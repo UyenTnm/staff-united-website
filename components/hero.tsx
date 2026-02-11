@@ -14,14 +14,15 @@ export default function Hero() {
               </p>
 
               <h1 className="text-4xl md:text-5xl font-bold text-[#0b1b33] leading-tight tracking-tight">
-                Clear Standards. Reliable Service. Transparent Operations.
+                Reliable execution for growing businesses.
               </h1>
             </div>
 
             <p className="text-lg text-[#0b1b33]/80 leading-relaxed max-w-md">
-              STAFF UNITED delivers professional business solutions backed by
-              structured workflows, experienced teams, and a commitment to
-              excellence that doesn't compromise on clarity or consistency.
+              STAFF United is a women-powered offshore execution partner based
+              in Vietnam, supporting international businesses through a
+              distributed team of women across Asia—operating under one shared
+              standard.
             </p>
 
             {/* CTA */}
