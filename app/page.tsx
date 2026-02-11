@@ -5,24 +5,25 @@ export default function Home() {
   return (
     <main className="bg-white">
       {/* <Navigation /> */}
-
       {/* HOME CONTENT START */}
-      <section className="max-w-5xl mx-auto px-6 py-20 space-y-20">
+      <section className="max-w-5xl mx-auto px-6 py-10 space-y-10 ">
         {/* SECTION 1 — HERO */}
         <div className="space-y-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-semibold text-[#0b1b33] leading-[1.1] tracking-tight">
-            Reliable execution <br />
-            for growing businesses.
+          <h1 className="text-4xl md:text-5xl font-semibold text-[#0b1b33] leading-[1.1] tracking-tight">
+            Women-powered <br /> offshore execution <br />
+            partner based in Vietnam
           </h1>
 
-          <p className="text-3xl md:text-4xl text-[#0b1b33]/80 max-w-2xl mx-auto">
-            An offshore execution partner for international companies.
+          <p className="text-lg md:text-2xl text-[#0b1b33]/80 max-w-2xl mx-auto">
+            Supports international businesses through a distributed team of
+            women across Asia, operating under one shared standard.{" "}
           </p>
 
-          <p className="text-[#0b1b33]/70 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-[#0b1b33]/70 text-lg max-w-3xl mx-auto leading-relaxed">
             STAFF United is a women-powered offshore execution partner based in
             Vietnam, supporting international businesses through a distributed
-            team of women across Asia—operating under one shared standard.
+            team of women across <br />
+            Asia-operating under one shared standard.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
@@ -41,7 +42,7 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="text-xl text-[#0b1b33]/60 space-y-1 pt-4">
+          <div className="text-base text-[#0b1b33]/60 space-y-1 pt-4">
             <p>All Females. All Business.</p>
             <p>One standard. One team.</p>
           </div>
@@ -49,43 +50,48 @@ export default function Home() {
 
         {/* SECTION 2 — POSITIONING */}
         <div className="space-y-6">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
+          {/* <h2 className="text-3xl text-center md:text-4xl font-semibold text-[#0b1b33]">
             Built for execution. Designed to scale.
-          </h2>
+          </h2> */}
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
+              Built for execution. Designed to scale.
+            </h2>
+            <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 rounded-full"></div>
+          </div>
 
-          <p className="text-[#0b1b33]/80 leading-relaxed">
+          <p className="text-[#0b1b33]/80 text-lg text-center leading-relaxed">
             STAFF United integrates directly into our clients’ operations and
             takes responsibility for delivery. Our work is guided by defined
-            standards, structured workflows, and shared accountability—ensuring
-            consistent outcomes as businesses grow. This execution-first model
-            allows companies to scale support with confidence, clarity, and
-            control.
+            standards, structured workflows, and shared accountability -
+            ensuring consistent outcomes as businesses grow. This
+            execution-first model allows companies to scale support with
+            confidence, clarity, and control.
           </p>
 
-          <p className="font-medium text-[#0b1b33]">
+          <p className="text-center font-medium text-[#0b1b33]">
             Execution without compromise.
           </p>
         </div>
 
         {/* SECTION 3 — VALUE SIGNAL */}
-        <div className=" text-center">
-          <p className="text-2xl md:text-3xl font-semibold text-[#0b1b33] tracking-tight">
-            Dedicated teams{" "}
-            <span className="text-[#0b1b33]/70">
-              without the overhead of local hiring.
-            </span>
-          </p>
-        </div>
 
         {/* SECTION 4 — WHAT WE DELIVER */}
-        <section className=" bg-white">
-          <div className="max-w-6xl mx-auto px-6 space-y-16">
+        <section className="bg-white">
+          <div className="max-w-[1500px] mx-auto px-10 py-6 space-y-14">
             {/* Title */}
             <div className="text-center space-y-4">
-              <h2 className="text-3xl md:text-4xl tracking-widest font-semibold text-[#0b1b33] uppercase">
+              {/* <h2 className="text-3xl md:text-4xl tracking-widest font-semibold text-[#0b1b33] uppercase">
                 WHAT WE DELIVER
-              </h2>
-              <p className="text-xl font-medium max-w-xl mx-auto">
+              </h2> */}
+              <div className="text-center">
+                <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
+                  WHAT WE DELIVER
+                </h2>
+                <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 rounded-full"></div>
+              </div>
+
+              <p className="text-xl font-medium">
                 <span className="text-[#0b1b33]">Dedicated teams</span>{" "}
                 <span className="text-[#0b1b33]/60">
                   without the overhead of local hiring.
@@ -94,36 +100,37 @@ export default function Home() {
             </div>
 
             {/* Cards */}
-            <div className="grid md:grid-cols-2 gap-10">
+            <div className="grid md:grid-cols-2 gap-14">
               {/* CARD 1 */}
-              <div className="bg-[#eef2f7] border border-[#4f8fcb]/40 rounded-xl p-8 transition hover:border-[#4f8fcb] hover:shadow-md">
+              <div className="bg-[#eef2f7] border border-[#4f8fcb]/40 rounded-xl p-6 xl:p-7 transition-all duration-300 hover:border-[#4f8fcb] hover:shadow-md">
                 {/* Image */}
-                <div className="flex justify-center mb-6">
+                <div className="flex justify-center mb-5">
                   <img
                     src="/images/creative.png"
                     alt="Creative"
-                    className="h-32 object-contain"
+                    className="h-36 object-contain"
                   />
                 </div>
 
                 {/* Title */}
-                <div className="text-center mb-6 space-y-2">
-                  <h3 className="text-xl md:text-4xl font-semibold text-[#0b1b33]">
+                <div className="text-center mb-5 space-y-2">
+                  <h3 className="text-xl md:text-2xl font-semibold text-[#0b1b33]">
                     Creative & Content Production
                   </h3>
-                  <p className="text-base md:text-lg text-[#0b1b33]/70 leading-relaxed">
+
+                  <p className="text-base text-[#0b1b33]/70 leading-relaxed">
                     Publish-ready creative output—delivered through structured
                     workflow and internal review.
                   </p>
                 </div>
 
                 {/* What we support */}
-                <div className="space-y-4 mb-6">
-                  <h4 className="text-base md:text-lg font-semibold text-[#0b1b33]">
+                <div className="space-y-3 mb-5">
+                  <h4 className="text-base font-semibold text-[#0b1b33]">
                     What we support
                   </h4>
 
-                  <ul className="space-y-2 text-base md:text-lg text-[#0b1b33]/80">
+                  <ul className="space-y-2 text-base text-[#0b1b33]/80">
                     {[
                       "Content editing & formatting (blogs, newsletters, long-form)",
                       "Social content production & repurposing",
@@ -132,9 +139,7 @@ export default function Home() {
                       "Publishing support (scheduling, uploads, QA checks)",
                     ].map((item, i) => (
                       <li key={i} className="flex gap-2 items-start">
-                        <span className="text-[#4f8fcb] mt-[2px] text-base">
-                          ✓
-                        </span>
+                        <span className="text-[#4f8fcb] mt-[2px]">✓</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -142,21 +147,19 @@ export default function Home() {
                 </div>
 
                 {/* How we deliver */}
-                <div className="space-y-4">
-                  <h4 className="text-base md:text-lg font-semibold text-[#0b1b33]">
+                <div className="space-y-3">
+                  <h4 className="text-base font-semibold text-[#0b1b33]">
                     How we deliver
                   </h4>
 
-                  <ul className="space-y-2 text-base md:text-lg text-[#0b1b33]/80">
+                  <ul className="space-y-2 text-base text-[#0b1b33]/80">
                     {[
                       "Clear scope + checklist-based execution",
                       "Internal review before delivery",
                       "Consistent quality and on-time output",
                     ].map((item, i) => (
                       <li key={i} className="flex gap-2 items-start">
-                        <span className="text-[#4f8fcb] mt-[2px] text-base">
-                          ✓
-                        </span>
+                        <span className="text-[#4f8fcb] mt-[2px]">✓</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -165,34 +168,35 @@ export default function Home() {
               </div>
 
               {/* CARD 2 */}
-              <div className="bg-[#eef2f7] border border-[#4f8fcb]/40 rounded-xl p-8 transition hover:border-[#4f8fcb] hover:shadow-md">
+              <div className="bg-[#eef2f7] border border-[#4f8fcb]/40 rounded-xl p-6 xl:p-7 transition-all duration-300 hover:border-[#4f8fcb] hover:shadow-md">
                 {/* Image */}
-                <div className="flex justify-center mb-6">
+                <div className="flex justify-center mb-5">
                   <img
                     src="/images/admin.png"
                     alt="Admin"
-                    className="h-32 object-contain"
+                    className="h-36 object-contain"
                   />
                 </div>
 
                 {/* Title */}
-                <div className="text-center mb-6 space-y-2">
-                  <h3 className="text-xl md:text-4xl font-semibold text-[#0b1b33]">
+                <div className="text-center mb-5 space-y-2">
+                  <h3 className="text-xl md:text-2xl font-semibold text-[#0b1b33]">
                     Administration & Business Support
                   </h3>
-                  <p className="text-base md:text-lg text-[#0b1b33]/70 leading-relaxed">
+
+                  <p className="text-base text-[#0b1b33]/70 leading-relaxed">
                     Reliable operational support—handled with clear process and
                     accountability.
                   </p>
                 </div>
 
                 {/* What we support */}
-                <div className="space-y-4 mb-6">
-                  <h4 className="text-base md:text-lg font-semibold text-[#0b1b33]">
+                <div className="space-y-3 mb-5">
+                  <h4 className="text-base font-semibold text-[#0b1b33]">
                     What we support
                   </h4>
 
-                  <ul className="space-y-2 text-base md:text-lg text-[#0b1b33]/80">
+                  <ul className="space-y-2 text-base text-[#0b1b33]/80">
                     {[
                       "Inbox/calendar support & follow-ups",
                       "Meeting notes, action items, and tracking",
@@ -201,9 +205,7 @@ export default function Home() {
                       "Research, reporting, and lightweight ops tasks",
                     ].map((item, i) => (
                       <li key={i} className="flex gap-2 items-start">
-                        <span className="text-[#4f8fcb] mt-[2px] text-base">
-                          ✓
-                        </span>
+                        <span className="text-[#4f8fcb] mt-[2px]">✓</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -211,21 +213,19 @@ export default function Home() {
                 </div>
 
                 {/* How we deliver */}
-                <div className="space-y-4">
-                  <h4 className="text-base md:text-lg font-semibold text-[#0b1b33]">
+                <div className="space-y-3">
+                  <h4 className="text-base font-semibold text-[#0b1b33]">
                     How we deliver
                   </h4>
 
-                  <ul className="space-y-2 text-base md:text-lg text-[#0b1b33]/80">
+                  <ul className="space-y-2 text-base text-[#0b1b33]/80">
                     {[
                       "Standard operating procedures (SOPs)",
                       "Structured workflows + handoff clarity",
                       "Ownership for completion—not just task handling",
                     ].map((item, i) => (
                       <li key={i} className="flex gap-2 items-start">
-                        <span className="text-[#4f8fcb] mt-[2px] text-base">
-                          ✓
-                        </span>
+                        <span className="text-[#4f8fcb] mt-[2px]">✓</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -238,17 +238,24 @@ export default function Home() {
 
         {/* SECTION 5 — HOW CLIENTS WORK WITH US */}
         <div className="space-y-10">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
+          {/* <h2 className="text-3xl text-center md:text-4xl font-semibold text-[#0b1b33]">
             How clients work with us
-          </h2>
+          </h2> */}
+
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
+              How clients work with us
+            </h2>
+            <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 rounded-full"></div>
+          </div>
 
           <div className="grid md:grid-cols-2 gap-10">
             {/* Dedicated */}
             <div className="space-y-4">
-              <h3 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
+              <h3 className="text-2xl text-center md:text-3xl font-semibold text-[#0b1b33]">
                 Dedicated team members
               </h3>
-              <p className="text-[#0b1b33]/80 leading-relaxed">
+              <p className="text-[#0b1b33]/80 text-lg text-center leading-relaxed">
                 Build long-term capacity by hiring full-time team members
                 through STAFF United. This model supports continuity, deeper
                 integration, and ownership within your business.
@@ -257,10 +264,10 @@ export default function Home() {
 
             {/* Flexible */}
             <div className="space-y-4">
-              <h3 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
+              <h3 className="text-2xl text-center md:text-3xl font-semibold text-[#0b1b33]">
                 Flexible support
               </h3>
-              <p className="text-[#0b1b33]/80 leading-relaxed">
+              <p className="text-[#0b1b33]/80 text-lg text-center leading-relaxed">
                 Use part-time or as-needed support to fill gaps, manage workload
                 spikes, or support specific functions without long-term
                 commitment.
@@ -269,11 +276,11 @@ export default function Home() {
           </div>
 
           <div className="pt-6 border-t border-[#d1d5db]">
-            <p className="text-[#0b1b33]/80 leading-relaxed">
+            <p className="text-[#0b1b33]/80 text-center text-lg leading-relaxed">
               Both models operate under the same workflows, review process, and
               quality expectations.
             </p>
-            <p className="font-medium text-[#0b1b33] pt-2">
+            <p className="font-medium text-lg text-center text-[#0b1b33] pt-2">
               One standard. One team.
             </p>
           </div>
@@ -281,11 +288,17 @@ export default function Home() {
 
         {/* SECTION 6 — WHY WE BUILT THIS */}
         <div className="space-y-8">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
+          {/* <h2 className="text-3xl text-center md:text-4xl font-semibold text-[#0b1b33]">
             Why we built this
-          </h2>
+          </h2> */}
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
+              Why we built this
+            </h2>
+            <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 rounded-full"></div>
+          </div>
 
-          <div className="space-y-6 text-[#0b1b33]/80 leading-relaxed">
+          <div className="space-y-4 text-lg text-[#0b1b33]/80 leading-relaxed">
             <p>
               STAFF United was built in Vietnam by women who understood what it
               means to work hard without always being seen.
@@ -310,7 +323,7 @@ export default function Home() {
             </p>
           </div>
 
-          <p className="font-medium text-[#0b1b33] pt-2">
+          <p className="font-medium text-lg text-[#0b1b33]">
             Supporting women is not separate from how we work. It is built into
             the standard.
           </p>
@@ -318,11 +331,18 @@ export default function Home() {
 
         {/* SECTION 7 — THE STANDARD (PREVIEW) */}
         <div className="space-y-8">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
+          {/* <h2 className="text-3xl text-center md:text-4xl font-semibold text-[#0b1b33]">
             The Standard
-          </h2>
+          </h2> */}
 
-          <div className="space-y-6 text-[#0b1b33]/80 leading-relaxed">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
+              The Standard
+            </h2>
+            <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 rounded-full"></div>
+          </div>
+
+          <div className="space-y-4 text-lg text-[#0b1b33]/80 leading-relaxed">
             <p>Anyone can promise quality. Very few can enforce it.</p>
 
             <p>
@@ -338,10 +358,10 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="pt-4">
+          <div className="pt-4 text-center">
             <a
               href="/the-standard"
-              className="inline-block px-6 py-3 bg-[#0b1b33] text-white text-base md:text-lg font-medium rounded hover:bg-[#0b1b33]/90 transition"
+              className="inline-block px-6 py-3 bg-[#0b1b33] text-white text-base md:text-lg font-medium rounded hover:bg-[#0b1b33]/90 transition text-center"
             >
               View The Standard
             </a>
@@ -349,14 +369,14 @@ export default function Home() {
         </div>
 
         {/* SECTION 8 — HOW IT WORKS */}
-        {/* SECTION 8 — HOW IT WORKS */}
-        <section className="py-28">
+        <section className="py-5">
           <div className="max-w-6xl mx-auto px-6">
             {/* Title */}
-            <div className="mb-16 text-center">
+            <div className="text-center">
               <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
-                How it works
+                The Standard
               </h2>
+              <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 mb-4 rounded-full"></div>
             </div>
 
             <div className="relative">
@@ -377,7 +397,7 @@ export default function Home() {
                     Request
                   </h3>
 
-                  <p className="text-[#0b1b33]/75 leading-relaxed">
+                  <p className="text-[#0b1b33]/75 text-lg leading-relaxed">
                     Tell us what you need, when you need it, and what success
                     looks like.
                   </p>
@@ -396,7 +416,7 @@ export default function Home() {
                     Scope + assign
                   </h3>
 
-                  <p className="text-[#0b1b33]/75 leading-relaxed">
+                  <p className="text-[#0b1b33]/75 text-lg leading-relaxed">
                     We confirm deliverables and timelines, then assign the right
                     team under one shared standard.
                   </p>
@@ -414,7 +434,7 @@ export default function Home() {
                     Deliver + review
                   </h3>
 
-                  <p className="text-[#0b1b33]/75 leading-relaxed">
+                  <p className="text-[#0b1b33]/75 text-lg leading-relaxed">
                     Work is delivered with internal review, clear communication,
                     and accountability.
                   </p>
@@ -426,11 +446,18 @@ export default function Home() {
 
         {/* SECTION 9 — MODERN SYSTEMS */}
         <div className="space-y-6">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
+          {/* <h2 className="text-3xl text-center md:text-4xl font-semibold text-[#0b1b33]">
             Modern systems
-          </h2>
+          </h2> */}
 
-          <p className="text-[#0b1b33]/80 leading-relaxed">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
+              Modern systems
+            </h2>
+            <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 rounded-full"></div>
+          </div>
+
+          <p className="text-[#0b1b33]/80 text-lg leading-relaxed">
             We use structured workflows and modern tooling—including AI-assisted
             drafting and quality support—to improve speed and consistency. Final
             delivery is always reviewed by people and delivered under one shared
@@ -440,7 +467,7 @@ export default function Home() {
 
         {/* SECTION 10 — CTA STRIP */}
         <div className="mt-12 bg-[#f2f4f7] rounded-md p-10 text-center space-y-6">
-          <p className="text-3xl md:text-4xl font-medium text-[#0b1b33]">
+          <p className="text-lg md:text-2xl font-medium text-[#0b1b33]">
             Whether you’re building a dedicated team or need flexible support,
             send a request and we’ll confirm next steps.
           </p>

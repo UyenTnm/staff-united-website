@@ -1,7 +1,7 @@
 export default function TheStandard() {
   return (
     <main className="bg-white">
-      <section className="max-w-5xl mx-auto px-6 py-20 space-y-20">
+      <section className="max-w-5xl mx-auto px-6 py-10 space-y-10">
         {/* INTRO */}
         <div className="text-center space-y-6">
           <h1 className="text-4xl md:text-5xl font-semibold text-[#0b1b33] leading-tight">
@@ -13,7 +13,9 @@ export default function TheStandard() {
             across the team and enforced through process.
           </p>
 
-          <p className="font-medium text-[#0b1b33]">One standard. One team.</p>
+          <p className="text-base md:text-lg font-semibold text-[#4f8fcb] tracking-wide pt-2">
+            One standard. One team.
+          </p>
         </div>
 
         {/* STAFF VALUES */}
