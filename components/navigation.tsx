@@ -43,7 +43,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/#home" className="flex items-center">
             <Image
-              src="/STAFF.PNG"
+              src="/staff-logo.png"
               alt="STAFF United"
               width={140}
               height={32}
