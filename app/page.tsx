@@ -19,12 +19,12 @@ export default function Home() {
             women across Asia, operating under one shared standard.{" "}
           </p>
 
-          <p className="text-[#0b1b33]/70 text-lg max-w-3xl mx-auto leading-relaxed">
+          {/* <p className="text-[#0b1b33]/70 text-lg max-w-3xl mx-auto leading-relaxed">
             STAFF United is a women-powered offshore execution partner based in
             Vietnam, supporting international businesses through a distributed
             team of women across <br />
             Asia-operating under one shared standard.
-          </p>
+          </p> */}
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
             <a
@@ -60,14 +60,14 @@ export default function Home() {
             <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 rounded-full"></div>
           </div>
 
-          <p className="text-[#0b1b33]/80 text-lg text-center leading-relaxed">
+          {/* <p className="text-[#0b1b33]/80 text-lg text-center leading-relaxed">
             STAFF United integrates directly into our clients’ operations and
             takes responsibility for delivery. Our work is guided by defined
             standards, structured workflows, and shared accountability -
             ensuring consistent outcomes as businesses grow. This
             execution-first model allows companies to scale support with
             confidence, clarity, and control.
-          </p>
+          </p> */}
 
           <p className="text-center font-medium text-[#0b1b33]">
             Execution without compromise.
@@ -86,7 +86,7 @@ export default function Home() {
               </h2> */}
               <div className="text-center">
                 <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
-                  WHAT WE DELIVER
+                  What We Deliver
                 </h2>
                 <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 rounded-full"></div>
               </div>
@@ -244,7 +244,7 @@ export default function Home() {
 
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
-              How clients work with us
+              How Clients Work with Us
             </h2>
             <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 rounded-full"></div>
           </div>
@@ -293,7 +293,7 @@ export default function Home() {
           </h2> */}
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
-              Why we built this
+              Why We Built This
             </h2>
             <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 rounded-full"></div>
           </div>
@@ -374,7 +374,7 @@ export default function Home() {
             {/* Title */}
             <div className="text-center">
               <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
-                The Standard
+                How It Works
               </h2>
               <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 mb-4 rounded-full"></div>
             </div>
@@ -452,7 +452,7 @@ export default function Home() {
 
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
-              Modern systems
+              Modern Systems
             </h2>
             <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 rounded-full"></div>
           </div>
