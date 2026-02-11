@@ -1,10 +1,18 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function RequestSupportPage() {
-  const searchParams = useSearchParams();
-  const success = searchParams.get("success");
+  const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("success") === "true") {
+        setSuccess(true);
+      }
+    }
+  }, []);
 
   return (
     <main className="min-h-screen bg-[#f2f4f7]">
@@ -22,8 +30,7 @@ export default function RequestSupportPage() {
           </p>
         </div>
 
-        {/* SUCCESS MESSAGE */}
-        {success === "true" ? (
+        {success ? (
           <div className="bg-white border border-[#d1d5db] rounded-lg p-6 text-center">
             <h2 className="text-lg font-semibold text-[#0b1b33] mb-2">
               Thank you
@@ -39,11 +46,11 @@ export default function RequestSupportPage() {
             encType="multipart/form-data"
             className="bg-white border border-[#d1d5db] rounded-lg p-6 space-y-8"
           >
-            {/* Hidden redirect after submit */}
+            {/* Hidden redirect */}
             <input
               type="hidden"
               name="_next"
-              value="http://localhost:3000/request-support?success=true"
+              value="https://yourdomain.com/request-support?success=true"
             />
 
             {/* BASIC INFO */}
@@ -105,7 +112,6 @@ export default function RequestSupportPage() {
                 name="engagement_model"
                 className="w-full border border-[#d1d5db] rounded px-3 py-2"
               >
-                <option>Engagement Model</option>
                 <option>Dedicated</option>
                 <option>Flexible</option>
                 <option>Not sure</option>
@@ -164,7 +170,6 @@ export default function RequestSupportPage() {
               </label>
             </section>
 
-            {/* SUBMIT */}
             <button
               type="submit"
               className="w-full bg-[#0b1b33] text-white py-3 rounded font-medium hover:bg-[#0b1b33]/90 transition"
