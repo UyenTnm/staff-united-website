@@ -59,14 +59,13 @@ export default function Navigation() {
     px-5 py-2
     text-sm font-medium
     rounded
-    text-white
-    bg-[#4f8fcb]
-    shadow-sm
+    border
     transition-all duration-200
-    hover:bg-[#3f7bb5]
-    hover:shadow-md
-    hover:-translate-y-[1px]
-    active:translate-y-0
+    ${
+      isActive("/request-support")
+        ? "bg-[#4f8fcb] text-white border-[#0b1b33] shadow-md"
+        : "bg-[#4f8fcb] text-white border-transparent shadow-sm hover:bg-[#3f7bb5] hover:shadow-md hover:-translate-y-[1px] active:translate-y-0"
+    }
   `}
             >
               Request Support
@@ -74,57 +73,95 @@ export default function Navigation() {
 
             <Link
               href="/join"
-              className={`px-5 py-2 text-sm font-medium rounded transition ${
-                isActive("/join")
-                  ? "bg-[#4f8fcb] text-white"
-                  : "bg-white text-[#0b1b33] hover:bg-[#f2f4f7]"
-              }`}
+              className={`
+    px-5 py-2
+    text-sm font-medium
+    rounded
+    border
+    transition-all duration-300
+    ${
+      isActive("/join")
+        ? "bg-[#4f8fcb] text-white border-[#0b1b33] shadow-lg scale-[1.03] ring-2 ring-[#0b1b33]/40"
+        : "bg-white text-[#0b1b33] border-transparent hover:bg-[#f2f4f7] hover:shadow-sm hover:-translate-y-[1px]"
+    }
+  `}
             >
               Join the Team
             </Link>
           </div>
 
           {/* Mobile Button */}
-          <button className="md:hidden p-2" onClick={() => setIsOpen(!isOpen)}>
-            <div className="w-6 h-5 flex flex-col justify-between">
-              <span className="h-0.5 w-full bg-white" />
-              <span className="h-0.5 w-full bg-white" />
-              <span className="h-0.5 w-full bg-white" />
-            </div>
+          <button
+            className="md:hidden p-2 relative w-8 h-8"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <span
+              className={`absolute left-0 top-2 h-0.5 w-full bg-white transition-all duration-300 ${
+                isOpen ? "rotate-45 top-3.5" : ""
+              }`}
+            />
+            <span
+              className={`absolute left-0 top-3.5 h-0.5 w-full bg-white transition-all duration-300 ${
+                isOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`absolute left-0 top-5 h-0.5 w-full bg-white transition-all duration-300 ${
+                isOpen ? "-rotate-45 top-3.5" : ""
+              }`}
+            />
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden pb-6 space-y-3">
-            {navItems.map((item) => (
+          <div className="md:hidden pb-6 pt-4 space-y-4 border-t border-white/10">
+            {/* Nav Links */}
+            <div className="space-y-3">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`block text-sm font-medium transition ${
+                    isActive(item.href)
+                      ? "text-white"
+                      : "text-white/70 hover:text-white"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="space-y-3 pt-4">
+              {/* Request Support */}
               <Link
-                key={item.href}
-                href={item.href}
+                href="/request-support"
                 onClick={() => setIsOpen(false)}
-                className={`block text-sm font-medium ${
-                  isActive(item.href) ? "text-white" : "text-white/70"
+                className={`block w-full text-center px-4 py-3 rounded font-medium border transition-all ${
+                  isActive("/request-support")
+                    ? "bg-[#4f8fcb] text-white border-[#0b1b33] shadow-md"
+                    : "bg-[#4f8fcb] text-white border-transparent hover:bg-[#3f7bb5]"
                 }`}
               >
-                {item.label}
+                Request Support
               </Link>
-            ))}
 
-            <Link
-              href="/request-support"
-              onClick={() => setIsOpen(false)}
-              className="block text-white mt-2"
-            >
-              Request Support
-            </Link>
-
-            <Link
-              href="/join"
-              onClick={() => setIsOpen(false)}
-              className="block text-white"
-            >
-              Join the Team
-            </Link>
+              {/* Join the Team */}
+              <Link
+                href="/join"
+                onClick={() => setIsOpen(false)}
+                className={`block w-full text-center px-4 py-3 rounded font-medium border transition-all ${
+                  isActive("/join")
+                    ? "bg-white text-[#0b1b33] border-[#0b1b33] shadow-md"
+                    : "bg-white text-[#0b1b33] border-transparent hover:bg-[#f2f4f7]"
+                }`}
+              >
+                Join the Team
+              </Link>
+            </div>
           </div>
         )}
       </div>
