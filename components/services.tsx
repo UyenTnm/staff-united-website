@@ -5,11 +5,11 @@ export default function ServicesPage() {
         {/* Header */}
         <section className="text-center max-w-2xl mx-auto space-y-2">
           <h1 className="text-3xl font-semibold text-[#0b1b33]">
-            Two service lanes. One execution model.
+            Two Service Lanes. One Execution Model.
           </h1>
           <p className="text-[#0b1b33]/80 leading-relaxed">
-            Delivered through dedicated or flexible support under one shared
-            standard.
+            Delivered Through Dedicated or Flexible Support Under One Shared
+            Standard.
           </p>
         </section>
 
@@ -95,11 +95,11 @@ export default function ServicesPage() {
 
         {/* Closing */}
         <p className="text-center text-sm text-[#0b1b33]/70 max-w-xl mx-auto leading-relaxed">
-          Both models operate under the same workflows, review process, and
-          quality expectations.
+          Both Models Operate Under the Same Workflows, Review Process, and
+          Quality Expectations.
           <br />
           <span className="font-medium text-[#0b1b33]">
-            One standard. One team.
+            One Standard. One team.
           </span>
         </p>
       </div>

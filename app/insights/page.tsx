@@ -35,9 +35,9 @@ export default function InsightsPage() {
           <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>
 
           <p className="text-lg text-[#0b1b33]/80 leading-relaxed max-w-3xl mx-auto">
-            Practical thinking on execution, standards,
+            Practical Thinking on Execution, Standards,
             <br className="hidden md:block" />
-            and building reliable support systems for modern businesses.
+            and Building Reliable Support Systems for Modern Businesses.
           </p>
         </div>
 
@@ -77,7 +77,7 @@ export default function InsightsPage() {
         {/* SUBTLE CTA */}
         <div className="text-center pt-6">
           <p className="text-xl text-[#4f8fcb] font-semibold animate-softBlink">
-            More insights coming soon.
+            More Insights Coming Soon.
           </p>
         </div>
       </section>

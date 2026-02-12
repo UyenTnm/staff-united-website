@@ -308,11 +308,11 @@ export default function Home() {
 
           <div className="pt-6 border-t border-[#d1d5db]">
             <p className="text-[#0b1b33]/80 text-center text-lg leading-relaxed">
-              Both models operate under the same workflows, review process, and
-              quality expectations.
+              Both Models Operate Under the Same Workflows, Review Process, and
+              Quality Expectations.
             </p>
             <p className="text-base text-center md:text-lg font-semibold text-[#4f8fcb] tracking-wide pt-2 space-y-1">
-              One standard. One team.
+              One Standard. One team.
             </p>
           </div>
         </div>

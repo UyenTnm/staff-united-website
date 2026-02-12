@@ -5,19 +5,19 @@ export default function Services() {
       <section className="bg-white pt-16">
         <div className="max-w-6xl mx-auto px-6 text-center space-y-6">
           <h1 className="text-4xl md:text-5xl font-semibold text-[#0b1b33] leading-[1.1] tracking-tight">
-            Two service lanes. One execution model.
+            Two Service Lanes. One Execution Model.
           </h1>
           <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>
 
           <p className="text-lg text-[#0b1b33]/75">
-            Delivered through dedicated or flexible support under one shared
-            standard.
+            Delivered Through Dedicated or Flexible Support Under One Shared
+            Standard.
           </p>
 
           <p className="text-lg md:text-xl font-medium leading-snug">
-            <span className="text-[#4f8fcb] font-bold">Dedicated teams</span>{" "}
+            <span className="text-[#4f8fcb] font-bold">Dedicated Teams</span>{" "}
             <span className="text-[#0b1b33]/60">
-              without the overhead of local hiring.
+              Without the Overhead of Local Hiring.
             </span>
           </p>
         </div>

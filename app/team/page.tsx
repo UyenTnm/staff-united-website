@@ -42,9 +42,9 @@ export default function TeamPage() {
           <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>
 
           <p className="text-lg md:text-xl text-[#0b1b33]/80 leading-relaxed max-w-3xl mx-auto">
-            We operate as one unit under one shared standard.
+            We Operate as One Unit Under One Shared Standard.
             <br className="hidden md:block" />
-            Roles differ. Responsibility is collective.
+            Roles Differ. Responsibility Is Collective.
             {/* <span className="text-[#0b1b33] font-medium">
               
             </span> */}

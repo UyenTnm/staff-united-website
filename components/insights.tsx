@@ -37,8 +37,8 @@ export default function Insights() {
             Insights
           </h2>
           <p className="text-[#0b1b33]/80 leading-relaxed">
-            Practical thinking on execution, standards, and building reliable
-            support systems for modern businesses.
+            Practical Thinking on Execution, Standards, and Building Reliable
+            Support Systems for Modern Businesses.
           </p>
         </div>
 

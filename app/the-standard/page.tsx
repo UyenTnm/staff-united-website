@@ -10,12 +10,12 @@ export default function TheStandard() {
           <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>
 
           <p className="text-lg text-[#0b1b33]/80 leading-relaxed max-w-3xl mx-auto">
-            STAFF is not just a name. It is the standard we operate under—shared
-            across the team and enforced through process.
+            Staff Is Not Just a Name. It Is the Standard We Operate Under—Shared
+            Across the Team and Enforced Through Process.
           </p>
 
           <p className="text-base md:text-lg font-semibold text-[#4f8fcb] tracking-wide pt-2">
-            One standard. One team.
+            One Standard. One team.
           </p>
         </div>
 
