@@ -15,7 +15,7 @@ export default function Services() {
           </p>
 
           <p className="text-lg md:text-xl font-medium leading-snug">
-            <span className="text-[#0b1b33]">Dedicated teams</span>{" "}
+            <span className="text-[#4f8fcb] font-bold">Dedicated teams</span>{" "}
             <span className="text-[#0b1b33]/60">
               without the overhead of local hiring.
             </span>

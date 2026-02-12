@@ -86,9 +86,9 @@ export default function TheStandard() {
           </div>
           <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>
 
-          <p className="text-center text-[#0b1b33]/80 leading-relaxed max-w-3xl mx-auto">
+          {/* <p className="text-center text-[#0b1b33]/80 leading-relaxed max-w-3xl mx-auto">
             Shared standards. Shared responsibility. Collective delivery.
-          </p>
+          </p> */}
 
           <div className="grid md:grid-cols-3 gap-6 pt-4">
             <div className="border-l-2 border-[#4f8fcb] pl-4">
@@ -162,7 +162,7 @@ export default function TheStandard() {
 
           {/* Closing statement */}
           <div className="text-center pt-6">
-            <p className="text-lg font-medium text-[#0b1b33]">
+            <p className="text-lg text-[#4f8fcb] font-bold">
               Standards protect our clients—and our people.
             </p>
           </div>

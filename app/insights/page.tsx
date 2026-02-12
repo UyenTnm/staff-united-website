@@ -26,7 +26,7 @@ export default function InsightsPage() {
 
   return (
     <main className="bg-white">
-      <section className="max-w-6xl mx-auto px-6 py-16 space-y-16">
+      <section className="max-w-5xl mx-auto px-6 py-10 space-y-10">
         {/* INTRO */}
         <div className="text-center space-y-6 max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-semibold text-[#0b1b33]">
@@ -76,7 +76,7 @@ export default function InsightsPage() {
 
         {/* SUBTLE CTA */}
         <div className="text-center pt-6">
-          <p className="text-xl text-[#0b1b33]/60">
+          <p className="text-xl text-[#4f8fcb] font-semibold animate-softBlink">
             More insights coming soon.
           </p>
         </div>
