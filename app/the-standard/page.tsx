@@ -7,6 +7,7 @@ export default function TheStandard() {
           <h1 className="text-4xl md:text-5xl font-semibold text-[#0b1b33] leading-tight">
             The Standard
           </h1>
+          <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>
 
           <p className="text-lg text-[#0b1b33]/80 leading-relaxed max-w-3xl mx-auto">
             STAFF is not just a name. It is the standard we operate under—shared
@@ -26,6 +27,7 @@ export default function TheStandard() {
               STAFF
             </h2>
           </div>
+          <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>
 
           {/* STAFF GRID */}
           <div className="grid md:grid-cols-5 gap-4">
@@ -82,6 +84,7 @@ export default function TheStandard() {
               UNITED
             </h2>
           </div>
+          <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>
 
           <p className="text-center text-[#0b1b33]/80 leading-relaxed max-w-3xl mx-auto">
             Shared standards. Shared responsibility. Collective delivery.
@@ -125,6 +128,7 @@ export default function TheStandard() {
               IN PRACTICE
             </h2>
           </div>
+          <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>
 
           {/* Structured grid */}
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6 pt-4">

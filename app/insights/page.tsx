@@ -32,6 +32,7 @@ export default function InsightsPage() {
           <h1 className="text-4xl md:text-5xl font-semibold text-[#0b1b33]">
             Insights
           </h1>
+          <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>
 
           <p className="text-lg text-[#0b1b33]/80 leading-relaxed max-w-3xl mx-auto">
             Practical thinking on execution, standards,

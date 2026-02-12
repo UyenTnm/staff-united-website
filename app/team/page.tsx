@@ -38,6 +38,7 @@ export default function TeamPage() {
           <h1 className="text-5xl md:text-6xl font-semibold text-[#0b1b33] tracking-tight">
             Our Team
           </h1>
+          <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>
 
           <p className="text-lg md:text-xl text-[#0b1b33]/80 leading-relaxed max-w-3xl mx-auto">
             We operate as one unit under one shared standard.
