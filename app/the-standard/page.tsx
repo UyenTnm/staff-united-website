@@ -92,7 +92,7 @@ export default function TheStandard() {
 
           <div className="grid md:grid-cols-3 gap-6 pt-4">
             <div className="border-l-2 border-[#4f8fcb] pl-4">
-              <p className="font-semibold text-[#0b1b33]">Shared standards</p>
+              <p className="font-semibold text-[#0b1b33]">Shared Standards</p>
               <p className="text-sm text-[#0b1b33]/70 leading-relaxed mt-1">
                 Process defines how we work. Every team member operates under
                 the same expectations.
@@ -101,7 +101,7 @@ export default function TheStandard() {
 
             <div className="border-l-2 border-[#4f8fcb] pl-4">
               <p className="font-semibold text-[#0b1b33]">
-                Shared responsibility
+                Shared Responsibility
               </p>
               <p className="text-sm text-[#0b1b33]/70 leading-relaxed mt-1">
                 Accountability is collective. Delivery is not isolated to
@@ -111,7 +111,7 @@ export default function TheStandard() {
 
             <div className="border-l-2 border-[#4f8fcb] pl-4">
               <p className="font-semibold text-[#0b1b33]">
-                Collective delivery
+                Collective Delivery
               </p>
               <p className="text-sm text-[#0b1b33]/70 leading-relaxed mt-1">
                 We operate as one unit—aligned, coordinated, and consistent.
@@ -133,11 +133,11 @@ export default function TheStandard() {
           {/* Structured grid */}
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6 pt-4">
             {[
-              "Clear scope",
-              "Internal review",
-              "Documented workflows",
-              "Trackable communication",
-              "Quality checks",
+              "Clear Scope",
+              "Internal Review",
+              "Documented Workflows",
+              "Trackable Communication",
+              "Quality Checks",
             ].map((item, i) => (
               <div
                 key={i}
@@ -163,7 +163,7 @@ export default function TheStandard() {
           {/* Closing statement */}
           <div className="text-center pt-6">
             <p className="text-lg text-[#4f8fcb] font-bold">
-              Standards protect our clients—and our people.
+              Standards Protect Our Clients and Our People.
             </p>
           </div>
         </section>
