@@ -115,13 +115,13 @@ export default function JoinPage() {
               placeholder="Portfolio Link"
               className="w-full border border-[#d1d5db] rounded px-3 py-2"
             />
-
-            <input
+  
+            {/* <input
               name="resume"
               type="file"
               accept=".pdf"
               className="w-full border border-[#d1d5db] rounded px-3 py-2"
-            />
+            /> */}
           </section>
 
           {/* Culture Fit */}

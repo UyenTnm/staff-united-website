@@ -311,7 +311,7 @@ export default function Home() {
               Both models operate under the same workflows, review process, and
               quality expectations.
             </p>
-            <p className="font-medium text-lg text-center text-[#0b1b33] pt-2">
+            <p className="text-base text-center md:text-lg font-semibold text-[#4f8fcb] tracking-wide pt-2 space-y-1">
               One standard. One team.
             </p>
           </div>
@@ -351,12 +351,11 @@ export default function Home() {
               we create professional, long-term opportunities for women - while
               delivering reliability our clients can trust.
             </p>
+            <p>
+              Supporting women is not separate from how we work. It is built
+              into the standard.
+            </p>
           </div>
-
-          <p className="font-medium text-lg text-[#0b1b33]">
-            Supporting women is not separate from how we work. It is built into
-            the standard.
-          </p>
         </div>
       </section>
 

@@ -31,11 +31,12 @@ export default function TeamPage() {
 
   return (
     <main className="bg-white">
-      <section className="max-w-6xl mx-auto px-6 py-16 space-y-20">
+      {/* max-w-6xl mx-auto px-6 py-16 space-y-20 */}
+      <section className="max-w-5xl mx-auto px-6 py-10 space-y-10">
         {/* INTRO */}
         <div className="text-center space-y-6 max-w-3xl mx-auto">
-          {/* Title bigger */}
-          <h1 className="text-5xl md:text-6xl font-semibold text-[#0b1b33] tracking-tight">
+          {/* Title bigger.  text-4xl md:text-5xl font-semibold text-[#0b1b33] leading-tight */}
+          <h1 className="text-4xl md:text-5xl font-semibold text-[#0b1b33] leading-tight">
             Our Team
           </h1>
           <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>
@@ -43,10 +44,10 @@ export default function TeamPage() {
           <p className="text-lg md:text-xl text-[#0b1b33]/80 leading-relaxed max-w-3xl mx-auto">
             We operate as one unit under one shared standard.
             <br className="hidden md:block" />
-            Roles differ.{" "}
-            <span className="text-[#0b1b33] font-medium">
-              Responsibility is collective.
-            </span>
+            Roles differ. Responsibility is collective.
+            {/* <span className="text-[#0b1b33] font-medium">
+              
+            </span> */}
           </p>
 
           {/* Brand line bigger */}
@@ -73,20 +74,7 @@ export default function TeamPage() {
                 <div className="absolute inset-0 rounded-full bg-[#4f8fcb]/10 blur-xl opacity-0 group-hover:opacity-100 transition duration-300"></div>
 
                 {/* Image wrapper */}
-                <div
-                  className="
-          relative
-          w-40 h-40
-          mx-auto
-          rounded-full
-          overflow-hidden
-          border-4 border-white
-          shadow-md
-          ring-1 ring-[#4f8fcb]/30
-          transition duration-300
-          group-hover:ring-[#4f8fcb]
-        "
-                >
+                <div className=" relative w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-white shadow-md ring-1 ring-[#4f8fcb]/30 transition duration-300 group-hover:ring-[#4f8fcb]">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -118,17 +106,7 @@ export default function TeamPage() {
         <div className="text-center">
           <Link
             href="/join"
-            className="
-              inline-block
-              px-7 py-3
-              bg-[#4f8fcb]
-              text-white
-              text-sm font-medium
-              rounded-md
-              transition
-              hover:bg-[#0b1b33]
-              hover:shadow-md
-            "
+            className="inline-block px-6 py-3 bg-[#4f8fcb] text-white text-base md:text-lg font-medium rounded hover:bg-[#0b1b33]/90 transition"
           >
             Join the Team
           </Link>
