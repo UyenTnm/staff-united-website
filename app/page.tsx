@@ -153,8 +153,8 @@ export default function Home() {
                 </h3>
 
                 <p className="text-base text-[#0b1b33]/70 leading-relaxed">
-                  Publish-ready creative output - delivered through structured
-                  workflow <br /> and internal review.
+                  Publish-Ready Creative Output - Delivered Through Structured
+                  Workflow <br /> and Internal Review.
                 </p>
               </div>
 
@@ -219,8 +219,8 @@ export default function Home() {
                 </h3>
 
                 <p className="text-base text-[#0b1b33]/70 leading-relaxed">
-                  Reliable operational support—handled with clear process and
-                  accountability.
+                  Reliable Operational Support - Handled with Clear Process and
+                  Accountability.
                 </p>
               </div>
 
@@ -312,7 +312,7 @@ export default function Home() {
               Quality Expectations.
             </p>
             <p className="text-base text-center md:text-lg font-semibold text-[#4f8fcb] tracking-wide pt-2 space-y-1">
-              One Standard. One team.
+              One Standard. One Team.
             </p>
           </div>
         </div>
@@ -495,8 +495,8 @@ export default function Home() {
       <section className="bg-[#eef2f7] py-24">
         <div className="max-w-4xl mx-auto px-6 text-center space-y-6">
           <p className="text-lg md:text-2xl font-medium text-[#0b1b33]">
-            Whether you’re building a dedicated team or need flexible support,
-            send a request and we’ll confirm next steps.
+            Whether You’re Building A Dedicated Team Or Need Flexible Support,
+            Send A Request And We’ll Confirm Next Steps.
           </p>
 
           <a

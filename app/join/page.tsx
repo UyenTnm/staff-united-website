@@ -69,28 +69,28 @@ const vietnamProvinces = [
 ].sort((a, b) => a.localeCompare(b, "vi"));
 
 export default function JoinPage() {
-  const [department, setDepartment] = useState("");
+  const [role, setRole] = useState("");
   const [success, setSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const marketingRoles = [
-    "Content Creator",
-    "Social Media Manager",
-    "Performance Marketer",
+  const roleList = [
+    "Content Writer",
+    "Content Editor",
+    "Social Media Executive",
     "Graphic Designer",
-    "Video Editor",
-  ];
-
-  const webRoles = [
-    "Frontend Developer",
-    "Backend Developer",
-    "Full Stack Developer",
     "Web Designer",
-    "WordPress Developer",
-    "Shopify Developer",
+    "Video Editor",
+    "Motion Designer",
+    "UI/UX Designer",
+    "Virtual Assistant (VA)",
+    "Virtual Assistant",
+    "Executive Assistant",
+    "Operations Support",
+    "CRM & Data Support",
+    "Customer Support",
   ];
 
-  const marketingTools = [
+  const creativeTools = [
     "Canva",
     "Adobe Photoshop",
     "Adobe Illustrator",
@@ -102,17 +102,22 @@ export default function JoinPage() {
     "Google Analytics",
   ];
 
-  const webTools = [
-    "HTML/CSS",
-    "JavaScript",
-    "React",
-    "Next.js",
-    "WordPress",
-    "Shopify",
-    "Webflow",
-    "Git",
-    "Figma",
+  const adminTools = [
+    "Google Workspace",
+    "Notion",
+    "Monday.com",
+    "Slack",
+    "HubSpot",
+    "CRM Systems",
+    "Excel / Google Sheets",
   ];
+
+  const isCreative =
+    role.includes("Designer") ||
+    role.includes("Editor") ||
+    role.includes("Content") ||
+    role.includes("Social") ||
+    role.includes("Video");
 
   return (
     <main className="min-h-screen bg-[#f2f4f7]">
@@ -168,7 +173,7 @@ export default function JoinPage() {
               if (response.ok) {
                 setSuccess(true);
                 form.reset();
-                setDepartment("");
+                setRole("");
               } else {
                 alert("Something went wrong. Please try again.");
               }
@@ -210,7 +215,7 @@ export default function JoinPage() {
               <select
                 name="location"
                 required
-                className="w-full border border-[#d1d5db] rounded px-3 py-2"
+                className="w-full border  border-[#d1d5db] rounded px-3 py-2"
               >
                 <option value="">Select Your Province / City</option>
                 {vietnamProvinces.map((province) => (
@@ -231,31 +236,19 @@ export default function JoinPage() {
               </div>
 
               <select
-                name="department"
+                name="role"
                 required
-                value={department}
-                onChange={(e) => setDepartment(e.target.value)}
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
                 className="w-full border border-[#d1d5db] rounded px-3 py-2"
               >
-                <option value="">Select Department</option>
-                <option value="Marketing">Marketing</option>
-                <option value="Web">Web Development</option>
+                <option value="">Select Role</option>
+                {roleList.map((r) => (
+                  <option key={r} value={r}>
+                    {r}
+                  </option>
+                ))}
               </select>
-
-              {department && (
-                <select
-                  name="position"
-                  required
-                  className="w-full border border-[#d1d5db] rounded px-3 py-2"
-                >
-                  <option value="">Select Position</option>
-                  {(department === "Marketing" ? marketingRoles : webRoles).map(
-                    (role) => (
-                      <option key={role}>{role}</option>
-                    ),
-                  )}
-                </select>
-              )}
 
               <select
                 name="availability"
@@ -283,7 +276,7 @@ export default function JoinPage() {
             </section>
 
             {/* SKILLS */}
-            {department && (
+            {role && (
               <section className="space-y-5">
                 <div>
                   <h3 className="text-lg font-semibold text-[#0b1b33]">
@@ -293,14 +286,12 @@ export default function JoinPage() {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-2 text-sm text-[#0b1b33]/80">
-                  {(department === "Marketing" ? marketingTools : webTools).map(
-                    (tool) => (
-                      <label key={tool} className="flex items-center gap-2">
-                        <input type="checkbox" name="tools" value={tool} />
-                        {tool}
-                      </label>
-                    ),
-                  )}
+                  {(isCreative ? creativeTools : adminTools).map((tool) => (
+                    <label key={tool} className="flex items-center gap-2">
+                      <input type="checkbox" name="tools" value={tool} />
+                      {tool}
+                    </label>
+                  ))}
                 </div>
 
                 <input

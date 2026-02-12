@@ -99,7 +99,7 @@ export default function ServicesPage() {
           Quality Expectations.
           <br />
           <span className="font-medium text-[#0b1b33]">
-            One Standard. One team.
+            One Standard. One Team.
           </span>
         </p>
       </div>

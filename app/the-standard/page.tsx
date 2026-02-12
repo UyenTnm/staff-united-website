@@ -15,7 +15,7 @@ export default function TheStandard() {
           </p>
 
           <p className="text-base md:text-lg font-semibold text-[#4f8fcb] tracking-wide pt-2">
-            One Standard. One team.
+            One Standard. One Team.
           </p>
         </div>
 
