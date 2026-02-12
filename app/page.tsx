@@ -9,13 +9,13 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-6 text-center space-y-10">
           <div className="space-y-8">
             <h1 className="text-4xl md:text-5xl font-semibold text-[#0b1b33] leading-[1.1] tracking-tight">
-              Women-powered <br /> offshore execution <br />
-              partner based in Vietnam
+              Women - Powered <br /> Offshore Execution <br />
+              Partner Based in Vietnam
             </h1>
 
             <p className="text-lg md:text-2xl text-[#0b1b33]/80 max-w-2xl mx-auto">
-              Supports international businesses through a distributed team of
-              women across Asia, operating under one shared standard.
+              Supports International Pusinesses Through A Distributed Team Of
+              Women Across Asia Operating Under One Shared Standard
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
@@ -47,7 +47,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 text-center">
           <div className="mb-16">
             <h2 className="text-4xl md:text-5xl font-semibold text-[#0b1b33]">
-              Built for execution. Designed to scale.
+              Built for Execution - Designed to Scale.
             </h2>
             <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-6 rounded-full"></div>
           </div>
@@ -127,9 +127,9 @@ export default function Home() {
             </div>
 
             <p className="text-xl font-medium">
-              <span className="text-[#0b1b33]">Dedicated teams</span>{" "}
+              {/* <span className="text-[#4f8fcb] font-bold">Dedicated teams</span>{" "} */}
               <span className="text-[#0b1b33]/60">
-                without the overhead of local hiring.
+                Dedicated Teams Without the Overhead of Local Hiring
               </span>
             </p>
           </div>
@@ -284,7 +284,7 @@ export default function Home() {
             {/* Dedicated */}
             <div className="space-y-4">
               <h3 className="text-2xl text-center md:text-3xl font-semibold text-[#0b1b33]">
-                Dedicated team members
+                Dedicated Team Members
               </h3>
               <p className="text-[#0b1b33]/80 text-lg text-center leading-relaxed">
                 Build long-term capacity by hiring full-time team members
@@ -296,7 +296,7 @@ export default function Home() {
             {/* Flexible */}
             <div className="space-y-4">
               <h3 className="text-2xl text-center md:text-3xl font-semibold text-[#0b1b33]">
-                Flexible support
+                Flexible Support
               </h3>
               <p className="text-[#0b1b33]/80 text-lg text-center leading-relaxed">
                 Use part-time or as-needed support to fill gaps, manage workload
@@ -441,7 +441,7 @@ export default function Home() {
                 </div>
 
                 <h3 className="text-lg font-semibold text-[#0b1b33]">
-                  Scope + assign
+                  Scope + Assign
                 </h3>
 
                 <p className="text-[#0b1b33]/75 text-lg leading-relaxed">
@@ -459,7 +459,7 @@ export default function Home() {
                 </div>
 
                 <h3 className="text-lg font-semibold text-[#0b1b33]">
-                  Deliver + review
+                  Deliver + Review
                 </h3>
 
                 <p className="text-[#0b1b33]/75 text-lg leading-relaxed">
