@@ -89,27 +89,27 @@ export default function TheStandard() {
               {
                 letter: "S",
                 title: "Strong",
-                desc: "Responsibility for outcomes",
+                desc: "Responsibility for Outcomes",
               },
               {
                 letter: "T",
                 title: "Talented",
-                desc: "Skill and quality",
+                desc: "Skill and Quality",
               },
               {
                 letter: "A",
                 title: "Ambitious",
-                desc: "Growth expected",
+                desc: "Growth Expected",
               },
               {
                 letter: "F",
                 title: "Focused",
-                desc: "Discipline and consistency",
+                desc: "Discipline and Consistency",
               },
               {
                 letter: "F",
                 title: "Female",
-                desc: "Women-powered execution",
+                desc: "Women-Powered Execution",
               },
             ].map((item, i) => (
               <div

@@ -181,7 +181,7 @@ export default function Home() {
             </div>
 
             {/* CARD 3 */}
-            <div
+            {/* <div
               className="
           group
           border border-[#0b1b33]/10
@@ -201,10 +201,10 @@ export default function Home() {
                 Ongoing support for campaign execution, content distribution,
                 and performance tracking — aligned with clear workflows.
               </p>
-            </div>
+            </div> */}
 
             {/* CARD 4 */}
-            <div
+            {/* <div
               className="
           group
           border border-[#0b1b33]/10
@@ -224,7 +224,7 @@ export default function Home() {
                 Documentation, task tracking, and structured workflows that
                 ensure clarity, consistency, and accountability across teams.
               </p>
-            </div>
+            </div> */}
           </div>
 
           {/* CTA */}

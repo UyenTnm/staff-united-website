@@ -49,7 +49,7 @@ export const insights: Insight[] = [
     readTime: "4–5 minutes",
 
     thumbnail: "/images/thumbnail/thumb-blog-1.png",
-    image: "/images/thumbnail/blog-1.png",
+    image: "/images/thumbnail/thumb-blog-1.png",
 
     content: [
       {
