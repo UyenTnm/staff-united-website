@@ -34,6 +34,12 @@ export default function TeamPage() {
       responsibility: "System execution and technical delivery.",
       image: "/team/alicetr.png",
     },
+    {
+      name: "Annie Nguyen",
+      title: "UIUX",
+      responsibility: "Designs intuitive and user-friendly interfaces.",
+      image: "/team/annie.png",
+    },
   ];
 
   return (
@@ -64,15 +70,24 @@ export default function TeamPage() {
         </div>
 
         {/* TEAM GRID */}
+        {/* TEAM GRID */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {teamMembers.map((member, i) => (
             <div
               key={i}
-              className="group text-center transition-all duration-300 hover:-translate-y-1"
+              className="
+        group
+        text-center
+        transition-all duration-300
+        hover:-translate-y-1
+      "
             >
+              {/* Portrait */}
               <div className="relative mx-auto mb-6">
+                {/* Glow background */}
                 <div className="absolute inset-0 rounded-full bg-[#4f8fcb]/10 blur-xl opacity-0 group-hover:opacity-100 transition duration-300"></div>
 
+                {/* Image wrapper */}
                 <div className=" relative w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-white shadow-md ring-1 ring-[#4f8fcb]/30 transition duration-300 group-hover:ring-[#4f8fcb]">
                   <Image
                     src={member.image}
@@ -83,14 +98,17 @@ export default function TeamPage() {
                 </div>
               </div>
 
+              {/* Name */}
               <h3 className="text-lg font-semibold text-[#0b1b33]">
                 {member.name}
               </h3>
 
+              {/* Title */}
               <p className="text-sm font-medium text-[#4f8fcb] mt-1">
                 {member.title}
               </p>
 
+              {/* Responsibility */}
               <p className="text-sm text-[#0b1b33]/70 leading-relaxed mt-3 max-w-xs mx-auto">
                 {member.responsibility}
               </p>

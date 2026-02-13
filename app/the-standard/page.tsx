@@ -20,60 +20,6 @@ export default function TheStandard() {
         </div>
 
         {/* STAFF VALUES */}
-        {/* <section className="space-y-6">
-          <div className="text-center">
-            <h2 className="text-2xl md:text-3xl font-semibold text-[#0b1b33] tracking-wide">
-              STAFF
-            </h2>
-          </div>
-          <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>
-
-          <div className="grid md:grid-cols-5 gap-4">
-            {[
-              {
-                letter: "S",
-                title: "Strong",
-                desc: "Responsibility for outcomes",
-              },
-              { letter: "T", title: "Talented", desc: "Skill and quality" },
-              { letter: "A", title: "Ambitious", desc: "Growth expected" },
-              {
-                letter: "F",
-                title: "Focused",
-                desc: "Discipline and consistency",
-              },
-              { letter: "F", title: "Female", desc: "Women-powered execution" },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="
-          flex items-stretch
-          bg-white
-          border border-[#0b1b33]/10
-          rounded-xl
-          transition-all duration-300
-          hover:shadow-sm
-          hover:border-[#4f8fcb]/40
-        "
-              >
-                <div className="flex items-center justify-center w-14 bg-[#4f8fcb] text-white font-semibold text-lg rounded-l-xl">
-                  {item.letter}
-                </div>
-
-                <div className="px-4 py-4 flex flex-col justify-center">
-                  <p className="text-[#0b1b33] font-semibold text-base">
-                    {item.title}
-                  </p>
-                  <p className="text-sm text-[#0b1b33]/70 mt-1 leading-snug">
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section> */}
-
-        {/* STAFF VALUES */}
         <section className="space-y-8">
           {/* Title */}
           <div className="text-center">
@@ -131,11 +77,12 @@ export default function TheStandard() {
                 </div>
 
                 {/* Content */}
-                <div className="px-5 py-4 flex flex-col justify-center">
-                  <p className="text-[#0b1b33] font-semibold text-base">
-                    {item.title}
+                <div className="px-5 py-4 flex items-center">
+                  <p className="text-[#0b1b33] text-sm">
+                    <span className="font-semibold">{item.title}</span>
+                    <span className="mx-1">-</span>
+                    <span className="text-[#0b1b33]/70">{item.desc}</span>
                   </p>
-                  <p className="text-sm text-[#0b1b33]/70 mt-1">{item.desc}</p>
                 </div>
               </div>
             ))}
