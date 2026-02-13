@@ -14,12 +14,13 @@ export const metadata: Metadata = {
   description:
     "Professional staffing and business solutions with clear standards, reliable service, and transparent operations. We deliver consistent excellence through structured workflows and human expertise.",
   generator: "v0.app",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-  },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({

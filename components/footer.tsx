@@ -33,7 +33,8 @@ export default function Footer() {
           </a>
 
           <span>
-            <span className="font-semibold text-white">Location:</span> Vietnam
+            <span className="font-semibold text-white">Location:</span> Ho Chi
+            Minh City, Vietnam
           </span>
         </div>
 

@@ -40,7 +40,7 @@ export default function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-sm font-medium transition ${
+                className={`text-base font-medium transition ${
                   isActive(item.href)
                     ? "text-white border-b border-white pb-1"
                     : "text-white/70 hover:text-white"

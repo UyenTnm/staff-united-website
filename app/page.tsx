@@ -9,12 +9,12 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-6 text-center space-y-10">
           <div className="space-y-8">
             <h1 className="text-4xl md:text-5xl font-semibold text-[#0b1b33] leading-[1.1] tracking-tight">
-              Women - Powered <br /> Offshore Execution <br />
-              Partner Based in Vietnam
+              Women - Powered <br /> Offshore Execution Partner <br />
+              Based in Vietnam
             </h1>
 
             <p className="text-lg md:text-2xl text-[#0b1b33]/80 max-w-2xl mx-auto">
-              Supports International Pusinesses Through A Distributed Team Of
+              Supports International Businesses Through a Distributed Team of
               Women Across Asia Operating Under One Shared Standard
             </p>
 
@@ -101,7 +101,7 @@ export default function Home() {
                 <span className="font-semibold text-[#0b1b33]">
                   {" "}
                   execution-first model
-                </span>
+                </span>{" "}
                 allows companies to scale support with
                 <span className="font-semibold text-[#0b1b33]">
                   {" "}
@@ -116,156 +116,126 @@ export default function Home() {
 
       {/* SECTION 4 — WHAT WE DELIVER (WHITE) */}
       <section className="bg-white py-24">
-        <div className="max-w-[1500px] mx-auto px-10 space-y-14">
-          {/* Title */}
+        <div className="max-w-5xl mx-auto px-6 space-y-12">
+          {/* TITLE */}
           <div className="text-center space-y-4">
-            <div className="text-center">
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
-                What We Deliver
-              </h2>
-              <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 rounded-full"></div>
-            </div>
+            <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
+              What We Deliver
+            </h2>
 
-            <p className="text-xl font-medium">
-              {/* <span className="text-[#4f8fcb] font-bold">Dedicated teams</span>{" "} */}
-              <span className="text-[#0b1b33]/60">
-                Dedicated Teams Without the Overhead of Local Hiring
-              </span>
+            <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>
+
+            <p className="text-lg text-[#0b1b33]/70 max-w-2xl mx-auto leading-relaxed">
+              Dedicated Teams Supporting Execution Across Marketing, Operations,
+              and Business Workflows — Without the Overhead of Local Hiring.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-14">
+          {/* SERVICES OVERVIEW */}
+          <div className="grid md:grid-cols-2 gap-6">
             {/* CARD 1 */}
-            <div className="bg-[#eef2f7] border border-[#4f8fcb]/40 rounded-xl p-6 xl:p-7 transition-all duration-300 hover:border-[#4f8fcb] hover:shadow-md">
-              {/* Image */}
-              <div className="flex justify-center mb-5">
-                <img
-                  src="/images/creative.png"
-                  alt="Creative"
-                  className="h-36 object-contain"
-                />
-              </div>
+            <div
+              className="
+          group
+          border border-[#0b1b33]/10
+          rounded-xl
+          p-8
+          bg-[#f8fafc]
+          transition-all duration-300
+          hover:border-[#4f8fcb]/40
+          hover:shadow-md
+        "
+            >
+              <h3 className="text-xl font-semibold text-[#0b1b33] group-hover:text-[#4f8fcb]">
+                Creative & Content Production
+              </h3>
 
-              {/* Title */}
-              <div className="text-center mb-5 space-y-2">
-                <h3 className="text-xl md:text-2xl font-semibold text-[#0b1b33]">
-                  Creative & Content Production
-                </h3>
-
-                <p className="text-base text-[#0b1b33]/70 leading-relaxed">
-                  Publish-Ready Creative Output - Delivered Through Structured
-                  Workflow <br /> and Internal Review.
-                </p>
-              </div>
-
-              {/* What we support */}
-              <div className="space-y-3 mb-5">
-                <h4 className="text-base font-semibold text-[#0b1b33]">
-                  What we support
-                </h4>
-
-                <ul className="space-y-2 text-base text-[#0b1b33]/80">
-                  {[
-                    "Content editing & formatting (blogs, newsletters, long-form)",
-                    "Social content production & repurposing",
-                    "Design production support (templates, assets, deck formatting)",
-                    "Video support (captions, subtitles, basic edits)",
-                    "Publishing support (scheduling, uploads, QA checks)",
-                  ].map((item, i) => (
-                    <li key={i} className="flex gap-2 items-start">
-                      <span className="text-[#4f8fcb] mt-[2px]">✓</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* How we deliver */}
-              <div className="space-y-3">
-                <h4 className="text-base font-semibold text-[#0b1b33]">
-                  How we deliver
-                </h4>
-
-                <ul className="space-y-2 text-base text-[#0b1b33]/80">
-                  {[
-                    "Clear scope + checklist-based execution",
-                    "Internal review before delivery",
-                    "Consistent quality and on-time output",
-                  ].map((item, i) => (
-                    <li key={i} className="flex gap-2 items-start">
-                      <span className="text-[#4f8fcb] mt-[2px]">✓</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <p className="text-[#0b1b33]/70 mt-3 leading-relaxed">
+                Structured content execution for blogs, social media, and
+                digital assets — delivered through defined workflows and
+                internal review.
+              </p>
             </div>
 
             {/* CARD 2 */}
-            <div className="bg-[#eef2f7] border border-[#4f8fcb]/40 rounded-xl p-6 xl:p-7 transition-all duration-300 hover:border-[#4f8fcb] hover:shadow-md">
-              {/* Image */}
-              <div className="flex justify-center mb-5">
-                <img
-                  src="/images/admin.png"
-                  alt="Admin"
-                  className="h-36 object-contain"
-                />
-              </div>
+            <div
+              className="
+          group
+          border border-[#0b1b33]/10
+          rounded-xl
+          p-8
+          bg-[#f8fafc]
+          transition-all duration-300
+          hover:border-[#4f8fcb]/40
+          hover:shadow-md
+        "
+            >
+              <h3 className="text-xl font-semibold text-[#0b1b33] group-hover:text-[#4f8fcb]">
+                Administration & Business Support
+              </h3>
 
-              {/* Title */}
-              <div className="text-center mb-5 space-y-2">
-                <h3 className="text-xl md:text-2xl font-semibold text-[#0b1b33]">
-                  Administration & Business Support
-                </h3>
-
-                <p className="text-base text-[#0b1b33]/70 leading-relaxed">
-                  Reliable Operational Support - Handled with Clear Process and
-                  Accountability.
-                </p>
-              </div>
-
-              {/* What we support */}
-              <div className="space-y-3 mb-5">
-                <h4 className="text-base font-semibold text-[#0b1b33]">
-                  What we support
-                </h4>
-
-                <ul className="space-y-2 text-base text-[#0b1b33]/80">
-                  {[
-                    "Inbox/calendar support & follow-ups",
-                    "Meeting notes, action items, and tracking",
-                    "CRM updates & data cleanup",
-                    "Client/admin coordination & documentation",
-                    "Research, reporting, and lightweight ops tasks",
-                  ].map((item, i) => (
-                    <li key={i} className="flex gap-2 items-start">
-                      <span className="text-[#4f8fcb] mt-[2px]">✓</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* How we deliver */}
-              <div className="space-y-3">
-                <h4 className="text-base font-semibold text-[#0b1b33]">
-                  How we deliver
-                </h4>
-
-                <ul className="space-y-2 text-base text-[#0b1b33]/80">
-                  {[
-                    "Standard operating procedures (SOPs)",
-                    "Structured workflows + handoff clarity",
-                    "Ownership for completion—not just task handling",
-                  ].map((item, i) => (
-                    <li key={i} className="flex gap-2 items-start">
-                      <span className="text-[#4f8fcb] mt-[2px]">✓</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <p className="text-[#0b1b33]/70 mt-3 leading-relaxed">
+                Reliable operational support handled through structured
+                processes, clear ownership, and consistent execution standards.
+              </p>
             </div>
+
+            {/* CARD 3 */}
+            <div
+              className="
+          group
+          border border-[#0b1b33]/10
+          rounded-xl
+          p-8
+          bg-[#f8fafc]
+          transition-all duration-300
+          hover:border-[#4f8fcb]/40
+          hover:shadow-md
+        "
+            >
+              <h3 className="text-xl font-semibold text-[#0b1b33] group-hover:text-[#4f8fcb]">
+                Marketing Execution
+              </h3>
+
+              <p className="text-[#0b1b33]/70 mt-3 leading-relaxed">
+                Ongoing support for campaign execution, content distribution,
+                and performance tracking — aligned with clear workflows.
+              </p>
+            </div>
+
+            {/* CARD 4 */}
+            <div
+              className="
+          group
+          border border-[#0b1b33]/10
+          rounded-xl
+          p-8
+          bg-[#f8fafc]
+          transition-all duration-300
+          hover:border-[#4f8fcb]/40
+          hover:shadow-md
+        "
+            >
+              <h3 className="text-xl font-semibold text-[#0b1b33] group-hover:text-[#4f8fcb]">
+                Process & Workflow Support
+              </h3>
+
+              <p className="text-[#0b1b33]/70 mt-3 leading-relaxed">
+                Documentation, task tracking, and structured workflows that
+                ensure clarity, consistency, and accountability across teams.
+              </p>
+            </div>
+          </div>
+
+          {/* CTA */}
+
+          <div className="pt-4 text-center">
+            <a
+              href="/services"
+              className="inline-block px-6 py-3 bg-[#0b1b33] text-white text-base md:text-lg font-medium rounded hover:bg-[#0b1b33]/90 transition text-center"
+            >
+              View All Services
+            </a>
           </div>
         </div>
       </section>
@@ -495,8 +465,8 @@ export default function Home() {
       <section className="bg-[#eef2f7] py-24">
         <div className="max-w-4xl mx-auto px-6 text-center space-y-6">
           <p className="text-lg md:text-2xl font-medium text-[#0b1b33]">
-            Whether You’re Building A Dedicated Team Or Need Flexible Support,
-            Send A Request And We’ll Confirm Next Steps.
+            Whether You’re Building a Dedicated Team or Need Flexible Support,
+            Send a Request and We’ll Confirm Next Steps.
           </p>
 
           <a
