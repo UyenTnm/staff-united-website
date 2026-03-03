@@ -41,9 +41,18 @@ export default function Footer() {
         {/* Social Icons */}
         <div className="flex justify-center gap-6 mb-10">
           {[
-            { href: "https://linkedin.com", label: "LinkedIn" },
-            { href: "https://instagram.com", label: "Instagram" },
-            { href: "https://facebook.com", label: "Facebook" },
+            {
+              href: "https://www.linkedin.com/company/staff-united-group/",
+              label: "LinkedIn",
+            },
+            {
+              href: "https://www.instagram.com/staffunitedgroup/",
+              label: "Instagram",
+            },
+            {
+              href: "https://www.facebook.com/staffunitedgroup",
+              label: "Facebook",
+            },
           ].map((social) => (
             <a
               key={social.label}
