@@ -7,17 +7,23 @@ export default function Home() {
   const clientLogos = [
     { name: "InnPro", src: "/logo-client/innpro.png" },
     { name: "MASX World Travel", src: "/logo-client/masx-logo.png" },
-    { name: "InnPro", src: "/logo-client/innpro.png" },
-    { name: "MASX", src: "/logo-client/masx.jpg" },
-    { name: "InnPro", src: "/logo-client/innpro.png" },
-    { name: "InnPro", src: "/logo-client/World-Travel.png" },
+    { name: "SANITIZE", src: "/logo-client/SANITIZE-SQUAD-Logo.png" },
 
+    { name: "InnPro", src: "/logo-client/innpro.png" },
     { name: "MASX World Travel", src: "/logo-client/masx-logo.png" },
-    { name: "InnPro", src: "/logo-client/innpro.png" },
+    { name: "SANITIZE", src: "/logo-client/SANITIZE-SQUAD-Logo.png" },
 
-    { name: "MASX", src: "/logo-client/masx.jpg" },
     { name: "InnPro", src: "/logo-client/innpro.png" },
-    { name: "MASX", src: "/logo-client/masx.jpg" },
+    { name: "MASX World Travel", src: "/logo-client/masx-logo.png" },
+    { name: "SANITIZE", src: "/logo-client/SANITIZE-SQUAD-Logo.png" },
+
+    { name: "InnPro", src: "/logo-client/innpro.png" },
+    { name: "MASX World Travel", src: "/logo-client/masx-logo.png" },
+    { name: "SANITIZE", src: "/logo-client/SANITIZE-SQUAD-Logo.png" },
+
+    { name: "InnPro", src: "/logo-client/innpro.png" },
+    { name: "MASX World Travel", src: "/logo-client/masx-logo.png" },
+    { name: "SANITIZE", src: "/logo-client/SANITIZE-SQUAD-Logo.png" },
   ];
 
   return (
@@ -405,7 +411,7 @@ export default function Home() {
               <div className="flex justify-center md:justify-end">
                 <div className="w-full max-w-md aspect-square overflow-hidden rounded-xl shadow-lg">
                   <img
-                    src="/team/why-we-built.jpg"
+                    src="/team/why-we-built1.jpg"
                     alt="Women working together"
                     className="w-full h-full object-cover"
                   />
