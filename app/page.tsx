@@ -7,22 +7,27 @@ export default function Home() {
   const clientLogos = [
     { name: "InnPro", src: "/logo-client/innpro.png" },
     { name: "MASX World Travel", src: "/logo-client/masx-logo.png" },
+    { name: "InnPro", src: "/logo-client/innpro.png" },
     { name: "SANITIZE", src: "/logo-client/SANITIZE-SQUAD-Logo.png" },
 
     { name: "InnPro", src: "/logo-client/innpro.png" },
     { name: "MASX World Travel", src: "/logo-client/masx-logo.png" },
+    { name: "InnPro", src: "/logo-client/innpro.png" },
     { name: "SANITIZE", src: "/logo-client/SANITIZE-SQUAD-Logo.png" },
 
     { name: "InnPro", src: "/logo-client/innpro.png" },
     { name: "MASX World Travel", src: "/logo-client/masx-logo.png" },
+    { name: "InnPro", src: "/logo-client/innpro.png" },
     { name: "SANITIZE", src: "/logo-client/SANITIZE-SQUAD-Logo.png" },
 
     { name: "InnPro", src: "/logo-client/innpro.png" },
     { name: "MASX World Travel", src: "/logo-client/masx-logo.png" },
+    { name: "InnPro", src: "/logo-client/innpro.png" },
     { name: "SANITIZE", src: "/logo-client/SANITIZE-SQUAD-Logo.png" },
 
     { name: "InnPro", src: "/logo-client/innpro.png" },
     { name: "MASX World Travel", src: "/logo-client/masx-logo.png" },
+    { name: "InnPro", src: "/logo-client/innpro.png" },
     { name: "SANITIZE", src: "/logo-client/SANITIZE-SQUAD-Logo.png" },
   ];
 
