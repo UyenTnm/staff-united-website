@@ -1,3 +1,4 @@
+import AnimatedSection from "@/components/AnimatedSection";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -45,86 +46,88 @@ export default function TeamPage() {
   return (
     <main className="bg-white">
       {/* max-w-6xl mx-auto px-6 py-16 space-y-20 */}
-      <section className="max-w-5xl mx-auto px-6 py-10 space-y-10">
-        {/* INTRO */}
-        <div className="text-center space-y-6 max-w-3xl mx-auto">
-          {/* Title bigger.  text-4xl md:text-5xl font-semibold text-[#0b1b33] leading-tight */}
-          <h1 className="text-4xl md:text-5xl font-semibold text-[#0b1b33] leading-tight">
-            Our Team
-          </h1>
-          <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>
+      <AnimatedSection>
+        <section className="max-w-5xl mx-auto px-6 py-10 space-y-10">
+          {/* INTRO */}
+          <div className="text-center space-y-6 max-w-3xl mx-auto">
+            {/* Title bigger.  text-4xl md:text-5xl font-semibold text-[#0b1b33] leading-tight */}
+            <h1 className="text-4xl md:text-5xl font-semibold text-[#0b1b33] leading-tight">
+              Our Team
+            </h1>
+            <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>
 
-          <p className="text-lg md:text-xl text-[#0b1b33]/80 leading-relaxed max-w-3xl mx-auto">
-            We Operate as One Unit Under One Shared Standard.
-            <br className="hidden md:block" />
-            Roles Differ. Responsibility Is Collective.
-            {/* <span className="text-[#0b1b33] font-medium">
+            <p className="text-lg md:text-xl text-[#0b1b33]/80 leading-relaxed max-w-3xl mx-auto">
+              We Operate as One Unit Under One Shared Standard.
+              <br className="hidden md:block" />
+              Roles Differ. Responsibility Is Collective.
+              {/* <span className="text-[#0b1b33] font-medium">
               
             </span> */}
-          </p>
+            </p>
 
-          {/* Brand line bigger */}
-          <p className="text-base md:text-lg font-semibold text-[#4f8fcb] tracking-wide pt-2">
-            All Females. All Business.
-          </p>
-        </div>
+            {/* Brand line bigger */}
+            <p className="text-base md:text-lg font-semibold text-[#4f8fcb] tracking-wide pt-2">
+              All Females. All Business.
+            </p>
+          </div>
 
-        {/* TEAM GRID */}
-        {/* TEAM GRID */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {teamMembers.map((member, i) => (
-            <div
-              key={i}
-              className="
+          {/* TEAM GRID */}
+          {/* TEAM GRID */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            {teamMembers.map((member, i) => (
+              <div
+                key={i}
+                className="
         group
         text-center
         transition-all duration-300
         hover:-translate-y-1
       "
-            >
-              {/* Portrait */}
-              <div className="relative mx-auto mb-6">
-                {/* Glow background */}
-                <div className="absolute inset-0 rounded-full bg-[#4f8fcb]/10 blur-xl opacity-0 group-hover:opacity-100 transition duration-300"></div>
+              >
+                {/* Portrait */}
+                <div className="relative mx-auto mb-6">
+                  {/* Glow background */}
+                  <div className="absolute inset-0 rounded-full bg-[#4f8fcb]/10 blur-xl opacity-0 group-hover:opacity-100 transition duration-300"></div>
 
-                {/* Image wrapper */}
-                <div className=" relative w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-white shadow-md ring-1 ring-[#4f8fcb]/30 transition duration-300 group-hover:ring-[#4f8fcb]">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover object-center"
-                  />
+                  {/* Image wrapper */}
+                  <div className=" relative w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-white shadow-md ring-1 ring-[#4f8fcb]/30 transition duration-300 group-hover:ring-[#4f8fcb]">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover object-center"
+                    />
+                  </div>
                 </div>
+
+                {/* Name */}
+                <h3 className="text-lg font-semibold text-[#0b1b33]">
+                  {member.name}
+                </h3>
+
+                {/* Title */}
+                <p className="text-sm font-medium text-[#4f8fcb] mt-1">
+                  {member.title}
+                </p>
+
+                {/* Responsibility */}
+                <p className="text-sm text-[#0b1b33]/70 leading-relaxed mt-3 max-w-xs mx-auto">
+                  {member.responsibility}
+                </p>
               </div>
+            ))}
+          </div>
 
-              {/* Name */}
-              <h3 className="text-lg font-semibold text-[#0b1b33]">
-                {member.name}
-              </h3>
-
-              {/* Title */}
-              <p className="text-sm font-medium text-[#4f8fcb] mt-1">
-                {member.title}
-              </p>
-
-              {/* Responsibility */}
-              <p className="text-sm text-[#0b1b33]/70 leading-relaxed mt-3 max-w-xs mx-auto">
-                {member.responsibility}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <div className="text-center">
-          <Link
-            href="/join"
-            className="inline-block px-6 py-3 bg-[#4f8fcb] text-white text-base md:text-lg font-medium rounded hover:bg-[#0b1b33]/90 transition"
-          >
-            Join the Team
-          </Link>
-        </div>
-      </section>
+          <div className="text-center">
+            <Link
+              href="/join"
+              className="inline-block px-6 py-3 bg-[#4f8fcb] text-white text-base md:text-lg font-medium rounded hover:bg-[#0b1b33]/90 transition"
+            >
+              Join the Team
+            </Link>
+          </div>
+        </section>
+      </AnimatedSection>
     </main>
   );
 }

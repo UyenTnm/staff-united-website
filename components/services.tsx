@@ -1,3 +1,5 @@
+import AnimatedSection from "./AnimatedSection";
+
 export default function ServicesPage() {
   return (
     <main className="bg-white">
@@ -42,19 +44,7 @@ export default function ServicesPage() {
 
             <a
               href="/request-support"
-              className="
-    w-full
-    text-center
-    px-4 py-2
-    bg-[#0b1b33]
-    text-white
-    border border-[#0b1b33]
-    rounded
-    text-sm font-medium
-    transition-colors
-    hover:bg-[#4f8fcb]
-    hover:border-[#4f8fcb]
-  "
+              className="w-full text-center px-4 py-2 bg-[#0b1b33] text-white border border-[#0b1b33] rounded text-sm font-medium transition-colors hover:bg-[#4f8fcb] hover:border-[#4f8fcb]"
             >
               Request Creative Support
             </a>

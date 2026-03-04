@@ -92,6 +92,24 @@ export default function Footer() {
           ))}
         </div>
 
+        {/* QR CONTACT */}
+        {/* <div className="flex flex-col items-center text-center mb-10">
+          <div className="bg-white p-3 rounded-lg shadow-md">
+            <Image
+              src="/qr-code.png"
+              alt="Scan to contact STAFF United"
+              width={110}
+              height={110}
+            />
+          </div>
+
+          <p className="text-sm text-white/70 mt-3">Scan to contact our team</p>
+
+          <p className="text-xs text-white/50 mt-1">
+            WhatsApp • Email • Location
+          </p>
+        </div> */}
+
         {/* Divider */}
         <div className="border-t border-white/10 mb-6" />
 
