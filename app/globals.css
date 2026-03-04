@@ -108,3 +108,23 @@ body {
 .animate-softBlink {
   animation: softBlink 1.8s ease-in-out infinite;
 }
+
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.marquee:hover {
+  animation-play-state: paused;
+  cursor: pointer;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
