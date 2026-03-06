@@ -416,7 +416,7 @@ export default function Home() {
               <div className="flex justify-center md:justify-end">
                 <div className="w-full max-w-md aspect-square overflow-hidden rounded-xl shadow-lg">
                   <img
-                    src="/team/why-we-built1.jpg"
+                    src="/team/why-we-built.png"
                     alt="Women working together"
                     className="w-full h-full object-cover"
                   />
