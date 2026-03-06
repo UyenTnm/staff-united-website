@@ -79,15 +79,20 @@ export default function JoinPage() {
     "Social Media Executive",
     "Graphic Designer",
     "Web Designer",
+    "UI/UX Designer",
     "Video Editor",
     "Motion Designer",
-    "UI/UX Designer",
-    "Virtual Assistant (VA)",
+
     "Virtual Assistant",
     "Executive Assistant",
     "Operations Support",
     "CRM & Data Support",
     "Customer Support",
+    "Research Assistant",
+
+    "Frontend Developer",
+    "Backend Developer",
+    "Full Stack Developer",
   ];
 
   const creativeTools = [
@@ -112,12 +117,31 @@ export default function JoinPage() {
     "Excel / Google Sheets",
   ];
 
+  const techTools = [
+    "JavaScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "REST API",
+    "Git / GitHub",
+  ];
+
   const isCreative =
     role.includes("Designer") ||
     role.includes("Editor") ||
     role.includes("Content") ||
     role.includes("Social") ||
     role.includes("Video");
+
+  const isTech =
+    role.includes("Developer") ||
+    role.includes("Engineer") ||
+    role.includes("Frontend") ||
+    role.includes("Backend") ||
+    role.includes("Full Stack") ||
+    role.includes("QA");
 
   return (
     <main className="min-h-screen bg-[#f2f4f7]">
@@ -162,21 +186,34 @@ export default function JoinPage() {
               const form = e.target as HTMLFormElement;
               const formData = new FormData(form);
 
-              const response = await fetch("https://formspree.io/f/mbdadpee", {
-                method: "POST",
-                body: formData,
-                headers: { Accept: "application/json" },
-              });
+              await fetch(
+                "https://script.google.com/macros/s/AKfycbzybHfmkVYdBr8Dcu57vZKnfVn2VIrbqVyY1Sxoy1eOhx_ErEvHqZMSCSmLUm_QCLt7/exec",
+                {
+                  method: "POST",
+                  mode: "no-cors",
+                  body: formData,
+                },
+              );
+
+              // vì no-cors nên không đọc được response, cứ coi là thành công
+              setSuccess(true);
+              form.reset();
+              setRole("");
 
               setIsSubmitting(false);
 
-              if (response.ok) {
-                setSuccess(true);
-                form.reset();
-                setRole("");
-              } else {
-                alert("Something went wrong. Please try again.");
-              }
+              setSuccess(true);
+
+              form.reset();
+              setRole("");
+
+              // if (response.ok) {
+              //   setSuccess(true);
+              //   form.reset();
+              //   setRole("");
+              // } else {
+              //   alert("Something went wrong. Please try again.");
+              // }
             }}
             className="bg-white border border-[#d1d5db] rounded-lg p-8 space-y-10"
           >
@@ -226,6 +263,44 @@ export default function JoinPage() {
               </select>
             </section>
 
+            {/* PROFESSIONAL PROFILE */}
+            <section className="space-y-5">
+              <div>
+                <h3 className="text-lg font-semibold text-[#0b1b33]">
+                  Professional Profile
+                </h3>
+                <div className="w-10 h-[2px] bg-[#4f8fcb] mt-2 rounded-full"></div>
+              </div>
+
+              <select
+                name="specialization"
+                required
+                className="w-full border border-[#d1d5db] rounded px-3 py-2"
+              >
+                <option value="">Area of Specialization</option>
+                <option>Software Development</option>
+                <option>Marketing</option>
+                <option>Design</option>
+                <option>Operations</option>
+                <option>Customer Support</option>
+              </select>
+
+              <input
+                name="expected_role"
+                required
+                placeholder="Current / Expected Role (e.g. Senior UX Designer)"
+                className="w-full border border-[#d1d5db] rounded px-3 py-2"
+              />
+
+              <textarea
+                name="strength_summary"
+                required
+                rows={3}
+                placeholder="Brief strengths summary (short professional bio)"
+                className="w-full border border-[#d1d5db] rounded px-3 py-2"
+              />
+            </section>
+
             {/* ROLE */}
             <section className="space-y-5">
               <div>
@@ -258,7 +333,6 @@ export default function JoinPage() {
                 <option value="">Availability</option>
                 <option>Full-time</option>
                 <option>Part-time</option>
-                <option>Freelance</option>
               </select>
 
               <div>
@@ -285,8 +359,14 @@ export default function JoinPage() {
                   <div className="w-10 h-[2px] bg-[#4f8fcb] mt-2 rounded-full"></div>
                 </div>
 
+                {/* Skills */}
                 <div className="grid md:grid-cols-2 gap-2 text-sm text-[#0b1b33]/80">
-                  {(isCreative ? creativeTools : adminTools).map((tool) => (
+                  {(isCreative
+                    ? creativeTools
+                    : isTech
+                      ? techTools
+                      : adminTools
+                  ).map((tool) => (
                     <label key={tool} className="flex items-center gap-2">
                       <input type="checkbox" name="tools" value={tool} />
                       {tool}
@@ -294,30 +374,165 @@ export default function JoinPage() {
                   ))}
                 </div>
 
+                {/* Experience years */}
                 <input
                   name="experience_years"
                   type="number"
                   min="0"
                   required
-                  placeholder="Years of experience (e.g. 3)"
+                  placeholder="Years of professional experience (e.g. 3)"
                   className="w-full border border-[#d1d5db] rounded px-3 py-2"
                 />
 
+                {/* Portfolio */}
                 <input
                   name="portfolio_link"
+                  required
                   type="url"
-                  placeholder="Portfolio link (Google Drive / Behance / GitHub / Website)"
+                  placeholder="Portfolio / Work samples (Google Drive / Behance / GitHub / Website)"
                   className="w-full border border-[#d1d5db] rounded px-3 py-2"
                 />
 
+                {/* Experience summary */}
                 <textarea
                   name="experience_summary"
+                  required
                   rows={4}
-                  placeholder="Brief summary of your professional experience..."
+                  placeholder="Briefly describe your key experience, industries you worked in, and main responsibilities."
                   className="w-full border border-[#d1d5db] rounded px-3 py-2"
                 />
               </section>
             )}
+
+            {/* QUALIFICATIONS */}
+            <section className="space-y-5">
+              <div>
+                <h3 className="text-lg font-semibold text-[#0b1b33]">
+                  Qualifications
+                </h3>
+                <div className="w-10 h-[2px] bg-[#4f8fcb] mt-2 rounded-full"></div>
+              </div>
+
+              <select
+                name="english_level"
+                className="w-full border border-[#d1d5db] rounded px-3 py-2"
+              >
+                <option value="">English Level</option>
+                <option>Native</option>
+                <option>C1 - Advanced</option>
+                <option>B2 - Intermediate</option>
+                <option>B1 - Basic</option>
+              </select>
+
+              <input
+                name="english_cert"
+                placeholder="English certification (IELTS / TOEFL if any)"
+                className="w-full border border-[#d1d5db] rounded px-3 py-2"
+              />
+            </section>
+
+            {/* AVAILABILITY & LOGISTICS */}
+            <section className="space-y-5">
+              <div>
+                <h3 className="text-lg font-semibold text-[#0b1b33]">
+                  Availability & Logistics
+                </h3>
+                <div className="w-10 h-[2px] bg-[#4f8fcb] mt-2 rounded-full"></div>
+              </div>
+
+              <select
+                name="availability_start"
+                className="w-full border border-[#d1d5db] rounded px-3 py-2"
+              >
+                <option value="">Current Availability</option>
+                <option>Immediate</option>
+                <option>2 weeks</option>
+                <option>1 month</option>
+                <option>3 months</option>
+              </select>
+
+              <select
+                name="employment_type"
+                className="w-full border border-[#d1d5db] rounded px-3 py-2"
+              >
+                <option value="">Employment Type</option>
+                <option>Full-time</option>
+                <option>Part-time</option>
+              </select>
+
+              <select
+                name="currently_employed"
+                className="w-full border border-[#d1d5db] rounded px-3 py-2"
+              >
+                <option value="">Currently Employed?</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+
+              <input
+                name="notice_period"
+                placeholder="Notice period (e.g. 30 days)"
+                className="w-full border border-[#d1d5db] rounded px-3 py-2"
+              />
+
+              <input
+                name="preferred_hours"
+                placeholder="Preferred working hours (e.g. 9AM–5PM EST)"
+                className="w-full border border-[#d1d5db] rounded px-3 py-2"
+              />
+
+              <label className="flex items-center gap-2 text-sm text-[#0b1b33]/80">
+                <input type="checkbox" name="night_shift" required />
+                Available for night shift (international clients)
+              </label>
+            </section>
+
+            {/* COMPENSATION */}
+            <section className="space-y-5">
+              <div>
+                <h3 className="text-lg font-semibold text-[#0b1b33]">
+                  Compensation
+                </h3>
+                <div className="w-10 h-[2px] bg-[#4f8fcb] mt-2 rounded-full"></div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="relative">
+                  <input
+                    name="current_salary_million"
+                    type="number"
+                    required
+                    min="1"
+                    placeholder="Current Salary VND"
+                    className="w-full border border-[#d1d5db] rounded px-3 py-2 pr-28"
+                  />
+
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-[#0b1b33]/60">
+                    million VND
+                  </span>
+                </div>
+
+                {/* Expected Salary */}
+                <div className="relative">
+                  <input
+                    name="expected_salary_million"
+                    type="number"
+                    required
+                    min="1"
+                    placeholder="Expected Salary VND"
+                    className="w-full border border-[#d1d5db] rounded px-3 py-2 pr-28"
+                  />
+
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-[#0b1b33]/60">
+                    million VND
+                  </span>
+                </div>
+              </div>
+
+              <p className="text-sm text-[#0b1b33]/60">
+                Please enter monthly salary in Vietnamese Dong (VND).
+              </p>
+            </section>
 
             {/* CULTURE */}
             <section className="space-y-5">
