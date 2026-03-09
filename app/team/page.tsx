@@ -50,7 +50,6 @@ export default function TeamPage() {
         <section className="max-w-5xl mx-auto px-6 py-10 space-y-10">
           {/* INTRO */}
           <div className="text-center space-y-6 max-w-3xl mx-auto">
-            {/* Title bigger.  text-4xl md:text-5xl font-semibold text-[#0b1b33] leading-tight */}
             <h1 className="text-4xl md:text-5xl font-semibold text-[#0b1b33] leading-tight">
               Our Team
             </h1>
@@ -60,60 +59,50 @@ export default function TeamPage() {
               We Operate as One Unit Under One Shared Standard.
               <br className="hidden md:block" />
               Roles Differ. Responsibility Is Collective.
-              {/* <span className="text-[#0b1b33] font-medium">
-              
-            </span> */}
             </p>
 
-            {/* Brand line bigger */}
             <p className="text-base md:text-lg font-semibold text-[#4f8fcb] tracking-wide pt-2">
               All Females. All Business.
             </p>
           </div>
 
           {/* TEAM GRID */}
-          {/* TEAM GRID */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, i) => (
-              <div
-                key={i}
-                className="
-        group
-        text-center
-        transition-all duration-300
-        hover:-translate-y-1
-      "
-              >
-                {/* Portrait */}
-                <div className="relative mx-auto mb-6">
-                  {/* Glow background */}
-                  <div className="absolute inset-0 rounded-full bg-[#4f8fcb]/10 blur-xl opacity-0 group-hover:opacity-100 transition duration-300"></div>
+              <div key={i} className="group [perspective:1200px]">
+                <div className="relative w-full h-[420px] transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] hover:shadow-xl cursor-pointer">
+                  {/* FRONT */}
+                  <div className="absolute inset-0 bg-white rounded-lg shadow-md overflow-hidden [backface-visibility:hidden]">
+                    {/* IMAGE */}
+                    <div className="relative w-full h-[300px]">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
 
-                  {/* Image wrapper */}
-                  <div className=" relative w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-white shadow-md ring-1 ring-[#4f8fcb]/30 transition duration-300 group-hover:ring-[#4f8fcb]">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="object-cover object-center"
-                    />
+                    {/* INFO */}
+                    <div className="p-4 text-center flex gap-2 flex-col justify-center items-center h-[120px]">
+                      <h3 className="text-[#0b1b33] font-semibold">
+                        {member.name}
+                      </h3>
+
+                      <p className="text-base text-[#4f8fcb]">{member.title}</p>
+                      {/* <p className="text-sm text-[#0b1b33]">
+                        {member.responsibility}
+                      </p> */}
+                    </div>
+                  </div>
+
+                  {/* BACK */}
+                  <div className="absolute inset-0 bg-[#0b1b33] text-white rounded-lg shadow-md flex items-center justify-center p-6 text-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                    <p className="text-sm leading-relaxed">
+                      {member.responsibility}
+                    </p>
                   </div>
                 </div>
-
-                {/* Name */}
-                <h3 className="text-lg font-semibold text-[#0b1b33]">
-                  {member.name}
-                </h3>
-
-                {/* Title */}
-                <p className="text-sm font-medium text-[#4f8fcb] mt-1">
-                  {member.title}
-                </p>
-
-                {/* Responsibility */}
-                <p className="text-sm text-[#0b1b33]/70 leading-relaxed mt-3 max-w-xs mx-auto">
-                  {member.responsibility}
-                </p>
               </div>
             ))}
           </div>
