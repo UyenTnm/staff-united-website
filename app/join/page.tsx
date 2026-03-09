@@ -503,7 +503,13 @@ export default function JoinPage() {
                     type="number"
                     required
                     min="1"
+                    max="99"
                     placeholder="Current Salary VND"
+                    onInput={(e: any) => {
+                      if (e.target.value.length > 2) {
+                        e.target.value = e.target.value.slice(0, 2);
+                      }
+                    }}
                     className="w-full border border-[#d1d5db] rounded px-3 py-2 pr-28"
                   />
 
@@ -520,6 +526,11 @@ export default function JoinPage() {
                     required
                     min="1"
                     placeholder="Expected Salary VND"
+                    onInput={(e: any) => {
+                      if (e.target.value.length > 2) {
+                        e.target.value = e.target.value.slice(0, 2);
+                      }
+                    }}
                     className="w-full border border-[#d1d5db] rounded px-3 py-2 pr-28"
                   />
 
