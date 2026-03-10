@@ -90,18 +90,35 @@ const toolsList = [
   "WordPress",
 ];
 
+const roleList = [
+  "Content Writer",
+  "Content Editor",
+  "Social Media Executive",
+  "Graphic Designer",
+  "Web Designer",
+  "Video Editor",
+  "Motion Designer",
+  "UI/UX Designer",
+  "Virtual Assistant",
+  "Executive Assistant",
+  "Operations Support",
+  "CRM & Data Support",
+  "Customer Support",
+  "Project Coordinator",
+];
+
 export default function JoinPage() {
   const [success, setSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleIndustryChange = (e: any) => {
-    const checked = document.querySelectorAll('input[name="industry"]:checked');
+  // const handleIndustryChange = (e: any) => {
+  //   const checked = document.querySelectorAll('input[name="industry"]:checked');
 
-    if (checked.length > 3) {
-      (e.target as HTMLInputElement).checked = false;
-      alert("Please select up to 3 industries only");
-    }
-  };
+  //   if (checked.length > 3) {
+  //     (e.target as HTMLInputElement).checked = false;
+  //     alert("Please select up to 3 industries only");
+  //   }
+  // };
   const {
     register,
     handleSubmit,
@@ -162,7 +179,7 @@ export default function JoinPage() {
               const formData = new FormData(form);
 
               await fetch(
-                "https://script.google.com/macros/s/AKfycbxMGEF1fiUvTawDOW74M0q9qJXjeTTFQEhZK1K2_LSVDjbciG-z-mkF97Tc2FvNjkI/exec",
+                "https://script.google.com/macros/s/AKfycbxw7t4SxdmI9Nrqt9SaMFIzBmOBGfZnvSQWORcJS9PXQdpm17Img8ZJHnBjso1vW0x2/exec",
                 {
                   method: "POST",
                   mode: "no-cors",
@@ -227,7 +244,8 @@ export default function JoinPage() {
               </div>
 
               <div>
-                <div>
+                {/* GENDER */}
+                <div className="mb-4">
                   <label className="text-sm font-medium text-[#0b1b33]">
                     Gender <span className="text-red-500">*</span>
                   </label>
@@ -242,6 +260,11 @@ export default function JoinPage() {
                     <option value="Prefer not to say">Prefer not to say</option>
                   </select>
 
+                  <p className="text-sm text-[#0b1b33]/60 mt-1">
+                    (We currently hire female employees only, as this aligns
+                    with our mission.)
+                  </p>
+
                   {errors.gender?.message && (
                     <p className="text-red-500 text-sm mt-1">
                       {errors.gender.message as string}
@@ -249,22 +272,25 @@ export default function JoinPage() {
                   )}
                 </div>
 
-                <label className="text-sm font-medium">
-                  Email Address <span className="text-red-500">*</span>
-                </label>
+                {/* EMAIL */}
+                <div>
+                  <label className="text-sm font-medium">
+                    Email Address <span className="text-red-500">*</span>
+                  </label>
 
-                <input
-                  type="email"
-                  {...register("email")}
-                  placeholder="Email Address"
-                  className="w-full border border-[#d1d5db] rounded px-3 py-2 mt-1"
-                />
+                  <input
+                    type="email"
+                    {...register("email")}
+                    placeholder="Email Address"
+                    className="w-full border border-[#d1d5db] rounded px-3 py-2 mt-1"
+                  />
 
-                {errors.email?.message && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.email.message as string}
-                  </p>
-                )}
+                  {errors.email?.message && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.email.message as string}
+                    </p>
+                  )}
+                </div>
               </div>
 
               <div>
@@ -306,6 +332,7 @@ export default function JoinPage() {
                   <option value="LinkedIn">LinkedIn</option>
                   <option value="Facebook">Facebook</option>
                   <option value="Instagram">Instagram</option>
+                  <option value="Threads">Threads</option>
                   <option value="Friend / Referral">Friend / Referral</option>
                   <option value="Google Search">Google Search</option>
                 </select>
@@ -400,14 +427,11 @@ export default function JoinPage() {
                 </label>
 
                 <p className="text-sm text-[#0b1b33]/60">
-                  You may select up to 3 industries that best match your
-                  experience or career goals.
+                  You may select industries that best match your experience or
+                  career goals.
                 </p>
 
-                <div
-                  className="grid md:grid-cols-2 gap-3 text-sm text-[#0b1b33]/80"
-                  onChange={handleIndustryChange}
-                >
+                <div className="grid md:grid-cols-2 gap-3 text-sm text-[#0b1b33]/80">
                   <label className="flex items-center gap-2">
                     <input
                       type="checkbox"
@@ -610,17 +634,28 @@ export default function JoinPage() {
                 </div>
               </div>
 
-              <div>
+              <div className="space-y-1">
                 <label className="text-sm font-medium text-[#0b1b33]">
                   Current / Expected Role{" "}
                   <span className="text-red-500">*</span>
                 </label>
 
-                <input
-                  {...register("expected_role")}
-                  placeholder="Current / Expected Role"
-                  className="w-full border border-[#d1d5db] rounded px-3 py-2 mt-1"
-                />
+                <p className="text-sm text-[#0b1b33]/60">
+                  Select the role that best matches your experience.
+                </p>
+
+                <div className="grid md:grid-cols-2 gap-2 text-sm text-[#0b1b33]/80 mt-1">
+                  {roleList.map((role) => (
+                    <label key={role} className="flex items-center gap-2">
+                      <input
+                        type="radio"
+                        value={role}
+                        {...register("expected_role")}
+                      />
+                      {role}
+                    </label>
+                  ))}
+                </div>
 
                 {errors.expected_role?.message && (
                   <p className="text-red-500 text-sm mt-1">
@@ -636,7 +671,7 @@ export default function JoinPage() {
 
                 <input
                   {...register("professional_headline")}
-                  placeholder="Job title with X years of experience"
+                  placeholder="Example: Graphic Designer with 5 years of experience"
                   className="w-full border border-[#d1d5db] rounded px-3 py-2 mt-1"
                 />
 
@@ -677,7 +712,7 @@ export default function JoinPage() {
                 <div className="w-10 h-[2px] bg-[#4f8fcb] mt-2 rounded-full"></div>
               </div>
 
-              <div>
+              {/* <div>
                 <label className="text-sm font-medium text-[#0b1b33]">
                   Key Skills <span className="text-gray-400">(Optional)</span>
                 </label>
@@ -687,7 +722,7 @@ export default function JoinPage() {
                   placeholder="List 3–5 key skills"
                   className="w-full border border-[#d1d5db] rounded px-3 py-2 mt-1"
                 />
-              </div>
+              </div> */}
 
               <div className="space-y-1">
                 <label className="text-sm font-medium text-[#0b1b33]">
@@ -875,7 +910,6 @@ export default function JoinPage() {
                   <option value="Full-time">Full-time</option>
 
                   <option value="Part-time">Part-time</option>
-
                 </select>
               </div>
 
@@ -919,53 +953,82 @@ export default function JoinPage() {
               </div>
 
               {/* CURRENT SALARY */}
-
-              <div>
-                <label className="text-sm font-medium text-[#0b1b33]">
-                  Current Monthly Salary <span className="text-red-500">*</span>
-                </label>
-
-                <input
-                  type="number"
-                  {...register("current_salary")}
-                  placeholder="Example: 12000000"
-                  className="w-full border border-[#d1d5db] rounded px-3 py-2 mt-1"
-                />
-
-                {errors.current_salary?.message && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.current_salary.message as string}
-                  </p>
-                )}
-
-                <p className="text-sm text-[#0b1b33]/60 mt-1">
-                  Example: 12,000,000 VND
-                </p>
-              </div>
-
               {/* EXPECTED SALARY */}
-              <div>
-                <label className="text-sm font-medium text-[#0b1b33]">
-                  Expected Monthly Salary (VND){" "}
-                  <span className="text-red-500">*</span>
-                </label>
 
-                <input
-                  type="number"
-                  {...register("expected_salary")}
-                  placeholder="Enter amount in VND"
-                  className="w-full border border-[#d1d5db] rounded px-3 py-2 mt-1"
-                />
+              <div className="grid md:grid-cols-2 gap-4">
+                {/* CURRENT SALARY */}
 
-                {errors.expected_salary?.message && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.expected_salary.message as string}
+                <div>
+                  <label className="text-sm font-medium text-[#0b1b33]">
+                    Current Monthly Salary{" "}
+                    <span className="text-gray-400">(Optional)</span>
+                  </label>
+
+                  <div className="relative mt-1">
+                    <input
+                      type="number"
+                      min="1"
+                      max="99"
+                      placeholder="Example: 12"
+                      {...register("current_salary")}
+                      onInput={(e) => {
+                        const target = e.target as HTMLInputElement;
+                        if (target.value.length > 2) {
+                          target.value = target.value.slice(0, 2);
+                        }
+                      }}
+                      className="w-full border border-[#d1d5db] rounded px-3 py-2 pr-14"
+                    />
+
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[#0b1b33]/60 text-sm">
+                      VND
+                    </span>
+                  </div>
+
+                  <p className="text-sm text-[#0b1b33]/60 mt-1">
+                    Enter salary in millions (e.g., 12 = 12,000,000 VND)
                   </p>
-                )}
+                </div>
 
-                <p className="text-sm text-[#0b1b33]/60 mt-1">
-                  Example: 15,000,000 VND
-                </p>
+                {/* EXPECTED SALARY */}
+
+                <div>
+                  <label className="text-sm font-medium text-[#0b1b33]">
+                    Expected Monthly Salary{" "}
+                    <span className="text-red-500">*</span>
+                  </label>
+
+                  <div className="relative mt-1">
+                    <input
+                      type="number"
+                      min="1"
+                      max="99"
+                      placeholder="Example: 12"
+                      {...register("expected_salary")}
+                      onInput={(e) => {
+                        const target = e.target as HTMLInputElement;
+                        if (target.value.length > 2) {
+                          target.value = target.value.slice(0, 2);
+                        }
+                      }}
+                      className="w-full border border-[#d1d5db] rounded px-3 py-2 pr-14"
+                    />
+
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[#0b1b33]/60 text-sm">
+                      VND
+                    </span>
+                  </div>
+
+                  {errors.expected_salary?.message && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.expected_salary.message as string}
+                    </p>
+                  )}
+
+                  <p className="text-sm text-[#0b1b33]/60 mt-1">
+                    Enter salary in millions (e.g., 12 = 12,000,000 VND)
+                  </p>
+                </div>
               </div>
             </section>
 

@@ -11,7 +11,7 @@ export const joinSchema = z.object({
 
   location: z.string().min(1, "Please select your location"),
 
-  expected_role: z.string().min(1, "Please enter expected role"),
+  expected_role: z.string().min(1, "Please select a role"),
 
   career_summary: z.string().min(30, "Please write at least 30 characters"),
 
@@ -19,17 +19,9 @@ export const joinSchema = z.object({
 
   portfolio: z.string().url("Invalid URL").optional().or(z.literal("")),
 
-  current_salary: z.coerce
-    .number({
-      invalid_type_error: "Please enter your current salary",
-    })
-    .min(1000000, "Please enter salary in VND (example: 12000000)"),
+  current_salary: z.coerce.number().min(1, "Invalid salary").optional(),
 
-  expected_salary: z.coerce
-    .number({
-      invalid_type_error: "Please enter your expected salary",
-    })
-    .min(1000000, "Please enter salary in VND (example: 15000000)"),
+  expected_salary: z.coerce.number().min(1, "Please enter salary"),
 
   cv_upload: z.string().url("Please paste a valid Google Drive link"),
 
@@ -41,7 +33,7 @@ export const joinSchema = z.object({
 
   industry: z.array(z.string()).optional(),
 
-  skills: z.string().optional(),
+  // skills: z.string().optional(),
 
   tools: z.array(z.string()).optional(),
 
