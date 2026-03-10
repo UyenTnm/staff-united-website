@@ -876,9 +876,9 @@ export default function JoinPage() {
 
                   <option value="Part-time">Part-time</option>
 
-                  <option value="Freelance / Project-based">
+                  {/* <option value="Freelance / Project-based">
                     Freelance / Project-based
-                  </option>
+                  </option> */}
                 </select>
               </div>
 
