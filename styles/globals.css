@@ -108,3 +108,17 @@ body {
 .backface-hidden {
   backface-visibility: hidden;
 }
+
+.input {
+  @apply w-full border border-gray-300 rounded px-3 py-2;
+}
+
+.error {
+  @apply text-red-500 text-sm mt-1;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
