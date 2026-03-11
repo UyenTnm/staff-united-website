@@ -179,7 +179,7 @@ export default function JoinPage() {
               const formData = new FormData(form);
 
               await fetch(
-                "https://script.google.com/macros/s/AKfycbxw7t4SxdmI9Nrqt9SaMFIzBmOBGfZnvSQWORcJS9PXQdpm17Img8ZJHnBjso1vW0x2/exec",
+                "https://script.google.com/macros/s/AKfycbxDkdI9haEWJ_-NlIbovPExFWPY-tvz2348Q8vfJ3Y0Pfm7i5TZoh8Tzzy4n7xC1J4w/exec",
                 {
                   method: "POST",
                   mode: "no-cors",
