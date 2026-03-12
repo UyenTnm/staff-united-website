@@ -117,7 +117,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center text-sm text-white/60 gap-3 text-center md:text-left">
           <p>© {year} STAFF United. All rights reserved.</p>
           <p className="text-white/80 font-medium tracking-wide">
-            All Females. All Business.
+            All Women. All Business.
           </p>
         </div>
       </div>
