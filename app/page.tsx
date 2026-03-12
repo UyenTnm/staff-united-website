@@ -7,13 +7,13 @@ export default function Home() {
   const clientLogos = [
     { name: "InnPro", src: "/logo-client/innpro.png" },
     { name: "MASX World Travel", src: "/logo-client/masx-logo.png" },
-    { name: "InnPro", src: "/logo-client/innpro.png" },
+    { name: "InnPro", src: "/logo-client/masx.jpg" },
     { name: "SANITIZE", src: "/logo-client/SANITIZE-SQUAD-Logo.png" },
 
-    { name: "InnPro", src: "/logo-client/innpro.png" },
-    { name: "MASX World Travel", src: "/logo-client/masx-logo.png" },
-    { name: "InnPro", src: "/logo-client/innpro.png" },
-    { name: "SANITIZE", src: "/logo-client/SANITIZE-SQUAD-Logo.png" },
+    { name: "InnPro", src: "/logo-client/bloom-spa.png" },
+    { name: "MASX World Travel", src: "/logo-client/modern-architecture.png" },
+    { name: "InnPro", src: "/logo-client/color-studio.png" },
+    { name: "SANITIZE", src: "/logo-client/true-flow.png" },
 
     { name: "InnPro", src: "/logo-client/innpro.png" },
     { name: "MASX World Travel", src: "/logo-client/masx-logo.png" },
@@ -565,9 +565,7 @@ export default function Home() {
         </section>
       </AnimatedSection>
 
-      {/* TRUSTED BY STRIP */}
-      {/* TRUSTED BY STRIP */}
-      {/* TRUSTED BY MARQUEE */}
+      {/* TRUSTED BY */}
       <AnimatedSection>
         <section className="py-24 overflow-hidden">
           <div className="max-w-6xl mx-auto px-6 text-center space-y-8">

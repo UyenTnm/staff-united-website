@@ -9,7 +9,7 @@ export default function TeamPage() {
       title: "Quality & Standards Manager",
       responsibility:
         "Ensures every deliverable meets our defined standards before it reaches the client.",
-      image: "/team/yuko.jpeg",
+      image: "/team/yuko.png",
     },
     {
       name: "Jena Truong",
