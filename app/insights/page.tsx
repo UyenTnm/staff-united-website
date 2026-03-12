@@ -4,7 +4,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import { getCategories, getPosts } from "@/lib/wordpress";
 import { calculateReadingTime } from "@/lib/readingTime";
 
-const USE_CMS = false; // 🔑 đổi thành true khi CMS hoàn tất
+const USE_CMS = false; // đổi thành true khi CMS hoàn tất
 
 type Props = {
   searchParams: Promise<{
@@ -104,7 +104,7 @@ export default async function InsightsPage({ searchParams }: Props) {
                 >
                   <div className="group border border-[#0b1b33]/10 rounded-xl overflow-hidden bg-white transition-all duration-300 hover:border-[#4f8fcb]/40 hover:shadow-md hover:-translate-y-1">
                     {featuredImage && (
-                      <div className="w-full aspect-[16/9] overflow-hidden bg-[#0b1b33]">
+                      <div className="w-full h-full overflow-hidden bg-[#0b1b33]">
                         <img
                           src={featuredImage}
                           alt={post.title?.rendered || post.title}
@@ -113,7 +113,7 @@ export default async function InsightsPage({ searchParams }: Props) {
                       </div>
                     )}
 
-                    <div className="p-6 space-y-4">
+                    <div className="p-6 flex flex-col h-full">
                       {/* TITLE */}
                       <h3
                         className="text-xl font-semibold text-[#0b1b33] group-hover:text-[#4f8fcb] transition-colors"
@@ -124,7 +124,7 @@ export default async function InsightsPage({ searchParams }: Props) {
 
                       {/* META (CMS only) */}
                       {USE_CMS && (
-                        <p className="text-sm text-[#0b1b33]/60">
+                        <p className="text-sm text-[#0b1b33]/60 leading-relaxed mt-4">
                           {new Date(post.date).toLocaleDateString()} •{" "}
                           {readingTime} min read
                         </p>
@@ -176,7 +176,6 @@ export default async function InsightsPage({ searchParams }: Props) {
             </div>
           )}
 
-          {/* CTA (giống version cũ) */}
           <div className="text-center pt-6">
             <p className="text-xl text-[#4f8fcb] font-semibold animate-softBlink">
               More Insights Coming Soon.
