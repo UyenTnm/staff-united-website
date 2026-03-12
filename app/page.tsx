@@ -75,7 +75,7 @@ export default function Home() {
               </div>
 
               <div className="text-base md:text-lg font-semibold text-[#4f8fcb] tracking-wide pt-2 space-y-1">
-                <p>All Females. All Business.</p>
+                <p>All Women. All Business.</p>
                 <p>One Standard. One Team.</p>
               </div>
             </div>

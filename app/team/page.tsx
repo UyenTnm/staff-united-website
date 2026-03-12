@@ -62,7 +62,7 @@ export default function TeamPage() {
             </p>
 
             <p className="text-base md:text-lg font-semibold text-[#4f8fcb] tracking-wide pt-2">
-              All Females. All Business.
+              All Women. All Business.
             </p>
           </div>
 
