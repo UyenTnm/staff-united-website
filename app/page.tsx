@@ -17,18 +17,23 @@ export default function Home() {
 
     { name: "InnPro", src: "/logo-client/innpro.png" },
     { name: "MASX World Travel", src: "/logo-client/masx-logo.png" },
-    { name: "InnPro", src: "/logo-client/innpro.png" },
+    { name: "InnPro", src: "/logo-client/masx.jpg" },
     { name: "SANITIZE", src: "/logo-client/SANITIZE-SQUAD-Logo.png" },
+
+    { name: "InnPro", src: "/logo-client/bloom-spa.png" },
+    { name: "MASX World Travel", src: "/logo-client/modern-architecture.png" },
+    { name: "InnPro", src: "/logo-client/color-studio.png" },
+    { name: "SANITIZE", src: "/logo-client/true-flow.png" },
 
     { name: "InnPro", src: "/logo-client/innpro.png" },
     { name: "MASX World Travel", src: "/logo-client/masx-logo.png" },
-    { name: "InnPro", src: "/logo-client/innpro.png" },
+    { name: "InnPro", src: "/logo-client/masx.jpg" },
     { name: "SANITIZE", src: "/logo-client/SANITIZE-SQUAD-Logo.png" },
 
-    { name: "InnPro", src: "/logo-client/innpro.png" },
-    { name: "MASX World Travel", src: "/logo-client/masx-logo.png" },
-    { name: "InnPro", src: "/logo-client/innpro.png" },
-    { name: "SANITIZE", src: "/logo-client/SANITIZE-SQUAD-Logo.png" },
+    { name: "InnPro", src: "/logo-client/bloom-spa.png" },
+    { name: "MASX World Travel", src: "/logo-client/modern-architecture.png" },
+    { name: "InnPro", src: "/logo-client/color-studio.png" },
+    { name: "SANITIZE", src: "/logo-client/true-flow.png" },
   ];
 
   return (
