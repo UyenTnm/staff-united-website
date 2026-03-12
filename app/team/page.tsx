@@ -41,6 +41,20 @@ export default function TeamPage() {
       responsibility: "Designs intuitive and user-friendly interfaces.",
       image: "/team/annie.png",
     },
+    {
+      name: "Trang Ngoc Bao Tran",
+      title: "Marketing & SEO Content",
+      responsibility:
+        "Supports digital marketing initiatives through SEO-focused content, social media engagement and brand communication.",
+      image: "/team/trang-tran.png",
+    },
+    {
+      name: "Le Hoang Dieu Linh",
+      title: "Customer Support Specialist",
+      responsibility:
+        "Ensures smooth customer support and marketplace operations by managing inquiries, orders and fulfillment processes.",
+      image: "/team/linh-le.png",
+    },
   ];
 
   return (
@@ -67,38 +81,48 @@ export default function TeamPage() {
           </div>
 
           {/* TEAM GRID */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member, i) => (
-              <div key={i} className="group [perspective:1200px]">
-                <div className="relative w-full h-[420px] transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] hover:shadow-xl cursor-pointer">
+              <div
+                key={i}
+                className="group w-full max-w-[260px] sm:max-w-none mx-auto sm:mx-0 [perspective:1200px]"
+              >
+                <div
+                  className="
+        relative w-full aspect-[3/4]
+        transition-transform duration-500
+        [transform-style:preserve-3d]
+        group-hover:[transform:rotateY(180deg)]
+        hover:shadow-xl cursor-pointer
+      "
+                >
                   {/* FRONT */}
-                  <div className="absolute inset-0 bg-white rounded-lg shadow-md overflow-hidden [backface-visibility:hidden]">
+                  <div className="absolute inset-0 bg-white rounded-lg shadow-md overflow-hidden flex flex-col [backface-visibility:hidden]">
                     {/* IMAGE */}
-                    <div className="relative w-full h-[300px]">
+                    <div className="relative w-full aspect-[3/4] overflow-hidden bg-gray-50">
                       <Image
                         src={member.image}
                         alt={member.name}
                         fill
-                        className="object-cover"
+                        className="object-cover object-top"
                       />
                     </div>
 
                     {/* INFO */}
-                    <div className="p-4 text-center flex gap-2 flex-col justify-center items-center h-[120px]">
-                      <h3 className="text-[#0b1b33] font-semibold">
+                    <div className="p-4 text-center">
+                      <h3 className="text-[#0b1b33] font-semibold text-sm sm:text-base">
                         {member.name}
                       </h3>
 
-                      <p className="text-base text-[#4f8fcb]">{member.title}</p>
-                      {/* <p className="text-sm text-[#0b1b33]">
-                        {member.responsibility}
-                      </p> */}
+                      <p className="text-[#4f8fcb] text-xs sm:text-sm">
+                        {member.title}
+                      </p>
                     </div>
                   </div>
 
                   {/* BACK */}
-                  <div className="absolute inset-0 bg-[#0b1b33] text-white rounded-lg shadow-md flex items-center justify-center p-6 text-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                    <p className="text-sm leading-relaxed">
+                  <div className="absolute inset-0 bg-[#0b1b33] text-white rounded-lg shadow-md flex items-center justify-center p-4 text-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                    <p className="text-xs sm:text-sm leading-relaxed">
                       {member.responsibility}
                     </p>
                   </div>
