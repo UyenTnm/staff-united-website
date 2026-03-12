@@ -43,7 +43,7 @@ export const insights: Insight[] = [
 
     title: "Execution Without Drift",
     description:
-      "Execution without drift means scaling without losing quality. Learn how disciplined standards prevent operational erosion and protect long-term execution.",
+      "Structured workflows help businesses scale support operations without sacrificing clarity, or service quality.",
     subtitle:
       "Why standards matter more than speed, and how disciplined execution prevents long-term operational erosion.",
     readTime: "4–5 minutes",
