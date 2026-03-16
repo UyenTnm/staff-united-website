@@ -79,7 +79,7 @@ export default function TeamPage() {
       title: "Growth Marketing Specialist ",
       responsibility:
         "Manage end-to-end marketing strategies and budgets, from branding and creative direction to multi-channel execution (Paid Ads, Content, Social Media)",
-      image: "/team/trang-phuong-chul.png",
+      image: "/team/trang-phuong.png",
     },
     {
       name: "Khue Vu",
