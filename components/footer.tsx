@@ -31,7 +31,7 @@ export default function Footer() {
           </a>
 
           <a href="tel:+000000000" className="hover:text-white transition">
-            <span className="font-semibold text-white">Phone:</span> TBD
+            <span className="font-semibold text-white">Phone:</span> +84 32 942 6269
           </a>
 
           <span>
