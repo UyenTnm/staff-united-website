@@ -14,27 +14,32 @@ export default function TeamPage() {
     {
       name: "Jena Truong",
       title: "Video Editor",
-      responsibility: "Video production, editing, and final delivery.",
+      responsibility:
+        "Deliver high-quality video production and editing integrated with social media management.",
       image: "/team/jena.png",
     },
     {
       name: "Martha Nguyen",
       title: "Video Editor",
-      responsibility: "Content editing and post-production support.",
+      responsibility:
+        "Drive video strategy and branding through expert editing, post-production support, and creative content oversight.",
       image: "/team/martha.jpeg",
     },
     {
       name: "Betty Van",
       title: "Video Editor",
-      responsibility: "Publishing preparation and quality checks.",
+      responsibility:
+        "Produce and host interactive video content, ensuring top-tier quality and publishing standards.",
       image: "/team/betty.jpeg",
     },
     {
       name: "Alice Truong",
       title: "Website Developer",
-      responsibility: "System execution and technical delivery.",
+      responsibility:
+        "Execute high-quality web development specializing in Frontend and Fullstack support, utilizing WordPress, custom coding, and modern frameworks.",
       image: "/team/alicetr.png",
     },
+
     {
       name: "Annie Nguyen",
       title: "UIUX",
@@ -49,11 +54,46 @@ export default function TeamPage() {
       image: "/team/trang-tran.png",
     },
     {
-      name: "Le Hoang Dieu Linh",
+      name: "Elly Le",
       title: "Customer Support Specialist",
       responsibility:
         "Ensures smooth customer support and marketplace operations by managing inquiries, orders and fulfillment processes.",
       image: "/team/linh-le.png",
+    },
+    {
+      name: "Thao Tong",
+      title: "Graphic Designer",
+      responsibility:
+        "2D Design, basic 3D modeling, editing video, content creation",
+      image: "/team/thao-tong.png",
+    },
+    {
+      name: "Mel Vu",
+      title: "Website Developer",
+      responsibility:
+        "Deliver scalable web solutions through clean coding, modern frameworks (Frontend/Fullstack), and Python-based technical support.",
+      image: "/team/mel-vu.PNG",
+    },
+    {
+      name: "Trang Phuong",
+      title: "Growth Marketing Specialist ",
+      responsibility:
+        "Manage end-to-end marketing strategies and budgets, from branding and creative direction to multi-channel execution (Paid Ads, Content, Social Media)",
+      image: "/team/trang-phuong-chul.png",
+    },
+    {
+      name: "Khue Vu",
+      title: "Operations Coordinator ",
+      responsibility:
+        "Execute market research and Excel-based reporting to drive problem-solving, while facilitating cross-cultural communication within international teams.",
+      image: "/team/khue-vu.png",
+    },
+    {
+      name: "Levi Le",
+      title: "Marketing & Project Coordinator",
+      responsibility:
+        "Execute integrated marketing projects and social media campaigns through seamless cross-functional collaboration and strategic coordination.",
+      image: "/team/levi.png",
     },
   ];
 
