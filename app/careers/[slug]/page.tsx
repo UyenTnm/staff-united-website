@@ -42,10 +42,10 @@ export default function JobDetailPage() {
               {job.department}
             </span>
 
-            <span className="hidden sm:inline">•</span>
+            <span className=" sm:inline">•</span>
             <span>{job.location}</span>
 
-            <span className="hidden sm:inline">•</span>
+            <span className=" sm:inline">•</span>
             <span>{job.type}</span>
           </div>
         </div>
