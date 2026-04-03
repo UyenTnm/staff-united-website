@@ -26,27 +26,36 @@ export default function Careers({ jobs }: { jobs: Job[] }) {
     <div>
       {/* HERO */}
 
-      <section className="relative w-full h-[420px] md:h-[600px] overflow-hidden">
-        {/* IMAGE */}
+      <section className="relative w-full h-[520px] sm:h-[560px] md:h-[600px] overflow-hidden">
+        {/* MOBILE + TABLET */}
+        <Image
+          src="/careers/hero-banner-mobile.jpeg"
+          alt="Careers Hero"
+          fill
+          priority
+          className="object-cover object-center block md:hidden"
+        />
+
+        {/* DESKTOP */}
         <Image
           src="/careers/hero-banner.jpeg"
           alt="Careers Hero"
           fill
           priority
-          className="object-cover object-[center_30%]"
+          className="object-cover object-center hidden md:block"
         />
 
         {/* OVERLAY */}
-        {/* <div className="absolute inset-0 bg-[#0b1b33]/70" /> */}
+        {/* <div className="absolute inset-0 bg-[#0b1b33]/50 md:bg-[#0b1b33]/60" /> */}
 
         {/* CONTENT */}
-        <div className="relative z-10 max-w-5xl mx-auto px-6 h-full flex flex-col justify-center text-center text-white space-y-6">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.1] tracking-tight">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 h-full flex flex-col justify-center text-center text-white space-y-5 sm:space-y-6">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-semibold leading-[1.2] md:leading-[1.1] tracking-tight">
             Join STAFF United today <br />
             and keep maximizing your potential.
           </h1>
 
-          <p className="text-base sm:text-lg md:text-2xl text-white/90 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-2xl text-white/90 max-w-xl sm:max-w-2xl mx-auto leading-relaxed">
             Work with the best talents, on successful brands,{" "}
             <span className="whitespace-nowrap">across global projects.</span>
           </p>
