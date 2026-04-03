@@ -14,6 +14,7 @@ export default function Navigation() {
     { label: "Services", href: "/services" },
     { label: "The Standard", href: "/the-standard" },
     { label: "Team", href: "/team" },
+    { label: "Careers", href: "/careers" },
     { label: "Insights", href: "/insights" },
   ];
 
