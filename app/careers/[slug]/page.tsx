@@ -2,8 +2,36 @@
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { jobs } from "../data1";
+import { jobs } from "@/data/jobs";
 import { ArrowLeft } from "lucide-react";
+import { Job } from "@/data/jobs";
+
+const headings = [
+  // Travel job
+  "Design Distinctive Travel Experiences",
+  "Develop Premium Travel Packages",
+  "Content & Presentation",
+  "Structure & Systems",
+  "Collaboration",
+  "Continuous Improvement",
+
+  // Developer job
+  "Website Development",
+  "Performance & Optimization",
+  "Maintenance & Improvement",
+
+  // Operations job
+  "Tenant Communication",
+  "Leasing & Application Management",
+  "Property Operations",
+  "Digital Marketing",
+  "Systems & Organization",
+
+  // Shared
+  "Core Skills",
+  "Mindset",
+  "Nice to Have",
+];
 
 export default function JobDetailPage() {
   const params = useParams();
@@ -58,9 +86,13 @@ export default function JobDetailPage() {
           </p>
 
           {/* SECTIONS */}
-          <Section title="What you will do" items={job.whatYouDo} />
-          <Section title="Responsibilities" items={job.responsibilities} />
-          <Section title="Requirements" items={job.requirements} />
+          {job.sections?.map((section, index) => (
+            <Section
+              key={index}
+              title={section.title}
+              items={section.content}
+            />
+          ))}
           {job.benefits && <Section title="Benefits" items={job.benefits} />}
 
           {/* APPLY BUTTON */}
@@ -79,12 +111,24 @@ export default function JobDetailPage() {
 function Section({ title, items }: { title: string; items: string[] }) {
   return (
     <div>
-      <h2 className="text-lg sm:text-xl font-semibold mb-3">{title}</h2>
+      <h2 className="text-xl font-semibold mb-3">{title}</h2>
 
-      <ul className="list-disc pl-5 space-y-2 text-gray-700 text-sm sm:text-base">
-        {items.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
+      <ul className="space-y-2 text-gray-700">
+        {items.map((item, index) => {
+          const cleanItem = item.trim().toLowerCase();
+
+          const isHeading = headings.some((h) => h.toLowerCase() === cleanItem);
+
+          return isHeading ? (
+            <li key={index} className="font-semibold mt-4">
+              {item}
+            </li>
+          ) : (
+            <li key={index} className="list-disc ml-5">
+              {item}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

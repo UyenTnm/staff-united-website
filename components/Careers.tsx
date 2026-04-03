@@ -68,8 +68,11 @@ export default function Careers({ jobs }: { jobs: Job[] }) {
 
         <div className="space-y-4">
           {jobs.map((job) => (
-            <div
+            <Link
               key={job.slug}
+              href={`/careers/${job.slug}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="border rounded-xl p-5 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 hover:shadow-md transition"
             >
               {/* LEFT */}
@@ -92,13 +95,16 @@ export default function Careers({ jobs }: { jobs: Job[] }) {
               </div>
 
               {/* RIGHT */}
-              <Link
+              {/* <div
                 href={`/careers/${job.slug}`}
                 className="w-full sm:w-auto text-center bg-[#0b1b33]  text-white px-4 py-2 rounded-lg hover:bg-[#0b1b33]/90 transition text-sm sm:text-base"
               >
                 Read more
-              </Link>
-            </div>
+              </div> */}
+              <div className="w-full sm:w-auto text-center bg-[#0b1b33] text-white px-4 py-2 rounded-lg text-sm sm:text-base">
+                Read more
+              </div>
+            </Link>
           ))}
         </div>
       </section>
