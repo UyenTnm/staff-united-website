@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Job } from "@/data/jobs";
+import Image from "next/image";
 
 // Mock data (sau này thay bằng API/CMS)
 // const jobs = [
@@ -24,16 +25,30 @@ export default function Careers({ jobs }: { jobs: Job[] }) {
   return (
     <div>
       {/* HERO */}
-      <section className="bg-gradient-to-r from-[#1e3a8a] to-[#0f766e] text-white py-16 md:py-20 px-6">
-        <div className="max-w-5xl mx-auto text-center space-y-8">
+
+      <section className="relative w-full h-[420px] md:h-[600px] overflow-hidden">
+        {/* IMAGE */}
+        <Image
+          src="/careers/hero-banner.jpeg"
+          alt="Careers Hero"
+          fill
+          priority
+          className="object-cover object-[center_30%]"
+        />
+
+        {/* OVERLAY */}
+        {/* <div className="absolute inset-0 bg-[#0b1b33]/70" /> */}
+
+        {/* CONTENT */}
+        <div className="relative z-10 max-w-5xl mx-auto px-6 h-full flex flex-col justify-center text-center text-white space-y-6">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.1] tracking-tight">
             Join STAFF United today <br />
             and keep maximizing your potential.
           </h1>
 
           <p className="text-base sm:text-lg md:text-2xl text-white/90 max-w-2xl mx-auto">
-            Work with the best talents, on successful brands, across global
-            projects.
+            Work with the best talents, on successful brands,{" "}
+            <span className="whitespace-nowrap">across global projects.</span>
           </p>
         </div>
       </section>
@@ -55,7 +70,7 @@ export default function Careers({ jobs }: { jobs: Job[] }) {
                 </h3>
 
                 <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-500 mt-2">
-                  <span className="bg-green-100 text-green-700 px-2 py-1 rounded-md text-xs font-bold">
+                  <span className="bg-[#4f8fcb]/10 text-[#0b1b33] px-2.5 py-1 rounded-full text-xs font-semibold">
                     {job.department}
                   </span>
 
@@ -70,7 +85,7 @@ export default function Careers({ jobs }: { jobs: Job[] }) {
               {/* RIGHT */}
               <Link
                 href={`/careers/${job.slug}`}
-                className="w-full sm:w-auto text-center bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition text-sm sm:text-base"
+                className="w-full sm:w-auto text-center bg-[#0b1b33]  text-white px-4 py-2 rounded-lg hover:bg-[#0b1b33]/90 transition text-sm sm:text-base"
               >
                 Read more
               </Link>
