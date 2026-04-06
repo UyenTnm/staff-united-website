@@ -2,6 +2,7 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import { ClipboardCheck, Layers, TrendingUp, Users, Zap } from "lucide-react";
+import Image from "next/image";
 
 export default function Home() {
   const clientLogos = [
@@ -43,9 +44,11 @@ export default function Home() {
       <AnimatedSection>
         <section className="relative py-24 overflow-hidden">
           <div className="absolute inset-0">
-            <img
+            <Image
               src="/team/hero-banner-team.webp"
               alt="Women professional offshore team"
+              fill
+              priority
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0b1b33]/85 via-[#0b1b33]/70 to-[#0b1b33]/60"></div>
@@ -420,10 +423,12 @@ export default function Home() {
               {/* IMAGE */}
               <div className="flex justify-center md:justify-end">
                 <div className="w-full max-w-md aspect-square overflow-hidden rounded-xl shadow-lg">
-                  <img
+                  <Image
                     src="/team/why-we-built.webp"
                     alt="Women working together"
-                    className="w-full h-full object-cover"
+                    className="rounded-xl object-cover"
+                    width={500}
+                    height={500}
                   />
                 </div>
               </div>
@@ -589,16 +594,12 @@ export default function Home() {
                     className="flex items-center justify-center w-48 h-20"
                   >
                     <div className="flex items-center justify-center w-full h-full">
-                      <img
+                      <Image
                         src={client.src}
                         alt={client.name}
-                        className="
-                        w-full
-                        h-full
-                        object-contain
-                        transition-all duration-900
-                        transform-gpu
-                        hover:scale-110 hover:grayscale-0 hover:opacity-100"
+                        width={120}
+                        height={60}
+                        className="object-contain max-h-full w-auto"
                       />
                     </div>
                   </div>
@@ -615,10 +616,13 @@ export default function Home() {
           <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
             {/* IMAGE */}
             <div>
-              <img
+              <Image
                 src="/team/team-square.webp"
                 alt="Women team working"
-                className="rounded-xl shadow-md"
+                width={500}
+                height={500}
+                className="rounded-xl shadow-md object-cover"
+                sizes="(max-width: 768px) 100vw, 500px"
               />
             </div>
 
