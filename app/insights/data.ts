@@ -48,8 +48,8 @@ export const insights: Insight[] = [
       "Why standards matter more than speed, and how disciplined execution prevents long-term operational erosion.",
     readTime: "4–5 minutes",
 
-    thumbnail: "/images/thumbnail/thumb-blog-1.png",
-    image: "/images/thumbnail/thumb-blog-1.png",
+    thumbnail: "/images/thumbnail/thumb-blog-1.webp",
+    image: "/images/thumbnail/thumb-blog-1.webp",
 
     content: [
       {
@@ -264,8 +264,8 @@ export const insights: Insight[] = [
     description:
       "How structured workflows enable businesses to scale without sacrificing clarity, accountability, or quality.",
 
-    thumbnail: "/images/thumbnail/thumb-blog-2.png",
-    image: "/images/thumbnail/thumb-blog-2.png",
+    thumbnail: "/images/thumbnail/thumb-blog-2.webp",
+    image: "/images/thumbnail/thumb-blog-2.webp",
 
     content: [
       {
@@ -524,8 +524,8 @@ export const insights: Insight[] = [
     description:
       "Internal review systems are not friction—they are protection against inconsistency and reputation risk.",
 
-    thumbnail: "/images/thumbnail/thumb-blog-3.png",
-    image: "/images/thumbnail/thumb-blog-3.png",
+    thumbnail: "/images/thumbnail/thumb-blog-3.webp",
+    image: "/images/thumbnail/thumb-blog-3.webp",
 
     content: [
       {
@@ -855,8 +855,8 @@ export const insights: Insight[] = [
     description:
       "How disciplined, women-led distributed teams create reliable, long-term operational capacity.",
 
-    thumbnail: "/images/thumbnail/thumb-blog-4.png",
-    image: "/images/thumbnail/thumb-blog-4.png",
+    thumbnail: "/images/thumbnail/thumb-blog-4.webp",
+    image: "/images/thumbnail/thumb-blog-4.webp",
 
     content: [
       {

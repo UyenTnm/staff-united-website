@@ -40,7 +40,7 @@ export default function Services() {
                 <div className="flex-grow">
                   <div className="flex justify-center mb-5">
                     <img
-                      src="/images/creative.png"
+                      src="/images/creative.webp"
                       alt="Creative"
                       className="h-36 object-contain transition-transform duration-500 group-hover:-translate-y-2 group-hover:scale-105"
                     />
@@ -116,7 +116,7 @@ export default function Services() {
                 <div className="flex-grow">
                   <div className="flex justify-center mb-5">
                     <img
-                      src="/images/admin.png"
+                      src="/images/admin.webp"
                       alt="Admin"
                       className="h-36 object-contain transition-transform duration-500 group-hover:-translate-y-2 group-hover:scale-105"
                     />
