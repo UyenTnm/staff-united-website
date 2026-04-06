@@ -1,10 +1,7 @@
 import Link from "next/link";
 import { insights } from "./data";
 import AnimatedSection from "@/components/AnimatedSection";
-import { getCategories, getPosts } from "@/lib/wordpress";
-import { calculateReadingTime } from "@/lib/readingTime";
-
-const USE_CMS = false; // đổi thành true khi CMS hoàn tất
+import Image from "next/image";
 
 type Props = {
   searchParams: Promise<{
@@ -19,20 +16,7 @@ export default async function InsightsPage({ searchParams }: Props) {
   const page = Number(params?.page || 1);
   const category = params?.category ? Number(params.category) : undefined;
 
-  // CMS fetch (chỉ chạy khi bật CMS)
-  let posts: any[] = [];
-  let categories: any[] = [];
-  let totalPages = 1;
-
-  if (USE_CMS) {
-    categories = await getCategories();
-    const result = await getPosts(page, category);
-    posts = result.posts;
-    totalPages = result.totalPages;
-  }
-
-  const displayPosts = USE_CMS ? posts : insights;
-
+  const displayPosts = insights;
   return (
     <main className="bg-white">
       <AnimatedSection>
@@ -52,49 +36,12 @@ export default async function InsightsPage({ searchParams }: Props) {
             </p>
           </div>
 
-          {/* CATEGORY FILTER (CMS only) */}
-          {USE_CMS && (
-            <div className="flex justify-center gap-6 text-lg mt-10">
-              <Link
-                href="/insights"
-                className={`font-medium ${
-                  !category
-                    ? "text-[#4f8fcb]"
-                    : "text-[#0b1b33]/70 hover:text-[#4f8fcb]"
-                }`}
-              >
-                All
-              </Link>
-
-              {categories.map((cat: any) => (
-                <Link
-                  key={cat.id}
-                  href={`/insights?category=${cat.id}`}
-                  className={`font-medium ${
-                    category === cat.id
-                      ? "text-[#4f8fcb]"
-                      : "text-[#0b1b33]/70 hover:text-[#4f8fcb]"
-                  }`}
-                >
-                  {cat.name}
-                </Link>
-              ))}
-            </div>
-          )}
-
           {/* GRID */}
           <div className="grid md:grid-cols-2 gap-10">
             {displayPosts.map((post: any, index: number) => {
               const featuredImage =
                 post?._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
                 post.thumbnail;
-
-              const readingTime = USE_CMS
-                ? Math.ceil(
-                    post.content.rendered.replace(/<[^>]+>/g, "").split(" ")
-                      .length / 200,
-                  )
-                : null;
 
               return (
                 <Link
@@ -105,10 +52,13 @@ export default async function InsightsPage({ searchParams }: Props) {
                   <div className="group border border-[#0b1b33]/10 rounded-xl overflow-hidden bg-white transition-all duration-300 hover:border-[#4f8fcb]/40 hover:shadow-md hover:-translate-y-1">
                     {featuredImage && (
                       <div className="w-full h-full overflow-hidden bg-[#0b1b33]">
-                        <img
+                        <Image
                           src={featuredImage}
                           alt={post.title?.rendered || post.title}
-                          className="w-full h-full object-cover object-center"
+                          width={600}
+                          height={400}
+                          className="w-full h-full object-cover"
+                          sizes="(max-width: 768px) 100vw, 600px"
                         />
                       </div>
                     )}
@@ -121,14 +71,6 @@ export default async function InsightsPage({ searchParams }: Props) {
                           __html: post.title?.rendered || post.title,
                         }}
                       />
-
-                      {/* META (CMS only) */}
-                      {USE_CMS && (
-                        <p className="text-sm text-[#0b1b33]/60 leading-relaxed mt-4">
-                          {new Date(post.date).toLocaleDateString()} •{" "}
-                          {readingTime} min read
-                        </p>
-                      )}
 
                       {/* EXCERPT */}
                       <p className="text-[#0b1b33]/80 leading-relaxed">
@@ -148,33 +90,6 @@ export default async function InsightsPage({ searchParams }: Props) {
               );
             })}
           </div>
-
-          {/* PAGINATION (CMS only) */}
-          {USE_CMS && (
-            <div className="flex justify-center gap-4 pt-10">
-              {page > 1 && (
-                <Link
-                  href={`/insights?page=${page - 1}`}
-                  className="px-4 py-2 border rounded-lg hover:bg-gray-100"
-                >
-                  Previous
-                </Link>
-              )}
-
-              <span className="px-4 py-2 text-[#0b1b33]/70">
-                Page {page} / {totalPages}
-              </span>
-
-              {page < totalPages && (
-                <Link
-                  href={`/insights?page=${page + 1}`}
-                  className="px-4 py-2 border rounded-lg hover:bg-gray-100"
-                >
-                  Next
-                </Link>
-              )}
-            </div>
-          )}
 
           <div className="text-center pt-6">
             <p className="text-xl text-[#4f8fcb] font-semibold animate-softBlink">

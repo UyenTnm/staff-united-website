@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import ThemeToggle from "./theme-toggle";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -18,7 +19,10 @@ export default function Navigation() {
     { label: "Insights", href: "/insights" },
   ];
 
-  const isActive = (href: string) => pathname === href;
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
 
   return (
     <nav className="sticky top-0 z-50 bg-[#0b1b33] border-b border-white/10">
@@ -54,6 +58,7 @@ export default function Navigation() {
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
+            {/* <ThemeToggle /> */}
             <Link
               href="/request-support"
               className={`
@@ -75,17 +80,13 @@ export default function Navigation() {
             <Link
               href="/join"
               className={`
-    px-5 py-2
-    text-sm font-medium
-    rounded
-    border
-    transition-all duration-300
-    ${
-      isActive("/join")
-        ? "bg-[#4f8fcb] text-white border-[#0b1b33] shadow-lg scale-[1.03] ring-2 ring-[#0b1b33]/40"
-        : "bg-white text-[#0b1b33] border-transparent hover:bg-[#f2f4f7] hover:shadow-sm hover:-translate-y-[1px]"
-    }
-  `}
+  px-5 py-2 text-sm font-medium rounded border transition-all duration-300
+  ${
+    isActive("/join")
+      ? "bg-[#eaf2fb] text-[#0b1b33] border-[#4f8fcb] shadow-md"
+      : "bg-white text-[#0b1b33] border-transparent hover:bg-[#f2f4f7] hover:-translate-y-[1px]"
+  }
+`}
             >
               Join the Team
             </Link>
@@ -141,26 +142,40 @@ export default function Navigation() {
               <Link
                 href="/request-support"
                 onClick={() => setIsOpen(false)}
-                className={`block w-full text-center px-4 py-3 rounded font-medium border transition-all ${
-                  isActive("/request-support")
-                    ? "bg-[#4f8fcb] text-white border-[#0b1b33] shadow-md"
-                    : "bg-[#4f8fcb] text-white border-transparent hover:bg-[#3f7bb5]"
-                }`}
+                className={`
+  px-5 py-2 text-sm font-medium rounded
+  transition-all duration-200
+  ${
+    isActive("/request-support")
+      ? "bg-[#4f8fcb] text-white shadow-[0_6px_0_#2f5f8f] translate-y-[2px]"
+      : "bg-[#4f8fcb] text-white shadow-[0_6px_0_#2f5f8f] hover:translate-y-[2px] hover:shadow-[0_4px_0_#2f5f8f] active:translate-y-[4px] active:shadow-[0_2px_0_#2f5f8f]"
+  }
+`}
               >
                 Request Support
+                {/* subtle shine effect */}
+                <span className="absolute inset-0 bg-white/10 opacity-0 hover:opacity-100 transition" />
               </Link>
 
               {/* Join the Team */}
               <Link
                 href="/join"
                 onClick={() => setIsOpen(false)}
-                className={`block w-full text-center px-4 py-3 rounded font-medium border transition-all ${
-                  isActive("/join")
-                    ? "bg-white text-[#0b1b33] border-[#0b1b33] shadow-md"
-                    : "bg-white text-[#0b1b33] border-transparent hover:bg-[#f2f4f7]"
-                }`}
+                className={`
+  px-5 py-2 text-sm font-medium rounded
+  transition-all duration-200
+  ${
+    isActive("/join")
+      ? "bg-white text-[#0b1b33] shadow-[0_5px_0_#cbd5e1] translate-y-[2px]"
+      : "bg-white text-[#0b1b33] shadow-[0_5px_0_#cbd5e1] hover:translate-y-[2px] hover:shadow-[0_3px_0_#cbd5e1] active:translate-y-[4px] active:shadow-[0_1px_0_#cbd5e1]"
+  }
+`}
               >
                 Join the Team
+                {/* 🔥 underline chạy nhẹ */}
+                {isActive("/join") && (
+                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#4f8fcb] animate-slide" />
+                )}
               </Link>
             </div>
           </div>
