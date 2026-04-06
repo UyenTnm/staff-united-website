@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import ThemeToggle from "./theme-toggle";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -56,6 +57,7 @@ export default function Navigation() {
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
+            {/* <ThemeToggle /> */}
             <Link
               href="/request-support"
               className={`
