@@ -27,7 +27,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/">
             <Image
-              src="/staff-logo.png"
+              src="/staff-logo.webp"
               alt="STAFF United"
               width={140}
               height={32}

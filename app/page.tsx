@@ -44,7 +44,7 @@ export default function Home() {
         <section className="relative py-24 overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="/team/hero-banner-team.png"
+              src="/team/hero-banner-team.webp"
               alt="Women professional offshore team"
               className="w-full h-full object-cover"
             />
@@ -421,7 +421,7 @@ export default function Home() {
               <div className="flex justify-center md:justify-end">
                 <div className="w-full max-w-md aspect-square overflow-hidden rounded-xl shadow-lg">
                   <img
-                    src="/team/why-we-built.png"
+                    src="/team/why-we-built.webp"
                     alt="Women working together"
                     className="w-full h-full object-cover"
                   />
@@ -596,7 +596,7 @@ export default function Home() {
                         w-full
                         h-full
                         object-contain
-                        transition-all duration-300
+                        transition-all duration-900
                         transform-gpu
                         hover:scale-110 hover:grayscale-0 hover:opacity-100"
                       />
@@ -609,48 +609,6 @@ export default function Home() {
         </section>
       </AnimatedSection>
 
-      {/* SECTION — TESTIMONIAL */}
-      {/* <AnimatedSection>
-        <section className="bg-white pb-24">
-          <div className="max-w-5xl mx-auto px-6 space-y-12 text-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
-                What Clients Say
-              </h2>
-
-              <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 rounded-full"></div>
-            </div>
-
-            <div
-              className="
-      bg-[#f8f9fb]
-      p-10
-      rounded-xl
-      shadow-sm
-      max-w-3xl
-      mx-auto
-      space-y-6
-    "
-            >
-              <p className="text-lg md:text-xl text-[#0b1b33]/80 leading-relaxed italic">
-                “Working with STAFF United has allowed our team to scale
-                operations while maintaining structured execution and consistent
-                delivery. Their team integrates smoothly with our workflows and
-                takes real ownership of outcomes.”
-              </p>
-
-              <div className="space-y-1">
-                <p className="font-semibold text-[#0b1b33]">Founder</p>
-
-                <p className="text-sm text-[#0b1b33]/60">
-                  Marketing Agency — Australia
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </AnimatedSection> */}
-
       {/* SECTION 10 — CTA STRIP (FULL WIDTH STRIP) */}
       <AnimatedSection>
         <section className="bg-[#f8f9fb] py-24">
@@ -658,7 +616,7 @@ export default function Home() {
             {/* IMAGE */}
             <div>
               <img
-                src="/team/team-square.png"
+                src="/team/team-square.webp"
                 alt="Women team working"
                 className="rounded-xl shadow-md"
               />

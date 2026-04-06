@@ -12,7 +12,7 @@ export default function Footer() {
         {/* Logo */}
         <div className="flex justify-center mb-2">
           <Image
-            src="/staff-logo.png"
+            src="/staff-logo.webp"
             alt="STAFF United"
             width={130}
             height={32}
@@ -31,7 +31,8 @@ export default function Footer() {
           </a>
 
           <a href="tel:+000000000" className="hover:text-white transition">
-            <span className="font-semibold text-white">Phone:</span> +84 32 942 6269
+            <span className="font-semibold text-white">Phone:</span> +84 32 942
+            6269
           </a>
 
           <span>
