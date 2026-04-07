@@ -117,7 +117,17 @@ export default function Navigation() {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden pb-6 pt-4 space-y-4 border-t border-white/10">
+          <div
+            className="
+  md:hidden 
+  pb-6 pt-4 
+  space-y-4 
+  border-t border-white/10
+  bg-[#0b1b33]
+  relative
+  z-50
+"
+          >
             {/* Nav Links */}
             <div className="space-y-3">
               {navItems.map((item) => (
