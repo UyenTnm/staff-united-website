@@ -103,7 +103,7 @@ export default function TeamPage() {
       {/* <AnimatedSection> */}
       <section className="max-w-5xl mx-auto px-6 py-10 space-y-10">
         {/* INTRO */}
-        <div className="text-center space-y-6 max-w-3xl mx-auto">
+        <div className="text-center py-10 space-y-6 max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-semibold text-[#0b1b33] leading-tight">
             Our Team
           </h1>

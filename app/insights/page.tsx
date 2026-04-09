@@ -23,7 +23,7 @@ export default async function InsightsPage({ searchParams }: Props) {
         <section className="max-w-5xl mx-auto px-6 py-10 space-y-10">
           {/* HEADER */}
           <div className="text-center space-y-6 max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-semibold text-[#0b1b33]">
+            <h1 className="text-4xl md:text-5xl py-10 font-semibold text-[#0b1b33]">
               Insights
             </h1>
 

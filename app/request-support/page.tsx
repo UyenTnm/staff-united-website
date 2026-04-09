@@ -69,7 +69,7 @@ export default function RequestSupportPage() {
       <div className="max-w-3xl mx-auto px-4 py-16">
         {/* Intro */}
         <div className="mb-10 text-center">
-          <h1 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
+          <h1 className="text-3xl md:text-4xl font-semibold py-10 text-[#0b1b33]">
             Request Support
           </h1>
           <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 rounded-full"></div>
