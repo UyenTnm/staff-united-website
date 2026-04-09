@@ -22,6 +22,11 @@ import Hero from "@/components/hero";
 import { useInView } from "react-intersection-observer";
 import CountUp from "@/components/CountUp";
 import test from "node:test";
+import { useEffect } from "react";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import { useState } from "react";
+import Link from "next/link";
 
 export default function Home() {
   const testimonials = [
@@ -55,6 +60,48 @@ export default function Home() {
     triggerOnce: true,
     threshold: 0.3,
   });
+
+  const [phone, setPhone] = useState("");
+
+  useEffect(() => {
+    const elements = document.querySelectorAll(".fade-up");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const elements = document.querySelectorAll(
+      ".slide-left, .slide-right, .fade-up",
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
   return (
     <main className="bg-white w-full">
       {/* SECTION 1 — HERO (VISUAL ENHANCED) */}
@@ -64,7 +111,6 @@ export default function Home() {
       </AnimatedSection>
 
       {/* SECTION 2 — POSITIONING (FULL GREY) */}
-
       <AnimatedSection>
         <section className="bg-[#f3f4f6] py-16 sm:py-20 md:py-32" ref={ref}>
           <div className="max-w-8xl mx-auto px-6">
@@ -177,7 +223,7 @@ export default function Home() {
           <div className="max-w-8xl mx-auto px-5 md:px-8 xl:px-12">
             <div
               className="
-      grid
+      grid fade-up active
       grid-cols-1
       lg:grid-cols-[auto_1fr_auto]
       lg:grid-rows-[auto_auto_auto]
@@ -319,7 +365,7 @@ export default function Home() {
                 href={item.href}
                 key={i}
                 className="
-        group
+        group slide-left active
         rounded-2xl
         p-6 sm:p-8
 
@@ -436,7 +482,7 @@ export default function Home() {
         <section className="bg-gradient-to-b from-[#0a1b33] via-[#0a1b33] to-[#103663] py-24 text-white overflow-hidden">
           <div className="max-w-8xl mx-auto px-6 space-y-16">
             {/* HEADER */}
-            <div className="text-center space-y-4">
+            <div className="text-center space-y-4 fade-up active">
               <span
                 className="
           inline-block
@@ -535,7 +581,7 @@ export default function Home() {
             {/* FEATURES */}
             <div className="mt-16 space-y-10">
               {/* 3 CARDS */}
-              <div className="grid lg:grid-cols-3 gap-6">
+              <div className="grid lg:grid-cols-3 gap-6 slide-right active">
                 {[
                   {
                     title: "Proven Track Record",
@@ -598,7 +644,7 @@ export default function Home() {
               </div>
 
               {/* TAGS */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap justify-center gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap justify-center gap-3 slide-left active">
                 {[
                   {
                     label: "Continuous Innovation",
@@ -651,113 +697,135 @@ export default function Home() {
         </section>
       </AnimatedSection>
 
-      {/* SECTION 6 — WHY WE BUILT THIS */}
+      {/* SECTION 6 — WHY WE BUILT THIS -> ABOUT US */}
       <AnimatedSection>
-        <section className="bg-white py-24">
-          <div className="max-w-6xl mx-auto px-6 space-y-16">
-            {/* TITLE */}
-            <div className="text-center">
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
-                Why We Built This
+        <section className="relative h-[500px] md:h-[600px] w-full overflow-hidden">
+          {/* BACKGROUND IMAGE */}
+          <Image
+            src="/team/hero-banner-team.webp" // đổi lại ảnh giống hình bạn
+            alt="Team meeting"
+            fill
+            className="object-cover"
+            priority
+          />
+
+          {/* OVERLAY */}
+          <div className="absolute inset-0 bg-[#0b1b33]/60"></div>
+
+          {/* CONTENT */}
+          <div className="absolute inset-0 flex items-end">
+            <div className="max-w-6xl mx-auto px-6 pb-12 w-full flex flex-col md:flex-row items-center justify-center md:justify-between gap-4 text-center md:text-left">
+              {/* TEXT */}
+              <h2
+                className="
+  text-lg sm:text-lg md:text-2xl lg:text-3xl
+  font-light fade-up
+  text-white
+  max-w-[320px] sm:max-w-none
+  leading-[1.4]
+  tracking-wide
+"
+              >
+                The Concept of an All Women
+                <br className="block sm:hidden" />
+                Execution Team
               </h2>
 
-              <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 rounded-full"></div>
-            </div>
-
-            {/* CONTENT */}
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-              {/* TEXT */}
-              <div className="space-y-4 text-lg text-[#0b1b33]/80 leading-relaxed text-left max-w-xl mx-auto">
-                <p>
-                  STAFF United was built in Vietnam by women who understood what
-                  it means to work hard without always being seen.
-                </p>
-
-                <p>
-                  We saw talented women carrying responsibility balancing work,
-                  family, and expectation often without access to stable
-                  opportunities, fair systems, or long-term growth.
-                </p>
-
-                <p>
-                  This company exists to change that. Not through charity. Not
-                  through shortcuts. But through real work, clear standards, and
-                  shared accountability.
-                </p>
-
-                <p>
-                  By supporting international businesses with disciplined
-                  execution, we create professional, long-term opportunities for
-                  women - while delivering reliability our clients can trust.
-                </p>
-
-                <p>
-                  Supporting women is not separate from how we work. It is built
-                  into the standard.
-                </p>
-              </div>
-
-              {/* IMAGE */}
-              <div className="flex justify-center md:justify-end">
-                <div className="w-full max-w-md aspect-square overflow-hidden rounded-xl shadow-lg">
-                  <Image
-                    src="/team/why-we-built.webp"
-                    alt="Women working together"
-                    className="rounded-xl object-cover"
-                    width={500}
-                    height={500}
-                  />
-                </div>
-              </div>
+              {/* BUTTON */}
+              <Link
+                href="/about-us"
+                className="
+            px-6 py-2 fade-up delay-1
+            rounded-full
+            border border-white
+            text-white
+            backdrop-blur-md
+            hover:bg-white hover:text-[#0b1b33]
+            transition-all duration-700
+          "
+              >
+                About Us
+              </Link>
             </div>
           </div>
         </section>
       </AnimatedSection>
 
-      {/* SECTION 7 — THE STANDARD (LIGHT GREY) */}
+      {/* SECTION 7 — THE STANDARD (LIGHT GREY) -> STAFF UNITED's Execution Team*/}
       <AnimatedSection>
-        <section className="bg-[#f8f9fb] py-24">
-          <div className="max-w-5xl mx-auto px-6 space-y-8">
-            <div className="text-center">
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
-                The Standard
-              </h2>
-              <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 rounded-full"></div>
-            </div>
-
-            <div className="space-y-4 text-lg text-[#0b1b33]/80 leading-relaxed">
-              <p>Anyone can promise quality. Very few can enforce it.</p>
-
-              <p>
-                We define a standard and apply it across people, tasks, and
-                timelines. That is how we deliver consistent outcomes - and how
-                we scale without drift.
-              </p>
-
-              <p>
-                Being based in Vietnam allows us to operate efficiently and
-                offer competitive pricing, while maintaining the level of
-                quality expected by international businesses.
-              </p>
-            </div>
-
-            <div className="pt-4 text-center">
-              <a
-                href="/the-standard"
-                className="inline-block px-6 py-3 bg-[#0b1b33] text-white text-base md:text-lg font-medium rounded hover:bg-[#0b1b33]/90 transition text-center"
+        <section className="bg-gradient-to-b from-[#0a1b33] via-[#0a1b33] to-[#103663] py-20">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14 lg:gap-20 items-center">
+              {/* IMAGE */}
+              <div
+                className="
+  slide-left
+  w-full
+  h-[320px] sm:h-[420px] md:h-[520px] lg:h-[580px]
+  relative overflow-hidden rounded-xl
+"
               >
-                View The Standard
-              </a>
+                <img
+                  src="../home/workspace.png"
+                  alt="Workspace STAFF UNITED"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* CONTENT */}
+              <div className="space-y-6 text-white fade-up mx-auto items-center text-center lg:text-left">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-light leading-snug">
+                  <span className="text-[#4f8dc9]">STA</span>FF United's
+                  <span
+                    className="
+    block lg:text-left lg:mx-0
+    mt-2 md:mt-3
+    w-fit
+    bg-[#4f8fcb]
+    text-white
+    px-2 py-1
+    font-medium mx-auto items-center text-center 
+  "
+                  >
+                    Execution Team
+                  </span>
+                </h2>
+
+                <p className="text-white/70 leading-relaxed max-w-md">
+                  STAFF United is built by women who take execution seriously.{" "}
+                  <br />
+                  <span className="font-medium text-white">
+                    If you value standards, discipline, and growth, apply below.
+                  </span>
+                </p>
+
+                {/* BUTTON */}
+                <a
+                  href="/join"
+                  className="
+              inline-block
+              px-6 py-3
+              rounded-full
+              bg-[#4f8fcb]
+              text-white
+              font-medium
+
+              hover:opacity-90
+              transition-all duration-300
+            "
+                >
+                  Join Our Team
+                </a>
+              </div>
             </div>
           </div>
         </section>
       </AnimatedSection>
 
       {/* SECTION 8 — HOW IT WORKS (WHITE) */}
-      <AnimatedSection>
+      {/* <AnimatedSection>
         <section className="bg-white py-24">
           <div className="max-w-6xl mx-auto px-6">
-            {/* Title */}
             <div className="text-center">
               <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
                 How It Works
@@ -766,11 +834,9 @@ export default function Home() {
             </div>
 
             <div className="relative">
-              {/* Horizontal line - desktop only */}
               <div className="hidden md:block absolute top-8 left-0 w-full h-px bg-[#d1d5db]" />
 
               <div className="grid md:grid-cols-3 gap-12 relative">
-                {/* STEP 1 */}
                 <div className="space-y-6">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full border border-[#4f8fcb] flex items-center justify-center text-[#4f8fcb] font-semibold text-sm bg-white">
@@ -789,7 +855,6 @@ export default function Home() {
                   </p>
                 </div>
 
-                {/* STEP 2 */}
                 <div className="space-y-6">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full border border-[#4f8fcb] flex items-center justify-center text-[#4f8fcb] font-semibold text-sm bg-white">
@@ -808,7 +873,6 @@ export default function Home() {
                   </p>
                 </div>
 
-                {/* STEP 3 */}
                 <div className="space-y-6">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full border border-[#4f8fcb] flex items-center justify-center text-[#4f8fcb] font-semibold text-sm bg-white">
@@ -829,10 +893,10 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </AnimatedSection>
+      </AnimatedSection> */}
 
       {/* SECTION 9 — MODERN SYSTEMS (LIGHT GREY) */}
-      <AnimatedSection>
+      {/* <AnimatedSection>
         <section className="bg-[#f8f9fb] py-24">
           <div className="max-w-5xl mx-auto px-6 space-y-6">
             <div className="text-center">
@@ -850,7 +914,7 @@ export default function Home() {
             </p>
           </div>
         </section>
-      </AnimatedSection>
+      </AnimatedSection> */}
 
       {/* TRUSTED BY */}
       {/* <AnimatedSection>
@@ -887,35 +951,250 @@ export default function Home() {
         </section>
       </AnimatedSection> */}
 
-      {/* SECTION 10 — CTA STRIP (FULL WIDTH STRIP) */}
+      {/* SECTION 10 — CTA STRIP -> LEAD */}
       <AnimatedSection>
         <section className="bg-[#f8f9fb] py-24">
-          <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-            {/* IMAGE */}
-            <div>
-              <Image
-                src="/team/team-square.webp"
-                alt="Women team working"
-                width={500}
-                height={500}
-                className="rounded-xl shadow-md object-cover"
-                sizes="(max-width: 768px) 100vw, 500px"
-              />
-            </div>
+          <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-start">
+            {/* LEFT */}
+            <div className="space-y-6 slide-left">
+              {/* TAG */}
+              <span className="inline-block text-xs px-4 py-1 rounded-full border border-[#4f8dc9] text-[#4f8dc9]">
+                REQUEST SUPPORT
+              </span>
 
-            {/* TEXT */}
-            <div className="space-y-6 text-center md:text-center">
-              <p className="text-lg md:text-2xl font-medium text-[#0b1b33]">
-                Whether You’re Building a Dedicated Team or Need Flexible
-                Support, Send a Request and We’ll Confirm Next Steps.
+              {/* TITLE */}
+              <h2 className="text-3xl md:text-4xl font-semibold text-[#0a1b33]">
+                Let’s Talk <span className="text-[#4f8dc9]">Support</span>
+              </h2>
+
+              {/* DESC */}
+              <p className="text-[#4a596e] leading-relaxed max-w-md">
+                Have a project in mind? Fill out the form and we’ll get in touch
+                within 24 hours to discuss your needs.
               </p>
 
-              <a
-                href="/request-support"
-                className="inline-block px-6 py-3 bg-[#0b1b33] text-white text-base md:text-lg font-medium rounded hover:bg-[#0b1b33]/90 transition"
+              {/* IMAGE */}
+              <div className="rounded-xl overflow-hidden">
+                <Image
+                  src="/team/team-square.webp"
+                  alt="Team"
+                  width={600}
+                  height={400}
+                  className="w-full h-[260px] object-cover"
+                />
+              </div>
+
+              {/* CONTACT */}
+              <div className="flex flex-col sm:flex-row gap-6 pt-4">
+                {/* PHONE */}
+                <a
+                  href="tel:+84329426269"
+                  className="flex items-center gap-3 group"
+                >
+                  <div className="w-10 h-10 flex items-center justify-center rounded-full border border-[#4f8dc9] text-[#4f8dc9] group-hover:bg-[#4f8dc9] group-hover:text-white transition duration-700">
+                    📞
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-[#0a1b33]">
+                      Call Us
+                    </p>
+                    <p className="text-sm text-[#4a596e]">+84 32 942 6269</p>
+                  </div>
+                </a>
+
+                {/* EMAIL */}
+                <a
+                  href="mailto:info@staffunitedgroup.com"
+                  className="flex items-center gap-3 group"
+                >
+                  <div className="w-10 h-10 flex items-center justify-center rounded-full border border-[#4f8dc9] text-[#4f8dc9] group-hover:bg-[#4f8dc9] group-hover:text-white transition duration-700">
+                    ✉️
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-[#0a1b33]">
+                      Email Us
+                    </p>
+                    <p className="text-sm text-[#4a596e]">
+                      info@staffunitedgroup.com
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            {/* RIGHT - FORM */}
+            <div className="slide-right">
+              <form
+                onSubmit={async (e) => {
+                  e.preventDefault();
+
+                  const form = e.target as HTMLFormElement;
+                  const formData = new FormData(form);
+
+                  await fetch("/api/contact", {
+                    method: "POST",
+                    body: formData,
+                  });
+
+                  alert("Submitted!");
+                  form.reset();
+                  setPhone("");
+                }}
+                className="
+    relative overflow-hidden 
+
+    bg-gradient-to-b from-white/20 to-white/5
+    backdrop-blur-xl
+
+    rounded-2xl
+    p-8
+
+    border border-[#d5dadf]
+
+    shadow-[0_10px_40px_rgba(0,0,0,0.25)]
+    hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)]
+
+    hover:-translate-y-1
+    transition-all duration-500
+  "
               >
-                Request Support
-              </a>
+                {/* 🔥 GLASS LIGHT LAYER */}
+                <div className="absolute inset-0 pointer-events-none">
+                  {/* ánh sáng trắng */}
+                  <div
+                    className="
+      absolute inset-0
+      bg-gradient-to-br
+      from-white/30 via-white/10 to-transparent
+    "
+                  ></div>
+
+                  {/* glow xanh brand */}
+                  <div
+                    className="
+      absolute -top-20 -left-20
+      w-[300px] h-[300px]
+      bg-[#4f8dc9]/20
+      blur-[120px]
+    "
+                  ></div>
+                </div>
+
+                {/* 🔥 CONTENT */}
+                <div className="relative z-10 space-y-4">
+                  {/* NAME */}
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <input
+                      name="first_name"
+                      placeholder="First Name *"
+                      className="w-full px-4 py-2 rounded-lg border border-[#d5dadf] bg-white/60 backdrop-blur-md"
+                      required
+                    />
+                    <input
+                      name="last_name"
+                      placeholder="Last Name *"
+                      className="w-full px-4 py-2 rounded-lg border border-[#d5dadf] bg-white/60 backdrop-blur-md"
+                      required
+                    />
+                  </div>
+
+                  {/* COMPANY */}
+                  <input
+                    name="company_name"
+                    placeholder="Company Name"
+                    className="w-full px-4 py-2 rounded-lg border border-[#d5dadf] bg-white/60 backdrop-blur-md"
+                  />
+
+                  {/* EMAIL */}
+                  <input
+                    name="work_email"
+                    type="email"
+                    placeholder="Work Email *"
+                    className="w-full px-4 py-2 rounded-lg border border-[#d5dadf] bg-white/60 backdrop-blur-md"
+                    required
+                  />
+
+                  {/* PHONE */}
+                  <div className="bg-white/60 backdrop-blur-md rounded-lg">
+                    <PhoneInput
+                      country={"vn"}
+                      value={phone}
+                      onChange={setPhone}
+                      inputClass="!w-full !border-none !bg-transparent !py-2"
+                    />
+                    <input type="hidden" name="phone" value={phone} />
+                  </div>
+
+                  {/* START DATE */}
+                  <input
+                    type="date"
+                    name="start_timeline"
+                    className="w-full px-4 py-2 rounded-lg border border-[#d5dadf] bg-white/60 backdrop-blur-md"
+                  />
+
+                  {/* MESSAGE */}
+                  <textarea
+                    name="description"
+                    rows={4}
+                    placeholder="Describe your needs *"
+                    className="w-full px-4 py-2 rounded-lg border border-[#d5dadf] bg-white/60 backdrop-blur-md"
+                    required
+                  />
+
+                  {/* BUTTON */}
+                  <button
+                    type="submit"
+                    className="
+    group
+    relative overflow-hidden
+
+    w-full mt-4
+    px-6 py-3
+    rounded-full
+
+    bg-[#0a1b33]
+    text-white
+    font-medium
+
+    transition-all duration-500
+
+    hover:bg-white/10
+    hover:text-[#0a1b33]
+
+    hover:backdrop-blur-xl
+    hover:border hover:border-[#d5dadf]
+
+    hover:shadow-[0_10px_40px_rgba(79,141,201,0.4)]
+    hover:-translate-y-0.5
+  "
+                  >
+                    {/* TEXT */}
+                    <span className="relative z-10 flex items-center justify-center gap-2">
+                      Request Support
+                      {/* ARROW */}
+                      <span
+                        className="
+        inline-block
+        transition-transform duration-300
+        group-hover:-rotate-45
+      "
+                      >
+                        →
+                      </span>
+                    </span>
+
+                    {/* GLASS LIGHT */}
+                    <span
+                      className="
+    absolute inset-0 opacity-0
+    group-hover:opacity-100
+    transition duration-500
+    bg-gradient-to-r from-transparent via-white/30 to-transparent
+  "
+                    ></span>
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </section>

@@ -10,8 +10,8 @@ export default function Navigation() {
 
   const navItems = [
     { label: "HOME", href: "/" },
+    { label: "ABOUT US", href: "/about-us" },
     { label: "SERVICES", href: "/services" },
-    { label: "THE STANDARD", href: "/the-standard" },
     { label: "TEAM", href: "/team" },
     { label: "CAREERS", href: "/careers" },
     { label: "INSIGHT", href: "/insights" },
@@ -27,7 +27,7 @@ export default function Navigation() {
 
   return (
     <nav className="fixed top-0 left-0 w-full z-[9999] isolate">
-      <div className="w-full mx-auto h-[56px] sm:h-[64px] lg:h-[72px] flex items-center justify-between px-4 sm:px-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.3)] pointer-events-auto">
+      <div className="w-full mx-auto h-[56px] sm:h-[64px] lg:h-[72px] flex items-center justify-between px-4 sm:px-6 bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.3)] pointer-events-auto">
         {/* LOGO */}
         <Link href="/">
           <Image src="/staff-logo.webp" alt="logo" width={120} height={30} />
@@ -80,7 +80,7 @@ export default function Navigation() {
                 />
 
                 {/* LAYER 1 (rất nhẹ) */}
-                <span
+                {/* <span
                   className="
     absolute top-1/2 left-1/2
     w-[150%] h-[150%]
@@ -95,10 +95,10 @@ export default function Navigation() {
 
     group-hover:animate-[liquidZoom_700ms_cubic-bezier(0.22,1,0.36,1)]
   "
-                />
+                /> */}
 
                 {/* LAYER 2 (rất subtle) */}
-                <span
+                {/* <span
                   className="
       absolute top-1/2 left-1/2
       w-[170%] h-[170%]
@@ -116,8 +116,47 @@ export default function Navigation() {
       delay-75
       ease-[cubic-bezier(0.22,1,0.36,1)]
     "
+                /> */}
+
+                {/* LIQUID SPREAD */}
+                <span
+                  className="
+    absolute top-1/2 left-1/2
+    w-0 h-0
+    rounded-full
+    -translate-x-1/2 -translate-y-1/2
+
+    bg-white/20
+
+    transition-all
+    duration-700
+    delay-[150ms]
+
+    ease-[cubic-bezier(0.19,1,0.22,1)]
+
+    group-hover:w-[260%]
+    group-hover:h-[260%]
+  "
                 />
 
+                <span
+                  className="
+    absolute top-1/2 left-1/2
+    w-0 h-0
+    rounded-full
+    -translate-x-1/2 -translate-y-1/2
+
+    bg-white/10
+
+    transition-all
+    duration-700
+    delay-[75ms]
+    ease-[cubic-bezier(0.19,1,0.22,1)]
+
+    group-hover:w-[320%]
+    group-hover:h-[320%]
+  "
+                />
                 {/* TEXT */}
                 <span
                   className={`
