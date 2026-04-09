@@ -1,22 +1,21 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import ThemeToggle from "./theme-toggle";
 
 export default function Navigation() {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { label: "Home", href: "/" },
-    { label: "Services", href: "/services" },
-    { label: "The Standard", href: "/the-standard" },
-    { label: "Team", href: "/team" },
-    { label: "Careers", href: "/careers" },
-    { label: "Insights", href: "/insights" },
+    { label: "HOME", href: "/" },
+    { label: "SERVICES", href: "/services" },
+    { label: "THE STANDARD", href: "/the-standard" },
+    { label: "TEAM", href: "/team" },
+    { label: "CAREERS", href: "/careers" },
+    { label: "INSIGHT", href: "/insights" },
+    { label: "JOIN TEAM", href: "/join" },
   ];
 
   const isActive = (href: string) => {
@@ -24,172 +23,219 @@ export default function Navigation() {
     return pathname.startsWith(href);
   };
 
-  return (
-    <nav className="sticky top-0 z-50 bg-[#0b1b33] border-b border-white/10">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link href="/">
-            <Image
-              src="/staff-logo.webp"
-              alt="STAFF United"
-              width={140}
-              height={32}
-              priority
-            />
-          </Link>
+  const [isOpen, setIsOpen] = useState(false);
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+  return (
+    <nav className="fixed top-0 left-0 w-full z-[9999] isolate">
+      <div className="w-full mx-auto h-[56px] sm:h-[64px] lg:h-[72px] flex items-center justify-between px-4 sm:px-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.3)] pointer-events-auto">
+        {/* LOGO */}
+        <Link href="/">
+          <Image src="/staff-logo.webp" alt="logo" width={120} height={30} />
+        </Link>
+
+        {/* CENTER PILL */}
+        <div
+          className="
+          hidden xl:flex  items-center gap-2
+          bg-[#0d0d0d]/80
+          border border-white/10
+          rounded-full px-3 py-2
+          shadow-[0_-9px_22px_rgba(0,0,0,0.32)]
+        "
+        >
+          {navItems.map((item) => {
+            const active = isActive(item.href);
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="
+    group
+    relative
+    px-4 py-2
+    text-sm
+    rounded-full
+    overflow-hidden
+  "
+              >
+                {/* ACTIVE */}
+                {active && (
+                  <span className="absolute inset-0 bg-[#4f8dc9] rounded-full z-0" />
+                )}
+
+                {/* GLASS BASE (nhẹ hơn) */}
+                <span
+                  className="
+      absolute inset-0
+      rounded-full
+
+      bg-white/5 backdrop-blur-md
+
+      opacity-0
+      group-hover:opacity-100
+
+      transition duration-300
+    "
+                />
+
+                {/* LAYER 1 (rất nhẹ) */}
+                <span
+                  className="
+    absolute top-1/2 left-1/2
+    w-[150%] h-[150%]
+    rounded-full
+
+    -translate-x-1/2 -translate-y-1/2
+
+    bg-white/20
+
+    opacity-0
+    group-hover:opacity-40
+
+    group-hover:animate-[liquidZoom_700ms_cubic-bezier(0.22,1,0.36,1)]
+  "
+                />
+
+                {/* LAYER 2 (rất subtle) */}
+                <span
+                  className="
+      absolute top-1/2 left-1/2
+      w-[170%] h-[170%]
+      rounded-full
+
+      -translate-x-1/2 -translate-y-1/2
+
+      bg-white/10
+
+      scale-0 opacity-0
+      group-hover:scale-100 group-hover:opacity-30
+
+      transition
+      duration-700
+      delay-75
+      ease-[cubic-bezier(0.22,1,0.36,1)]
+    "
+                />
+
+                {/* TEXT */}
+                <span
+                  className={`
+      relative z-10
+      transition-colors duration-300
+
+      ${active ? "text-[#0a1b33]" : "text-white/70 group-hover:text-white"}
+    `}
+                >
+                  {item.label}
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* CTA */}
+        {/* CTA GROUP */}
+        <div className="hidden lg:flex items-center gap-3">
+          {/* JOIN (secondary button) */}
+          {/* <Link
+            href="/join"
+            className="
+      px-5 py-2
+      rounded-full
+      text-sm font-medium
+      border border-white/20
+      text-white
+      hover:bg-white/10
+      transition
+    "
+          >
+            Join the Team
+          </Link> */}
+
+          {/* REQUEST SUPPORT (primary) */}
+          <Link
+            href="/request-support"
+            className="
+            hidden xl:flex items-center gap-2
+            bg-[#4f8dc9]
+            text-[#0a1b33]
+            px-5 py-2
+            rounded-full
+            font-medium
+            hover:bg-[#103663]
+            hover:text-white
+            transition
+          "
+          >
+            Request Support
+            <span className="rotate-[-45deg]">→</span>
+          </Link>
+        </div>
+
+        {isOpen && (
+          <div className="fixed top-[56px] sm:top-[64px] left-0 w-full bg-black/90 backdrop-blur-xl z-[9998] flex flex-col items-center gap-6 py-10">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-base font-medium transition ${
-                  isActive(item.href)
-                    ? "text-white border-b border-white pb-1"
-                    : "text-white/70 hover:text-white"
-                }`}
+                onClick={() => setIsOpen(false)}
+                className="text-white text-lg"
               >
                 {item.label}
               </Link>
             ))}
-          </div>
 
-          {/* CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            {/* <ThemeToggle /> */}
             <Link
               href="/request-support"
-              className={`
-    px-5 py-2
-    text-sm font-medium
-    rounded
-    border
-    transition-all duration-200
-    ${
-      isActive("/request-support")
-        ? "bg-[#4f8fcb] text-white border-[#0b1b33] shadow-md"
-        : "bg-[#4f8fcb] text-white border-transparent shadow-sm hover:bg-[#3f7bb5] hover:shadow-md hover:-translate-y-[1px] active:translate-y-0"
-    }
-  `}
+              onClick={() => setIsOpen(false)}
+              className="
+        mt-4
+        bg-[#4f8dc9]
+        text-white
+        px-6 py-3
+        rounded-full
+      "
             >
               Request Support
             </Link>
-
-            <Link
-              href="/join"
-              className={`
-  px-5 py-2 text-sm font-medium rounded border transition-all duration-300
-  ${
-    isActive("/join")
-      ? "bg-[#eaf2fb] text-[#0b1b33] border-[#4f8fcb] shadow-md"
-      : "bg-white text-[#0b1b33] border-transparent hover:bg-[#f2f4f7] hover:-translate-y-[1px]"
-  }
-`}
-            >
-              Join the Team
-            </Link>
-          </div>
-
-          {/* Mobile Button */}
-          <button
-            className="md:hidden p-2 relative w-8 h-8"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <span
-              className={`absolute left-0 top-2 h-0.5 w-full bg-white transition-all duration-300 ${
-                isOpen ? "rotate-45 top-3.5" : ""
-              }`}
-            />
-            <span
-              className={`absolute left-0 top-3.5 h-0.5 w-full bg-white transition-all duration-300 ${
-                isOpen ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`absolute left-0 top-5 h-0.5 w-full bg-white transition-all duration-300 ${
-                isOpen ? "-rotate-45 top-3.5" : ""
-              }`}
-            />
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div
-            className="
-  md:hidden 
-  pb-6 pt-4 
-  space-y-4 
-  border-t border-white/10
-  bg-[#0b1b33]
-  relative
-  z-50
-"
-          >
-            {/* Nav Links */}
-            <div className="space-y-3">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`block text-sm font-medium transition ${
-                    isActive(item.href)
-                      ? "text-white"
-                      : "text-white/70 hover:text-white"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="space-y-3 pt-4">
-              {/* Request Support */}
-              <Link
-                href="/request-support"
-                onClick={() => setIsOpen(false)}
-                className={`
-  px-5 py-2 text-sm font-medium rounded
-  transition-all duration-200
-  ${
-    isActive("/request-support")
-      ? "bg-[#4f8fcb] text-white shadow-[0_6px_0_#2f5f8f] translate-y-[2px]"
-      : "bg-[#4f8fcb] text-white shadow-[0_6px_0_#2f5f8f] hover:translate-y-[2px] hover:shadow-[0_4px_0_#2f5f8f] active:translate-y-[4px] active:shadow-[0_2px_0_#2f5f8f]"
-  }
-`}
-              >
-                Request Support
-                {/* subtle shine effect */}
-                <span className="absolute inset-0 bg-white/10 opacity-0 hover:opacity-100 transition" />
-              </Link>
-
-              {/* Join the Team */}
-              <Link
-                href="/join"
-                onClick={() => setIsOpen(false)}
-                className={`
-  px-5 py-2 text-sm font-medium rounded
-  transition-all duration-200
-  ${
-    isActive("/join")
-      ? "bg-white text-[#0b1b33] shadow-[0_5px_0_#cbd5e1] translate-y-[2px]"
-      : "bg-white text-[#0b1b33] shadow-[0_5px_0_#cbd5e1] hover:translate-y-[2px] hover:shadow-[0_3px_0_#cbd5e1] active:translate-y-[4px] active:shadow-[0_1px_0_#cbd5e1]"
-  }
-`}
-              >
-                Join the Team
-                {/* 🔥 underline chạy nhẹ */}
-                {isActive("/join") && (
-                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#4f8fcb] animate-slide" />
-                )}
-              </Link>
-            </div>
           </div>
         )}
+
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="xl:hidden w-10 h-10 flex items-center justify-center relative"
+        >
+          {/* LINE 1 */}
+          <span
+            className={`
+      absolute w-6 h-[2px] bg-[#4f8dc9]
+      transition-all duration-300 ease-in-out
+
+      ${isOpen ? "rotate-45 top-1/2" : "-translate-y-2"}
+    `}
+          />
+
+          {/* LINE 2 */}
+          <span
+            className={`
+      absolute w-6 h-[2px] bg-[#4f8dc9]
+      transition-all duration-300 ease-in-out
+
+      ${isOpen ? "opacity-0" : ""}
+    `}
+          />
+
+          {/* LINE 3 */}
+          <span
+            className={`
+      absolute w-6 h-[2px] bg-[#4f8dc9]
+      transition-all duration-300 ease-in-out
+
+      ${isOpen ? "-rotate-45 top-1/2" : "translate-y-2"}
+    `}
+          />
+        </button>
       </div>
     </nav>
   );

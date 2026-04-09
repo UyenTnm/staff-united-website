@@ -135,7 +135,7 @@ export default function JoinPage() {
         {/* HEADER */}
 
         <div className="mb-12 text-center">
-          <h1 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
+          <h1 className="text-3xl md:text-4xl py-10 font-semibold text-[#0b1b33]">
             Join the Team
           </h1>
 

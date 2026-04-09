@@ -7,7 +7,7 @@ export default function TheStandard() {
         <section className="max-w-5xl mx-auto px-6 py-10 space-y-10">
           {/* INTRO */}
           <div className="text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl font-semibold text-[#0b1b33] leading-tight">
+            <h1 className="text-4xl md:text-5xl py-20 font-semibold text-[#0b1b33] leading-tight">
               The Standard
             </h1>
             <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>

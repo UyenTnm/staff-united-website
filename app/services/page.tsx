@@ -5,9 +5,9 @@ export default function Services() {
     <main className="bg-white">
       {/* HEADER */}
       <AnimatedSection>
-        <section className="bg-white pt-16">
+        <section className="bg-white pt-16 ">
           <div className="max-w-6xl mx-auto px-6 text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl font-semibold text-[#0b1b33] leading-[1.1] tracking-tight">
+            <h1 className="text-4xl md:text-5xl py-10 font-semibold text-[#0b1b33] leading-[1.1] tracking-tight">
               Two Service Lanes. One Execution Model.
             </h1>
             <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>

@@ -1,118 +1,197 @@
+"use client";
+
 export default function Hero() {
   return (
-    <section
-      id="home"
-      className="py-16 lg:py-14 md:py-20 bg-gradient-to-br from-white via-gray-50 to-white"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          {/* Left Column */}
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <p className="text-[#4f8fcb] font-semibold text-sm tracking-wide uppercase">
-                Professional Solutions Since 2026
-              </p>
+    <section className="relative bg-gradient-to-b from-[#0a1b33] via-[#0a1b33] to-[#103663] text-white overflow-hidden">
+      {/* ===== CONTENT ===== */}
+      <div className="relative z-10 pt-24 pb-14 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 px-5 sm:px-6 text-center max-w-4xl mx-auto">
+        <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
+          Your execution{" "}
+          <span className="bg-[#4f8dc9] text-white px-3 py-1 inline-block rotate-2">
+            engine
+          </span>
+          <br />
+          for scalable growth.
+        </h1>
 
-              <h1 className="text-4xl md:text-5xl font-bold text-[#0b1b33] leading-tight tracking-tight">
-                Reliable execution for growing businesses.
-              </h1>
+        <p className="text-white mt-6 text-lg max-w-2xl mx-auto">
+          <span className="text-[#4f8dc9] mt-5 sm:mt-6 text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-relaxed ">
+            Women-Powered Offshore Team | Based in Vietnam{" "}
+          </span>{" "}
+          <br />
+          Supporting global businesses with disciplined, high-performance
+          results
+        </p>
+
+        {/* CTA */}
+        <div className="mt-6 sm:mt-8 flex justify-center relative z-[999]">
+          <a
+            href="/request-support"
+            className="group relative inline-flex items-center justify-center gap-2 w-full  sm:w-auto max-w-[240px] rounded-full bg-[#4f8dc9] text-white overflow-hidden cursor-pointer transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_10px_30px_rgba(0,0,0,0.25)] text-sm sm:text-base px-5 py-3 sm:px-6 sm:py-4"
+          >
+            {/* TEXT */}
+            <span className="relative z-10">REQUEST SUPPORT</span>
+
+            {/* ICON */}
+            <span
+              className="
+      relative z-10
+      flex items-center justify-center w-5 h-5
+      transition-all duration-300
+      group-hover:translate-x-1
+    "
+            >
+              →
+            </span>
+
+            {/* DIVIDER SLIDE */}
+            <span
+              className="
+      absolute
+      top-0 right-0
+      h-full w-[7px]
+      bg-black
+      translate-x-full
+      group-hover:-translate-x-[42px]
+      transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
+      pointer-events-none
+    "
+            />
+          </a>
+        </div>
+      </div>
+
+      {/* ===== MARQUEE (BACKGROUND) ===== */}
+      {/* <div className="relative w-full py-2 z-0 mb-0">
+        <div className="marquee-track flex whitespace-nowrap gap-20 text-white text-4xl sm:text-6xl md:text-8xl px-6">
+          <span>All Women. All Business.</span>
+          <span>One Standard. One Team.</span>
+
+          <span>All Women. All Business.</span>
+          <span>One Standard. One Team.</span>
+
+          <span>All Women. All Business.</span>
+          <span>One Standard. One Team.</span>
+        </div>
+      </div> */}
+
+      <div className="relative w-full">
+        {/* <div className="relative overflow-hidden w-full ">
+          <div className="flex whitespace-nowrap gap-20 marquee-track text-4xl sm:text-6xl md:text-8xl px-6">
+            <div className="flex gap-20">
+              <span>All Women. All Business.</span>
+              <span>One Standard. One Team.</span>
+              <span>All Women. All Business.</span>
+              <span>One Standard. One Team.</span>
             </div>
 
-            <p className="text-lg text-[#0b1b33]/80 leading-relaxed max-w-md">
-              STAFF United is a women-powered offshore execution partner based
-              in Vietnam, supporting international businesses through a
-              distributed team of women across Asia—operating under one shared
-              standard.
-            </p>
-
-            {/* CTA */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              {/* Request Support */}
-              <a
-                href="/request-support"
-                className="
-                  px-8 py-4
-                  bg-[#0b1b33]
-                  text-white
-                  rounded
-                  font-semibold
-                  text-center
-                  transition
-                  hover:bg-[#0b1b33]/90
-                  hover:shadow-md
-                "
-              >
-                Request Support
-              </a>
-
-              {/* Learn Standards */}
-              <a
-                href="/join"
-                className="
-                  px-8 py-4
-                  bg-white
-                  text-[#0b1b33]
-                  border-2 border-[#0b1b33]
-                  rounded
-                  font-semibold
-                  text-center
-                  transition
-                  hover:bg-[#f2f4f7]
-                  hover:text-[#0b1b33]
-                "
-              >
-                Join the Team
-              </a>
-            </div>
-
-            {/* Trust Indicators */}
-            <div className="grid grid-cols-3 gap-6 pt-12">
-              <div className="space-y-1">
-                <p className="text-2xl font-bold text-[#0b1b33]">98%</p>
-                <p className="text-sm text-[#0b1b33]/60">Client Satisfaction</p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-2xl font-bold text-[#0b1b33]">500+</p>
-                <p className="text-sm text-[#0b1b33]/60">Successful Projects</p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-2xl font-bold text-[#0b1b33]">24/7</p>
-                <p className="text-sm text-[#0b1b33]/60">Support Available</p>
-              </div>
+            <div className="flex gap-20">
+              <span>All Women. All Business.</span>
+              <span>One Standard. One Team.</span>
+              <span>All Women. All Business.</span>
+              <span>One Standard. One Team.</span>
             </div>
           </div>
+        </div> */}
+        <div className="absolute top-[20%] sm:top-[8%] md:top-[10%] lg:top-[10%] left-0 w-full overflow-hidden z-0 text-4xl sm:text-6xl md:text-8xl px-6">
+          <div className="flex whitespace-nowrap gap-20 marquee-track text-4xl sm:text-6xl md:text-8xl px-6">
+            <div className="flex gap-20">
+              <span>All Women. All Business.</span>
+              <span>One Standard. One Team.</span>
+              <span>All Women. All Business.</span>
+              <span>One Standard. One Team.</span>
+            </div>
 
-          {/* Right Column */}
-          <div className="hidden md:flex items-center justify-center">
-            <div className="w-full max-w-sm aspect-square bg-[#f2f4f7] rounded-lg border border-[#d1d5db] flex items-center justify-center">
-              <div className="text-center space-y-6">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-[#0b1b33]/10 rounded-lg">
-                  <svg
-                    className="w-10 h-10 text-[#0b1b33]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-[#0b1b33] font-semibold text-lg">
-                    Professional Standards
-                  </p>
-                  <p className="text-sm text-[#0b1b33]/60 mt-2">
-                    Built on clarity, consistency, and commitment to excellence
-                  </p>
-                </div>
-              </div>
+            <div className="flex gap-20">
+              <span>All Women. All Business.</span>
+              <span>One Standard. One Team.</span>
+              <span>All Women. All Business.</span>
+              <span>One Standard. One Team.</span>
             </div>
           </div>
         </div>
+
+        {/* ===== IMAGE ===== */}
+
+        <div className="relative z-0 h-[260px] sm:h-[320px] md:h-[420px] lg:h-[520px] flex items-end justify-center pointer-events-none -mt-6 sm:-mt-14 md:mt-0 -translate-y-6 sm:-translate-y-2 md:translate-y-0">
+          <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent pointer-events-none" />
+
+          <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent z-20 pointer-events-none" />
+
+          {/* IMAGE */}
+          <img
+            src="/home/hero-banner-home.png"
+            className="
+            relative z-0
+            w-[140%] sm:w-[120%] md:w-[110%] lg:w-[100%]
+            max-w-none
+            object-contain
+            pointer-events-none
+          "
+          />
+        </div>
+      </div>
+
+      {/* ===== FLOATING CARD ===== */}
+      <div className="absolute bottom-10 left-9 hidden md:block z-40">
+        <a
+          href="https://www.google.com/search?q=staff+united+group+review"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="
+      group
+      block
+      w-[350px]
+      rounded-[24px]
+      border border-white/20
+      bg-white/10
+      backdrop-blur-xl
+      p-5
+      transition-all duration-300
+      hover:scale-[1.03]
+      hover:bg-white/15
+      hover:border-white/40
+      cursor-pointer
+    "
+        >
+          {/* TITLE */}
+          <p className="text-white font-semibold text-lg leading-tight">
+            STAFF UNITED COMPANY LIMITED
+          </p>
+
+          {/* LINE */}
+          <div className="w-full h-[1px] bg-white/20 my-3" />
+
+          {/* CONTENT */}
+          <div className="flex items-center justify-between">
+            {/* AVATAR */}
+            <div className="flex -space-x-3">
+              {[
+                "../logo-client/masx-logo.png",
+                "../logo-client/masx.jpg",
+                "../logo-client/SANITIZE-SQUAD-Logo.png",
+                "../logo-client/modern-architecture.png",
+                "../logo-client/bloom-spa.png",
+              ].map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  className="
+              w-10 h-10 rounded-full
+              border-2 border-black
+              object-cover
+            "
+                />
+              ))}
+            </div>
+
+            {/* RATING */}
+            <div className="flex flex-col items-end">
+              <div className="flex  text-base">⭐⭐⭐⭐⭐</div>
+              <span className="text-white/70 text-sm">200+ reviews</span>
+            </div>
+          </div>
+        </a>
       </div>
     </section>
   );

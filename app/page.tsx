@@ -1,177 +1,170 @@
+"use client";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import AnimatedSection from "@/components/AnimatedSection";
-import { ClipboardCheck, Layers, TrendingUp, Users, Zap } from "lucide-react";
+import {
+  ArrowUpRight,
+  ClipboardCheck,
+  Headphones,
+  Layers,
+  Link2,
+  Rocket,
+  ShieldCheck,
+  Smile,
+  Sparkles,
+  Target,
+  TrendingUp,
+  Users,
+  Zap,
+} from "lucide-react";
 import Image from "next/image";
+import Hero from "@/components/hero";
+import { useInView } from "react-intersection-observer";
+import CountUp from "@/components/CountUp";
+import test from "node:test";
 
 export default function Home() {
-  const clientLogos = [
-    { name: "InnPro", src: "/logo-client/innpro.png" },
-    { name: "MASX World Travel", src: "/logo-client/masx-logo.png" },
-    { name: "InnPro", src: "/logo-client/masx.jpg" },
-    { name: "SANITIZE", src: "/logo-client/SANITIZE-SQUAD-Logo.png" },
-
-    { name: "InnPro", src: "/logo-client/bloom-spa.png" },
-    { name: "MASX World Travel", src: "/logo-client/modern-architecture.png" },
-    { name: "InnPro", src: "/logo-client/color-studio.png" },
-    { name: "SANITIZE", src: "/logo-client/true-flow.png" },
-
-    { name: "InnPro", src: "/logo-client/innpro.png" },
-    { name: "MASX World Travel", src: "/logo-client/masx-logo.png" },
-    { name: "InnPro", src: "/logo-client/masx.jpg" },
-    { name: "SANITIZE", src: "/logo-client/SANITIZE-SQUAD-Logo.png" },
-
-    { name: "InnPro", src: "/logo-client/bloom-spa.png" },
-    { name: "MASX World Travel", src: "/logo-client/modern-architecture.png" },
-    { name: "InnPro", src: "/logo-client/color-studio.png" },
-    { name: "SANITIZE", src: "/logo-client/true-flow.png" },
-
-    { name: "InnPro", src: "/logo-client/innpro.png" },
-    { name: "MASX World Travel", src: "/logo-client/masx-logo.png" },
-    { name: "InnPro", src: "/logo-client/masx.jpg" },
-    { name: "SANITIZE", src: "/logo-client/SANITIZE-SQUAD-Logo.png" },
-
-    { name: "InnPro", src: "/logo-client/bloom-spa.png" },
-    { name: "MASX World Travel", src: "/logo-client/modern-architecture.png" },
-    { name: "InnPro", src: "/logo-client/color-studio.png" },
-    { name: "SANITIZE", src: "/logo-client/true-flow.png" },
+  const testimonials = [
+    {
+      content: `We’re currently working with STAFF UNITED and it’s been a great experience...`,
+      name: "Wesley Anton",
+      role: "CEO of MASX World Entertainment",
+      avatar: "/logo-client/masx-logo.png",
+    },
+    {
+      content: `Their team is highly skilled across key marketing areas...`,
+      name: "Seth Foster",
+      role: "President of InnPro USA",
+      avatar: "/logo-client/innprousa.png",
+    },
+    {
+      content: `STAFF United Team has been an invaluable partner for our business...`,
+      name: "Melissa K.",
+      role: "Owner of Bloom Beauty Spa",
+      avatar: "/logo-client/bloom-spa.png",
+    },
+    {
+      content: `Their collaborative approach, attention to detail...`,
+      name: "Ryan Johnson",
+      role: "Project Manager of Modern Architecture",
+      avatar: "/logo-client/modern-architecture.png",
+    },
   ];
 
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.3,
+  });
   return (
     <main className="bg-white w-full">
       {/* SECTION 1 — HERO (VISUAL ENHANCED) */}
 
       <AnimatedSection>
-        <section className="relative py-24 overflow-hidden">
-          <div className="absolute inset-0">
-            <Image
-              src="/team/hero-banner-team.webp"
-              alt="Women professional offshore team"
-              fill
-              priority
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0b1b33]/85 via-[#0b1b33]/70 to-[#0b1b33]/60"></div>
-          </div>
-
-          <div className="relative max-w-5xl mx-auto px-6 text-center space-y-10 text-white">
-            <div className="space-y-8">
-              <h1 className="text-4xl md:text-5xl font-semibold leading-[1.1] tracking-tight drop-shadow-sm">
-                Women - Powered <br /> Offshore Execution Partner <br />
-                Based in Vietnam
-              </h1>
-
-              <p className="text-lg md:text-2xl text-white/90 max-w-2xl mx-auto">
-                Supports International Businesses Through a Distributed Team of
-                Women Across Asia Operating Under One Shared Standard
-              </p>
-
-              <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-                <a
-                  href="/request-support"
-                  className="px-7 py-3 bg-white text-[#0b1b33] text-base md:text-lg font-semibold rounded shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-                >
-                  Request Support
-                </a>
-
-                <a
-                  href="/join"
-                  className="px-7 py-3 border border-white text-white text-base md:text-lg font-medium rounded hover:bg-white/10 transition-all duration-300"
-                >
-                  Join the Team
-                </a>
-              </div>
-
-              <div className="text-base md:text-lg font-semibold text-[#4f8fcb] tracking-wide pt-2 space-y-1">
-                <p>All Women. All Business.</p>
-                <p>One Standard. One Team.</p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Hero />
       </AnimatedSection>
 
       {/* SECTION 2 — POSITIONING (FULL GREY) */}
+
       <AnimatedSection>
-        <section className="bg-[#f3f4f6] py-24">
-          <div className="max-w-6xl mx-auto px-6 text-center">
-            <div className="mb-16">
-              <h2 className="text-4xl md:text-5xl font-semibold text-[#0b1b33]">
-                Built for Execution - Designed to Scale.
-              </h2>
-              <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-6 rounded-full"></div>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-16 text-left">
-              {/* Block 1 */}
-              <div className="space-y-5 max-w-xs mx-auto text-center md:text-left">
-                <div className="flex justify-center md:justify-start">
-                  <Layers className="w-8 h-8 text-[#4f8fcb]" />
+        <section className="bg-[#f3f4f6] py-16 sm:py-20 md:py-32" ref={ref}>
+          <div className="max-w-8xl mx-auto px-6">
+            {/* MAIN GRID */}
+            <div className="grid xl:grid-cols-2 gap-10 md:gap-20 items-center">
+              {/* IMAGE  */}
+              <div className="grid grid-cols-[1.5fr_1fr] gap-4 items-center">
+                {/* COLUMN 1 - BIG IMAGE */}
+                <div className="rounded-[10px] overflow-hidden group h-full">
+                  <img
+                    src="../home/design-to-scale-1.jpeg"
+                    className="w-full h-full object-cover object-[center_top] transition duration-700 ease-out group-hover:scale-[1.03]"
+                  />
                 </div>
 
-                <h3 className="text-xl font-semibold text-[#0b1b33]">
-                  Integrated Delivery
-                </h3>
+                {/* COLUMN 2 - 2 SMALL IMAGES */}
+                <div className="grid grid-rows-2 gap-4 h-full">
+                  {/* IMAGE 2 */}
+                  <div className="rounded-[10px] overflow-hidden group">
+                    <img
+                      src="../home/design-to-scale-2.jpeg"
+                      className="w-full h-full object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
+                    />
+                  </div>
 
-                <p className="text-[15px] text-[#0b1b33]/75 leading-7">
-                  STAFF United integrates directly into your operations and
-                  takes
-                  <span className="font-semibold text-[#0b1b33]">
-                    {" "}
-                    responsibility for delivery
-                  </span>
-                  .
-                </p>
+                  {/* IMAGE 3 */}
+                  <div className="rounded-[10px] overflow-hidden group">
+                    <img
+                      src="../home/design-to-scale-3.jpeg"
+                      className="w-full h-full object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
+                    />
+                  </div>
+                </div>
               </div>
 
-              {/* Block 2 */}
-              <div className="space-y-5 max-w-xs mx-auto text-center md:text-left">
-                <div className="flex justify-center md:justify-start">
-                  <ClipboardCheck className="w-8 h-8 text-[#4f8fcb]" />
+              {/* RIGHT CONTENT */}
+              <div className="space-y-6">
+                {/* HEADING */}
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight text-[#0b1b33]">
+                  Built for{" "}
+                  <span className="text-[#4f8fcb]">
+                    Execution. Designed to Scale.{" "}
+                  </span>
+                </h2>
+
+                {/* PARAGRAPH */}
+                {/* <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px] max-w-lg">
+                  STAFF United integrates directly into your operations,
+                  delivering structured offshore execution across administrative
+                  support, operations, and core business functions. <br />
+                  Our work is guided by clear standards, disciplined workflows,
+                  and shared accountability - ensuring consistent, high-quality
+                  outcomes as your business grows.
+                </p> */}
+                <div className="space-y-3 sm:space-y-4 w-full">
+                  <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px]  md:text-[17px]">
+                    STAFF United integrates directly into your operations,
+                    delivering structured offshore execution across
+                    administrative support, operations, and core business
+                    functions.
+                  </p>
+
+                  <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px] md:text-[17px]">
+                    Our work is guided by clear standards, disciplined
+                    workflows, and shared accountability - ensuring consistent,
+                    high-quality outcomes as your business grows.
+                  </p>
                 </div>
 
-                <h3 className="text-xl font-semibold text-[#0b1b33]">
-                  Structured Execution
-                </h3>
+                {/* STATS */}
+                {/* <div className="grid grid-cols-3 gap-10 pt-6"> */}
+                <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-10 pt-4 md:pt-6 text-center md:text-left">
+                  {[
+                    { number: 15, suffix: "+", label: "Years Experience" },
+                    { number: 10, suffix: "+", label: "Projects Completed" },
+                    {
+                      number: 100,
+                      suffix: "%",
+                      label: "Client Satisfaction",
+                    },
+                  ].map((item, i) => (
+                    <div
+                      key={i}
+                      className="opacity-0 animate-fadeUp"
+                      style={{
+                        animationDelay: `${i * 0.2}s`,
+                        animationFillMode: "forwards",
+                      }}
+                    >
+                      <p className="text-2xl sm:text-3xl md:text-5xl font-semibold text-[#0b1b33]">
+                        <CountUp end={item.number} start={inView} />
+                        {item.suffix}
+                      </p>
 
-                <p className="text-[15px] text-[#0b1b33]/75 leading-7">
-                  Our work is guided by
-                  <span className="font-semibold text-[#0b1b33]">
-                    {" "}
-                    defined standards and structured workflows
-                  </span>
-                  , with shared accountability ensuring
-                  <span className="font-semibold text-[#0b1b33]">
-                    {" "}
-                    consistent outcomes as you grow
-                  </span>
-                  .
-                </p>
-              </div>
-
-              {/* Block 3 */}
-              <div className="space-y-5 max-w-xs mx-auto text-center md:text-left">
-                <div className="flex justify-center md:justify-start">
-                  <TrendingUp className="w-8 h-8 text-[#4f8fcb]" />
+                      <p className="text-xs sm:text-sm text-[#0b1b33]/60 mt-1">
+                        {item.label}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-
-                <h3 className="text-xl font-semibold text-[#0b1b33]">
-                  Scalable Support
-                </h3>
-
-                <p className="text-[15px] text-[#0b1b33]/75 leading-7">
-                  This
-                  <span className="font-semibold text-[#0b1b33]">
-                    {" "}
-                    execution-first model
-                  </span>{" "}
-                  allows companies to scale support with
-                  <span className="font-semibold text-[#0b1b33]">
-                    {" "}
-                    confidence, clarity, and control
-                  </span>
-                  .
-                </p>
               </div>
             </div>
           </div>
@@ -180,195 +173,479 @@ export default function Home() {
 
       {/* SECTION 4 — WHAT WE DELIVER (WHITE) */}
       <AnimatedSection>
-        <section className="bg-white py-24">
-          <div className="max-w-5xl mx-auto px-6 space-y-12">
-            {/* TITLE */}
-            <div className="text-center space-y-4">
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
-                What We Deliver
+        <section className="bg-white py-16 sm:py-20 md:py-32">
+          <div className="max-w-8xl mx-auto px-5 md:px-8 xl:px-12">
+            <div
+              className="
+      grid
+      grid-cols-1
+      lg:grid-cols-[auto_1fr_auto]
+      lg:grid-rows-[auto_auto_auto]
+
+      gap-x-10 gap-y-6
+      text-center lg:text-left
+    "
+            >
+              {/* SERVICES */}
+              <div
+                className="
+    lg:col-start-1 lg:row-start-1
+    flex justify-center lg:block
+  "
+              >
+                <span
+                  className="
+      inline-block
+      text-[11px] sm:text-xs
+      px-4 py-1.5
+      rounded-full
+
+      font-semibold tracking-wide
+
+      text-[#4f8fcb]
+
+      bg-white/70
+      backdrop-blur-md
+      border border-[#0b1b33]/10
+      shadow-[0_4px_20px_rgba(79,143,203,0.15)]
+    "
+                >
+                  SERVICES
+                </span>
+              </div>
+
+              {/* H2 */}
+              <h2
+                className="
+        lg:col-start-2 lg:row-start-1
+        text-2xl sm:text-3xl md:text-4xl lg:text-5xl
+        font-semibold
+        text-[#0b1b33]
+        leading-tight
+
+        mx-auto lg:mx-0
+        max-w-2xl
+      "
+              >
+                Structured Offshore Support for Growing Businesses
               </h2>
 
-              <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>
+              {/* PARAGRAPH */}
+              <p
+                className="
+        lg:col-start-2 lg:row-start-2
+        text-[#0b1b33]
+        leading-7
+        text-sm sm:text-[15px] md:text-base
 
-              <p className="text-lg text-[#0b1b33]/70 max-w-2xl mx-auto leading-relaxed">
-                Dedicated Teams Supporting Execution Across Marketing,
-                Operations, and Business Workflows — Without the Overhead of
-                Local Hiring.
+        mx-auto lg:mx-0
+        max-w-xl
+      "
+              >
+                We provide reliable support across finance, administration,
+                customer operations, and marketing execution — so you can focus
+                on growth.
               </p>
-            </div>
 
-            {/* SERVICES OVERVIEW */}
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* CARD 1 */}
+              {/* BUTTON */}
               <div
                 className="
-          group
-          border border-[#0b1b33]/10
-          rounded-xl
-          p-8
-          bg-[#f8fafc]
-          transition-all duration-300
-          hover:border-[#4f8fcb]/40
-          hover:shadow-md
-        "
+        lg:col-start-3 lg:row-start-3
+        flex justify-center lg:justify-end
+        mt-2 lg:mt-0
+      "
               >
-                <h3 className="text-xl font-semibold text-[#0b1b33] group-hover:text-[#4f8fcb]">
-                  Creative & Content Production
-                </h3>
+                <a
+                  href="/services"
+                  className="
+          group
+          inline-flex items-center gap-2
+          px-5 sm:px-6 py-2.5 sm:py-3
+          rounded-full
+          bg-[#4f8fcb]
+          text-[#0b1b33]
+          text-sm sm:text-base
+          font-medium
 
-                <p className="text-[#0b1b33]/70 mt-3 leading-relaxed">
-                  Structured content execution for blogs, social media, and
-                  digital assets — delivered through defined workflows and
-                  internal review.
-                </p>
+          transition-all duration-700
+          hover:bg-[#103663]
+          hover:text-white
+        "
+                >
+                  VIEW ALL SERVICES
+                  <span
+                    className="
+            rotate-[-45deg]
+            transition-transform duration-700 ease-out
+            group-hover:rotate-0
+          "
+                  >
+                    →
+                  </span>
+                </a>
               </div>
-
-              {/* CARD 2 */}
-              <div
-                className="
-          group
-          border border-[#0b1b33]/10
-          rounded-xl
-          p-8
-          bg-[#f8fafc]
-          transition-all duration-300
-          hover:border-[#4f8fcb]/40
-          hover:shadow-md
-        "
-              >
-                <h3 className="text-xl font-semibold text-[#0b1b33] group-hover:text-[#4f8fcb]">
-                  Administration & Business Support
-                </h3>
-
-                <p className="text-[#0b1b33]/70 mt-3 leading-relaxed">
-                  Reliable operational support handled through structured
-                  processes, clear ownership, and consistent execution
-                  standards.
-                </p>
-              </div>
-
-              {/* CARD 3 */}
-              {/* <div
-              className="
-          group
-          border border-[#0b1b33]/10
-          rounded-xl
-          p-8
-          bg-[#f8fafc]
-          transition-all duration-300
-          hover:border-[#4f8fcb]/40
-          hover:shadow-md
-        "
-            >
-              <h3 className="text-xl font-semibold text-[#0b1b33] group-hover:text-[#4f8fcb]">
-                Marketing Execution
-              </h3>
-
-              <p className="text-[#0b1b33]/70 mt-3 leading-relaxed">
-                Ongoing support for campaign execution, content distribution,
-                and performance tracking — aligned with clear workflows.
-              </p>
-            </div> */}
-
-              {/* CARD 4 */}
-              {/* <div
-              className="
-          group
-          border border-[#0b1b33]/10
-          rounded-xl
-          p-8
-          bg-[#f8fafc]
-          transition-all duration-300
-          hover:border-[#4f8fcb]/40
-          hover:shadow-md
-        "
-            >
-              <h3 className="text-xl font-semibold text-[#0b1b33] group-hover:text-[#4f8fcb]">
-                Process & Workflow Support
-              </h3>
-
-              <p className="text-[#0b1b33]/70 mt-3 leading-relaxed">
-                Documentation, task tracking, and structured workflows that
-                ensure clarity, consistency, and accountability across teams.
-              </p>
-            </div> */}
             </div>
+          </div>
 
-            {/* CTA */}
-
-            <div className="pt-4 text-center">
+          {/* SERVICES GRID */}
+          <div className="grid sm:grid-cols-2 gap-6 mt-12 max-w-8xl mx-auto px-6">
+            {[
+              {
+                title: "Finance & Bookkeeping Support",
+                desc: "Reliable financial operations support to keep your books accurate, organized, and up to date.",
+                icon: "💰",
+                href: "/services",
+              },
+              {
+                title: "Executive Admin & Business Support",
+                desc: "Day-to-day operational and administrative support to help founders and teams stay focused on growth.",
+                icon: "📋",
+                href: "/services",
+              },
+              {
+                title: "Social Marketing & Sales Support",
+                desc: "Execution-focused support to keep your marketing and sales processes running consistently.",
+                icon: "📢",
+                href: "/services",
+              },
+              {
+                title: "Customer Support & Back-Office Operations",
+                desc: "Consistent, professional support for your customers and internal processes.",
+                icon: "🗂️",
+                href: "/services",
+              },
+            ].map((item, i) => (
               <a
-                href="/services"
-                className="inline-block px-6 py-3 bg-[#0b1b33] text-white text-base md:text-lg font-medium rounded hover:bg-[#0b1b33]/90 transition text-center"
+                href={item.href}
+                key={i}
+                className="
+        group
+        rounded-2xl
+        p-6 sm:p-8
+
+        bg-[#f8fafc]
+        border border-[#0b1b33]/10
+
+        transition-all duration-300
+        hover:border-[#4f8fcb]/40
+        hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)] cursor-pointer
+      "
               >
-                View All Services
+                {/* ICON */}
+                <div
+                  className="
+        w-10 h-10
+        rounded-lg
+        bg-[#4f8fcb]/10
+        flex items-center justify-center
+        mb-6
+      "
+                >
+                  <span className="text-[#4f8fcb] text-lg">{item.icon}</span>
+                </div>
+
+                {/* TITLE */}
+                <h3
+                  className="
+        text-lg sm:text-xl
+        font-semibold
+        text-[#0b1b33]
+        transition-colors
+      "
+                >
+                  {item.title}
+                </h3>
+
+                {/* DESCRIPTION */}
+                <p
+                  className="
+        text-[#0b1b33]
+        mt-3
+        text-base
+        leading-relaxed
+      "
+                >
+                  {item.desc}
+                </p>
+
+                {/* CTA */}
+                {/* <div className="mt-6 text-sm font-medium flex items-center gap-2 text-[#4f8dc9]/70 group-hover:text-[#4f8fcb] transition-colors">
+                  Learn More
+                  <span className="rotate-[-45deg]">→</span>
+                </div> */}
+
+                <div className="mt-6 flex items-center gap-2.5 ">
+                  {/* TEXT */}
+                  <span
+                    className="
+    text-xs tracking-wider font-medium uppercase
+    text-[#0b1b33]
+    transition-colors duration-700
+    group-hover:text-[#4f8fcb]
+  "
+                  >
+                    LEARN MORE
+                  </span>
+
+                  {/* ICON */}
+                  <div
+                    className="
+    w-7 h-7 rounded-full
+    border border-[#0b1b33]/30
+    text-[#0b1b33]
+
+    flex items-center justify-center
+
+    transition-all duration-300 ease-out
+
+    group-hover:bg-[#4f8fcb]
+    group-hover:border-[#4f8fcb]
+    group-hover:text-white
+  "
+                  >
+                    {/* <span
+                      className="
+      flex items-center justify-center
+      leading-none
+
+      rotate-[-45deg]
+      transition-transform duration-300 ease-out
+      group-hover:rotate-0
+    "
+                    >
+                      →
+                    </span> */}
+
+                    <ArrowUpRight
+                      size={14}
+                      className="
+    transition-transform duration-300
+    -rotate-95 group-hover:rotate-45
+  "
+                    />
+                  </div>
+                </div>
               </a>
-            </div>
+            ))}
           </div>
         </section>
       </AnimatedSection>
 
-      {/* SECTION 5 — HOW CLIENTS WORK WITH US (LIGHT GREY) */}
+      {/* SECTION 5 — HOW CLIENTS WORK WITH US (LIGHT GREY) ->> BRANDS COLLABORATIONS */}
       <AnimatedSection>
-        <section className="bg-[#f8f9fb] py-24">
-          <div className="max-w-6xl mx-auto px-6 space-y-10">
-            <div className="text-center">
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
-                How Clients Work with Us
+        <section className="bg-gradient-to-b from-[#0a1b33] via-[#0a1b33] to-[#103663] py-24 text-white overflow-hidden">
+          <div className="max-w-8xl mx-auto px-6 space-y-16">
+            {/* HEADER */}
+            <div className="text-center space-y-4">
+              <span
+                className="
+          inline-block
+          text-xs px-4 py-1.5 font-semibold
+          rounded-full
+          bg-white/5 backdrop-blur-md
+          border border-white/10
+          text-[#4f8fcb]
+        "
+              >
+                BRANDS COLLABORATIONS
+              </span>
+
+              <h2 className="text-3xl md:text-5xl font-semibold">
+                Brands that trust us
               </h2>
-              <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 rounded-full"></div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-10">
-              {/* Dedicated */}
-              <div className="space-y-4">
-                <div className="flex justify-center mb-4">
-                  <div className="flex justify-center mb-2">
-                    <Users
-                      className="w-10 h-10 text-[#4f8fcb]"
-                      strokeWidth={1.5}
-                    />
+            {/* LOGO MARQUEE */}
+            <div className="relative overflow-hidden">
+              <div className="flex gap-6 marquee-track">
+                {[...Array(2)].map((_, loop) => (
+                  <div key={loop} className="flex gap-6">
+                    {[
+                      "bloom-spa.png",
+                      "color-studio.png",
+                      "masx.jpg",
+                      "innpro.png",
+                      "masx-logo.png",
+                      "modern-architecture.png",
+                      "SANITIZE-SQUAD-Logo.png",
+                      "true-flow.png",
+                    ].map((logo, i) => (
+                      <div
+                        key={i}
+                        className="
+                    flex items-center justify-center
+                    px-8 py-4
+                    rounded-2xl
+                    bg-white/5
+                    border border-white/10
+                    backdrop-blur-md
+                    min-w-[160px]
+                  "
+                      >
+                        <img
+                          src={`/logo-client/${logo}`}
+                          className="h-8 sm:h-10 max-w-[120px] object-contain"
+                        />
+                      </div>
+                    ))}
                   </div>
-                </div>
-                <h3 className="text-2xl text-center md:text-3xl font-semibold text-[#0b1b33]">
-                  Dedicated Team Members
-                </h3>
-                <p className="text-[#0b1b33]/80 text-lg text-center leading-relaxed">
-                  Build long-term capacity by hiring full-time team members
-                  through STAFF United. This model supports continuity, deeper
-                  integration, and ownership within your business.
-                </p>
-              </div>
-
-              {/* Flexible */}
-              <div className="space-y-4">
-                <div className="flex justify-center mb-4">
-                  <div className="flex justify-center mb-2">
-                    <Zap
-                      className="w-10 h-10 text-[#4f8fcb]"
-                      strokeWidth={1.5}
-                    />
-                  </div>
-                </div>
-                <h3 className="text-2xl text-center md:text-3xl font-semibold text-[#0b1b33]">
-                  Flexible Support
-                </h3>
-                <p className="text-[#0b1b33]/80 text-lg text-center leading-relaxed">
-                  Use part-time or as-needed support to fill gaps, manage
-                  workload spikes, or support specific functions without
-                  long-term commitment.
-                </p>
+                ))}
               </div>
             </div>
 
-            <div className="pt-6 border-t border-[#d1d5db]">
-              <p className="text-[#0b1b33]/80 text-center text-lg leading-relaxed">
-                Both Models Operate Under the Same Workflows, Review Process,
-                and Quality Expectations.
-              </p>
-              <p className="text-base text-center md:text-lg font-semibold text-[#4f8fcb] tracking-wide pt-2 space-y-1">
-                One Standard. One Team.
-              </p>
+            {/* TESTIMONIALS */}
+            <div className="relative h-[400px] overflow-hidden">
+              {/* WRAPPER CONTROL WIDTH */}
+              <div className="max-w-2xl mx-auto px-4 sm:px-0">
+                <div className="testimonial-wrapper">
+                  <div className="flex flex-col testimonial-scroll">
+                    {/* <div className="flex flex-col gap-6 testimonial-scroll"> */}
+                    {[...testimonials, ...testimonials].map((item, i) => (
+                      <div
+                        key={i}
+                        className="p-6 mb-6 rounded-2xl testimonial-item min-h-[140px] bg-white/5 border border-[#4a596e]/30 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.4)]"
+                      >
+                        {/* STAR */}
+                        <div className="text-[#4f8fcb] text-xl mb-2">★★★★★</div>
+
+                        {/* CONTENT */}
+                        <p className="text-sm text-white/80 leading-relaxed">
+                          {item.content}
+                        </p>
+
+                        {/* USER */}
+                        <div className="flex items-center gap-3 mt-4">
+                          <img
+                            src={item.avatar}
+                            className="w-10 h-10 rounded-full object-cover"
+                          />
+                          <div>
+                            <p className="text-sm font-medium">{item.name}</p>
+                            <p className="text-xs text-white/50">{item.role}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                    {/* </div> */}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* FEATURES */}
+            <div className="mt-16 space-y-10">
+              {/* 3 CARDS */}
+              <div className="grid lg:grid-cols-3 gap-6">
+                {[
+                  {
+                    title: "Proven Track Record",
+                    desc: "We have built a reputation as a trusted and reliable partner in achieving business success.",
+                    icon: Rocket,
+                  },
+                  {
+                    title: "Tailored Solutions",
+                    desc: "We offer personalized solutions tailored to your specific goals, audience, and industry.",
+                    icon: Link2,
+                  },
+                  {
+                    title: "Client-Centric Focus",
+                    desc: "Your success is our priority. We prioritize understanding your business goals.",
+                    icon: Target,
+                  },
+                ].map((item, i) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <div
+                      key={i}
+                      className="
+            group
+            p-6 rounded-2xl
+
+            bg-white/5
+            border border-[#4a596e]/30
+            backdrop-blur-md
+
+           
+             text-center items-center
+          "
+                    >
+                      {/* ICON */}
+                      <div
+                        className="
+              w-10 h-10 mb-5
+              rounded-xl 
+              flex items-center justify-center
+              bg-[#4f8dc9]/10
+              text-[#4f8dc9] border
+              border-[#4f8dc9] mx-auto"
+                      >
+                        <Icon className="w-5 h-5" strokeWidth={1.5} />
+                      </div>
+
+                      {/* TITLE */}
+                      <h3 className="text-lg font-semibold mb-2">
+                        {item.title}
+                      </h3>
+
+                      {/* DESC */}
+                      <p className="text-sm text-white/70 leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* TAGS */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap justify-center gap-3">
+                {[
+                  {
+                    label: "Continuous Innovation",
+                    icon: Sparkles,
+                  },
+                  {
+                    label: "Dedicated Support",
+                    icon: Headphones,
+                  },
+                  {
+                    label: "Positive Client Experiences",
+                    icon: Smile,
+                  },
+                  {
+                    label: "Commitment to Excellence",
+                    icon: ShieldCheck,
+                  },
+                ].map((tag, i) => {
+                  const Icon = tag.icon;
+
+                  return (
+                    <span
+                      key={i}
+                      className="
+          flex items-center justify-center gap-2
+
+          text-xs
+          px-4 py-2
+          rounded-full
+
+          bg-white/5
+          border border-[#4a596e]/30
+          backdrop-blur-md
+
+          text-white
+
+          transition-all duration-300
+
+          
+        "
+                    >
+                      <Icon className="w-3.5 h-3.5" strokeWidth={1.8} />
+                      {tag.label}
+                    </span>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </section>
@@ -576,7 +853,7 @@ export default function Home() {
       </AnimatedSection>
 
       {/* TRUSTED BY */}
-      <AnimatedSection>
+      {/* <AnimatedSection>
         <section className="py-24 overflow-hidden">
           <div className="max-w-6xl mx-auto px-6 text-center space-y-8">
             <div className="text-center">
@@ -608,7 +885,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </AnimatedSection>
+      </AnimatedSection> */}
 
       {/* SECTION 10 — CTA STRIP (FULL WIDTH STRIP) */}
       <AnimatedSection>
