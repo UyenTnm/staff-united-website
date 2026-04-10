@@ -63,6 +63,9 @@ export default function Home() {
 
   const [phone, setPhone] = useState("");
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
+
   useEffect(() => {
     const elements = document.querySelectorAll(".fade-up");
 
@@ -102,6 +105,7 @@ export default function Home() {
 
     return () => observer.disconnect();
   }, []);
+
   return (
     <main className="bg-white w-full">
       {/* SECTION 1 — HERO (VISUAL ENHANCED) */}
@@ -822,135 +826,6 @@ export default function Home() {
         </section>
       </AnimatedSection>
 
-      {/* SECTION 8 — HOW IT WORKS (WHITE) */}
-      {/* <AnimatedSection>
-        <section className="bg-white py-24">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center">
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
-                How It Works
-              </h2>
-              <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 mb-4 rounded-full"></div>
-            </div>
-
-            <div className="relative">
-              <div className="hidden md:block absolute top-8 left-0 w-full h-px bg-[#d1d5db]" />
-
-              <div className="grid md:grid-cols-3 gap-12 relative">
-                <div className="space-y-6">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full border border-[#4f8fcb] flex items-center justify-center text-[#4f8fcb] font-semibold text-sm bg-white">
-                      01
-                    </div>
-                    <div className="h-px bg-[#d1d5db] flex-1 md:hidden" />
-                  </div>
-
-                  <h3 className="text-lg font-semibold text-[#0b1b33]">
-                    Request
-                  </h3>
-
-                  <p className="text-[#0b1b33]/75 text-lg leading-relaxed">
-                    Tell us what you need, when you need it, and what success
-                    looks like.
-                  </p>
-                </div>
-
-                <div className="space-y-6">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full border border-[#4f8fcb] flex items-center justify-center text-[#4f8fcb] font-semibold text-sm bg-white">
-                      02
-                    </div>
-                    <div className="h-px bg-[#d1d5db] flex-1 md:hidden" />
-                  </div>
-
-                  <h3 className="text-lg font-semibold text-[#0b1b33]">
-                    Scope + Assign
-                  </h3>
-
-                  <p className="text-[#0b1b33]/75 text-lg leading-relaxed">
-                    We confirm deliverables and timelines, then assign the right
-                    team under one shared standard.
-                  </p>
-                </div>
-
-                <div className="space-y-6">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full border border-[#4f8fcb] flex items-center justify-center text-[#4f8fcb] font-semibold text-sm bg-white">
-                      03
-                    </div>
-                  </div>
-
-                  <h3 className="text-lg font-semibold text-[#0b1b33]">
-                    Deliver + Review
-                  </h3>
-
-                  <p className="text-[#0b1b33]/75 text-lg leading-relaxed">
-                    Work is delivered with internal review, clear communication,
-                    and accountability.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </AnimatedSection> */}
-
-      {/* SECTION 9 — MODERN SYSTEMS (LIGHT GREY) */}
-      {/* <AnimatedSection>
-        <section className="bg-[#f8f9fb] py-24">
-          <div className="max-w-5xl mx-auto px-6 space-y-6">
-            <div className="text-center">
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
-                Modern Systems
-              </h2>
-              <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 rounded-full"></div>
-            </div>
-
-            <p className="text-[#0b1b33]/80 text-lg leading-relaxed">
-              We use structured workflows and modern tooling - including
-              AI-assisted drafting and quality support - to improve speed and
-              consistency. Final delivery is always reviewed by people and
-              delivered under one shared standard.
-            </p>
-          </div>
-        </section>
-      </AnimatedSection> */}
-
-      {/* TRUSTED BY */}
-      {/* <AnimatedSection>
-        <section className="py-24 overflow-hidden">
-          <div className="max-w-6xl mx-auto px-6 text-center space-y-8">
-            <div className="text-center">
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#0b1b33]">
-                Trusted by
-              </h2>
-              <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 rounded-full"></div>
-            </div>
-
-            <div className="relative w-full overflow-hidden">
-              <div className="flex gap-16 marquee whitespace-nowrap items-center">
-                {[...clientLogos, ...clientLogos].map((client, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center justify-center w-48 h-20"
-                  >
-                    <div className="flex items-center justify-center w-full h-full">
-                      <Image
-                        src={client.src}
-                        alt={client.name}
-                        width={120}
-                        height={60}
-                        className="object-contain max-h-full w-auto"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-      </AnimatedSection> */}
-
       {/* SECTION 10 — CTA STRIP -> LEAD */}
       <AnimatedSection>
         <section className="bg-[#f8f9fb] py-24">
@@ -1028,17 +903,46 @@ export default function Home() {
                 onSubmit={async (e) => {
                   e.preventDefault();
 
+                  if (isSubmitting) return;
+
+                  setIsSubmitting(true);
+
                   const form = e.target as HTMLFormElement;
                   const formData = new FormData(form);
+                  formData.append("form_type", "lite");
 
-                  await fetch("/api/contact", {
-                    method: "POST",
-                    body: formData,
+                  const body = new URLSearchParams();
+
+                  formData.forEach((value, key) => {
+                    body.append(key, String(value));
                   });
 
-                  alert("Submitted!");
-                  form.reset();
-                  setPhone("");
+                  try {
+                    const res = await fetch(
+                      "https://script.google.com/macros/s/AKfycbwEfL2geCsZcl5waUihSrzKUJ31Dmo640pa0hA0GnyAYIq2yRY-EIHwV6wF9y8cQm82/exec",
+                      {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/x-www-form-urlencoded",
+                        },
+                        body,
+                      },
+                    );
+
+                    const text = await res.text();
+                    console.log("LITE RESPONSE:", text);
+
+                    setSuccess(true);
+                    // window.scrollTo({ top: 0, behavior: "smooth" });
+
+                    form.reset();
+                    setPhone("");
+                  } catch (err) {
+                    console.error(err);
+                    alert("Something went wrong");
+                  }
+
+                  setIsSubmitting(false);
                 }}
                 className="
     relative overflow-hidden 
@@ -1058,7 +962,7 @@ export default function Home() {
     transition-all duration-500
   "
               >
-                {/* 🔥 GLASS LIGHT LAYER */}
+                {/* GLASS LIGHT LAYER */}
                 <div className="absolute inset-0 pointer-events-none">
                   {/* ánh sáng trắng */}
                   <div
@@ -1080,7 +984,7 @@ export default function Home() {
                   ></div>
                 </div>
 
-                {/* 🔥 CONTENT */}
+                {/* CONTENT */}
                 <div className="relative z-10 space-y-4">
                   {/* NAME */}
                   <div className="grid sm:grid-cols-2 gap-4">
@@ -1144,54 +1048,43 @@ export default function Home() {
                   {/* BUTTON */}
                   <button
                     type="submit"
+                    disabled={isSubmitting}
                     className="
-    group
-    relative overflow-hidden
+    group relative overflow-hidden
 
-    w-full mt-4
-    px-6 py-3
-    rounded-full
+    w-full mt-4 px-6 py-3 rounded-full
 
     bg-[#0a1b33]
-    text-white
-    font-medium
+    text-white font-medium
 
     transition-all duration-500
 
+    disabled:opacity-50
+    disabled:cursor-not-allowed
+
     hover:bg-white/10
     hover:text-[#0a1b33]
-
     hover:backdrop-blur-xl
     hover:border hover:border-[#d5dadf]
-
     hover:shadow-[0_10px_40px_rgba(79,141,201,0.4)]
     hover:-translate-y-0.5
   "
                   >
-                    {/* TEXT */}
                     <span className="relative z-10 flex items-center justify-center gap-2">
-                      Request Support
-                      {/* ARROW */}
-                      <span
-                        className="
-        inline-block
-        transition-transform duration-300
-        group-hover:-rotate-45
-      "
-                      >
-                        →
-                      </span>
+                      {isSubmitting ? (
+                        <>
+                          <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          Request Support
+                          <span className="transition-transform duration-300 group-hover:-rotate-45">
+                            →
+                          </span>
+                        </>
+                      )}
                     </span>
-
-                    {/* GLASS LIGHT */}
-                    <span
-                      className="
-    absolute inset-0 opacity-0
-    group-hover:opacity-100
-    transition duration-500
-    bg-gradient-to-r from-transparent via-white/30 to-transparent
-  "
-                    ></span>
                   </button>
                 </div>
               </form>
@@ -1199,6 +1092,40 @@ export default function Home() {
           </div>
         </section>
       </AnimatedSection>
+
+      {success && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+
+          <div
+            className="
+      relative
+      bg-white
+      rounded-2xl
+      p-8
+      max-w-md
+      w-full
+      text-center
+      shadow-xl
+    "
+          >
+            <h3 className="text-xl font-semibold mb-3 text-[#0b1b33]">
+              🎉 Request Sent!
+            </h3>
+
+            <p className="text-[#0b1b33]/70 mb-6">
+              We've received your request. Our team will contact you shortly.
+            </p>
+
+            <button
+              onClick={() => setSuccess(false)}
+              className="px-6 py-2 rounded-full bg-[#0a1b33] text-white"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
