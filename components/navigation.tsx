@@ -79,84 +79,52 @@ export default function Navigation() {
     "
                 />
 
-                {/* LAYER 1 (rất nhẹ) */}
-                {/* <span
-                  className="
-    absolute top-1/2 left-1/2
-    w-[150%] h-[150%]
-    rounded-full
-
-    -translate-x-1/2 -translate-y-1/2
-
-    bg-white/20
-
-    opacity-0
-    group-hover:opacity-40
-
-    group-hover:animate-[liquidZoom_700ms_cubic-bezier(0.22,1,0.36,1)]
-  "
-                /> */}
-
-                {/* LAYER 2 (rất subtle) */}
-                {/* <span
-                  className="
-      absolute top-1/2 left-1/2
-      w-[170%] h-[170%]
-      rounded-full
-
-      -translate-x-1/2 -translate-y-1/2
-
-      bg-white/10
-
-      scale-0 opacity-0
-      group-hover:scale-100 group-hover:opacity-30
-
-      transition
-      duration-700
-      delay-75
-      ease-[cubic-bezier(0.22,1,0.36,1)]
-    "
-                /> */}
-
                 {/* LIQUID SPREAD */}
+                {/* LAYER 1 */}
                 <span
                   className="
     absolute top-1/2 left-1/2
-    w-0 h-0
+    w-[20px] h-[20px]
     rounded-full
     -translate-x-1/2 -translate-y-1/2
+    group-hover:duration-700
 
     bg-white/20
 
-    transition-all
-    duration-700
-    delay-[150ms]
+    scale-0
+    group-hover:scale-[14]
 
-    ease-[cubic-bezier(0.19,1,0.22,1)]
+    transition-transform
+    duration-500
 
-    group-hover:w-[260%]
-    group-hover:h-[260%]
+    ease-[cubic-bezier(0.33,1,0.68,1)]
+
+    will-change-transform
   "
                 />
 
+                {/* LAYER 2 */}
                 <span
                   className="
     absolute top-1/2 left-1/2
-    w-0 h-0
+    w-[20px] h-[20px]
     rounded-full
     -translate-x-1/2 -translate-y-1/2
-
+group-hover:duration-700
     bg-white/10
 
-    transition-all
-    duration-700
-    delay-[75ms]
-    ease-[cubic-bezier(0.19,1,0.22,1)]
+    scale-0
+    group-hover:scale-[18]
 
-    group-hover:w-[320%]
-    group-hover:h-[320%]
+    transition-transform
+    duration-800
+
+    ease-[cubic-bezier(0.33,1,0.68,1)]
+
+    will-change-transform
   "
                 />
+
                 {/* TEXT */}
                 <span
                   className={`

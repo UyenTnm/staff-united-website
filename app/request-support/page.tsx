@@ -106,15 +106,14 @@ export default function RequestSupportPage() {
         ) : (
           /* ================= FORM ================= */
           <form
-            action="https://formspree.io/f/xwvnvwjy"
-            method="POST"
             onSubmit={async (e) => {
               e.preventDefault();
+              if (isSubmitting) return;
 
               const form = e.target as HTMLFormElement;
               const formData = new FormData(form);
-              const data = Object.fromEntries(formData.entries());
 
+              const data = Object.fromEntries(formData.entries());
               const validationErrors = validate(data);
 
               if (Object.keys(validationErrors).length > 0) {
@@ -125,21 +124,69 @@ export default function RequestSupportPage() {
               setErrors({});
               setIsSubmitting(true);
 
-              const response = await fetch("https://formspree.io/f/xwvnvwjy", {
-                method: "POST",
-                body: formData,
-                headers: { Accept: "application/json" },
-              });
+              try {
+                formData.set("phone", phone || "");
+                formData.set("support_type", supportType);
+                formData.set("hours_per_week_option", hoursOption);
+                formData.set("custom_hours", customHours || "");
+                formData.set("time_zone", timezone || "");
+
+                const body = new URLSearchParams();
+
+                // field thường
+                formData.forEach((value, key) => {
+                  if (key !== "tools_used") {
+                    body.append(key, String(value));
+                  }
+                });
+
+                // checkbox multiple
+                formData.getAll("tools_used").forEach((tool) => {
+                  body.append("tools_used", tool as string);
+                });
+
+                // CALL API
+                const res = await fetch(
+                  "https://script.google.com/macros/s/AKfycbwEfL2geCsZcl5waUihSrzKUJ31Dmo640pa0hA0GnyAYIq2yRY-EIHwV6wF9y8cQm82/exec",
+                  {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    body,
+                  },
+                );
+
+                // DEBUG
+                const text = await res.text();
+                console.log("RESPONSE:", text);
+
+                let json;
+                try {
+                  json = JSON.parse(text);
+                } catch {
+                  throw new Error("Invalid response from server");
+                }
+
+                // SUCCESS
+                if (json.success) {
+                  setSuccess(true);
+
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+
+                  form.reset();
+                  setPhone("");
+                  setHoursOption("");
+                  setCustomHours("");
+                } else {
+                  alert("Submit failed: " + json.error);
+                }
+              } catch (error) {
+                console.error("Submit error:", error);
+                alert("Something went wrong!");
+              }
 
               setIsSubmitting(false);
-
-              if (response.ok) {
-                setSuccess(true);
-                form.reset();
-                setPhone("");
-                setHoursOption("");
-                setCustomHours("");
-              }
             }}
             className="bg-white border border-[#d1d5db] rounded-lg p-6 space-y-8"
           >
@@ -448,13 +495,79 @@ export default function RequestSupportPage() {
 
             <button
               type="submit"
-              className="w-full bg-[#0b1b33] text-white py-3 rounded font-medium hover:bg-[#0b1b33]/90 transition"
+              disabled={isSubmitting}
+              className="
+    w-full
+    bg-[#0b1b33]
+    text-white
+    py-3
+    rounded
+    font-medium
+    transition
+
+    hover:bg-[#0b1b33]/90
+    disabled:opacity-50
+    disabled:cursor-not-allowed
+  "
             >
-              Submit Request
+              {isSubmitting ? (
+                <span className="flex items-center justify-center gap-2">
+                  <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                  Sending...
+                </span>
+              ) : (
+                "Submit Request"
+              )}
             </button>
           </form>
         )}
       </div>
+
+      {success && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          {/* overlay */}
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+
+          {/* modal */}
+          <div
+            className="
+      relative
+      bg-white
+      rounded-2xl
+      p-8
+      max-w-md
+      w-full
+      text-center
+      shadow-[0_20px_60px_rgba(0,0,0,0.2)]
+    "
+          >
+            <div className="w-14 h-14 mx-auto rounded-full bg-[#4f8fcb]/10 flex items-center justify-center mb-4">
+              <span className="text-2xl text-[#4f8fcb]">✓</span>
+            </div>
+
+            <h2 className="text-xl font-semibold text-[#0b1b33] mb-3">
+              Request Submitted Successfully
+            </h2>
+
+            <p className="text-[#0b1b33]/70 mb-6">
+              Thank you for reaching out. Our team will review your request and
+              follow up shortly.
+            </p>
+
+            <button
+              onClick={() => setSuccess(false)}
+              className="
+          px-6 py-2
+          bg-[#0b1b33]
+          text-white
+          rounded
+        "
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

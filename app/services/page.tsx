@@ -1,196 +1,127 @@
+"use client";
 import AnimatedSection from "@/components/AnimatedSection";
+import {
+  Headphones,
+  MessageCircle,
+  Network,
+  Rocket,
+  Sparkle,
+  Target,
+} from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Services() {
+  const services = [
+    {
+      title: "Finance & Bookkeeping Support",
+      desc: "Reliable financial operations support to keep your books accurate, organized, and up to date.",
+      icon: "/services/icon-finance.png",
+      items: [
+        "Monthly Bookkeeping",
+        "Bank & Credit Card Reconciliation",
+        "Accounts Payable (AP) Support",
+        "Accounts Receivable (AR) Support",
+        "Invoicing & Billing Support",
+        "Expense Coding & Categorization",
+        "Month-End Close Support",
+        "Catch-Up & Cleanup Bookkeeping",
+        "Payroll Administration Support",
+        "Financial Data Entry & Maintenance",
+        "Management Reporting Support",
+        "Vendor & Payment Coordination",
+      ],
+    },
+    {
+      title: "Administration & Business Support",
+      desc: "Day-to-day operational and administrative support to help founders and teams stay focused on growth.",
+      icon: "/services/icon-admin.png",
+      items: [
+        "Executive Assistant Support",
+        "Calendar & Inbox Management",
+        "Meeting Scheduling & Coordination",
+        "Document Formatting & Preparation",
+        "CRM Updates & Data Management",
+        "Research & Information Gathering",
+        "Internal Follow-Ups & Task Tracking",
+        "SOP Documentation Support",
+        "File & System Organization",
+        "Reporting & Administrative Support",
+        "Vendor & Operations Coordination",
+      ],
+    },
+    {
+      title: "Customer Support & Back-Office Operations",
+      desc: "Consistent, professional support for your customers and internal processes.",
+      icon: "/services/icon-cs.png",
+      items: [
+        "Email Customer Support",
+        "Live Chat Support",
+        "Helpdesk & Ticket Handling",
+        "Order Processing Support",
+        "Returns & Refund Coordination",
+        "Customer Follow-Up Support",
+        "Appointment Scheduling",
+        "CRM Case Logging & Updates",
+        "After-Sales Support",
+        "Data Entry & Back-Office Processing",
+        "Internal Support Coordination",
+      ],
+    },
+    {
+      title: "Marketing & Sales Support",
+      desc: "Execution-focused support to keep your marketing and sales processes running consistently.",
+      icon: "/services/icon-mkt.png",
+      items: [
+        "Social Media Scheduling",
+        "Content Upload & Publishing",
+        "Website Content Updates",
+        "Email Campaign Setup Support",
+        "CRM Cleanup & Maintenance",
+        "Lead Research & List Building",
+        "Sales Admin Support",
+        "Proposal & Document Formatting",
+        "Pipeline & Follow-Up Tracking",
+        "Reporting & Dashboard Support",
+        "Campaign Coordination Support",
+      ],
+    },
+  ];
+
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    const elements = document.querySelectorAll(
+      ".fade-up, .slide-left, .slide-right",
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+      },
+    );
+
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main className="bg-white">
-      {/* HEADER */}
-      {/* <AnimatedSection>
-        <section className="bg-white pt-16 ">
-          <div className="max-w-6xl mx-auto px-6 text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl py-10 font-semibold text-[#0b1b33] leading-[1.1] tracking-tight">
-              Two Service Lanes. One Execution Model.
-            </h1>
-            <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>
-
-            <p className="text-lg text-[#0b1b33]/75">
-              Delivered Through Dedicated or Flexible Support Under One Shared
-              Standard.
-            </p>
-
-            <p className="text-lg md:text-xl font-medium leading-snug">
-              <span className="text-[#4f8fcb] font-bold">Dedicated Teams</span>{" "}
-              <span className="text-[#0b1b33]/60">
-                Without the Overhead of Local Hiring.
-              </span>
-            </p>
-          </div>
-        </section>
-      </AnimatedSection> */}
-
-      {/* CARDS — */}
-      {/* <section className="bg-white py-12">
-        <div className="max-w-[1500px] mx-auto px-10">
-          <div className="grid md:grid-cols-2 gap-14 ">
-            <AnimatedSection>
-              <div
-                className="group relative flex flex-col bg-[#eef2f7] h-full border border-[#4f8fcb]/40 rounded-xl p-6 xl:p-7 transition-all duration-500 ease-out transform-gpu hover:-translate-y-3 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] hover:border-[#4f8fcb]"
-                style={{ perspective: "1000px" }}
-              >
-                <div className="flex-grow">
-                  <div className="flex justify-center mb-5">
-                    <img
-                      src="/images/creative.webp"
-                      alt="Creative"
-                      className="h-36 object-contain transition-transform duration-500 group-hover:-translate-y-2 group-hover:scale-105"
-                    />
-                  </div>
-
-                  <div className="text-center mb-5 space-y-2">
-                    <h3 className="text-xl md:text-2xl font-semibold text-[#0b1b33]">
-                      Creative & Content Production
-                    </h3>
-
-                    <p className="text-base text-[#0b1b33]/70 leading-relaxed">
-                      Publish-ready creative output—delivered through structured
-                      workflow and internal review.
-                    </p>
-                  </div>
-
-                  <div className="space-y-3 mb-5">
-                    <h4 className="text-base font-semibold text-[#0b1b33]">
-                      What we support
-                    </h4>
-
-                    <ul className="space-y-2 text-base text-[#0b1b33]/80">
-                      {[
-                        "Content editing & formatting (blogs, newsletters, long-form)",
-                        "Social content production & repurposing",
-                        "Design production support (templates, assets, deck formatting)",
-                        "Video support (captions, subtitles, basic edits)",
-                        "Publishing support (scheduling, uploads, QA checks)",
-                      ].map((item, i) => (
-                        <li key={i} className="flex gap-2 items-start">
-                          <span className="text-[#4f8fcb] mt-[2px]">✓</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="space-y-3">
-                    <h4 className="text-base font-semibold text-[#0b1b33]">
-                      How we deliver
-                    </h4>
-
-                    <ul className="space-y-2 text-base text-[#0b1b33]/80">
-                      {[
-                        "Clear scope + checklist-based execution",
-                        "Internal review before delivery",
-                        "Consistent quality and on-time output",
-                      ].map((item, i) => (
-                        <li key={i} className="flex gap-2 items-start">
-                          <span className="text-[#4f8fcb] mt-[2px]">✓</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <a
-                  href="/request-support"
-                  className="mt-8 inline-flex justify-center items-center h-11 px-6 bg-[#0b1b33] text-white text-base font-medium rounded hover:bg-[#0b1b33]/90 transition"
-                >
-                  Request Creative Support
-                </a>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection>
-              <div
-                className="group relative flex flex-col h-full bg-[#eef2f7] border border-[#4f8fcb]/40 rounded-xl p-6 xl:p-7 transition-all duration-500 ease-out transform-gpu hover:-translate-y-3 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] hover:border-[#4f8fcb]"
-                style={{ perspective: "1000px" }}
-              >
-                <div className="flex-grow">
-                  <div className="flex justify-center mb-5">
-                    <img
-                      src="/images/admin.webp"
-                      alt="Admin"
-                      className="h-36 object-contain transition-transform duration-500 group-hover:-translate-y-2 group-hover:scale-105"
-                    />
-                  </div>
-
-                  <div className="text-center mb-5 space-y-2">
-                    <h3 className="text-xl md:text-2xl font-semibold text-[#0b1b33]">
-                      Administration & Business Support
-                    </h3>
-
-                    <p className="text-base text-[#0b1b33]/70 leading-relaxed">
-                      Reliable operational support—handled with clear process
-                      and accountability.
-                    </p>
-                  </div>
-
-                  <div className="space-y-3 mb-5">
-                    <h4 className="text-base font-semibold text-[#0b1b33]">
-                      What we support
-                    </h4>
-
-                    <ul className="space-y-2 text-base text-[#0b1b33]/80">
-                      {[
-                        "Inbox/calendar support & follow-ups",
-                        "Meeting notes, action items, and tracking",
-                        "CRM updates & data cleanup",
-                        "Client/admin coordination & documentation",
-                        "Research, reporting, and lightweight ops tasks",
-                      ].map((item, i) => (
-                        <li key={i} className="flex gap-2 items-start">
-                          <span className="text-[#4f8fcb] mt-[2px]">✓</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="space-y-3">
-                    <h4 className="text-base font-semibold text-[#0b1b33]">
-                      How we deliver
-                    </h4>
-
-                    <ul className="space-y-2 text-base text-[#0b1b33]/80">
-                      {[
-                        "Standard operating procedures (SOPs)",
-                        "Structured workflows + handoff clarity",
-                        "Ownership for completion—not just task handling",
-                      ].map((item, i) => (
-                        <li key={i} className="flex gap-2 items-start">
-                          <span className="text-[#4f8fcb] mt-[2px]">✓</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <a
-                  href="/request-support"
-                  className="mt-8 inline-flex justify-center items-center h-11 px-6 bg-[#0b1b33] text-white text-base font-medium rounded hover:bg-[#0b1b33]/90 transition"
-                >
-                  Request Business Support
-                </a>
-              </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section> */}
-
+      {/* SERVICES */}
       <section
         className="pt-28 md:pt-32 lg:pt-36
   pb-20 md:pb-24
   relative overflow-hidden"
       >
         {/* BACKGROUND GLOW */}
-        <div className="absolute inset-0 opacity-20">
+        <div className="hidden md:block absolute inset-0 opacity-20">
           <div className="w-full h-full bg-[radial-gradient(circle_at_center,_#4f8dc9_0%,transparent_70%)]"></div>
         </div>
 
@@ -203,140 +134,282 @@ export default function Services() {
           </div>
 
           {/* CARDS */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* CARD */}
-            <div
-              className="
-        group slide-left active
-        relative
-        rounded-2xl
-        p-10
 
-        flex flex-col items-center text-center
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+            {services.map((item, index) => {
+              const isActive = activeIndex === index;
 
-        bg-white/5
-        backdrop-blur-2xl
-        border border-white/10
+              return (
+                <div
+                  key={index}
+                  style={{ transitionDelay: `${index * 100}ms` }}
+                  onClick={() =>
+                    setActiveIndex(activeIndex === index ? null : index)
+                  }
+                  className={`
+  cursor-pointer
+  group
+  relative
+  overflow-hidden
 
-        shadow-[0_10px_40px_rgba(0,0,0,0.3)]
-        transition-all duration-500
+  rounded-2xl
+  p-10
+  flex flex-col items-center text-center
 
-        hover:-translate-y-2
-        hover:bg-white/10
-        hover:shadow-[0_20px_80px_rgba(79,141,201,0.25)]
-      "
-            >
-              {/* LIGHT EFFECT */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 to-transparent opacity-40 pointer-events-none"></div>
+  bg-white/5
+  backdrop-blur-2xl
+  border border-white/10
+  ${index % 2 === 0 ? "slide-left active" : "slide-right active"}
 
-              {/* IMAGE */}
-              <img
-                src="/services/icon-cal.png"
-                alt="STAFF UNITED GROUP"
-                className="
-           w-24 h-24 md:w-28 md:h-28
-  mb-6
-  object-contain
-  transition duration-500
-  group-hover:scale-110
-          "
-              />
+  shadow-[0_10px_40px_rgba(0,0,0,0.3)]
 
-              {/* TITLE */}
-              <h3 className="text-lg md:text-xl text-[#4f8dc9] font-medium mb-3">
-                Finance & Bookkeeping Support
-              </h3>
+  transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
 
-              {/* DESC */}
-              <p
-                className="text-[#0a1b33] flex flex-col items-center text-center
-"
-              >
-                Reliable financial operations support to keep your books
-                accurate, organized, and up to date.
-              </p>
+  hover:-translate-y-2
+  lg:hover:scale-[1.02]
+  hover:bg-white/10
+  hover:border-white/20
+  hover:shadow-[0_30px_80px_rgba(79,141,201,0.35)]
 
-              {/* PLUS */}
-              <div
-                className="
-          mt-6
-          text-[#4f8dc9]
-          text-xl
-          opacity-60
-          transition
-          group-hover:opacity-100
-          group-hover:translate-x-1 group-hover:-translate-y-1
-        "
-              >
-                +
-              </div>
-            </div>
+  active:scale-[0.98]
+`}
+                >
+                  {/* ICON */}
+                  <div className="w-18 h-18 mb-6 rounded-full bg-[#0a1b33] flex items-center justify-center">
+                    <img
+                      src={item.icon}
+                      alt={item.title}
+                      className="
+      w-16 h-16
+      object-contain
+      transition duration-500
+      group-hover:scale-110
+    "
+                    />
+                  </div>
 
-            {/* CARD 2 */}
-            <div
-              className="
-        group slide-right active
-        relative
-        rounded-2xl
-        p-10
+                  {/* TITLE */}
+                  <h3 className="text-lg md:text-xl text-[#4f8dc9] font-medium min-h-[56px]">
+                    {item.title}
+                  </h3>
 
-        flex flex-col items-center text-center
+                  {/* DESC */}
+                  <p className="text-[#0a1b33] min-h-[72px] mb-4">
+                    {item.desc}
+                  </p>
 
-        bg-white/5
-        backdrop-blur-2xl
-        border border-white/10
+                  {/* PLUS */}
+                  <div
+                    className={`
+    mt-2
+    text-[#4f8dc9]
+    text-xl
 
-        shadow-[0_10px_40px_rgba(0,0,0,0.3)]
-        transition-all duration-500
+    transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
 
-        hover:-translate-y-2
-        hover:bg-white/10
-        hover:shadow-[0_20px_80px_rgba(79,141,201,0.25)]
-      "
-            >
-              {/* LIGHT EFFECT */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 to-transparent opacity-40 pointer-events-none"></div>
+    ${isActive ? "scale-125" : "group-hover:scale-125"}
+  `}
+                  >
+                    {isActive ? "−" : "+"}
+                  </div>
 
-              {/* IMAGE */}
-              <img
-                src="/services/icon-cal.png"
-                alt="STAFF UNITED GROUP"
-                className="
-             w-24 h-24 md:w-28 md:h-28
-  mb-6
-  object-contain
-  transition duration-500
-  group-hover:scale-110
-          "
-              />
+                  {/* EXPAND CONTENT */}
+                  <div
+                    className={`
+                overflow-hidden transition-all duration-700
+                ${
+                  isActive
+                    ? "max-h-[1000px] mt-6 opacity-100"
+                    : "max-h-0 opacity-0"
+                }
+              `}
+                  >
+                    <div className="text-left w-full">
+                      <p className="text-[#4f8dc9] font-semibold mb-2">
+                        Services:
+                      </p>
 
-              {/* TITLE */}
-              <h3 className="text-lg md:text-xl text-[#4f8dc9] font-medium mb-3">
-                Administration & Business Support
-              </h3>
-
-              {/* DESC */}
-              <p className="text-[#0a1b33] flex flex-col items-center text-center">
-                Structured support systems that help businesses operate
-                efficiently and scale with clarity.
-              </p>
-
-              {/* PLUS */}
-              <div
-                className="
-          mt-6
-          text-[#4f8dc9]
-          text-xl
-          opacity-60
-          transition
-          group-hover:opacity-100
-          group-hover:translate-x-1 group-hover:-translate-y-1
-        "
-              >
-                +
-              </div>
-            </div>
+                      <ul className="list-disc pl-5 space-y-1 text-[#0a1b33]">
+                        {item.items.map((service, i) => (
+                          <li key={i}>{service}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US */}
+      <section className="py-16 bg-white relative">
+        <div className="max-w-6xl mx-auto px-6">
+          {/* HEADER */}
+          <div className="text-center mb-16 fade-up active">
+            <div className="flex justify-center lg:block">
+              <span
+                className="
+      inline-block
+      text-[11px] sm:text-xs
+      px-4 py-1.5
+      rounded-full
+      font-semibold
+      tracking-wide
+
+      text-[#4f8dc9]
+
+      bg-white/70
+      backdrop-blur-md
+      border border-[#0b1b33]/10
+
+      shadow-[0_4px_20px_rgba(79,141,201,0.15)]
+    "
+              >
+                WHY CHOOSE US
+              </span>
+            </div>
+
+            <h2 className="text-3xl md:text-5xl text-[#0b1b33] mt-4 font-light">
+              Why we are your best <br /> choice
+            </h2>
+          </div>
+
+          {/* GRID */}
+          <AnimatedSection>
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Proven Track Record",
+                  desc: "We have built a reputation as a trusted and reliable partner in achieving business success.",
+                  icon: Rocket,
+                },
+                {
+                  title: "Tailored Solutions",
+                  desc: "We offer personalized solutions tailored to your specific goals, audience, and industry.",
+                  icon: Network,
+                },
+                {
+                  title: "Client-Centric Focus",
+                  desc: "Your success is our priority. We prioritize understanding your business goals.",
+                  icon: Target,
+                },
+                {
+                  title: "Transparent Communication",
+                  desc: "We believe in open and honest communication every step of the way.",
+                  icon: MessageCircle,
+                },
+                {
+                  title: "Dedicated Support",
+                  desc: "Your success is our priority, and we're here to support you every step of the way.",
+                  icon: Headphones,
+                },
+                {
+                  title: "Expertise Across Industries",
+                  desc: "Our team has extensive experience working across various industries.",
+                  icon: Sparkle,
+                },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className={`
+            group
+            rounded-2xl
+            p-8
+            text-center
+
+            border border-[#e5e7eb]
+            bg-white
+
+            shadow-[0_10px_30px_rgba(0,0,0,0.05)]
+            transition-all duration-500 active
+${index % 2 === 0 ? "slide-left" : "slide-right"}
+            hover:-translate-y-2
+            hover:border-[#4f8dc9]
+            hover:shadow-[0_20px_50px_rgba(79,141,201,0.15)]`}
+                >
+                  {/* ICON */}
+                  <div className="w-14 h-14 mx-auto mb-6 rounded-xl border border-[#4f8dc9]/30 flex items-center justify-center group-hover:border-[#4f8dc9] transition">
+                    {(() => {
+                      const Icon = item.icon;
+                      return (
+                        <Icon
+                          className="
+          w-6 h-6 stroke-[1.5]
+          text-[#4f8dc9]
+          transition-all duration-300
+          group-hover:scale-110
+          group-hover:text-[#0b1b33]
+        "
+                        />
+                      );
+                    })()}
+                  </div>
+
+                  {/* TITLE */}
+                  <h3 className="text-[#0a1b33] text-lg font-semibold mb-2">
+                    {item.title}
+                  </h3>
+
+                  {/* DESC */}
+                  <p className="text-[#0b1b33] text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="mt-15">
+        <div
+          className="
+        bg-gradient-to-b from-[#4f8dc9] to-[#0b1b33]
+          text-white
+
+          px-6 md:px-12
+          py-6 md:py-8
+
+          flex flex-col md:flex-row
+          items-center
+          justify-between
+          gap-4
+
+          rounded-t-2xl
+          shadow-[0_-10px_40px_rgba(0,0,0,0.3)]
+      "
+        >
+          {/* TEXT */}
+          <AnimatedSection>
+            <h3 className="text-lg md:text-2xl font-light">
+              Ready to grow your business?
+            </h3>
+          </AnimatedSection>
+
+          {/* BUTTON */}
+          <AnimatedSection>
+            <a
+              href="/request-support"
+              className="
+          px-6 py-2.5 
+          rounded-full
+          border border-white/80
+
+          text-sm md:text-base
+          font-medium
+
+          transition-all duration-700
+
+          hover:bg-white
+          hover:text-[#3f6fb5]
+        "
+            >
+              Request Support
+            </a>
+          </AnimatedSection>
         </div>
       </section>
     </main>

@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section className="relative bg-gradient-to-b from-[#0a1b33] via-[#0a1b33] to-[#103663] text-white overflow-hidden">
       {/* ===== CONTENT ===== */}
-      <div className="relative z-10 pt-24 pb-14 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 px-5 sm:px-6 text-center max-w-4xl mx-auto">
+      <div className="relative mt-4 z-10 pb-14 pt-[120px] sm:pt-[130px] md:pt-[140px] lg:pt-[150px] md:pb-20 px-5 sm:px-6 text-center max-w-4xl mx-auto">
         <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
           Your execution{" "}
           <span className="bg-[#4f8dc9] text-white px-3 py-1 inline-block rotate-2">
@@ -61,39 +61,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ===== MARQUEE (BACKGROUND) ===== */}
-      {/* <div className="relative w-full py-2 z-0 mb-0">
-        <div className="marquee-track flex whitespace-nowrap gap-20 text-white text-4xl sm:text-6xl md:text-8xl px-6">
-          <span>All Women. All Business.</span>
-          <span>One Standard. One Team.</span>
-
-          <span>All Women. All Business.</span>
-          <span>One Standard. One Team.</span>
-
-          <span>All Women. All Business.</span>
-          <span>One Standard. One Team.</span>
-        </div>
-      </div> */}
-
       <div className="relative w-full">
-        {/* <div className="relative overflow-hidden w-full ">
-          <div className="flex whitespace-nowrap gap-20 marquee-track text-4xl sm:text-6xl md:text-8xl px-6">
-            <div className="flex gap-20">
-              <span>All Women. All Business.</span>
-              <span>One Standard. One Team.</span>
-              <span>All Women. All Business.</span>
-              <span>One Standard. One Team.</span>
-            </div>
-
-            <div className="flex gap-20">
-              <span>All Women. All Business.</span>
-              <span>One Standard. One Team.</span>
-              <span>All Women. All Business.</span>
-              <span>One Standard. One Team.</span>
-            </div>
-          </div>
-        </div> */}
-        <div className="absolute top-[20%] sm:top-[8%] md:top-[10%] lg:top-[10%] left-0 w-full overflow-hidden z-0 text-4xl sm:text-6xl md:text-8xl px-6">
+        <div className="absolute top-[8%] sm:top-[8%] md:top-[10%] lg:top-[10%] left-0 w-full overflow-hidden z-0 text-4xl sm:text-6xl md:text-8xl px-6">
           <div className="flex whitespace-nowrap gap-20 marquee-track text-4xl sm:text-6xl md:text-8xl px-6">
             <div className="flex gap-20">
               <span>All Women. All Business.</span>
@@ -113,7 +82,7 @@ export default function Hero() {
 
         {/* ===== IMAGE ===== */}
 
-        <div className="relative z-0 h-[260px] sm:h-[320px] md:h-[420px] lg:h-[520px] flex items-end justify-center pointer-events-none -mt-6 sm:-mt-14 md:mt-0 -translate-y-6 sm:-translate-y-2 md:translate-y-0">
+        <div className="relative z-0 h-[200px] sm:h-[260px] md:h-[420px] lg:h-[520px] flex items-end justify-center pointer-events-none ">
           <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent pointer-events-none" />
 
           <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent z-20 pointer-events-none" />
@@ -123,10 +92,17 @@ export default function Hero() {
             src="/home/hero-banner-home.png"
             className="
             relative z-0
-            w-[140%] sm:w-[120%] md:w-[110%] lg:w-[100%]
-            max-w-none
-            object-contain
-            pointer-events-none
+
+    w-[140%]
+    sm:w-[120%]
+    md:w-[110%]
+    lg:w-[100%]
+    xl:w-[100%]
+    2xl:w-[55%]
+
+    max-w-none
+    object-contain
+    pointer-events-none
           "
           />
         </div>
