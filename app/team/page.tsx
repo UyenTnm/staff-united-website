@@ -1,6 +1,8 @@
+"use client";
 import AnimatedSection from "@/components/AnimatedSection";
 import Image from "next/image";
 import Link from "next/link";
+import React, { useState } from "react";
 
 export default function TeamPage() {
   const teamMembers = [
@@ -122,53 +124,65 @@ export default function TeamPage() {
 
         {/* TEAM GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {teamMembers.map((member, i) => (
-            <div
-              key={i}
-              className="group w-full max-w-[260px] sm:max-w-none mx-auto sm:mx-0 [perspective:1200px]"
-            >
+          {teamMembers.map((member, i) => {
+            const [flipped, setFlipped] = React.useState(false);
+            const [activeIndex, setActiveIndex] = React.useState<number | null>(
+              null,
+            );
+
+            return (
               <div
-                className="
-        relative w-full aspect-[3/4]
-        transition-transform duration-500
-        [transform-style:preserve-3d]
-        group-hover:[transform:rotateY(180deg)]
-        hover:shadow-xl cursor-pointer
-      "
+                key={i}
+                className="group w-full max-w-[260px] sm:max-w-none mx-auto sm:mx-0 [perspective:1200px]"
               >
-                {/* FRONT */}
-                <div className="absolute inset-0 bg-white rounded-lg shadow-md overflow-hidden flex flex-col [backface-visibility:hidden]">
-                  {/* IMAGE */}
-                  <div className="relative w-full aspect-[3/4] overflow-hidden bg-gray-50">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="object-cover object-top"
-                    />
+                <div
+                  onClick={() => setActiveIndex(activeIndex === i ? null : i)}
+                  className={`
+    relative w-full aspect-[3/4]
+    transition-transform duration-500
+    [transform-style:preserve-3d]
+    cursor-pointer
+    hover:shadow-xl
+
+    ${activeIndex === i ? "[transform:rotateY(180deg)]" : ""}
+    
+    lg:group-hover:[transform:rotateY(180deg)]
+  `}
+                >
+                  {/* FRONT */}
+                  <div className="absolute inset-0 bg-white rounded-lg shadow-md overflow-hidden flex flex-col [backface-visibility:hidden]">
+                    {/* IMAGE */}
+                    <div className="relative w-full aspect-[3/4] overflow-hidden bg-gray-50">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover object-top"
+                      />
+                    </div>
+
+                    {/* INFO */}
+                    <div className="p-4 text-center">
+                      <h3 className="text-[#0b1b33] font-semibold text-sm sm:text-base">
+                        {member.name}
+                      </h3>
+
+                      <p className="text-[#4f8fcb] text-xs sm:text-sm">
+                        {member.title}
+                      </p>
+                    </div>
                   </div>
 
-                  {/* INFO */}
-                  <div className="p-4 text-center">
-                    <h3 className="text-[#0b1b33] font-semibold text-sm sm:text-base">
-                      {member.name}
-                    </h3>
-
-                    <p className="text-[#4f8fcb] text-xs sm:text-sm">
-                      {member.title}
+                  {/* BACK */}
+                  <div className="absolute inset-0 bg-[#0b1b33] text-white rounded-lg shadow-md flex items-center justify-center p-4 text-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                    <p className="text-xs sm:text-sm leading-relaxed">
+                      {member.responsibility}
                     </p>
                   </div>
                 </div>
-
-                {/* BACK */}
-                <div className="absolute inset-0 bg-[#0b1b33] text-white rounded-lg shadow-md flex items-center justify-center p-4 text-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                  <p className="text-xs sm:text-sm leading-relaxed">
-                    {member.responsibility}
-                  </p>
-                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="text-center">

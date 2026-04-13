@@ -64,7 +64,7 @@ export default function Hero() {
       <div className="relative w-full">
         <div
           className="absolute top-[8%] sm:top-[8%] md:top-[10%] lg:top-[10%] left-0 w-full overflow-hidden z-0 
-text-xl sm:text-3xl md:text-4xl lg:text-5xl px-6 "
+text-xl sm:text-3xl md:text-4xl lg:text-5xl px-6"
         >
           <div className="flex whitespace-nowrap gap-20 marquee-track">
             <div className="flex gap-20">

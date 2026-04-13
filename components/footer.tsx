@@ -30,7 +30,7 @@ export default function Footer() {
             info@staffunitedgroup.com
           </a>
 
-          <a href="tel:+000000000" className="hover:text-white transition">
+          <a href="tel:+84329426269" className="hover:text-white transition">
             <span className="font-semibold text-white">Phone:</span> +84 32 942
             6269
           </a>
@@ -43,7 +43,7 @@ export default function Footer() {
         </div>
 
         {/* Social Icons */}
-        <div className="flex justify-center gap-6 mb-10">
+        <div className="flex justify-center gap-6 mb-5">
           {[
             {
               href: "https://www.linkedin.com/company/staff-united-group/",
@@ -77,23 +77,31 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* QR CONTACT */}
-        {/* <div className="flex flex-col items-center text-center mb-10">
-          <div className="bg-white p-3 rounded-lg shadow-md">
-            <Image
-              src="/qr-code.png"
-              alt="Scan to contact STAFF United"
-              width={110}
-              height={110}
+        {/* Google Review */}
+        {/* Google Reviews */}
+        {/* Google Reviews */}
+        <div className="flex justify-center mb-8">
+          <a
+            href="https://www.google.com/maps/place/STAFF+UNITED+COMPANY+LIMITED/@15.7295901,100.6036258,6z/data=!3m1!4b1!4m6!3m5!1s0x69843f99aa231b5b:0x8d8b77157a0423ee!8m2!3d15.7939252!4d105.9102332!16s%2Fg%2F11nb74df_k?entry=ttu&g_ep=EgoyMDI2MDQwOC4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            className="
+      flex items-center justify-center
+      transition-all duration-300
+      hover:scale-110
+      hover:drop-shadow-[0_10px_20px_rgba(0,0,0,0.4)]
+    "
+          >
+            <img
+              src="/footer/Google-Review-Logo.webp"
+              alt="Google Reviews"
+              className="
+        w-20 h-20 sm:w-24 sm:h-24
+        object-contain
+        transition-all duration-300
+      "
             />
-          </div>
-
-          <p className="text-sm text-white/70 mt-3">Scan to contact our team</p>
-
-          <p className="text-xs text-white/50 mt-1">
-            WhatsApp • Email • Location
-          </p>
-        </div> */}
+          </a>
+        </div>
 
         {/* Divider */}
         <div className="border-t border-white/10 mb-6" />
