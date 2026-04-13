@@ -2,9 +2,25 @@
 import AnimatedSection from "@/components/AnimatedSection";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export default function TeamPage() {
+  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        window.innerWidth < 1024 &&
+        gridRef.current &&
+        !gridRef.current.contains(e.target as Node)
+      ) {
+        setActiveIndex(null);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
   const teamMembers = [
     {
       name: "Yuko Furuta",
@@ -123,31 +139,35 @@ export default function TeamPage() {
         </div>
 
         {/* TEAM GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div
+          ref={gridRef}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
           {teamMembers.map((member, i) => {
-            const [flipped, setFlipped] = React.useState(false);
-            const [activeIndex, setActiveIndex] = React.useState<number | null>(
-              null,
-            );
-
             return (
               <div
                 key={i}
                 className="group w-full max-w-[260px] sm:max-w-none mx-auto sm:mx-0 [perspective:1200px]"
               >
                 <div
-                  onClick={() => setActiveIndex(activeIndex === i ? null : i)}
-                  className={`
-    relative w-full aspect-[3/4]
-    transition-transform duration-500
-    [transform-style:preserve-3d]
-    cursor-pointer
-    hover:shadow-xl
+                  onClick={(e) => {
+                    e.stopPropagation();
 
-    ${activeIndex === i ? "[transform:rotateY(180deg)]" : ""}
-    
-    lg:group-hover:[transform:rotateY(180deg)]
-  `}
+                    if (window.innerWidth < 1024) {
+                      setActiveIndex(activeIndex === i ? null : i);
+                    }
+                  }}
+                  className={`
+  relative w-full aspect-[3/4]
+  transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
+  [transform-style:preserve-3d]
+  cursor-pointer
+  hover:shadow-xl
+
+  ${activeIndex === i ? "[transform:rotateY(180deg)]" : ""}
+
+  lg:group-hover:[transform:rotateY(180deg)]
+`}
                 >
                   {/* FRONT */}
                   <div className="absolute inset-0 bg-white rounded-lg shadow-md overflow-hidden flex flex-col [backface-visibility:hidden]">
