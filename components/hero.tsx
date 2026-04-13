@@ -62,8 +62,11 @@ export default function Hero() {
       </div>
 
       <div className="relative w-full">
-        <div className="absolute top-[8%] sm:top-[8%] md:top-[10%] lg:top-[10%] left-0 w-full overflow-hidden z-0 text-4xl sm:text-6xl md:text-8xl px-6">
-          <div className="flex whitespace-nowrap gap-20 marquee-track text-4xl sm:text-6xl md:text-8xl px-6">
+        <div
+          className="absolute top-[8%] sm:top-[8%] md:top-[10%] lg:top-[10%] left-0 w-full overflow-hidden z-0 
+text-xl sm:text-3xl md:text-4xl lg:text-5xl px-6 "
+        >
+          <div className="flex whitespace-nowrap gap-20 marquee-track">
             <div className="flex gap-20">
               <span>All Women. All Business.</span>
               <span>One Standard. One Team.</span>
