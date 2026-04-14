@@ -6,11 +6,13 @@ import React, { useEffect, useRef, useState } from "react";
 
 export default function TeamPage() {
   const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
   const gridRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (
-        window.innerWidth < 1024 &&
+        window.matchMedia("(max-width: 1023px)").matches &&
         gridRef.current &&
         !gridRef.current.contains(e.target as Node)
       ) {
@@ -20,6 +22,15 @@ export default function TeamPage() {
 
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 1023px)");
+    setIsMobile(media.matches);
+
+    const listener = () => setIsMobile(media.matches);
+    media.addEventListener("change", listener);
+
+    return () => media.removeEventListener("change", listener);
   }, []);
   const teamMembers = [
     {
@@ -140,24 +151,31 @@ export default function TeamPage() {
         </div>
 
         {/* TEAM GRID */}
-<div
-  ref={gridRef}
-  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
->
-  {teamMembers.map((member, i) => (
-    <div
-      key={i}
-      className="group w-full max-w-[260px] sm:max-w-none mx-auto sm:mx-0 [perspective:1200px]"
-    >
-      <div
-        onClick={(e) => {
-          e.stopPropagation();
+        <div
+          ref={gridRef}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
+        >
+          {teamMembers.map((member, i) => (
+            <div
+              key={i}
+              className="group w-full max-w-[260px] sm:max-w-none mx-auto sm:mx-0 [perspective:1200px]"
+            >
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
 
-          if (window.innerWidth < 1024) {
-            setActiveIndex(activeIndex === i ? null : i);
-          }
-        }}
-        className={`
+                  if (window.matchMedia("(max-width: 1023px)").matches) {
+                    setActiveIndex((prev) => (prev === i ? null : i));
+                  }
+                }}
+                style={{
+                  transform:
+                    isMobile && activeIndex === i
+                      ? "rotateY(180deg)"
+                      : undefined,
+                }}
+                // onClick={() => alert("CLICK")}
+                className={`
           relative w-full aspect-[3/4]
           transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
           [transform-style:preserve-3d]
@@ -166,69 +184,67 @@ export default function TeamPage() {
           hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)]
           hover:-translate-y-1
 
-          ${activeIndex === i ? "[transform:rotateY(180deg)]" : ""}
 
           lg:group-hover:[transform:rotateY(180deg)]
         `}
-      >
-        {/* FRONT */}
-        <div
-          className="
+              >
+                {/* FRONT */}
+                <div
+                  className="
             absolute inset-0 
-            bg-white/90 backdrop-blur-sm
-            rounded-2xl 
-            shadow-[0_10px_30px_rgba(0,0,0,0.08)]
-            overflow-hidden flex flex-col
-            [backface-visibility:hidden]
+    bg-white/90 backdrop-blur-sm
+    rounded-2xl 
+    shadow-[0_10px_30px_rgba(0,0,0,0.08)]
+    overflow-hidden flex flex-col
+    [backface-visibility:hidden]
+    pointer-events-auto
           "
-        >
-          {/* IMAGE */}
-          <div className="relative w-full aspect-[3/4] overflow-hidden">
-            <Image
-              src={member.image}
-              alt={member.name}
-              fill
-              className="object-cover object-top group-hover:scale-105 transition duration-500"
-            />
+                >
+                  {/* IMAGE */}
+                  <div className="relative w-full aspect-[3/4] overflow-hidden">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover object-top group-hover:scale-105 transition duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />{" "}
+                  </div>
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-          </div>
+                  {/* INFO */}
+                  <div className="p-4 text-center space-y-1">
+                    <h3 className="text-[#0b1b33] font-semibold text-sm sm:text-base">
+                      {member.name}
+                    </h3>
 
-          {/* INFO */}
-          <div className="p-4 text-center space-y-1">
-            <h3 className="text-[#0b1b33] font-semibold text-sm sm:text-base">
-              {member.name}
-            </h3>
+                    <p className="text-[#4f8fcb] text-xs sm:text-sm font-medium">
+                      {member.title}
+                    </p>
+                  </div>
+                </div>
 
-            <p className="text-[#4f8fcb] text-xs sm:text-sm font-medium">
-              {member.title}
-            </p>
-          </div>
-        </div>
-
-        {/* BACK */}
-        <div
-          className="
+                {/* BACK */}
+                <div
+                  className="
             absolute inset-0 
-            bg-[#0b1b33]
-            text-white 
-            rounded-2xl
-            shadow-xl
-            flex items-center justify-center p-5 text-center
-            [transform:rotateY(180deg)]
-            [backface-visibility:hidden]
+    bg-[#0b1b33]
+    text-white 
+    rounded-2xl
+    shadow-xl
+    flex items-center justify-center p-5 text-center
+    [transform:rotateY(180deg)]
+    [backface-visibility:hidden]
+    pointer-events-none
           "
-        >
-          <p className="text-xs sm:text-sm leading-relaxed text-white/80">
-            {member.responsibility}
-          </p>
+                >
+                  <p className="text-xs sm:text-sm leading-relaxed text-white/80">
+                    {member.responsibility}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-    </div>
-  ))}
-</div>
-
-                  
 
         <div className="text-center pt-6">
           <Link
