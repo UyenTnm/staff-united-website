@@ -128,9 +128,9 @@ export default function Services() {
         <div className="relative z-10 max-w-6xl mx-auto px-6">
           {/* TITLE */}
           <div className="text-center mb-16 fade-up active">
-            <h2 className="text-3xl md:text-5xl text-[#4f8dc9] font-light">
+            <h1 className="text-3xl md:text-5xl text-[#4f8dc9] font-light">
               Discover <br /> Our Services
-            </h2>
+            </h1>
           </div>
 
           {/* CARDS */}

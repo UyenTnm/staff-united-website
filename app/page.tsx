@@ -154,10 +154,8 @@ export default function Home() {
               <div className="space-y-6">
                 {/* HEADING */}
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight text-[#0b1b33]">
-                  Built for{" "}
-                  <span className="text-[#4f8fcb]">
-                    Execution. Designed to Scale.{" "}
-                  </span>
+                  Built for <span className="text-[#4f8fcb]">Execution</span>.
+                  Designed to <span className="text-[#4f8fcb]">Scale</span>.
                 </h2>
 
                 {/* PARAGRAPH */}
@@ -188,8 +186,16 @@ export default function Home() {
                 {/* <div className="grid grid-cols-3 gap-10 pt-6"> */}
                 <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-10 pt-4 md:pt-6 text-center md:text-left">
                   {[
-                    { number: 15, suffix: "+", label: "Years Experience" },
-                    { number: 10, suffix: "+", label: "Projects Completed" },
+                    {
+                      number: 50,
+                      suffix: "+",
+                      label: "Years of Combined Experience",
+                    },
+                    {
+                      number: 5,
+                      suffix: "+",
+                      label: "Active Client Partnerships",
+                    },
                     {
                       number: 100,
                       suffix: "%",
@@ -209,8 +215,16 @@ export default function Home() {
                         {item.suffix}
                       </p>
 
-                      <p className="text-xs sm:text-sm text-[#0b1b33]/60 mt-1">
-                        {item.label}
+                      <p className="text-xs sm:text-sm text-[#0b1b33]/60 mt-1 leading-snug max-w-[140px] mx-auto md:mx-0">
+                        {item.label.split(" ").length > 3 ? (
+                          <>
+                            {item.label.split(" ").slice(0, -1).join(" ")}{" "}
+                            <br />
+                            {item.label.split(" ").slice(-1)}
+                          </>
+                        ) : (
+                          item.label
+                        )}
                       </p>
                     </div>
                   ))}

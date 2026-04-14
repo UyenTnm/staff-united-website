@@ -164,19 +164,44 @@ group-hover:duration-700
           <Link
             href="/request-support"
             className="
-            hidden xl:flex items-center gap-2
-            bg-[#4f8dc9]
-            text-[#0a1b33]
-            px-5 py-2
-            rounded-full
-            font-medium
-            hover:bg-[#103663]
-            hover:text-white
-            transition
-          "
+    group relative overflow-hidden
+    hidden xl:flex items-center gap-2
+
+    px-5 py-2 rounded-full
+    font-medium
+
+    bg-[#4f8dc9] text-[#0a1b33]
+
+    transition-all duration-700
+    hover:shadow-[0_0_20px_rgba(79,141,201,0.6)]
+    hover:bg-[#103663]
+    hover:text-white
+  "
           >
-            Request Support
-            <span className="rotate-[-45deg]">→</span>
+            {/* TEXT */}
+            <span className="relative z-10 flex items-center gap-2">
+              Request Support
+              <span
+                className="
+      rotate-[-45deg]
+      transition-transform duration-300
+      group-hover:rotate-0 group-hover:translate-x-1
+    "
+              >
+                →
+              </span>
+            </span>
+
+            {/* SHINE EFFECT */}
+            <span
+              className="
+    absolute inset-0
+    bg-gradient-to-r from-white/0 via-white/20 to-white/0
+    translate-x-[-120%]
+    group-hover:translate-x-[120%]
+    transition-transform duration-700
+  "
+            />
           </Link>
         </div>
 
