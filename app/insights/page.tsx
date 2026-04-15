@@ -45,7 +45,7 @@ export default async function InsightsPage({ searchParams }: Props) {
           </div>
 
           {/* GRID */}
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="grid md:grid-cols-2 gap-10 items-stretch">
             {displayPosts.map((post: any, index: number) => {
               const featuredImage = getImageUrl(post.thumbnail);
 
@@ -53,9 +53,9 @@ export default async function InsightsPage({ searchParams }: Props) {
                 <Link
                   key={post.id || `${post.slug}-${index}`}
                   href={`/insights/${post.slug}`}
-                  className="block group cursor-read"
+                  className="block group cursor-read h-full"
                 >
-                  <div className="group border border-[#0b1b33]/10 rounded-xl overflow-hidden bg-white transition-all duration-300 hover:border-[#4f8fcb]/40 hover:shadow-md hover:-translate-y-1">
+                  <div className="group border border-[#0b1b33]/10 rounded-xl overflow-hidden bg-white transition-all duration-300 hover:border-[#4f8fcb]/40 hover:shadow-md hover:-translate-y-1 h-full flex flex-col">
                     {featuredImage && (
                       <div className="relative w-full aspect-[3/2] overflow-hidden rounded-t-xl">
                         {/* IMAGE */}
@@ -71,34 +71,11 @@ export default async function InsightsPage({ searchParams }: Props) {
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0b1b33]/90 via-[#0b1b33]/50 to-transparent" />
 
                         {/* CONTENT ON IMAGE */}
-                        <div className="absolute inset-0 flex flex-col justify-between p-5">
-                          {/* TOP RIGHT LOGO */}
-                          {/* <div className="flex justify-end">
-                            <div className="relative w-[20px] h-[20px] opacity-80">
-                              <Image
-                                src="/staff-logo.webp"
-                                alt="Staff United"
-                                fill
-                                className="object-contain"
-                              />
-                            </div>
-                          </div> */}
-
-                          {/* TITLE + SUBTITLE */}
-                          {/* <div>
-                            <h3 className="text-white text-lg md:text-xl font-semibold leading-snug line-clamp-2">
-                              {post.title}
-                            </h3>
-
-                            <p className="text-[#4f8fcb] text-sm md:text-base mt-1 line-clamp-2">
-                              {post.subtitle}
-                            </p>
-                          </div> */}
-                        </div>
+                        <div className="absolute inset-0 flex flex-col justify-between p-5"></div>
                       </div>
                     )}
 
-                    <div className="p-6 flex flex-col h-full">
+                    <div className="p-6 flex flex-col flex-1">
                       <h3 className="text-xl font-semibold text-[#0b1b33] group-hover:text-[#4f8fcb] transition-colors line-clamp-2">
                         {post.title}
                       </h3>
