@@ -744,7 +744,7 @@ export default function Home() {
   tracking-wide
 "
               >
-                The Concept of an All Women
+                The Concept of an All Women {""}
                 <br className="block sm:hidden" />
                 Execution Team
               </h2>
