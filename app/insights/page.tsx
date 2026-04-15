@@ -1,8 +1,10 @@
 import Link from "next/link";
-import { insights } from "./data";
+// import { insights } from "./data";
+import { getInsights } from "@/lib/sanity";
 import AnimatedSection from "@/components/AnimatedSection";
 import Image from "next/image";
 import CursorRead from "@/components/CursorRead";
+import { getImageUrl, urlFor } from "@/lib/image";
 
 type Props = {
   searchParams: Promise<{
@@ -17,7 +19,7 @@ export default async function InsightsPage({ searchParams }: Props) {
   const page = Number(params?.page || 1);
   const category = params?.category ? Number(params.category) : undefined;
 
-  const displayPosts = insights;
+  const displayPosts = await getInsights();
   return (
     <main className="bg-white">
       <CursorRead />
@@ -45,9 +47,7 @@ export default async function InsightsPage({ searchParams }: Props) {
           {/* GRID */}
           <div className="grid md:grid-cols-2 gap-10">
             {displayPosts.map((post: any, index: number) => {
-              const featuredImage =
-                post?._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
-                post.thumbnail;
+              const featuredImage = getImageUrl(post.thumbnail);
 
               return (
                 <Link
@@ -57,32 +57,54 @@ export default async function InsightsPage({ searchParams }: Props) {
                 >
                   <div className="group border border-[#0b1b33]/10 rounded-xl overflow-hidden bg-white transition-all duration-300 hover:border-[#4f8fcb]/40 hover:shadow-md hover:-translate-y-1">
                     {featuredImage && (
-                      <div className="w-full h-full overflow-hidden bg-[#0b1b33]">
+                      <div className="relative w-full aspect-[3/2] overflow-hidden rounded-t-xl">
+                        {/* IMAGE */}
                         <Image
                           src={featuredImage}
-                          alt={post.title?.rendered || post.title}
-                          width={600}
-                          height={400}
-                          className="w-full h-full object-cover"
+                          alt={post.title}
+                          fill
+                          className="object-cover object-center transition-transform duration-700 group-hover:scale-105 group-hover:brightness-110"
                           sizes="(max-width: 768px) 100vw, 600px"
                         />
+
+                        {/* GRADIENT OVERLAY */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0b1b33]/90 via-[#0b1b33]/50 to-transparent" />
+
+                        {/* CONTENT ON IMAGE */}
+                        <div className="absolute inset-0 flex flex-col justify-between p-5">
+                          {/* TOP RIGHT LOGO */}
+                          {/* <div className="flex justify-end">
+                            <div className="relative w-[20px] h-[20px] opacity-80">
+                              <Image
+                                src="/staff-logo.webp"
+                                alt="Staff United"
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                          </div> */}
+
+                          {/* TITLE + SUBTITLE */}
+                          {/* <div>
+                            <h3 className="text-white text-lg md:text-xl font-semibold leading-snug line-clamp-2">
+                              {post.title}
+                            </h3>
+
+                            <p className="text-[#4f8fcb] text-sm md:text-base mt-1 line-clamp-2">
+                              {post.subtitle}
+                            </p>
+                          </div> */}
+                        </div>
                       </div>
                     )}
 
                     <div className="p-6 flex flex-col h-full">
-                      {/* TITLE */}
-                      <h3
-                        className="text-xl font-semibold text-[#0b1b33] group-hover:text-[#4f8fcb] transition-colors line-clamp-2"
-                        dangerouslySetInnerHTML={{
-                          __html: post.title?.rendered || post.title,
-                        }}
-                      />
+                      <h3 className="text-xl font-semibold text-[#0b1b33] group-hover:text-[#4f8fcb] transition-colors line-clamp-2">
+                        {post.title}
+                      </h3>
 
-                      {/* EXCERPT */}
                       <p className="text-[#0b1b33]/80 leading-relaxed line-clamp-2">
-                        {post.excerpt?.rendered
-                          ? post.excerpt.rendered.replace(/<[^>]+>/g, "")
-                          : post.description}
+                        {post.subtitle}
                       </p>
 
                       <div className="mt-auto pt-6">

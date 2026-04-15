@@ -1,7 +1,11 @@
 import { notFound } from "next/navigation";
-import { insights } from "../data";
+// import { insights } from "../data";
+import { client, getInsightBySlug } from "@/lib/sanity";
 import ReadingProgress from "@/components/ReadingProgress";
 import BackToTop from "@/components/BackToTop";
+import { PortableText } from "@portabletext/react";
+import Image from "next/image";
+import { getImageUrl } from "@/lib/image";
 
 type Props = {
   params: {
@@ -10,17 +14,59 @@ type Props = {
 };
 
 // STATIC ROUTES
-export function generateStaticParams() {
-  return insights.map((item) => ({
-    slug: item.slug,
-  }));
+// export function generateStaticParams() {
+//   return insights.map((item) => ({
+//     slug: item.slug,
+//   }));
+// }
+
+const components = {
+  types: {
+    image: ({ value }: any) => {
+      const imageUrl = getImageUrl(value);
+
+      return (
+        <div className="my-10">
+          <div className="rounded-xl overflow-hidden">
+            {imageUrl && (
+              <Image
+                src={imageUrl}
+                alt={value.alt || "Blog image"}
+                width={1200}
+                height={800}
+                className="w-full h-auto object-cover"
+              />
+            )}
+          </div>
+
+          {value.caption && (
+            <p className="text-sm text-center text-gray-500 mt-2">
+              {value.caption}
+            </p>
+          )}
+        </div>
+      );
+    },
+  },
+};
+
+export async function generateStaticParams() {
+  const slugs = await client.fetch(`
+    *[_type == "insight"]{ "slug": slug.current }
+  `);
+
+  return slugs;
 }
 
 // PAGE
-export default async function BlogDetail({ params }: Props) {
+export default async function BlogDetail({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const { slug } = await params;
 
-  const blog = insights.find((item) => item.slug === slug);
+  const blog = await getInsightBySlug(slug);
 
   if (!blog) return notFound();
 
@@ -69,19 +115,21 @@ export default async function BlogDetail({ params }: Props) {
         </div>
 
         {/* IMAGE */}
-        {blog.image && (
+        {blog.thumbnail && (
           <div className="rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
-            <img
-              src={blog.image}
+            <Image
+              src={getImageUrl(blog.thumbnail) as string}
               alt={blog.title}
-              className="w-full h-full object-cover"
+              width={1200}
+              height={800}
+              className="w-full h-auto object-cover"
             />
           </div>
         )}
 
         {/* CONTENT */}
         <div className="max-w-2xl mx-auto space-y-6 text-[#0b1b33]/80 text-[16px] md:text-[18px] leading-relaxed">
-          {Array.isArray(blog.content) &&
+          {/* {Array.isArray(blog.content) &&
             blog.content.map((block, i) => {
               if (block.type === "h2") {
                 return (
@@ -137,7 +185,8 @@ export default async function BlogDetail({ params }: Props) {
               }
 
               return null;
-            })}
+            })} */}
+          <PortableText value={blog.content} components={components} />
         </div>
       </article>
     </main>

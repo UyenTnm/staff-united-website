@@ -5,6 +5,7 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
+    domains: ["cdn.sanity.io"],
   },
 }
 
