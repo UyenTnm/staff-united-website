@@ -113,13 +113,18 @@ export async function generateMetadata({ params }: Props) {
 
   if (!blog) return {};
 
+  const mainTitle = blog.title.split("–")[0].trim();
+  const seoTitle = `${mainTitle} | Staff United`;
+
+  const seoDescription = blog.subtitle?.replace(/\n/g, " ");
+
   return {
-    title: blog.title,
-    description: blog.subtitle,
+    title: seoTitle,
+    description: seoDescription,
 
     openGraph: {
-      title: blog.title,
-      description: blog.subtitle,
+      title: seoTitle,
+      description: seoDescription,
       images: blog.thumbnail
         ? [
             {
@@ -134,9 +139,11 @@ export async function generateMetadata({ params }: Props) {
 
     twitter: {
       card: "summary_large_image",
-      title: blog.title,
-      description: blog.subtitle,
-      images: blog.thumbnail ? [getImageUrl(blog.thumbnail)] : [],
+      title: seoTitle,
+      description: seoDescription,
+      images: blog.thumbnail
+        ? [urlFor(blog.thumbnail).width(1200).height(630).url()]
+        : [],
     },
   };
 }
@@ -147,8 +154,6 @@ export default async function BlogDetail({
 }: {
   params: { slug: string };
 }) {
-  const { slug } = await params;
-
   const resolvedParams = await params;
 
   const blog = await getInsightBySlug(resolvedParams.slug);
