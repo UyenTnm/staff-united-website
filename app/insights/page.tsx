@@ -1,6 +1,6 @@
 import Link from "next/link";
 // import { insights } from "./data";
-import { getInsights } from "@/lib/sanity";
+import { getInsights, getInsightsCount } from "@/lib/sanity";
 import AnimatedSection from "@/components/AnimatedSection";
 import Image from "next/image";
 import CursorRead from "@/components/CursorRead";
@@ -19,7 +19,12 @@ export default async function InsightsPage({ searchParams }: Props) {
   const page = Number(params?.page || 1);
   const category = params?.category ? Number(params.category) : undefined;
 
-  const displayPosts = await getInsights();
+  const limit = 6;
+
+  const displayPosts = await getInsights(page, limit);
+  const total = await getInsightsCount();
+
+  const totalPages = Math.ceil(total / limit);
   return (
     <main className="bg-white">
       <CursorRead />
@@ -107,7 +112,29 @@ export default async function InsightsPage({ searchParams }: Props) {
           </div>
         )}
 
-        
+        <div className="flex justify-center gap-2 mt-10">
+          {Array.from({ length: totalPages }, (_, i) => {
+            const pageNumber = i + 1;
+
+            return (
+              <Link
+                key={pageNumber}
+                href={`/insights?page=${pageNumber}`}
+                className={`
+          px-4 py-2 rounded-md border text-sm
+          transition
+          ${
+            page === pageNumber
+              ? "bg-[#4f8fcb] text-white"
+              : "text-[#0b1b33] border-[#0b1b33]/10 hover:border-[#4f8fcb]"
+          }
+        `}
+              >
+                {pageNumber}
+              </Link>
+            );
+          })}
+        </div>
 
         <div className="text-center pt-6">
           <p

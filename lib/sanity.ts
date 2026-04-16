@@ -8,16 +8,22 @@ export const client = createClient({
   useCdn: true,
 });
 
-export async function getInsights() {
-  return client.fetch(`
-    *[_type == "insight"] | order(_createdAt desc) {
+export async function getInsights(page = 1, limit = 6) {
+  const start = (page - 1) * limit;
+  const end = start + limit;
+
+  return client.fetch(
+    `
+    *[_type == "insight"] | order(_createdAt desc) [$start...$end] {
       _id,
       title,
       "slug": slug.current,
       subtitle,
       thumbnail
     }
-  `);
+  `,
+    { start, end },
+  );
 }
 
 export async function getInsightBySlug(slug: string) {
@@ -47,4 +53,8 @@ const builder = createImageUrlBuilder(client);
 
 export function getImageUrl(source: any) {
   return builder.image(source);
+}
+
+export async function getInsightsCount() {
+  return client.fetch(`count(*[_type == "insight"])`);
 }

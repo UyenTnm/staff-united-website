@@ -7,6 +7,7 @@ import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import { getImageUrl, urlFor } from "@/lib/image";
 import Link from "next/link";
+import AnimatedSection from "@/components/AnimatedSection";
 
 type Props = {
   params: Promise<{
@@ -198,17 +199,19 @@ export default async function BlogDetail({
         </Link>
 
         {/* HEADER */}
-        <div className="space-y-6 text-center">
-          <h1 className="text-3xl md:text-5xl font-light tracking-tight text-[#0b1b33] leading-tight">
-            {blog.title}
-          </h1>
+        <AnimatedSection direction="up" delay={0}>
+          <div className="space-y-6 text-center">
+            <h1 className="text-3xl md:text-5xl font-light tracking-tight text-[#0b1b33] leading-tight">
+              {blog.title}
+            </h1>
 
-          {blog.subtitle && (
-            <p className="text-lg md:text-xl text-[#0b1b33] leading-relaxed max-w-2xl mx-auto">
-              {blog.subtitle}
-            </p>
-          )}
-        </div>
+            {blog.subtitle && (
+              <p className="text-lg md:text-xl text-[#0b1b33] leading-relaxed max-w-2xl mx-auto">
+                {blog.subtitle}
+              </p>
+            )}
+          </div>
+        </AnimatedSection>
 
         {/* IMAGE */}
         {blog.thumbnail && (
