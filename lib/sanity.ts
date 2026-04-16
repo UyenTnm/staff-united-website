@@ -1,4 +1,5 @@
 import { createClient } from "@sanity/client";
+import { createImageUrlBuilder } from "@sanity/image-url";
 
 export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
@@ -40,4 +41,10 @@ export async function generateStaticParams() {
   );
 
   return slugs;
+}
+
+const builder = createImageUrlBuilder(client);
+
+export function getImageUrl(source: any) {
+  return builder.image(source);
 }

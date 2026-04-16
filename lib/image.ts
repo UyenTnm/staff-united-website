@@ -13,8 +13,9 @@ export function getImageUrl(source: any) {
   return urlFor(source)
     .width(800)
     .height(533)
+    .dpr(2)
     .fit("crop")
-    .crop("top")
+    .crop("entropy")
     .auto("format")
     .quality(80)
     .url();

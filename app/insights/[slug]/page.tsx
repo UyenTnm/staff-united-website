@@ -5,7 +5,7 @@ import ReadingProgress from "@/components/ReadingProgress";
 import BackToTop from "@/components/BackToTop";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
-import { getImageUrl } from "@/lib/image";
+import { getImageUrl, urlFor } from "@/lib/image";
 
 type Props = {
   params: Promise<{
@@ -123,7 +123,7 @@ export async function generateMetadata({ params }: Props) {
       images: blog.thumbnail
         ? [
             {
-              url: getImageUrl(blog.thumbnail),
+              url: urlFor(blog.thumbnail).width(1200).height(630).url(),
               width: 1200,
               height: 630,
               alt: blog.title,
