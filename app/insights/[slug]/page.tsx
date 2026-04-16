@@ -6,6 +6,7 @@ import BackToTop from "@/components/BackToTop";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import { getImageUrl, urlFor } from "@/lib/image";
+import Link from "next/link";
 
 type Props = {
   params: Promise<{
@@ -174,7 +175,7 @@ export default async function BlogDetail({
         className="max-w-3xl mx-auto px-6 pt-28 md:pt-32 lg:pt-36 pb-16 space-y-12"
       >
         {/* BACK */}
-        <a
+        <Link
           href="/insights"
           className="
           group inline-flex items-center gap-2
@@ -194,7 +195,7 @@ export default async function BlogDetail({
             ←
           </span>
           Back to Insights
-        </a>
+        </Link>
 
         {/* HEADER */}
         <div className="space-y-6 text-center">
