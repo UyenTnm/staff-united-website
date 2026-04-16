@@ -8,17 +8,10 @@ import Image from "next/image";
 import { getImageUrl } from "@/lib/image";
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
-
-// STATIC ROUTES
-// export function generateStaticParams() {
-//   return insights.map((item) => ({
-//     slug: item.slug,
-//   }));
-// }
 
 const components = {
   types: {
@@ -48,6 +41,62 @@ const components = {
       );
     },
   },
+
+  marks: {
+    strong: ({ children }: any) => (
+      <span className="font-semibold text-[#0b1b33]">{children}</span>
+    ),
+
+    underline: ({ children }: any) => (
+      <span className="underline underline-offset-4">{children}</span>
+    ),
+  },
+
+  block: {
+    normal: ({ children }: any) => (
+      <p className="text-[16px] md:text-[18px] leading-7 text-[#0b1b33]/80 mb-4">
+        {children}
+      </p>
+    ),
+
+    h2: ({ children }: any) => (
+      <h2 className="text-2xl md:text-3xl font-semibold text-[#0b1b33] mt-10 mb-4">
+        {children}
+      </h2>
+    ),
+
+    h3: ({ children }: any) => (
+      <h3 className="text-xl font-semibold text-[#0b1b33] mt-6 mb-2">
+        {children}
+      </h3>
+    ),
+
+    blockquote: ({ children }: any) => (
+      <blockquote className="border-l-4 border-[#0b1b33] pl-4 italic text-[#0b1b33]/70 my-6">
+        {children}
+      </blockquote>
+    ),
+  },
+
+  list: {
+    bullet: ({ children }: any) => (
+      <ul className="list-disc pl-6 space-y-2 my-4">{children}</ul>
+    ),
+
+    number: ({ children }: any) => (
+      <ol className="list-decimal pl-6 space-y-2 my-4">{children}</ol>
+    ),
+  },
+
+  listItem: {
+    bullet: ({ children }: any) => (
+      <li className="leading-7 text-[#0b1b33]/80">{children}</li>
+    ),
+
+    number: ({ children }: any) => (
+      <li className="leading-7 text-[#0b1b33]/80">{children}</li>
+    ),
+  },
 };
 
 export async function generateStaticParams() {
@@ -58,6 +107,40 @@ export async function generateStaticParams() {
   return slugs;
 }
 
+export async function generateMetadata({ params }: Props) {
+  const resolvedParams = await params;
+  const blog = await getInsightBySlug(resolvedParams.slug);
+
+  if (!blog) return {};
+
+  return {
+    title: blog.title,
+    description: blog.subtitle,
+
+    openGraph: {
+      title: blog.title,
+      description: blog.subtitle,
+      images: blog.thumbnail
+        ? [
+            {
+              url: getImageUrl(blog.thumbnail),
+              width: 1200,
+              height: 630,
+              alt: blog.title,
+            },
+          ]
+        : [],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: blog.title,
+      description: blog.subtitle,
+      images: blog.thumbnail ? [getImageUrl(blog.thumbnail)] : [],
+    },
+  };
+}
+
 // PAGE
 export default async function BlogDetail({
   params,
@@ -66,7 +149,9 @@ export default async function BlogDetail({
 }) {
   const { slug } = await params;
 
-  const blog = await getInsightBySlug(slug);
+  const resolvedParams = await params;
+
+  const blog = await getInsightBySlug(resolvedParams.slug);
 
   if (!blog) return notFound();
 
@@ -108,7 +193,7 @@ export default async function BlogDetail({
           </h1>
 
           {blog.subtitle && (
-            <p className="text-lg md:text-xl text-[#0b1b33]/70 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-[#0b1b33] leading-relaxed max-w-2xl mx-auto">
               {blog.subtitle}
             </p>
           )}
@@ -128,64 +213,7 @@ export default async function BlogDetail({
         )}
 
         {/* CONTENT */}
-        <div className="max-w-2xl mx-auto space-y-6 text-[#0b1b33]/80 text-[16px] md:text-[18px] leading-relaxed">
-          {/* {Array.isArray(blog.content) &&
-            blog.content.map((block, i) => {
-              if (block.type === "h2") {
-                return (
-                  <h2
-                    key={i}
-                    className="text-xl md:text-2xl font-semibold text-[#0b1b33] pt-4"
-                  >
-                    {block.value}
-                  </h2>
-                );
-              }
-
-              if (block.type === "h3") {
-                return (
-                  <h3
-                    key={i}
-                    className="text-lg md:text-xl font-semibold text-[#0b1b33] pt-4"
-                  >
-                    {block.value}
-                  </h3>
-                );
-              }
-
-              if (block.type === "text") {
-                return (
-                  <p
-                    key={i}
-                    className="
-                    leading-7
-                    text-justify
-                    hyphens-auto
-                  "
-                  >
-                    {block.value}
-                  </p>
-                );
-              }
-
-              if (block.type === "highlight") {
-                return (
-                  <p
-                    key={i}
-                    className="
-                    text-lg md:text-xl
-                    font-medium
-                    text-[#4f8fcb]
-                    pt-8
-                  "
-                  >
-                    {block.value}
-                  </p>
-                );
-              }
-
-              return null;
-            })} */}
+        <div className="max-w-2xl mx-auto space-y-4 text-[#0b1b33] text-[16px] md:text-[18px] leading-relaxed">
           <PortableText value={blog.content} components={components} />
         </div>
       </article>
