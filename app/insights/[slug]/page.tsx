@@ -128,7 +128,12 @@ export async function generateMetadata({ params }: Props) {
       images: blog.thumbnail
         ? [
             {
-              url: urlFor(blog.thumbnail).width(1200).height(630).url(),
+              url: urlFor(blog.thumbnail)
+                .width(1200)
+                .height(630)
+                .auto("format")
+                .quality(70)
+                .url(),
               width: 1200,
               height: 630,
               alt: blog.title,
