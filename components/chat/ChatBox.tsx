@@ -409,7 +409,7 @@ export default function ChatBox() {
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
               <div className="flex flex-col">
                 <span className="text-sm font-semibold">
-                  Staff United Support
+                  STAFF UNITED SUPPORT
                 </span>
                 <span className="text-xs text-gray-400">
                   Typically replies in a few minutes
