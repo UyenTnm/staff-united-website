@@ -27,6 +27,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useState } from "react";
 import Link from "next/link";
+import ChatBox from "@/components/chat/ChatBox";
 
 export default function Home() {
   const testimonials = [
@@ -107,59 +108,60 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-white w-full">
-      {/* SECTION 1 — HERO (VISUAL ENHANCED) */}
+    <>
+      <main className="bg-white w-full">
+        {/* SECTION 1 — HERO (VISUAL ENHANCED) */}
 
-      <AnimatedSection>
-        <Hero />
-      </AnimatedSection>
+        <AnimatedSection>
+          <Hero />
+        </AnimatedSection>
 
-      {/* SECTION 2 — POSITIONING (FULL GREY) */}
-      <AnimatedSection>
-        <section className="bg-[#f3f4f6] py-16 sm:py-20 md:py-32" ref={ref}>
-          <div className="max-w-8xl mx-auto px-6">
-            {/* MAIN GRID */}
-            <div className="grid xl:grid-cols-2 gap-10 md:gap-20 items-center">
-              {/* IMAGE  */}
-              <div className="grid grid-cols-[1.5fr_1fr] gap-4 items-center">
-                {/* COLUMN 1 - BIG IMAGE */}
-                <div className="rounded-[10px] overflow-hidden group h-full">
-                  <img
-                    src="../home/design-to-scale-1.jpeg"
-                    className="w-full h-full object-cover object-[center_top] transition duration-700 ease-out group-hover:scale-[1.03]"
-                  />
-                </div>
-
-                {/* COLUMN 2 - 2 SMALL IMAGES */}
-                <div className="grid grid-rows-2 gap-4 h-full">
-                  {/* IMAGE 2 */}
-                  <div className="rounded-[10px] overflow-hidden group">
+        {/* SECTION 2 — POSITIONING (FULL GREY) */}
+        <AnimatedSection>
+          <section className="bg-[#f3f4f6] py-16 sm:py-20 md:py-32" ref={ref}>
+            <div className="max-w-8xl mx-auto px-6">
+              {/* MAIN GRID */}
+              <div className="grid xl:grid-cols-2 gap-10 md:gap-20 items-center">
+                {/* IMAGE  */}
+                <div className="grid grid-cols-[1.5fr_1fr] gap-4 items-center">
+                  {/* COLUMN 1 - BIG IMAGE */}
+                  <div className="rounded-[10px] overflow-hidden group h-full">
                     <img
-                      src="../home/design-to-scale-2.jpeg"
-                      className="w-full h-full object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
+                      src="../home/design-to-scale-1.jpeg"
+                      className="w-full h-full object-cover object-[center_top] transition duration-700 ease-out group-hover:scale-[1.03]"
                     />
                   </div>
 
-                  {/* IMAGE 3 */}
-                  <div className="rounded-[10px] overflow-hidden group">
-                    <img
-                      src="../home/design-to-scale-3.jpeg"
-                      className="w-full h-full object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
-                    />
+                  {/* COLUMN 2 - 2 SMALL IMAGES */}
+                  <div className="grid grid-rows-2 gap-4 h-full">
+                    {/* IMAGE 2 */}
+                    <div className="rounded-[10px] overflow-hidden group">
+                      <img
+                        src="../home/design-to-scale-2.jpeg"
+                        className="w-full h-full object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
+                      />
+                    </div>
+
+                    {/* IMAGE 3 */}
+                    <div className="rounded-[10px] overflow-hidden group">
+                      <img
+                        src="../home/design-to-scale-3.jpeg"
+                        className="w-full h-full object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* RIGHT CONTENT */}
-              <div className="space-y-6">
-                {/* HEADING */}
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight text-[#0b1b33]">
-                  Built for <span className="text-[#4f8fcb]">Execution</span>.
-                  Designed to <span className="text-[#4f8fcb]">Scale</span>.
-                </h2>
+                {/* RIGHT CONTENT */}
+                <div className="space-y-6">
+                  {/* HEADING */}
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight text-[#0b1b33]">
+                    Built for <span className="text-[#4f8fcb]">Execution</span>.
+                    Designed to <span className="text-[#4f8fcb]">Scale</span>.
+                  </h2>
 
-                {/* PARAGRAPH */}
-                {/* <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px] max-w-lg">
+                  {/* PARAGRAPH */}
+                  {/* <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px] max-w-lg">
                   STAFF United integrates directly into your operations,
                   delivering structured offshore execution across administrative
                   support, operations, and core business functions. <br />
@@ -167,80 +169,80 @@ export default function Home() {
                   and shared accountability - ensuring consistent, high-quality
                   outcomes as your business grows.
                 </p> */}
-                <div className="space-y-3 sm:space-y-4 w-full">
-                  <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px]  md:text-[17px]">
-                    STAFF United integrates directly into your operations,
-                    delivering structured offshore execution across
-                    administrative support, operations, and core business
-                    functions.
-                  </p>
+                  <div className="space-y-3 sm:space-y-4 w-full">
+                    <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px]  md:text-[17px]">
+                      STAFF United integrates directly into your operations,
+                      delivering structured offshore execution across
+                      administrative support, operations, and core business
+                      functions.
+                    </p>
 
-                  <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px] md:text-[17px]">
-                    Our work is guided by clear standards, disciplined
-                    workflows, and shared accountability - ensuring consistent,
-                    high-quality outcomes as your business grows.
-                  </p>
-                </div>
+                    <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px] md:text-[17px]">
+                      Our work is guided by clear standards, disciplined
+                      workflows, and shared accountability - ensuring
+                      consistent, high-quality outcomes as your business grows.
+                    </p>
+                  </div>
 
-                {/* STATS */}
-                {/* <div className="grid grid-cols-3 gap-10 pt-6"> */}
-                <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-10 pt-4 md:pt-6 text-center md:text-left">
-                  {[
-                    {
-                      number: 50,
-                      suffix: "+",
-                      label: "Years of Combined Experience",
-                    },
-                    {
-                      number: 5,
-                      suffix: "+",
-                      label: "Active Client Partnerships",
-                    },
-                    {
-                      number: 100,
-                      suffix: "%",
-                      label: "Client Satisfaction",
-                    },
-                  ].map((item, i) => (
-                    <div
-                      key={i}
-                      className="opacity-0 animate-fadeUp"
-                      style={{
-                        animationDelay: `${i * 0.2}s`,
-                        animationFillMode: "forwards",
-                      }}
-                    >
-                      <p className="text-2xl sm:text-3xl md:text-5xl font-semibold text-[#0b1b33]">
-                        <CountUp end={item.number} start={inView} />
-                        {item.suffix}
-                      </p>
+                  {/* STATS */}
+                  {/* <div className="grid grid-cols-3 gap-10 pt-6"> */}
+                  <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-10 pt-4 md:pt-6 text-center md:text-left">
+                    {[
+                      {
+                        number: 50,
+                        suffix: "+",
+                        label: "Years of Combined Experience",
+                      },
+                      {
+                        number: 5,
+                        suffix: "+",
+                        label: "Active Client Partnerships",
+                      },
+                      {
+                        number: 100,
+                        suffix: "%",
+                        label: "Client Satisfaction",
+                      },
+                    ].map((item, i) => (
+                      <div
+                        key={i}
+                        className="opacity-0 animate-fadeUp"
+                        style={{
+                          animationDelay: `${i * 0.2}s`,
+                          animationFillMode: "forwards",
+                        }}
+                      >
+                        <p className="text-2xl sm:text-3xl md:text-5xl font-semibold text-[#0b1b33]">
+                          <CountUp end={item.number} start={inView} />
+                          {item.suffix}
+                        </p>
 
-                      <p className="text-xs sm:text-sm text-[#0b1b33]/60 mt-1 leading-snug max-w-[140px] mx-auto md:mx-0">
-                        {item.label.split(" ").length > 3 ? (
-                          <>
-                            {item.label.split(" ").slice(0, -1).join(" ")}{" "}
-                            <br />
-                            {item.label.split(" ").slice(-1)}
-                          </>
-                        ) : (
-                          item.label
-                        )}
-                      </p>
-                    </div>
-                  ))}
+                        <p className="text-xs sm:text-sm text-[#0b1b33]/60 mt-1 leading-snug max-w-[140px] mx-auto md:mx-0">
+                          {item.label.split(" ").length > 3 ? (
+                            <>
+                              {item.label.split(" ").slice(0, -1).join(" ")}{" "}
+                              <br />
+                              {item.label.split(" ").slice(-1)}
+                            </>
+                          ) : (
+                            item.label
+                          )}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-      </AnimatedSection>
+          </section>
+        </AnimatedSection>
 
-      {/* SECTION 4 — WHAT WE DELIVER (WHITE) */}
-      <AnimatedSection>
-        <section className="bg-white py-16 sm:py-20 md:py-32">
-          <div className="max-w-8xl mx-auto px-5 md:px-8 xl:px-12">
-            <div
-              className="
+        {/* SECTION 4 — WHAT WE DELIVER (WHITE) */}
+        <AnimatedSection>
+          <section className="bg-white py-16 sm:py-20 md:py-32">
+            <div className="max-w-8xl mx-auto px-5 md:px-8 xl:px-12">
+              <div
+                className="
       grid fade-up active
       grid-cols-1
       lg:grid-cols-[auto_1fr_auto]
@@ -249,16 +251,16 @@ export default function Home() {
       gap-x-10 gap-y-6
       text-center lg:text-left
     "
-            >
-              {/* SERVICES */}
-              <div
-                className="
+              >
+                {/* SERVICES */}
+                <div
+                  className="
     lg:col-start-1 lg:row-start-1
     flex justify-center lg:block
   "
-              >
-                <span
-                  className="
+                >
+                  <span
+                    className="
       inline-block
       text-[11px] sm:text-xs
       px-4 py-1.5
@@ -273,14 +275,14 @@ export default function Home() {
       border border-[#0b1b33]/10
       shadow-[0_4px_20px_rgba(79,143,203,0.15)]
     "
-                >
-                  SERVICES
-                </span>
-              </div>
+                  >
+                    SERVICES
+                  </span>
+                </div>
 
-              {/* H2 */}
-              <h2
-                className="
+                {/* H2 */}
+                <h2
+                  className="
         lg:col-start-2 lg:row-start-1
         text-2xl sm:text-3xl md:text-4xl lg:text-5xl
         font-semibold
@@ -290,13 +292,13 @@ export default function Home() {
         mx-auto lg:mx-0
         max-w-2xl
       "
-              >
-                Structured Offshore Support for Growing Businesses
-              </h2>
+                >
+                  Structured Offshore Support for Growing Businesses
+                </h2>
 
-              {/* PARAGRAPH */}
-              <p
-                className="
+                {/* PARAGRAPH */}
+                <p
+                  className="
         lg:col-start-2 lg:row-start-2
         text-[#0b1b33]
         leading-7
@@ -305,23 +307,23 @@ export default function Home() {
         mx-auto lg:mx-0
         max-w-xl
       "
-              >
-                We provide reliable support across finance, administration,
-                customer operations, and marketing execution — so you can focus
-                on growth.
-              </p>
+                >
+                  We provide reliable support across finance, administration,
+                  customer operations, and marketing execution — so you can
+                  focus on growth.
+                </p>
 
-              {/* BUTTON */}
-              <div
-                className="
+                {/* BUTTON */}
+                <div
+                  className="
         lg:col-start-3 lg:row-start-3
         flex justify-center lg:justify-end
         mt-2 lg:mt-0
       "
-              >
-                <a
-                  href="/services"
-                  className="
+                >
+                  <a
+                    href="/services"
+                    className="
           group
           inline-flex items-center gap-2
           px-5 sm:px-6 py-2.5 sm:py-3
@@ -335,54 +337,54 @@ export default function Home() {
           hover:bg-[#103663]
           hover:text-white
         "
-                >
-                  VIEW ALL SERVICES
-                  <span
-                    className="
+                  >
+                    VIEW ALL SERVICES
+                    <span
+                      className="
             rotate-[-45deg]
             transition-transform duration-700 ease-out
             group-hover:rotate-0
           "
-                  >
-                    →
-                  </span>
-                </a>
+                    >
+                      →
+                    </span>
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* SERVICES GRID */}
-          <div className="grid sm:grid-cols-2 gap-6 mt-12 max-w-8xl mx-auto px-6">
-            {[
-              {
-                title: "Finance & Bookkeeping Support",
-                desc: "Reliable financial operations support to keep your books accurate, organized, and up to date.",
-                icon: "💰",
-                href: "/services",
-              },
-              {
-                title: "Executive Admin & Business Support",
-                desc: "Day-to-day operational and administrative support to help founders and teams stay focused on growth.",
-                icon: "📋",
-                href: "/services",
-              },
-              {
-                title: "Social Marketing & Sales Support",
-                desc: "Execution-focused support to keep your marketing and sales processes running consistently.",
-                icon: "📢",
-                href: "/services",
-              },
-              {
-                title: "Customer Support & Back-Office Operations",
-                desc: "Consistent, professional support for your customers and internal processes.",
-                icon: "🗂️",
-                href: "/services",
-              },
-            ].map((item, i) => (
-              <a
-                href={item.href}
-                key={i}
-                className="
+            {/* SERVICES GRID */}
+            <div className="grid sm:grid-cols-2 gap-6 mt-12 max-w-8xl mx-auto px-6">
+              {[
+                {
+                  title: "Finance & Bookkeeping Support",
+                  desc: "Reliable financial operations support to keep your books accurate, organized, and up to date.",
+                  icon: "💰",
+                  href: "/services",
+                },
+                {
+                  title: "Executive Admin & Business Support",
+                  desc: "Day-to-day operational and administrative support to help founders and teams stay focused on growth.",
+                  icon: "📋",
+                  href: "/services",
+                },
+                {
+                  title: "Social Marketing & Sales Support",
+                  desc: "Execution-focused support to keep your marketing and sales processes running consistently.",
+                  icon: "📢",
+                  href: "/services",
+                },
+                {
+                  title: "Customer Support & Back-Office Operations",
+                  desc: "Consistent, professional support for your customers and internal processes.",
+                  icon: "🗂️",
+                  href: "/services",
+                },
+              ].map((item, i) => (
+                <a
+                  href={item.href}
+                  key={i}
+                  className="
         group slide-left active
         rounded-2xl
         p-6 sm:p-8
@@ -394,66 +396,66 @@ export default function Home() {
         hover:border-[#4f8fcb]/40
         hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)] cursor-pointer
       "
-              >
-                {/* ICON */}
-                <div
-                  className="
+                >
+                  {/* ICON */}
+                  <div
+                    className="
         w-10 h-10
         rounded-lg
         bg-[#4f8fcb]/10
         flex items-center justify-center
         mb-6
       "
-                >
-                  <span className="text-[#4f8fcb] text-lg">{item.icon}</span>
-                </div>
+                  >
+                    <span className="text-[#4f8fcb] text-lg">{item.icon}</span>
+                  </div>
 
-                {/* TITLE */}
-                <h3
-                  className="
+                  {/* TITLE */}
+                  <h3
+                    className="
         text-lg sm:text-xl
         font-semibold
         text-[#0b1b33]
         transition-colors
       "
-                >
-                  {item.title}
-                </h3>
+                  >
+                    {item.title}
+                  </h3>
 
-                {/* DESCRIPTION */}
-                <p
-                  className="
+                  {/* DESCRIPTION */}
+                  <p
+                    className="
         text-[#0b1b33]
         mt-3
         text-base
         leading-relaxed
       "
-                >
-                  {item.desc}
-                </p>
+                  >
+                    {item.desc}
+                  </p>
 
-                {/* CTA */}
-                {/* <div className="mt-6 text-sm font-medium flex items-center gap-2 text-[#4f8dc9]/70 group-hover:text-[#4f8fcb] transition-colors">
+                  {/* CTA */}
+                  {/* <div className="mt-6 text-sm font-medium flex items-center gap-2 text-[#4f8dc9]/70 group-hover:text-[#4f8fcb] transition-colors">
                   Learn More
                   <span className="rotate-[-45deg]">→</span>
                 </div> */}
 
-                <div className="mt-6 flex items-center gap-2.5 ">
-                  {/* TEXT */}
-                  <span
-                    className="
+                  <div className="mt-6 flex items-center gap-2.5 ">
+                    {/* TEXT */}
+                    <span
+                      className="
     text-xs tracking-wider font-medium uppercase
     text-[#0b1b33]
     transition-colors duration-700
     group-hover:text-[#4f8fcb]
   "
-                  >
-                    LEARN MORE
-                  </span>
+                    >
+                      LEARN MORE
+                    </span>
 
-                  {/* ICON */}
-                  <div
-                    className="
+                    {/* ICON */}
+                    <div
+                      className="
     w-7 h-7 rounded-full
     border border-[#0b1b33]/30
     text-[#0b1b33]
@@ -466,8 +468,8 @@ export default function Home() {
     group-hover:border-[#4f8fcb]
     group-hover:text-white
   "
-                  >
-                    {/* <span
+                    >
+                      {/* <span
                       className="
       flex items-center justify-center
       leading-none
@@ -480,29 +482,29 @@ export default function Home() {
                       →
                     </span> */}
 
-                    <ArrowUpRight
-                      size={14}
-                      className="
+                      <ArrowUpRight
+                        size={14}
+                        className="
     transition-transform duration-300
     -rotate-95 group-hover:rotate-45
   "
-                    />
+                      />
+                    </div>
                   </div>
-                </div>
-              </a>
-            ))}
-          </div>
-        </section>
-      </AnimatedSection>
+                </a>
+              ))}
+            </div>
+          </section>
+        </AnimatedSection>
 
-      {/* SECTION 5 — HOW CLIENTS WORK WITH US (LIGHT GREY) ->> BRANDS COLLABORATIONS */}
-      <AnimatedSection>
-        <section className="bg-gradient-to-b from-[#0a1b33] via-[#0a1b33] to-[#103663] py-24 text-white overflow-hidden">
-          <div className="max-w-8xl mx-auto px-6 space-y-16">
-            {/* HEADER */}
-            <div className="text-center space-y-4 fade-up active">
-              <span
-                className="
+        {/* SECTION 5 — HOW CLIENTS WORK WITH US (LIGHT GREY) ->> BRANDS COLLABORATIONS */}
+        <AnimatedSection>
+          <section className="bg-gradient-to-b from-[#0a1b33] via-[#0a1b33] to-[#103663] py-24 text-white overflow-hidden">
+            <div className="max-w-8xl mx-auto px-6 space-y-16">
+              {/* HEADER */}
+              <div className="text-center space-y-4 fade-up active">
+                <span
+                  className="
           inline-block
           text-xs px-4 py-1.5 font-semibold
           rounded-full
@@ -510,33 +512,33 @@ export default function Home() {
           border border-white/10
           text-[#4f8fcb]
         "
-              >
-                BRANDS COLLABORATIONS
-              </span>
+                >
+                  BRANDS COLLABORATIONS
+                </span>
 
-              <h2 className="text-3xl md:text-5xl font-semibold">
-                Brands that trust us
-              </h2>
-            </div>
+                <h2 className="text-3xl md:text-5xl font-semibold">
+                  Brands that trust us
+                </h2>
+              </div>
 
-            {/* LOGO MARQUEE */}
-            <div className="relative overflow-hidden">
-              <div className="flex gap-6 marquee-track">
-                {[...Array(2)].map((_, loop) => (
-                  <div key={loop} className="flex gap-6">
-                    {[
-                      "bloom-spa.png",
-                      "color-studio.png",
-                      "masx.jpg",
-                      "innpro.png",
-                      "masx-logo.png",
-                      "modern-architecture.png",
-                      "SANITIZE-SQUAD-Logo.png",
-                      "true-flow.png",
-                    ].map((logo, i) => (
-                      <div
-                        key={i}
-                        className="
+              {/* LOGO MARQUEE */}
+              <div className="relative overflow-hidden">
+                <div className="flex gap-6 marquee-track">
+                  {[...Array(2)].map((_, loop) => (
+                    <div key={loop} className="flex gap-6">
+                      {[
+                        "bloom-spa.png",
+                        "color-studio.png",
+                        "masx.jpg",
+                        "innpro.png",
+                        "masx-logo.png",
+                        "modern-architecture.png",
+                        "SANITIZE-SQUAD-Logo.png",
+                        "true-flow.png",
+                      ].map((logo, i) => (
+                        <div
+                          key={i}
+                          className="
                     flex items-center justify-center
                     px-8 py-4
                     rounded-2xl
@@ -545,84 +547,88 @@ export default function Home() {
                     backdrop-blur-md
                     min-w-[160px]
                   "
-                      >
-                        <img
-                          src={`/logo-client/${logo}`}
-                          className="h-8 sm:h-10 max-w-[120px] object-contain"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* TESTIMONIALS */}
-            <div className="relative h-[400px] overflow-hidden">
-              {/* WRAPPER CONTROL WIDTH */}
-              <div className="max-w-2xl mx-auto px-4 sm:px-0">
-                <div className="testimonial-wrapper">
-                  <div className="flex flex-col testimonial-scroll">
-                    {/* <div className="flex flex-col gap-6 testimonial-scroll"> */}
-                    {[...testimonials, ...testimonials].map((item, i) => (
-                      <div
-                        key={i}
-                        className="p-6 mb-6 rounded-2xl testimonial-item min-h-[140px] bg-white/5 border border-[#4a596e]/30 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.4)]"
-                      >
-                        {/* STAR */}
-                        <div className="text-[#4f8fcb] text-xl mb-2">★★★★★</div>
-
-                        {/* CONTENT */}
-                        <p className="text-sm text-white/80 leading-relaxed">
-                          {item.content}
-                        </p>
-
-                        {/* USER */}
-                        <div className="flex items-center gap-3 mt-4">
+                        >
                           <img
-                            src={item.avatar}
-                            className="w-10 h-10 rounded-full object-cover"
+                            src={`/logo-client/${logo}`}
+                            className="h-8 sm:h-10 max-w-[120px] object-contain"
                           />
-                          <div>
-                            <p className="text-sm font-medium">{item.name}</p>
-                            <p className="text-xs text-white/50">{item.role}</p>
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* TESTIMONIALS */}
+              <div className="relative h-[400px] overflow-hidden">
+                {/* WRAPPER CONTROL WIDTH */}
+                <div className="max-w-2xl mx-auto px-4 sm:px-0">
+                  <div className="testimonial-wrapper">
+                    <div className="flex flex-col testimonial-scroll">
+                      {/* <div className="flex flex-col gap-6 testimonial-scroll"> */}
+                      {[...testimonials, ...testimonials].map((item, i) => (
+                        <div
+                          key={i}
+                          className="p-6 mb-6 rounded-2xl testimonial-item min-h-[140px] bg-white/5 border border-[#4a596e]/30 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.4)]"
+                        >
+                          {/* STAR */}
+                          <div className="text-[#4f8fcb] text-xl mb-2">
+                            ★★★★★
+                          </div>
+
+                          {/* CONTENT */}
+                          <p className="text-sm text-white/80 leading-relaxed">
+                            {item.content}
+                          </p>
+
+                          {/* USER */}
+                          <div className="flex items-center gap-3 mt-4">
+                            <img
+                              src={item.avatar}
+                              className="w-10 h-10 rounded-full object-cover"
+                            />
+                            <div>
+                              <p className="text-sm font-medium">{item.name}</p>
+                              <p className="text-xs text-white/50">
+                                {item.role}
+                              </p>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
-                    {/* </div> */}
+                      ))}
+                      {/* </div> */}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* FEATURES */}
-            <div className="mt-16 space-y-10">
-              {/* 3 CARDS */}
-              <div className="grid lg:grid-cols-3 gap-6 slide-right active">
-                {[
-                  {
-                    title: "Proven Track Record",
-                    desc: "We have built a reputation as a trusted and reliable partner in achieving business success.",
-                    icon: Rocket,
-                  },
-                  {
-                    title: "Tailored Solutions",
-                    desc: "We offer personalized solutions tailored to your specific goals, audience, and industry.",
-                    icon: Link2,
-                  },
-                  {
-                    title: "Client-Centric Focus",
-                    desc: "Your success is our priority. We prioritize understanding your business goals.",
-                    icon: Target,
-                  },
-                ].map((item, i) => {
-                  const Icon = item.icon;
+              {/* FEATURES */}
+              <div className="mt-16 space-y-10">
+                {/* 3 CARDS */}
+                <div className="grid lg:grid-cols-3 gap-6 slide-right active">
+                  {[
+                    {
+                      title: "Proven Track Record",
+                      desc: "We have built a reputation as a trusted and reliable partner in achieving business success.",
+                      icon: Rocket,
+                    },
+                    {
+                      title: "Tailored Solutions",
+                      desc: "We offer personalized solutions tailored to your specific goals, audience, and industry.",
+                      icon: Link2,
+                    },
+                    {
+                      title: "Client-Centric Focus",
+                      desc: "Your success is our priority. We prioritize understanding your business goals.",
+                      icon: Target,
+                    },
+                  ].map((item, i) => {
+                    const Icon = item.icon;
 
-                  return (
-                    <div
-                      key={i}
-                      className="
+                    return (
+                      <div
+                        key={i}
+                        className="
             group
             p-6 rounded-2xl
 
@@ -633,60 +639,60 @@ export default function Home() {
            
              text-center items-center
           "
-                    >
-                      {/* ICON */}
-                      <div
-                        className="
+                      >
+                        {/* ICON */}
+                        <div
+                          className="
               w-10 h-10 mb-5
               rounded-xl 
               flex items-center justify-center
               bg-[#4f8dc9]/10
               text-[#4f8dc9] border
               border-[#4f8dc9] mx-auto"
-                      >
-                        <Icon className="w-5 h-5" strokeWidth={1.5} />
+                        >
+                          <Icon className="w-5 h-5" strokeWidth={1.5} />
+                        </div>
+
+                        {/* TITLE */}
+                        <h3 className="text-lg font-semibold mb-2">
+                          {item.title}
+                        </h3>
+
+                        {/* DESC */}
+                        <p className="text-sm text-white/70 leading-relaxed">
+                          {item.desc}
+                        </p>
                       </div>
+                    );
+                  })}
+                </div>
 
-                      {/* TITLE */}
-                      <h3 className="text-lg font-semibold mb-2">
-                        {item.title}
-                      </h3>
+                {/* TAGS */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap justify-center gap-3 slide-left active">
+                  {[
+                    {
+                      label: "Continuous Innovation",
+                      icon: Sparkles,
+                    },
+                    {
+                      label: "Dedicated Support",
+                      icon: Headphones,
+                    },
+                    {
+                      label: "Positive Client Experiences",
+                      icon: Smile,
+                    },
+                    {
+                      label: "Commitment to Excellence",
+                      icon: ShieldCheck,
+                    },
+                  ].map((tag, i) => {
+                    const Icon = tag.icon;
 
-                      {/* DESC */}
-                      <p className="text-sm text-white/70 leading-relaxed">
-                        {item.desc}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* TAGS */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap justify-center gap-3 slide-left active">
-                {[
-                  {
-                    label: "Continuous Innovation",
-                    icon: Sparkles,
-                  },
-                  {
-                    label: "Dedicated Support",
-                    icon: Headphones,
-                  },
-                  {
-                    label: "Positive Client Experiences",
-                    icon: Smile,
-                  },
-                  {
-                    label: "Commitment to Excellence",
-                    icon: ShieldCheck,
-                  },
-                ].map((tag, i) => {
-                  const Icon = tag.icon;
-
-                  return (
-                    <span
-                      key={i}
-                      className="
+                    return (
+                      <span
+                        key={i}
+                        className="
           flex items-center justify-center gap-2
 
           text-xs
@@ -703,39 +709,39 @@ export default function Home() {
 
           
         "
-                    >
-                      <Icon className="w-3.5 h-3.5" strokeWidth={1.8} />
-                      {tag.label}
-                    </span>
-                  );
-                })}
+                      >
+                        <Icon className="w-3.5 h-3.5" strokeWidth={1.8} />
+                        {tag.label}
+                      </span>
+                    );
+                  })}
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-      </AnimatedSection>
+          </section>
+        </AnimatedSection>
 
-      {/* SECTION 6 — WHY WE BUILT THIS -> ABOUT US */}
-      <AnimatedSection>
-        <section className="relative h-[500px] md:h-[600px] w-full overflow-hidden">
-          {/* BACKGROUND IMAGE */}
-          <Image
-            src="/team/hero-banner-team.webp" // đổi lại ảnh giống hình bạn
-            alt="Team meeting"
-            fill
-            className="object-cover"
-            priority
-          />
+        {/* SECTION 6 — WHY WE BUILT THIS -> ABOUT US */}
+        <AnimatedSection>
+          <section className="relative h-[500px] md:h-[600px] w-full overflow-hidden">
+            {/* BACKGROUND IMAGE */}
+            <Image
+              src="/team/hero-banner-team.webp" // đổi lại ảnh giống hình bạn
+              alt="Team meeting"
+              fill
+              className="object-cover"
+              priority
+            />
 
-          {/* OVERLAY */}
-          <div className="absolute inset-0 bg-[#0b1b33]/60"></div>
+            {/* OVERLAY */}
+            <div className="absolute inset-0 bg-[#0b1b33]/60"></div>
 
-          {/* CONTENT */}
-          <div className="absolute inset-0 flex items-end">
-            <div className="max-w-6xl mx-auto px-6 pb-12 w-full flex flex-col md:flex-row items-center justify-center md:justify-between gap-4 text-center md:text-left">
-              {/* TEXT */}
-              <h2
-                className="
+            {/* CONTENT */}
+            <div className="absolute inset-0 flex items-end">
+              <div className="max-w-6xl mx-auto px-6 pb-12 w-full flex flex-col md:flex-row items-center justify-center md:justify-between gap-4 text-center md:text-left">
+                {/* TEXT */}
+                <h2
+                  className="
   text-lg sm:text-lg md:text-2xl lg:text-3xl
   font-light fade-up
   text-white
@@ -743,16 +749,16 @@ export default function Home() {
   leading-[1.4]
   tracking-wide
 "
-              >
-                The Concept of an All Women {""}
-                <br className="block sm:hidden" />
-                Execution Team
-              </h2>
+                >
+                  The Concept of an All Women {""}
+                  <br className="block sm:hidden" />
+                  Execution Team
+                </h2>
 
-              {/* BUTTON */}
-              <Link
-                href="/about-us"
-                className="
+                {/* BUTTON */}
+                <Link
+                  href="/about-us"
+                  className="
             px-6 py-2 fade-up delay-1
             rounded-full
             border border-white
@@ -761,41 +767,41 @@ export default function Home() {
             hover:bg-white hover:text-[#0b1b33]
             transition-all duration-700
           "
-              >
-                About Us
-              </Link>
+                >
+                  About Us
+                </Link>
+              </div>
             </div>
-          </div>
-        </section>
-      </AnimatedSection>
+          </section>
+        </AnimatedSection>
 
-      {/* SECTION 7 — THE STANDARD (LIGHT GREY) -> STAFF UNITED's Execution Team*/}
-      <AnimatedSection>
-        <section className="bg-gradient-to-b from-[#0a1b33] via-[#0a1b33] to-[#103663] py-20">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14 lg:gap-20 items-center">
-              {/* IMAGE */}
-              <div
-                className="
+        {/* SECTION 7 — THE STANDARD (LIGHT GREY) -> STAFF UNITED's Execution Team*/}
+        <AnimatedSection>
+          <section className="bg-gradient-to-b from-[#0a1b33] via-[#0a1b33] to-[#103663] py-20">
+            <div className="max-w-6xl mx-auto px-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14 lg:gap-20 items-center">
+                {/* IMAGE */}
+                <div
+                  className="
   slide-left
   w-full
   h-[320px] sm:h-[420px] md:h-[520px] lg:h-[580px]
   relative overflow-hidden rounded-xl
 "
-              >
-                <img
-                  src="../home/workspace.png"
-                  alt="Workspace STAFF UNITED"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+                >
+                  <img
+                    src="../home/workspace.png"
+                    alt="Workspace STAFF UNITED"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
 
-              {/* CONTENT */}
-              <div className="space-y-6 text-white fade-up mx-auto items-center text-center lg:text-left">
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-light leading-snug">
-                  <span className="text-[#4f8dc9]">STA</span>FF United's
-                  <span
-                    className="
+                {/* CONTENT */}
+                <div className="space-y-6 text-white fade-up mx-auto items-center text-center lg:text-left">
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-light leading-snug">
+                    <span className="text-[#4f8dc9]">STA</span>FF United's
+                    <span
+                      className="
     block lg:text-left lg:mx-0
     mt-2 md:mt-3
     w-fit
@@ -804,23 +810,24 @@ export default function Home() {
     px-2 py-1
     font-medium mx-auto items-center text-center 
   "
-                  >
-                    Execution Team
-                  </span>
-                </h2>
+                    >
+                      Execution Team
+                    </span>
+                  </h2>
 
-                <p className="text-white/70 leading-relaxed max-w-md">
-                  STAFF United is built by women who take execution seriously.{" "}
-                  <br />
-                  <span className="font-medium text-white">
-                    If you value standards, discipline, and growth, apply below.
-                  </span>
-                </p>
+                  <p className="text-white/70 leading-relaxed max-w-md">
+                    STAFF United is built by women who take execution seriously.{" "}
+                    <br />
+                    <span className="font-medium text-white">
+                      If you value standards, discipline, and growth, apply
+                      below.
+                    </span>
+                  </p>
 
-                {/* BUTTON */}
-                <a
-                  href="/join"
-                  className="
+                  {/* BUTTON */}
+                  <a
+                    href="/join"
+                    className="
               inline-block
               px-6 py-3
               rounded-full
@@ -831,134 +838,134 @@ export default function Home() {
               hover:opacity-90
               transition-all duration-300
             "
-                >
-                  Join Our Team
-                </a>
+                  >
+                    Join Our Team
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-      </AnimatedSection>
+          </section>
+        </AnimatedSection>
 
-      {/* SECTION 10 — CTA STRIP -> LEAD */}
-      <AnimatedSection>
-        <section className="bg-[#f8f9fb] py-24">
-          <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-start">
-            {/* LEFT */}
-            <div className="space-y-6 slide-left">
-              {/* TAG */}
-              <span className="inline-block text-xs px-4 py-1 rounded-full border border-[#4f8dc9] text-[#4f8dc9]">
-                REQUEST SUPPORT
-              </span>
+        {/* SECTION 10 — CTA STRIP -> LEAD */}
+        <AnimatedSection>
+          <section className="bg-[#f8f9fb] py-24">
+            <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-start">
+              {/* LEFT */}
+              <div className="space-y-6 slide-left">
+                {/* TAG */}
+                <span className="inline-block text-xs px-4 py-1 rounded-full border border-[#4f8dc9] text-[#4f8dc9]">
+                  REQUEST SUPPORT
+                </span>
 
-              {/* TITLE */}
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#0a1b33]">
-                Let’s Talk <span className="text-[#4f8dc9]">Support</span>
-              </h2>
+                {/* TITLE */}
+                <h2 className="text-3xl md:text-4xl font-semibold text-[#0a1b33]">
+                  Let’s Talk <span className="text-[#4f8dc9]">Support</span>
+                </h2>
 
-              {/* DESC */}
-              <p className="text-[#4a596e] leading-relaxed max-w-md">
-                Have a project in mind? Fill out the form and we’ll get in touch
-                within 24 hours to discuss your needs.
-              </p>
+                {/* DESC */}
+                <p className="text-[#4a596e] leading-relaxed max-w-md">
+                  Have a project in mind? Fill out the form and we’ll get in
+                  touch within 24 hours to discuss your needs.
+                </p>
 
-              {/* IMAGE */}
-              <div className="rounded-xl overflow-hidden">
-                <Image
-                  src="/team/team-square.webp"
-                  alt="Team"
-                  width={600}
-                  height={400}
-                  className="w-full h-[260px] object-cover"
-                />
+                {/* IMAGE */}
+                <div className="rounded-xl overflow-hidden">
+                  <Image
+                    src="/team/team-square.webp"
+                    alt="Team"
+                    width={600}
+                    height={400}
+                    className="w-full h-[260px] object-cover"
+                  />
+                </div>
+
+                {/* CONTACT */}
+                <div className="flex flex-col sm:flex-row gap-6 pt-4">
+                  {/* PHONE */}
+                  <a
+                    href="tel:+84329426269"
+                    className="flex items-center gap-3 group"
+                  >
+                    <div className="w-10 h-10 flex items-center justify-center rounded-full border border-[#4f8dc9] text-[#4f8dc9] group-hover:bg-[#4f8dc9] group-hover:text-white transition duration-700">
+                      📞
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-[#0a1b33]">
+                        Call Us
+                      </p>
+                      <p className="text-sm text-[#4a596e]">+84 32 942 6269</p>
+                    </div>
+                  </a>
+
+                  {/* EMAIL */}
+                  <a
+                    href="mailto:info@staffunitedgroup.com"
+                    className="flex items-center gap-3 group"
+                  >
+                    <div className="w-10 h-10 flex items-center justify-center rounded-full border border-[#4f8dc9] text-[#4f8dc9] group-hover:bg-[#4f8dc9] group-hover:text-white transition duration-700">
+                      ✉️
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-[#0a1b33]">
+                        Email Us
+                      </p>
+                      <p className="text-sm text-[#4a596e]">
+                        info@staffunitedgroup.com
+                      </p>
+                    </div>
+                  </a>
+                </div>
               </div>
 
-              {/* CONTACT */}
-              <div className="flex flex-col sm:flex-row gap-6 pt-4">
-                {/* PHONE */}
-                <a
-                  href="tel:+84329426269"
-                  className="flex items-center gap-3 group"
-                >
-                  <div className="w-10 h-10 flex items-center justify-center rounded-full border border-[#4f8dc9] text-[#4f8dc9] group-hover:bg-[#4f8dc9] group-hover:text-white transition duration-700">
-                    📞
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-[#0a1b33]">
-                      Call Us
-                    </p>
-                    <p className="text-sm text-[#4a596e]">+84 32 942 6269</p>
-                  </div>
-                </a>
+              {/* RIGHT - FORM */}
+              <div className="slide-right">
+                <form
+                  onSubmit={async (e) => {
+                    e.preventDefault();
 
-                {/* EMAIL */}
-                <a
-                  href="mailto:info@staffunitedgroup.com"
-                  className="flex items-center gap-3 group"
-                >
-                  <div className="w-10 h-10 flex items-center justify-center rounded-full border border-[#4f8dc9] text-[#4f8dc9] group-hover:bg-[#4f8dc9] group-hover:text-white transition duration-700">
-                    ✉️
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-[#0a1b33]">
-                      Email Us
-                    </p>
-                    <p className="text-sm text-[#4a596e]">
-                      info@staffunitedgroup.com
-                    </p>
-                  </div>
-                </a>
-              </div>
-            </div>
+                    if (isSubmitting) return;
 
-            {/* RIGHT - FORM */}
-            <div className="slide-right">
-              <form
-                onSubmit={async (e) => {
-                  e.preventDefault();
+                    setIsSubmitting(true);
 
-                  if (isSubmitting) return;
+                    const form = e.target as HTMLFormElement;
+                    const formData = new FormData(form);
+                    formData.append("form_type", "lite");
 
-                  setIsSubmitting(true);
+                    const body = new URLSearchParams();
 
-                  const form = e.target as HTMLFormElement;
-                  const formData = new FormData(form);
-                  formData.append("form_type", "lite");
+                    formData.forEach((value, key) => {
+                      body.append(key, String(value));
+                    });
 
-                  const body = new URLSearchParams();
-
-                  formData.forEach((value, key) => {
-                    body.append(key, String(value));
-                  });
-
-                  try {
-                    const res = await fetch(
-                      "https://script.google.com/macros/s/AKfycbwEfL2geCsZcl5waUihSrzKUJ31Dmo640pa0hA0GnyAYIq2yRY-EIHwV6wF9y8cQm82/exec",
-                      {
-                        method: "POST",
-                        headers: {
-                          "Content-Type": "application/x-www-form-urlencoded",
+                    try {
+                      const res = await fetch(
+                        "https://script.google.com/macros/s/AKfycbwEfL2geCsZcl5waUihSrzKUJ31Dmo640pa0hA0GnyAYIq2yRY-EIHwV6wF9y8cQm82/exec",
+                        {
+                          method: "POST",
+                          headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                          },
+                          body,
                         },
-                        body,
-                      },
-                    );
+                      );
 
-                    const text = await res.text();
-                    console.log("LITE RESPONSE:", text);
+                      const text = await res.text();
+                      console.log("LITE RESPONSE:", text);
 
-                    setSuccess(true);
-                    // window.scrollTo({ top: 0, behavior: "smooth" });
+                      setSuccess(true);
+                      // window.scrollTo({ top: 0, behavior: "smooth" });
 
-                    form.reset();
-                    setPhone("");
-                  } catch (err) {
-                    console.error(err);
-                    alert("Something went wrong");
-                  }
+                      form.reset();
+                      setPhone("");
+                    } catch (err) {
+                      console.error(err);
+                      alert("Something went wrong");
+                    }
 
-                  setIsSubmitting(false);
-                }}
-                className="
+                    setIsSubmitting(false);
+                  }}
+                  className="
     relative overflow-hidden 
 
     bg-gradient-to-b from-white/20 to-white/5
@@ -975,95 +982,95 @@ export default function Home() {
     hover:-translate-y-1
     transition-all duration-500
   "
-              >
-                {/* GLASS LIGHT LAYER */}
-                <div className="absolute inset-0 pointer-events-none">
-                  {/* ánh sáng trắng */}
-                  <div
-                    className="
+                >
+                  {/* GLASS LIGHT LAYER */}
+                  <div className="absolute inset-0 pointer-events-none">
+                    {/* ánh sáng trắng */}
+                    <div
+                      className="
       absolute inset-0
       bg-gradient-to-br
       from-white/30 via-white/10 to-transparent
     "
-                  ></div>
+                    ></div>
 
-                  {/* glow xanh brand */}
-                  <div
-                    className="
+                    {/* glow xanh brand */}
+                    <div
+                      className="
       absolute -top-20 -left-20
       w-[300px] h-[300px]
       bg-[#4f8dc9]/20
       blur-[120px]
     "
-                  ></div>
-                </div>
+                    ></div>
+                  </div>
 
-                {/* CONTENT */}
-                <div className="relative z-10 space-y-4">
-                  {/* NAME */}
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  {/* CONTENT */}
+                  <div className="relative z-10 space-y-4">
+                    {/* NAME */}
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <input
+                        name="first_name"
+                        placeholder="First Name *"
+                        className="w-full px-4 py-2 rounded-lg border border-[#d5dadf] bg-white/60 backdrop-blur-md"
+                        required
+                      />
+                      <input
+                        name="last_name"
+                        placeholder="Last Name *"
+                        className="w-full px-4 py-2 rounded-lg border border-[#d5dadf] bg-white/60 backdrop-blur-md"
+                        required
+                      />
+                    </div>
+
+                    {/* COMPANY */}
                     <input
-                      name="first_name"
-                      placeholder="First Name *"
+                      name="company_name"
+                      placeholder="Company Name"
+                      className="w-full px-4 py-2 rounded-lg border border-[#d5dadf] bg-white/60 backdrop-blur-md"
+                    />
+
+                    {/* EMAIL */}
+                    <input
+                      name="work_email"
+                      type="email"
+                      placeholder="Work Email *"
                       className="w-full px-4 py-2 rounded-lg border border-[#d5dadf] bg-white/60 backdrop-blur-md"
                       required
                     />
+
+                    {/* PHONE */}
+                    <div className="bg-white/60 backdrop-blur-md rounded-lg">
+                      <PhoneInput
+                        country={"vn"}
+                        value={phone}
+                        onChange={setPhone}
+                        inputClass="!w-full !border-none !bg-transparent !py-2"
+                      />
+                      <input type="hidden" name="phone" value={phone} />
+                    </div>
+
+                    {/* START DATE */}
                     <input
-                      name="last_name"
-                      placeholder="Last Name *"
+                      type="date"
+                      name="start_timeline"
+                      className="w-full px-4 py-2 rounded-lg border border-[#d5dadf] bg-white/60 backdrop-blur-md"
+                    />
+
+                    {/* MESSAGE */}
+                    <textarea
+                      name="description"
+                      rows={4}
+                      placeholder="Describe your needs *"
                       className="w-full px-4 py-2 rounded-lg border border-[#d5dadf] bg-white/60 backdrop-blur-md"
                       required
                     />
-                  </div>
 
-                  {/* COMPANY */}
-                  <input
-                    name="company_name"
-                    placeholder="Company Name"
-                    className="w-full px-4 py-2 rounded-lg border border-[#d5dadf] bg-white/60 backdrop-blur-md"
-                  />
-
-                  {/* EMAIL */}
-                  <input
-                    name="work_email"
-                    type="email"
-                    placeholder="Work Email *"
-                    className="w-full px-4 py-2 rounded-lg border border-[#d5dadf] bg-white/60 backdrop-blur-md"
-                    required
-                  />
-
-                  {/* PHONE */}
-                  <div className="bg-white/60 backdrop-blur-md rounded-lg">
-                    <PhoneInput
-                      country={"vn"}
-                      value={phone}
-                      onChange={setPhone}
-                      inputClass="!w-full !border-none !bg-transparent !py-2"
-                    />
-                    <input type="hidden" name="phone" value={phone} />
-                  </div>
-
-                  {/* START DATE */}
-                  <input
-                    type="date"
-                    name="start_timeline"
-                    className="w-full px-4 py-2 rounded-lg border border-[#d5dadf] bg-white/60 backdrop-blur-md"
-                  />
-
-                  {/* MESSAGE */}
-                  <textarea
-                    name="description"
-                    rows={4}
-                    placeholder="Describe your needs *"
-                    className="w-full px-4 py-2 rounded-lg border border-[#d5dadf] bg-white/60 backdrop-blur-md"
-                    required
-                  />
-
-                  {/* BUTTON */}
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="
+                    {/* BUTTON */}
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="
     group relative overflow-hidden
 
     w-full mt-4 px-6 py-3 rounded-full
@@ -1083,36 +1090,36 @@ export default function Home() {
     hover:shadow-[0_10px_40px_rgba(79,141,201,0.4)]
     hover:-translate-y-0.5
   "
-                  >
-                    <span className="relative z-10 flex items-center justify-center gap-2">
-                      {isSubmitting ? (
-                        <>
-                          <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                          Sending...
-                        </>
-                      ) : (
-                        <>
-                          Request Support
-                          <span className="transition-transform duration-300 group-hover:-rotate-45">
-                            →
-                          </span>
-                        </>
-                      )}
-                    </span>
-                  </button>
-                </div>
-              </form>
+                    >
+                      <span className="relative z-10 flex items-center justify-center gap-2">
+                        {isSubmitting ? (
+                          <>
+                            <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                            Sending...
+                          </>
+                        ) : (
+                          <>
+                            Request Support
+                            <span className="transition-transform duration-300 group-hover:-rotate-45">
+                              →
+                            </span>
+                          </>
+                        )}
+                      </span>
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
-          </div>
-        </section>
-      </AnimatedSection>
+          </section>
+        </AnimatedSection>
 
-      {success && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+        {success && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center">
+            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
 
-          <div
-            className="
+            <div
+              className="
       relative
       bg-white
       rounded-2xl
@@ -1122,24 +1129,26 @@ export default function Home() {
       text-center
       shadow-xl
     "
-          >
-            <h3 className="text-xl font-semibold mb-3 text-[#0b1b33]">
-              🎉 Request Sent!
-            </h3>
-
-            <p className="text-[#0b1b33]/70 mb-6">
-              We've received your request. Our team will contact you shortly.
-            </p>
-
-            <button
-              onClick={() => setSuccess(false)}
-              className="px-6 py-2 rounded-full bg-[#0a1b33] text-white"
             >
-              Close
-            </button>
+              <h3 className="text-xl font-semibold mb-3 text-[#0b1b33]">
+                🎉 Request Sent!
+              </h3>
+
+              <p className="text-[#0b1b33]/70 mb-6">
+                We've received your request. Our team will contact you shortly.
+              </p>
+
+              <button
+                onClick={() => setSuccess(false)}
+                className="px-6 py-2 rounded-full bg-[#0a1b33] text-white"
+              >
+                Close
+              </button>
+            </div>
           </div>
-        </div>
-      )}
-    </main>
+        )}
+      </main>
+      <ChatBox />
+    </>
   );
 }
