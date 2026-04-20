@@ -126,7 +126,7 @@ export default function RequestSupportPage() {
 
               // CALL API
               const res = await fetch(
-                "https://script.google.com/macros/s/AKfycbwEfL2geCsZcl5waUihSrzKUJ31Dmo640pa0hA0GnyAYIq2yRY-EIHwV6wF9y8cQm82/exec",
+                "https://script.google.com/macros/s/AKfycbwI8nKDpaqTb3-VYAS0bebFPe1NIGpsMBDFp5dlExxITxrGkNfn2h_lBDHIZFJfoRhd/exec",
                 {
                   method: "POST",
                   headers: {
