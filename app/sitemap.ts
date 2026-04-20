@@ -2,13 +2,13 @@ import { client } from "@/lib/sanity";
 
 export default async function sitemap() {
   const posts = await client.fetch(`
-    *[_type == "insight"]{
+    *[_type == "insight" && defined(slug.current)]{
       "slug": slug.current,
       _updatedAt
     }
   `);
 
-  const baseUrl = "https://www.staffunitedgroup.com/";
+  const baseUrl = "https://www.staffunitedgroup.com";
 
   const blogUrls = posts.map((post: any) => ({
     url: `${baseUrl}/insights/${post.slug}`,
