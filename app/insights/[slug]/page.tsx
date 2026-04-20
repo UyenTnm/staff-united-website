@@ -165,6 +165,19 @@ export default async function BlogDetail({
 
   const blog = await getInsightBySlug(resolvedParams.slug);
 
+  const relatedPosts = await client.fetch(
+    `
+  *[_type == "insight" && slug.current != $slug] 
+  | order(_createdAt desc)[0..2]{
+    title,
+    subtitle,
+    "slug": slug.current,
+    thumbnail
+  }
+`,
+    { slug: resolvedParams.slug },
+  );
+
   if (!blog) return notFound();
 
   return (
@@ -229,6 +242,61 @@ export default async function BlogDetail({
         {/* CONTENT */}
         <div className="max-w-2xl mx-auto space-y-4 text-[#0b1b33] text-[16px] md:text-[18px] leading-relaxed">
           <PortableText value={blog.content} components={components} />
+        </div>
+
+        {/* RELATED INSIGHTS */}
+        <div className="max-w-5xl mx-auto px-6 ">
+          <h3 className="text-2xl font-semibold text-[#0b1b33] mb-6">
+            Related Insights
+          </h3>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {relatedPosts.map((post: any) => (
+              <Link
+                key={post.slug}
+                href={`/insights/${post.slug}`}
+                className="group flex flex-col h-full rounded-2xl overflow-hidden border border-gray-200 hover:shadow-xl transition-all duration-300"
+              >
+                {/* IMAGE */}
+                <div className="h-32 bg-gray-100 overflow-hidden">
+                  <Image
+                    src={
+                      post.thumbnail
+                        ? urlFor(post.thumbnail)
+                            .width(600)
+                            .height(400)
+                            .fit("crop")
+                            .auto("format")
+                            .url()
+                        : "https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
+                    }
+                    alt={post.title}
+                    width={600}
+                    height={400}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* CONTENT */}
+                <div className="p-5 flex flex-col flex-1">
+                  <h4 className="text-lg font-semibold text-[#0b1b33] leading-snug group-hover:text-blue-600 transition line-clamp-2">
+                    {post.title}
+                  </h4>
+
+                  {post.subtitle && (
+                    <p className="text-sm text-gray-500 mt-2 line-clamp-2">
+                      {post.subtitle}
+                    </p>
+                  )}
+
+                  {/* CTA */}
+                  <div className="mt-4 text-sm text-blue-600 font-medium group-hover:underline">
+                    Read more →
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </article>
     </main>
