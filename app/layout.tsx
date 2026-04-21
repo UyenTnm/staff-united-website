@@ -14,7 +14,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "STAFF UNITED | Professional Business Solutions",
   description:
-    "Professional staffing and business solutions with clear standards, reliable service, and transparent operations. We deliver consistent excellence through structured workflows and human expertise.",
+    "STAFF United is your offshore execution partner in Vietnam, powered by all-women teams, delivering structured, high-performance services through managed remote teams across operations, admin, marketing, and back-office support—built for consistency, control, and scalable growth.",
   icons: {
     icon: "/staff-logo.ico",
   },
