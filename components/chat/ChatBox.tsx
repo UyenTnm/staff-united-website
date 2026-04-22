@@ -57,6 +57,13 @@ export default function ChatBox() {
     loadGreeting();
   }, []);
 
+  useEffect(() => {
+    const open = () => setIsOpen(true);
+    window.addEventListener("open-chat", open);
+
+    return () => window.removeEventListener("open-chat", open);
+  }, []);
+
   // =========================
   // HELPERS
   // =========================
