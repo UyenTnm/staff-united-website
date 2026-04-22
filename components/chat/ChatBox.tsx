@@ -373,7 +373,7 @@ export default function ChatBox() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-4 right-4 bg-[#0a1b33] text-white p-3 rounded-full shadow-lg hover:scale-110 active:scale-95 transition"
+          className="fixed bottom-4 right-4 bg-[#0a1b33] text-white p-3 rounded-full shadow-lg hover:scale-110 active:scale-95 transition z-[9999]"
         >
           💬
         </button>
