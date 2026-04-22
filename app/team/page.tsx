@@ -143,7 +143,7 @@ export default function TeamPage() {
 
           <AnimatedSection direction="up" delay={0}>
             <p className="text-lg md:text-xl text-[#0b1b33]/70 leading-relaxed">
-              We operate as one unit under one shared standard.
+              We operate as one unit under one shared standard.{" "}
               <br className="hidden md:block" />
               Roles differ. Responsibility is collective.
             </p>
