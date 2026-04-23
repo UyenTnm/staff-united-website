@@ -37,8 +37,8 @@ export default function Footer() {
 
           <span>
             <span className="font-semibold text-white">Location:</span> L17-11,
-            17th Floor, Vincom Center, 72 Lê Thánh Tôn Street, Sài Gòn Ward, Ho
-            Chi Minh City
+            17th Floor, Vincom Center, 72 Lê Thánh Tôn Street, Sài Gòn Ward, Hồ
+            Chí Minh City.
           </span>
         </div>
 
