@@ -10,8 +10,8 @@ export default function WhatsAppButton() {
     const interval = setInterval(() => {
       setShake(true);
 
-      setTimeout(() => setShake(false), 600); // duration animation
-    }, 2000); // mỗi 5s rung 1 lần
+      setTimeout(() => setShake(false), 600);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, []);
