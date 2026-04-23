@@ -404,7 +404,7 @@ hover:before:opacity-100
 before:transition hover:bg-blue-600
 "
         >
-          💬
+          <span className="text-2xl leading-none translate-y-[1px]">💬</span>
         </button>
       )}
 
