@@ -33,7 +33,7 @@ export default function Home() {
   const testimonials = [
     {
       content: `We’re currently working with STAFF UNITED and it’s been a great experience...`,
-      name: "Wesley Anton",
+      name: "Wes Anthony",
       role: "CEO of MASX World Entertainment",
       avatar: "/logo-client/masx-logo.png",
     },
