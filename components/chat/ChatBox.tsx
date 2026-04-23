@@ -381,19 +381,27 @@ export default function ChatBox() {
         <button
           onClick={() => setIsOpen(true)}
           className="
-  fixed bottom-4 right-4 z-[9999]
+fixed bottom-4 right-4 z-[9999]
+w-12 h-12 rounded-full
+ bg-[#4f8dc9]
+text-white
 
-  w-12 h-12
-  rounded-full
+flex items-center justify-center
 
-  bg-[#0a1b33] text-white
+ 
+backdrop-blur-md
 
-  flex items-center justify-center
+shadow-[0_8px_30px_rgba(0,0,0,0.4)]
+hover:shadow-[0_0_20px_rgba(59,130,246,0.6)]
 
-  shadow-lg
-  transition-all duration-300
-  hover:scale-110
-  active:scale-95
+transition-all duration-300
+hover:scale-110
+active:scale-95
+
+before:absolute before:inset-0 before:rounded-full
+before:bg-white/10 before:opacity-0
+hover:before:opacity-100
+before:transition hover:bg-blue-600
 "
         >
           💬
