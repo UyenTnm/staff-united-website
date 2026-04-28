@@ -139,10 +139,11 @@ export const jobs: Job[] = [
       },
 
       {
-        title: "Compensation",
+        title: "Compensation & Benefits",
         content: [
           "Salary: Up to 10,000,000 VND/month",
           "Performance bonus: Up to 15% monthly",
+          "Access to premium office facilities (gym, swimming pool, pantry)",
         ],
       },
 
@@ -348,8 +349,11 @@ export const jobs: Job[] = [
       },
 
       {
-        title: "Compensation",
-        content: ["Salary: Up to 20,000,000 VND/month (based on experience)"],
+        title: "Compensation & Benefits",
+        content: [
+          "Salary: Up to 20,000,000 VND/month (based on experience)",
+          "Access to premium office facilities (gym, swimming pool, pantry)",
+        ],
       },
 
       {
