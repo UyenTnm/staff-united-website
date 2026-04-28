@@ -465,4 +465,129 @@ export const jobs: Job[] = [
 
     benefits: [],
   },
+  {
+    slug: "brand-social-media-coordinator",
+    title: "Brand & Social Media Coordinator",
+    department: "Marketing",
+    location: "Ho Chi Minh City",
+    type: "Full-time",
+
+    description:
+      "STAFF United is hiring a Brand & Social Media Coordinator to build and manage a strong, consistent brand presence across social platforms and website content.",
+
+    sections: [
+      {
+        title: "About the Role",
+        content: [
+          "This role is about building and maintaining a strong, credible brand presence across digital platforms.",
+          "You will create and manage content across Instagram, Facebook, LinkedIn, and the company blog.",
+          "The focus is not just on posting content, but on ensuring clarity, consistency, and alignment with business goals.",
+          "We’re looking for someone who can translate ideas into structured, high-quality content that reflects the brand professionally.",
+          "This is an office-based role in Ho Chi Minh City for someone who can take ownership and execute independently.",
+        ],
+      },
+
+      {
+        title: "What You’ll Do",
+        content: [
+          "Content Creation",
+          "Create clear, structured content aligned with brand voice and positioning",
+          "Translate business ideas into concise and engaging posts",
+          "Develop content for LinkedIn, Instagram, Facebook, and blog articles",
+          "Maintain consistency in tone, messaging, and quality",
+
+          "Social Media Management",
+          "Manage and schedule content across Instagram, Facebook, and LinkedIn",
+          "Ensure consistent posting and engagement",
+          "Monitor performance and refine content direction",
+          "Maintain a clean, professional digital presence",
+
+          "Visual Content & Video",
+          "Design social media visuals using Canva",
+          "Create and edit short-form video content using Capcut",
+          "Ensure all visuals align with brand identity",
+          "Maintain consistency across formats and platforms",
+
+          "Brand Positioning Support",
+          "Support positioning STAFF United as a reliable offshore execution partner",
+          "Align content with sales messaging and growth strategy",
+          "Help build trust and authority through content",
+          "Support content that attracts, educates, and converts potential clients",
+        ],
+      },
+
+      {
+        title: "Who We’re Looking For",
+        content: [
+          "Core Skills",
+          "Strong English speaking and writing skills",
+          "Experience managing Instagram, Facebook, and LinkedIn",
+          "Proficiency in Canva and Capcut",
+          "Good sense of design, layout, and visual balance",
+
+          "Mindset",
+          "Organized, consistent, and detail-oriented",
+          "Able to execute without constant direction",
+          "Comfortable combining creativity with discipline",
+          "Takes ownership of outcomes, not just tasks",
+
+          "Nice to Have",
+          "Experience writing blog content",
+          "Understanding of brand positioning and content strategy",
+          "Experience working in B2B or international environments",
+        ],
+      },
+
+      {
+        title: "Who This Role Is Good For",
+        content: [
+          "This role is a good fit if you:",
+          "Enjoy building brand presence through structured content",
+          "Like both creative execution and organized workflows",
+          "Want to grow in branding, content, and marketing strategy",
+        ],
+      },
+
+      {
+        title: "Working Details",
+        content: [
+          "Role Type: Full-Time",
+          "Work Setting: Office-based (District 1, Ho Chi Minh City)",
+          "Location: Ho Chi Minh City, Vietnam",
+        ],
+      },
+
+      {
+        title: "Compensation & Benefits",
+        content: [
+          "Base salary + performance bonus",
+          "Work with modern tools and equipment",
+          "Access to premium office facilities (gym, swimming pool, pantry)",
+          "Structured, international-facing working environment",
+          "Exposure to global clients and real business operations",
+          "Opportunity to grow into Brand / Marketing Lead roles",
+        ],
+      },
+
+      {
+        title: "Why This Role Matters",
+        content: [
+          "This role directly supports sales and revenue growth by shaping how STAFF United is perceived.",
+          "You will help build trust and credibility before the first client interaction.",
+          "You will create a consistent, high-quality brand presence.",
+          "You will support sales with content that drives inbound interest and engagement.",
+        ],
+      },
+
+      {
+        title: "Apply",
+        content: [
+          "If you are someone who enjoys building brand presence and creating structured, high-quality content, we’d like to hear from you.",
+          "Apply here: https://www.staffunitedgroup.com/join",
+        ],
+      },
+    ],
+
+    benefits: [],
+  },
 ];
