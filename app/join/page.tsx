@@ -107,6 +107,7 @@ const roleList = [
   "Customer Support",
   "Project Coordinator",
   "Travel Experience Curator",
+  "Sales Executive",
 ];
 
 export default function JoinPage() {
