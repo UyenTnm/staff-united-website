@@ -594,4 +594,130 @@ export const jobs: Job[] = [
 
     benefits: [],
   },
+  {
+    slug: "sales-client-growth-coordinator",
+    title: "Sales & Client Growth Coordinator",
+    department: "Sales",
+    location: "Ho Chi Minh City",
+    type: "Full-time",
+
+    description:
+      "STAFF United is hiring a Sales & Client Growth Coordinator to drive pipeline growth, manage a structured CRM system, and ensure seamless client transitions from prospect to long-term partner.",
+
+    sections: [
+      {
+        title: "About the Role",
+        content: [
+          "This role is about building and maintaining a high-quality, structured sales pipeline.",
+          "You will identify opportunities, manage client relationships, and ensure smooth transitions from lead to active client.",
+          "The focus is not just on outreach, but on maintaining clarity, consistency, and professionalism across every touchpoint.",
+          "We’re looking for someone who is organized, proactive, and comfortable working with systems and processes.",
+          "This is an office-based role in Ho Chi Minh City for someone who can take ownership and execute with discipline.",
+        ],
+      },
+
+      {
+        title: "What You’ll Do",
+        content: [
+          "Prospect Research & Outreach",
+          "Conduct targeted research on LinkedIn and relevant databases",
+          "Identify founders, agencies, and operators aligned with our model",
+          "Execute personalized outreach via LinkedIn and email",
+          "Track emerging industries and trends with operational gaps",
+
+          "CRM Management & Pipeline Tracking",
+          "Own and manage CRM system (Monday.com)",
+          "Ensure all leads are accurately tracked and categorized",
+          "Maintain clean, up-to-date pipeline data",
+          "Support reporting on pipeline health and performance",
+
+          "Proposal Support & Lead Follow-up",
+          "Manage consistent follow-ups to keep leads engaged",
+          "Coordinate scheduling and communication flow",
+          "Support creation of clear, professional proposals",
+          "Ensure communication is prompt, structured, and confident",
+
+          "Client Onboarding Support",
+          "Coordinate with Operations for smooth client transitions",
+          "Support onboarding setup (Slack, Notion, workflows)",
+          "Ensure a polished onboarding experience",
+          "Capture feedback to improve sales-to-delivery process",
+        ],
+      },
+
+      {
+        title: "Who We’re Looking For",
+        content: [
+          "Core Skills",
+          "Fluent, confident English communication (written and verbal)",
+          "Ability to communicate professionally with international clients",
+          "Experience with CRM systems or structured workflows",
+          "Strong organization and attention to detail",
+
+          "Mindset",
+          "Proactive, consistent, and accountable",
+          "Comfortable working within structured systems",
+          "Follows through on tasks and responsibilities",
+          "Interested in sales, networking, and client growth",
+
+          "Nice to Have",
+          "Experience in B2B sales or client-facing roles",
+          "Familiarity with tools like Monday.com, Notion, or Slack",
+          "Understanding of sales pipelines and conversion tracking",
+        ],
+      },
+
+      {
+        title: "Who This Role Is Good For",
+        content: [
+          "This role is a good fit if you:",
+          "Enjoy building relationships and managing client pipelines",
+          "Like structured systems and organized workflows",
+          "Want to grow in sales, business development, and client strategy",
+        ],
+      },
+
+      {
+        title: "Working Details",
+        content: [
+          "Role Type: Full-Time",
+          "Work Setting: Office-based (District 1, Ho Chi Minh City)",
+          "Location: Ho Chi Minh City, Vietnam",
+        ],
+      },
+
+      {
+        title: "Compensation & Benefits",
+        content: [
+          "Base salary + commission + performance bonus",
+          "Compensation directly tied to performance and contribution",
+          "Work with modern tools and equipment",
+          "Access to premium office facilities (gym, swimming pool, pantry)",
+          "Structured, international-facing working environment",
+          "Direct exposure to founders and global clients",
+          "Clear pathway to grow into Business Development / Growth Lead roles",
+        ],
+      },
+
+      {
+        title: "Why This Role Matters",
+        content: [
+          "This role is central to building a predictable and scalable growth engine.",
+          "You will help build a high-quality and consistent client pipeline.",
+          "You will expand network reach and market presence.",
+          "You will support long-term revenue growth through structured execution.",
+        ],
+      },
+
+      {
+        title: "Apply",
+        content: [
+          "If you are organized, proactive, and interested in building structured client growth systems, we’d like to hear from you.",
+          "Apply here: https://www.staffunitedgroup.com/join",
+        ],
+      },
+    ],
+
+    benefits: [],
+  },
 ];
