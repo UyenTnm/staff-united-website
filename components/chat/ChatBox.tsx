@@ -412,7 +412,7 @@ before:transition hover:bg-blue-600
         <div
           className={`fixed bottom-0 right-0 w-full sm:w-80 sm:bottom-4 sm:right-4 
   bg-white shadow-2xl rounded-2xl p-4 border border-gray-100
-  transform transition-all duration-300 ease-out
+  transform transition-all duration-300 ease-out z-50
   ${
     isOpen
       ? "translate-y-0 opacity-100"
