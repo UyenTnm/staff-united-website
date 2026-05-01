@@ -21,6 +21,7 @@ export default function ChatBox() {
 
   const isSendingRef = useRef(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const chatRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef("");
   const lastSendRef = useRef(0);
 
@@ -63,6 +64,32 @@ export default function ChatBox() {
 
     return () => window.removeEventListener("open-chat", open);
   }, []);
+
+  useEffect(() => {
+    const close = () => setIsOpen(false);
+
+    window.addEventListener("close-chat", close);
+
+    return () => window.removeEventListener("close-chat", close);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isOpen &&
+        chatRef.current &&
+        !chatRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
 
   // =========================
   // HELPERS
@@ -379,7 +406,11 @@ export default function ChatBox() {
     <>
       {!isOpen && (
         <button
-          onClick={() => setIsOpen(true)}
+          // onClick={() => setIsOpen(true)}
+          onClick={() => {
+            window.dispatchEvent(new Event("close-menu"));
+            setIsOpen(true);
+          }}
           className="
 fixed bottom-4 right-4 z-[9999]
 w-12 h-12 rounded-full
@@ -410,7 +441,8 @@ before:transition hover:bg-blue-600
 
       {isOpen && (
         <div
-          className={`fixed bottom-0 right-0 w-full sm:w-80 sm:bottom-4 sm:right-4 
+          ref={chatRef}
+          className={`fixed bottom-0 right-0 w-[full] sm:w-80 lg:w-[360px] sm:bottom-4 sm:right-4 
   bg-white shadow-2xl rounded-2xl p-4 border border-gray-100
   transform transition-all duration-300 ease-out z-50
   ${
@@ -419,20 +451,6 @@ before:transition hover:bg-blue-600
       : "translate-y-10 opacity-0 pointer-events-none"
   }`}
         >
-          {/* <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <span className="text-sm font-medium">Staff United Support</span>
-            </div>
-
-            <button
-              onClick={() => setIsOpen(false)}
-              className="text-gray-500 hover:text-black transition text-lg"
-            >
-              ✕
-            </button>
-          </div> */}
-
           <div className="flex items-center justify-between mb-3 pb-2 border-b">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
@@ -446,18 +464,11 @@ before:transition hover:bg-blue-600
               </div>
             </div>
 
-            {/* <button
-              onClick={() => setIsOpen(false)}
-              className="text-gray-400 hover:text-black transition text-lg"
-            >
-              ✕
-            </button> */}
-
             <button
               onClick={() => {
                 setIsOpen(false);
 
-                // 🔥 reset toàn bộ
+                // reset toàn bộ
                 setMessages([]);
                 setStep("service");
                 setInput("");
@@ -479,7 +490,7 @@ before:transition hover:bg-blue-600
           </div>
 
           {/* CHAT */}
-          <div className="h-[60vh] sm:h-64 overflow-y-auto space-y-3 text-sm px-1 scroll-smooth">
+          <div className="h-[50vh] max-h-[420px] sm:h-64 overflow-y-auto space-y-3 text-sm px-1 scroll-smooth">
             <div className="flex flex-col gap-3">
               {messages.map((m, i) => (
                 // <div

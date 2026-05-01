@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -24,6 +24,14 @@ export default function Navigation() {
   };
 
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const close = () => setIsOpen(false);
+
+    window.addEventListener("close-menu", close);
+
+    return () => window.removeEventListener("close-menu", close);
+  }, []);
 
   return (
     <nav className="fixed top-0 left-0 w-full z-[9999] isolate">
@@ -235,7 +243,12 @@ group-hover:duration-700
         )}
 
         <button
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => {
+            if (!isOpen) {
+              window.dispatchEvent(new Event("close-chat"));
+            }
+            setIsOpen(!isOpen);
+          }}
           className="xl:hidden w-10 h-10 flex items-center justify-center relative"
         >
           {/* LINE 1 */}
