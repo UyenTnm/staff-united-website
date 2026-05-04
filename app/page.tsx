@@ -1148,7 +1148,7 @@ export default function Home() {
           </div>
         )}
       </main>
-      <ChatBox />
+      {/* <ChatBox /> */}
     </>
   );
 }
