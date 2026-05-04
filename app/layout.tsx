@@ -9,6 +9,7 @@ import Footer from "@/components/footer";
 import ChatBox from "@/components/chat/ChatBox";
 import FloatingStack from "@/components/FloatingStack";
 import WhatsAppButton from "@/components/whatsapp/WhatsAppButton";
+import { ChatProvider } from "@/context/ChatContext";
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
@@ -37,13 +38,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-white text-[#0b1b33]">
-        <Navigation />
-        {children}
-        <Footer />
-        <WhatsAppButton />
+        <ChatProvider>
+          <Navigation />
+          {children}
+          <Footer />
 
-        <ChatBox />
-        {/* <FloatingStack /> */}
+          <div className="fixed bottom-6 right-4 z-[9999] flex flex-col items-end gap-6">
+            <WhatsAppButton />
+            <ChatBox />
+          </div>
+          {/* <FloatingStack /> */}
+        </ChatProvider>
       </body>
     </html>
   );

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { getChatReply } from "@/lib/chat/chatService";
+import { useChat } from "@/context/ChatContext";
 
 type ChatMessage = {
   role: "assistant" | "user";
@@ -11,7 +12,7 @@ type ChatMessage = {
 type Step = "service" | "choose_service" | "timeline" | "email" | "done";
 
 export default function ChatBox() {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, openChat, closeChat } = useChat();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [step, setStep] = useState<Step>("service");
 
@@ -58,20 +59,20 @@ export default function ChatBox() {
     loadGreeting();
   }, []);
 
-  useEffect(() => {
-    const open = () => setIsOpen(true);
-    window.addEventListener("open-chat", open);
+  // useEffect(() => {
+  //   const open = () => openChat();
+  //   window.addEventListener("open-chat", open);
 
-    return () => window.removeEventListener("open-chat", open);
-  }, []);
+  //   return () => window.removeEventListener("open-chat", open);
+  // }, []);
 
-  useEffect(() => {
-    const close = () => setIsOpen(false);
+  // useEffect(() => {
+  //   const close = () => closeChat();
 
-    window.addEventListener("close-chat", close);
+  //   window.addEventListener("close-chat", close);
 
-    return () => window.removeEventListener("close-chat", close);
-  }, []);
+  //   return () => window.removeEventListener("close-chat", close);
+  // }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -80,14 +81,14 @@ export default function ChatBox() {
         chatRef.current &&
         !chatRef.current.contains(event.target as Node)
       ) {
-        setIsOpen(false);
+        closeChat();
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("click", handleClickOutside, true);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, [isOpen]);
 
@@ -406,36 +407,47 @@ export default function ChatBox() {
     <>
       {!isOpen && (
         <button
-          // onClick={() => setIsOpen(true)}
           onClick={() => {
             window.dispatchEvent(new Event("close-menu"));
-            setIsOpen(true);
+            openChat();
           }}
           className="
-fixed bottom-4 right-4 z-[9999]
-w-12 h-12 rounded-full
- bg-[#4f8dc9]
-text-white
+z-[9999]
 
-flex items-center justify-center
+  flex items-center justify-center md:justify-start
 
- 
-backdrop-blur-md
+  /* MOBILE: circle giống WhatsApp */
+  w-14 h-14 p-0
 
-shadow-[0_8px_30px_rgba(0,0,0,0.4)]
-hover:shadow-[0_0_20px_rgba(59,130,246,0.6)]
+  /* DESKTOP: pill */
+  md:w-auto md:h-auto md:px-3 md:py-3 md:gap-3
 
-transition-all duration-300
-hover:scale-110
-active:scale-95
+  rounded-full
 
-before:absolute before:inset-0 before:rounded-full
-before:bg-white/10 before:opacity-0
-hover:before:opacity-100
-before:transition hover:bg-blue-600
+  bg-[linear-gradient(110deg,#081426,#0a1b33,#1f4e79,#4f8dc9,#0a1b33)]
+  bg-[length:200%_200%]
+  animate-gradient
+
+  text-white
+
+  shadow-[0_10px_30px_rgba(0,0,0,0.3)]
+  hover:scale-105 active:scale-95
+  transition-all duration-300
 "
         >
-          <span className="text-2xl leading-none translate-y-[1px]">💬</span>
+          {/* Avatar */}
+          <div className="w-12 h-12 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-white/30 shadow-md">
+            <img
+              src="/images/chatbot-ai.png"
+              alt="chat"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Text */}
+          <span className="hidden md:inline text-sm font-semibold whitespace-nowrap">
+            Chat with us
+          </span>
         </button>
       )}
 
@@ -444,7 +456,7 @@ before:transition hover:bg-blue-600
           ref={chatRef}
           className={`fixed bottom-0 right-0 w-[full] sm:w-80 lg:w-[360px] sm:bottom-4 sm:right-4 
   bg-white shadow-2xl rounded-2xl p-4 border border-gray-100
-  transform transition-all duration-300 ease-out z-50
+  transform transition-all duration-300 ease-out z-[10000]
   ${
     isOpen
       ? "translate-y-0 opacity-100"
@@ -466,7 +478,7 @@ before:transition hover:bg-blue-600
 
             <button
               onClick={() => {
-                setIsOpen(false);
+                closeChat();
 
                 // reset toàn bộ
                 setMessages([]);
@@ -532,13 +544,19 @@ before:transition hover:bg-blue-600
           {step === "service" && (
             <div className="mt-2 space-y-2">
               <button
-                onClick={handleClient}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleClient();
+                }}
                 className="w-full p-3 rounded-xl bg-[#0a1b33] text-white hover:opacity-90 transition"
               >
                 Get support for my business
               </button>
               <button
-                onClick={handleCandidate}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleCandidate();
+                }}
                 className="w-full border p-2 rounded-lg hover:opacity-90 transition"
               >
                 Join our team
@@ -615,7 +633,7 @@ before:transition hover:bg-blue-600
                 value={input}
                 onChange={(e) => {
                   setInput(e.target.value);
-                  inputRef.current = e.target.value; // nhớ giữ dòng này
+                  inputRef.current = e.target.value;
                 }}
                 disabled={isSubmitting}
                 placeholder="Enter your email..."
