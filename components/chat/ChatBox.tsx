@@ -412,14 +412,10 @@ export default function ChatBox() {
             openChat();
           }}
           className="
-z-[9999]
-
+  z-[9999]
   flex items-center justify-center md:justify-start
 
-  /* MOBILE: circle giống WhatsApp */
   w-14 h-14 p-0
-
-  /* DESKTOP: pill */
   md:w-auto md:h-auto md:px-3 md:py-3 md:gap-3
 
   rounded-full
@@ -429,18 +425,18 @@ z-[9999]
   animate-gradient
 
   text-white
+  shadow-lg
 
-  shadow-[0_10px_30px_rgba(0,0,0,0.3)]
-  hover:scale-105 active:scale-95
+  hover:scale-110 active:scale-95
   transition-all duration-300
 "
         >
           {/* Avatar */}
-          <div className="w-12 h-12 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-white/30 shadow-md">
+          <div className="w-full h-full md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-white/30 flex items-center justify-center">
             <img
               src="/images/chatbot-ai.png"
               alt="chat"
-              className="w-full h-full object-cover"
+              className="w-[36px] h-[36px] object-cover rounded-full"
             />
           </div>
 
