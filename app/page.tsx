@@ -22,7 +22,7 @@ import Hero from "@/components/hero";
 import { useInView } from "react-intersection-observer";
 import CountUp from "@/components/CountUp";
 import test from "node:test";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useState } from "react";
@@ -61,6 +61,19 @@ export default function Home() {
     triggerOnce: true,
     threshold: 0.3,
   });
+
+  const dateRef = useRef<HTMLInputElement>(null);
+
+  const openDatePicker = () => {
+    const input = dateRef.current;
+    if (!input) return;
+
+    try {
+      input.showPicker();
+    } catch {
+      input.click();
+    }
+  };
 
   const [phone, setPhone] = useState("");
 
@@ -965,20 +978,10 @@ export default function Home() {
 
                     setIsSubmitting(false);
                   }}
-                  className="
-    relative overflow-hidden 
-
-    bg-gradient-to-b from-white/20 to-white/5
-    backdrop-blur-xl
-
-    rounded-2xl
-    p-8
-
+                  className="relative overflow-hidden bg-gradient-to-b from-white/20 to-white/5 backdrop-blur-xl rounded-2xl p-8
     border border-[#d5dadf]
-
     shadow-[0_10px_40px_rgba(0,0,0,0.25)]
     hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)]
-
     hover:-translate-y-1
     transition-all duration-500
   "
@@ -1040,22 +1043,29 @@ export default function Home() {
                     />
 
                     {/* PHONE */}
-                    <div className="bg-white/60 backdrop-blur-md rounded-lg">
+                    <div className="bg-white/60 backdrop-blur-md rounded-lg relative z-[9999]">
                       <PhoneInput
-                        country={"vn"}
+                        country={"us"}
                         value={phone}
                         onChange={setPhone}
+                        enableSearch
                         inputClass="!w-full !border-none !bg-transparent !py-2"
                       />
                       <input type="hidden" name="phone" value={phone} />
                     </div>
 
                     {/* START DATE */}
-                    <input
-                      type="date"
-                      name="start_timeline"
-                      className="w-full px-4 py-2 rounded-lg border border-[#d5dadf] bg-white/60 backdrop-blur-md"
-                    />
+                    <div
+                      onClick={openDatePicker}
+                      className="w-full px-4 py-2 rounded-lg border border-[#d5dadf] bg-white/60 backdrop-blur-md cursor-pointer"
+                    >
+                      <input
+                        ref={dateRef}
+                        type="date"
+                        name="start_timeline"
+                        className="w-full bg-transparent outline-none cursor-pointer"
+                      />
+                    </div>
 
                     {/* MESSAGE */}
                     <textarea

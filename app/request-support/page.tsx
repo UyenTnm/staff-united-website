@@ -306,7 +306,16 @@ export default function RequestSupportPage() {
                 type="date"
                 name="start_timeline"
                 min={new Date().toISOString().split("T")[0]}
-                className="w-full border border-[#d1d5db] rounded px-3 py-2 text-[#0b1b33]"
+                onClick={(e) => {
+                  const input = e.currentTarget as HTMLInputElement;
+
+                  try {
+                    (input as any).showPicker();
+                  } catch {
+                    input.focus();
+                  }
+                }}
+                className="w-full border border-[#d1d5db] rounded px-3 py-2 text-[#0b1b33] bg-white cursor-pointer"
               />
             </div>
 
