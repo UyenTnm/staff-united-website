@@ -10,6 +10,7 @@ import ChatBox from "@/components/chat/ChatBox";
 import FloatingStack from "@/components/FloatingStack";
 import WhatsAppButton from "@/components/whatsapp/WhatsAppButton";
 import { ChatProvider } from "@/context/ChatContext";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
@@ -36,8 +37,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="bg-white text-[#0b1b33]">
+    <html lang="en" suppressHydrationWarning>
+      <body className="bg-background text-foreground transition-colors duration-300">
+        {/* <ThemeProvider> */}
         <ChatProvider>
           <Navigation />
           {children}
@@ -49,6 +51,7 @@ export default function RootLayout({
           </div>
           {/* <FloatingStack /> */}
         </ChatProvider>
+        {/* </ThemeProvider> */}
       </body>
     </html>
   );

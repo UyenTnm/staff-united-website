@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import ThemeToggle from "./theme/ThemeToggle";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -44,7 +45,7 @@ export default function Navigation() {
         {/* CENTER PILL */}
         <div
           className="
-          hidden xl:flex  items-center gap-2
+          hidden xl:flex items-center gap-2
           bg-[#0d0d0d]/80
           border border-white/10
           rounded-full px-3 py-2
@@ -152,21 +153,7 @@ group-hover:duration-700
         {/* CTA */}
         {/* CTA GROUP */}
         <div className="hidden lg:flex items-center gap-3">
-          {/* JOIN (secondary button) */}
-          {/* <Link
-            href="/join"
-            className="
-      px-5 py-2
-      rounded-full
-      text-sm font-medium
-      border border-white/20
-      text-white
-      hover:bg-white/10
-      transition
-    "
-          >
-            Join the Team
-          </Link> */}
+          {/* <ThemeToggle /> */}
 
           {/* REQUEST SUPPORT (primary) */}
           <Link
