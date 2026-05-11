@@ -92,7 +92,7 @@ text-xl sm:text-3xl md:text-4xl lg:text-5xl px-6"
 
           {/* IMAGE */}
           <img
-            src="/home/hero-banner-home.png"
+            src="/home/hero-banner-home.webp"
             className="
             relative z-0
 
