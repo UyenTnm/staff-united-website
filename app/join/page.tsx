@@ -160,6 +160,11 @@ export default function JoinPage() {
               },
             );
 
+            // Track job application lead
+            (window as any).gtag?.("event", "generate_lead", {
+              form_name: "join_our_team",
+            });
+
             setSuccess(true);
             window.scrollTo({ top: 0, behavior: "smooth" });
             reset();
