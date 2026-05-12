@@ -728,7 +728,7 @@ export default function RequestSupportPage() {
         </section>
 
         {/* ================= MOBILE STICKY CTA ================= */}
-        <div className="fixed bottom-0 left-0 right-0 md:hidden z-40 bg-white border-t border-muted shadow-lg">
+        {/* <div className="fixed bottom-0 left-0 right-0 md:hidden z-40 bg-white border-t border-muted shadow-lg">
           <div className="px-4 py-3 flex items-center justify-between gap-3">
             <div>
               <p className="text-xs text-muted-foreground">Need assistance?</p>
@@ -747,7 +747,7 @@ export default function RequestSupportPage() {
               Submit Request
             </a>
           </div>
-        </div>
+        </div> */}
 
         {/* ================= SUCCESS MODAL ================= */}
         {success && (
