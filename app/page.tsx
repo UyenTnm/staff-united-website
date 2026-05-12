@@ -966,6 +966,11 @@ export default function Home() {
                       const text = await res.text();
                       console.log("LITE RESPONSE:", text);
 
+                      // Track homepage lead
+                      (window as any).gtag?.("event", "generate_lead", {
+                        form_name: "request_support_home",
+                      });
+
                       setSuccess(true);
                       // window.scrollTo({ top: 0, behavior: "smooth" });
 
