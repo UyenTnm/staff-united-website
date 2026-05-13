@@ -1,6 +1,5 @@
 "use client";
-import Navigation from "@/components/navigation";
-import Footer from "@/components/footer";
+
 import AnimatedSection from "@/components/AnimatedSection";
 import {
   ArrowUpRight,
@@ -21,13 +20,11 @@ import Image from "next/image";
 import Hero from "@/components/hero";
 import { useInView } from "react-intersection-observer";
 import CountUp from "@/components/CountUp";
-import test from "node:test";
 import { useEffect, useRef } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useState } from "react";
 import Link from "next/link";
-import ChatBox from "@/components/chat/ChatBox";
 
 export default function Home() {
   const testimonials = [
@@ -80,28 +77,49 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  useEffect(() => {
-    const elements = document.querySelectorAll(".fade-up");
+  // useEffect(() => {
+  //   const elements = document.querySelectorAll(".fade-up");
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("active");
-          }
-        });
-      },
-      { threshold: 0.2 },
-    );
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       entries.forEach((entry) => {
+  //         if (entry.isIntersecting) {
+  //           entry.target.classList.add("active");
+  //         }
+  //       });
+  //     },
+  //     { threshold: 0.2 },
+  //   );
 
-    elements.forEach((el) => observer.observe(el));
+  //   elements.forEach((el) => observer.observe(el));
 
-    return () => observer.disconnect();
-  }, []);
+  //   return () => observer.disconnect();
+  // }, []);
+
+  // useEffect(() => {
+  //   const elements = document.querySelectorAll(
+  //     ".slide-left, .slide-right, .fade-up",
+  //   );
+
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       entries.forEach((entry) => {
+  //         if (entry.isIntersecting) {
+  //           entry.target.classList.add("active");
+  //         }
+  //       });
+  //     },
+  //     { threshold: 0.2 },
+  //   );
+
+  //   elements.forEach((el) => observer.observe(el));
+
+  //   return () => observer.disconnect();
+  // }, []);
 
   useEffect(() => {
     const elements = document.querySelectorAll(
-      ".slide-left, .slide-right, .fade-up",
+      ".fade-up, .slide-left, .slide-right",
     );
 
     const observer = new IntersectionObserver(
@@ -139,9 +157,13 @@ export default function Home() {
                 <div className="grid grid-cols-[1.5fr_1fr] gap-4 items-center">
                   {/* COLUMN 1 - BIG IMAGE */}
                   <div className="rounded-[10px] overflow-hidden group h-full">
-                    <img
-                      src="../home/design-to-scale-1.jpeg"
-                      className="w-full h-full object-cover object-[center_top] transition duration-700 ease-out group-hover:scale-[1.03]"
+                    <Image
+                      src="/home/design-to-scale-1.jpeg"
+                      alt="Business operations and scaling"
+                      width={900}
+                      height={1200}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
                     />
                   </div>
 
@@ -149,17 +171,25 @@ export default function Home() {
                   <div className="grid grid-rows-2 gap-4 h-full">
                     {/* IMAGE 2 */}
                     <div className="rounded-[10px] overflow-hidden group">
-                      <img
-                        src="../home/design-to-scale-2.jpeg"
+                      <Image
+                        src="/home/design-to-scale-2.jpeg"
+                        alt="Business scaling and operations"
+                        width={600}
+                        height={800}
                         className="w-full h-full object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
+                        loading="lazy"
                       />
                     </div>
 
                     {/* IMAGE 3 */}
                     <div className="rounded-[10px] overflow-hidden group">
-                      <img
+                      <Image
                         src="../home/design-to-scale-3.jpeg"
+                        alt="Business scaling and operations"
+                        width={600}
+                        height={800}
                         className="w-full h-full object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -596,9 +626,13 @@ export default function Home() {
 
                           {/* USER */}
                           <div className="flex items-center gap-3 mt-4">
-                            <img
+                            <Image
                               src={item.avatar}
+                              alt={item.name}
+                              width={40}
+                              height={40}
                               className="w-10 h-10 rounded-full object-cover"
+                              loading="lazy"
                             />
                             <div>
                               <p className="text-sm font-medium">{item.name}</p>
@@ -802,10 +836,15 @@ export default function Home() {
   relative overflow-hidden rounded-xl
 "
                 >
-                  <img
-                    src="../home/workspace.png"
+                  <Image
+                    src="/home/workspace.png"
                     alt="Workspace STAFF UNITED"
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 640px) 100vw,
+           (max-width: 1024px) 50vw,
+           50vw"
                   />
                 </div>
 
