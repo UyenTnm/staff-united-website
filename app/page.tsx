@@ -184,7 +184,7 @@ export default function Home() {
                     {/* IMAGE 3 */}
                     <div className="rounded-[10px] overflow-hidden group">
                       <Image
-                        src="../home/design-to-scale-3.jpeg"
+                        src="/home/design-to-scale-3.jpeg"
                         alt="Business scaling and operations"
                         width={600}
                         height={800}
@@ -591,9 +591,13 @@ export default function Home() {
                     min-w-[160px]
                   "
                         >
-                          <img
+                          <Image
                             src={`/logo-client/${logo}`}
+                            alt={logo.replace(/\.[^.]+$/, "")}
+                            width={120}
+                            height={40}
                             className="h-8 sm:h-10 max-w-[120px] object-contain"
+                            loading="lazy"
                           />
                         </div>
                       ))}
