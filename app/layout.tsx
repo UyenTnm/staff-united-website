@@ -1,17 +1,21 @@
 import React from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import dynamic from "next/dynamic";
+import Script from "next/script";
 
 import "./globals.css";
 
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import ChatBox from "@/components/chat/ChatBox";
-import FloatingStack from "@/components/FloatingStack";
-import WhatsAppButton from "@/components/whatsapp/WhatsAppButton";
 import { ChatProvider } from "@/context/ChatContext";
-import { ThemeProvider } from "@/components/theme/ThemeProvider";
-import Script from "next/script";
+
+// Lazy load non-critical widgets
+const ChatBox = dynamic(() => import("@/components/chat/ChatBox"));
+
+const WhatsAppButton = dynamic(
+  () => import("@/components/whatsapp/WhatsAppButton"),
+);
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
@@ -38,11 +42,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+  const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
 
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-background text-foreground transition-colors duration-300">
-        {/* <ThemeProvider> */}
         <ChatProvider>
           <Navigation />
           {children}
@@ -52,9 +56,7 @@ export default function RootLayout({
             <WhatsAppButton />
             <ChatBox />
           </div>
-          {/* <FloatingStack /> */}
         </ChatProvider>
-        {/* </ThemeProvider> */}
       </body>
 
       {GA_ID && (
@@ -75,15 +77,17 @@ export default function RootLayout({
         </>
       )}
 
-      {process.env.NEXT_PUBLIC_CLARITY_ID && (
+      {CLARITY_ID && (
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`
-      (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "${process.env.NEXT_PUBLIC_CLARITY_ID}");
-    `}
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;
+              t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];
+              y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "${CLARITY_ID}");
+          `}
         </Script>
       )}
     </html>
