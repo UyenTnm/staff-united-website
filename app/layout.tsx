@@ -44,9 +44,37 @@ export default function RootLayout({
   const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
   const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "STAFF UNITED",
+    url: "https://www.staffunitedgroup.com",
+    logo: "https://www.staffunitedgroup.com/staff-logo.webp",
+    description:
+      "Women-powered offshore execution teams in Vietnam supporting global businesses with structured operational, administrative, and marketing services.",
+    sameAs: [
+      "https://www.linkedin.com/company/staff-united-group",
+      "https://www.facebook.com/staffunitedgroup",
+      "https://www.instagram.com/staffunitedgroup",
+      "https://www.threads.com/@staffunitedgroup",
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      availableLanguage: ["English"],
+    },
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-background text-foreground transition-colors duration-300">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
+
         <ChatProvider>
           <Navigation />
           {children}
