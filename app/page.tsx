@@ -1103,16 +1103,21 @@ export default function Home() {
                     </div>
 
                     {/* START DATE */}
-                    <div
-                      onClick={openDatePicker}
-                      className="w-full px-4 py-2 rounded-lg border border-[#d5dadf] bg-white/60 backdrop-blur-md cursor-pointer"
-                    >
-                      <input
-                        ref={dateRef}
-                        type="date"
-                        name="start_timeline"
-                        className="w-full bg-transparent outline-none cursor-pointer"
-                      />
+                    <div>
+                      <label className="block text-sm font-medium text-[#0b1b33] mb-1">
+                        Preferred Start Date
+                      </label>
+                      <div
+                        onClick={openDatePicker}
+                        className="w-full px-4 py-2 rounded-lg border border-[#d5dadf] bg-white/60 backdrop-blur-md cursor-pointer"
+                      >
+                        <input
+                          ref={dateRef}
+                          type="date"
+                          name="start_timeline"
+                          className="w-full bg-transparent outline-none cursor-pointer"
+                        />
+                      </div>
                     </div>
 
                     {/* MESSAGE */}
