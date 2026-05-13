@@ -143,9 +143,9 @@ export default function Home() {
       <main className="bg-white w-full">
         {/* SECTION 1 — HERO (VISUAL ENHANCED) */}
 
-        <AnimatedSection>
-          <Hero />
-        </AnimatedSection>
+        {/* <AnimatedSection> */}
+        <Hero />
+        {/* </AnimatedSection> */}
 
         {/* SECTION 2 — POSITIONING (FULL GREY) */}
         <AnimatedSection>

@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function Hero() {
   return (
     <section className="relative bg-gradient-to-b from-[#0a1b33] via-[#0a1b33] to-[#103663] text-white overflow-hidden">
@@ -91,22 +93,25 @@ text-xl sm:text-3xl md:text-4xl lg:text-5xl px-6"
           <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent z-20 pointer-events-none" />
 
           {/* IMAGE */}
-          <img
+          <Image
             src="/home/hero-banner-home.webp"
+            alt="STAFF UNITED execution team"
+            width={1600}
+            height={900}
+            priority
+            sizes="100vw"
             className="
-            relative z-0
-
+    relative z-0
     w-[140%]
     sm:w-[120%]
     md:w-[110%]
     lg:w-[100%]
     xl:w-[100%]
     2xl:w-[55%]
-
     max-w-none
     object-contain
     pointer-events-none
-          "
+  "
           />
         </div>
       </div>
@@ -152,14 +157,14 @@ text-xl sm:text-3xl md:text-4xl lg:text-5xl px-6"
                 "../logo-client/modern-architecture.png",
                 "../logo-client/bloom-spa.png",
               ].map((src, i) => (
-                <img
+                <Image
                   key={i}
-                  src={src}
-                  className="
-              w-10 h-10 rounded-full
-              border-2 border-black
-              object-cover
-            "
+                  src={src.replace("../", "/")}
+                  alt="Client logo"
+                  width={40}
+                  height={40}
+                  className="w-10 h-10 rounded-full border-2 border-black object-cover"
+                  loading="lazy"
                 />
               ))}
             </div>
