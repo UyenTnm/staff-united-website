@@ -1,5 +1,6 @@
 "use client";
 import AnimatedSection from "@/components/AnimatedSection";
+import Image from "next/image";
 import { useEffect } from "react";
 
 export default function AboutUs() {
@@ -22,10 +23,13 @@ h-[70vh] md:h-[75vh]
   overflow-hidden -mt-[80px]
 "
         >
-          <img
+          <Image
             src="/team/hero-banner-team.webp"
             alt="About STAFF United"
-            className="absolute inset-0 w-full h-full object-cover "
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
           />
 
           <div className="absolute inset-0 bg-[#0a1b33]/60"></div>
@@ -101,10 +105,13 @@ h-[70vh] md:h-[75vh]
             {/* RIGHT IMAGE */}
             <div className="slide-right active order-1 md:order-2">
               <div className="w-full md:max-w-[520px] ml-auto h-[420px] md:h-[520px] rounded-xl overflow-hidden shadow-lg">
-                <img
+                <Image
                   src="/about-us/women-team-working.avif"
                   alt="Women working together"
-                  className="w-full h-full object-cover object-center"
+                  fill
+                  className="object-cover object-center"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
             </div>

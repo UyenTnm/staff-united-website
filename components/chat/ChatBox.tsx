@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { getChatReply } from "@/lib/chat/chatService";
 import { useChat } from "@/context/ChatContext";
+import Image from "next/image";
 
 type ChatMessage = {
   role: "assistant" | "user";
@@ -433,10 +434,13 @@ export default function ChatBox() {
         >
           {/* Avatar */}
           <div className="w-full h-full md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-white/30 flex items-center justify-center">
-            <img
+            <Image
               src="/images/chatbot-ai.png"
-              alt="chat"
+              alt="AI chat assistant"
+              width={36}
+              height={36}
               className="w-[36px] h-[36px] object-cover rounded-full"
+              loading="lazy"
             />
           </div>
 

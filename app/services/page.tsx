@@ -8,6 +8,7 @@ import {
   Sparkle,
   Target,
 } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Services() {
@@ -176,15 +177,18 @@ export default function Services() {
                 >
                   {/* ICON */}
                   <div className="w-18 h-18 mb-6 rounded-full bg-[#0a1b33] flex items-center justify-center">
-                    <img
+                    <Image
                       src={item.icon}
                       alt={item.title}
+                      width={64}
+                      height={64}
                       className="
       w-16 h-16
       object-contain
       transition duration-500
       group-hover:scale-110
     "
+                      loading="lazy"
                     />
                   </div>
 

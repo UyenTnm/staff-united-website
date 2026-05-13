@@ -91,14 +91,17 @@ export default function Footer() {
       hover:drop-shadow-[0_10px_20px_rgba(0,0,0,0.4)]
     "
           >
-            <img
+            <Image
               src="/footer/Google-Review-Logo.webp"
               alt="Google Reviews"
+              width={96}
+              height={96}
               className="
-        w-20 h-20 sm:w-24 sm:h-24
-        object-contain
-        transition-all duration-300
-      "
+    w-20 h-20 sm:w-24 sm:h-24
+    object-contain
+    transition-all duration-300
+  "
+              loading="lazy"
             />
           </a>
         </div>
