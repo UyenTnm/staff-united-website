@@ -280,7 +280,7 @@ export default function Home() {
           </section>
         </AnimatedSection>
 
-        {/* SECTION 4 — WHAT WE DELIVER (WHITE) */}
+        {/* SECTION 4 — SERVICES */}
         <AnimatedSection>
           <section className="bg-white py-16 sm:py-20 md:py-32">
             <div className="max-w-8xl mx-auto px-5 md:px-8 xl:px-12">
@@ -336,7 +336,7 @@ export default function Home() {
         max-w-2xl
       "
                 >
-                  Structured Offshore Support for Growing Businesses
+                  Specialized Business Support Services
                 </h2>
 
                 {/* PARAGRAPH */}
@@ -351,9 +351,9 @@ export default function Home() {
         max-w-xl
       "
                 >
-                  We provide reliable support across finance, administration,
-                  customer operations, and marketing execution — so you can
-                  focus on growth.
+                  From bookkeeping and executive assistance to customer service
+                  and digital marketing, our dedicated offshore professionals
+                  help your business scale with confidence.
                 </p>
 
                 {/* BUTTON */}
@@ -397,31 +397,40 @@ export default function Home() {
             </div>
 
             {/* SERVICES GRID */}
-            <div className="grid sm:grid-cols-2 gap-6 mt-12 max-w-8xl mx-auto px-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 max-w-8xl mx-auto px-6">
               {[
                 {
-                  title: "Finance & Bookkeeping Support",
-                  desc: "Reliable financial operations support to keep your books accurate, organized, and up to date.",
-                  icon: "💰",
+                  title: "Bookkeeping Support",
+                  desc: "Accurate day-to-day bookkeeping support to keep your financial records organized and current.",
+                  icon: "📘",
+                  // href: "/services/bookkeeping-support",
                   href: "/services",
                 },
                 {
-                  title: "Executive Admin & Business Support",
-                  desc: "Day-to-day operational and administrative support to help founders and teams stay focused on growth.",
-                  icon: "📋",
+                  title: "Executive Assistant Support",
+                  desc: "Professional administrative assistance to help founders and executives stay focused on high-value work.",
+                  icon: "📅",
+                  // href: "/services/executive-assistant-support",
                   href: "/services",
                 },
                 {
-                  title: "Social Marketing & Sales Support",
-                  desc: "Execution-focused support to keep your marketing and sales processes running consistently.",
-                  icon: "📢",
+                  title: "Digital Marketing Support",
+                  desc: "Execution support for content, campaigns, and marketing operations to help drive consistent growth.",
+                  icon: "📈",
+                  // href: "/services/digital-marketing-support",
                   href: "/services",
                 },
                 {
-                  title: "Customer Support & Back-Office Operations",
-                  desc: "Consistent, professional support for your customers and internal processes.",
+                  title: "Customer Support",
+                  desc: "Responsive and professional customer service support to strengthen your client experience.",
+                  icon: "💬",
+                  // href: "/services/customer-support",
+                },
+                {
+                  title: "Administrative Support",
+                  desc: "Reliable back-office and operational assistance to keep your business running smoothly.",
                   icon: "🗂️",
-                  href: "/services",
+                  // href: "/services/administrative-support",
                 },
               ].map((item, i) => (
                 <a
@@ -478,10 +487,6 @@ export default function Home() {
                   </p>
 
                   {/* CTA */}
-                  {/* <div className="mt-6 text-sm font-medium flex items-center gap-2 text-[#4f8dc9]/70 group-hover:text-[#4f8fcb] transition-colors">
-                  Learn More
-                  <span className="rotate-[-45deg]">→</span>
-                </div> */}
 
                   <div className="mt-6 flex items-center gap-2.5 ">
                     {/* TEXT */}
@@ -512,19 +517,6 @@ export default function Home() {
     group-hover:text-white
   "
                     >
-                      {/* <span
-                      className="
-      flex items-center justify-center
-      leading-none
-
-      rotate-[-45deg]
-      transition-transform duration-300 ease-out
-      group-hover:rotate-0
-    "
-                    >
-                      →
-                    </span> */}
-
                       <ArrowUpRight
                         size={14}
                         className="
