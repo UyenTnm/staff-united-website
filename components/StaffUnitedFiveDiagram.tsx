@@ -15,7 +15,7 @@ export default function StaffUnitedFiveDiagram() {
       subtitle: "Clarity & control",
       color: "#4a90d9",
       startAngle: -90,
-      labelX: 460,
+      labelX: 465,
       labelY: 95,
       align: "start",
     },
@@ -24,7 +24,7 @@ export default function StaffUnitedFiveDiagram() {
       subtitle: "Structure & efficiency",
       color: "#0d1b36",
       startAngle: -18,
-      labelX: 535,
+      labelX: 540,
       labelY: 280,
       align: "start",
     },
@@ -33,8 +33,8 @@ export default function StaffUnitedFiveDiagram() {
       subtitle: "Customers & revenue",
       color: "#7a9ab8",
       startAngle: 54,
-      labelX: 292,
-      labelY: 555,
+      labelX: 291,
+      labelY: 565,
       align: "middle",
     },
     {
@@ -42,7 +42,7 @@ export default function StaffUnitedFiveDiagram() {
       subtitle: "Visibility & brand",
       color: "#2255a0",
       startAngle: 126,
-      labelX: 45,
+      labelX: 40,
       labelY: 280,
       align: "end",
     },
@@ -51,7 +51,7 @@ export default function StaffUnitedFiveDiagram() {
       subtitle: "Setup & expansion",
       color: "#7aabdf",
       startAngle: 198,
-      labelX: 110,
+      labelX: 105,
       labelY: 95,
       align: "end",
     },
@@ -148,7 +148,7 @@ export default function StaffUnitedFiveDiagram() {
                 <feDropShadow
                   dx="0"
                   dy="14"
-                  stdDeviation="14"
+                  stdDeviation="4"
                   floodColor="#0b1b33"
                   floodOpacity="0.14"
                 />
