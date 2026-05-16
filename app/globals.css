@@ -444,3 +444,103 @@ select {
 .animate-ring {
   animation: ring 0.8s ease-in-out;
 }
+
+/* ==========================================================
+   STAFF UNITED UTILITIES
+   Reuse colors from :root
+========================================================== */
+
+@layer components {
+  /* LIGHT SECTION */
+  .staff-section-light {
+    @apply bg-background text-foreground;
+  }
+
+  /* DARK SECTION */
+  .staff-section-dark {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--foreground)) 0%,
+      #102848 100%
+    );
+    color: hsl(var(--primary-foreground));
+  }
+
+  /* Ensure all text inside dark sections is readable */
+  .staff-section-dark h1,
+  .staff-section-dark h2,
+  .staff-section-dark h3,
+  .staff-section-dark h4,
+  .staff-section-dark h5,
+  .staff-section-dark h6 {
+    color: hsl(var(--primary-foreground));
+  }
+
+  .staff-section-dark p {
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  /* MAIN SERVICE CATEGORY (Sales, Finance, etc.) */
+  .service-category {
+    @apply text-sm uppercase tracking-[0.28em] font-semibold;
+    color: hsl(var(--primary));
+  }
+
+  /* SECONDARY TITLE */
+  .service-heading {
+    @apply mt-3 text-3xl md:text-4xl leading-tight font-semibold;
+    min-height: 7rem;
+  }
+
+  /* IMPACT TEXT */
+  .service-impact {
+    min-height: 170px;
+  }
+
+  /* PREVIEW TAG AREA */
+  .service-preview {
+    min-height: 110px;
+    align-content: flex-start;
+  }
+
+  /* DROPDOWN ITEMS */
+  .service-item {
+    min-height: 56px;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .service-item-text {
+    flex: 1;
+    line-height: 1.6;
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-expanded {
+    height: 900px;
+  }
+}
+
+/* Thêm vào globals.css */
+
+@keyframes serviceRotate {
+  from {
+    opacity: 0;
+    transform: translateY(100%) rotate(6deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

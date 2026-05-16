@@ -1,18 +1,27 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export default function StaffUnitedFiveDiagram() {
   const center = 290;
   const outerRadius = 230;
   const innerRadius = 130;
   const segmentAngle = 72; // 360 / 5
+  const [rotation, setRotation] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const svgRef = useRef<SVGSVGElement>(null);
+  const dragStartAngle = useRef(0);
+  const startRotation = useRef(0);
 
   const segments = [
     {
-      title: "Finance",
-      subtitle: "Clarity & control",
+      letter: "S",
+
+      title: "Structured Operations",
+      // subtitle: "Clarity & control",
       color: "#4a90d9",
       startAngle: -90,
       labelX: 465,
@@ -20,8 +29,10 @@ export default function StaffUnitedFiveDiagram() {
       align: "start",
     },
     {
-      title: "Operations",
-      subtitle: "Structure & efficiency",
+      letter: "T",
+
+      title: "Targeted Sales",
+      // subtitle: "Structure & efficiency",
       color: "#0d1b36",
       startAngle: -18,
       labelX: 540,
@@ -29,8 +40,10 @@ export default function StaffUnitedFiveDiagram() {
       align: "start",
     },
     {
-      title: "Sales",
-      subtitle: "Customers & revenue",
+      letter: "A",
+
+      title: "Accounting & Finance",
+      // subtitle: "Customers & revenue",
       color: "#7a9ab8",
       startAngle: 54,
       labelX: 291,
@@ -38,8 +51,10 @@ export default function StaffUnitedFiveDiagram() {
       align: "middle",
     },
     {
-      title: "Marketing",
-      subtitle: "Visibility & brand",
+      letter: "F",
+
+      title: "Focused Marketing",
+      // subtitle: "Visibility & brand",
       color: "#2255a0",
       startAngle: 126,
       labelX: 40,
@@ -47,8 +62,10 @@ export default function StaffUnitedFiveDiagram() {
       align: "end",
     },
     {
-      title: "Growth",
-      subtitle: "Setup & expansion",
+      letter: "F",
+
+      title: "Future Expansion",
+      // subtitle: "Setup & expansion",
       color: "#7aabdf",
       startAngle: 198,
       labelX: 105,
@@ -94,15 +111,147 @@ export default function StaffUnitedFiveDiagram() {
     `;
   };
 
+  const createArcPath = (
+    startAngle: number,
+    endAngle: number,
+    radius: number,
+  ) => {
+    const start = polarToCartesian(center, center, radius, startAngle);
+    const end = polarToCartesian(center, center, radius, endAngle);
+
+    const largeArcFlag = endAngle - startAngle <= 180 ? 0 : 1;
+
+    return `
+    M ${start.x} ${start.y}
+    A ${radius} ${radius} 0 ${largeArcFlag} 1 ${end.x} ${end.y}
+  `;
+  };
+
+  const getAngle = (clientX: number, clientY: number) => {
+    const svg = svgRef.current;
+    if (!svg) return 0;
+
+    const rect = svg.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+
+    return Math.atan2(clientY - cy, clientX - cx) * (180 / Math.PI);
+  };
+
+  const handlePointerDown = (e: React.PointerEvent<SVGGElement>) => {
+    setIsDragging(true);
+    setIsPaused(true);
+
+    dragStartAngle.current = getAngle(e.clientX, e.clientY);
+    startRotation.current = rotation;
+
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<SVGGElement>) => {
+    if (!isDragging) return;
+
+    const currentAngle = getAngle(e.clientX, e.clientY);
+    const delta = currentAngle - dragStartAngle.current;
+
+    setRotation(startRotation.current + delta);
+  };
+
+  const handlePointerUp = () => {
+    setIsDragging(false);
+    setIsPaused(false); // thả ra sẽ tự xoay lại
+  };
+
+  useEffect(() => {
+    if (isPaused || isDragging) return;
+
+    const id = setInterval(() => {
+      setRotation((prev) => prev + 0.08);
+    }, 16);
+
+    return () => clearInterval(id);
+  }, [isPaused, isDragging]);
+
   return (
     <section
-      className="pb-12 md:pb-16 lg:pb-24
-    fade-up active"
+      className="
+    relative
+    w-screen
+    left-1/2
+    right-1/2
+    -ml-[50vw]
+    -mr-[50vw]
+
+    pt-16 md:pt-32 lg:pt-36
+    pb-16 md:pb-24
+
+    overflow-hidden
+
+    bg-gradient-to-b
+    from-[#06172d]
+    via-[#0a1b33]
+    to-[#103663]
+
+    text-white
+    fade-up active
+  "
     >
-      <div className="max-w-2xl mx-auto px-6">
-        {/* Diagram */}
-        <div
-          className="
+      {/* BACKGROUND GLOW */}
+      <div className="hidden md:block absolute inset-0 opacity-20 pointer-events-none">
+        <div className="w-full h-full bg-[radial-gradient(circle_at_center,_rgba(79,141,201,0.45)_0%,_rgba(79,141,201,0.12)_35%,_transparent_75%)]"></div>
+      </div>
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
+        {/* HEADER */}
+        <div className="text-center">
+          {/* BADGE */}
+          <div className="flex justify-center">
+            <span
+              className="
+            inline-block
+            text-[11px] sm:text-xs
+            px-4 py-1.5
+            rounded-full
+            font-semibold
+            tracking-wide
+            text-[#8FD3FF]
+            bg-white/10
+            backdrop-blur-md
+            border border-white/10
+            shadow-[0_4px_20px_rgba(79,141,201,0.15)]
+          "
+            >
+              OUR SERVICES
+            </span>
+          </div>
+
+          {/* LOGO */}
+          <div className="mt-2 flex justify-center">
+            <Image
+              src="/services/5taff-logo-services.webp"
+              alt="5TAFF United"
+              width={320}
+              height={120}
+              className="
+            w-auto
+            h-auto
+            max-w-[220px]
+            sm:max-w-[280px]
+            md:max-w-[320px]
+          "
+              priority
+            />
+          </div>
+
+          {/* SUBTITLE */}
+          <p className="mt-2 max-w-4xl mx-auto text-white/80 leading-relaxed">
+            Five core business functions. One scalable support ecosystem.
+          </p>
+        </div>
+        {/* Existing Diagram Content */}
+        <div className="max-w-2xl mx-auto px-6">
+          {/* Diagram */}
+          <div
+            className="
     max-w-[320px]
     sm:max-w-[420px]
     md:max-w-[560px]
@@ -110,291 +259,416 @@ export default function StaffUnitedFiveDiagram() {
     xl:max-w-[760px]
     2xl:max-w-[820px]
     mx-auto px-4 "
-        >
-          <svg
-            viewBox="-40 0 660 580"
-            className="w-full h-auto overflow-visible"
           >
-            <defs>
-              {/* Glass gradient overlay */}
-              <linearGradient
-                id="glassOverlay"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
-                <stop offset="0%" stopColor="rgba(255,255,255,0.38)" />
-                <stop offset="30%" stopColor="rgba(255,255,255,0.14)" />
-                <stop offset="65%" stopColor="rgba(255,255,255,0.05)" />
-                <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-              </linearGradient>
-
-              {/* Soft glossy highlight */}
-              <linearGradient id="glassShine" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="rgba(255,255,255,0.28)" />
-                <stop offset="35%" stopColor="rgba(255,255,255,0.08)" />
-                <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-              </linearGradient>
-
-              {/* Outer shadow */}
-              <filter
-                id="glassShadow"
-                x="-50%"
-                y="-50%"
-                width="200%"
-                height="200%"
-              >
-                <feDropShadow
-                  dx="0"
-                  dy="14"
-                  stdDeviation="4"
-                  floodColor="#0b1b33"
-                  floodOpacity="0.14"
-                />
-              </filter>
-
-              {/* Inner glow */}
-              <filter
-                id="glassGlow"
-                x="-50%"
-                y="-50%"
-                width="200%"
-                height="200%"
-              >
-                <feDropShadow
-                  dx="0"
-                  dy="-2"
-                  stdDeviation="4"
-                  floodColor="#ffffff"
-                  floodOpacity="0.5"
-                />
-              </filter>
-            </defs>
-
-            {/* Donut Segments */}
-            {segments.map((segment, index) => {
-              const path = createDonutSegment(
-                segment.startAngle,
-                segment.startAngle + segmentAngle,
-                outerRadius,
-                innerRadius,
-              );
-
-              return (
-                <g
-                  key={index}
-                  className="group cursor-pointer"
-                  style={{
-                    transformBox: "fill-box",
-                    transformOrigin: "center",
-                  }}
+            <svg
+              ref={svgRef}
+              viewBox="-40 0 660 580"
+              className="w-full h-auto overflow-visible"
+            >
+              <defs>
+                {/* Glass gradient overlay */}
+                <linearGradient
+                  id="glassOverlay"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
                 >
-                  {/* Segment Wrapper */}
-                  <g
-                    className="
+                  <stop offset="0%" stopColor="rgba(255,255,255,0.38)" />
+                  <stop offset="30%" stopColor="rgba(255,255,255,0.14)" />
+                  <stop offset="65%" stopColor="rgba(255,255,255,0.05)" />
+                  <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+                </linearGradient>
+
+                {/* Soft glossy highlight */}
+                <linearGradient
+                  id="glassShine"
+                  x1="0%"
+                  y1="0%"
+                  x2="0%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stopColor="rgba(255,255,255,0.28)" />
+                  <stop offset="35%" stopColor="rgba(255,255,255,0.08)" />
+                  <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+                </linearGradient>
+
+                {/* Outer shadow */}
+                <filter
+                  id="glassShadow"
+                  x="-50%"
+                  y="-50%"
+                  width="200%"
+                  height="200%"
+                >
+                  <feDropShadow
+                    dx="0"
+                    dy="14"
+                    stdDeviation="4"
+                    floodColor="#0b1b33"
+                    floodOpacity="0.14"
+                  />
+                </filter>
+
+                {/* Inner glow */}
+                <filter
+                  id="glassGlow"
+                  x="-50%"
+                  y="-50%"
+                  width="200%"
+                  height="200%"
+                >
+                  <feDropShadow
+                    dx="0"
+                    dy="-2"
+                    stdDeviation="4"
+                    floodColor="#9cc9ff"
+                    floodOpacity="0.5"
+                  />
+                </filter>
+              </defs>
+
+              {/* Donut Segments */}
+              <g
+                onMouseEnter={(e) => {
+                  if (!isDragging) {
+                    e.currentTarget.style.animationPlayState = "paused";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isDragging) {
+                    e.currentTarget.style.animationPlayState = "running";
+                  }
+                }}
+                onPointerDown={(e) => {
+                  setIsDragging(true);
+
+                  // Dừng animation CSS
+                  e.currentTarget.style.animationPlayState = "paused";
+
+                  // Lấy góc xoay hiện tại từ CSS transform
+                  const computed = window.getComputedStyle(e.currentTarget);
+                  const matrix = new DOMMatrix(computed.transform);
+
+                  const currentRotation =
+                    Math.atan2(matrix.b, matrix.a) * (180 / Math.PI);
+
+                  setRotation(currentRotation);
+                  startRotation.current = currentRotation;
+                  dragStartAngle.current = getAngle(e.clientX, e.clientY);
+
+                  e.currentTarget.setPointerCapture(e.pointerId);
+                }}
+                onPointerMove={(e) => {
+                  if (!isDragging) return;
+
+                  const currentAngle = getAngle(e.clientX, e.clientY);
+                  const delta = currentAngle - dragStartAngle.current;
+
+                  setRotation(startRotation.current + delta);
+                }}
+                onPointerUp={(e) => {
+                  setIsDragging(false);
+
+                  // Xóa transform thủ công
+                  e.currentTarget.style.transform = "";
+
+                  // Tiếp tục animation CSS
+                  e.currentTarget.style.animationPlayState = "running";
+                }}
+                onPointerCancel={(e) => {
+                  setIsDragging(false);
+                  e.currentTarget.style.transform = "";
+                  e.currentTarget.style.animationPlayState = "running";
+                }}
+                className={isDragging ? "" : "animate-spin origin-center"}
+                style={{
+                  transformBox: "view-box",
+                  transformOrigin: `${center}px ${center}px`,
+                  animationDuration: "60s",
+                  animationTimingFunction: "linear",
+                  animationIterationCount: "infinite",
+                  cursor: isDragging ? "grabbing" : "grab",
+                  ...(isDragging
+                    ? {
+                        transform: `rotate(${rotation}deg)`,
+                      }
+                    : {}),
+                }}
+              >
+                {segments.map((segment, index) => {
+                  const path = createDonutSegment(
+                    segment.startAngle,
+                    segment.startAngle + segmentAngle,
+                    outerRadius,
+                    innerRadius,
+                  );
+
+                  return (
+                    <g
+                      key={index}
+                      className="group "
+                      style={{
+                        transformBox: "fill-box",
+                        transformOrigin: "center",
+                      }}
+                    >
+                      {/* Segment Wrapper */}
+                      <g
+                        className="
         transition-all
         duration-700
         ease-out
-        group-hover:scale-[1.04]
       "
-                    style={{
-                      transformBox: "fill-box",
-                      transformOrigin: "center center",
-                    }}
-                  >
-                    {/* Main segment */}
-                    <path
-                      d={path}
-                      fill={segment.color}
-                      stroke="rgba(255,255,255,0.75)"
-                      strokeWidth="10"
-                      strokeLinejoin="round"
-                      filter="url(#glassShadow)"
-                    />
+                        style={{
+                          transformBox: "fill-box",
+                          transformOrigin: "center center",
+                        }}
+                      >
+                        {/* Main segment */}
+                        <path
+                          d={path}
+                          fill={segment.color}
+                          stroke="rgba(255,255,255,0.75)"
+                          strokeWidth="7"
+                          strokeLinejoin="miter"
+                          strokeMiterlimit="2"
+                          strokeLinecap="butt"
+                          filter="url(#glassShadow)"
+                        />
 
-                    {/* Stronger shadow when hovered */}
-                    <path
-                      d={path}
-                      fill={segment.color}
-                      opacity="0"
-                      pointerEvents="none"
-                      className="
+                        {/* Stronger shadow when hovered */}
+                        <path
+                          d={path}
+                          fill={segment.color}
+                          opacity="0"
+                          pointerEvents="none"
+                          className="
           transition-all
           duration-700
           ease-out
           group-hover:opacity-100
         "
-                      style={{
-                        filter: `
+                          style={{
+                            filter: `
             drop-shadow(0 30px 35px rgba(11,27,51,0.28))
             drop-shadow(0 10px 18px rgba(74,144,217,0.18))
           `,
-                      }}
-                    />
+                          }}
+                        />
 
-                    {/* Glass overlay */}
-                    <path
-                      d={path}
-                      fill="url(#glassOverlay)"
-                      opacity="0.95"
-                      pointerEvents="none"
-                    />
+                        {/* Glass overlay */}
+                        {/* <path
+                          d={path}
+                          fill="url(#glassOverlay)"
+                          opacity="0.95"
+                          pointerEvents="none"
+                        /> */}
 
-                    {/* Top shine */}
-                    <path
-                      d={path}
-                      fill="url(#glassShine)"
-                      filter="url(#glassGlow)"
-                      opacity="0.9"
-                      pointerEvents="none"
-                    />
+                        {/* Top shine */}
+                        {/* <path
+                          d={path}
+                          fill="url(#glassShine)"
+                          filter="url(#glassGlow)"
+                          opacity="0.9"
+                          pointerEvents="none"
+                        /> */}
 
-                    {/* Bright edge highlight on hover */}
-                    <path
-                      d={path}
-                      fill="none"
-                      stroke="rgba(255,255,255,0.22)"
-                      strokeWidth="2"
-                      strokeLinejoin="round"
-                      pointerEvents="none"
-                      className="
+                        {/* Bright edge highlight on hover */}
+                        <path
+                          d={path}
+                          fill="none"
+                          stroke="rgba(255,255,255,0.22)"
+                          strokeWidth="2"
+                          strokeLinejoin="miter"
+                          strokeMiterlimit="2"
+                          pointerEvents="none"
+                          strokeLinecap="butt"
+                          className="
           transition-all
           duration-700
           ease-out
           group-hover:stroke-[rgba(255,255,255,0.55)]
           group-hover:stroke-[3]
         "
-                    />
-                  </g>
+                        />
+                      </g>
+                      {/* Large branding letter inside segment */}
+                      <text
+                        x={center}
+                        y={center - 178}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                        fill="rgba(255,255,255,0.60)"
+                        fontSize="72"
+                        fontWeight="900"
+                        fontFamily="Poppins, sans-serif"
+                        style={{
+                          filter:
+                            "drop-shadow(0 0 20px rgba(255,255,255,0.22))",
+                        }}
+                        transform={`rotate(${segment.startAngle + segmentAngle / 2 + 90} ${center} ${center})`}
+                      >
+                        {segment.letter}
+                      </text>
 
-                  {/* LABEL */}
-                  <g
-                    pointerEvents="none"
+                      {/* LABEL */}
+                      {/* LABEL */}
+                      <g pointerEvents="none">
+                        {/* Invisible curved path for title */}
+                        <path
+                          id={`title-path-${index}`}
+                          d={createArcPath(
+                            segment.startAngle + 8,
+                            segment.startAngle + segmentAngle - 8,
+                            outerRadius + 20,
+                          )}
+                          fill="none"
+                          stroke="none"
+                        />
+
+                        {/* Curved title */}
+                        <text
+                          fill="rgba(255,255,255,0.96)"
+                          fontSize="20"
+                          fontWeight="700"
+                          fontFamily="Poppins, sans-serif"
+                          letterSpacing="0.2"
+                          className="
+      transition-all
+      duration-700
+      ease-out
+    "
+                          style={{
+                            filter:
+                              "drop-shadow(0 4px 12px rgba(74,144,217,0.22))",
+                          }}
+                        >
+                          <textPath
+                            href={`#title-path-${index}`}
+                            startOffset="50%"
+                            textAnchor="middle"
+                            method="align"
+                            spacing="auto"
+                          >
+                            {segment.title}
+                          </textPath>
+                        </text>
+                      </g>
+                    </g>
+                  );
+                })}
+              </g>
+
+              {/* Center Circle */}
+              <circle
+                cx={center}
+                cy={center}
+                r="130"
+                fill="#F7FBFF"
+                stroke="rgba(143,211,255,0.35)"
+                strokeWidth="1.5"
+                filter="
+    drop-shadow(0 12px 35px rgba(11,27,51,0.16))
+    drop-shadow(0 0 24px rgba(79,141,201,0.22))
+  "
+              />
+
+              {/* Outer Rotating Ring using STAFF light colors */}
+              <defs>
+                <linearGradient
+                  id="staffRingGradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stopColor="#8FD3FF" />
+                  <stop offset="25%" stopColor="#B8E3FF" />
+                  <stop offset="50%" stopColor="#D6ECFF" />
+                  <stop offset="75%" stopColor="#9FD8FF" />
+                  <stop offset="100%" stopColor="#CFE8FF" />
+                </linearGradient>
+              </defs>
+
+              {/* Dashed Inner Ring */}
+              <circle
+                cx={center}
+                cy={center}
+                r="118"
+                fill="none"
+                stroke="url(#staffRingGradient)"
+                strokeWidth="3"
+                strokeDasharray="7 9"
+                strokeLinecap="round"
+                opacity="0.9"
+                className="animate-spin origin-center"
+                style={{
+                  transformBox: "fill-box",
+                  transformOrigin: "center center",
+                  animationDuration: "40s",
+                  animationTimingFunction: "linear",
+                  animationIterationCount: "infinite",
+                  filter: "drop-shadow(0 0 10px rgba(184,227,255,0.35))",
+                }}
+              />
+
+              {/* Center Logo */}
+              {/* Center Logo */}
+              <foreignObject x="205" y="225" width="170" height="90">
+                <div className="flex items-center justify-center w-full h-full">
+                  <Image
+                    src="/services/5taff-logo-services.webp"
+                    alt="5TAFF United"
+                    width={160}
+                    height={60}
                     className="
-        transition-all
-        duration-700
-        ease-out
-        group-hover:scale-[1.08]
-        group-hover:-translate-y-1
+        w-full
+        h-auto
+        object-contain
+        drop-shadow-[0_4px_12px_rgba(11,27,51,0.12)]
       "
                     style={{
-                      transformBox: "fill-box",
-                      transformOrigin: "center center",
+                      filter: `
+          drop-shadow(0 2px 4px rgba(255,255,255,0.35))
+          drop-shadow(0 8px 18px rgba(11,27,51,0.12))
+          blur(0.15px)
+        `,
                     }}
-                  >
-                    {/* Title */}
-                    <text
-                      x={segment.labelX}
-                      y={segment.labelY}
-                      textAnchor={segment.align as any}
-                      fill={segment.color}
-                      fontSize="20"
-                      fontWeight="700"
-                      fontFamily="Poppins, sans-serif"
-                      className="
-          transition-all
-          duration-700
-          ease-out
-          group-hover:font-extrabold
-        "
-                      style={{
-                        filter: "drop-shadow(0 4px 12px rgba(74,144,217,0.22))",
-                      }}
-                    >
-                      {segment.title}
-                    </text>
+                    priority
+                  />
+                </div>
+              </foreignObject>
 
-                    {/* Subtitle */}
-                    <text
-                      x={segment.labelX}
-                      y={segment.labelY + 28}
-                      textAnchor={segment.align as any}
-                      fill="#6b7a96"
-                      fontSize="14"
-                      fontWeight="400"
-                      fontFamily="Poppins, sans-serif"
-                      opacity="0.95"
-                      className="
-          transition-all
-          duration-700
-          ease-out
-          group-hover:opacity-100
-        "
-                    >
-                      {segment.subtitle}
-                    </text>
-                  </g>
-                </g>
-              );
-            })}
+              {/* Tagline */}
+              <text
+                x={center}
+                y="322"
+                textAnchor="middle"
+                fill="#0b1b33"
+                fontSize="22"
+                fontWeight="300"
+                fontFamily="Poppins, sans-serif"
+              >
+                Scalable Support
+              </text>
+            </svg>
+          </div>
 
-            {/* Center White Circle */}
-            <circle
-              cx={center}
-              cy={center}
-              r="114"
-              fill="rgba(255,255,255,0.92)"
-              filter="drop-shadow(0 10px 30px rgba(11,27,51,0.10))"
-            />
+          {/* Description */}
 
-            {/* Dashed Inner Ring */}
-            <circle
-              cx={center}
-              cy={center}
-              r="104"
-              fill="none"
-              stroke="rgba(79,141,201,0.22)"
-              strokeWidth="2"
-              strokeDasharray="6 8"
-              className="animate-spin origin-center"
-              style={{
-                transformBox: "fill-box",
-                transformOrigin: "center center",
-                animationDuration: "40s", // chỉnh tốc độ quay
-                animationTimingFunction: "linear",
-                animationIterationCount: "infinite",
-              }}
-            />
-
-            {/* Center Logo */}
-            <foreignObject x="205" y="225" width="170" height="90">
-              <div className="flex items-center justify-center w-full h-full">
-                <Image
-                  src="/services/5taff-logo-services.webp"
-                  alt="5TAFF United"
-                  width={160}
-                  height={60}
-                  className="w-full h-auto object-contain"
-                  priority
-                />
-              </div>
-            </foreignObject>
-
-            {/* Tagline */}
-            <text
-              x={center}
-              y="322"
-              textAnchor="middle"
-              fill="#0b1b33"
-              fontSize="22"
-              fontWeight="300"
-              fontFamily="Poppins, sans-serif"
-            >
-              Scalable Support
-            </text>
-          </svg>
-        </div>
-
-        {/* Description */}
-        <div className="mt-10 max-w-4xl mx-auto text-center">
-          <p className="text-[#0a1b33] leading-relaxed text-base md:text-lg">
-            The 5 Core Functions Every Business Needs to Grow and Scale. At
-            STAFF United, we provide scalable operational support across
-            finance, operations, sales, marketing, and growth.
-          </p>
-        </div>
-      </div>
+          <div className="mt-10 max-w-4xl mx-auto text-center">
+            <p className="text-white/85 leading-relaxed text-base md:text-lg">
+              The 5 Core Functions Every Business Needs to Grow and Scale. At
+              STAFF United, we provide scalable operational support across
+              Structured Operations, Targeted Sales, Accounting & Finance,
+              Focused Marketing, and Future Expansion.
+            </p>
+          </div>
+        </div>{" "}
+        {/* End: max-w-2xl mx-auto px-6 */}
+      </div>{" "}
+      {/* End: relative z-10 max-w-6xl mx-auto px-6 */}
     </section>
   );
 }

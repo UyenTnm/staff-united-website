@@ -1,10 +1,30 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
+
+const rotatingServices = [
+  "Finance.",
+  "Operations.",
+  "Sales.",
+  "Marketing.",
+  "Growth",
+];
 
 export default function Hero() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  // const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % rotatingServices.length);
+    }, 2400);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative bg-gradient-to-b from-[#0a1b33] via-[#0a1b33] to-[#103663] text-white overflow-hidden">
+    <section className="relative bg-gradient-to-b from-[#0a1b33] via-[#0a1b33] to-[#103663] text-muted overflow-hidden">
       {/* ===== CONTENT ===== */}
       <div className="relative mt-4 z-10 pb-14 pt-[120px] sm:pt-[130px] md:pt-[140px] lg:pt-[150px] md:pb-20 px-5 sm:px-6 text-center max-w-4xl mx-auto">
         <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
@@ -12,79 +32,112 @@ export default function Hero() {
           <span className="bg-[#4f8dc9] text-white px-3 py-1 inline-block rotate-2">
             engine
           </span>
-          <br />
-          for scalable growth.
+          {/* Giữ "for" và chữ chạy cùng hàng ở mọi thiết bị */}
+          <span className="inline-flex items-baseline whitespace-nowrap">
+            {/* Khoảng cách nhỏ giữa "for" và chữ chạy */}
+            <span
+              className="
+        ml-1
+        sm:ml-2
+        md:ml-12
+        lg:ml-[175px]
+        mr-2
+        sm:mr-4
+        inline-block
+
+        translate-y-[0.04em]
+    sm:translate-y-[0.06em]
+    md:translate-y-[0.10em]
+    lg:translate-y-[0.09em]
+    xl:translate-y-[0.09em]
+    2xl:translate-y-[0.09em]
+      "
+            >
+              for
+            </span>
+
+            {/* Rotating text */}
+            <span
+              className="
+    relative
+    inline-block
+    align-baseline
+
+    /* Mobile */
+    translate-y-[0.06em]
+
+    /* Tablet */
+    sm:translate-y-[0.08em]
+
+    /* Laptop */
+    md:translate-y-[0.12em]
+
+    /* Desktop & 4K */
+    lg:translate-y-[0.10em]
+    xl:translate-y-[0.10em]
+    2xl:translate-y-[0.10em]
+
+    h-[1.15em]
+    sm:h-[1.2em]
+
+    leading-[1.15]
+    sm:leading-[1.2]
+
+    overflow-hidden
+    whitespace-nowrap
+    text-[#4f8dc9]
+
+    min-w-[8ch]
+    sm:min-w-[10ch]
+    md:min-w-[11ch]
+    lg:min-w-[12ch]
+  "
+            >
+              {rotatingServices.map((service, index) => {
+                const isActive = index === currentIndex;
+
+                return (
+                  <span
+                    key={service}
+                    className={`
+              absolute
+              inset-0
+              flex
+              items-center
+              justify-start
+              whitespace-nowrap
+              transition-all
+              duration-700
+              ease-[cubic-bezier(0.22,1,0.36,1)]
+              ${
+                isActive
+                  ? "translate-y-0 opacity-100 rotate-0"
+                  : "translate-y-full opacity-0 rotate-2"
+              }
+            `}
+                  >
+                    {service}
+                  </span>
+                );
+              })}
+
+              {/* Invisible text để giữ chiều rộng ổn định */}
+              <span className="invisible whitespace-nowrap">Operations</span>
+            </span>
+          </span>
         </h1>
 
         <p className="text-white mt-6 text-lg max-w-2xl mx-auto">
-          <span className="text-[#4f8dc9] mt-5 sm:mt-6 text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-relaxed ">
-            Women-Powered Offshore Team | Based in Vietnam{" "}
-          </span>{" "}
+          <span className="text-[#4f8dc9] mt-5 sm:mt-6 text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+            Women-Powered Offshore Team | Based in Vietnam
+          </span>
           <br />
           Supporting global businesses with disciplined, high-performance
           results
         </p>
-
-        {/* CTA */}
-        <div className="mt-6 sm:mt-8 flex justify-center relative z-[999]">
-          <a
-            href="/request-support"
-            className="group relative inline-flex items-center justify-center gap-2 w-full  sm:w-auto max-w-[240px] rounded-full bg-[#4f8dc9] text-white overflow-hidden cursor-pointer transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_10px_30px_rgba(0,0,0,0.25)] text-sm sm:text-base px-5 py-3 sm:px-6 sm:py-4"
-          >
-            {/* TEXT */}
-            <span className="relative z-10">REQUEST SUPPORT</span>
-
-            {/* ICON */}
-            <span
-              className="
-      relative z-10
-      flex items-center justify-center w-5 h-5
-      transition-all duration-300
-      group-hover:translate-x-1
-    "
-            >
-              →
-            </span>
-
-            {/* DIVIDER SLIDE */}
-            <span
-              className="
-      absolute
-      top-0 right-0
-      h-full w-[7px]
-      bg-black
-      translate-x-full
-      group-hover:-translate-x-[42px]
-      transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
-      pointer-events-none
-    "
-            />
-          </a>
-        </div>
       </div>
 
       <div className="relative w-full">
-        <div
-          className="absolute top-[8%] sm:top-[8%] md:top-[10%] lg:top-[10%] left-0 w-full overflow-hidden z-0 
-text-xl sm:text-3xl md:text-4xl lg:text-5xl px-6"
-        >
-          <div className="flex whitespace-nowrap gap-20 marquee-track">
-            <div className="flex gap-20">
-              <span>All Women. All Business.</span>
-              <span>One Standard. One Team.</span>
-              <span>All Women. All Business.</span>
-              <span>One Standard. One Team.</span>
-            </div>
-
-            <div className="flex gap-20">
-              <span>All Women. All Business.</span>
-              <span>One Standard. One Team.</span>
-              <span>All Women. All Business.</span>
-              <span>One Standard. One Team.</span>
-            </div>
-          </div>
-        </div>
-
         {/* ===== IMAGE ===== */}
 
         <div className="relative z-0 h-[200px] sm:h-[260px] md:h-[420px] lg:h-[520px] flex items-end justify-center pointer-events-none ">
@@ -139,7 +192,7 @@ text-xl sm:text-3xl md:text-4xl lg:text-5xl px-6"
     "
         >
           {/* TITLE */}
-          <p className="text-white font-semibold text-lg leading-tight">
+          <p className="text-muted font-semibold text-lg leading-tight">
             STAFF UNITED COMPANY LIMITED
           </p>
 
@@ -172,7 +225,7 @@ text-xl sm:text-3xl md:text-4xl lg:text-5xl px-6"
             {/* RATING */}
             <div className="flex flex-col items-end">
               <div className="flex  text-base">⭐⭐⭐⭐⭐</div>
-              <span className="text-white/70 text-sm">200+ reviews</span>
+              <span className="text-muted/70 text-sm">200+ reviews</span>
             </div>
           </div>
         </a>

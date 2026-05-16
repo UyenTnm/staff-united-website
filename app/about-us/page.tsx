@@ -195,7 +195,7 @@ h-[70vh] md:h-[75vh]
           <section className="pt-10 space-y-6">
             <div className="text-center">
               <h2 className="text-2xl md:text-3xl font-semibold text-[#0b1b33] tracking-wide">
-                UNITED
+                Why UNITED Matters
               </h2>
             </div>
             <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>
@@ -204,8 +204,8 @@ h-[70vh] md:h-[75vh]
               <div className="border-l-2 border-[#4f8fcb] pl-4">
                 <p className="font-semibold text-[#0b1b33]">Shared Standards</p>
                 <p className="text-base text-[#0b1b33]/70 leading-relaxed mt-1">
-                  Process defines how we work. Every team member operates under
-                  the same expectations.
+                  Every team member operates under the same expectations for
+                  quality, communication, accountability, and delivery.
                 </p>
               </div>
 
@@ -214,68 +214,23 @@ h-[70vh] md:h-[75vh]
                   Shared Responsibility
                 </p>
                 <p className="text-base text-[#0b1b33]/70 leading-relaxed mt-1">
-                  Accountability is collective. Delivery is not isolated to
-                  individuals.
+                  Operational excellence is built around coordinated execution
+                  and collective accountability.
                 </p>
               </div>
 
               <div className="border-l-2 border-[#4f8fcb] pl-4">
                 <p className="font-semibold text-[#0b1b33]">
-                  Collective Delivery
+                  Collective Execution
                 </p>
                 <p className="text-base text-[#0b1b33]/70 leading-relaxed mt-1">
-                  We operate as one unit—aligned, coordinated, and consistent.
+                  We operate as one aligned ecosystem focused on helping
+                  businesses move forward with confidence.
                 </p>
               </div>
             </div>
           </section>
         </AnimatedSection>
-
-        {/* IN PRACTICE */}
-        {/* <section className="pt-12 space-y-8">
-            <div className="text-center">
-              <h2 className="text-2xl md:text-3xl font-semibold text-[#0b1b33] tracking-wide">
-                IN PRACTICE
-              </h2>
-            </div>
-            <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto rounded-full"></div>
-
-            <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6 pt-4">
-              {[
-                "Clear Scope",
-                "Defined Ownership",
-                "Documented Workflows",
-                "Trackable Communication",
-                "Internal Review",
-                "Quality Checks",
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="
-          flex items-start gap-4
-          border border-[#0b1b33]/10
-          rounded-lg
-          px-5 py-4
-          bg-white
-          transition-all duration-300
-          hover:border-[#4f8fcb]/40
-          hover:shadow-sm
-        "
-                >
-                  <div className="w-2 h-2 bg-[#4f8fcb] mt-2 rounded-full" />
-                  <p className="text-[#0b1b33]/80 leading-relaxed text-sm md:text-base">
-                    {item}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <div className="text-center pt-6">
-              <p className="text-lg text-[#4f8fcb] font-bold">
-                Standards Protect Our Clients and Our People.
-              </p>
-            </div>
-          </section> */}
       </section>
     </main>
   );

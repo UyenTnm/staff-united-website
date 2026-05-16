@@ -77,46 +77,6 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  // useEffect(() => {
-  //   const elements = document.querySelectorAll(".fade-up");
-
-  //   const observer = new IntersectionObserver(
-  //     (entries) => {
-  //       entries.forEach((entry) => {
-  //         if (entry.isIntersecting) {
-  //           entry.target.classList.add("active");
-  //         }
-  //       });
-  //     },
-  //     { threshold: 0.2 },
-  //   );
-
-  //   elements.forEach((el) => observer.observe(el));
-
-  //   return () => observer.disconnect();
-  // }, []);
-
-  // useEffect(() => {
-  //   const elements = document.querySelectorAll(
-  //     ".slide-left, .slide-right, .fade-up",
-  //   );
-
-  //   const observer = new IntersectionObserver(
-  //     (entries) => {
-  //       entries.forEach((entry) => {
-  //         if (entry.isIntersecting) {
-  //           entry.target.classList.add("active");
-  //         }
-  //       });
-  //     },
-  //     { threshold: 0.2 },
-  //   );
-
-  //   elements.forEach((el) => observer.observe(el));
-
-  //   return () => observer.disconnect();
-  // }, []);
-
   useEffect(() => {
     const elements = document.querySelectorAll(
       ".fade-up, .slide-left, .slide-right",
@@ -400,37 +360,34 @@ export default function Home() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 max-w-8xl mx-auto px-6">
               {[
                 {
-                  title: "Bookkeeping Support",
-                  desc: "Accurate day-to-day bookkeeping support to keep your financial records organized and current.",
+                  title: "Structured Operations",
+                  desc: "Administrative and business operations support to create organized systems, streamlined workflows, and scalable internal processes.",
+                  icon: "⚙️",
+                  href: "/services",
+                },
+                {
+                  title: "Targeted Sales",
+                  desc: "Customer support and sales operations to strengthen client relationships, improve responsiveness, and support revenue growth.",
+                  icon: "🤝",
+                  href: "/services",
+                },
+                {
+                  title: "Accounting & Finance",
+                  desc: "Bookkeeping, reconciliations, invoicing, and financial administration to keep your business organized and in control.",
                   icon: "📘",
-                  // href: "/services/bookkeeping-support",
                   href: "/services",
                 },
                 {
-                  title: "Executive Assistant Support",
-                  desc: "Professional administrative assistance to help founders and executives stay focused on high-value work.",
-                  icon: "📅",
-                  // href: "/services/executive-assistant-support",
-                  href: "/services",
-                },
-                {
-                  title: "Digital Marketing Support",
-                  desc: "Execution support for content, campaigns, and marketing operations to help drive consistent growth.",
+                  title: "Focused Marketing",
+                  desc: "Marketing execution, brand coordination, and media support to increase visibility and maintain a consistent professional presence.",
                   icon: "📈",
-                  // href: "/services/digital-marketing-support",
                   href: "/services",
                 },
                 {
-                  title: "Customer Support",
-                  desc: "Responsive and professional customer service support to strengthen your client experience.",
-                  icon: "💬",
-                  // href: "/services/customer-support",
-                },
-                {
-                  title: "Administrative Support",
-                  desc: "Reliable back-office and operational assistance to keep your business running smoothly.",
-                  icon: "🗂️",
-                  // href: "/services/administrative-support",
+                  title: "Future Expansion",
+                  desc: "Business setup and market entry support to help your company launch, expand, and scale with confidence.",
+                  icon: "🚀",
+                  href: "/services",
                 },
               ].map((item, i) => (
                 <a
@@ -446,18 +403,21 @@ export default function Home() {
 
         transition-all duration-300
         hover:border-[#4f8fcb]/40
-        hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)] cursor-pointer
+        hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)]
+        cursor-pointer
+
+        flex flex-col h-full
       "
                 >
                   {/* ICON */}
                   <div
                     className="
-        w-10 h-10
-        rounded-lg
-        bg-[#4f8fcb]/10
-        flex items-center justify-center
-        mb-6
-      "
+          w-10 h-10
+          rounded-lg
+          bg-[#4f8fcb]/10
+          flex items-center justify-center
+          mb-6
+        "
                   >
                     <span className="text-[#4f8fcb] text-lg">{item.icon}</span>
                   </div>
@@ -465,11 +425,11 @@ export default function Home() {
                   {/* TITLE */}
                   <h3
                     className="
-        text-lg sm:text-xl
-        font-semibold
-        text-[#0b1b33]
-        transition-colors
-      "
+          text-lg sm:text-xl
+          font-semibold
+          text-[#0b1b33]
+          transition-colors
+        "
                   >
                     {item.title}
                   </h3>
@@ -477,26 +437,26 @@ export default function Home() {
                   {/* DESCRIPTION */}
                   <p
                     className="
-        text-[#0b1b33]
-        mt-3
-        text-base
-        leading-relaxed
-      "
+          text-[#0b1b33]
+          mt-3
+          text-base
+          leading-relaxed
+          flex-1
+        "
                   >
                     {item.desc}
                   </p>
 
                   {/* CTA */}
-
-                  <div className="mt-6 flex items-center gap-2.5 ">
+                  <div className="mt-6 flex items-center gap-2.5">
                     {/* TEXT */}
                     <span
                       className="
-    text-xs tracking-wider font-medium uppercase
-    text-[#0b1b33]
-    transition-colors duration-700
-    group-hover:text-[#4f8fcb]
-  "
+            text-xs tracking-wider font-medium uppercase
+            text-[#0b1b33]
+            transition-colors duration-700
+            group-hover:text-[#4f8fcb]
+          "
                     >
                       LEARN MORE
                     </span>
@@ -504,25 +464,22 @@ export default function Home() {
                     {/* ICON */}
                     <div
                       className="
-    w-7 h-7 rounded-full
-    border border-[#0b1b33]/30
-    text-[#0b1b33]
-
-    flex items-center justify-center
-
-    transition-all duration-300 ease-out
-
-    group-hover:bg-[#4f8fcb]
-    group-hover:border-[#4f8fcb]
-    group-hover:text-white
-  "
+            w-7 h-7 rounded-full
+            border border-[#0b1b33]/30
+            text-[#0b1b33]
+            flex items-center justify-center
+            transition-all duration-300 ease-out
+            group-hover:bg-[#4f8fcb]
+            group-hover:border-[#4f8fcb]
+            group-hover:text-white
+          "
                     >
                       <ArrowUpRight
                         size={14}
                         className="
-    transition-transform duration-300
-    -rotate-95 group-hover:rotate-45
-  "
+              transition-transform duration-300
+              -rotate-95 group-hover:rotate-45
+            "
                       />
                     </div>
                   </div>
