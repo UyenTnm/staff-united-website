@@ -4,11 +4,11 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const rotatingServices = [
-  "Finance.",
-  "Operations.",
-  "Sales.",
-  "Marketing.",
-  "Growth",
+  "Structured Operations",
+  "Targeted Sales",
+  "Accounting & Finance",
+  "Focused Marketing",
+  "Future Expansion",
 ];
 
 export default function Hero() {
@@ -18,134 +18,212 @@ export default function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % rotatingServices.length);
-    }, 2400);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative bg-gradient-to-b from-[#0a1b33] via-[#0a1b33] to-[#103663] text-muted overflow-hidden">
-      {/* ===== CONTENT ===== */}
-      <div className="relative mt-4 z-10 pb-14 pt-[120px] sm:pt-[130px] md:pt-[140px] lg:pt-[150px] md:pb-20 px-5 sm:px-6 text-center max-w-4xl mx-auto">
-        <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-          Your execution{" "}
-          <span className="bg-[#4f8dc9] text-white px-3 py-1 inline-block rotate-2">
-            engine
-          </span>
-          {/* Giữ "for" và chữ chạy cùng hàng ở mọi thiết bị */}
-          <span className="inline-flex items-baseline whitespace-nowrap">
-            {/* Khoảng cách nhỏ giữa "for" và chữ chạy */}
-            <span
-              className="
-        ml-1
-        sm:ml-2
-        md:ml-12
-        lg:ml-[175px]
-        mr-2
-        sm:mr-4
-        inline-block
+    <section
+      className="
+    relative overflow-hidden
 
-        translate-y-[0.04em]
-    sm:translate-y-[0.06em]
-    md:translate-y-[0.10em]
-    lg:translate-y-[0.09em]
-    xl:translate-y-[0.09em]
-    2xl:translate-y-[0.09em]
-      "
-            >
-              for
-            </span>
+    /* Chiều cao toàn bộ Hero (giảm lại cho phù hợp với video) */
+    min-h-[480px]      /* Mobile S / M / L */
+    sm:min-h-[620px]   /* Mobile lớn */
+    md:min-h-[700px]   /* Tablet */
+    lg:min-h-[760px]   /* Desktop */
+    xl:min-h-[820px]   /* Màn hình lớn */
+    2xl:min-h-[900px]  /* 4K / màn hình rất lớn */
 
-            {/* Rotating text */}
-            <span
-              className="
-    relative
-    inline-block
-    align-baseline
+    bg-[#06172d]
+    text-white
+  "
+    >
+      {/* ===== FULL HERO VIDEO BACKGROUND ===== */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        className="
+    absolute inset-0
+    w-full h-full
+    object-cover
 
-    /* Mobile */
-    translate-y-[0.06em]
+    /* Mobile: ưu tiên phần bên trái của video */
+    object-[25%_center]
 
     /* Tablet */
-    sm:translate-y-[0.08em]
+    md:object-[30%_center]
 
-    /* Laptop */
-    md:translate-y-[0.12em]
-
-    /* Desktop & 4K */
-    lg:translate-y-[0.10em]
-    xl:translate-y-[0.10em]
-    2xl:translate-y-[0.10em]
-
-    h-[1.15em]
-    sm:h-[1.2em]
-
-    leading-[1.15]
-    sm:leading-[1.2]
-
-    overflow-hidden
-    whitespace-nowrap
-    text-[#4f8dc9]
-
-    min-w-[8ch]
-    sm:min-w-[10ch]
-    md:min-w-[11ch]
-    lg:min-w-[12ch]
+    /* Desktop */
+    lg:object-center
   "
-            >
-              {rotatingServices.map((service, index) => {
-                const isActive = index === currentIndex;
+      >
+        <source src="/videos/home/hero-video-homepage.mp4" type="video/mp4" />
+      </video>
 
-                return (
-                  <span
-                    key={service}
-                    className={`
-              absolute
-              inset-0
-              flex
-              items-center
-              justify-start
-              whitespace-nowrap
-              transition-all
-              duration-700
-              ease-[cubic-bezier(0.22,1,0.36,1)]
-              ${
-                isActive
-                  ? "translate-y-0 opacity-100 rotate-0"
-                  : "translate-y-full opacity-0 rotate-2"
-              }
-            `}
-                  >
-                    {service}
-                  </span>
-                );
-              })}
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-[#06172d]/65" />
 
-              {/* Invisible text để giữ chiều rộng ổn định */}
-              <span className="invisible whitespace-nowrap">Operations</span>
+      {/* Additional gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#06172d]/35 via-[#06172d]/55 to-black/80" />
+
+      {/* ===== CONTENT ===== */}
+      <div
+        className="
+  relative z-10
+
+  /* Mobile S / M / L */
+  min-h-[480px]
+
+  /* Mobile lớn */
+  sm:min-h-[520px]
+
+  /* Tablet */
+  md:min-h-[700px]
+
+  /* Desktop */
+  lg:min-h-[760px]
+
+  /* Large Desktop */
+  xl:min-h-[820px]
+
+  /* 4K */
+  2xl:min-h-[900px]
+
+  flex items-center
+  px-5 sm:px-6
+
+  /* BỎ padding-right trên mobile S/M/L */
+    pr-0
+    sm:pr-0
+
+    /* Từ tablet trở lên dùng padding mặc định */
+    md:pr-6
+"
+      >
+        <div
+          className="
+    w-full
+    max-w-4xl
+    lg:max-w-3xl
+    mx-auto
+    text-left
+    md:text-left
+    md:mx-0
+md:ml-3
+  "
+        >
+          <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            {/* Line 1 */}
+            <span className="block">Your execution engine</span>
+
+            {/* Line 2: chỉ có "for" và chữ chạy */}
+            <span className="mt-1 inline-flex items-baseline whitespace-nowrap">
+              <span className="mr-2 md:mr-4">for</span>
+
+              <span
+                className="
+        relative
+        inline-block
+        text-[#4f8dc9]
+        overflow-hidden
+        whitespace-nowrap
+        align-baseline
+
+        /* Fine-tune baseline */
+        translate-y-0
+        lg:-translate-y-[8px]
+        xl:-translate-y-[3.8px]
+        2xl:-translate-y-[3px]
+
+        /* Không cắt các ký tự như g, p, q */
+        leading-[1.2]
+        h-[1.25em]
+        sm:h-[1.3em]
+
+        /* Đủ rộng cho cụm dài nhất nhưng không ảnh hưởng line 1 */
+        min-w-[20ch]
+      "
+              >
+                {rotatingServices.map((service, index) => {
+                  const isActive = index === currentIndex;
+
+                  return (
+                    <span
+                      key={service}
+                      className={`
+        absolute
+        inset-0
+        flex
+        items-center
+        justify-start
+        whitespace-nowrap
+        leading-[1.2]
+
+        transition-[transform,opacity]
+        duration-300
+        ease-[cubic-bezier(0.22,1,0.36,1)]
+        will-change-transform
+
+        ${isActive ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"}
+      `}
+                    >
+                      {service}
+                    </span>
+                  );
+                })}
+
+                {/* Invisible text dài nhất để giữ đủ width */}
+                <span className="invisible whitespace-nowrap leading-[1.2]">
+                  Accounting & Finance
+                </span>
+              </span>
             </span>
-          </span>
-        </h1>
+          </h1>
 
-        <p className="text-white mt-6 text-lg max-w-2xl mx-auto">
-          <span className="text-[#4f8dc9] mt-5 sm:mt-6 text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-            Women-Powered Offshore Team | Based in Vietnam
-          </span>
-          <br />
-          Supporting global businesses with disciplined, high-performance
-          results
-        </p>
+          <p
+            className="
+    text-white
+    mt-6
+    text-lg
+    max-w-2xl
+    mx-auto
+    md:mx-0
+    text-left
+    md:text-left
+    leading-relaxed
+    pr-0
+  "
+          >
+            <span
+              className="
+      text-[#4f8dc9]
+      text-sm
+      sm:text-base
+      md:text-lg
+      leading-relaxed
+      block
+      mb-1
+    "
+            >
+              Women-Powered Offshore Team | Based&nbsp;in&nbsp;Vietnam
+            </span>
+            Supporting global businesses with disciplined,{" "}
+            high-performance&nbsp;results
+          </p>
+        </div>
       </div>
 
-      <div className="relative w-full">
-        {/* ===== IMAGE ===== */}
-
+      {/* <div className="relative w-full">
         <div className="relative z-0 h-[200px] sm:h-[260px] md:h-[420px] lg:h-[520px] flex items-end justify-center pointer-events-none ">
           <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent pointer-events-none" />
 
           <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent z-20 pointer-events-none" />
 
-          {/* IMAGE */}
           <Image
             src="/home/hero-banner-home.webp"
             alt="STAFF UNITED execution team"
@@ -153,23 +231,97 @@ export default function Hero() {
             height={900}
             priority
             sizes="100vw"
-            className="
-    relative z-0
-    w-[140%]
-    sm:w-[120%]
-    md:w-[110%]
-    lg:w-[100%]
-    xl:w-[100%]
-    2xl:w-[55%]
-    max-w-none
-    object-contain
-    pointer-events-none
-  "
+            className="relative z-0 w-[140%] sm:w-[120%] md:w-[110%] lg:w-[100%] xl:w-[100%] 2xl:w-[55%] max-w-none object-contain pointer-events-none"
           />
+        </div>
+      </div> */}
+
+      {/* ===== FLOATING CARD ===== */}
+      {/* ===== TECHNOLOGY MARQUEE ===== */}
+      {/* ===== TECHNOLOGY MARQUEE ===== */}
+      {/* ===== TECHNOLOGY MARQUEE ===== */}
+      {/* ===== TECHNOLOGY MARQUEE ===== */}
+      <div
+        className="
+    absolute
+    z-30
+    pointer-events-none
+    overflow-hidden
+
+    /* Mobile: chạy toàn màn hình */
+    left-0
+    right-0
+    bottom-8
+
+    /* Desktop trở lên: bắt đầu sau floating card */
+    md:left-[394px]
+    md:right-0
+    md:bottom-24
+  "
+      >
+        <div
+          className="
+      flex
+      w-max
+      animate-[marquee_35s_linear_infinite]
+
+      gap-6
+      sm:gap-8
+      md:gap-10
+
+      px-4
+      sm:px-6
+    "
+        >
+          {[
+            "QuickBooks",
+            "HubSpot",
+            "Xero",
+            "Salesforce",
+            "Zoho",
+            "Shopify",
+            "Asana",
+            "ClickUp",
+            "Slack",
+            "Google Workspace",
+
+            // Duplicate để chạy liên tục
+            "QuickBooks",
+            "HubSpot",
+            "Xero",
+            "Salesforce",
+            "Zoho",
+            "Shopify",
+            "Asana",
+            "ClickUp",
+            "Slack",
+            "Google Workspace",
+          ].map((tech, i) => (
+            <span
+              key={i}
+              className="
+          whitespace-nowrap
+          font-semibold
+          uppercase
+          text-white/65
+
+          text-[10px]
+          sm:text-xs
+          md:text-sm
+
+          tracking-[0.14em]
+          sm:tracking-[0.16em]
+          md:tracking-[0.18em]
+        "
+            >
+              {tech}
+            </span>
+          ))}
         </div>
       </div>
 
       {/* ===== FLOATING CARD ===== */}
+
       <div className="absolute bottom-10 left-9 hidden md:block z-40">
         <a
           href="https://www.google.com/search?q=staff+united+group+review"
