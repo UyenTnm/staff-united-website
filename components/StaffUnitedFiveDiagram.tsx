@@ -615,16 +615,17 @@ export default function StaffUnitedFiveDiagram() {
 
               {/* Center Logo */}
               {/* Center Logo */}
-              <foreignObject x="205" y="225" width="170" height="90">
+              <foreignObject x={center - 90} y="225" width="180" height="90">
                 <div className="flex items-center justify-center w-full h-full">
                   <Image
                     src="/services/5taff-logo-services.webp"
                     alt="5TAFF United"
-                    width={160}
-                    height={60}
+                    width={170}
+                    height={64}
                     className="
-        w-full
+        w-auto
         h-auto
+        max-w-full
         object-contain
         drop-shadow-[0_4px_12px_rgba(11,27,51,0.12)]
       "
@@ -632,7 +633,6 @@ export default function StaffUnitedFiveDiagram() {
                       filter: `
           drop-shadow(0 2px 4px rgba(255,255,255,0.35))
           drop-shadow(0 8px 18px rgba(11,27,51,0.12))
-          blur(0.15px)
         `,
                     }}
                     priority
