@@ -121,10 +121,7 @@ export default function StaffUnitedFiveDiagram() {
 
     const largeArcFlag = endAngle - startAngle <= 180 ? 0 : 1;
 
-    return `
-    M ${start.x} ${start.y}
-    A ${radius} ${radius} 0 ${largeArcFlag} 1 ${end.x} ${end.y}
-  `;
+    return `M ${start.x.toFixed(3)} ${start.y.toFixed(3)} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${end.x.toFixed(3)} ${end.y.toFixed(3)}`;
   };
 
   const getAngle = (clientX: number, clientY: number) => {
@@ -615,30 +612,20 @@ export default function StaffUnitedFiveDiagram() {
 
               {/* Center Logo */}
               {/* Center Logo */}
-              <foreignObject x={center - 90} y="225" width="180" height="90">
-                <div className="flex items-center justify-center w-full h-full">
-                  <Image
-                    src="/services/5taff-logo-services.webp"
-                    alt="5TAFF United"
-                    width={170}
-                    height={64}
-                    className="
-        w-auto
-        h-auto
-        max-w-full
-        object-contain
-        drop-shadow-[0_4px_12px_rgba(11,27,51,0.12)]
-      "
-                    style={{
-                      filter: `
-          drop-shadow(0 2px 4px rgba(255,255,255,0.35))
-          drop-shadow(0 8px 18px rgba(11,27,51,0.12))
-        `,
-                    }}
-                    priority
-                  />
-                </div>
-              </foreignObject>
+              <image
+                href="/services/5taff-logo-services.webp"
+                x={center - 85}
+                y="236"
+                width="170"
+                height="64"
+                preserveAspectRatio="xMidYMid meet"
+                style={{
+                  filter: `
+      drop-shadow(0 2px 4px rgba(255,255,255,0.35))
+      drop-shadow(0 8px 18px rgba(11,27,51,0.12))
+    `,
+                }}
+              />
 
               {/* Tagline */}
               <text
