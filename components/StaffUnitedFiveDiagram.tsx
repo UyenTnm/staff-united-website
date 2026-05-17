@@ -260,7 +260,12 @@ export default function StaffUnitedFiveDiagram() {
             <svg
               ref={svgRef}
               viewBox="-40 0 660 580"
-              className="w-full h-auto overflow-visible"
+              className="w-full h-auto overflow-visible touch-none select-none"
+              style={{
+                touchAction: "none",
+                WebkitUserSelect: "none",
+                userSelect: "none",
+              }}
             >
               <defs>
                 {/* Glass gradient overlay */}
