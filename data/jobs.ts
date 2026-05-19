@@ -689,7 +689,7 @@ export const jobs: Job[] = [
       {
         title: "Compensation & Benefits",
         content: [
-          "Base salary + commission + performance bonus",
+          "Salary: Up to 15 million VND + bonus",
           "Compensation directly tied to performance and contribution",
           "Work with modern tools and equipment",
           "Access to premium office facilities (gym, swimming pool, pantry)",

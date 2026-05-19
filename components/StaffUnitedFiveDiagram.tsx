@@ -240,8 +240,9 @@ export default function StaffUnitedFiveDiagram() {
           </div>
 
           {/* SUBTITLE */}
-          <p className="mt-2 max-w-4xl mx-auto text-white/80 leading-relaxed">
-            Five core business functions. One scalable support ecosystem.
+          <p className="mt-2 mb-10 max-w-4xl mx-auto text-white/80 leading-relaxed">
+            5-Core Support™ Ecosystem business functions. One scalable support
+            ecosystem.
           </p>
         </div>
         {/* Existing Diagram Content */}
@@ -268,7 +269,26 @@ export default function StaffUnitedFiveDiagram() {
               }}
             >
               <defs>
-                {/* Glass gradient overlay */}
+                {/* Whole donut glass overlay */}
+                <radialGradient id="wholeDonutGlass" cx="28%" cy="18%" r="90%">
+                  <stop offset="0%" stopColor="rgba(255,255,255,0.85)" />
+                  <stop offset="18%" stopColor="rgba(255,255,255,0.42)" />
+                  <stop offset="40%" stopColor="rgba(255,255,255,0.16)" />
+                  <stop offset="70%" stopColor="rgba(255,255,255,0.05)" />
+                  <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+                </radialGradient>
+                {/* Soft blur for realistic glass */}
+                <filter
+                  id="wholeDonutGlassBlur"
+                  x="-20%"
+                  y="-20%"
+                  width="140%"
+                  height="140%"
+                >
+                  <feGaussianBlur stdDeviation="2.2" />
+                </filter>
+
+                {/* Main glass overlay */}
                 <linearGradient
                   id="glassOverlay"
                   x1="0%"
@@ -276,13 +296,14 @@ export default function StaffUnitedFiveDiagram() {
                   x2="100%"
                   y2="100%"
                 >
-                  <stop offset="0%" stopColor="rgba(255,255,255,0.38)" />
-                  <stop offset="30%" stopColor="rgba(255,255,255,0.14)" />
-                  <stop offset="65%" stopColor="rgba(255,255,255,0.05)" />
-                  <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+                  <stop offset="0%" stopColor="rgba(255,255,255,0.78)" />
+                  <stop offset="15%" stopColor="rgba(255,255,255,0.42)" />
+                  <stop offset="35%" stopColor="rgba(255,255,255,0.18)" />
+                  <stop offset="65%" stopColor="rgba(255,255,255,0.07)" />
+                  <stop offset="100%" stopColor="rgba(255,255,255,0.00)" />
                 </linearGradient>
 
-                {/* Soft glossy highlight */}
+                {/* Glossy reflection */}
                 <linearGradient
                   id="glassShine"
                   x1="0%"
@@ -290,45 +311,107 @@ export default function StaffUnitedFiveDiagram() {
                   x2="0%"
                   y2="100%"
                 >
-                  <stop offset="0%" stopColor="rgba(255,255,255,0.28)" />
-                  <stop offset="35%" stopColor="rgba(255,255,255,0.08)" />
-                  <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+                  <stop offset="0%" stopColor="rgba(255,255,255,0.65)" />
+                  <stop offset="12%" stopColor="rgba(255,255,255,0.34)" />
+                  <stop offset="28%" stopColor="rgba(255,255,255,0.12)" />
+                  <stop offset="55%" stopColor="rgba(255,255,255,0.03)" />
+                  <stop offset="100%" stopColor="rgba(255,255,255,0.00)" />
                 </linearGradient>
 
-                {/* Outer shadow */}
+                {/* Frosted tint */}
+                <linearGradient
+                  id="glassTint"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stopColor="rgba(255,255,255,0.14)" />
+                  <stop offset="100%" stopColor="rgba(255,255,255,0.03)" />
+                </linearGradient>
+
+                {/* Premium glass shadow */}
                 <filter
                   id="glassShadow"
-                  x="-50%"
-                  y="-50%"
-                  width="200%"
-                  height="200%"
+                  x="-80%"
+                  y="-80%"
+                  width="260%"
+                  height="260%"
                 >
                   <feDropShadow
                     dx="0"
-                    dy="14"
-                    stdDeviation="4"
-                    floodColor="#0b1b33"
+                    dy="10"
+                    stdDeviation="8"
+                    floodColor="#02101f"
                     floodOpacity="0.14"
+                  />
+
+                  <feDropShadow
+                    dx="0"
+                    dy="2"
+                    stdDeviation="4"
+                    floodColor="#8FD3FF"
+                    floodOpacity="0.08"
+                  />
+
+                  <feDropShadow
+                    dx="0"
+                    dy="-1"
+                    stdDeviation="2"
+                    floodColor="#ffffff"
+                    floodOpacity="0.16"
                   />
                 </filter>
 
-                {/* Inner glow */}
-                <filter
-                  id="glassGlow"
-                  x="-50%"
-                  y="-50%"
-                  width="200%"
-                  height="200%"
+                {/* Background glass panel gradient */}
+                <linearGradient
+                  id="backGlassGradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
                 >
-                  <feDropShadow
-                    dx="0"
-                    dy="-2"
-                    stdDeviation="4"
-                    floodColor="#9cc9ff"
-                    floodOpacity="0.5"
-                  />
+                  <stop offset="0%" stopColor="rgba(255,255,255,0.40)" />
+                  <stop offset="45%" stopColor="rgba(255,255,255,0.12)" />
+                  <stop offset="100%" stopColor="rgba(255,255,255,0.04)" />
+                </linearGradient>
+
+                {/* Background glass blur */}
+                <filter
+                  id="backGlassBlur"
+                  x="-20%"
+                  y="-20%"
+                  width="140%"
+                  height="140%"
+                >
+                  <feGaussianBlur stdDeviation="4" />
                 </filter>
               </defs>
+
+              {/* =========================================
+     CIRCULAR GLASS PANEL BEHIND DONUT
+     ========================================= */}
+              <circle
+                cx={center}
+                cy={center}
+                r={outerRadius + 12}
+                fill="url(#backGlassGradient)"
+                filter="url(#backGlassBlur)"
+                opacity="1"
+                pointerEvents="none"
+              />
+
+              {/* Soft glowing edge */}
+              <circle
+                cx={center}
+                cy={center}
+                r={outerRadius + 10}
+                fill="none"
+                stroke="rgba(255,255,255,0.18)"
+                strokeWidth="2"
+                opacity="0.9"
+                pointerEvents="none"
+              />
 
               {/* Donut Segments */}
               <g
@@ -431,7 +514,8 @@ export default function StaffUnitedFiveDiagram() {
                         <path
                           d={path}
                           fill={segment.color}
-                          stroke="rgba(255,255,255,0.75)"
+                          fillOpacity="0.72"
+                          stroke="rgba(255,255,255,0.82)"
                           strokeWidth="7"
                           strokeLinejoin="miter"
                           strokeMiterlimit="2"
@@ -459,24 +543,6 @@ export default function StaffUnitedFiveDiagram() {
                           }}
                         />
 
-                        {/* Glass overlay */}
-                        {/* <path
-                          d={path}
-                          fill="url(#glassOverlay)"
-                          opacity="0.95"
-                          pointerEvents="none"
-                        /> */}
-
-                        {/* Top shine */}
-                        {/* <path
-                          d={path}
-                          fill="url(#glassShine)"
-                          filter="url(#glassGlow)"
-                          opacity="0.9"
-                          pointerEvents="none"
-                        /> */}
-
-                        {/* Bright edge highlight on hover */}
                         <path
                           d={path}
                           fill="none"
@@ -503,7 +569,7 @@ export default function StaffUnitedFiveDiagram() {
                         dominantBaseline="middle"
                         fill="rgba(255,255,255,0.60)"
                         fontSize="72"
-                        fontWeight="900"
+                        fontWeight="400"
                         fontFamily="Poppins, sans-serif"
                         style={{
                           filter:
@@ -515,7 +581,6 @@ export default function StaffUnitedFiveDiagram() {
                       </text>
 
                       {/* LABEL */}
-                      {/* LABEL */}
                       <g pointerEvents="none">
                         {/* Invisible curved path for title */}
                         <path
@@ -523,7 +588,7 @@ export default function StaffUnitedFiveDiagram() {
                           d={createArcPath(
                             segment.startAngle + 8,
                             segment.startAngle + segmentAngle - 8,
-                            outerRadius + 20,
+                            outerRadius + 25,
                           )}
                           fill="none"
                           stroke="none"
@@ -562,17 +627,90 @@ export default function StaffUnitedFiveDiagram() {
                 })}
               </g>
 
+              {/* =========================================
+     WHOLE DONUT GLASS PANEL
+     ========================================= */}
+
+              {/* Frosted glass base */}
+              <path
+                d={createDonutSegment(-90, 270, outerRadius, innerRadius)}
+                fill="rgba(255,255,255,0.14)"
+                filter="url(#wholeDonutGlassBlur)"
+                pointerEvents="none"
+              />
+
+              {/* Main glossy overlay */}
+              <path
+                d={createDonutSegment(-90, 270, outerRadius, innerRadius)}
+                fill="url(#wholeDonutGlass)"
+                opacity="1"
+                pointerEvents="none"
+              />
+
+              {/* Strong top-left reflection */}
+              <path
+                d={createDonutSegment(-90, 270, outerRadius, innerRadius)}
+                fill="url(#glassOverlay)"
+                opacity="0.75"
+                pointerEvents="none"
+              />
+
+              {/* Glossy shine */}
+              <path
+                d={createDonutSegment(-90, 270, outerRadius, innerRadius)}
+                fill="url(#glassShine)"
+                opacity="0.55"
+                pointerEvents="none"
+              />
+
               {/* Center Circle */}
+              <defs>
+                <radialGradient
+                  id="centerCoreGradient"
+                  cx="45%"
+                  cy="45%"
+                  r="50%"
+                >
+                  {/* Highlight góc trên trái */}
+                  <stop offset="0%" stopColor="#1f4f85" />
+
+                  {/* Mid tone */}
+                  <stop offset="35%" stopColor="#103663" />
+
+                  {/* Main section tone */}
+                  <stop offset="70%" stopColor="#0a1b33" />
+
+                  {/* Dark outer edge */}
+                  <stop offset="100%" stopColor="#06172d" />
+                </radialGradient>
+              </defs>
+
+              {/* <circle
+                cx={center}
+                cy={center}
+                r="130"
+                fill="url(#centerCoreGradient)"
+                stroke="rgba(143,211,255,0.42)"
+                strokeWidth="15"
+                filter="
+    drop-shadow(0 14px 40px rgba(2,10,24,0.95))
+    drop-shadow(0 0 30px rgba(143,211,255,0.30))
+    drop-shadow(0 0 80px rgba(79,141,201,0.18))
+  "
+              /> */}
+
               <circle
                 cx={center}
                 cy={center}
                 r="130"
-                fill="#F7FBFF"
-                stroke="rgba(143,211,255,0.35)"
-                strokeWidth="1.5"
+                fill="url(#centerCoreGradient)" // Giữ nguyên màu nền xanh bên trong
+                stroke="rgba(255,255,255,0.92)"
+                strokeWidth="7"
                 filter="
-    drop-shadow(0 12px 35px rgba(11,27,51,0.16))
-    drop-shadow(0 0 24px rgba(79,141,201,0.22))
+    drop-shadow(0 4px 20px rgba(2,10,24,0.95))
+    drop-shadow(0 0 10px rgba(255,255,255,0.08))
+    drop-shadow(0 0 22px rgba(255,255,255,0.05))
+    drop-shadow(0 0 40px rgba(143,211,255,0.08))
   "
               />
 
@@ -585,11 +723,11 @@ export default function StaffUnitedFiveDiagram() {
                   x2="100%"
                   y2="100%"
                 >
-                  <stop offset="0%" stopColor="#8FD3FF" />
-                  <stop offset="25%" stopColor="#B8E3FF" />
-                  <stop offset="50%" stopColor="#D6ECFF" />
-                  <stop offset="75%" stopColor="#9FD8FF" />
-                  <stop offset="100%" stopColor="#CFE8FF" />
+                  <stop offset="0%" stopColor="rgba(255,255,255,0.95)" />
+                  <stop offset="25%" stopColor="rgba(255,255,255,0.85)" />
+                  <stop offset="50%" stopColor="rgba(255,255,255,1)" />
+                  <stop offset="75%" stopColor="rgba(255,255,255,0.85)" />
+                  <stop offset="100%" stopColor="rgba(255,255,255,0.95)" />
                 </linearGradient>
               </defs>
 
@@ -603,7 +741,7 @@ export default function StaffUnitedFiveDiagram() {
                 strokeWidth="3"
                 strokeDasharray="7 9"
                 strokeLinecap="round"
-                opacity="0.9"
+                opacity="0.95"
                 className="animate-spin origin-center"
                 style={{
                   transformBox: "fill-box",
@@ -611,11 +749,13 @@ export default function StaffUnitedFiveDiagram() {
                   animationDuration: "40s",
                   animationTimingFunction: "linear",
                   animationIterationCount: "infinite",
-                  filter: "drop-shadow(0 0 10px rgba(184,227,255,0.35))",
+                  filter: `
+      drop-shadow(0 0 8px rgba(255,255,255,0.45))
+      drop-shadow(0 0 16px rgba(255,255,255,0.25))
+    `,
                 }}
               />
 
-              {/* Center Logo */}
               {/* Center Logo */}
               <image
                 href="/services/5taff-logo-services.webp"
@@ -637,7 +777,7 @@ export default function StaffUnitedFiveDiagram() {
                 x={center}
                 y="322"
                 textAnchor="middle"
-                fill="#0b1b33"
+                fill="#FFFFFF"
                 fontSize="22"
                 fontWeight="300"
                 fontFamily="Poppins, sans-serif"
@@ -651,10 +791,10 @@ export default function StaffUnitedFiveDiagram() {
 
           <div className="mt-10 max-w-4xl mx-auto text-center">
             <p className="text-white/85 leading-relaxed text-base md:text-lg">
-              The 5 Core Functions Every Business Needs to Grow and Scale. At
-              STAFF United, we provide scalable operational support across
-              Structured Operations, Targeted Sales, Accounting & Finance,
-              Focused Marketing, and Future Expansion.
+              The 5-Core Support™ Ecosystem. Core Functions Every Business Needs
+              to Grow and Scale. At STAFF United, we provide scalable
+              operational support across Structured Operations, Targeted Sales,
+              Accounting & Finance, Focused Marketing, and Future Expansion.
             </p>
           </div>
         </div>{" "}

@@ -551,48 +551,176 @@ export default function Services() {
         </p>
       </div>
 
+      {/* STAFF — HOW WE EXECUTE */}
+      <AnimatedSection>
+        <section
+          className="pt-10 space-y-6 px-6 md:px-10 py-12 bg-gradient-to-b
+      from-[#06172d]
+      via-[#0a1b33]
+      to-[#103663]"
+        >
+          {/* SECTION HEADER */}
+          <div className="text-center max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-light my-6 text-white tracking-wide">
+              STAFF — How We Execute
+            </h2>
+
+            <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-4 rounded-full"></div>
+
+            <p className="mt-8 text-lg md:text-xl font-medium text-[#7fc4ff] tracking-wide">
+              Structure. Technology. Accountability. Flexibility. Foresight.
+            </p>
+
+            <p className="mt-6 text-sm sm:text-base text-white/80 leading-relaxed">
+              At STAFF United, we believe execution is just as important as the
+              people behind our brand and the services we provide.
+            </p>
+
+            <p className="mt-4 text-sm sm:text-base text-white/80 leading-relaxed">
+              This is the operational philosophy behind how we deliver support
+              consistently, efficiently, and at scale through our structured{" "}
+              <span className="text-[#7fc4ff] font-semibold">
+                “5-Core Support”™ Ecosystem
+              </span>
+              .
+            </p>
+          </div>
+
+          {/* EXECUTION PRINCIPLES — 5 PREMIUM CARDS */}
+          <div className="pt-10">
+            <div className="grid md:grid-cols-2 xl:grid-cols-5 gap-6">
+              {[
+                {
+                  letter: "S",
+                  title: "Structure",
+                  desc: "Organized workflows and scalable processes for consistency and continuity.",
+                },
+                {
+                  letter: "T",
+                  title: "Technology",
+                  desc: "AI, automation, and software-driven workflows that improve efficiency.",
+                },
+                {
+                  letter: "A",
+                  title: "Accountability",
+                  desc: "Clear ownership, disciplined execution, and strong communication.",
+                },
+                {
+                  letter: "F",
+                  title: "Flexibility",
+                  desc: "The ability to adapt to changing priorities and business needs.",
+                },
+                {
+                  letter: "F",
+                  title: "Foresight",
+                  desc: "Anticipating future operational needs and growth opportunities.",
+                },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="group relative overflow-hidden bg-white/8 backdrop-blur-xl border border-white/15 rounded-[28px] px-6 py-8 shadow-[0_20px_60px_rgba(0,0,0,0.25)]
+          transition-all duration-500 hover:-translate-y-2 hover:bg-white/12 cursor-pointer
+          hover:border-[#7fc4ff]/35 hover:shadow-[0_30px_80px_rgba(79,141,201,0.22)] flex flex-col text-center min-h-[320px]"
+                >
+                  {/* TOP GLOW */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-px bg-[#7fc4ff]/60"></div>
+
+                  {/* LETTER ORB */}
+                  <div className="relative mx-auto mb-6">
+                    {/* OUTER RING */}
+                    <div className="absolute inset-0 rounded-full border border-[#7fc4ff]/25 scale-125"></div>
+
+                    {/* GLOW */}
+                    <div className="absolute inset-0 rounded-full bg-[#4f8fcb]/20 blur-xl scale-150"></div>
+
+                    {/* INNER CIRCLE */}
+                    <div
+                      className="
+              relative
+              w-24 h-24
+              rounded-full
+              bg-gradient-to-br
+              from-[#67b4ff]
+              to-[#2f6ea9]
+
+              text-white
+              flex items-center justify-center
+              text-5xl
+              font-semibold
+
+              shadow-[0_20px_50px_rgba(79,143,203,0.35)]
+              ring-1 ring-white/20
+
+              transition-all duration-500
+              group-hover:scale-110
+            "
+                    >
+                      {item.letter}
+                    </div>
+                  </div>
+
+                  {/* TITLE */}
+                  <h3 className="text-3xl font-semibold text-white mb-4">
+                    {item.title}
+                  </h3>
+
+                  {/* ACCENT LINE */}
+                  <div className="w-12 h-[2px] bg-[#7fc4ff] mx-auto mb-6 rounded-full"></div>
+
+                  {/* DESCRIPTION */}
+                  <p className="text-base leading-relaxed text-white/75 flex-1">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* CLOSING STATEMENT */}
+          <div className="max-w-4xl mx-auto pt-4 text-center">
+            <p className="text-sm sm:text-base text-white/80 leading-relaxed">
+              Together, these five execution principles shape how STAFF United
+              delivers operational support with structure, accountability, and
+              scalability.
+            </p>
+          </div>
+        </section>
+      </AnimatedSection>
+
       {/* WHY CHOOSE US */}
-      {/* <section className="py-16 bg-[#dbe3ea] relative"> */}
       <section
         className="
     py-16 md:py-24 lg:py-24
     relative
     overflow-hidden
-
-    bg-gradient-to-b
-    from-[#06172d]
-    via-[#0a1b33]
-    to-[#103663]
-
-    text-white
+    bg-white
+    text-[#0b1b33]
   "
       >
         <div className="relative z-10 max-w-6xl mx-auto px-6">
           {/* HEADER */}
           <div className="text-center mb-16 fade-up active">
-            <div className="flex justify-center lg:block">
-              <div className="flex justify-center">
-                <span
-                  className="
+            <div className="flex justify-center">
+              <span
+                className="
             inline-block
             text-[11px] sm:text-xs
             px-4 py-1.5
             rounded-full
             font-semibold
             tracking-wide
-            text-[#8FD3FF]
-            bg-white/10
-            backdrop-blur-md
-            border border-white/10
-            shadow-[0_4px_20px_rgba(79,141,201,0.15)]
+            uppercase
+            text-[#4f8dc9]
+            bg-[#4f8dc9]/10
+            border border-[#4f8dc9]/15
+            shadow-[0_4px_20px_rgba(79,141,201,0.08)]
           "
-                >
-                  WHY CHOOSE US
-                </span>
-              </div>
+              >
+                WHY CHOOSE US
+              </span>
             </div>
 
-            <h2 className="text-3xl md:text-5xl text-white mt-6 font-light">
+            <h2 className="text-3xl md:text-5xl text-[#0b1b33] mt-6 font-light">
               Why we are your best choice
             </h2>
           </div>
@@ -635,43 +763,53 @@ export default function Services() {
                 <div
                   key={index}
                   className={`group
-  relative
-  overflow-hidden
-  rounded-[28px]
-  p-8
-  text-center
-  text-[#0b1b33]
+              relative
+              overflow-hidden
+              rounded-[28px]
+              p-8
+              text-center
 
-  bg-white
-  border border-white/80
+              bg-white
+              border border-[#0b1b33]/8
 
-  shadow-[0_12px_40px_rgba(11,27,51,0.06)]
-  backdrop-blur-sm
+              shadow-[0_12px_40px_rgba(11,27,51,0.06)]
 
-  transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
-  ${index % 2 === 0 ? "slide-left active" : "slide-right active"}
+              transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
+              ${index % 2 === 0 ? "slide-left active" : "slide-right active"}
 
-  hover:-translate-y-2
-  hover:scale-[1.01]
-  hover:border-[#d7e6f8]
-  hover:shadow-[0_28px_70px_rgba(79,141,201,0.18)]
+              hover:-translate-y-2
+              hover:scale-[1.01]
+              hover:border-[#4f8dc9]/25
+              hover:shadow-[0_28px_70px_rgba(79,141,201,0.14)]
 
-  flex flex-col
-`}
+              flex flex-col
+            `}
                 >
                   {/* ICON */}
-                  <div className="w-14 h-14 mx-auto mb-6 rounded-xl border border-[#4f8dc9]/30 flex items-center justify-center group-hover:border-[#4f8dc9] transition">
+                  <div
+                    className="
+                w-14 h-14
+                mx-auto mb-6
+                rounded-xl
+                bg-[#4f8dc9]/10
+                border border-[#4f8dc9]/20
+                flex items-center justify-center
+                transition-all duration-300
+                group-hover:bg-[#4f8dc9]/15
+                group-hover:border-[#4f8dc9]/35
+              "
+                  >
                     {(() => {
                       const Icon = item.icon;
                       return (
                         <Icon
                           className="
-          w-6 h-6 stroke-[1.5]
-          text-[#4f8dc9]
-          transition-all duration-300
-          group-hover:scale-110
-          group-hover:text-[#0b1b33]
-        "
+                      w-6 h-6
+                      stroke-[1.5]
+                      text-[#4f8dc9]
+                      transition-all duration-300
+                      group-hover:scale-110
+                    "
                         />
                       );
                     })()}
@@ -683,7 +821,7 @@ export default function Services() {
                   </h3>
 
                   {/* DESC */}
-                  <p className="text-[#0b1b33] text-sm leading-relaxed">
+                  <p className="text-[#0b1b33]/70 text-sm leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -693,80 +831,58 @@ export default function Services() {
         </div>
       </section>
 
-      {/* BACKGROUND GLOW */}
-      {/* <div className="hidden md:block absolute inset-0 opacity-20">
-        <div className="w-full h-full bg-[radial-gradient(circle_at_center,_#4f8dc9_0%,transparent_70%)]"></div>
-      </div> */}
-
       {/* CTA */}
-      {/* CTA */}
-      <section className="py-16 md:py-24 lg:py-32 bg-[#edf4fd]">
-        <div className="max-w-6xl mx-auto px-6">
-          <div
-            className="
-        relative
-        overflow-hidden
-        rounded-[32px]
+      <section className="">
+        <div
+          className="
+      bg-gradient-to-b
+      from-[#4f8dc9]
+      to-[#0b1b33]
+      text-white
 
-        bg-gradient-to-br
-        from-[#4f8dc9]
-        via-[#3f79bb]
-        to-[#0b1b33]
+      px-8 md:px-16 lg:px-20
+      py-10 md:py-14 lg:py-16
 
-        text-white
+      flex flex-col md:flex-row
+      items-center
+      justify-between
+      gap-6 md:gap-8
 
-        px-6 md:px-12 lg:px-16
-        py-8 md:py-10 lg:py-12
+      shadow-[0_-20px_60px_rgba(0,0,0,0.35)]
+    "
+        >
+          {/* TEXT */}
+          <AnimatedSection>
+            <h3 className="text-xl md:text-2xl lg:text-3xl font-light leading-tight text-center md:text-left">
+              Ready to grow your business?
+            </h3>
+          </AnimatedSection>
 
-        flex flex-col md:flex-row
-        items-center
-        justify-between
-        gap-6
+          {/* BUTTON */}
+          {/* BUTTON */}
+          <AnimatedSection>
+            <a
+              href="/request-support"
+              className="
+      px-7 md:px-8
+      py-3 md:py-3.5
+      rounded-full
+      border border-white/80
 
-        shadow-[0_20px_60px_rgba(79,141,201,0.25)]
-      "
-          >
-            {/* Background Glow */}
-            <div className="absolute inset-0 opacity-20 pointer-events-none">
-              <div className="w-full h-full bg-[radial-gradient(circle_at_top_right,_#8FD3FF_0%,transparent_60%)]"></div>
-            </div>
+      text-sm md:text-base lg:text-lg
+      font-medium
+      whitespace-nowrap
 
-            {/* TEXT */}
-            <AnimatedSection>
-              <h3 className="relative z-10 text-2xl md:text-4xl font-light tracking-[-0.02em] text-center md:text-left">
-                Ready to grow your business?
-              </h3>
-            </AnimatedSection>
+      transition-all duration-700
 
-            {/* BUTTON */}
-            <AnimatedSection>
-              <a
-                href="/request-support"
-                className="
-            relative z-10
-            inline-flex items-center justify-center
-
-            px-7 py-3
-            rounded-full
-
-            bg-white
-            text-[#0b1b33]
-
-            font-semibold
-            text-sm md:text-base
-
-            shadow-[0_10px_30px_rgba(255,255,255,0.25)]
-            transition-all duration-500
-
-            hover:-translate-y-0.5
-            hover:bg-[#f8fbff]
-            hover:shadow-[0_18px_40px_rgba(255,255,255,0.35)]
-          "
-              >
-                Book a Free Consultation
-              </a>
-            </AnimatedSection>
-          </div>
+      hover:bg-white
+      hover:text-[#3f6fb5]
+      hover:shadow-lg
+    "
+            >
+              Request Support
+            </a>
+          </AnimatedSection>
         </div>
       </section>
     </main>
