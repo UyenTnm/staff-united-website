@@ -435,7 +435,7 @@ export default function ChatBox() {
           {/* Avatar */}
           <div className="w-full h-full md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-white/30 flex items-center justify-center">
             <Image
-              src="/images/chatbot-ai.png"
+              src="/staff-logo.webp"
               alt="AI chat assistant"
               width={36}
               height={36}

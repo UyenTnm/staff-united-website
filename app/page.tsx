@@ -25,6 +25,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useState } from "react";
 import Link from "next/link";
+import StaffUnitedFiveDiagram from "@/components/StaffUnitedFiveDiagram";
 
 export default function Home() {
   const testimonials = [
@@ -106,6 +107,8 @@ export default function Home() {
         {/* <AnimatedSection> */}
         <Hero />
         {/* </AnimatedSection> */}
+
+        <StaffUnitedFiveDiagram />
 
         {/* SECTION 2 — POSITIONING (FULL GREY) */}
         <AnimatedSection>
@@ -801,7 +804,7 @@ export default function Home() {
 
                 {/* BUTTON */}
                 <Link
-                  href="/about-us"
+                  href="/our-story"
                   className="
             px-6 py-2 fade-up delay-1
             rounded-full

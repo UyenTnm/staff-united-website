@@ -62,7 +62,7 @@ export default function Hero() {
     lg:object-center
   "
       >
-        <source src="/videos/home/hero-video-homepage.mp4" type="video/mp4" />
+        <source src="/videos/home/hero.mp4" type="video/mp4" />
       </video>
 
       {/* Dark overlay for readability */}

@@ -13,132 +13,244 @@ export default function AboutUs() {
 
   return (
     <main className="bg-white">
-      <section className="max-w-5xl mx-auto px-6 py-10 space-y-10 ">
+      {/* <section className="max-w-5xl mx-auto px-6 py-10 space-y-10 "> */}
+      <section className="w-full py-10 space-y-10">
         {/* INTRO HERO */}
         <section
           className="
-  relative pt-[90px]
+  relative
   w-screen
-h-[70vh] md:h-[75vh]
+  h-[72vh] md:h-[78vh]
+  min-h-[620px]
   left-1/2
   -translate-x-1/2
-  overflow-hidden -mt-[80px]
+  overflow-hidden
+  -mt-[80px]
+  pt-[90px]
 "
         >
+          {/* Background Image */}
           <Image
             src="/team/hero-banner-team.webp"
-            alt="About STAFF United"
+            alt="STAFF United Group Team"
             fill
-            className="object-cover"
             priority
             sizes="100vw"
+            className="object-cover"
           />
 
-          <div className="absolute inset-0 bg-[#0a1b33]/60"></div>
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-[#0A1B33]/65 z-[1]" />
 
-          <div className="relative z-10 h-full flex items-center justify-center text-center px-6 ">
-            <h1 className="text-4xl md:text-6xl text-white font-light fade-up">
-              About Us
-            </h1>
-          </div>
-        </section>
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#08172b]/80 via-[#0a1b33]/55 to-[#0a1b33]/25 z-[2]" />
 
-        {/* OUR STORY */}
-        {/* OUR STORY */}
-        {/* OUR STORY */}
-        {/* OUR STORY */}
-        <section className="py-10">
-          <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            {" "}
-            {/* LEFT CONTENT */}
-            {/* LEFT CONTENT */}
-            <div className="space-y-5 md:space-y-6 fade-up active order-2 md:order-1">
-              {/* SMALL LABEL */}
-              <div className="flex items-center gap-2 md:gap-3">
-                <div className="w-8 md:w-10 h-[2px] bg-[#4f8dc9]"></div>
+          {/* Content */}
+          <div className="absolute inset-0 z-[10] flex items-center">
+            {/* Giảm max-width và tăng padding trái để nội dung dịch sang trái giống Home */}
+            <div className="w-full max-w-[1400px] mx-auto px-8 md:px-14 lg:px-20 xl:px-24">
+              {/* Giảm max-width của khối text để không nằm quá giữa */}
+              <div className="max-w-5xl text-left">
+                {/* Eyebrow */}
+                <div className="flex items-center gap-4 md:gap-6 mb-6">
+                  <span
+                    className="
+            text-[#5EA2FF]
+            text-2xl md:text-4xl lg:text-4xl
+            font-light
+            tracking-tight
+          "
+                    style={{ fontFamily: "var(--font-cormorant, serif)" }}
+                  >
+                    Our Story
+                  </span>
 
-                <p className="text-xs sm:text-sm md:text-base text-[#4f8dc9] font-medium tracking-wide">
-                  Our Story
+                  <span className="h-[2px] w-20 md:w-36 bg-[#5EA2FF] rounded-full" />
+                </div>
+
+                {/* Main Heading */}
+                <h1
+                  className="
+          text-white
+          font-bold
+          leading-[1.05]
+          tracking-[-0.03em]
+          text-2xl sm:text-4xl md:text-6xl lg:text-5xl
+          mb-6
+        "
+                >
+                  All Women. All Business.
+                </h1>
+
+                {/* Subtitle */}
+                <p
+                  className="
+          text-white/95
+          font-light
+          leading-tight
+          max-w-5xl
+          text-lg sm:text-base md:text-lg lg:text-2xl
+        "
+                >
+                  A women-powered offshore execution engine — built for
+                  businesses
+                  <br className="hidden md:block" />
+                  that need to scale with structure.
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
 
-              {/* TITLE */}
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-[#103663] leading-snug md:leading-tight">
-                Built to help businesses scale and women thrive
-              </h2>
-
-              {/* THAY TOÀN BỘ PHẦN TEXT CŨ BẰNG ĐOẠN NÀY */}
-              <div className="space-y-4 md:space-y-5">
-                {[
-                  {
-                    icon: Building2,
-                    text: "STAFF United was created to help businesses scale efficiently across Finance, Operations, Sales, and Marketing.",
-                  },
-                  {
-                    icon: Users,
-                    text: "We saw talented women with exceptional capabilities who deserved structured opportunities and long-term growth.",
-                  },
-                  {
-                    icon: TrendingUp,
-                    text: (
-                      <>
-                        Today, we help businesses grow through our structured{" "}
-                        <span className="text-[#4f8dc9] font-semibold">
-                          “5-Core Support”™ Ecosystem
-                        </span>{" "}
-                        while creating meaningful careers for women.
-                      </>
-                    ),
-                  },
-                  {
-                    icon: ShieldCheck,
-                    text: "STAFF is built on structure, accountability, and continuity.",
-                  },
-                ].map((item, index) => {
-                  const Icon = item.icon;
-
-                  return (
-                    <div
-                      key={index}
-                      className="flex items-start gap-4 pb-4 border-b border-[#103663]/10 last:border-b-0 last:pb-0"
+        {/* OUR STORY */}
+        <section className="py-20 md:py-24">
+          <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-10">
+            {/* TOP: LEFT CONTENT + RIGHT IMAGE */}
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
+              {/* LEFT CONTENT */}
+              <div className="fade-up active h-full flex flex-col justify-between">
+                <div>
+                  {/* SECTION LABEL */}
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-16 h-[2px] bg-[#4f8dc9]" />
+                    <span
+                      className="text-[#4f8dc9] text-2xl md:text-3xl font-light"
+                      style={{ fontFamily: "var(--font-cormorant, serif)" }}
                     >
-                      {/* ICON CIRCLE */}
-                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#4f8dc9]/10 flex items-center justify-center">
-                        <Icon
-                          className="w-6 h-6 text-[#4f8dc9]"
-                          strokeWidth={1.8}
-                        />
-                      </div>
+                      Our Story
+                    </span>
+                  </div>
 
-                      {/* TEXT */}
-                      <p className="flex-1 text-sm sm:text-base text-[#0b1b33]/80 leading-relaxed">
-                        {item.text}
-                      </p>
-                    </div>
-                  );
-                })}
+                  {/* TITLE */}
+                  <h2
+                    className="
+          text-[#103663]
+          text-3xl md:text-4xl lg:text-5xl
+          font-medium
+          leading-[1.12]
+          tracking-[-0.02em]
+          mb-6
+        "
+                    style={{ fontFamily: "var(--font-cormorant, serif)" }}
+                  >
+                    Built to help businesses scale
+                    <br />— and women thrive.
+                  </h2>
+
+                  {/* BLUE CALLOUT */}
+                  <div className="border-l-[3px] border-[#4f8dc9] pl-4 mb-6">
+                    <p className="text-[#4f8dc9] text-xl md:text-2xl font-light">
+                      All Women. All Business.
+                    </p>
+                  </div>
+
+                  {/* BODY CONTENT */}
+                  <div className="space-y-9 text-base md:text-lg text-[#0b1b33]/85 leading-relaxed">
+                    <p>
+                      STAFF United was born out of a simple but important
+                      reality:
+                    </p>
+
+                    <p>
+                      Businesses worldwide face mounting pressure to scale
+                      faster and operate leaner — across Finance, Operations,
+                      Sales, and Marketing — often without the infrastructure or
+                      support capacity to do so sustainably.
+                    </p>
+
+                    <p className="max-w-[720px] text-base md:text-lg text-[#0b1b33]/85 leading-8">
+                      At the same time, we saw something equally clear: highly
+                      capable women were already doing the work that keeps
+                      businesses moving — coordinating operations, managing
+                      workflows, driving execution behind the scenes — yet often
+                      without structured pathways for long-term
+                      professional&nbsp;growth.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* RIGHT IMAGE */}
+              <div className="slide-right active h-full">
+                <div
+                  className="
+        relative
+        w-full
+        h-full
+        min-h-[620px]
+        overflow-hidden
+        rounded-[2.5rem]
+        shadow-[0_20px_60px_rgba(11,27,51,0.08)]
+      "
+                >
+                  <Image
+                    src="/about-us/our-story.jpeg"
+                    alt="Women working together"
+                    fill
+                    className="object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </div>
               </div>
             </div>
-            {/* RIGHT IMAGE */}
-            <div className="slide-right active order-1 md:order-2">
-              <div className="relative w-full h-[420px] md:h-[520px] rounded-xl overflow-hidden shadow-lg">
-                {" "}
-                <Image
-                  src="/about-us/women-team-working.avif"
-                  alt="Women working together"
-                  fill
-                  className="object-cover object-center"
-                  loading="lazy"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+
+            {/* QUOTE BOX */}
+            <div className="mt-12 md:mt-14">
+              <div
+                className="
+          relative
+          bg-[#E7EDF5]
+          rounded-3xl
+          px-6 md:px-10
+          py-6 md:py-8
+        "
+              >
+                {/* LEFT ACCENT BAR */}
+                <div className="absolute left-0 top-5 bottom-5 w-[3px] bg-[#4f8dc9] rounded-full" />
+
+                <p className="text-[#0b1b33] text-base md:text-xl leading-snug italic font-medium">
+                  Strong businesses and strong teams both depend on the same
+                  foundation: structure, continuity, accountability, and
+                  coordinated execution.
+                </p>
               </div>
+            </div>
+
+            {/* INSIGHT PARAGRAPH */}
+            <div className="mt-10">
+              <p className="text-base md:text-lg text-[#0b1b33]/85 leading-relaxed">
+                That insight became the foundation of STAFF United — a
+                women-powered offshore execution engine helping global
+                businesses grow through our structured{" "}
+                <span className="font-semibold text-[#103663]">
+                  “5-Core Support”™ Ecosystem
+                </span>
+                , while creating meaningful, long-term careers for talented
+                women.
+              </p>
+            </div>
+
+            {/* MORE THAN A NAME */}
+            <div className="text-center mt-10">
+              <h3 className="text-[#4f8dc9] text-2xl md:text-3xl font-light uppercase tracking-wide">
+                More Than a Name
+              </h3>
+            </div>
+
+            {/* FINAL PARAGRAPH */}
+            <div className="mt-8">
+              <p className="text-base md:text-lg text-[#0b1b33]/85 leading-relaxed">
+                STAFF evolved into more than our name — it became a connected
+                operational framework representing who we are, what we provide,
+                and how we execute across every part of our organization.
+              </p>
             </div>
           </div>
         </section>
 
         {/* STAFF VALUES — Who We Are */}
-        {/* STAFF VALUES — Who We Are */}
-        <section className="space-y-6">
+        <section className="space-y-6 bg-[#F3F6FA] pt-20 md:pt-20">
           {/* Title */}
           <AnimatedSection>
             <div className="text-center max-w-3xl mx-auto">
@@ -159,7 +271,9 @@ h-[70vh] md:h-[75vh]
             </div>
 
             {/* STAFF LIST */}
-            <div className="max-w-1xl mx-auto space-y-4 pt-8">
+            {/* STAFF LIST */}
+            {/* STAFF LIST */}
+            <div className="max-w-3xl mx-auto space-y-3 sm:space-y-4 pt-6 md:pt-8 px-4 sm:px-6 md:px-8">
               {[
                 {
                   letter: "S",
@@ -193,24 +307,31 @@ h-[70vh] md:h-[75vh]
         flex items-stretch
         bg-white
         border border-[#0b1b33]/10
-        rounded-2xl
+        rounded-xl sm:rounded-2xl
         overflow-hidden
         transition-all duration-300
         hover:shadow-sm
         hover:border-[#4f8fcb]/40
-        min-h-[112px] md:min-h-[120px]
+        min-h-[88px]
+        sm:min-h-[100px]
+        md:min-h-[120px]
       "
                 >
-                  {/* LETTER COLUMN - Same width and same height for all rows */}
+                  {/* LETTER COLUMN */}
                   <div
                     className="
           flex-shrink-0
-          w-16 md:w-18
+          w-12
+          sm:w-14
+          md:w-16
+          lg:w-[72px]
           bg-[#4f8fcb]
           flex items-center justify-center
           text-white
           font-semibold
-          text-2xl md:text-3xl
+          text-xl
+          sm:text-2xl
+          md:text-3xl
           self-stretch
         "
                   >
@@ -218,16 +339,170 @@ h-[70vh] md:h-[75vh]
                   </div>
 
                   {/* CONTENT */}
-                  <div className="flex-1 px-6 py-5 flex items-center">
-                    <p className="text-[#0b1b33] text-base md:text-lg leading-relaxed">
+                  <div
+                    className="
+          flex-1
+          px-4 py-4
+          sm:px-5 sm:py-4
+          md:px-6 md:py-5
+          flex items-center
+        "
+                  >
+                    <p
+                      className="
+            text-[#0b1b33]
+            text-sm
+            sm:text-base
+            md:text-lg
+            leading-6
+            sm:leading-7
+            md:leading-relaxed
+          "
+                    >
                       <span className="font-semibold">{item.title}</span>
-                      <span className="mx-2">–</span>
+                      <span className="mx-1.5 sm:mx-2">–</span>
                       <span className="text-[#0b1b33]/70">{item.desc}</span>
                     </p>
                   </div>
                 </div>
               ))}
             </div>
+
+            {/* BY THE NUMBERS */}
+            {/* BY THE NUMBERS — FULL WIDTH */}
+            {/* BY THE NUMBERS — FULL WIDTH */}
+            <section className="w-screen relative left-1/2 -translate-x-1/2 mt-16 md:mt-20">
+              <div>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-10 space-y-5 md:space-y-6">
+                  {/* Section Label */}
+                  <p
+                    className="
+          text-[#4f8fcb]
+          text-xs sm:text-sm md:text-base
+          font-semibold
+          tracking-[0.18em] md:tracking-[0.22em]
+          uppercase
+        "
+                  >
+                    By the Numbers
+                  </p>
+
+                  {/* Stat Cards */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+                    {[
+                      {
+                        value: "100%",
+                        label: "Women-led delivery teams",
+                      },
+                      {
+                        value: "5-Core",
+                        label: "Support™ Ecosystem pillars",
+                      },
+                      {
+                        value: "5",
+                        label: "Verticals covered",
+                      },
+                    ].map((item, index) => (
+                      <div
+                        key={index}
+                        className="
+              bg-[#07244A]
+              text-white
+              rounded-xl md:rounded-2xl
+              px-5 sm:px-6 md:px-8
+              py-5 sm:py-6 md:py-7
+            "
+                      >
+                        <div
+                          className="
+                text-2xl sm:text-3xl md:text-4xl
+                font-semibold
+                leading-none
+                mb-2 md:mb-3
+              "
+                        >
+                          {item.value}
+                        </div>
+
+                        <p
+                          className="
+                text-white/80
+                text-sm sm:text-base md:text-lg
+                leading-snug
+              "
+                        >
+                          {item.label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Founder Quote — FULL WIDTH */}
+                  <section className="w-screen relative left-1/2 -translate-x-1/2">
+                    <div
+                      className="
+            relative
+            overflow-hidden
+            bg-[#254A82]
+            px-5 sm:px-6 md:px-10 lg:px-16
+            py-10 sm:py-12 md:py-16 lg:py-20
+          "
+                    >
+                      {/* Left Accent Line */}
+                      <div className="absolute left-0 top-0 bottom-0 w-[3px] md:w-[4px] bg-[#6CB6FF]" />
+
+                      {/* Subtle Background Pattern */}
+                      <div className="absolute inset-0 opacity-[0.05] pointer-events-none overflow-hidden">
+                        <div
+                          className="
+                absolute inset-0
+                flex items-center justify-center
+                text-[8rem] sm:text-[12rem] md:text-[20rem] lg:text-[28rem]
+                font-bold
+                text-white
+                whitespace-nowrap
+              "
+                        >
+                          STAFF
+                        </div>
+                      </div>
+
+                      {/* Content Container */}
+                      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-10">
+                        <div className="max-w-6xl mx-auto">
+                          <blockquote
+                            className="
+                  text-white
+                  italic
+                  font-medium
+                  leading-snug md:leading-tight
+                  text-lg sm:text-xl md:text-3xl lg:text-4xl
+                "
+                          >
+                            “We didn’t just build a business — we built a home
+                            for talented women to grow, lead, and deliver
+                            world-class work.”
+                          </blockquote>
+
+                          <p
+                            className="
+                  mt-5 sm:mt-6 md:mt-8
+                  text-[#6CB6FF]
+                  uppercase
+                  tracking-[0.12em] sm:tracking-[0.15em] md:tracking-[0.18em]
+                  text-sm sm:text-base md:text-xl lg:text-2xl
+                  font-medium
+                "
+                          >
+                            — The STAFF United Founding Team.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </section>
           </AnimatedSection>
         </section>
 
@@ -241,16 +516,10 @@ h-[70vh] md:h-[75vh]
               </h2>
 
               <div className="w-12 h-[3px] bg-[#4f8fcb] mx-auto mt-5 rounded-full"></div>
-
-              {/* <p className="mt-8 text-sm sm:text-base text-[#0b1b33]/70 leading-relaxed">
-                UNITED reflects the shared standards, accountability, and
-                alignment that allow our team to operate as one coordinated
-                execution ecosystem.
-              </p> */}
             </div>
 
             {/* VISUAL CARDS */}
-            <div className="grid md:grid-cols-3 gap-6 pt-6">
+            <div className="grid md:grid-cols-3 gap-6 pt-6 px-6 sm:px-6 md:px-8">
               {[
                 {
                   number: "01",
