@@ -160,7 +160,7 @@ export default function StaffUnitedFiveDiagram() {
     {
       letter: "S",
       title: "Structure",
-      color: "#103663", // Navy Blue
+      color: "#5E8F86", // Navy Blue
       startAngle: -90,
     },
     {
