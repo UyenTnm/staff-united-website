@@ -476,7 +476,7 @@ export default function AboutUs() {
                   italic
                   font-medium
                   leading-snug md:leading-tight
-                  text-lg sm:text-xl md:text-3xl lg:text-4xl
+                  text-base sm:text-base md:text-2xl lg:text-2xl
                 "
                           >
                             “We didn’t just build a business — we built a home
@@ -490,7 +490,7 @@ export default function AboutUs() {
                   text-[#6CB6FF]
                   uppercase
                   tracking-[0.12em] sm:tracking-[0.15em] md:tracking-[0.18em]
-                  text-sm sm:text-base md:text-xl lg:text-2xl
+                  text-sm sm:text-base md:text-xl lg:text-xl
                   font-medium
                 "
                           >
