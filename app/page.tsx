@@ -804,7 +804,7 @@ export default function Home() {
 
                 {/* BUTTON */}
                 <Link
-                  href="/our-story"
+                  href="/about-us"
                   className="
             px-6 py-2 fade-up delay-1
             rounded-full
@@ -815,7 +815,7 @@ export default function Home() {
             transition-all duration-700
           "
                 >
-                  About Us
+                  Our Story
                 </Link>
               </div>
             </div>
