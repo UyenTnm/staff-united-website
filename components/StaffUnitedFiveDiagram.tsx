@@ -695,7 +695,7 @@ pb-12 md:pb-20
                         {/* Curved title */}
                         <text
                           // fill="rgba(255,255,255,0.96)"
-                          fontSize="22"
+                          fontSize="25"
                           fontWeight="700"
                           fontFamily="Poppins, sans-serif"
                           letterSpacing="0.2"
@@ -1204,7 +1204,7 @@ pb-12 md:pb-20
 
                         {/* Curved title */}
                         <text
-                          fontSize="22"
+                          fontSize="25"
                           fontWeight="700"
                           fontFamily="Poppins, sans-serif"
                           fill="rgba(32,16,4,1)"
@@ -1743,7 +1743,7 @@ pb-12 md:pb-20
 
                         {/* Curved title */}
                         <text
-                          fontSize="22"
+                          fontSize="25"
                           fontWeight="700"
                           fontFamily="Poppins, sans-serif"
                           letterSpacing="0.2"
