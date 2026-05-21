@@ -417,7 +417,12 @@ pb-12 md:pb-20
                     letterSpacing="0.5"
                     style={{ filter: "none" }}
                   >
-                    People
+                    <tspan x={center} dy="-20">
+                      Our
+                    </tspan>
+                    <tspan x={center} dy="42">
+                      People
+                    </tspan>
                   </text>
                 </>
               }
@@ -658,7 +663,8 @@ pb-12 md:pb-20
                         y={center - 198}
                         textAnchor="middle"
                         dominantBaseline="middle"
-                        fill="rgba(255,255,255,0.60)"
+                        // fill="rgba(255,255,255,0.60)"
+                        fill="#FFFFFF"
                         fontSize="72"
                         fontWeight="400"
                         fontFamily="Poppins, sans-serif"
@@ -813,13 +819,14 @@ pb-12 md:pb-20
               />
 
               {/* Center Title Only */}
-              <text
+              {/* <text
                 x={center}
                 y="290"
                 textAnchor="middle"
                 dominantBaseline="middle"
-                fill="#FFFFFF"
-                fontSize="42"
+                // fill="#FFFFFF"
+                fill="rgba(255,255,255,0.60)"
+                fontSize="38"
                 fontWeight="500"
                 fontFamily="Poppins, sans-serif"
                 letterSpacing="0.5"
@@ -827,8 +834,13 @@ pb-12 md:pb-20
                   filter: "none",
                 }}
               >
-                People
-              </text>
+                <tspan x={center} dy="-35">
+                  Our
+                </tspan>
+                <tspan x={center} dy="42">
+                  People
+                </tspan>
+              </text> */}
             </RotatingDiagram>
           </div>
 
@@ -851,31 +863,16 @@ pb-12 md:pb-20
                 <>
                   {/* Center Circle Gradient */}
                   <defs>
-                    {/* <radialGradient
-                      id="provide-centerCoreGradient"
-                      cx="50%"
-                      cy="70%"
-                      r="98%"
-                    >
-                      <stop offset="0%" stopColor="#FFF4E2" />
-                      <stop offset="16%" stopColor="#F4DEC0" />
-                      <stop offset="38%" stopColor="#E6BE8A" />
-                      <stop offset="65%" stopColor="#D7A96D" />
-                      <stop offset="100%" stopColor="#BF8952" />
-                    </radialGradient> */}
-
                     <linearGradient
-                      id="staffRingGradient"
+                      id="provide-centerCoreGradient"
                       x1="0%"
                       y1="0%"
                       x2="100%"
                       y2="100%"
                     >
-                      <stop offset="0%" stopColor="rgba(255,255,255,0.95)" />
-                      <stop offset="25%" stopColor="rgba(255,255,255,0.85)" />
-                      <stop offset="50%" stopColor="rgba(255,255,255,1)" />
-                      <stop offset="75%" stopColor="rgba(255,255,255,0.85)" />
-                      <stop offset="100%" stopColor="rgba(255,255,255,0.95)" />
+                      <stop offset="0%" stopColor="#F4B400" />
+                      <stop offset="45%" stopColor="#D99A00" />
+                      <stop offset="100%" stopColor="#B87900" />
                     </linearGradient>
                   </defs>
 
@@ -924,7 +921,7 @@ pb-12 md:pb-20
                     textAnchor="middle"
                     dominantBaseline="middle"
                     fill="#FFFFFF"
-                    fontSize="42"
+                    fontSize="40"
                     fontWeight="500"
                     fontFamily="Poppins, sans-serif"
                     letterSpacing="0.5"
@@ -935,7 +932,12 @@ pb-12 md:pb-20
           `,
                     }}
                   >
-                    Services
+                    <tspan x={center} dy="-23">
+                      Our
+                    </tspan>
+                    <tspan x={center} dy="42">
+                      Services
+                    </tspan>
                   </text>
                 </>
               }
@@ -1171,7 +1173,8 @@ pb-12 md:pb-20
                         y={center - 198}
                         textAnchor="middle"
                         dominantBaseline="middle"
-                        fill="rgba(255,255,235,0.92)"
+                        // fill="rgba(255,255,235,0.92)"
+                        fill="#FFFFFF"
                         fontSize="78"
                         fontWeight="400"
                         fontFamily="Poppins, sans-serif"
@@ -1270,21 +1273,6 @@ pb-12 md:pb-20
 
               {/* Center Circle */}
               <defs>
-                {/* Center Circle Gradient */}
-                <radialGradient
-                  id="provide-centerCoreGradient"
-                  cx="50%"
-                  cy="42%"
-                  r="75%"
-                >
-                  <stop offset="0%" stopColor="#FFFBEA" />
-                  <stop offset="10%" stopColor="#FFEFB0" />
-                  <stop offset="28%" stopColor="#FFD44A" />
-                  <stop offset="55%" stopColor="#F5B300" />
-                  <stop offset="78%" stopColor="#D99500" />
-                  <stop offset="100%" stopColor="#A56A00" />
-                </radialGradient>
-
                 {/* Center Circle */}
                 <circle
                   cx={center}
@@ -1355,22 +1343,25 @@ pb-12 md:pb-20
               />
 
               {/* Tagline */}
-              <text
+              {/* <text
                 x={center}
                 y="290"
                 textAnchor="middle"
                 dominantBaseline="middle"
-                fill="#FFFFFF"
-                fontSize="42"
+                // fill="#FFFFFF"
+                fill="rgba(255,255,235,0.92)"
+                fontSize="33"
                 fontWeight="500"
                 fontFamily="Poppins, sans-serif"
                 letterSpacing="0.5"
-                style={{
-                  filter: `drop-shadow(0 2px 6px rgba(11,27,51,0.45)) drop-shadow(0 0 14px rgba(79,141,233,0.18))`,
-                }}
+                style={
+                  {
+                    // filter: `drop-shadow(0 2px 6px rgba(11,27,51,0.45)) drop-shadow(0 0 14px rgba(79,141,233,0.18))`,
+                  }
+                }
               >
-                Services
-              </text>
+                Our Services
+              </text> */}
             </RotatingDiagram>
           </div>
 
@@ -1467,7 +1458,7 @@ pb-12 md:pb-20
                     textAnchor="middle"
                     dominantBaseline="middle"
                     fill="#FFFFFF"
-                    fontSize="42"
+                    fontSize="38"
                     fontWeight="500"
                     fontFamily="Poppins, sans-serif"
                     style={{
@@ -1475,7 +1466,12 @@ pb-12 md:pb-20
                       filter: "none",
                     }}
                   >
-                    Execution
+                    <tspan x={center} dy="-30">
+                      Our
+                    </tspan>
+                    <tspan x={center} dy="42">
+                      Approach
+                    </tspan>
                   </text>
                 </>
               }
@@ -1716,7 +1712,8 @@ pb-12 md:pb-20
                         y={center - 198}
                         textAnchor="middle"
                         dominantBaseline="middle"
-                        fill="rgba(255,255,255,0.60)"
+                        // fill="rgba(255,255,255,0.60)"
+                        fill="#FFFFFF"
                         fontSize="72"
                         fontWeight="400"
                         fontFamily="Poppins, sans-serif"
@@ -1888,8 +1885,9 @@ pb-12 md:pb-20
                 y={center}
                 textAnchor="middle"
                 dominantBaseline="middle"
-                fill="#FFFFFF"
-                fontSize="42"
+                // fill="#FFFFFF"
+                fill="rgba(255,255,255,0.60)"
+                fontSize="32"
                 fontWeight="500"
                 fontFamily="Poppins, sans-serif"
                 style={{
@@ -1897,7 +1895,7 @@ pb-12 md:pb-20
                   filter: "none",
                 }}
               >
-                Execution
+                Our Approach
               </text>
             </RotatingDiagram>
           </div>

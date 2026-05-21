@@ -324,7 +324,7 @@ md:ml-3
 
       <div className="absolute bottom-10 left-9 hidden md:block z-40">
         <a
-          href="https://www.google.com/search?q=staff+united+group+review"
+          href="https://maps.app.goo.gl/Rg6R1UCux7tWsjGZ7?g_st=ic"
           target="_blank"
           rel="noopener noreferrer"
           className="
@@ -377,7 +377,7 @@ md:ml-3
             {/* RATING */}
             <div className="flex flex-col items-end">
               <div className="flex  text-base">⭐⭐⭐⭐⭐</div>
-              <span className="text-muted/70 text-sm">200+ reviews</span>
+              <span className="text-muted/70 text-sm">5⭐ reviews</span>
             </div>
           </div>
         </a>
