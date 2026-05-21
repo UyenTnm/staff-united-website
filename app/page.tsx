@@ -399,7 +399,7 @@ export default function Home() {
 
                 // CTA CARD
                 {
-                  title: "Ready to Scale?",
+                  title: "Not Sure Yet?",
                   keywords: ["Request", "Support", "Grow"],
                   image: "/home/services/ready-to-scale.jpeg",
                   href: "/request-support",
@@ -510,7 +510,7 @@ export default function Home() {
 
                     {/* CTA TEXT */}
                     <div className="mt-6 flex items-center gap-2 text-[#8FD3FF] font-medium text-sm">
-                      {item.isCTA ? "Request Support" : "Explore Service"}
+                      {item.isCTA ? "Free Consulting" : "Explore Service"}
                       <span className="transition-transform duration-500 group-hover:translate-x-1">
                         →
                       </span>
