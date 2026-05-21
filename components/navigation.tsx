@@ -11,7 +11,7 @@ export default function Navigation() {
 
   const navItems = [
     { label: "HOME", href: "/" },
-    { label: "ABOUT US", href: "/about-us" },
+    { label: "OUR STORY", href: "/about-us" },
     { label: "SERVICES", href: "/services" },
     { label: "TEAM", href: "/team" },
     { label: "CAREERS", href: "/careers" },

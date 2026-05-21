@@ -25,6 +25,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useState } from "react";
 import Link from "next/link";
+import StaffUnitedFiveDiagram from "@/components/StaffUnitedFiveDiagram";
 
 export default function Home() {
   const testimonials = [
@@ -77,46 +78,6 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  // useEffect(() => {
-  //   const elements = document.querySelectorAll(".fade-up");
-
-  //   const observer = new IntersectionObserver(
-  //     (entries) => {
-  //       entries.forEach((entry) => {
-  //         if (entry.isIntersecting) {
-  //           entry.target.classList.add("active");
-  //         }
-  //       });
-  //     },
-  //     { threshold: 0.2 },
-  //   );
-
-  //   elements.forEach((el) => observer.observe(el));
-
-  //   return () => observer.disconnect();
-  // }, []);
-
-  // useEffect(() => {
-  //   const elements = document.querySelectorAll(
-  //     ".slide-left, .slide-right, .fade-up",
-  //   );
-
-  //   const observer = new IntersectionObserver(
-  //     (entries) => {
-  //       entries.forEach((entry) => {
-  //         if (entry.isIntersecting) {
-  //           entry.target.classList.add("active");
-  //         }
-  //       });
-  //     },
-  //     { threshold: 0.2 },
-  //   );
-
-  //   elements.forEach((el) => observer.observe(el));
-
-  //   return () => observer.disconnect();
-  // }, []);
-
   useEffect(() => {
     const elements = document.querySelectorAll(
       ".fade-up, .slide-left, .slide-right",
@@ -146,6 +107,8 @@ export default function Home() {
         {/* <AnimatedSection> */}
         <Hero />
         {/* </AnimatedSection> */}
+
+        <StaffUnitedFiveDiagram />
 
         {/* SECTION 2 — POSITIONING (FULL GREY) */}
         <AnimatedSection>
@@ -397,135 +360,176 @@ export default function Home() {
             </div>
 
             {/* SERVICES GRID */}
+            {/* SERVICES GRID - Visual & Minimal */}
+            {/* SERVICES GRID - Highly Visual Version */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 max-w-8xl mx-auto px-6">
               {[
                 {
-                  title: "Bookkeeping Support",
-                  desc: "Accurate day-to-day bookkeeping support to keep your financial records organized and current.",
-                  icon: "📘",
-                  // href: "/services/bookkeeping-support",
+                  title: "Structured Operations",
+                  keywords: ["Systems", "Processes", "Admin"],
+                  image:
+                    "/home/services/business-setup-market-entry-support.jpeg",
                   href: "/services",
                 },
                 {
-                  title: "Executive Assistant Support",
-                  desc: "Professional administrative assistance to help founders and executives stay focused on high-value work.",
-                  icon: "📅",
-                  // href: "/services/executive-assistant-support",
+                  title: "Targeted Sales",
+                  keywords: ["Clients", "Support", "Revenue"],
+                  image:
+                    "/home/services/customer-support-sales-operations.jpeg",
                   href: "/services",
                 },
                 {
-                  title: "Digital Marketing Support",
-                  desc: "Execution support for content, campaigns, and marketing operations to help drive consistent growth.",
-                  icon: "📈",
-                  // href: "/services/digital-marketing-support",
+                  title: "Accounting & Finance",
+                  keywords: ["Bookkeeping", "Invoicing", "Reports"],
+                  image: "/home/services/accounting-financial.jpeg",
                   href: "/services",
                 },
                 {
-                  title: "Customer Support",
-                  desc: "Responsive and professional customer service support to strengthen your client experience.",
-                  icon: "💬",
-                  // href: "/services/customer-support",
+                  title: "Focused Marketing",
+                  keywords: ["Brand", "Content", "Visibility"],
+                  image: "/home/services/focus-marketing.jpeg",
+                  href: "/services",
                 },
                 {
-                  title: "Administrative Support",
-                  desc: "Reliable back-office and operational assistance to keep your business running smoothly.",
-                  icon: "🗂️",
-                  // href: "/services/administrative-support",
+                  title: "Future Expansion",
+                  keywords: ["Launch", "Growth", "Scale"],
+                  image: "/home/services/structured-operations.jpeg",
+                  href: "/services",
+                },
+
+                // CTA CARD
+                {
+                  title: "Not Sure Yet?",
+                  keywords: ["Request", "Support", "Grow"],
+                  image: "/home/services/ready-to-scale.jpeg",
+                  href: "/request-support",
+                  isCTA: true,
                 },
               ].map((item, i) => (
                 <a
                   href={item.href}
                   key={i}
-                  className="
-        group slide-left active
-        rounded-2xl
-        p-6 sm:p-8
-
-        bg-[#f8fafc]
-        border border-[#0b1b33]/10
-
-        transition-all duration-300
-        hover:border-[#4f8fcb]/40
-        hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)] cursor-pointer
-      "
+                  className={`
+      group
+      relative
+      overflow-hidden
+      rounded-3xl
+      min-h-[420px]
+      border
+      shadow-[0_10px_40px_rgba(11,27,51,0.08)]
+      hover:-translate-y-2
+      hover:shadow-[0_25px_60px_rgba(79,143,203,0.18)]
+      transition-all duration-700
+      flex flex-col justify-end
+      ${
+        item.isCTA
+          ? `
+            border-[#4f8fcb]/30
+            bg-gradient-to-b
+            from-[#06172d]
+            via-[#0a1b33]
+            to-[#103663]
+          `
+          : `
+            border-[#0b1b33]/10
+          `
+      }
+    `}
                 >
-                  {/* ICON */}
-                  <div
+                  {/* BACKGROUND IMAGE - only for normal cards */}
+                  {/* BACKGROUND IMAGE - render for ALL cards, including CTA */}
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
                     className="
-        w-10 h-10
-        rounded-lg
-        bg-[#4f8fcb]/10
-        flex items-center justify-center
-        mb-6
-      "
-                  >
-                    <span className="text-[#4f8fcb] text-lg">{item.icon}</span>
-                  </div>
-
-                  {/* TITLE */}
-                  <h3
-                    className="
-        text-lg sm:text-xl
-        font-semibold
-        text-[#0b1b33]
-        transition-colors
-      "
-                  >
-                    {item.title}
-                  </h3>
-
-                  {/* DESCRIPTION */}
-                  <p
-                    className="
-        text-[#0b1b33]
-        mt-3
-        text-base
-        leading-relaxed
-      "
-                  >
-                    {item.desc}
-                  </p>
-
-                  {/* CTA */}
-
-                  <div className="mt-6 flex items-center gap-2.5 ">
-                    {/* TEXT */}
-                    <span
-                      className="
-    text-xs tracking-wider font-medium uppercase
-    text-[#0b1b33]
-    transition-colors duration-700
-    group-hover:text-[#4f8fcb]
+    object-cover
+    transition-transform duration-1000 ease-out
+    group-hover:scale-110
   "
-                    >
-                      LEARN MORE
-                    </span>
+                  />
 
-                    {/* ICON */}
+                  {/* OVERLAY */}
+                  <div
+                    className={`
+    absolute inset-0
+    ${
+      item.isCTA
+        ? `
+          bg-gradient-to-b
+          from-[#06172d]/85
+          via-[#0a1b33]/80
+          to-[#103663]/95
+        `
+        : `
+          bg-gradient-to-t
+          from-[#06172d]/95
+          via-[#0a1b33]/55
+          to-transparent
+        `
+    }
+  `}
+                  />
+
+                  {/* EXTRA GLOW FOR CTA */}
+                  {item.isCTA && (
                     <div
                       className="
-    w-7 h-7 rounded-full
-    border border-[#0b1b33]/30
-    text-[#0b1b33]
+      absolute inset-0
+      bg-[radial-gradient(circle_at_center,rgba(79,143,203,0.18),transparent_70%)]
+    "
+                    />
+                  )}
 
-    flex items-center justify-center
+                  {/* CONTENT */}
+                  <div className="relative z-10 p-6 sm:p-7">
+                    {/* TITLE */}
+                    <h3 className="text-xl sm:text-2xl font-semibold text-white leading-snug">
+                      {item.title}
+                    </h3>
 
-    transition-all duration-300 ease-out
+                    {/* KEYWORDS */}
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {item.keywords.map((keyword, index) => (
+                        <span
+                          key={index}
+                          className="
+              px-3 py-1.5
+              rounded-full
+              text-xs font-medium
+              bg-white/10
+              backdrop-blur-md
+              border border-white/10
+              text-white/90
+            "
+                        >
+                          {keyword}
+                        </span>
+                      ))}
+                    </div>
 
-    group-hover:bg-[#4f8fcb]
-    group-hover:border-[#4f8fcb]
-    group-hover:text-white
-  "
-                    >
-                      <ArrowUpRight
-                        size={14}
-                        className="
-    transition-transform duration-300
-    -rotate-95 group-hover:rotate-45
-  "
-                      />
+                    {/* CTA TEXT */}
+                    <div className="mt-6 flex items-center gap-2 text-[#8FD3FF] font-medium text-sm">
+                      {item.isCTA ? "Free Consulting" : "Explore Service"}
+                      <span className="transition-transform duration-500 group-hover:translate-x-1">
+                        →
+                      </span>
                     </div>
                   </div>
+
+                  {/* GLOW EFFECT */}
+                  <div
+                    className="
+        absolute -bottom-20 left-1/2 -translate-x-1/2
+        w-56 h-56
+        bg-[#4f8fcb]/20
+        blur-[80px]
+        opacity-0
+        group-hover:opacity-100
+        transition-opacity duration-700
+        pointer-events-none
+      "
+                  />
                 </a>
               ))}
             </div>
@@ -811,7 +815,7 @@ export default function Home() {
             transition-all duration-700
           "
                 >
-                  About Us
+                  Our Story
                 </Link>
               </div>
             </div>
