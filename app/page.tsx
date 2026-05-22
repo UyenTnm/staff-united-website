@@ -842,7 +842,7 @@ to-[#103663]/70
 "
                 >
                   <Image
-                    src="/home/workspace.png"
+                    src="/services/targeted-sales.webp"
                     alt="Workspace STAFF UNITED"
                     fill
                     className="object-cover"
