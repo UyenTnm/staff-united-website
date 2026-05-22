@@ -14,7 +14,7 @@ function RotatingDiagram({
   children: React.ReactNode;
   centerContent?: React.ReactNode;
 }) {
-  const center = 320;
+  const center = 340;
 
   const [rotation, setRotation] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -54,7 +54,9 @@ function RotatingDiagram({
     <svg
       ref={svgRef}
       // viewBox="-40 0 660 580"
-      viewBox="-30 -20 700 680"
+      // viewBox="-30 -20 700 680"
+      // viewBox="-60 -60 760 760"
+      viewBox="-45 -45 760 760"
       className="w-full h-auto overflow-visible touch-none select-none"
       style={{
         touchAction: "none",
@@ -116,13 +118,10 @@ function RotatingDiagram({
 }
 
 export default function StaffUnitedFiveDiagram() {
-  // const center = 290;
-  // const outerRadius = 230;
-  // const innerRadius = 130;
-  const center = 320; // tăng tâm SVG
-  const outerRadius = 255; // vòng ngoài lớn hơn
-  const innerRadius = 145;
-  const segmentAngle = 72; // 360 / 5
+  const center = 340; // tăng tâm SVG
+  const outerRadius = 305;
+  const innerRadius = 175;
+  const segmentAngle = 72;
 
   const segmentsWhoWeAre = [
     { letter: "S", title: "Strong", color: "#4f8de9", startAngle: -90 },
@@ -361,13 +360,28 @@ pb-12 md:pb-20
                       <stop offset="75%" stopColor="rgba(255,255,255,0.85)" />
                       <stop offset="100%" stopColor="rgba(255,255,255,0.95)" />
                     </linearGradient>
+
+                    <linearGradient
+                      id="metallicLetter"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
+                    >
+                      <stop offset="0%" stopColor="#FFFFFF" />
+                      <stop offset="18%" stopColor="#F8F8F8" />
+                      <stop offset="38%" stopColor="#D9D9D9" />
+                      <stop offset="52%" stopColor="#FFFFFF" />
+                      <stop offset="72%" stopColor="#BEBEBE" />
+                      <stop offset="100%" stopColor="#FFFFFF" />
+                    </linearGradient>
                   </defs>
 
                   {/* Center Circle */}
                   <circle
                     cx={center}
                     cy={center}
-                    r="150"
+                    r="175"
                     fill="url(#who-centerCoreGradient)"
                     stroke="rgba(255,255,255,0.92)"
                     strokeWidth="7"
@@ -383,7 +397,7 @@ pb-12 md:pb-20
                   <circle
                     cx={center}
                     cy={center}
-                    r="126"
+                    r="150"
                     fill="none"
                     stroke="url(#staffRingGradient)"
                     strokeWidth="3"
@@ -545,7 +559,7 @@ pb-12 md:pb-20
                   height="140%"
                 >
                   {/* <feGaussianBlur stdDeviation="4" /> */}
-                  <feGaussianBlur stdDeviation="1.5" />
+                  {/* <feGaussianBlur stdDeviation="1.5" /> */}
                 </filter>
               </defs>
 
@@ -615,7 +629,7 @@ pb-12 md:pb-20
                           strokeLinejoin="miter"
                           strokeMiterlimit="2"
                           strokeLinecap="butt"
-                          filter="url(#glassShadow)"
+                          // filter="url(#glassShadow)"
                         />
 
                         {/* Stronger shadow when hovered */}
@@ -656,21 +670,38 @@ pb-12 md:pb-20
         "
                         />
                       </g>
+
+                      {/* create 3d word bg */}
+                      <text
+                        x={center + 3}
+                        y={center - 235}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                        fill="rgba(0,0,0,0.32)"
+                        fontSize="82"
+                        fontWeight="700"
+                        fontFamily="Poppins, sans-serif"
+                        letterSpacing="-0.02em"
+                        transform={`rotate(${segment.startAngle + segmentAngle / 2 + 90} ${center} ${center})`}
+                      >
+                        {segment.letter}
+                      </text>
                       {/* Large branding letter inside segment */}
                       <text
                         x={center}
-                        // y={center - 178}
-                        y={center - 198}
+                        y={center - 240}
                         textAnchor="middle"
                         dominantBaseline="middle"
-                        // fill="rgba(255,255,255,0.60)"
-                        fill="#FFFFFF"
+                        fill="url(#metallicLetter)"
                         fontSize="72"
-                        fontWeight="400"
+                        fontWeight="600"
                         fontFamily="Poppins, sans-serif"
                         style={{
-                          filter:
-                            "drop-shadow(0 0 20px rgba(255,255,255,0.22))",
+                          letterSpacing: "-0.02em",
+                          filter: `
+    drop-shadow(0 2px 0 rgba(255,255,255,0.95))
+    drop-shadow(0 5px 8px rgba(0,0,0,0.22))
+  `,
                         }}
                         transform={`rotate(${segment.startAngle + segmentAngle / 2 + 90} ${center} ${center})`}
                       >
@@ -686,7 +717,7 @@ pb-12 md:pb-20
                             segment.startAngle + 8,
                             segment.startAngle + segmentAngle - 8,
                             // outerRadius + 25,
-                            outerRadius + 30,
+                            outerRadius + 42,
                           )}
                           fill="none"
                           stroke="none"
@@ -695,7 +726,7 @@ pb-12 md:pb-20
                         {/* Curved title */}
                         <text
                           // fill="rgba(255,255,255,0.96)"
-                          fontSize="25"
+                          fontSize="31"
                           fontWeight="700"
                           fontFamily="Poppins, sans-serif"
                           letterSpacing="0.2"
@@ -797,7 +828,7 @@ pb-12 md:pb-20
               <circle
                 cx={center}
                 cy={center}
-                r="126"
+                r="150"
                 fill="none"
                 stroke="url(#staffRingGradient)"
                 strokeWidth="3"
@@ -817,30 +848,6 @@ pb-12 md:pb-20
     `,
                 }}
               />
-
-              {/* Center Title Only */}
-              {/* <text
-                x={center}
-                y="290"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                // fill="#FFFFFF"
-                fill="rgba(255,255,255,0.60)"
-                fontSize="38"
-                fontWeight="500"
-                fontFamily="Poppins, sans-serif"
-                letterSpacing="0.5"
-                style={{
-                  filter: "none",
-                }}
-              >
-                <tspan x={center} dy="-35">
-                  Our
-                </tspan>
-                <tspan x={center} dy="42">
-                  People
-                </tspan>
-              </text> */}
             </RotatingDiagram>
           </div>
 
@@ -880,7 +887,7 @@ pb-12 md:pb-20
                   <circle
                     cx={center}
                     cy={center}
-                    r="150"
+                    r="175"
                     fill="url(#provide-centerCoreGradient)"
                     stroke="rgba(255,255,255,0.72)"
                     strokeWidth="9"
@@ -893,7 +900,7 @@ pb-12 md:pb-20
                   <circle
                     cx={center}
                     cy={center}
-                    r="126"
+                    r="150"
                     fill="none"
                     stroke="url(#staffRingGradient)"
                     strokeWidth="3"
@@ -1052,7 +1059,7 @@ pb-12 md:pb-20
                   height="140%"
                 >
                   {/* <feGaussianBlur stdDeviation="4" /> */}
-                  <feGaussianBlur stdDeviation="1.5" />
+                  {/* <feGaussianBlur stdDeviation="1.5" /> */}
                 </filter>
               </defs>
 
@@ -1062,7 +1069,7 @@ pb-12 md:pb-20
               <circle
                 cx={center}
                 cy={center}
-                r="150"
+                r="175"
                 fill="url(#provide-centerCoreGradient)"
                 stroke="rgba(255,255,255,0.14)"
                 strokeWidth="7"
@@ -1124,7 +1131,7 @@ pb-12 md:pb-20
                           strokeLinejoin="miter"
                           strokeMiterlimit="2"
                           strokeLinecap="butt"
-                          filter="url(#glassShadow)"
+                          // filter="url(#glassShadow)"
                         />
 
                         {/* Stronger shadow when hovered */}
@@ -1166,21 +1173,39 @@ pb-12 md:pb-20
         "
                         />
                       </g>
+
+                      {/* create 3d word bg */}
+                      <text
+                        x={center + 3}
+                        y={center - 235}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                        fill="rgba(0,0,0,0.32)"
+                        fontSize="82"
+                        fontWeight="700"
+                        fontFamily="Poppins, sans-serif"
+                        letterSpacing="-0.02em"
+                        transform={`rotate(${segment.startAngle + segmentAngle / 2 + 90} ${center} ${center})`}
+                      >
+                        {segment.letter}
+                      </text>
+
                       {/* Large branding letter inside segment */}
                       <text
                         x={center}
-                        // y={center - 178}
-                        y={center - 198}
+                        y={center - 240}
                         textAnchor="middle"
                         dominantBaseline="middle"
-                        // fill="rgba(255,255,235,0.92)"
-                        fill="#FFFFFF"
+                        fill="url(#metallicLetter)"
                         fontSize="78"
-                        fontWeight="400"
+                        fontWeight="600"
                         fontFamily="Poppins, sans-serif"
                         style={{
                           letterSpacing: "-0.02em",
-                          filter: "none", // QUAN TRỌNG: bỏ toàn bộ glow
+                          filter: `
+    drop-shadow(0 2px 0 rgba(255,255,255,0.95))
+    drop-shadow(0 5px 8px rgba(0,0,0,0.22))
+  `,
                         }}
                         transform={`rotate(${segment.startAngle + segmentAngle / 2 + 90} ${center} ${center})`}
                       >
@@ -1195,8 +1220,7 @@ pb-12 md:pb-20
                           d={createArcPath(
                             segment.startAngle + 12,
                             segment.startAngle + segmentAngle - 12,
-                            // outerRadius + 25,
-                            outerRadius + 30,
+                            outerRadius + 42,
                           )}
                           fill="none"
                           stroke="none"
@@ -1204,7 +1228,7 @@ pb-12 md:pb-20
 
                         {/* Curved title */}
                         <text
-                          fontSize="25"
+                          fontSize="31"
                           fontWeight="700"
                           fontFamily="Poppins, sans-serif"
                           fill="rgba(32,16,4,1)"
@@ -1277,7 +1301,7 @@ pb-12 md:pb-20
                 <circle
                   cx={center}
                   cy={center}
-                  r="150"
+                  r="175"
                   fill="url(#provide-centerCoreGradient)"
                   stroke="rgba(255,255,255,0.14)"
                   strokeWidth="2"
@@ -1291,7 +1315,7 @@ pb-12 md:pb-20
               <circle
                 cx={center}
                 cy={center}
-                r="150"
+                r="175"
                 fill="url(#provide-centerCoreGradient)"
                 stroke="rgba(255,255,255,0.72)"
                 strokeWidth="9"
@@ -1321,7 +1345,7 @@ pb-12 md:pb-20
               <circle
                 cx={center}
                 cy={center}
-                r="126"
+                r="150"
                 fill="none"
                 stroke="url(#staffRingGradient)"
                 strokeWidth="3"
@@ -1341,27 +1365,6 @@ pb-12 md:pb-20
                 `,
                 }}
               />
-
-              {/* Tagline */}
-              {/* <text
-                x={center}
-                y="290"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                // fill="#FFFFFF"
-                fill="rgba(255,255,235,0.92)"
-                fontSize="33"
-                fontWeight="500"
-                fontFamily="Poppins, sans-serif"
-                letterSpacing="0.5"
-                style={
-                  {
-                    // filter: `drop-shadow(0 2px 6px rgba(11,27,51,0.45)) drop-shadow(0 0 14px rgba(79,141,233,0.18))`,
-                  }
-                }
-              >
-                Our Services
-              </text> */}
             </RotatingDiagram>
           </div>
 
@@ -1416,7 +1419,7 @@ pb-12 md:pb-20
                   <circle
                     cx={center}
                     cy={center}
-                    r="150"
+                    r="175"
                     fill="url(#execute-centerCoreGradient)"
                     stroke="rgba(255,255,255,0.92)"
                     strokeWidth="7"
@@ -1430,7 +1433,7 @@ pb-12 md:pb-20
                   <circle
                     cx={center}
                     cy={center}
-                    r="126"
+                    r="150"
                     fill="none"
                     stroke="url(#staffRingGradient)"
                     strokeWidth="3"
@@ -1594,7 +1597,7 @@ pb-12 md:pb-20
                   height="140%"
                 >
                   {/* <feGaussianBlur stdDeviation="4" /> */}
-                  <feGaussianBlur stdDeviation="1.5" />
+                  {/* <feGaussianBlur stdDeviation="1.5" /> */}
                 </filter>
               </defs>
 
@@ -1664,7 +1667,7 @@ pb-12 md:pb-20
                           strokeLinejoin="miter"
                           strokeMiterlimit="2"
                           strokeLinecap="butt"
-                          filter="url(#glassShadow)"
+                          // filter="url(#glassShadow)"
                         />
 
                         {/* Stronger shadow when hovered */}
@@ -1705,21 +1708,39 @@ pb-12 md:pb-20
         "
                         />
                       </g>
+
+                      {/* create 3d word bg */}
+                      <text
+                        x={center + 3}
+                        y={center - 235}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                        fill="rgba(0,0,0,0.32)"
+                        fontSize="82"
+                        fontWeight="700"
+                        fontFamily="Poppins, sans-serif"
+                        letterSpacing="-0.02em"
+                        transform={`rotate(${segment.startAngle + segmentAngle / 2 + 90} ${center} ${center})`}
+                      >
+                        {segment.letter}
+                      </text>
+
                       {/* Large branding letter inside segment */}
                       <text
                         x={center}
-                        // y={center - 178}
-                        y={center - 198}
+                        y={center - 240}
                         textAnchor="middle"
                         dominantBaseline="middle"
-                        // fill="rgba(255,255,255,0.60)"
-                        fill="#FFFFFF"
+                        fill="url(#metallicLetter)"
                         fontSize="72"
-                        fontWeight="400"
+                        fontWeight="600"
                         fontFamily="Poppins, sans-serif"
                         style={{
-                          filter:
-                            "drop-shadow(0 0 20px rgba(255,255,255,0.22))",
+                          letterSpacing: "-0.02em",
+                          filter: `
+    drop-shadow(0 2px 0 rgba(255,255,255,0.95))
+    drop-shadow(0 5px 8px rgba(0,0,0,0.22))
+  `,
                         }}
                         transform={`rotate(${segment.startAngle + segmentAngle / 2 + 90} ${center} ${center})`}
                       >
@@ -1735,7 +1756,7 @@ pb-12 md:pb-20
                             segment.startAngle + 8,
                             segment.startAngle + segmentAngle - 8,
                             // outerRadius + 25,
-                            outerRadius + 30,
+                            outerRadius + 42,
                           )}
                           fill="none"
                           stroke="none"
@@ -1743,7 +1764,7 @@ pb-12 md:pb-20
 
                         {/* Curved title */}
                         <text
-                          fontSize="25"
+                          fontSize="31"
                           fontWeight="700"
                           fontFamily="Poppins, sans-serif"
                           letterSpacing="0.2"
@@ -1828,7 +1849,7 @@ pb-12 md:pb-20
               <circle
                 cx={center}
                 cy={center}
-                r="150"
+                r="175"
                 fill="url(#execute-centerCoreGradient)"
                 stroke="rgba(255,255,255,0.92)"
                 strokeWidth="7"
@@ -1859,7 +1880,7 @@ pb-12 md:pb-20
               <circle
                 cx={center}
                 cy={center}
-                r="126"
+                r="150"
                 fill="none"
                 stroke="url(#staffRingGradient)"
                 strokeWidth="3"

@@ -54,7 +54,7 @@ export default function Services() {
     // Targeted Sales
     {
       title: "Targeted Sales",
-      desc: "Customer Support & Sales Operations",
+      desc: "Sales & Customer Support",
       icon: Handshake,
       items: [
         "Lead Research & List Building",
@@ -78,7 +78,7 @@ export default function Services() {
     // Accounting & Finance
     {
       title: "Accounting & Finance",
-      desc: "Accounting & Financial Operations",
+      desc: "Accounting & Financial Services",
       icon: Calculator,
       items: [
         "Monthly Bookkeeping",
@@ -99,7 +99,7 @@ export default function Services() {
     // Focused Marketing
     {
       title: "Focused Marketing",
-      desc: "Marketing Execution, Brand & Media Support",
+      desc: "Marketing Execution, Brand & Media Production",
       icon: Megaphone,
       items: [
         "Social Media Strategic Planning",
@@ -125,7 +125,7 @@ export default function Services() {
     // Future Expansion
     {
       title: "Future Expansion",
-      desc: "Business Setup & Market Entry Support",
+      desc: "Business Setup & Market Entry Coordition",
       icon: Rocket,
       items: [
         "Virtual Office Setup",
@@ -250,9 +250,6 @@ export default function Services() {
 
   return (
     <main className="bg-white">
-      {/* SERVICES */}
-      {/* <StaffUnitedFiveDiagram /> */}
-
       {/* STAFF — HOW WE EXECUTE */}
       <AnimatedSection>
         <section
@@ -274,11 +271,11 @@ export default function Services() {
               <span
                 className="
             inline-block
-            text-[11px] sm:text-xs
-            px-4 py-1.5
+            text-xs sm:text-sm
+            px-5 py-2
             rounded-full
             font-semibold
-            tracking-wide
+            tracking-[0.18em]
             text-[#8FD3FF]
             bg-white/10
             backdrop-blur-md
@@ -309,12 +306,25 @@ export default function Services() {
             </div>
 
             {/* SUBTITLE */}
-            <p className="mt-4 mb-10 max-w-4xl mx-auto text-white/80 leading-relaxed">
-              <span className="text-[#4f8fcb] font-semibold">
+            <div className="mt-4 mb-10 text-center">
+              <p
+                className="
+      text-[#8FD3FF] font-semibold text-lg sm:text-xl tracking-[0.04em] -mt-6 md:-mt-7"
+              >
                 5-Core Support™ Ecosystem
-              </span>{" "}
-              business functions. One scalable support ecosystem.
-            </p>
+              </p>
+
+              <p
+                className="
+      mt-2
+      text-white
+      text-sm sm:text-base
+      leading-relaxed
+    "
+              >
+                One scalable support system.
+              </p>
+            </div>
           </div>
 
           {/* EXECUTION PRINCIPLES — 5 PREMIUM CARDS */}
@@ -329,22 +339,22 @@ export default function Services() {
                 {
                   letter: "T",
                   title: "Targeted Sales",
-                  desc: "Customer Support & Sales Operations.",
+                  desc: "Sales & Customer Support.",
                 },
                 {
                   letter: "A",
                   title: "Accounting & Finance",
-                  desc: "Accounting & Financial Operations.",
+                  desc: "Accounting & Financial Services.",
                 },
                 {
                   letter: "F",
                   title: "Focused Marketing",
-                  desc: "Marketing Execution, Brand & Media Support.",
+                  desc: "Marketing Execution, Brand & Media Production.",
                 },
                 {
                   letter: "F",
                   title: "Future Expansion",
-                  desc: "Business Setup & Market Entry Support.",
+                  desc: "Business Setup & Market Entry Coordition.",
                 },
               ].map((item, index) => (
                 <div
@@ -363,7 +373,7 @@ export default function Services() {
               hover:-translate-y-2
               hover:bg-white/12
               cursor-pointer
-              hover:border-[#7fc4ff]/35
+              hover:border-[#7fc4ff]/45
               hover:shadow-[0_30px_80px_rgba(79,141,201,0.22)]
               flex flex-col
               text-center
@@ -506,7 +516,7 @@ export default function Services() {
                   src={serviceImages[index]}
                   alt={item.title}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   loading="lazy"
                   sizes="(max-width: 1024px) 100vw, 33vw"
                 />
@@ -514,7 +524,6 @@ export default function Services() {
 
               {/* BOTTOM PANEL */}
               <div className="bg-[#0A2348] text-white flex flex-col flex-1">
-                {/* COLLAPSED HEADER */}
                 {/* COLLAPSED HEADER */}
                 <button
                   type="button"
@@ -544,6 +553,9 @@ export default function Services() {
         text-2xl
         font-semibold
         flex-shrink-0
+        transition-all duration-500
+group-hover:scale-110
+group-hover:shadow-[0_10px_30px_rgba(121,185,255,0.28)]
       "
                     >
                       {item.title.charAt(0)}
@@ -596,29 +608,15 @@ export default function Services() {
         text-sm
         font-semibold
         whitespace-nowrap
+        transition-all duration-500
+group-hover:bg-[#2A67A8]
+group-hover:text-white
       "
                     >
                       {subtitles[index]}
                     </span>
                   </div>
                 </button>
-
-                {/* MOBILE BADGE */}
-                {/* <div className="sm:hidden px-6 pb-4 -mt-2">
-                  <span
-                    className="
-              inline-flex
-              px-3 py-1
-              rounded-full
-              bg-[#214D82]
-              text-[#79B9FF]
-              text-xs
-              font-semibold
-            "
-                  >
-                    {subtitles[index]}
-                  </span>
-                </div> */}
 
                 {/* EXPANDED CONTENT */}
                 <div
@@ -911,9 +909,9 @@ export default function Services() {
       px-8 md:px-16 lg:px-20
       py-10 md:py-14 lg:py-16
 
-      flex flex-col md:flex-row
+      flex flex-col
       items-center
-      justify-between
+      justify-center text-center
       gap-6 md:gap-8
 
       shadow-[0_-20px_60px_rgba(0,0,0,0.35)]
@@ -921,7 +919,7 @@ export default function Services() {
         >
           {/* TEXT */}
           <AnimatedSection>
-            <h3 className="text-xl md:text-2xl lg:text-3xl font-light leading-tight text-center md:text-left">
+            <h3 className="text-xl md:text-2xl lg:text-3xl font-light leading-tight text-center">
               Ready to grow your business?
             </h3>
           </AnimatedSection>

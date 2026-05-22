@@ -106,7 +106,6 @@ export default function Home() {
 
         {/* <AnimatedSection> */}
         <Hero />
-        {/* </AnimatedSection> */}
 
         <StaffUnitedFiveDiagram />
 
@@ -359,8 +358,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* SERVICES GRID */}
-            {/* SERVICES GRID - Visual & Minimal */}
             {/* SERVICES GRID - Highly Visual Version */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 max-w-8xl mx-auto px-6">
               {[
@@ -436,16 +433,17 @@ export default function Home() {
       }
     `}
                 >
-                  {/* BACKGROUND IMAGE - only for normal cards */}
                   {/* BACKGROUND IMAGE - render for ALL cards, including CTA */}
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
                     className="
-    object-cover
-    transition-transform duration-1000 ease-out
-    group-hover:scale-110
+   object-cover
+  brightness-[1.08]
+  contrast-[1.02]
+  transition-transform duration-1000 ease-out
+  group-hover:scale-110
   "
                   />
 
@@ -457,9 +455,9 @@ export default function Home() {
       item.isCTA
         ? `
           bg-gradient-to-b
-          from-[#06172d]/85
-          via-[#0a1b33]/80
-          to-[#103663]/95
+         from-[#06172d]/45
+via-[#0a1b33]/35
+to-[#103663]/70
         `
         : `
           bg-gradient-to-t
@@ -509,9 +507,16 @@ export default function Home() {
                     </div>
 
                     {/* CTA TEXT */}
-                    <div className="mt-6 flex items-center gap-2 text-[#8FD3FF] font-medium text-sm">
+                    <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#06172d]/38 backdrop-blur-[2px] border-blur-[2px] border border-white/10 text-[#BFE7FF] font-medium text-sm shadow-[0_4px_14px_rgba(2,10,24,0.28)]">
                       {item.isCTA ? "Free Consulting" : "Explore Service"}
-                      <span className="transition-transform duration-500 group-hover:translate-x-1">
+                      <span
+                        className="
+    relative
+    top-[1px]
+    transition-transform
+    duration-500 group-hover:translate-x-1
+  "
+                      >
                         →
                       </span>
                     </div>
@@ -773,7 +778,7 @@ export default function Home() {
           <section className="relative h-[500px] md:h-[600px] w-full overflow-hidden">
             {/* BACKGROUND IMAGE */}
             <Image
-              src="/team/hero-banner-team.webp" // đổi lại ảnh giống hình bạn
+              src="/team/hero-banner-team.webp"
               alt="Team meeting"
               fill
               className="object-cover"
@@ -826,7 +831,7 @@ export default function Home() {
         <AnimatedSection>
           <section className="bg-gradient-to-b from-[#0a1b33] via-[#0a1b33] to-[#103663] py-20">
             <div className="max-w-6xl mx-auto px-6">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14 lg:gap-20 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center">
                 {/* IMAGE */}
                 <div
                   className="
@@ -867,7 +872,7 @@ export default function Home() {
                     </span>
                   </h2>
 
-                  <p className="text-white/70 leading-relaxed max-w-md">
+                  <p className="text-white/70 leading-6 max-w-xl">
                     STAFF United is built by women who take execution seriously.{" "}
                     <br />
                     <span className="font-medium text-white">

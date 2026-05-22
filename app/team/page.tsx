@@ -127,8 +127,45 @@ export default function TeamPage() {
   ];
 
   return (
-    <main className="bg-white">
-      {/* max-w-6xl mx-auto px-6 py-16 space-y-20 */}
+    <main className="relative overflow-hidden bg-[#f5f8fc]">
+      {/* BACKGROUND ATMOSPHERE */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* TOP GLOW */}
+        <div
+          className="
+      absolute
+      top-[-250px]
+      left-1/2
+      -translate-x-1/2
+
+      w-[1000px]
+      h-[1000px]
+
+      rounded-full
+      bg-[#4f8dc9]/10
+
+      blur-3xl
+    "
+        />
+
+        {/* SIDE GLOW */}
+        <div
+          className="
+      absolute
+      bottom-[-200px]
+      right-[-200px]
+
+      w-[700px]
+      h-[700px]
+
+      rounded-full
+      bg-[#79B9FF]/10
+
+      blur-3xl
+    "
+        />
+      </div>
+
       {/* <AnimatedSection> */}
       <section className="max-w-6xl mx-auto px-6 pt-28 md:pt-32 lg:pt-36 pb-16 md:pb-16 space-y-16">
         {/* INTRO */}
@@ -179,15 +216,13 @@ export default function TeamPage() {
                           ? "rotateY(180deg)"
                           : undefined,
                     }}
-                    className={`relative w-full aspect-[3/4] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] cursor-pointer hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] hover:-translate-y-1 lg:group-hover:[transform:rotateY(180deg)] rounded-2xl`}
+                    className={`relative w-full aspect-[3/4] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] cursor-pointer hover:shadow-[0_30px_80px_rgba(79,141,201,0.18)] hover:-translate-y-3
+hover:scale-[1.02] lg:group-hover:[transform:rotateY(180deg)]  rounded-2xl`}
                   >
                     {/* FRONT */}
                     <div
-                      className="
-            absolute inset-0 
-    bg-white/90 backdrop-blur-sm
-    rounded-2xl 
-    shadow-[0_10px_30px_rgba(0,0,0,0.08)]
+                      className="absolute inset-0 bg-white/75 backdrop-blur-xl border border-white/50
+    rounded-2xl shadow-[0_20px_60px_rgba(79,141,201,0.12)]
     overflow-hidden flex flex-col
     [backface-visibility:hidden]
     pointer-events-auto
