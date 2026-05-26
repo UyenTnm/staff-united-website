@@ -396,7 +396,7 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
   "
               style={{
                 WebkitTextStroke: "0.6px rgba(255,255,255,0.18)",
-                transform: "perspective(800px) rotateX(8deg)",
+                transform: "perspective(800px) rotateX(8deg) translateX(8px)",
                 textShadow: `
   0px 1px 0px rgba(255,255,255,0.95),
   0px 2px 4px rgba(15,23,42,0.22)
@@ -977,7 +977,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
   "
               style={{
                 WebkitTextStroke: "0.6px rgba(255,255,255,0.18)",
-                transform: "perspective(800px) rotateX(8deg)",
+                transform: "perspective(800px) rotateX(8deg) translateX(4px)",
                 textShadow: `
   0px 1px 0px rgba(255,255,255,0.95),
   0px 2px 4px rgba(15,23,42,0.22)
@@ -1535,7 +1535,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
   "
               style={{
                 WebkitTextStroke: "0.6px rgba(255,255,255,0.18)",
-                transform: "perspective(800px) rotateX(8deg)",
+                transform: "perspective(800px) rotateX(8deg) translateX(6px)",
                 textShadow: `
   0px 1px 0px rgba(255,255,255,0.95),
   0px 2px 4px rgba(15,23,42,0.22)
