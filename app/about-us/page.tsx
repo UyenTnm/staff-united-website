@@ -396,7 +396,7 @@ export default function AboutUs() {
                       },
                       {
                         value: "5",
-                        label: "Approaching execution",
+                        label: "Approaches of execution",
                       },
                     ].map((item, index) => (
                       <div

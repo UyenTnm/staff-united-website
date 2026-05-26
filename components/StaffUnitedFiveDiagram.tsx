@@ -135,31 +135,31 @@ export default function StaffUnitedFiveDiagram() {
     {
       letter: "S",
       title: "Structured Operations",
-      color: "#E0A200", // rich golden amber
+      color: "#8FC2F0",
       startAngle: -90,
     },
     {
       letter: "T",
       title: "Targeted Sales",
-      color: "#F6C21A", // vibrant premium gold
+      color: "#6DA7DD",
       startAngle: -18,
     },
     {
       letter: "A",
       title: "Accounting & Finance",
-      color: "#FFD84D", // brightest highlight gold
+      color: "#4f8dc9",
       startAngle: 54,
     },
     {
       letter: "F",
       title: "Focused Marketing",
-      color: "#F0B414", // warm luxury gold
+      color: "#2F6EA8",
       startAngle: 126,
     },
     {
       letter: "F",
       title: "Future Expansion",
-      color: "#C98A00", // deep burnished gold
+      color: "#2F6EA8",
       startAngle: 198,
     },
   ];
@@ -168,31 +168,31 @@ export default function StaffUnitedFiveDiagram() {
     {
       letter: "S",
       title: "Structure",
-      color: "#5E8F86", // Navy Blue
+      color: "#cfd7df",
       startAngle: -90,
     },
     {
       letter: "T",
       title: "Technology",
-      color: "#1B5E4B", // Deep Emerald
+      color: "#d5dadf",
       startAngle: -18,
     },
     {
       letter: "A",
       title: "Accountability",
-      color: "#2F7D68", // Premium Teal Green
+      color: "#aeb8c4",
       startAngle: 54,
     },
     {
       letter: "F",
       title: "Flexibility",
-      color: "#4D9B85", // Soft Green Teal
+      color: "#6f8096",
       startAngle: 126,
     },
     {
       letter: "F",
       title: "Foresight",
-      color: "#6BB59C", // Mint Emerald
+      color: "#4a596e",
       startAngle: 198,
     },
   ];
@@ -301,31 +301,37 @@ pb-12 md:pb-20
           {/* segments who we are */}
           <div className="flex flex-col items-center">
             {/* TITLE PHÍA TRÊN CIRCLE */}
-            {/* <h3
-              className="
-      mb-8
-      text-3xl md:text-xl lg:text-3xl
-      font-light
-      tracking-wide
-      text-[#06172d]
-    "
-            >
-              Who We Are
-            </h3> */}
 
             <h3
-              className="
-    mb-8
+              className="relative mb-10
+
     text-3xl md:text-xl lg:text-3xl
-    font-light
-    tracking-wide
-    text-[#06172d]
 
-    drop-shadow-[0_2px_8px_rgba(255,255,255,0.65)]
-    sm:drop-shadow-[0_2px_8px_rgba(255,255,255,0.65)]
+    font-extrabold
+    tracking-[-0.02em]
 
-    md:drop-shadow-none
+    text-white
+
+    transition-all
+    duration-500
+
+    select-none
   "
+              style={{
+                WebkitTextStroke: "1.3px rgba(24,58,110,0.85)",
+                transform: "perspective(800px) rotateX(8deg)",
+
+                textShadow: `
+      0px 1px 0px #ffffff,
+      0px 1px 0px #dbeafe,
+      0px 1px 0px #93c5fd,
+      0px 2px 0px #60a5fa,
+      0px 1px 0px #3b82f6,
+      0px 1px 0px #2563eb,
+      0px 7px 12px rgba(37,99,235,0.45),
+      0px 0px 18px rgba(255,255,255,0.65)
+    `,
+              }}
             >
               Who We Are
             </h3>
@@ -854,17 +860,41 @@ pb-12 md:pb-20
           {/* segments - services - provide */}
           <div className="flex flex-col items-center">
             {/* TITLE PHÍA TRÊN CIRCLE */}
+
             <h3
-              className="
-      mb-8
-      text-3xl md:text-xl lg:text-3xl
-      font-light
-      tracking-wide
-      text-[#06172d]
-    "
+              className="relative mb-10
+
+    text-3xl md:text-xl lg:text-3xl
+
+    font-extrabold
+    tracking-[-0.02em]
+
+    text-white
+
+    transition-all
+    duration-500
+
+    select-none
+  "
+              style={{
+                WebkitTextStroke: "1.3px rgba(24,58,110,0.85)",
+                transform: "perspective(800px) rotateX(8deg)",
+
+                textShadow: `
+      0px 1px 0px #ffffff,
+      0px 1px 0px #dbeafe,
+      0px 1px 0px #93c5fd,
+      0px 2px 0px #60a5fa,
+      0px 1px 0px #3b82f6,
+      0px 1px 0px #2563eb,
+      0px 7px 12px rgba(37,99,235,0.45),
+      0px 0px 18px rgba(255,255,255,0.65)
+    `,
+              }}
             >
               What We Provide
             </h3>
+
             <RotatingDiagram
               centerContent={
                 <>
@@ -877,9 +907,10 @@ pb-12 md:pb-20
                       x2="100%"
                       y2="100%"
                     >
-                      <stop offset="0%" stopColor="#F4B400" />
-                      <stop offset="45%" stopColor="#D99A00" />
-                      <stop offset="100%" stopColor="#B87900" />
+                      <stop offset="0%" stopColor="#8FC2F0" />
+                      <stop offset="35%" stopColor="#4f8dc9" />
+                      <stop offset="70%" stopColor="#2F6EA8" />
+                      <stop offset="100%" stopColor="#103663" />
                     </linearGradient>
                   </defs>
 
@@ -892,7 +923,7 @@ pb-12 md:pb-20
                     stroke="rgba(255,255,255,0.72)"
                     strokeWidth="9"
                     filter="
-          drop-shadow(0 4px 12px rgba(160,120,70,0.58))
+          drop-shadow(0 4px 12px rgba(79,141,201,0.58))
         "
                   />
 
@@ -1074,7 +1105,7 @@ pb-12 md:pb-20
                 stroke="rgba(255,255,255,0.14)"
                 strokeWidth="7"
                 filter="
-    drop-shadow(0 4px 10px rgba(160,120,70,0.06))
+    drop-shadow(0 4px 10px rgba(79,141,201,0.06))
   "
               />
 
@@ -1231,7 +1262,7 @@ pb-12 md:pb-20
                           fontSize="31"
                           fontWeight="700"
                           fontFamily="Poppins, sans-serif"
-                          fill="rgba(32,16,4,1)"
+                          fill="rgba(6,23,45,0.92)"
                           letterSpacing="0.2"
                           className="
       transition-all
@@ -1320,7 +1351,7 @@ pb-12 md:pb-20
                 stroke="rgba(255,255,255,0.72)"
                 strokeWidth="9"
                 filter="
-    drop-shadow(0 4px 12px rgba(160,120,70,0.58))
+    drop-shadow(0 4px 12px rgba(79,141,201,0.58))
   "
               />
 
@@ -1371,17 +1402,40 @@ pb-12 md:pb-20
           {/* segments - how we execute */}
           <div className="flex flex-col items-center">
             {/* TITLE PHÍA TRÊN CIRCLE */}
+
             <h3
-              className="
-      mb-8
-      text-3xl md:text-xl lg:text-3xl
-      font-light
-      tracking-wide
-      text-[#06172d]
-    "
+              className="relative mb-10
+
+    text-3xl md:text-xl lg:text-3xl
+
+    font-extrabold
+    tracking-[-0.02em]
+
+    text-white
+
+    transition-all
+    duration-500
+
+    select-none
+  "
+              style={{
+                WebkitTextStroke: "1.3px rgba(24,58,110,0.85)",
+                transform: "perspective(800px) rotateX(8deg)",
+                textShadow: `
+      0px 1px 0px #ffffff,
+      0px 1px 0px #dbeafe,
+      0px 1px 0px #93c5fd,
+      0px 2px 0px #60a5fa,
+      0px 1px 0px #3b82f6,
+      0px 2px 0px #2563eb,
+      0px 7px 12px rgba(37,99,235,0.45),
+      0px 0px 1px rgba(255,255,255,0.25)
+    `,
+              }}
             >
               How We Execute
             </h3>
+
             <RotatingDiagram
               centerContent={
                 <>
@@ -1393,11 +1447,11 @@ pb-12 md:pb-20
                       cy="38%"
                       r="72%"
                     >
-                      <stop offset="0%" stopColor="#5FBF9F" />
-                      <stop offset="25%" stopColor="#2F7D68" />
-                      <stop offset="55%" stopColor="#1B5E4B" />
-                      <stop offset="80%" stopColor="#103663" />
-                      <stop offset="100%" stopColor="#081F3A" />
+                      <stop offset="0%" stopColor="#ffffff" />
+                      <stop offset="28%" stopColor="#d5dadf" />
+                      <stop offset="58%" stopColor="#7a8798" />
+                      <stop offset="82%" stopColor="#4a596e" />
+                      <stop offset="100%" stopColor="#103663" />
                     </radialGradient>
 
                     <linearGradient
@@ -1425,7 +1479,7 @@ pb-12 md:pb-20
                     strokeWidth="7"
                     filter="
           drop-shadow(0 6px 20px rgba(6,23,45,0.45))
-          drop-shadow(0 0 24px rgba(95,191,159,0.10))
+          drop-shadow(0 0 24px rgba(74,89,110,0.10))
         "
                   />
 
@@ -1766,6 +1820,7 @@ pb-12 md:pb-20
                         <text
                           fontSize="31"
                           fontWeight="700"
+                          fill="rgba(6,23,45,0.92)"
                           fontFamily="Poppins, sans-serif"
                           letterSpacing="0.2"
                           className="
@@ -1838,11 +1893,11 @@ pb-12 md:pb-20
                   cy="38%"
                   r="72%"
                 >
-                  <stop offset="0%" stopColor="#5FBF9F" />
-                  <stop offset="25%" stopColor="#2F7D68" />
-                  <stop offset="55%" stopColor="#1B5E4B" />
-                  <stop offset="80%" stopColor="#103663" />
-                  <stop offset="100%" stopColor="#081F3A" />
+                  <stop offset="0%" stopColor="#b8c2cc" />
+                  <stop offset="30%" stopColor="#9aa7b6" />
+                  <stop offset="58%" stopColor="#7a8798" />
+                  <stop offset="82%" stopColor="#5f6f84" />
+                  <stop offset="100%" stopColor="#4a596e" />
                 </radialGradient>
               </defs>
 
@@ -1855,7 +1910,7 @@ pb-12 md:pb-20
                 strokeWidth="7"
                 filter="
     drop-shadow(0 6px 20px rgba(6,23,45,0.45))
-    drop-shadow(0 0 24px rgba(95,191,159,0.10))
+    drop-shadow(0 0 24px rgba(74,89,110,0.10))
   "
               />
 

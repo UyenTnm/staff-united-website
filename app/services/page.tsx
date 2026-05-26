@@ -125,7 +125,7 @@ export default function Services() {
     // Future Expansion
     {
       title: "Future Expansion",
-      desc: "Business Setup & Market Entry Coordition",
+      desc: "Business Setup & Market Entry Coordination",
       icon: Rocket,
       items: [
         "Virtual Office Setup",
@@ -354,7 +354,7 @@ export default function Services() {
                 {
                   letter: "F",
                   title: "Future Expansion",
-                  desc: "Business Setup & Market Entry Coordition.",
+                  desc: "Business Setup & Market Entry Coordination.",
                 },
               ].map((item, index) => (
                 <div
