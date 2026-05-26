@@ -802,7 +802,13 @@ group-hover:text-white
                 },
                 {
                   title: "Tailored Solutions",
-                  desc: "We offer personalized solutions tailored to your specific goals, audience, and industry.",
+                  desc: (
+                    <>
+                      We offer personalized solutions tailored to your specific
+                      goals, audience,{" "}
+                      <span className="whitespace-nowrap">and industry.</span>
+                    </>
+                  ),
                   icon: Network,
                 },
                 {
@@ -812,12 +818,23 @@ group-hover:text-white
                 },
                 {
                   title: "Transparent Communication",
-                  desc: "We believe in open and honest communication every step of the way.",
+                  desc: (
+                    <>
+                      We believe in open and honest communication every step{" "}
+                      <span className="whitespace-nowrap">of the way.</span>
+                    </>
+                  ),
                   icon: MessageCircle,
                 },
                 {
                   title: "Dedicated Support",
-                  desc: "Your success is our priority, and we're here to support you every step of the way.",
+                  desc: (
+                    <>
+                      Your success is our priority, and we're here to support
+                      you every step of{" "}
+                      <span className="whitespace-nowrap">the way.</span>
+                    </>
+                  ),
                   icon: Headphones,
                 },
                 {

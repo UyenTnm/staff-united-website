@@ -88,7 +88,10 @@ to-[#e7f0f9]
 
         <p className="mt-6 text-sm sm:text-base text-[#0b1b33]/80 leading-relaxed">
           At STAFF United, we believe execution is just as important as the
-          people behind our brand and the services we provide.
+          people behind our brand{" "}
+          <span className="whitespace-nowrap">
+            and the services we provide.
+          </span>
         </p>
 
         <p className="mt-4 text-sm sm:text-base text-[#0b1b33]/80 leading-relaxed">
