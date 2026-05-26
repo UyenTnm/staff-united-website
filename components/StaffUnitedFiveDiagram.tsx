@@ -301,7 +301,7 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
     top-[42%]
 
     h-[420px]
-    w-[2200px]
+    w-[1400px]
 
     -translate-x-1/2
     -translate-y-1/2
@@ -312,7 +312,7 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
 
     bg-[radial-gradient(circle,_rgba(255,255,255,0.05)_0%,_rgba(255,255,255,0.02)_38%,_transparent_72%)]
 
-    blur-3xl
+    blur-xl
   "
         />
       </div>
@@ -334,7 +334,7 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
     items-center
     relative
 
-    transition-all
+    transition-transform 
     duration-700
 
     hover:-translate-y-3
@@ -389,7 +389,7 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
 
     text-white
 
-    transition-all
+    transition-transform
     duration-500
 
     select-none
@@ -411,7 +411,7 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
                 <>
                   {/* Center Circle */}
                   <defs>
-                    <radialGradient
+                    {/* <radialGradient
                       id="who-centerCoreGradient"
                       cx="40%"
                       cy="35%"
@@ -421,7 +421,20 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
                       <stop offset="30%" stopColor="#4f8dc9" />
                       <stop offset="65%" stopColor="#173d66" />
                       <stop offset="100%" stopColor="#0a1b33" />
-                    </radialGradient>
+                    </radialGradient> */}
+
+                    <linearGradient
+                      id="who-centerCoreGradient"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
+                    >
+                      <stop offset="0%" stopColor="#6f97bf" />
+                      <stop offset="26%" stopColor="#4c78a6" />
+                      <stop offset="58%" stopColor="#244d78" />
+                      <stop offset="100%" stopColor="#102845" />
+                    </linearGradient>
 
                     <linearGradient
                       id="staffRingGradient"
@@ -462,11 +475,8 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
                     stroke="rgba(255,255,255,0.22)"
                     strokeWidth="5"
                     filter="
-          drop-shadow(0 4px 20px rgba(2,10,24,0.95))
-          drop-shadow(0 0 10px rgba(255,255,255,0.08))
-          drop-shadow(0 0 22px rgba(255,255,255,0.05))
-          drop-shadow(0 0 40px rgba(143,211,255,0.08))
-        "
+  drop-shadow(0 4px 10px rgba(11,27,51,0.12))
+"
                   />
 
                   {/* Dashed Inner Ring */}
@@ -670,7 +680,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                       {/* Segment Wrapper */}
                       <g
                         className="
-        transition-all
+        transition-transform
         duration-700
         ease-out
       "
@@ -699,14 +709,14 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                           opacity="0"
                           pointerEvents="none"
                           className="
-          transition-all
+          transition-transform
           duration-700
           ease-out
           group-hover:opacity-100
         "
                           style={{
                             filter: `
-            drop-shadow(0 30px 35px rgba(11,27,51,0.28))
+            drop-shadow(0 14px 18px rgba(11,27,51,0.18))
             drop-shadow(0 10px 18px rgba(74,144,217,0.18))
           `,
                           }}
@@ -722,7 +732,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                           pointerEvents="none"
                           strokeLinecap="butt"
                           className="
-          transition-all
+          transition-transform
           duration-700
           ease-out
           group-hover:stroke-[rgba(255,255,255,0.55)]
@@ -792,7 +802,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                           fontFamily="Poppins, sans-serif"
                           letterSpacing="0.2"
                           className="
-      transition-all
+      transition-transform
       duration-700
       ease-out
     "
@@ -907,7 +917,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
     items-center
     relative
 
-    transition-all
+    transition-transform
     duration-700
 
     hover:-translate-y-3
@@ -960,7 +970,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
 
     text-white
 
-    transition-all
+    transition-transform
     duration-500
 
     select-none
@@ -1209,7 +1219,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                       {/* Segment Wrapper */}
                       <g
                         className="
-        transition-all
+        transition-transform
         duration-700
         ease-out
       "
@@ -1238,7 +1248,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                           opacity="0"
                           pointerEvents="none"
                           className="
-          transition-all
+          transition-transform
           duration-700
           ease-out
           group-hover:opacity-100
@@ -1262,7 +1272,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                           pointerEvents="none"
                           strokeLinecap="butt"
                           className="
-          transition-all
+          transition-transform
           duration-700
           ease-out
           group-hover:stroke-[rgba(255,255,255,0.75)]
@@ -1331,7 +1341,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                           fill="rgba(255,255,255,0.94)"
                           letterSpacing="0.2"
                           className="
-      transition-all
+      transition-transform
       duration-700
       ease-out
     "
@@ -1463,7 +1473,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
     items-center
     relative
 
-    transition-all
+    transition-transform
     duration-700
 
     hover:-translate-y-3
@@ -1479,7 +1489,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
     absolute
     inset-0
     -z-10
-    blur-3xl
+    blur-xl
     opacity-60
     bg-[radial-gradient(circle,_rgba(210,220,235,0.12)_0%,_transparent_70%)]
   "
@@ -1518,7 +1528,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
 
     text-white
 
-    transition-all
+    transition-transform
     duration-500
 
     select-none
@@ -1540,20 +1550,32 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                 <>
                   {/* Center Circle Gradient */}
                   <defs>
-                    <radialGradient
+                    {/* <radialGradient
                       id="execute-centerCoreGradient"
                       cx="42%"
                       cy="38%"
                       r="72%"
                     >
-                      <stop offset="0%" stopColor="#b7c2cd" />
+                      <stop offset="0%" stopColor="#8a97a5" />
                       <stop offset="24%" stopColor="#8c9bac" />
                       <stop offset="52%" stopColor="#5d6d80" />
                       <stop offset="78%" stopColor="#38495f" />
                       <stop offset="100%" stopColor="#1a2938" />
-                    </radialGradient>
-
+                    </radialGradient> */}
                     <linearGradient
+                      id="execute-centerCoreGradient"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
+                    >
+                      <stop offset="0%" stopColor="#8a97a5" />
+                      <stop offset="28%" stopColor="#687587" />
+                      <stop offset="65%" stopColor="#434f60" />
+                      <stop offset="100%" stopColor="#1b2835" />
+                    </linearGradient>
+
+                    {/* <linearGradient
                       id="staffRingGradient"
                       x1="0%"
                       y1="0%"
@@ -1565,7 +1587,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                       <stop offset="50%" stopColor="rgba(255,255,255,1)" />
                       <stop offset="75%" stopColor="rgba(255,255,255,0.85)" />
                       <stop offset="100%" stopColor="rgba(255,255,255,0.95)" />
-                    </linearGradient>
+                    </linearGradient> */}
                   </defs>
 
                   {/* Center Circle */}
@@ -1576,10 +1598,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                     fill="url(#execute-centerCoreGradient)"
                     stroke="rgba(255,255,255,0.20)"
                     strokeWidth="6"
-                    filter="
-          drop-shadow(0 10px 24px rgba(2,10,24,0.32))
-  drop-shadow(0 2px 8px rgba(255,255,255,0.04))
-        "
+                    filter="none"
                   />
 
                   {/* Dashed Inner Ring */}
@@ -1600,10 +1619,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                       animationDuration: "80s",
                       animationTimingFunction: "linear",
                       animationIterationCount: "infinite",
-                      filter: `
-            drop-shadow(0 0 4px rgba(255,255,255,0.18))
-            drop-shadow(0 0 10px rgba(255,255,255,0.08))
-          `,
+                      filter: "none",
                     }}
                   />
 
@@ -1785,7 +1801,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                       {/* Segment Wrapper */}
                       <g
                         className="
-        transition-all
+        transition-transform
         duration-700
         ease-out
       "
@@ -1814,14 +1830,14 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                           opacity="0"
                           pointerEvents="none"
                           className="
-          transition-all
+          transition-transform
           duration-700
           ease-out
           group-hover:opacity-100
         "
                           style={{
                             filter: `
-            drop-shadow(0 30px 35px rgba(11,27,51,0.28))
+            drop-shadow(0 14px 18px rgba(11,27,51,0.18))
             drop-shadow(0 10px 18px rgba(74,144,217,0.18))
           `,
                           }}
@@ -1837,7 +1853,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                           pointerEvents="none"
                           strokeLinecap="butt"
                           className="
-          transition-all
+          transition-transform
           duration-700
           ease-out
           group-hover:stroke-[rgba(255,255,255,0.55)]
@@ -1907,7 +1923,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                           fontFamily="Poppins, sans-serif"
                           letterSpacing="0.2"
                           className="
-      transition-all
+      transition-transform
       duration-700
       ease-out
     "

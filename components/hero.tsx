@@ -47,13 +47,12 @@ export default function Hero() {
       className="
     relative overflow-hidden
 
-    /* Chiều cao toàn bộ Hero (giảm lại cho phù hợp với video) */
     min-h-[480px]      /* Mobile S / M / L */
     sm:min-h-[620px]   /* Mobile lớn */
     md:min-h-[700px]   /* Tablet */
     lg:min-h-[760px]   /* Desktop */
     xl:min-h-[820px]   /* Màn hình lớn */
-    2xl:min-h-[900px]  /* 4K / màn hình rất lớn */
+    2xl:min-h-[820px]  /* 4K / màn hình rất lớn */
 
     bg-[#06172d]
     text-white
@@ -65,19 +64,16 @@ export default function Hero() {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
         className="
     absolute inset-0
     w-full h-full
     object-cover
 
-    /* Mobile: ưu tiên phần bên trái của video */
     object-[25%_center]
 
-    /* Tablet */
     md:object-[30%_center]
 
-    /* Desktop */
     lg:object-center
   "
       >
@@ -85,7 +81,7 @@ export default function Hero() {
       </video>
 
       {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-[#06172d]/65" />
+      <div className="absolute inset-0 bg-[#06172d]/50" />
 
       {/* Additional gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#06172d]/35 via-[#06172d]/55 to-black/80" />
@@ -93,7 +89,7 @@ export default function Hero() {
       {/* ===== CONTENT ===== */}
       <div
         className="relative z-10 min-h-[480px] sm:min-h-[520px] md:min-h-[700px]
-  lg:min-h-[760px] xl:min-h-[820px] 2xl:min-h-[900px] flex items-center pt-28 md:pt-32 pb-56 lg:pt-48 md:pb-52 px-5 sm:px-6 pr-0 sm:pr-0 md:pr-6"
+  lg:min-h-[760px] xl:min-h-[820px] 2xl:min-h-[820px] flex items-center pt-28 md:pt-32 pb-56 lg:pt-48 md:pb-52 px-5 sm:px-6 pr-0 sm:pr-0 md:pr-6"
       >
         <div
           className="
@@ -220,10 +216,10 @@ md:ml-3
       rounded-[24px]
       border border-white/20
       bg-white/10
-      backdrop-blur-xl
+      backdrop-blur-sm
       p-3 sm:p-4 md:p-5
-      transition-all duration-300
-      hover:scale-[1.03]
+      transition-transform duration-300
+      hover:scale-[1.01]
       hover:bg-white/15
       hover:border-white/40
       cursor-pointer
