@@ -233,8 +233,8 @@ export default function AboutUs() {
 
             {/* MORE THAN A NAME */}
             <div className="text-center mt-10">
-              <h3 className="text-[#4f8dc9] text-2xl md:text-3xl font-light uppercase tracking-wide">
-                More Than a Name
+              <h3 className="text-[#4f8dc9] text-2xl md:text-3xl font-light tracking-wide">
+                More Than A Name
               </h3>
             </div>
 

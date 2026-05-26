@@ -185,7 +185,7 @@ export default function Home() {
                       STAFF United integrates directly into your operations,
                       delivering structured offshore execution across Structured
                       Operations, Targeted Sales, Accounting & Finance, Focus
-                      Marketing and Future Expansion
+                      Marketing and Future Expansion.
                     </p>
 
                     <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px] md:text-[17px]">
