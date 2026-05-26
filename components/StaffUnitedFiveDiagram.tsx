@@ -124,42 +124,42 @@ export default function StaffUnitedFiveDiagram() {
   const segmentAngle = 72;
 
   const segmentsWhoWeAre = [
-    { letter: "S", title: "Strong", color: "#4f8de9", startAngle: -90 },
-    { letter: "T", title: "Talented", color: "#4f8de9", startAngle: -18 },
-    { letter: "A", title: "Ambitious", color: "#2f6fc2", startAngle: 54 },
-    { letter: "F", title: "Focused", color: "#103663", startAngle: 126 },
-    { letter: "F", title: "Females", color: "#103663", startAngle: 198 },
+    { letter: "S", title: "Strong", color: "#132844", startAngle: -90 },
+    { letter: "T", title: "Talented", color: "#132844", startAngle: -18 },
+    { letter: "A", title: "Ambitious", color: "#132844", startAngle: 54 },
+    { letter: "F", title: "Focused", color: "#132844", startAngle: 126 },
+    { letter: "F", title: "Females", color: "#132844", startAngle: 198 },
   ];
 
   const segments = [
     {
       letter: "S",
       title: "Structured Operations",
-      color: "#8FC2F0",
+      color: "#21507d",
       startAngle: -90,
     },
     {
       letter: "T",
       title: "Targeted Sales",
-      color: "#6DA7DD",
+      color: "#21507d",
       startAngle: -18,
     },
     {
       letter: "A",
       title: "Accounting & Finance",
-      color: "#4f8dc9",
+      color: "#21507d",
       startAngle: 54,
     },
     {
       letter: "F",
       title: "Focused Marketing",
-      color: "#2F6EA8",
+      color: "#21507d",
       startAngle: 126,
     },
     {
       letter: "F",
       title: "Future Expansion",
-      color: "#2F6EA8",
+      color: "#21507d",
       startAngle: 198,
     },
   ];
@@ -168,31 +168,31 @@ export default function StaffUnitedFiveDiagram() {
     {
       letter: "S",
       title: "Structure",
-      color: "#cfd7df",
+      color: "#6c7f95",
       startAngle: -90,
     },
     {
       letter: "T",
       title: "Technology",
-      color: "#d5dadf",
+      color: "#6c7f95",
       startAngle: -18,
     },
     {
       letter: "A",
       title: "Accountability",
-      color: "#aeb8c4",
+      color: "#6c7f95",
       startAngle: 54,
     },
     {
       letter: "F",
       title: "Flexibility",
-      color: "#6f8096",
+      color: "#6c7f95",
       startAngle: 126,
     },
     {
       letter: "F",
       title: "Foresight",
-      color: "#4a596e",
+      color: "#6c7f95",
       startAngle: 198,
     },
   ];
@@ -262,15 +262,13 @@ pb-12 md:pb-20
 
   overflow-hidden
 
-bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
-  /* Borders mềm để chuyển tiếp tự nhiên */
-  border-b border-[rgba(255,255,255,0.72)]
+bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#d5dadf_100%)]  border-b border-[rgba(255,255,255,0.12)]
 
   /* Luxury depth */
   shadow-[
     inset_0_1px_0_rgba(255,255,255,0.10),
     inset_0_60px_120px_rgba(255,255,255,0.10),
-    inset_0_-80px_120px_rgba(243,244,246,0.45),
+    inset_0_-80px_120px_rgba(243,244,246,0.18),
     0_30px_80px_rgba(2,10,24,0.08)
   ]
 
@@ -280,7 +278,14 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
     >
       {/* CINEMATIC BACKGROUND */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Main center glow */}
+        <div
+          className="
+    absolute
+    inset-0
+    opacity-40
+    bg-[radial-gradient(circle_at_50%_35%,_rgba(255,255,255,0.10)_0%,_transparent_52%)]
+  "
+        />
         {/* Main center glow */}
         <div
           className="
@@ -304,10 +309,6 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
   "
         />
       </div>
-      {/* BACKGROUND GLOW */}
-      {/* <div className="hidden md:block absolute inset-0 opacity-20 pointer-events-none">
-        <div className="w-full h-full bg-[radial-gradient(circle_at_center,_rgba(79,141,201,0.18)_0%,_rgba(79,141,201,0.06)_35%,_transparent_75%)]"></div>
-      </div> */}
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         {/* Diagram */}
         <div
@@ -323,42 +324,58 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
     justify-items-center"
         >
           {/* segments who we are */}
-          <div className="flex flex-col items-center">
-            {/* TITLE PHÍA TRÊN CIRCLE */}
-
-            {/* <h3
-              className="relative mb-10
-
-    text-3xl md:text-xl lg:text-3xl
-
-    font-extrabold
-    tracking-[-0.02em]
-
-    text-white
+          {/* <div className="flex flex-col items-center relative"> */}
+          <div
+            className="
+    flex
+    flex-col
+    items-center
+    relative
 
     transition-all
-    duration-500
+    duration-700
 
-    select-none
+    hover:-translate-y-3
+    hover:scale-[1.01]
   "
-              style={{
-                WebkitTextStroke: "1.3px rgba(24,58,110,0.85)",
-                transform: "perspective(800px) rotateX(8deg)",
+            style={{
+              transform: "perspective(1400px) rotateX(6deg)",
+              transformStyle: "preserve-3d",
+            }}
+          >
+            {/* TITLE PHÍA TRÊN CIRCLE */}
+            <div
+              className="
+    absolute
+    inset-0
+    -z-10
+    blur-xl
+    opacity-45
+    bg-[radial-gradient(circle,_rgba(79,141,233,0.22)_0%,_transparent_70%)]
+  "
+            />
 
-                textShadow: `
-      0px 1px 0px #ffffff,
-      0px 1px 0px #dbeafe,
-      0px 1px 0px #93c5fd,
-      0px 2px 0px #60a5fa,
-      0px 1px 0px #3b82f6,
-      0px 1px 0px #2563eb,
-      0px 7px 12px rgba(37,99,235,0.45),
-      0px 0px 18px rgba(255,255,255,0.65)
-    `,
-              }}
-            >
-              Who We Are
-            </h3> */}
+            {/* BIG DEPTH SHADOW */}
+            <div
+              className="
+    absolute
+    left-1/2
+    top-[82%]
+    -translate-x-1/2
+
+    h-[130px]
+    w-[85%]
+
+    rounded-full
+
+    blur-xl
+    opacity-60
+
+    bg-[radial-gradient(circle,_rgba(2,10,24,0.58)_0%,_transparent_72%)]
+
+    -z-10
+  "
+            />
 
             <h3
               className="relative mb-10
@@ -398,10 +415,10 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                       cy="35%"
                       r="70%"
                     >
-                      <stop offset="0%" stopColor="#4f8de9" />
-                      <stop offset="45%" stopColor="#2d6fc2" />
-                      <stop offset="75%" stopColor="#103663" />
-                      <stop offset="100%" stopColor="#0a2445" />
+                      <stop offset="0%" stopColor="#8fc5ff" />
+                      <stop offset="30%" stopColor="#4f8dc9" />
+                      <stop offset="65%" stopColor="#173d66" />
+                      <stop offset="100%" stopColor="#0a1b33" />
                     </radialGradient>
 
                     <linearGradient
@@ -440,8 +457,8 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                     cy={center}
                     r="175"
                     fill="url(#who-centerCoreGradient)"
-                    stroke="rgba(255,255,255,0.92)"
-                    strokeWidth="7"
+                    stroke="rgba(255,255,255,0.22)"
+                    strokeWidth="5"
                     filter="
           drop-shadow(0 4px 20px rgba(2,10,24,0.95))
           drop-shadow(0 0 10px rgba(255,255,255,0.08))
@@ -469,8 +486,8 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                       animationTimingFunction: "linear",
                       animationIterationCount: "infinite",
                       filter: `
-            drop-shadow(0 0 8px rgba(255,255,255,0.45))
-            drop-shadow(0 0 16px rgba(255,255,255,0.25))
+            drop-shadow(0 0 4px rgba(255,255,255,0.16))
+drop-shadow(0 0 10px rgba(255,255,255,0.08))
           `,
                     }}
                   />
@@ -527,7 +544,7 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                   x2="100%"
                   y2="100%"
                 >
-                  <stop offset="0%" stopColor="rgba(255,255,255,0.78)" />
+                  <stop offset="0%" stopColor="rgba(255,255,255,0.42)" />
                   <stop offset="15%" stopColor="rgba(255,255,255,0.42)" />
                   <stop offset="35%" stopColor="rgba(255,255,255,0.18)" />
                   <stop offset="65%" stopColor="rgba(255,255,255,0.07)" />
@@ -542,7 +559,7 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                   x2="0%"
                   y2="100%"
                 >
-                  <stop offset="0%" stopColor="rgba(255,255,255,0.65)" />
+                  <stop offset="0%" stopColor="rgba(255,255,255,0.28)" />
                   <stop offset="12%" stopColor="rgba(255,255,255,0.34)" />
                   <stop offset="28%" stopColor="rgba(255,255,255,0.12)" />
                   <stop offset="55%" stopColor="rgba(255,255,255,0.03)" />
@@ -575,22 +592,6 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                     stdDeviation="8"
                     floodColor="#02101f"
                     floodOpacity="0.14"
-                  />
-
-                  <feDropShadow
-                    dx="0"
-                    dy="2"
-                    stdDeviation="4"
-                    floodColor="#8FD3FF"
-                    floodOpacity="0.08"
-                  />
-
-                  <feDropShadow
-                    dx="0"
-                    dy="-1"
-                    stdDeviation="2"
-                    floodColor="#ffffff"
-                    floodOpacity="0.16"
                   />
                 </filter>
 
@@ -680,7 +681,7 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                         <path
                           d={path}
                           fill={segment.color}
-                          fillOpacity="0.95"
+                          fillOpacity="0.78"
                           stroke="rgba(255,255,255,0.82)"
                           strokeWidth="7"
                           strokeLinejoin="miter"
@@ -851,21 +852,6 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                 pointerEvents="none"
               />
 
-              {/* Center Circle */}
-              <defs>
-                <radialGradient
-                  id="who-centerCoreGradient"
-                  cx="40%"
-                  cy="35%"
-                  r="70%"
-                >
-                  <stop offset="0%" stopColor="#4f8de9" />
-                  <stop offset="45%" stopColor="#2d6fc2" />
-                  <stop offset="75%" stopColor="#103663" />
-                  <stop offset="100%" stopColor="#0a2445" />
-                </radialGradient>
-              </defs>
-
               {/* Outer Rotating Ring using STAFF light colors */}
               <defs>
                 <linearGradient
@@ -911,42 +897,56 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
           </div>
 
           {/* segments - services - provide */}
-          <div className="flex flex-col items-center">
-            {/* TITLE PHÍA TRÊN CIRCLE */}
-
-            {/* <h3
-              className="relative mb-10
-
-    text-3xl md:text-xl lg:text-3xl
-
-    font-extrabold
-    tracking-[-0.02em]
-
-    text-white
+          {/* <div className="flex flex-col items-center relative"> */}
+          <div
+            className="
+    flex
+    flex-col
+    items-center
+    relative
 
     transition-all
-    duration-500
+    duration-700
 
-    select-none
+    hover:-translate-y-3
+    hover:scale-[1.01]
   "
-              style={{
-                WebkitTextStroke: "1.3px rgba(24,58,110,0.85)",
-                transform: "perspective(800px) rotateX(8deg)",
+            style={{
+              transform: "perspective(1400px) rotateX(6deg)",
+              transformStyle: "preserve-3d",
+            }}
+          >
+            <div
+              className="
+    absolute
+    inset-0
+    -z-10
+    blur-xl
+    opacity-45
+    bg-[radial-gradient(circle,_rgba(120,220,255,0.18)_0%,_transparent_70%)]
+  "
+            />
+            <div
+              className="
+    absolute
+    left-1/2
+    top-[82%]
+    -translate-x-1/2
 
-                textShadow: `
-      0px 1px 0px #ffffff,
-      0px 1px 0px #dbeafe,
-      0px 1px 0px #93c5fd,
-      0px 2px 0px #60a5fa,
-      0px 1px 0px #3b82f6,
-      0px 1px 0px #2563eb,
-      0px 7px 12px rgba(37,99,235,0.45),
-      0px 0px 18px rgba(255,255,255,0.65)
-    `,
-              }}
-            >
-              What We Provide
-            </h3> */}
+    h-[130px]
+    w-[85%]
+
+    rounded-full
+
+    blur-xl
+    opacity-65
+
+    bg-[radial-gradient(circle,_rgba(6,18,38,0.52)_0%,_transparent_72%)]
+
+    -z-10
+  "
+            />
+            {/* TITLE PHÍA TRÊN CIRCLE */}
 
             <h3
               className="relative mb-10
@@ -987,10 +987,10 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                       x2="100%"
                       y2="100%"
                     >
-                      <stop offset="0%" stopColor="#8FC2F0" />
-                      <stop offset="35%" stopColor="#4f8dc9" />
-                      <stop offset="70%" stopColor="#2F6EA8" />
-                      <stop offset="100%" stopColor="#103663" />
+                      <stop offset="0%" stopColor="#b9ecff" />
+                      <stop offset="28%" stopColor="#6eb5e7" />
+                      <stop offset="65%" stopColor="#2c6597" />
+                      <stop offset="100%" stopColor="#173a5c" />
                     </linearGradient>
                   </defs>
 
@@ -1000,10 +1000,10 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                     cy={center}
                     r="175"
                     fill="url(#provide-centerCoreGradient)"
-                    stroke="rgba(255,255,255,0.72)"
-                    strokeWidth="9"
+                    stroke="rgba(255,255,255,0.26)"
+                    strokeWidth="5"
                     filter="
-          drop-shadow(0 4px 12px rgba(79,141,201,0.58))
+          drop-shadow(0 10px 24px rgba(6,18,38,0.28))
         "
                   />
 
@@ -1026,8 +1026,8 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                       animationTimingFunction: "linear",
                       animationIterationCount: "infinite",
                       filter: `
-            drop-shadow(0 0 8px rgba(255,255,255,0.45))
-            drop-shadow(0 0 16px rgba(255,255,255,0.25))
+            drop-shadow(0 0 4px rgba(255,255,255,0.16))
+drop-shadow(0 0 10px rgba(255,255,255,0.08))
           `,
                     }}
                   />
@@ -1081,7 +1081,7 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                   x2="100%"
                   y2="100%"
                 >
-                  <stop offset="0%" stopColor="rgba(255,255,255,0.78)" />
+                  <stop offset="0%" stopColor="rgba(255,255,255,0.42)" />
                   <stop offset="15%" stopColor="rgba(255,255,255,0.42)" />
                   <stop offset="35%" stopColor="rgba(255,255,255,0.18)" />
                   <stop offset="65%" stopColor="rgba(255,255,255,0.07)" />
@@ -1096,7 +1096,7 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                   x2="0%"
                   y2="100%"
                 >
-                  <stop offset="0%" stopColor="rgba(255,255,255,0.65)" />
+                  <stop offset="0%" stopColor="rgba(255,255,255,0.28)" />
                   <stop offset="12%" stopColor="rgba(255,255,255,0.34)" />
                   <stop offset="28%" stopColor="rgba(255,255,255,0.12)" />
                   <stop offset="55%" stopColor="rgba(255,255,255,0.03)" />
@@ -1129,22 +1129,6 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                     stdDeviation="8"
                     floodColor="#02101f"
                     floodOpacity="0.14"
-                  />
-
-                  <feDropShadow
-                    dx="0"
-                    dy="2"
-                    stdDeviation="4"
-                    floodColor="#8FD3FF"
-                    floodOpacity="0.08"
-                  />
-
-                  <feDropShadow
-                    dx="0"
-                    dy="-1"
-                    stdDeviation="2"
-                    floodColor="#ffffff"
-                    floodOpacity="0.16"
                   />
                 </filter>
 
@@ -1423,19 +1407,6 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                 />
               </defs>
 
-              {/* Center Circle */}
-              <circle
-                cx={center}
-                cy={center}
-                r="175"
-                fill="url(#provide-centerCoreGradient)"
-                stroke="rgba(255,255,255,0.72)"
-                strokeWidth="9"
-                filter="
-    drop-shadow(0 4px 12px rgba(79,141,201,0.58))
-  "
-              />
-
               {/* Outer Rotating Ring using STAFF light colors */}
               <defs>
                 <linearGradient
@@ -1472,8 +1443,8 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                   animationTimingFunction: "linear",
                   animationIterationCount: "infinite",
                   filter: `
-                  drop-shadow(0 0 8px rgba(255,255,255,0.45))
-                  drop-shadow(0 0 16px rgba(255,255,255,0.25))
+                  drop-shadow(0 0 4px rgba(255,255,255,0.16))
+drop-shadow(0 0 10px rgba(255,255,255,0.08))
                 `,
                 }}
               />
@@ -1481,41 +1452,59 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
           </div>
 
           {/* segments - how we execute */}
-          <div className="flex flex-col items-center">
-            {/* TITLE PHÍA TRÊN CIRCLE */}
+          {/* <div className="flex flex-col items-center relative"> */}
 
-            {/* <h3
-              className="relative mb-10
-
-    text-3xl md:text-xl lg:text-3xl
-
-    font-extrabold
-    tracking-[-0.02em]
-
-    text-white
+          <div
+            className="
+    flex
+    flex-col
+    items-center
+    relative
 
     transition-all
-    duration-500
+    duration-700
 
-    select-none
+    hover:-translate-y-3
+    hover:scale-[1.01]
   "
-              style={{
-                WebkitTextStroke: "1.3px rgba(24,58,110,0.85)",
-                transform: "perspective(800px) rotateX(8deg)",
-                textShadow: `
-      0px 1px 0px #ffffff,
-      0px 1px 0px #dbeafe,
-      0px 1px 0px #93c5fd,
-      0px 2px 0px #60a5fa,
-      0px 1px 0px #3b82f6,
-      0px 2px 0px #2563eb,
-      0px 7px 12px rgba(37,99,235,0.45),
-      0px 0px 1px rgba(255,255,255,0.25)
-    `,
-              }}
-            >
-              How We Execute
-            </h3> */}
+            style={{
+              transform: "perspective(1400px) rotateX(6deg)",
+              transformStyle: "preserve-3d",
+            }}
+          >
+            <div
+              className="
+    absolute
+    inset-0
+    -z-10
+    blur-3xl
+    opacity-60
+    bg-[radial-gradient(circle,_rgba(210,220,235,0.12)_0%,_transparent_70%)]
+  "
+            />
+
+            {/* BIG DEPTH SHADOW */}
+            <div
+              className="
+    absolute
+    left-1/2
+    top-[82%]
+    -translate-x-1/2
+
+    h-[130px]
+    w-[85%]
+
+    rounded-full
+
+    blur-xl
+    opacity-70
+
+    bg-[radial-gradient(circle,_rgba(2,10,24,0.65)_0%,_transparent_72%)]
+
+    -z-10
+  "
+            />
+            {/* TITLE PHÍA TRÊN CIRCLE */}
 
             <h3
               className="relative mb-10
@@ -1555,11 +1544,11 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                       cy="38%"
                       r="72%"
                     >
-                      <stop offset="0%" stopColor="#ffffff" />
-                      <stop offset="28%" stopColor="#d5dadf" />
-                      <stop offset="58%" stopColor="#7a8798" />
-                      <stop offset="82%" stopColor="#4a596e" />
-                      <stop offset="100%" stopColor="#103663" />
+                      <stop offset="0%" stopColor="#b7c2cd" />
+                      <stop offset="24%" stopColor="#8c9bac" />
+                      <stop offset="52%" stopColor="#5d6d80" />
+                      <stop offset="78%" stopColor="#38495f" />
+                      <stop offset="100%" stopColor="#1a2938" />
                     </radialGradient>
 
                     <linearGradient
@@ -1583,11 +1572,11 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                     cy={center}
                     r="175"
                     fill="url(#execute-centerCoreGradient)"
-                    stroke="rgba(255,255,255,0.92)"
-                    strokeWidth="7"
+                    stroke="rgba(255,255,255,0.20)"
+                    strokeWidth="6"
                     filter="
-          drop-shadow(0 6px 20px rgba(6,23,45,0.45))
-          drop-shadow(0 0 24px rgba(74,89,110,0.10))
+          drop-shadow(0 10px 24px rgba(2,10,24,0.32))
+  drop-shadow(0 2px 8px rgba(255,255,255,0.04))
         "
                   />
 
@@ -1610,8 +1599,8 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                       animationTimingFunction: "linear",
                       animationIterationCount: "infinite",
                       filter: `
-            drop-shadow(0 0 8px rgba(255,255,255,0.45))
-            drop-shadow(0 0 16px rgba(255,255,255,0.25))
+            drop-shadow(0 0 4px rgba(255,255,255,0.18))
+            drop-shadow(0 0 10px rgba(255,255,255,0.08))
           `,
                     }}
                   />
@@ -1670,7 +1659,7 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                   x2="100%"
                   y2="100%"
                 >
-                  <stop offset="0%" stopColor="rgba(255,255,255,0.78)" />
+                  <stop offset="0%" stopColor="rgba(255,255,255,0.42)" />
                   <stop offset="15%" stopColor="rgba(255,255,255,0.42)" />
                   <stop offset="35%" stopColor="rgba(255,255,255,0.18)" />
                   <stop offset="65%" stopColor="rgba(255,255,255,0.07)" />
@@ -1685,7 +1674,7 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                   x2="0%"
                   y2="100%"
                 >
-                  <stop offset="0%" stopColor="rgba(255,255,255,0.65)" />
+                  <stop offset="0%" stopColor="rgba(255,255,255,0.28)" />
                   <stop offset="12%" stopColor="rgba(255,255,255,0.34)" />
                   <stop offset="28%" stopColor="rgba(255,255,255,0.12)" />
                   <stop offset="55%" stopColor="rgba(255,255,255,0.03)" />
@@ -1718,22 +1707,6 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                     stdDeviation="8"
                     floodColor="#02101f"
                     floodOpacity="0.14"
-                  />
-
-                  <feDropShadow
-                    dx="0"
-                    dy="2"
-                    stdDeviation="4"
-                    floodColor="#8FD3FF"
-                    floodOpacity="0.08"
-                  />
-
-                  <feDropShadow
-                    dx="0"
-                    dy="-1"
-                    stdDeviation="2"
-                    floodColor="#ffffff"
-                    floodOpacity="0.16"
                   />
                 </filter>
 
@@ -1992,35 +1965,6 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                 pointerEvents="none"
               />
 
-              {/* Center Circle */}
-              <defs>
-                <radialGradient
-                  id="execute-centerCoreGradient"
-                  cx="42%"
-                  cy="38%"
-                  r="72%"
-                >
-                  <stop offset="0%" stopColor="#b8c2cc" />
-                  <stop offset="30%" stopColor="#9aa7b6" />
-                  <stop offset="58%" stopColor="#7a8798" />
-                  <stop offset="82%" stopColor="#5f6f84" />
-                  <stop offset="100%" stopColor="#4a596e" />
-                </radialGradient>
-              </defs>
-
-              <circle
-                cx={center}
-                cy={center}
-                r="175"
-                fill="url(#execute-centerCoreGradient)"
-                stroke="rgba(255,255,255,0.92)"
-                strokeWidth="7"
-                filter="
-    drop-shadow(0 6px 20px rgba(6,23,45,0.45))
-    drop-shadow(0 0 24px rgba(74,89,110,0.10))
-  "
-              />
-
               {/* Outer Rotating Ring using STAFF light colors */}
               <defs>
                 <linearGradient
@@ -2058,7 +2002,7 @@ bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
                   animationIterationCount: "infinite",
                   filter: `
       drop-shadow(0 0 8px rgba(255,255,255,0.45))
-      drop-shadow(0 0 16px rgba(255,255,255,0.25))
+      drop-shadow(0 0 16px rgba(255,255,255,0.12))
     `,
                 }}
               />

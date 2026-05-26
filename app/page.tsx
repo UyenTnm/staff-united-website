@@ -160,25 +160,32 @@ export default function Home() {
                 {/* RIGHT CONTENT */}
                 <div className="space-y-6">
                   {/* HEADING */}
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight text-[#0b1b33]">
+                  <h2
+                    className="
+    text-2xl
+    sm:text-3xl
+    md:text-4xl
+
+    font-semibold
+
+    leading-[1.1]
+    tracking-[-0.02em]
+
+    text-[#0b1b33]
+  "
+                  >
                     Built for <span className="text-[#4f8fcb]">Execution</span>.
+                    <br className="block md:hidden" />
+                    <span className="hidden md:inline">&nbsp;</span>
                     Designed to <span className="text-[#4f8fcb]">Scale</span>.
                   </h2>
 
-                  {/* PARAGRAPH */}
-                  {/* <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px] max-w-lg">
-                  STAFF United integrates directly into your operations,
-                  delivering structured offshore execution across administrative
-                  support, operations, and core business functions. <br />
-                  Our work is guided by clear standards, disciplined workflows,
-                  and shared accountability - ensuring consistent, high-quality
-                  outcomes as your business grows.
-                </p> */}
                   <div className="space-y-3 sm:space-y-4 w-full">
                     <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px]  md:text-[17px]">
                       STAFF United integrates directly into your operations,
                       delivering structured offshore execution across Structured
-                      Operations, Targeted Sales, Accounting & Finance, Focus Marketing and Future Expansion
+                      Operations, Targeted Sales, Accounting & Finance, Focus
+                      Marketing and Future Expansion
                     </p>
 
                     <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px] md:text-[17px]">
