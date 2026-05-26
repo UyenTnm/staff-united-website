@@ -57,7 +57,14 @@ function RotatingDiagram({
       // viewBox="-30 -20 700 680"
       // viewBox="-60 -60 760 760"
       viewBox="-45 -45 760 760"
-      className="w-full h-auto overflow-visible touch-none select-none"
+      className="w-[115%]
+  xl:w-[122%]
+  2xl:w-[128%]
+
+  h-auto
+  overflow-visible
+  touch-none
+  select-none"
       style={{
         touchAction: "none",
         WebkitUserSelect: "none",
@@ -309,17 +316,12 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
   "
         />
       </div>
-      <div className="relative z-10 max-w-6xl mx-auto px-6">
+      <div className="relative z-10 max-w-[1800px] mx-auto px-6 md:px-10 xl:px-14">
         {/* Diagram */}
         <div
           className="w-full
-    mx-auto
-    px-2 md:px-3
-    grid
-    grid-cols-1
-    md:grid-cols-3
-    gap-6
-    lg:gap-8
+    mx-auto px-2 md:px-4 xl:px-6
+    grid grid-cols-1 md:grid-cols-3 gap-10 xl:gap-14 lg:gap-8
     items-start
     justify-items-center"
         >

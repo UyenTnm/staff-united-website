@@ -294,17 +294,32 @@ export default function Home() {
                 {/* H2 */}
                 <h2
                   className="
-        lg:col-start-2 lg:row-start-1
-        text-2xl sm:text-3xl md:text-4xl lg:text-5xl
-        font-semibold
-        text-[#0b1b33]
-        leading-tight
+    lg:col-start-2 lg:row-start-1
 
-        mx-auto lg:mx-0
-        max-w-2xl
-      "
+    text-2xl
+    sm:text-3xl
+    md:text-[2.5rem]
+    lg:text-[3.2rem]
+    xl:text-[3.4rem]
+
+    font-semibold
+
+    text-[#0b1b33]
+
+    leading-[1.05]
+    tracking-[-0.02em]
+
+    mx-auto lg:mx-0
+
+    max-w-[16ch]
+    md:max-w-[20ch]
+    lg:max-w-none
+  "
                 >
-                  Specialized Business Support Services
+                  Specialized Business
+                  <br className="block lg:hidden" />
+                  <span className="hidden lg:inline">&nbsp;</span>
+                  Support Services
                 </h2>
 
                 {/* PARAGRAPH */}
