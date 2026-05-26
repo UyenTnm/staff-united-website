@@ -177,9 +177,8 @@ export default function Home() {
                   <div className="space-y-3 sm:space-y-4 w-full">
                     <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px]  md:text-[17px]">
                       STAFF United integrates directly into your operations,
-                      delivering structured offshore execution across
-                      administrative support, operations, and core business
-                      functions.
+                      delivering structured offshore execution across Structured
+                      Operations, Targeted Sales, Accounting & Finance, Focus Marketing and Future Expansion
                     </p>
 
                     <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px] md:text-[17px]">

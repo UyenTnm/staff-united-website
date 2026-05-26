@@ -262,9 +262,7 @@ pb-12 md:pb-20
 
   overflow-hidden
 
-  
-  bg-[radial-gradient(circle_at_center,_#ffffff_0%,_#f8fbff_18%,_#eaf3ff_36%,_#b9d0ee_56%,_#4f82bf_76%,_#103663_90%,_#06172d_100%),linear-gradient(to_bottom,_#06172d_0%,_transparent_14%,_transparent_82%,_#f3f4f6_100%)]
-
+bg-[linear-gradient(90deg,_#1d4f91_0%,_#2f6fc2_38%,_#5f97dc_62%,_#8eb8ea_100%)]
   /* Borders mềm để chuyển tiếp tự nhiên */
   border-b border-[rgba(255,255,255,0.72)]
 
@@ -280,10 +278,36 @@ pb-12 md:pb-20
   fade-up active
 "
     >
-      {/* BACKGROUND GLOW */}
-      <div className="hidden md:block absolute inset-0 opacity-20 pointer-events-none">
-        <div className="w-full h-full bg-[radial-gradient(circle_at_center,_rgba(79,141,201,0.18)_0%,_rgba(79,141,201,0.06)_35%,_transparent_75%)]"></div>
+      {/* CINEMATIC BACKGROUND */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Main center glow */}
+        {/* Main center glow */}
+        <div
+          className="
+    absolute
+    left-[68%]
+    top-[42%]
+
+    h-[420px]
+    w-[2200px]
+
+    -translate-x-1/2
+    -translate-y-1/2
+
+    rotate-[4deg]
+
+    rounded-full
+
+    bg-[radial-gradient(circle,_rgba(255,255,255,0.05)_0%,_rgba(255,255,255,0.02)_38%,_transparent_72%)]
+
+    blur-3xl
+  "
+        />
       </div>
+      {/* BACKGROUND GLOW */}
+      {/* <div className="hidden md:block absolute inset-0 opacity-20 pointer-events-none">
+        <div className="w-full h-full bg-[radial-gradient(circle_at_center,_rgba(79,141,201,0.18)_0%,_rgba(79,141,201,0.06)_35%,_transparent_75%)]"></div>
+      </div> */}
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         {/* Diagram */}
         <div
@@ -302,7 +326,7 @@ pb-12 md:pb-20
           <div className="flex flex-col items-center">
             {/* TITLE PHÍA TRÊN CIRCLE */}
 
-            <h3
+            {/* <h3
               className="relative mb-10
 
     text-3xl md:text-xl lg:text-3xl
@@ -331,6 +355,33 @@ pb-12 md:pb-20
       0px 7px 12px rgba(37,99,235,0.45),
       0px 0px 18px rgba(255,255,255,0.65)
     `,
+              }}
+            >
+              Who We Are
+            </h3> */}
+
+            <h3
+              className="relative mb-10
+
+    text-3xl md:text-xl lg:text-3xl
+
+    font-bold
+    tracking-[0.02em]
+
+    text-white
+
+    transition-all
+    duration-500
+
+    select-none
+  "
+              style={{
+                WebkitTextStroke: "0.6px rgba(255,255,255,0.18)",
+                transform: "perspective(800px) rotateX(8deg)",
+                textShadow: `
+  0px 1px 0px rgba(255,255,255,0.95),
+  0px 2px 4px rgba(15,23,42,0.22)
+`,
               }}
             >
               Who We Are
@@ -733,6 +784,7 @@ pb-12 md:pb-20
                         <text
                           // fill="rgba(255,255,255,0.96)"
                           fontSize="31"
+                          fill="rgba(255,255,255,0.94)"
                           fontWeight="700"
                           fontFamily="Poppins, sans-serif"
                           letterSpacing="0.2"
@@ -742,8 +794,9 @@ pb-12 md:pb-20
       ease-out
     "
                           style={{
-                            filter:
-                              "drop-shadow(0 4px 12px rgba(74,144,217,0.22))",
+                            filter: `
+  drop-shadow(0 1px 2px rgba(15,23,42,0.22))
+`,
                           }}
                         >
                           <textPath
@@ -861,7 +914,7 @@ pb-12 md:pb-20
           <div className="flex flex-col items-center">
             {/* TITLE PHÍA TRÊN CIRCLE */}
 
-            <h3
+            {/* <h3
               className="relative mb-10
 
     text-3xl md:text-xl lg:text-3xl
@@ -890,6 +943,33 @@ pb-12 md:pb-20
       0px 7px 12px rgba(37,99,235,0.45),
       0px 0px 18px rgba(255,255,255,0.65)
     `,
+              }}
+            >
+              What We Provide
+            </h3> */}
+
+            <h3
+              className="relative mb-10
+
+    text-3xl md:text-xl lg:text-3xl
+
+    font-bold
+    tracking-[0.02em]
+
+    text-white
+
+    transition-all
+    duration-500
+
+    select-none
+  "
+              style={{
+                WebkitTextStroke: "0.6px rgba(255,255,255,0.18)",
+                transform: "perspective(800px) rotateX(8deg)",
+                textShadow: `
+  0px 1px 0px rgba(255,255,255,0.95),
+  0px 2px 4px rgba(15,23,42,0.22)
+`,
               }}
             >
               What We Provide
@@ -1262,7 +1342,7 @@ pb-12 md:pb-20
                           fontSize="31"
                           fontWeight="700"
                           fontFamily="Poppins, sans-serif"
-                          fill="rgba(6,23,45,0.92)"
+                          fill="rgba(255,255,255,0.94)"
                           letterSpacing="0.2"
                           className="
       transition-all
@@ -1270,8 +1350,9 @@ pb-12 md:pb-20
       ease-out
     "
                           style={{
-                            filter: `drop-shadow(0 2px 6px rgba(255,255,255,0.75))
-      drop-shadow(0 0 8px rgba(255,239,217,0.45))`,
+                            filter: `
+  drop-shadow(0 1px 2px rgba(15,23,42,0.22))
+`,
                           }}
                         >
                           <textPath
@@ -1403,7 +1484,7 @@ pb-12 md:pb-20
           <div className="flex flex-col items-center">
             {/* TITLE PHÍA TRÊN CIRCLE */}
 
-            <h3
+            {/* <h3
               className="relative mb-10
 
     text-3xl md:text-xl lg:text-3xl
@@ -1431,6 +1512,33 @@ pb-12 md:pb-20
       0px 7px 12px rgba(37,99,235,0.45),
       0px 0px 1px rgba(255,255,255,0.25)
     `,
+              }}
+            >
+              How We Execute
+            </h3> */}
+
+            <h3
+              className="relative mb-10
+
+    text-3xl md:text-xl lg:text-3xl
+
+    font-bold
+    tracking-[0.02em]
+
+    text-white
+
+    transition-all
+    duration-500
+
+    select-none
+  "
+              style={{
+                WebkitTextStroke: "0.6px rgba(255,255,255,0.18)",
+                transform: "perspective(800px) rotateX(8deg)",
+                textShadow: `
+  0px 1px 0px rgba(255,255,255,0.95),
+  0px 2px 4px rgba(15,23,42,0.22)
+`,
               }}
             >
               How We Execute
@@ -1820,7 +1928,7 @@ pb-12 md:pb-20
                         <text
                           fontSize="31"
                           fontWeight="700"
-                          fill="rgba(6,23,45,0.92)"
+                          fill="rgba(255,255,255,0.94)"
                           fontFamily="Poppins, sans-serif"
                           letterSpacing="0.2"
                           className="
@@ -1829,8 +1937,7 @@ pb-12 md:pb-20
       ease-out
     "
                           style={{
-                            filter:
-                              "drop-shadow(0 4px 12px rgba(74,144,217,0.22))",
+                            filter: `drop-shadow(0 1px 2px rgba(15,23,42,0.22))`,
                           }}
                         >
                           <textPath
