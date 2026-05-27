@@ -1574,8 +1574,6 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                       <stop offset="65%" stopColor="#434f60" />
                       <stop offset="100%" stopColor="#1b2835" />
                     </linearGradient>
-
-                    
                   </defs>
 
                   {/* Center Circle */}
@@ -1626,7 +1624,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                       filter: "none",
                     }}
                   >
-                    <tspan x={center} dy="-30">
+                    <tspan x={center} dy="-20">
                       Our
                     </tspan>
                     <tspan x={center} dy="42">
