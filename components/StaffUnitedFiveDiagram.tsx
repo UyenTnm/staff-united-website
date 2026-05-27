@@ -326,7 +326,6 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
     justify-items-center"
         >
           {/* segments who we are */}
-          {/* <div className="flex flex-col items-center relative"> */}
           <div
             className="
     flex
@@ -909,13 +908,12 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
           </div>
 
           {/* segments - services - provide */}
-          {/* <div className="flex flex-col items-center relative"> */}
           <div
             className="
     flex
     flex-col
     items-center
-    relative
+    relative pt-10 sm:pb-16 md:pb-0
 
     transition-transform
     duration-700
@@ -1464,14 +1462,13 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
           </div>
 
           {/* segments - how we execute */}
-          {/* <div className="flex flex-col items-center relative"> */}
 
           <div
             className="
     flex
     flex-col
     items-center
-    relative
+    relative pt-10 sm:pb-16 md:pb-0
 
     transition-transform
     duration-700
