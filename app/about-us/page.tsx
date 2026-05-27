@@ -233,8 +233,8 @@ export default function AboutUs() {
 
             {/* MORE THAN A NAME */}
             <div className="text-center mt-10">
-              <h3 className="text-[#4f8dc9] text-2xl md:text-3xl font-light uppercase tracking-wide">
-                More Than a Name
+              <h3 className="text-[#4f8dc9] text-2xl md:text-3xl font-light tracking-wide">
+                More Than A Name
               </h3>
             </div>
 
@@ -270,8 +270,6 @@ export default function AboutUs() {
               </p>
             </div>
 
-            {/* STAFF LIST */}
-            {/* STAFF LIST */}
             {/* STAFF LIST */}
             <div className="max-w-3xl mx-auto space-y-3 sm:space-y-4 pt-6 md:pt-8 px-4 sm:px-6 md:px-8">
               {[
@@ -368,8 +366,6 @@ export default function AboutUs() {
               ))}
             </div>
 
-            {/* BY THE NUMBERS */}
-            {/* BY THE NUMBERS — FULL WIDTH */}
             {/* BY THE NUMBERS — FULL WIDTH */}
             <section className="w-screen relative left-1/2 -translate-x-1/2 mt-16 md:mt-20">
               <div>
@@ -395,12 +391,12 @@ export default function AboutUs() {
                         label: "Women-led delivery teams",
                       },
                       {
-                        value: "5-Core",
-                        label: "Support™ Ecosystem pillars",
+                        value: "5-Core Support™",
+                        label: "Ecosystem pillars",
                       },
                       {
                         value: "5",
-                        label: "Verticals covered",
+                        label: "Approaches of execution",
                       },
                     ].map((item, index) => (
                       <div
@@ -415,7 +411,7 @@ export default function AboutUs() {
                       >
                         <div
                           className="
-                text-2xl sm:text-3xl md:text-4xl
+                text-1xl sm:text-2xl md:text-3xl
                 font-semibold
                 leading-none
                 mb-2 md:mb-3
@@ -481,7 +477,7 @@ export default function AboutUs() {
                           >
                             “We didn’t just build a business — we built a home
                             for talented women to grow, lead, and deliver
-                            world-class work.”
+                            world-class work to global business.”
                           </blockquote>
 
                           <p

@@ -11,6 +11,25 @@ const rotatingServices = [
   "Future Expansion",
 ];
 
+const marqueeItems = [
+  "QuickBooks",
+  "HubSpot",
+  "Xero",
+  "Salesforce",
+  "Zoho",
+  "Shopify",
+  "Asana",
+  "ClickUp",
+  "Slack",
+  "Google Workspace",
+  "OpenAI",
+  "Zapier",
+  "Notion",
+  "Monday.com",
+  "Stripe",
+];
+const repeatedItems = Array(6).fill(marqueeItems).flat();
+
 export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
   // const [isVisible, setIsVisible] = useState(true);
@@ -28,13 +47,12 @@ export default function Hero() {
       className="
     relative overflow-hidden
 
-    /* Chiều cao toàn bộ Hero (giảm lại cho phù hợp với video) */
     min-h-[480px]      /* Mobile S / M / L */
     sm:min-h-[620px]   /* Mobile lớn */
     md:min-h-[700px]   /* Tablet */
     lg:min-h-[760px]   /* Desktop */
     xl:min-h-[820px]   /* Màn hình lớn */
-    2xl:min-h-[900px]  /* 4K / màn hình rất lớn */
+    2xl:min-h-[820px]  /* 4K / màn hình rất lớn */
 
     bg-[#06172d]
     text-white
@@ -46,19 +64,16 @@ export default function Hero() {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
         className="
     absolute inset-0
     w-full h-full
     object-cover
 
-    /* Mobile: ưu tiên phần bên trái của video */
     object-[25%_center]
 
-    /* Tablet */
     md:object-[30%_center]
 
-    /* Desktop */
     lg:object-center
   "
       >
@@ -66,44 +81,15 @@ export default function Hero() {
       </video>
 
       {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-[#06172d]/65" />
+      <div className="absolute inset-0 bg-[#06172d]/50" />
 
       {/* Additional gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#06172d]/35 via-[#06172d]/55 to-black/80" />
 
       {/* ===== CONTENT ===== */}
       <div
-        className="
-  relative z-10
-
-  /* Mobile S / M / L */
-  min-h-[480px]
-
-  /* Mobile lớn */
-  sm:min-h-[520px]
-
-  /* Tablet */
-  md:min-h-[700px]
-
-  /* Desktop */
-  lg:min-h-[760px]
-
-  /* Large Desktop */
-  xl:min-h-[820px]
-
-  /* 4K */
-  2xl:min-h-[900px]
-
-  flex items-center
-  px-5 sm:px-6
-
-  /* BỎ padding-right trên mobile S/M/L */
-    pr-0
-    sm:pr-0
-
-    /* Từ tablet trở lên dùng padding mặc định */
-    md:pr-6
-"
+        className="relative z-10 min-h-[480px] sm:min-h-[520px] md:min-h-[700px]
+  lg:min-h-[760px] xl:min-h-[820px] 2xl:min-h-[820px] flex items-center pt-28 md:pt-32 pb-56 lg:pt-48 md:pb-52 px-5 sm:px-6 pr-0 sm:pr-0 md:pr-6"
       >
         <div
           className="
@@ -218,133 +204,29 @@ md:ml-3
         </div>
       </div>
 
-      {/* <div className="relative w-full">
-        <div className="relative z-0 h-[200px] sm:h-[260px] md:h-[420px] lg:h-[520px] flex items-end justify-center pointer-events-none ">
-          <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent pointer-events-none" />
-
-          <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent z-20 pointer-events-none" />
-
-          <Image
-            src="/home/hero-banner-home.webp"
-            alt="STAFF UNITED execution team"
-            width={1600}
-            height={900}
-            priority
-            sizes="100vw"
-            className="relative z-0 w-[140%] sm:w-[120%] md:w-[110%] lg:w-[100%] xl:w-[100%] 2xl:w-[55%] max-w-none object-contain pointer-events-none"
-          />
-        </div>
-      </div> */}
-
       {/* ===== FLOATING CARD ===== */}
-      {/* ===== TECHNOLOGY MARQUEE ===== */}
-      {/* ===== TECHNOLOGY MARQUEE ===== */}
-      {/* ===== TECHNOLOGY MARQUEE ===== */}
-      {/* ===== TECHNOLOGY MARQUEE ===== */}
-      <div
-        className="
-    absolute
-    z-30
-    pointer-events-none
-    overflow-hidden
-
-    /* Mobile: chạy toàn màn hình */
-    left-0
-    right-0
-    bottom-8
-
-    /* Desktop trở lên: bắt đầu sau floating card */
-    md:left-[394px]
-    md:right-0
-    md:bottom-24
-  "
-      >
-        <div
-          className="
-      flex
-      w-max
-      animate-[marquee_35s_linear_infinite]
-
-      gap-6
-      sm:gap-8
-      md:gap-10
-
-      px-4
-      sm:px-6
-    "
-        >
-          {[
-            "QuickBooks",
-            "HubSpot",
-            "Xero",
-            "Salesforce",
-            "Zoho",
-            "Shopify",
-            "Asana",
-            "ClickUp",
-            "Slack",
-            "Google Workspace",
-
-            // Duplicate để chạy liên tục
-            "QuickBooks",
-            "HubSpot",
-            "Xero",
-            "Salesforce",
-            "Zoho",
-            "Shopify",
-            "Asana",
-            "ClickUp",
-            "Slack",
-            "Google Workspace",
-          ].map((tech, i) => (
-            <span
-              key={i}
-              className="
-          whitespace-nowrap
-          font-semibold
-          uppercase
-          text-white/65
-
-          text-[10px]
-          sm:text-xs
-          md:text-sm
-
-          tracking-[0.14em]
-          sm:tracking-[0.16em]
-          md:tracking-[0.18em]
-        "
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* ===== FLOATING CARD ===== */}
-
-      <div className="absolute bottom-10 left-9 hidden md:block z-40">
+      <div className="absolute z-40 left-1/2 -translate-x-1/2 bottom-20 sm:bottom-20 md:left-9 md:translate-x-0 md:bottom-28 lg:bottom-24 xl:bottom-28 2xl:bottom-36">
         <a
           href="https://maps.app.goo.gl/Rg6R1UCux7tWsjGZ7?g_st=ic"
           target="_blank"
           rel="noopener noreferrer"
           className="
       group
-      block
-      w-[350px]
+      block w-[72vw] max-w-[350px]
       rounded-[24px]
       border border-white/20
       bg-white/10
-      backdrop-blur-xl
-      p-5
-      transition-all duration-300
-      hover:scale-[1.03]
+      backdrop-blur-sm
+      p-3 sm:p-4 md:p-5
+      transition-transform duration-300
+      hover:scale-[1.01]
       hover:bg-white/15
       hover:border-white/40
       cursor-pointer
     "
         >
           {/* TITLE */}
-          <p className="text-muted font-semibold text-lg leading-tight">
+          <p className="text-muted font-semibold text-sm sm:text-base md:text-lg leading-tight">
             STAFF UNITED COMPANY LIMITED
           </p>
 
@@ -368,7 +250,7 @@ md:ml-3
                   alt="Client logo"
                   width={40}
                   height={40}
-                  className="w-10 h-10 rounded-full border-2 border-black object-cover"
+                  className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full order-2 border-black object-cover"
                   loading="lazy"
                 />
               ))}
@@ -376,11 +258,27 @@ md:ml-3
 
             {/* RATING */}
             <div className="flex flex-col items-end">
-              <div className="flex  text-base">⭐⭐⭐⭐⭐</div>
+              <div className="flex  text-sx sm:text-sm md:text-base">
+                ⭐⭐⭐⭐⭐
+              </div>
               <span className="text-muted/70 text-sm">5⭐ reviews</span>
             </div>
           </div>
         </a>
+      </div>
+
+      {/* ===== TECHNOLOGY MARQUEE ===== */}
+      <div className="absolute z-30 pointer-events-none overflow-hidden left-0 right-0 bottom-5 md:left-[0] md:right-0 md:bottom-10">
+        <div className="marquee-track gap-10 sm:gap-14 md:gap-20 px-4 sm:px-6">
+          {[...repeatedItems, ...repeatedItems].map((tech, i) => (
+            <span
+              key={i}
+              className="shrink-0 whitespace-nowrap font-semibold text-white/90 text-sx sm:text-sm md:text-[15px] tracking-[0.05em] sm:tracking-[0.08em] md:tracking-[0.1em]"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -177,20 +177,24 @@ select {
   }
 }
 
-/* NEW STYLE */
 @keyframes marquee {
-  0% {
-    transform: translateX(0);
+  from {
+    transform: translate3d(0%, 0, 0);
   }
-  100% {
-    transform: translateX(-50%);
+
+  to {
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 .marquee-track {
   display: flex;
-  width: max-content;
-  animation: marquee 40s linear infinite;
+
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+
+  animation: marquee 45s linear infinite;
 }
 
 @keyframes liquidZoom {
@@ -542,5 +546,15 @@ select {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: 200% center;
+  }
+
+  100% {
+    background-position: -200% center;
   }
 }
