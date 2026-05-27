@@ -331,7 +331,7 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
     flex
     flex-col
     items-center
-    relative
+    relative pt-10 sm:pb-16 md:pb-0
 
     transition-transform 
     duration-700
