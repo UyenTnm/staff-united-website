@@ -1575,19 +1575,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                       <stop offset="100%" stopColor="#1b2835" />
                     </linearGradient>
 
-                    {/* <linearGradient
-                      id="staffRingGradient"
-                      x1="0%"
-                      y1="0%"
-                      x2="100%"
-                      y2="100%"
-                    >
-                      <stop offset="0%" stopColor="rgba(255,255,255,0.95)" />
-                      <stop offset="25%" stopColor="rgba(255,255,255,0.85)" />
-                      <stop offset="50%" stopColor="rgba(255,255,255,1)" />
-                      <stop offset="75%" stopColor="rgba(255,255,255,0.85)" />
-                      <stop offset="100%" stopColor="rgba(255,255,255,0.95)" />
-                    </linearGradient> */}
+                    
                   </defs>
 
                   {/* Center Circle */}
