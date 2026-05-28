@@ -97,6 +97,7 @@ export default async function InsightsPage({ searchParams }: Props) {
                         <p className="text-[#0b1b33]/80 leading-relaxed line-clamp-2">
                           {post.subtitle}
                         </p>
+                        <pre>{JSON.stringify(post.publishAt, null, 2)}</pre>
 
                         <div className="mt-auto pt-6">
                           <span className="text-[#4f8fcb] font-medium group-hover:underline">

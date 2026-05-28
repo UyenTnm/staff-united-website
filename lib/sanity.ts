@@ -5,7 +5,7 @@ export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
   apiVersion: "2024-01-01",
-  useCdn: true,
+  useCdn: false,
 });
 
 export async function getInsights(page = 1, limit = 6) {
@@ -14,22 +14,51 @@ export async function getInsights(page = 1, limit = 6) {
 
   return client.fetch(
     `
-    *[_type == "insight"] | order(_createdAt desc) [$start...$end] {
+    *[
+      _type == "insight" &&
+      (
+        !defined(publishAt) ||
+        publishAt <= now
+      )
+    ] | order(publishAt desc) [$start...$end] {
       _id,
       title,
       "slug": slug.current,
       subtitle,
-      thumbnail
+      thumbnail,
+      publishAt
     }
   `,
     { start, end },
   );
 }
 
+// export async function getInsightBySlug(slug: string) {
+//   return client.fetch(
+//     `
+//     *[_type == "insight" && slug.current == $slug][0]{
+//       title,
+//       subtitle,
+//       "slug": slug.current,
+//       thumbnail,
+//       content
+//     }
+//     `,
+//     { slug },
+//   );
+// }
+
 export async function getInsightBySlug(slug: string) {
   return client.fetch(
     `
-    *[_type == "insight" && slug.current == $slug][0]{
+    *[
+      _type == "insight" &&
+      slug.current == $slug &&
+      (
+        !defined(publishAt) ||
+        publishAt <= now
+      )
+    ][0]{
       title,
       subtitle,
       "slug": slug.current,
@@ -43,7 +72,7 @@ export async function getInsightBySlug(slug: string) {
 
 export async function generateStaticParams() {
   const slugs = await client.fetch(
-    `*[_type == "insight"]{ "slug": slug.current }`,
+    `*[_type == "insight" && ( !defined(publishAt) || publishAt <= now )]{ "slug": slug.current }`,
   );
 
   return slugs;
@@ -56,5 +85,7 @@ export function getImageUrl(source: any) {
 }
 
 export async function getInsightsCount() {
-  return client.fetch(`count(*[_type == "insight"])`);
+  return client.fetch(
+    `count(*[_type == "insight" && (!defined(publishAt) || publishAt <= now)])`,
+  );
 }
