@@ -6,6 +6,9 @@ import Image from "next/image";
 import CursorRead from "@/components/CursorRead";
 import { getImageUrl, urlFor } from "@/lib/image";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 10;
+
 type Props = {
   searchParams: Promise<{
     page?: string;
@@ -22,6 +25,16 @@ export default async function InsightsPage({ searchParams }: Props) {
   const limit = 6;
 
   const displayPosts = await getInsights(page, limit);
+  console.log("NOW:", new Date().toISOString());
+
+  console.log(
+    "POSTS:",
+    displayPosts.map((post: any) => ({
+      title: post.title,
+      publishAt: post.publishAt,
+    })),
+  );
+
   const total = await getInsightsCount();
 
   const totalPages = Math.ceil(total / limit);
@@ -97,7 +110,8 @@ export default async function InsightsPage({ searchParams }: Props) {
                         <p className="text-[#0b1b33]/80 leading-relaxed line-clamp-2">
                           {post.subtitle}
                         </p>
-                        <pre>{JSON.stringify(post.publishAt, null, 2)}</pre>
+                        {/* <pre>{JSON.stringify(post.publishAt, null, 2)}</pre> */}
+                        {/* <pre>{JSON.stringify(post.publishAt, null, 2)}</pre> */}
 
                         <div className="mt-auto pt-6">
                           <span className="text-[#4f8fcb] font-medium group-hover:underline">
