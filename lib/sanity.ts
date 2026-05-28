@@ -18,24 +18,47 @@ export async function getInsights(page = 1, limit = 6) {
       _type == "insight" &&
       (
         !defined(publishAt) ||
-        publishAt <= now()
+        publishAt <= now
       )
     ] | order(publishAt desc) [$start...$end] {
       _id,
       title,
       "slug": slug.current,
       subtitle,
-      thumbnail
+      thumbnail,
+      publishAt
     }
   `,
     { start, end },
   );
 }
 
+// export async function getInsightBySlug(slug: string) {
+//   return client.fetch(
+//     `
+//     *[_type == "insight" && slug.current == $slug][0]{
+//       title,
+//       subtitle,
+//       "slug": slug.current,
+//       thumbnail,
+//       content
+//     }
+//     `,
+//     { slug },
+//   );
+// }
+
 export async function getInsightBySlug(slug: string) {
   return client.fetch(
     `
-    *[_type == "insight" && slug.current == $slug][0]{
+    *[
+      _type == "insight" &&
+      slug.current == $slug &&
+      (
+        !defined(publishAt) ||
+        publishAt <= now
+      )
+    ][0]{
       title,
       subtitle,
       "slug": slug.current,
@@ -49,7 +72,7 @@ export async function getInsightBySlug(slug: string) {
 
 export async function generateStaticParams() {
   const slugs = await client.fetch(
-    `*[_type == "insight" && ( !defined(publishAt) || publishAt <= now() )]{ "slug": slug.current }`,
+    `*[_type == "insight" && ( !defined(publishAt) || publishAt <= now )]{ "slug": slug.current }`,
   );
 
   return slugs;
@@ -63,6 +86,6 @@ export function getImageUrl(source: any) {
 
 export async function getInsightsCount() {
   return client.fetch(
-    `count(*[_type == "insight" && (!defined(publishAt) || publishAt <= now())])`,
+    `count(*[_type == "insight" && (!defined(publishAt) || publishAt <= now)])`,
   );
 }
