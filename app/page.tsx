@@ -294,13 +294,13 @@ export default function Home() {
                 {/* H2 */}
                 <h2
                   className="
-    lg:col-start-2 lg:row-start-1
+    lg:col-start-2 lg:row-start-1 
 
     text-2xl
     sm:text-3xl
     md:text-[2.5rem]
-    lg:text-[3.2rem]
-    xl:text-[3.4rem]
+    lg:text-[2.8rem]
+    xl:text-[2.9rem]
 
     font-semibold
 
