@@ -184,7 +184,7 @@ export default function Home() {
                     <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px]  md:text-[17px]">
                       STAFF United integrates directly into your operations,
                       delivering structured offshore execution across Structured
-                      Operations, Targeted Sales, Accounting & Finance, Focus
+                      Operations, Targeted Sales, Accounting & Legal, Focus
                       Marketing and Future Expansion.
                     </p>
 
@@ -383,7 +383,7 @@ export default function Home() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 max-w-8xl mx-auto px-6">
               {[
                 {
-                  title: "Structured Operations",
+                  title: "Strategic Operations",
                   keywords: ["Systems", "Processes", "Admin"],
                   image:
                     "/home/services/business-setup-market-entry-support.jpeg",
@@ -397,7 +397,7 @@ export default function Home() {
                   href: "/services",
                 },
                 {
-                  title: "Accounting & Finance",
+                  title: "Accounting & Legal",
                   keywords: ["Bookkeeping", "Invoicing", "Reports"],
                   image: "/home/services/accounting-financial.jpeg",
                   href: "/services",
