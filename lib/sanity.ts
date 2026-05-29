@@ -33,20 +33,6 @@ export async function getInsights(page = 1, limit = 6) {
   );
 }
 
-// export async function getInsightBySlug(slug: string) {
-//   return client.fetch(
-//     `
-//     *[_type == "insight" && slug.current == $slug][0]{
-//       title,
-//       subtitle,
-//       "slug": slug.current,
-//       thumbnail,
-//       content
-//     }
-//     `,
-//     { slug },
-//   );
-// }
 
 export async function getInsightBySlug(slug: string) {
   return client.fetch(
