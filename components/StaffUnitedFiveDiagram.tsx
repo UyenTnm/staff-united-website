@@ -56,10 +56,10 @@ function RotatingDiagram({
       // viewBox="-40 0 660 580"
       // viewBox="-30 -20 700 680"
       // viewBox="-60 -60 760 760"
-      viewBox="-45 -45 760 760"
-      className="w-[115%]
-  xl:w-[122%]
-  2xl:w-[128%]
+      viewBox="-80 -80 840 840"
+      className="w-[100%]
+xl:w-[105%]
+2xl:w-[110%]
 
   h-auto
   overflow-visible
@@ -126,9 +126,11 @@ function RotatingDiagram({
 
 export default function StaffUnitedFiveDiagram() {
   const center = 340; // tăng tâm SVG
-  const outerRadius = 305;
-  const innerRadius = 175;
+  const outerRadius = 260;
+  const innerRadius = 155;
   const segmentAngle = 72;
+  const letterRadius = outerRadius - 70;
+  const titleRadius = outerRadius + 28;
 
   const segmentsWhoWeAre = [
     { letter: "S", title: "Strong", color: "#132844", startAngle: -90 },
@@ -141,7 +143,7 @@ export default function StaffUnitedFiveDiagram() {
   const segments = [
     {
       letter: "S",
-      title: "Structured Operations",
+      title: "Strategic Operations",
       color: "#21507d",
       startAngle: -90,
     },
@@ -153,7 +155,7 @@ export default function StaffUnitedFiveDiagram() {
     },
     {
       letter: "A",
-      title: "Accounting & Finance",
+      title: "Accounting & Legal",
       color: "#21507d",
       startAngle: 54,
     },
@@ -321,7 +323,8 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
         <div
           className="w-full
     mx-auto px-2 md:px-4 xl:px-6
-    grid grid-cols-1 md:grid-cols-3 gap-10 xl:gap-14 lg:gap-8
+    grid grid-cols-1 md:grid-cols-3 gap-16
+ lg:gap-8
     items-start
     justify-items-center"
         >
@@ -469,7 +472,7 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
                   <circle
                     cx={center}
                     cy={center}
-                    r="175"
+                    r="155"
                     fill="url(#who-centerCoreGradient)"
                     stroke="rgba(255,255,255,0.22)"
                     strokeWidth="5"
@@ -743,11 +746,11 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                       {/* create 3d word bg */}
                       <text
                         x={center + 3}
-                        y={center - 235}
+                        y={center - letterRadius}
                         textAnchor="middle"
                         dominantBaseline="middle"
                         fill="rgba(0,0,0,0.32)"
-                        fontSize="82"
+                        fontSize="68"
                         fontWeight="700"
                         fontFamily="Poppins, sans-serif"
                         letterSpacing="-0.02em"
@@ -758,11 +761,11 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                       {/* Large branding letter inside segment */}
                       <text
                         x={center}
-                        y={center - 240}
+                        y={center - letterRadius - 5}
                         textAnchor="middle"
                         dominantBaseline="middle"
                         fill="url(#metallicLetter)"
-                        fontSize="72"
+                        fontSize="60"
                         fontWeight="600"
                         fontFamily="Poppins, sans-serif"
                         style={{
@@ -783,10 +786,10 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                         <path
                           id={`title-path-${index}`}
                           d={createArcPath(
-                            segment.startAngle + 8,
-                            segment.startAngle + segmentAngle - 8,
+                            segment.startAngle + 2,
+                            segment.startAngle + segmentAngle - 2,
                             // outerRadius + 25,
-                            outerRadius + 42,
+                            titleRadius,
                           )}
                           fill="none"
                           stroke="none"
@@ -795,7 +798,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                         {/* Curved title */}
                         <text
                           // fill="rgba(255,255,255,0.96)"
-                          fontSize="31"
+                          fontSize="28"
                           fill="rgba(255,255,255,0.94)"
                           fontWeight="700"
                           fontFamily="Poppins, sans-serif"
@@ -900,11 +903,56 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                   animationIterationCount: "infinite",
                   filter: `
       drop-shadow(0 0 8px rgba(255,255,255,0.45))
-      drop-shadow(0 0 16px rgba(255,255,255,0.25))
+      drop-shadow(0 0 16px rgba(255,255,255,0.25))s
     `,
                 }}
               />
             </RotatingDiagram>
+
+            <div className="max-w-lg mx-auto mt-8 px-6 text-center">
+              <p
+                className="
+    text-lg
+    md:text-xl
+    font-semibold
+    text-white
+    tracking-wide
+  "
+              >
+                The STAFF Advantage™
+              </p>
+            </div>
+
+            <div className="flex items-center gap-4 mt-8 mb-8 w-full max-w-sm mx-auto">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent to-white/20" />
+              <div className="w-2 h-2 rounded-full bg-white/60" />
+              <div className="flex-1 h-px bg-gradient-to-l from-transparent to-white/20" />
+            </div>
+
+            <div className="max-w-4xl mx-auto text-left px-6 space-y-3">
+              <p className="text-white/80 leading-[1.6] text-sm md:text-base">
+                At STAFF United, our people are your advantage.
+              </p>
+
+              <p className="text-white/80 leading-[1.6] text-sm md:text-base">
+                The STAFF Advantage™ is built on Strong, Talented, Ambitious,
+                Focused Females — professional women trained to deliver more
+                than support.
+              </p>
+
+              <p className="text-white/80 leading-[1.6] text-sm md:text-base">
+                They bring structure, discipline, intelligence, presence, and
+                care to every task. They represent our clients with
+                professionalism, protect their standards with accountability,
+                and execute with the focus required to help businesses operate
+                at a higher level.
+              </p>
+
+              <p className="text-white/80 leading-[1.6] text-sm md:text-base">
+                We do not simply fill roles. We raise the standard of what
+                support should be.
+              </p>
+            </div>
           </div>
 
           {/* segments - services - provide */}
@@ -1008,7 +1056,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                   <circle
                     cx={center}
                     cy={center}
-                    r="175"
+                    r="155"
                     fill="url(#provide-centerCoreGradient)"
                     stroke="rgba(255,255,255,0.26)"
                     strokeWidth="5"
@@ -1174,7 +1222,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
               <circle
                 cx={center}
                 cy={center}
-                r="175"
+                r="155"
                 fill="url(#provide-centerCoreGradient)"
                 stroke="rgba(255,255,255,0.14)"
                 strokeWidth="7"
@@ -1282,11 +1330,11 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                       {/* create 3d word bg */}
                       <text
                         x={center + 3}
-                        y={center - 235}
+                        y={center - letterRadius}
                         textAnchor="middle"
                         dominantBaseline="middle"
                         fill="rgba(0,0,0,0.32)"
-                        fontSize="82"
+                        fontSize="68"
                         fontWeight="700"
                         fontFamily="Poppins, sans-serif"
                         letterSpacing="-0.02em"
@@ -1298,11 +1346,11 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                       {/* Large branding letter inside segment */}
                       <text
                         x={center}
-                        y={center - 240}
+                        y={center - letterRadius - 5}
                         textAnchor="middle"
                         dominantBaseline="middle"
                         fill="url(#metallicLetter)"
-                        fontSize="78"
+                        fontSize="60"
                         fontWeight="600"
                         fontFamily="Poppins, sans-serif"
                         style={{
@@ -1325,7 +1373,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                           d={createArcPath(
                             segment.startAngle + 12,
                             segment.startAngle + segmentAngle - 12,
-                            outerRadius + 42,
+                            titleRadius,
                           )}
                           fill="none"
                           stroke="none"
@@ -1333,7 +1381,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
 
                         {/* Curved title */}
                         <text
-                          fontSize="31"
+                          fontSize="28"
                           fontWeight="700"
                           fontFamily="Poppins, sans-serif"
                           fill="rgba(255,255,255,0.94)"
@@ -1407,7 +1455,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                 <circle
                   cx={center}
                   cy={center}
-                  r="175"
+                  r="155"
                   fill="url(#provide-centerCoreGradient)"
                   stroke="rgba(255,255,255,0.14)"
                   strokeWidth="2"
@@ -1459,10 +1507,52 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                 }}
               />
             </RotatingDiagram>
+
+            <div className="max-w-lg mx-auto mt-8 px-6 text-center">
+              <p
+                className="
+    text-lg
+    md:text-xl
+    font-semibold
+    text-white
+    tracking-wide
+  "
+              >
+                The 5-Core Support Ecosystem™
+              </p>
+            </div>
+            <div className="flex items-center gap-4 mt-8 mb-8 w-full max-w-sm mx-auto">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent to-white/20" />
+              <div className="w-2 h-2 rounded-full bg-white/60" />
+              <div className="flex-1 h-px bg-gradient-to-l from-transparent to-white/20" />
+            </div>
+            <div className="max-w-4xl mx-auto text-left px-6 space-y-3">
+              <p className="text-white/80 leading-[1.6] text-sm md:text-base">
+                At STAFF United, we provide more than services — we provide the
+                support system businesses need to operate, grow, protect, and
+                scale.
+              </p>
+
+              <p className="text-white/80 leading-[1.6] text-sm md:text-base">
+                The 5-Core Support Ecosystem™ is built around five essential
+                areas of business support: Strategic Operations, Targeted Sales,
+                Accounting & Legal, Focused Marketing, and Future Expansion.
+              </p>
+
+              <p className="text-white/80 leading-[1.6] text-sm md:text-base">
+                Together, these cores support the areas that drive performance,
+                revenue, visibility, protection, and long-term growth.
+              </p>
+
+              <p className="text-white/80 leading-[1.6] text-sm md:text-base">
+                We do not simply support operations. We strengthen the
+                foundation that allows businesses to grow and scale with
+                confidence.
+              </p>
+            </div>
           </div>
 
           {/* segments - how we execute */}
-
           <div
             className="
     flex
@@ -1547,18 +1637,6 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                 <>
                   {/* Center Circle Gradient */}
                   <defs>
-                    {/* <radialGradient
-                      id="execute-centerCoreGradient"
-                      cx="42%"
-                      cy="38%"
-                      r="72%"
-                    >
-                      <stop offset="0%" stopColor="#8a97a5" />
-                      <stop offset="24%" stopColor="#8c9bac" />
-                      <stop offset="52%" stopColor="#5d6d80" />
-                      <stop offset="78%" stopColor="#38495f" />
-                      <stop offset="100%" stopColor="#1a2938" />
-                    </radialGradient> */}
                     <linearGradient
                       id="execute-centerCoreGradient"
                       x1="0%"
@@ -1577,7 +1655,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                   <circle
                     cx={center}
                     cy={center}
-                    r="175"
+                    r="155"
                     fill="url(#execute-centerCoreGradient)"
                     stroke="rgba(255,255,255,0.20)"
                     strokeWidth="6"
@@ -1848,11 +1926,11 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                       {/* create 3d word bg */}
                       <text
                         x={center + 3}
-                        y={center - 235}
+                        y={center - letterRadius}
                         textAnchor="middle"
                         dominantBaseline="middle"
                         fill="rgba(0,0,0,0.32)"
-                        fontSize="82"
+                        fontSize="68"
                         fontWeight="700"
                         fontFamily="Poppins, sans-serif"
                         letterSpacing="-0.02em"
@@ -1864,11 +1942,11 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                       {/* Large branding letter inside segment */}
                       <text
                         x={center}
-                        y={center - 240}
+                        y={center - letterRadius - 5}
                         textAnchor="middle"
                         dominantBaseline="middle"
                         fill="url(#metallicLetter)"
-                        fontSize="72"
+                        fontSize="60"
                         fontWeight="600"
                         fontFamily="Poppins, sans-serif"
                         style={{
@@ -1889,10 +1967,10 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                         <path
                           id={`title-path-${index}`}
                           d={createArcPath(
-                            segment.startAngle + 8,
-                            segment.startAngle + segmentAngle - 8,
+                            segment.startAngle + 2,
+                            segment.startAngle + segmentAngle - 2,
                             // outerRadius + 25,
-                            outerRadius + 42,
+                            titleRadius,
                           )}
                           fill="none"
                           stroke="none"
@@ -1900,7 +1978,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
 
                         {/* Curved title */}
                         <text
-                          fontSize="31"
+                          fontSize="28"
                           fontWeight="700"
                           fill="rgba(255,255,255,0.94)"
                           fontFamily="Poppins, sans-serif"
@@ -2026,6 +2104,51 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                 Our Approach
               </text>
             </RotatingDiagram>
+
+            <div className="max-w-lg mx-auto mt-8 px-6 text-center">
+              <p
+                className="
+    text-lg
+    md:text-xl
+    font-semibold
+    text-white
+    tracking-wide
+  "
+              >
+                The 120/80 Approach™
+              </p>
+            </div>
+
+            <div className="flex items-center gap-4 mt-8 mb-8 w-full max-w-sm mx-auto">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent to-white/20" />
+              <div className="w-2 h-2 rounded-full bg-white/60" />
+              <div className="flex-1 h-px bg-gradient-to-l from-transparent to-white/20" />
+            </div>
+
+            <div className="max-w-4xl mx-auto text-left px-6 space-y-3">
+              <p className="text-white leading-[1.6] text-sm md:text-base">
+                At STAFF United, we aim to deliver every task at 120% of
+                expectation.
+              </p>
+
+              <p className="text-white leading-[1.6] text-sm md:text-base">
+                We execute with Structure, Technology, Accountability,
+                Flexibility, and Foresight, so that even when challenges arise,
+                an 80% outcome still remains strong, professional, and valuable.
+              </p>
+
+              <p className="text-white leading-[1.6] text-sm md:text-base">
+                Simply put: we aim higher than required, and we prepare well
+                enough that the work still holds up under pressure.
+              </p>
+
+              <p className="text-white leading-[1.6] text-sm md:text-base">
+                This approach is embedded in our culture and allows us to exceed
+                expectations while ensuring that our work remains reliable,
+                consistent, and impactful — even when perfection is not always
+                attainable.
+              </p>
+            </div>
           </div>
         </div>
         {/* End: max-w-2xl mx-auto px-6 */}
