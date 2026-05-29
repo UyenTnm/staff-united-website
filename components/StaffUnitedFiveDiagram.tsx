@@ -909,7 +909,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
               />
             </RotatingDiagram>
 
-            <div className="w-full mt-8 h-[60px] flex items-start justify-center px-2">
+            <div className="w-full mt-0 h-[60px] flex items-start justify-center px-2">
               <p
                 className="
       md:text-[18px]
@@ -1509,7 +1509,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
               />
             </RotatingDiagram>
 
-            <div className="w-full mt-8 h-[60px] flex items-start justify-center px-2">
+            <div className="w-full mt-0 h-[60px] flex items-start justify-center px-2">
               <p
                 className="
       md:text-[18px]
@@ -2108,7 +2108,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
               </text>
             </RotatingDiagram>
 
-            <div className="w-full mt-8 h-[60px] flex items-start justify-center px-2">
+            <div className="w-full mt-0 h-[60px] flex items-start justify-center px-2">
               <p
                 className="
       md:text-[18px]
