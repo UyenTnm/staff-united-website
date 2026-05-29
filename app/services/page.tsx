@@ -19,9 +19,9 @@ import { useEffect, useState } from "react";
 
 export default function Services() {
   const services = [
-    // Structured Operations
+    // Strategic Operations
     {
-      title: "Structured Operations",
+      title: "Strategic Operations",
       desc: "Administrative & Business Operations",
       icon: Settings,
       items: [
@@ -75,10 +75,10 @@ export default function Services() {
       impact:
         "When your sales and customer support operations are consistent and responsive, businesses build stronger customer relationships, improve retention, and create more opportunities for growth.",
     },
-    // Accounting & Finance
+    // Accounting & Legal
     {
-      title: "Accounting & Finance",
-      desc: "Accounting & Financial Services",
+      title: "Accounting & Legal",
+      desc: "Accounting & Legal Services",
       icon: Calculator,
       items: [
         "Monthly Bookkeeping",
@@ -333,7 +333,7 @@ export default function Services() {
               {[
                 {
                   letter: "S",
-                  title: "Structure Operations",
+                  title: "Strategic Operations",
                   desc: "Administrative & Business Operations.",
                 },
                 {
@@ -343,8 +343,8 @@ export default function Services() {
                 },
                 {
                   letter: "A",
-                  title: "Accounting & Finance",
-                  desc: "Accounting & Financial Services.",
+                  title: "Accounting & Legal",
+                  desc: "Accounting & Legal Services.",
                 },
                 {
                   letter: "F",

@@ -4,9 +4,9 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const rotatingServices = [
-  "Structured Operations",
+  "Strategic Operations",
   "Targeted Sales",
-  "Accounting & Finance",
+  "Accounting & Legal",
   "Focused Marketing",
   "Future Expansion",
 ];
@@ -165,7 +165,7 @@ md:ml-3
 
                 {/* Invisible text dài nhất để giữ đủ width */}
                 <span className="invisible whitespace-nowrap leading-[1.2]">
-                  Accounting & Finance
+                  Accounting & Legal
                 </span>
               </span>
             </span>
