@@ -126,7 +126,7 @@ xl:w-[105%]
 
 export default function StaffUnitedFiveDiagram() {
   const center = 340; // tăng tâm SVG
-  const outerRadius = 260;
+  const outerRadius = 230;
   const innerRadius = 155;
   const segmentAngle = 72;
   const letterRadius = outerRadius - 70;
@@ -323,7 +323,7 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
         <div
           className="w-full
     mx-auto px-2 md:px-4 xl:px-6
-    grid grid-cols-1 md:grid-cols-3 gap-16
+    grid grid-cols-1 xl:grid-cols-3 gap-16
  lg:gap-8
     items-start
     justify-items-center"
@@ -334,7 +334,7 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
     flex
     flex-col
     items-center
-    relative pt-10 sm:pb-16 md:pb-0
+    relative sm:pb-16 md:pb-0
 
     transition-transform 
     duration-700
@@ -382,7 +382,7 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
             />
 
             <h3
-              className="relative mb-10
+              className="relative
 
     text-3xl md:text-xl lg:text-3xl
 
@@ -909,38 +909,39 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
               />
             </RotatingDiagram>
 
-            <div className="max-w-lg mx-auto mt-8 px-6 text-center">
+            <div className="w-full mt-8 h-[60px] flex items-start justify-center px-2">
               <p
                 className="
-    text-lg
-    md:text-xl
-    font-semibold
-    text-white
-    tracking-wide
-  "
+      md:text-[18px]
+      lg:text-xl
+      font-semibold
+      text-white
+      text-center
+      leading-tight
+text-base md:text-lg xl:text-xl "
               >
                 The STAFF Advantage™
               </p>
             </div>
 
-            <div className="flex items-center gap-4 mt-8 mb-8 w-full max-w-sm mx-auto">
+            <div className="flex items-center gap-4 mt-0 mb-8 w-full max-w-sm mx-auto">
               <div className="flex-1 h-px bg-gradient-to-r from-transparent to-white/20" />
               <div className="w-2 h-2 rounded-full bg-white/60" />
               <div className="flex-1 h-px bg-gradient-to-l from-transparent to-white/20" />
             </div>
 
             <div className="max-w-4xl mx-auto text-left px-6 space-y-3">
-              <p className="text-white/80 leading-[1.6] text-sm md:text-base">
+              <p className="text-white leading-[1.6] text-sm md:text-base">
                 At STAFF United, our people are your advantage.
               </p>
 
-              <p className="text-white/80 leading-[1.6] text-sm md:text-base">
+              <p className="text-white leading-[1.6] text-sm md:text-base">
                 The STAFF Advantage™ is built on Strong, Talented, Ambitious,
                 Focused Females — professional women trained to deliver more
                 than support.
               </p>
 
-              <p className="text-white/80 leading-[1.6] text-sm md:text-base">
+              <p className="text-white leading-[1.6] text-sm md:text-base">
                 They bring structure, discipline, intelligence, presence, and
                 care to every task. They represent our clients with
                 professionalism, protect their standards with accountability,
@@ -961,7 +962,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
     flex
     flex-col
     items-center
-    relative pt-10 sm:pb-16 md:pb-0
+    relative sm:pb-16 md:pb-0
 
     transition-transform
     duration-700
@@ -1007,7 +1008,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
             {/* TITLE PHÍA TRÊN CIRCLE */}
 
             <h3
-              className="relative mb-10
+              className="relative
 
     text-3xl md:text-xl lg:text-3xl
 
@@ -1508,43 +1509,45 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
               />
             </RotatingDiagram>
 
-            <div className="max-w-lg mx-auto mt-8 px-6 text-center">
+            <div className="w-full mt-8 h-[60px] flex items-start justify-center px-2">
               <p
                 className="
-    text-lg
-    md:text-xl
-    font-semibold
-    text-white
-    tracking-wide
-  "
+      md:text-[18px]
+      lg:text-xl
+      font-semibold
+      text-white
+      text-center
+      leading-tight
+      text-base md:text-lg xl:text-xl
+    "
               >
                 The 5-Core Support Ecosystem™
               </p>
             </div>
-            <div className="flex items-center gap-4 mt-8 mb-8 w-full max-w-sm mx-auto">
+            <div className="flex items-center gap-4 mt-0 mb-8 w-full max-w-sm mx-auto">
               <div className="flex-1 h-px bg-gradient-to-r from-transparent to-white/20" />
               <div className="w-2 h-2 rounded-full bg-white/60" />
               <div className="flex-1 h-px bg-gradient-to-l from-transparent to-white/20" />
             </div>
             <div className="max-w-4xl mx-auto text-left px-6 space-y-3">
-              <p className="text-white/80 leading-[1.6] text-sm md:text-base">
+              <p className="text-white leading-[1.6] text-sm md:text-base">
                 At STAFF United, we provide more than services — we provide the
                 support system businesses need to operate, grow, protect, and
                 scale.
               </p>
 
-              <p className="text-white/80 leading-[1.6] text-sm md:text-base">
+              <p className="text-white leading-[1.6] text-sm md:text-base">
                 The 5-Core Support Ecosystem™ is built around five essential
                 areas of business support: Strategic Operations, Targeted Sales,
                 Accounting & Legal, Focused Marketing, and Future Expansion.
               </p>
 
-              <p className="text-white/80 leading-[1.6] text-sm md:text-base">
+              <p className="text-white leading-[1.6] text-sm md:text-base">
                 Together, these cores support the areas that drive performance,
                 revenue, visibility, protection, and long-term growth.
               </p>
 
-              <p className="text-white/80 leading-[1.6] text-sm md:text-base">
+              <p className="text-white leading-[1.6] text-sm md:text-base">
                 We do not simply support operations. We strengthen the
                 foundation that allows businesses to grow and scale with
                 confidence.
@@ -1558,7 +1561,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
     flex
     flex-col
     items-center
-    relative pt-10 sm:pb-16 md:pb-0
+    relative sm:pb-16 md:pb-0
 
     transition-transform
     duration-700
@@ -1606,7 +1609,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
             {/* TITLE PHÍA TRÊN CIRCLE */}
 
             <h3
-              className="relative mb-10
+              className="relative
 
     text-3xl md:text-xl lg:text-3xl
 
@@ -2105,21 +2108,22 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
               </text>
             </RotatingDiagram>
 
-            <div className="max-w-lg mx-auto mt-8 px-6 text-center">
+            <div className="w-full mt-8 h-[60px] flex items-start justify-center px-2">
               <p
                 className="
-    text-lg
-    md:text-xl
-    font-semibold
-    text-white
-    tracking-wide
-  "
+      md:text-[18px]
+      lg:text-xl
+      font-semibold
+      text-white
+      text-center
+      leading-tight text-base md:text-lg xl:text-xl
+    "
               >
                 The 120/80 Approach™
               </p>
             </div>
 
-            <div className="flex items-center gap-4 mt-8 mb-8 w-full max-w-sm mx-auto">
+            <div className="flex items-center gap-4 mt-0 mb-8 w-full max-w-sm mx-auto">
               <div className="flex-1 h-px bg-gradient-to-r from-transparent to-white/20" />
               <div className="w-2 h-2 rounded-full bg-white/60" />
               <div className="flex-1 h-px bg-gradient-to-l from-transparent to-white/20" />
