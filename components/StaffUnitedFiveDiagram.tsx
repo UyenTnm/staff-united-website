@@ -129,8 +129,8 @@ export default function StaffUnitedFiveDiagram() {
   const outerRadius = 230;
   const innerRadius = 155;
   const segmentAngle = 72;
-  const letterRadius = outerRadius - 70;
-  const titleRadius = outerRadius + 28;
+  const letterRadius = outerRadius - 50;
+  const titleRadius = outerRadius + 30;
 
   const segmentsWhoWeAre = [
     { letter: "S", title: "Strong", color: "#132844", startAngle: -90 },
@@ -750,7 +750,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                         textAnchor="middle"
                         dominantBaseline="middle"
                         fill="rgba(0,0,0,0.32)"
-                        fontSize="68"
+                        fontSize="58"
                         fontWeight="700"
                         fontFamily="Poppins, sans-serif"
                         letterSpacing="-0.02em"
@@ -765,7 +765,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                         textAnchor="middle"
                         dominantBaseline="middle"
                         fill="url(#metallicLetter)"
-                        fontSize="60"
+                        fontSize="50"
                         fontWeight="600"
                         fontFamily="Poppins, sans-serif"
                         style={{
@@ -1335,7 +1335,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                         textAnchor="middle"
                         dominantBaseline="middle"
                         fill="rgba(0,0,0,0.32)"
-                        fontSize="68"
+                        fontSize="58"
                         fontWeight="700"
                         fontFamily="Poppins, sans-serif"
                         letterSpacing="-0.02em"
@@ -1351,7 +1351,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                         textAnchor="middle"
                         dominantBaseline="middle"
                         fill="url(#metallicLetter)"
-                        fontSize="60"
+                        fontSize="50"
                         fontWeight="600"
                         fontFamily="Poppins, sans-serif"
                         style={{
@@ -1933,7 +1933,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                         textAnchor="middle"
                         dominantBaseline="middle"
                         fill="rgba(0,0,0,0.32)"
-                        fontSize="68"
+                        fontSize="58"
                         fontWeight="700"
                         fontFamily="Poppins, sans-serif"
                         letterSpacing="-0.02em"
@@ -1949,7 +1949,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                         textAnchor="middle"
                         dominantBaseline="middle"
                         fill="url(#metallicLetter)"
-                        fontSize="60"
+                        fontSize="50"
                         fontWeight="600"
                         fontFamily="Poppins, sans-serif"
                         style={{
