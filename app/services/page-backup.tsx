@@ -16,7 +16,6 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 
 export default function Services() {
   const services = [
@@ -100,7 +99,7 @@ export default function Services() {
     // Focused Marketing
     {
       title: "Focused Marketing",
-      desc: "Marketing, Brand & Media Production",
+      desc: "Marketing Execution, Brand & Media Production",
       icon: Megaphone,
       items: [
         "Social Media Strategic Planning",
@@ -151,11 +150,11 @@ export default function Services() {
   // const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [activeIndexes, setActiveIndexes] = useState<number[]>([]);
 
-  // const toggleCard = (index: number) => {
-  //   setActiveIndexes((prev) =>
-  //     prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
-  //   );
-  // };
+  const toggleCard = (index: number) => {
+    setActiveIndexes((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
+    );
+  };
 
   useEffect(() => {
     const elements = document.querySelectorAll(
@@ -289,8 +288,8 @@ export default function Services() {
             </div>
 
             {/* LOGO */}
-            <div className="mt-6 flex justify-center">
-              {/* <Image
+            <div className="mt-2 flex justify-center">
+              <Image
                 src="/services/5taff-logo-services.webp"
                 alt="5TAFF United"
                 width={320}
@@ -303,11 +302,11 @@ export default function Services() {
                         md:max-w-[320px]
                       "
                 priority
-              /> */}
+              />
             </div>
 
             {/* SUBTITLE */}
-            <div className="mt-6 mb-10 text-center">
+            <div className="mt-4 mb-10 text-center">
               <p
                 className="
       text-[#8FD3FF] font-semibold text-lg sm:text-xl tracking-[0.04em] -mt-6 md:-mt-7"
@@ -471,7 +470,7 @@ export default function Services() {
       >
         {/* <div className="grid lg:grid-cols-3 gap-6 items-stretch"> */}
         {services.map((item, index) => {
-          // const isActive = activeIndexes.includes(index);
+          const isActive = activeIndexes.includes(index);
           const Icon = item.icon;
 
           const subtitles = [
@@ -480,13 +479,6 @@ export default function Services() {
             "Customers & revenue",
             "Visibility & brand",
             "Setup & expansion",
-          ];
-          const serviceLinks = [
-            "/services/strategic-operations",
-            "/services/targeted-sales",
-            "/services/accounting-legal",
-            "/services/focused-marketing",
-            "/services/future-expansion",
           ];
 
           const serviceImages = [
@@ -498,12 +490,12 @@ export default function Services() {
           ];
 
           return (
-            <Link
-              href={serviceLinks[index]}
+            <article
               key={index}
               style={{ transitionDelay: `${index * 80}ms` }}
               className={`
         service-card 
+        ${isActive ? "is-active" : ""}
         group
         relative
         overflow-hidden
@@ -533,7 +525,9 @@ export default function Services() {
               {/* BOTTOM PANEL */}
               <div className="bg-[#0A2348] text-white flex flex-col flex-1">
                 {/* COLLAPSED HEADER */}
-                <div
+                <button
+                  type="button"
+                  onClick={() => toggleCard(index)}
                   className="
     w-full
     px-5 sm:px-6
@@ -569,79 +563,17 @@ group-hover:shadow-[0_10px_30px_rgba(121,185,255,0.28)]
 
                     {/* TITLE + DESC */}
                     <div className="flex-1 min-w-0">
-                      <div className="flex justify-between gap-6">
-                        {/* LEFT */}
-                        <div>
-                          <h3 className="text-xl sm:text-2xl font-semibold leading-tight">
-                            {item.title}
-                          </h3>
+                      <h3 className="text-xl sm:text-2xl font-semibold leading-tight">
+                        {item.title}
+                      </h3>
 
-                          <p className="text-white/55 text-sm sm:text-base mt-1 leading-relaxed">
-                            {item.desc}
-                          </p>
-                        </div>
-
-                        {/* RIGHT CTA */}
-                        {/* <div className="hidden lg:flex items-center gap-3 whitespace-nowrap"> */}
-                        <div className="flex items-center gap-3 whitespace-nowrap">
-                          <span
-                            className="
-hidden md:inline
-    text-white/50
-    text-sm
-    font-medium
-    transition-all duration-500
-    group-hover:text-[#79B9FF]
-  "
-                          >
-                            Explore More
-                          </span>
-
-                          <div
-                            className="
-          w-8 h-8
-          rounded-full
-          border border-white/10
-
-          flex items-center justify-center
-
-          text-[#79B9FF]
-
-          transition-all duration-500
-
-          group-hover:bg-[#79B9FF]
-          group-hover:text-[#0A2348]
-          group-hover:translate-x-1
-        "
-                          >
-                            →
-                          </div>
-                        </div>
-                      </div>
+                      <p className="text-white/55 text-sm sm:text-base mt-1 leading-relaxed">
+                        {item.desc}
+                      </p>
                     </div>
 
-                    {/* READ MORE */}
-                    {/* <div
-                      className="
-    w-9 h-9
-    rounded-full
-    border border-white/10
-
-    flex items-center justify-center
-
-    text-[#79B9FF]
-
-    transition-all duration-500
-
-    group-hover:bg-[#79B9FF]
-    group-hover:text-[#0A2348]
-    group-hover:translate-x-1
-  "
-                    >
-                      →
-                    </div> */}
-
-                    {/* <div
+                    {/* ARROW */}
+                    <div
                       className={`
         flex-shrink-0
         flex items-center justify-center
@@ -661,49 +593,84 @@ hidden md:inline
                       >
                         <path d="M6 9l6 6 6-6" />
                       </svg>
-                    </div> */}
+                    </div>
                   </div>
 
                   {/* ROW 2 - BADGE */}
-                  {/* <div className="mt-4 ml-[4.25rem] flex items-center justify-between pr-4">
+                  <div className="mt-4 ml-[4.25rem]">
                     <span
                       className="
-      inline-flex
-      px-4 py-1.5
-      rounded-full
-      bg-[#214D82]
-      text-[#79B9FF]
-      text-sm
-      font-semibold
-      whitespace-nowrap
-
-      transition-all duration-500
-      group-hover:bg-[#2A67A8]
-      group-hover:text-white
-    "
+        inline-flex
+        px-4 py-1.5
+        rounded-full
+        bg-[#214D82]
+        text-[#79B9FF]
+        text-sm
+        font-semibold
+        whitespace-nowrap
+        transition-all duration-500
+group-hover:bg-[#2A67A8]
+group-hover:text-white
+      "
                     >
                       {subtitles[index]}
                     </span>
+                  </div>
+                </button>
 
-                    <span
-                      className="
-      inline-flex items-center gap-2
-      text-[#79B9FF]
-      text-sm
-      font-medium
+                {/* EXPANDED CONTENT */}
+                <div
+                  className={`
+            overflow-hidden
+            transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
+            ${isActive ? "max-h-[4000px] opacity-100" : "max-h-0 opacity-0"}
+          `}
+                >
+                  {/* <div className="px-8 pb-8 h-full flex flex-col"> */}
+                  <div
+                    className={`
+    px-8 pb-8 h-full
+    flex flex-col service-details
+  `}
+                  >
+                    {/* IMPACT */}
+                    <p className="text-white/75 italic text-lg leading-8 mb-8">
+                      {item.impact}
+                    </p>
 
-      transition-all duration-300
-      group-hover:translate-x-1
-      group-hover:text-white
-    "
-                    >
-                      Explore
-                      <span>→</span>
-                    </span>
-                  </div> */}
+                    {/* DIVIDER */}
+                    <div className="border-t border-white/10 mb-6" />
+
+                    {/* LABEL */}
+                    <p className="text-[#6F8DB8] text-xs font-semibold tracking-[0.28em] uppercase mb-6">
+                      Services Included
+                    </p>
+
+                    {/* SERVICES GRID */}
+                    <ul className="grid md:grid-cols-3 gap-x-8 gap-y-4">
+                      {item.items.map((service, i) => (
+                        <li
+                          key={i}
+                          className="flex items-start gap-3 text-white/85 text-base leading-7"
+                        >
+                          <span className="mt-3 w-1.5 h-1.5 rounded-full bg-[#79B9FF] flex-shrink-0" />
+                          <span>{service}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* NOTE */}
+                    {/* {item.note && (
+                      <p className="mt-8 text-sm leading-7 text-white/60 italic">
+                        {item.note}
+                      </p>
+                    )} */}
+
+                    <div className="flex-1" />
+                  </div>
                 </div>
               </div>
-            </Link>
+            </article>
           );
         })}
 

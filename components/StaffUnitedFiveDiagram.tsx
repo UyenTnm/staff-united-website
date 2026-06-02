@@ -932,26 +932,26 @@ text-base md:text-lg xl:text-xl "
 
             <div className="max-w-4xl mx-auto text-left px-6 space-y-3">
               <p className="text-white leading-[1.6] text-sm md:text-base">
-                At STAFF United, our people are your advantage.
+                At STAFF United, our people are your advantage. They represent
+                the strength, professionalism, and commitment behind everything
+                we do.
               </p>
 
               <p className="text-white leading-[1.6] text-sm md:text-base">
                 The STAFF Advantage™ is built on Strong, Talented, Ambitious,
-                Focused Females — professional women trained to deliver more
-                than support.
+                Focused Females — professional women trained to deliver
+                meaningful business support with confidence and consistency.
               </p>
 
               <p className="text-white leading-[1.6] text-sm md:text-base">
                 They bring structure, discipline, intelligence, presence, and
-                care to every task. They represent our clients with
-                professionalism, protect their standards with accountability,
-                and execute with the focus required to help businesses operate
-                at a higher level.
+                care to every engagement while helping businesses maintain
+                standards, improve execution, and operate more effectively.
               </p>
 
-              <p className="text-white/80 leading-[1.6] text-sm md:text-base">
-                We do not simply fill roles. We raise the standard of what
-                support should be.
+              <p className="text-white leading-[1.6] text-sm md:text-base">
+                We do not simply fill positions. We help businesses raise the
+                standard of what professional support should be.
               </p>
             </div>
           </div>
@@ -1531,26 +1531,27 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
             </div>
             <div className="max-w-4xl mx-auto text-left px-6 space-y-3">
               <p className="text-white leading-[1.6] text-sm md:text-base">
-                At STAFF United, we provide more than services — we provide the
-                support system businesses need to operate, grow, protect, and
-                scale.
-              </p>
-
-              <p className="text-white leading-[1.6] text-sm md:text-base">
-                The 5-Core Support Ecosystem™ is built around five essential
-                areas of business support: Strategic Operations, Targeted Sales,
-                Accounting & Legal, Focused Marketing, and Future Expansion.
-              </p>
-
-              <p className="text-white leading-[1.6] text-sm md:text-base">
-                Together, these cores support the areas that drive performance,
-                revenue, visibility, protection, and long-term growth.
-              </p>
-
-              <p className="text-white leading-[1.6] text-sm md:text-base">
-                We do not simply support operations. We strengthen the
-                foundation that allows businesses to grow and scale with
+                At STAFF United, we provide more than services. We provide the
+                support businesses need to operate, grow, and move forward with
                 confidence.
+              </p>
+
+              <p className="text-white leading-[1.6] text-sm md:text-base">
+                The 5-Core Support Ecosystem™ is built around Operations, Sales,
+                Accounting, Marketing, and Expansion — the essential functions
+                behind sustainable business performance and growth.
+              </p>
+
+              <p className="text-white leading-[1.6] text-sm md:text-base">
+                Together, these service areas strengthen structure, improve
+                visibility, support financial control, increase consistency, and
+                create the operational foundation required for long-term
+                success.
+              </p>
+
+              <p className="text-white leading-[1.6] text-sm md:text-base">
+                We do not simply support businesses. We help build the systems
+                that enable them to scale with confidence.
               </p>
             </div>
           </div>
@@ -2131,26 +2132,26 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
 
             <div className="max-w-4xl mx-auto text-left px-6 space-y-3">
               <p className="text-white leading-[1.6] text-sm md:text-base">
-                At STAFF United, we aim to deliver every task at 120% of
-                expectation.
+                At STAFF United, we aim to deliver outcomes that consistently
+                exceed expectations while creating lasting value for every
+                client.{" "}
               </p>
 
               <p className="text-white leading-[1.6] text-sm md:text-base">
-                We execute with Structure, Technology, Accountability,
-                Flexibility, and Foresight, so that even when challenges arise,
-                an 80% outcome still remains strong, professional, and valuable.
+                The 120/80 Approach™ combines Structure, Technology,
+                Accountability, Flexibility, and Foresight to support reliable
+                execution and quality performance across every engagement.
               </p>
 
               <p className="text-white leading-[1.6] text-sm md:text-base">
-                Simply put: we aim higher than required, and we prepare well
-                enough that the work still holds up under pressure.
+                This methodology helps teams remain prepared, adaptable, and
+                effective while maintaining consistency, professionalism, and
+                attention to detail even when priorities change.
               </p>
 
               <p className="text-white leading-[1.6] text-sm md:text-base">
-                This approach is embedded in our culture and allows us to exceed
-                expectations while ensuring that our work remains reliable,
-                consistent, and impactful — even when perfection is not always
-                attainable.
+                We do not simply complete tasks. We create outcomes that deliver
+                greater value than expected.
               </p>
             </div>
           </div>
