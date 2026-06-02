@@ -932,26 +932,26 @@ text-base md:text-lg xl:text-xl "
 
             <div className="max-w-4xl mx-auto text-left px-6 space-y-3">
               <p className="text-white leading-[1.6] text-sm md:text-base">
-                At STAFF United, our people are your advantage. They represent
-                the strength, professionalism, and commitment behind everything
-                we do.
+                At STAFF United, our people are your advantage.
               </p>
 
               <p className="text-white leading-[1.6] text-sm md:text-base">
                 The STAFF Advantage™ is built on Strong, Talented, Ambitious,
-                Focused Females — professional women trained to deliver
-                meaningful business support with confidence and consistency.
+                Focused Females — professional women internationally trained to
+                deliver more than support.
               </p>
 
               <p className="text-white leading-[1.6] text-sm md:text-base">
                 They bring structure, discipline, intelligence, presence, and
-                care to every engagement while helping businesses maintain
-                standards, improve execution, and operate more effectively.
+                care to every task. They represent our clients with
+                professionalism, protect their standards with accountability,
+                and execute with the focus required to help businesses operate
+                at a higher level.
               </p>
 
               <p className="text-white leading-[1.6] text-sm md:text-base">
-                We do not simply fill positions. We help businesses raise the
-                standard of what professional support should be.
+                We do not simply fill roles. We raise the standard of what
+                support should be.
               </p>
             </div>
           </div>
