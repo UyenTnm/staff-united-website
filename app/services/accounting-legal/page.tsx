@@ -1,4 +1,7 @@
 "use client";
+
+import AccountingLegalForm from "@/components/forms/AccountingLegalForm";
+
 export default function AccountingLegalPage() {
   const serviceGroups = [
     {
@@ -432,7 +435,7 @@ export default function AccountingLegalPage() {
       </section>
 
       {/* REQUEST A QUOTE */}
-      <section id="quote-section" className="bg-[#F6F8FB] py-28">
+      {/* <section id="quote-section" className="bg-[#F6F8FB] py-28">
         <div className="max-w-5xl mx-auto px-6">
           <div
             className="
@@ -586,7 +589,8 @@ export default function AccountingLegalPage() {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
+      <AccountingLegalForm />
     </main>
   );
 }

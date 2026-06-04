@@ -1,4 +1,7 @@
 "use client";
+
+import StrategicOperationsForm from "../../../components/forms/StrategicOperationsForm";
+
 export default function StrategicOperationsPage() {
   const serviceGroups = [
     {
@@ -437,7 +440,7 @@ export default function StrategicOperationsPage() {
       </section>
 
       {/* REQUEST A QUOTE */}
-      <section id="quote-section" className="bg-[#F6F8FB] py-28">
+      {/* <section id="quote-section" className="bg-[#F6F8FB] py-28">
         <div className="max-w-5xl mx-auto px-6">
           <div
             className="
@@ -591,7 +594,9 @@ export default function StrategicOperationsPage() {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
+
+      <StrategicOperationsForm />
     </main>
   );
 }

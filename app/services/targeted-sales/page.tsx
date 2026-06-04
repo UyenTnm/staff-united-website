@@ -1,5 +1,8 @@
 "use client";
 
+import TargetedSalesForm from "@/components/forms/TargetedSalesForm";
+import { Target } from "lucide-react";
+
 export default function TargetedSalesPage() {
   const serviceGroups = [
     {
@@ -432,7 +435,7 @@ export default function TargetedSalesPage() {
       </section>
 
       {/* REQUEST A QUOTE */}
-      <section id="quote-section" className="bg-[#F6F8FB] py-28">
+      {/* <section id="quote-section" className="bg-[#F6F8FB] py-28">
         <div className="max-w-5xl mx-auto px-6">
           <div
             className="
@@ -586,7 +589,8 @@ export default function TargetedSalesPage() {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
+      <TargetedSalesForm />
     </main>
   );
 }
