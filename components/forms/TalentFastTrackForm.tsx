@@ -490,13 +490,11 @@ transition
 ${errors.firstName ? "border border-red-500" : "border border-slate-300"}
 `}
                 />
-                <div className="h-5 mt-2">
-                  {errors.firstName && (
-                    <p className="mt-2 text-sm text-red-600">
-                      {errors.firstName}
-                    </p>
-                  )}
-                </div>
+                {errors.firstName && (
+                  <p className="mt-2 text-sm text-red-600">
+                    {errors.firstName}
+                  </p>
+                )}
               </div>
               <div>
                 <input
@@ -528,13 +526,9 @@ ${errors.firstName ? "border border-red-500" : "border border-slate-300"}
   focus:ring-slate-100
 "
                 />
-                <div className="h-5 mt-2">
-                  {errors.lastName && (
-                    <p className="mt-2 text-sm text-red-600">
-                      {errors.lastName}
-                    </p>
-                  )}
-                </div>
+                {errors.lastName && (
+                  <p className="mt-2 text-sm text-red-600">{errors.lastName}</p>
+                )}
               </div>
             </div>
 
