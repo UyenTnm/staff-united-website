@@ -783,7 +783,7 @@ ${errors.firstName ? "border border-red-500" : "border border-slate-300"}
                       const rawValue = e.target.value.replace(/\D/g, "");
                       setSalaryMin(rawValue);
                     }}
-                    placeholder="Minimum Salary"
+                    // placeholder="Minimum Salary"
                     className="
     w-full
     rounded-2xl
@@ -807,7 +807,7 @@ ${errors.firstName ? "border border-red-500" : "border border-slate-300"}
                       const rawValue = e.target.value.replace(/\D/g, "");
                       setSalaryMax(rawValue);
                     }}
-                    placeholder="Maximum Salary"
+                    // placeholder="Maximum Salary"
                     className="
     w-full
     rounded-2xl
