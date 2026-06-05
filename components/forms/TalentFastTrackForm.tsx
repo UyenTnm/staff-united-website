@@ -1,7 +1,7 @@
 "use client";
 
 import { supabase } from "@/lib/supabase";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -17,6 +17,7 @@ export default function TalentFastTrackForm() {
   const [isRecording, setIsRecording] = useState(false);
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const streamRef = useRef<MediaStream | null>(null);
 
   const [salaryMin, setSalaryMin] = useState("");
   const [salaryMax, setSalaryMax] = useState("");
@@ -38,6 +39,18 @@ export default function TalentFastTrackForm() {
 
   const [cvUrl, setCvUrl] = useState("");
 
+  useEffect(() => {
+    return () => {
+      streamRef.current?.getTracks().forEach((track) => {
+        track.stop();
+      });
+
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+    };
+  }, []);
+
   const formatSalary = (value: string) => {
     const numericValue = value.replace(/\D/g, "");
 
@@ -48,9 +61,16 @@ export default function TalentFastTrackForm() {
     const stream = await navigator.mediaDevices.getUserMedia({
       audio: true,
     });
+    streamRef.current = stream;
 
-    const mediaRecorder = new MediaRecorder(stream);
-
+    const mediaRecorder = new MediaRecorder(
+      stream,
+      MediaRecorder.isTypeSupported("audio/webm;codecs=opus")
+        ? {
+            mimeType: "audio/webm;codecs=opus",
+          }
+        : undefined,
+    );
     const chunks: Blob[] = [];
 
     mediaRecorder.ondataavailable = (event) => {
@@ -59,8 +79,11 @@ export default function TalentFastTrackForm() {
 
     mediaRecorder.onstop = () => {
       const blob = new Blob(chunks, {
-        type: "audio/webm",
+        type: mediaRecorder.mimeType,
       });
+
+      console.log("Recorder Type:", mediaRecorder.mimeType);
+      console.log("Blob Size:", blob.size);
 
       setAudioBlob(blob);
 
@@ -84,6 +107,10 @@ export default function TalentFastTrackForm() {
 
   const stopRecording = () => {
     mediaRecorderRef.current?.stop();
+
+    streamRef.current?.getTracks().forEach((track) => {
+      track.stop();
+    });
 
     if (timerRef.current) {
       clearInterval(timerRef.current);
@@ -157,6 +184,9 @@ export default function TalentFastTrackForm() {
 
     if (!aiConsent) {
       newErrors.aiConsent = "Consent is required";
+    }
+    if (!cvFile) {
+      newErrors.cvFile = "CV is required";
     }
 
     setErrors(newErrors);
@@ -598,6 +628,9 @@ ${errors.firstName ? "border border-red-500" : "border border-slate-300"}
     w-full
   "
             />
+            {errors.cvFile && (
+              <p className="mt-2 text-sm text-red-600">{errors.cvFile}</p>
+            )}
 
             <div className="mt-6 space-y-3">
               <label
@@ -716,6 +749,12 @@ ${errors.firstName ? "border border-red-500" : "border border-slate-300"}
                 )}
               </>
               {audioUrl && <audio controls src={audioUrl} className="w-full" />}
+              {/* {audioUrl && (
+                <audio controls preload="metadata" className="w-full">
+                  <source src={audioUrl} type={audioBlob?.type} />
+                  Your browser does not support audio playback.
+                </audio>
+              )} */}
 
               {audioUrl && !isRecording && (
                 <div className="flex flex-wrap gap-3 mt-4">
@@ -753,120 +792,139 @@ ${errors.firstName ? "border border-red-500" : "border border-slate-300"}
               )}
             </div>
 
-            <div className="grid :grid-cols-2 gap-6 mt-8">
-              {/* Salary */}
-              <div>
-                <label
-                  className="
-      block
-      text-sm
-      font-semibold
-      text-[#06172D]
-      mb-3
-    "
-                >
-                  Salary Expectation Range
-                </label>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <input
-                    type="text"
-                    inputMode="numeric"
-                    value={formatSalary(salaryMin)}
-                    onChange={(e) => {
-                      const rawValue = e.target.value.replace(/\D/g, "");
-                      setSalaryMin(rawValue);
-                    }}
-                    // placeholder="Minimum Salary"
+            {/* <div className="grid grid-cols-2 gap-6 mt-8 w-full"> */}
+            <div className="mt-8 w-full">
+              <div className="mt-8">
+                {/* Salary */}
+                <div>
+                  <label
                     className="
-    w-full
-    rounded-2xl
-    border
-    border-slate-300
-    px-5
-    py-4
-    outline-none
-    transition
-    focus:border-[#06172D]
-    focus:ring-4
-    focus:ring-slate-100
-  "
-                  />
+        block
+        text-sm
+        font-semibold
+        text-[#06172D]
+        mb-3
+      "
+                  >
+                    Salary Expectation Range
+                  </label>
 
-                  <input
-                    type="text"
-                    inputMode="numeric"
-                    value={formatSalary(salaryMax)}
-                    onChange={(e) => {
-                      const rawValue = e.target.value.replace(/\D/g, "");
-                      setSalaryMax(rawValue);
-                    }}
-                    // placeholder="Maximum Salary"
-                    className="
-    w-full
-    rounded-2xl
-    border
-    border-slate-300
-    px-5
-    py-4
-    outline-none
-    transition
-    focus:border-[#06172D]
-    focus:ring-4
-    focus:ring-slate-100
-  "
-                  />
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <input
+                        type="text"
+                        inputMode="numeric"
+                        value={formatSalary(salaryMin)}
+                        onChange={(e) => {
+                          const rawValue = e.target.value.replace(/\D/g, "");
+                          setSalaryMin(rawValue);
+                        }}
+                        placeholder="Min Salary"
+                        className="
+            w-full
+            rounded-2xl
+            border
+            border-slate-300
+            px-5
+            py-4
+            outline-none
+            transition
+            focus:border-[#06172D]
+            focus:ring-4
+            focus:ring-slate-100
+          "
+                      />
+
+                      {errors.salaryMin && (
+                        <p className="mt-2 text-sm text-red-600">
+                          {errors.salaryMin}
+                        </p>
+                      )}
+                    </div>
+
+                    <div>
+                      <input
+                        type="text"
+                        inputMode="numeric"
+                        value={formatSalary(salaryMax)}
+                        onChange={(e) => {
+                          const rawValue = e.target.value.replace(/\D/g, "");
+                          setSalaryMax(rawValue);
+                        }}
+                        placeholder="Max Salary"
+                        className="
+            w-full
+            rounded-2xl
+            border
+            border-slate-300
+            px-5
+            py-4
+            outline-none
+            transition
+            focus:border-[#06172D]
+            focus:ring-4
+            focus:ring-slate-100
+          "
+                      />
+
+                      {errors.salaryMax && (
+                        <p className="mt-2 text-sm text-red-600">
+                          {errors.salaryMax}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  <p className="mt-2 text-xs text-slate-500">
+                    Example: 15,000,000 - 25,000,000 VND/month
+                  </p>
                 </div>
 
-                <p className="mt-2 text-xs text-slate-500">
-                  Example: 15,000,000 - 25,000,000 VND/month
-                </p>
-              </div>
+                {/* Available Date */}
+                <div className="mt-8">
+                  <label
+                    className="
+        block
+        text-sm
+        font-semibold
+        text-[#06172D]
+        mb-3
+      "
+                  >
+                    Available Start Date
+                  </label>
 
-              {/* Availability */}
-              <div>
-                <label
-                  className="
-      block
-      text-sm
-      font-semibold
-      text-[#06172D]
-      mb-3
-    "
-                >
-                  Available Start Date
-                </label>
+                  <DatePicker
+                    selected={availability}
+                    onChange={(date: Date | null) => setAvailability(date)}
+                    placeholderText="Select your availability"
+                    dateFormat="dd MMMM yyyy"
+                    minDate={new Date()}
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
+                    wrapperClassName="w-full"
+                    className="
+        w-full
+        rounded-2xl
+        border
+        border-slate-300
+        px-5
+        py-4
+        outline-none
+        transition
+        focus:border-[#06172D]
+        focus:ring-4
+        focus:ring-slate-100
+      "
+                  />
 
-                <DatePicker
-                  selected={availability}
-                  onChange={(date: Date | null) => setAvailability(date)}
-                  placeholderText="Select your availability"
-                  dateFormat="dd MMMM yyyy"
-                  minDate={new Date()}
-                  showMonthDropdown
-                  showYearDropdown
-                  dropdownMode="select"
-                  wrapperClassName="w-full"
-                  className="
-      w-full
-      rounded-2xl
-      border
-      border-slate-300
-      px-5
-      py-4
-      outline-none
-      transition
-      focus:border-[#06172D]
-      focus:ring-4
-      focus:ring-slate-100
-    "
-                />
-
-                {errors.availability && (
-                  <p className="mt-2 text-sm text-red-600">
-                    {errors.availability}
-                  </p>
-                )}
+                  {errors.availability && (
+                    <p className="mt-2 text-sm text-red-600">
+                      {errors.availability}
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -910,6 +968,9 @@ ${errors.firstName ? "border border-red-500" : "border border-slate-300"}
                 analyse and summarise my application materials.
               </span>
             </label>
+            {errors.aiConsent && (
+              <p className="mt-3 text-sm text-red-600">{errors.aiConsent}</p>
+            )}
           </div>
 
           <button
