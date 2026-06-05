@@ -224,7 +224,7 @@ export default function AboutUs() {
                 women-powered offshore execution engine helping global
                 businesses grow through our structured{" "}
                 <span className="font-semibold text-[#103663]">
-                  “5-Core Support”™ Ecosystem
+                  “5-Core Support Ecosystem™”
                 </span>
                 , while creating meaningful, long-term careers for talented
                 women.
