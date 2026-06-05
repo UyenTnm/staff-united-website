@@ -385,9 +385,25 @@ export default function TargetedSalesForm() {
         additionalNotes,
       };
 
-      console.log(formData);
-      // turn on 2 line below when need test
-      //   await new Promise((resolve) => setTimeout(resolve, 1000));
+      const crmPayload = {
+        serviceType: "Targeted Sales",
+
+        ...formData,
+
+        submittedAt: new Date().toISOString(),
+      };
+
+      console.log("CRM PAYLOAD", crmPayload);
+
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbwNH742hISqksyCyUHl54L8LHM07bMSHV4Sh7hczn4SqD6CTOQqFvEcNTtpW_ZSCl6J/exec",
+        {
+          method: "POST",
+          mode: "no-cors",
+          body: JSON.stringify(crmPayload),
+        },
+      );
+
       setIsSubmitted(true);
 
       // App Script sẽ đặt ở đây

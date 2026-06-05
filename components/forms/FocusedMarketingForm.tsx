@@ -180,6 +180,13 @@ export default function FocusedMarketingForm() {
     if (serviceAreas.includes("Marketing Reporting") && !trackingStatus) {
       newErrors.trackingStatus = "Please select tracking status";
     }
+    if (
+      serviceAreas.includes("Marketing Reporting") &&
+      reportingTasks.length === 0
+    ) {
+      newErrors.reportingTasks =
+        "Please select at least one reporting requirement";
+    }
 
     // BUSINESS
 
@@ -226,8 +233,6 @@ export default function FocusedMarketingForm() {
     if (!startTimeline) {
       newErrors.startTimeline = "Please select a timeline";
     }
-
-    // CLIENT RELATIONSHIP
 
     console.log("ERRORS:", newErrors);
     setErrors(newErrors);
@@ -310,47 +315,22 @@ export default function FocusedMarketingForm() {
 
       console.log(formData);
 
-      // const crmPayload = {
-      //   serviceType: "Focused Marketing",
-
-      //   contactName: fullName,
-      //   contactEmail: email,
-      //   contactPhone: phone,
-
-      //   companyName,
-      //   website,
-      //   country,
-
-      //   industry: industry === "Other" ? otherIndustry : industry,
-
-      //   marketingPresence,
-      //   marketingTeam,
-      //   marketingTools,
-
-      //   serviceAreas,
-
-      //   contentTasks,
-      //   socialPlatforms,
-      //   campaignTasks,
-      //   creativeTasks,
-      //   researchTasks,
-      //   reportingTasks,
-
-      //   engagementType,
-      //   startTimeline,
-
-      //   desiredOutcome,
-      //   currentChallenges,
-      //   additionalNotes,
-      // };
-
-      // turn on 2 line below when need test
-      //   await new Promise((resolve) => setTimeout(resolve, 1000));
-
       const crmPayload = {
         serviceType: "Focused Marketing",
         ...formData,
+        submittedAt: new Date().toISOString(),
       };
+
+      console.log("CRM PAYLOAD", crmPayload);
+
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbwNH742hISqksyCyUHl54L8LHM07bMSHV4Sh7hczn4SqD6CTOQqFvEcNTtpW_ZSCl6J/exec",
+        {
+          method: "POST",
+          mode: "no-cors",
+          body: JSON.stringify(crmPayload),
+        },
+      );
 
       setIsSubmitted(true);
 
@@ -996,6 +976,12 @@ export default function FocusedMarketingForm() {
                     </label>
                   ))}
                 </div>
+
+                {errors.contentTasks && (
+                  <p className="mt-3 text-sm text-red-500">
+                    {errors.contentTasks}
+                  </p>
+                )}
               </div>
 
               {/* QUESTION 7 */}
@@ -1169,6 +1155,12 @@ export default function FocusedMarketingForm() {
                     </label>
                   ))}
                 </div>
+
+                {errors.socialPlatforms && (
+                  <p className="mt-3 text-sm text-red-500">
+                    {errors.socialPlatforms}
+                  </p>
+                )}
               </div>
 
               {/* QUESTION 11 */}

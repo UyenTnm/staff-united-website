@@ -320,19 +320,75 @@ export default function StrategicOperationsForm() {
       return;
     }
 
+    const formData = {
+      fullName,
+      email,
+      phone,
+      companyName,
+      website,
+      country,
+
+      industry: industry === "Other" ? otherIndustry : industry,
+
+      teamSize,
+      operationsStaff,
+
+      serviceAreas,
+
+      adminTasks,
+      adminHours,
+
+      businessOpsTasks,
+      businessOpsNotes,
+
+      sopStatus,
+      processCount,
+      sopTasks,
+      sopNotes,
+
+      hrTasks,
+      employeeCount,
+      hiringStatus,
+      hrNotes,
+
+      clientSupportTasks,
+      activeClients,
+      clientSupportNotes,
+
+      currentTools,
+      toolChallenges,
+      newToolsPreference,
+
+      desiredOutcome,
+      currentChallenges,
+      additionalNotes,
+    };
+
+    const crmPayload = {
+      serviceType: "Strategic Operations",
+
+      ...formData,
+
+      submittedAt: new Date().toISOString(),
+    };
+
     try {
       setIsSubmitting(true);
 
-      console.log("READY TO SEND");
-      // turn on 2 line below when need test
-      //   await new Promise((resolve) => setTimeout(resolve, 1000));
-      //   setIsSubmitted(true);
+      console.log("CRM PAYLOAD", crmPayload);
 
-      // App Script sẽ đặt ở đây
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbwNH742hISqksyCyUHl54L8LHM07bMSHV4Sh7hczn4SqD6CTOQqFvEcNTtpW_ZSCl6J/exec",
+        {
+          method: "POST",
+          mode: "no-cors",
+          body: JSON.stringify(crmPayload),
+        },
+      );
+
+      setIsSubmitted(true);
     } catch (error) {
-      console.error(error);
-    } finally {
-      setIsSubmitting(false);
+      console.error("SUBMIT ERROR:", error);
     }
   };
 
