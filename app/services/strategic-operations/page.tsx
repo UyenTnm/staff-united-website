@@ -53,52 +53,114 @@ export default function StrategicOperationsPage() {
   return (
     <main className="min-h-screen">
       {/* HERO */}
-      <section className="bg-[#06172d] text-white pt-40 pb-28">
-        <div className="max-w-6xl mx-auto px-6">
+      <section
+        className="
+    relative
+    overflow-hidden
+    text-white
+  "
+      >
+        {/* Background Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="
+      absolute
+      inset-0
+      h-full
+      w-full
+      object-cover
+    "
+        >
+          <source
+            src="/videos/services/strategic-operations-hero.mp4"
+            type="video/mp4"
+          />
+        </video>
+
+        {/* Dark Overlay */}
+
+        <div
+          className="
+      absolute
+      inset-0
+      bg-[#06172D]/20
+    "
+        />
+
+        {/* Optional Gradient */}
+
+        <div
+          className="
+      absolute
+      inset-0
+      bg-gradient-to-b
+      from-black/20
+      via-[#06172D]/40
+      to-[#06172D]/90
+    "
+        />
+
+        {/* Content */}
+
+        <div
+          className="
+      relative
+      z-10
+      max-w-6xl
+      mx-auto
+      px-6
+      pt-40
+      pb-28
+    "
+        >
           <span
             className="
-              text-[#79B9FF]
-              uppercase
-              tracking-[0.25em]
-              text-xs
-              font-medium
-            "
+        text-[#79B9FF]
+        uppercase
+        tracking-[0.25em]
+        text-xs
+        font-medium
+      "
           >
             Service Line
           </span>
 
           <h1
             className="
-              mt-4
-              text-5xl
-              lg:text-7xl
-              font-semibold
-              leading-tight
-            "
+    mt-4
+    text-5xl
+    lg:text-7xl
+    font-semibold
+    leading-tight
+  "
           >
             Strategic Operations
           </h1>
 
           <p
             className="
-              mt-6
-              text-xl
-              lg:text-2xl
-              text-white/70
-              max-w-2xl
-            "
+    mt-6
+    text-xl
+    lg:text-2xl
+    text-white/80
+    max-w-2xl
+  "
           >
             Administrative & Business Operations
           </p>
 
           <p
             className="
-              mt-8
-              max-w-3xl
-              text-white/60
-              text-lg
-              leading-relaxed
-            "
+    mt-8
+    max-w-3xl
+    text-white/70
+    text-lg
+    leading-relaxed
+  "
           >
             Helping businesses build stronger systems, improve coordination, and
             create scalable operational processes that support long-term growth.
@@ -113,14 +175,15 @@ export default function StrategicOperationsPage() {
               <div
                 key={item}
                 className="
-        px-4 py-2
+        px-4
+        py-2
         rounded-full
-
-        border border-white/10
-        bg-white/[0.05]
-
+        border
+        border-white/20
+        bg-white/10
+        backdrop-blur-sm
         text-sm
-        text-white/80
+        text-white
       "
               >
                 {item}
@@ -136,7 +199,8 @@ export default function StrategicOperationsPage() {
             }
             className="
     mt-10
-    px-7 py-4
+    px-7
+    py-4
     rounded-full
 
     bg-[#4F8DC9]
@@ -145,7 +209,8 @@ export default function StrategicOperationsPage() {
     text-white
     font-medium
 
-    transition-all duration-300
+    transition-all
+    duration-300
   "
           >
             Request a Quote

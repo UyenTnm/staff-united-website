@@ -78,12 +78,16 @@ export default function RequestSupportPage() {
                 </p>
 
                 <h1 className="text-4xl md:text-6xl font-bold text-secondary tracking-tight leading-tight mb-6">
-                  Let&apos;s Discuss Your Business Needs
+                  Client Fast Track
                 </h1>
 
-                <p className="text-lg md:text-xl text-foreground/80 leading-relaxed max-w-3xl mx-auto">
+                {/* <p className="text-lg md:text-xl text-foreground/80 leading-relaxed max-w-3xl mx-auto">
                   Tell us what you need and our team will recommend the right
                   support model, tools, and timeline to help your business grow.
+                </p> */}
+                <p className="text-lg md:text-xl text-foreground/80 leading-relaxed max-w-3xl mx-auto">
+                  Tell us what support your business needs. Our team will review
+                  your request and recommend the most suitable next steps.
                 </p>
 
                 {/* Trust Badges */}

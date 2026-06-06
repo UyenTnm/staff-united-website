@@ -800,7 +800,7 @@ ${errors.firstName ? "border border-red-500" : "border border-slate-300"}
                   <label
                     className="
         block
-        text-sm
+        text-lg
         font-semibold
         text-[#06172D]
         mb-3
@@ -885,7 +885,7 @@ ${errors.firstName ? "border border-red-500" : "border border-slate-300"}
                   <label
                     className="
         block
-        text-sm
+        text-lg
         font-semibold
         text-[#06172D]
         mb-3
