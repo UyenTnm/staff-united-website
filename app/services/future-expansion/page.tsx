@@ -120,7 +120,7 @@ export default function FocusedMarketingPage() {
             ))}
           </div>
 
-          <button
+          {/* <button
             onClick={() =>
               document.getElementById("quote-section")?.scrollIntoView({
                 behavior: "smooth",
@@ -141,7 +141,57 @@ export default function FocusedMarketingPage() {
   "
           >
             Request a Quote
-          </button>
+          </button> */}
+          <div className="flex flex-wrap gap-4 mt-10">
+            <button
+              onClick={() =>
+                document.getElementById("quote-section")?.scrollIntoView({
+                  behavior: "smooth",
+                })
+              }
+              className="
+      px-7
+      py-4
+      rounded-full
+
+      bg-[#4F8DC9]
+      hover:bg-[#79B9FF]
+
+      text-white
+      font-medium
+
+      transition-all
+      duration-300
+    "
+            >
+              Request a Quote
+            </button>
+
+            <a
+              href="/request-support"
+              className="
+    px-7
+    py-4
+
+    rounded-full
+
+    border-2
+    border-[#79B9FF]
+
+    text-[#79B9FF]
+
+    font-semibold
+
+    hover:bg-[#79B9FF]
+    hover:text-white
+
+    transition-all
+    duration-300
+  "
+            >
+              Client Fast Track →
+            </a>
+          </div>
         </div>
       </section>
 
