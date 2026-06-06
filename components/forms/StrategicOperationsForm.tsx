@@ -378,7 +378,7 @@ export default function StrategicOperationsForm() {
       console.log("CRM PAYLOAD", crmPayload);
 
       await fetch(
-        "https://script.google.com/macros/s/AKfycbwNH742hISqksyCyUHl54L8LHM07bMSHV4Sh7hczn4SqD6CTOQqFvEcNTtpW_ZSCl6J/exec",
+        "https://script.google.com/macros/s/AKfycbzQMV0r0lhpYflclEflbenBX0esIe1zsivVRJ_xh5erVJWd8kmEoClIhJWb_W_Ptun1/exec",
         {
           method: "POST",
           mode: "no-cors",
