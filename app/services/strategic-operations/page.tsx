@@ -2,8 +2,10 @@
 
 import { Gauge, Layers3, ShieldCheck, Workflow } from "lucide-react";
 import StrategicOperationsForm from "../../../components/forms/StrategicOperationsForm";
+import { useState } from "react";
 
 export default function StrategicOperationsPage() {
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const serviceGroups = [
     {
       title: "Administrative Support",
@@ -59,6 +61,8 @@ export default function StrategicOperationsPage() {
     relative
     overflow-hidden
     text-white
+
+    bg-[#06172D]
   "
       >
         {/* Background Video */}
@@ -68,13 +72,19 @@ export default function StrategicOperationsPage() {
           loop
           playsInline
           preload="metadata"
-          className="
-      absolute
-      inset-0
-      h-full
-      w-full
-      object-cover
-    "
+          onLoadedData={() => setVideoLoaded(true)}
+          className={`
+    absolute
+    inset-0
+    h-full
+    w-full
+    object-cover
+
+    transition-opacity
+    duration-700
+
+    ${videoLoaded ? "opacity-100" : "opacity-0"}
+  `}
         >
           <source
             src="/videos/services/strategic-operations-hero.mp4"

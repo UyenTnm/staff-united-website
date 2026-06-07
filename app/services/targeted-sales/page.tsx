@@ -8,8 +8,10 @@ import {
   TrendingUp,
   UserCheck,
 } from "lucide-react";
+import { useState } from "react";
 
 export default function TargetedSalesPage() {
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const serviceGroups = [
     {
       title: "Sales Operations",
@@ -55,6 +57,8 @@ export default function TargetedSalesPage() {
     relative
     overflow-hidden
     text-white
+
+    bg-[#06172D]
   "
       >
         {/* Background Video */}
@@ -64,13 +68,19 @@ export default function TargetedSalesPage() {
           loop
           playsInline
           preload="metadata"
-          className="
-      absolute
-      inset-0
-      h-full
-      w-full
-      object-cover
-    "
+          onLoadedData={() => setVideoLoaded(true)}
+          className={`
+    absolute
+    inset-0
+    h-full
+    w-full
+    object-cover
+
+    transition-opacity
+    duration-700
+
+    ${videoLoaded ? "opacity-100" : "opacity-0"}
+  `}
         >
           <source
             src="/videos/services/targeted-sales-hero.mp4"

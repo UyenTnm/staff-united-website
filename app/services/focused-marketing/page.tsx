@@ -2,8 +2,10 @@
 
 import FocusedMarketingForm from "@/components/forms/FocusedMarketingForm";
 import { BadgeCheck, BarChart3, Megaphone, Users } from "lucide-react";
+import { useState } from "react";
 
 export default function FocusedMarketingPage() {
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const serviceGroups = [
     {
       title: "Marketing Strategy & Campaigns",
@@ -54,6 +56,8 @@ export default function FocusedMarketingPage() {
     relative
     overflow-hidden
     text-white
+
+    bg-[#06172D]
   "
       >
         {/* Background Video */}
@@ -63,13 +67,19 @@ export default function FocusedMarketingPage() {
           loop
           playsInline
           preload="metadata"
-          className="
-      absolute
-      inset-0
-      h-full
-      w-full
-      object-cover
-    "
+          onLoadedData={() => setVideoLoaded(true)}
+          className={`
+    absolute
+    inset-0
+    h-full
+    w-full
+    object-cover
+
+    transition-opacity
+    duration-700
+
+    ${videoLoaded ? "opacity-100" : "opacity-0"}
+  `}
         >
           <source
             src="/videos/services/focused-marketing-hero.mp4"

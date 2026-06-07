@@ -2,8 +2,10 @@
 
 import AccountingLegalForm from "@/components/forms/AccountingLegalForm";
 import { Calculator, Landmark, LineChart, ShieldCheck } from "lucide-react";
+import { useState } from "react";
 
 export default function AccountingLegalPage() {
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const serviceGroups = [
     {
       title: "Bookkeeping & Reconciliation",
@@ -49,6 +51,8 @@ export default function AccountingLegalPage() {
     relative
     overflow-hidden
     text-white
+
+    bg-[#06172D]
   "
       >
         {/* Background Video */}
@@ -58,13 +62,19 @@ export default function AccountingLegalPage() {
           loop
           playsInline
           preload="metadata"
-          className="
-      absolute
-      inset-0
-      h-full
-      w-full
-      object-cover
-    "
+          onLoadedData={() => setVideoLoaded(true)}
+          className={`
+    absolute
+    inset-0
+    h-full
+    w-full
+    object-cover
+
+    transition-opacity
+    duration-700
+
+    ${videoLoaded ? "opacity-100" : "opacity-0"}
+  `}
         >
           <source
             src="/videos/services/accounting-legal-hero.mp4"
