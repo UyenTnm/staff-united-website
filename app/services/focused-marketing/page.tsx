@@ -1,6 +1,7 @@
 "use client";
 
 import FocusedMarketingForm from "@/components/forms/FocusedMarketingForm";
+import { BadgeCheck, BarChart3, Megaphone, Users } from "lucide-react";
 
 export default function FocusedMarketingPage() {
   const serviceGroups = [
@@ -502,50 +503,78 @@ export default function FocusedMarketingPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
             {[
               {
+                icon: Megaphone,
                 title: "Brand Visibility",
                 desc: "Increase awareness and maintain a consistent presence across channels.",
               },
               {
+                icon: BadgeCheck,
                 title: "Professional Brand Presence",
                 desc: "Strengthen credibility through high-quality communication and assets.",
               },
               {
+                icon: Users,
                 title: "Audience Engagement",
                 desc: "Connect with customers through targeted campaigns and media content.",
               },
               {
+                icon: BarChart3,
                 title: "Marketing Consistency",
                 desc: "Maintain organized execution, reporting, and campaign coordination.",
               },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="
-            rounded-3xl flex flex-col
-            border border-slate-200
-            p-6 h-full
-          "
-              >
-                <h3
-                  className="
-              text-xl font-semibold min-h-[56px]
-              text-[#06172d] flex items-start
-            "
-                >
-                  {item.title}
-                </h3>
+            ].map((item) => {
+              const Icon = item.icon;
 
-                <p
+              return (
+                <div
+                  key={item.title}
                   className="
-              mt-4
-              text-slate-600
-              leading-relaxed 
-            "
+        rounded-3xl
+        flex flex-col
+        border border-slate-200
+        p-6
+        h-full
+      "
                 >
-                  {item.desc}
-                </p>
-              </div>
-            ))}
+                  <div
+                    className="
+          w-14 h-14
+          rounded-2xl
+          bg-[#EEF6FD]
+          border border-[#D7EAFB]
+          flex items-center justify-center
+          mb-6
+        "
+                  >
+                    <Icon
+                      className="w-7 h-7 text-[#4F8DC9]"
+                      strokeWidth={1.8}
+                    />
+                  </div>
+
+                  <h3
+                    className="
+          text-xl
+          font-semibold
+          text-[#06172d]
+          leading-tight h-[46px]
+        "
+                  >
+                    {item.title}
+                  </h3>
+
+                  <p
+                    className="
+          mt-4
+          text-slate-600
+          leading-relaxed
+        "
+                  >
+                    {item.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -1,5 +1,6 @@
 "use client";
 
+import { Gauge, Layers3, ShieldCheck, Workflow } from "lucide-react";
 import StrategicOperationsForm from "../../../components/forms/StrategicOperationsForm";
 
 export default function StrategicOperationsPage() {
@@ -505,51 +506,78 @@ export default function StrategicOperationsPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
             {[
               {
+                icon: Gauge,
                 title: "Operational Efficiency",
                 desc: "Reduce administrative bottlenecks and improve daily execution.",
               },
               {
+                icon: Workflow,
                 title: "Better Coordination",
                 desc: "Keep people, processes, and priorities aligned.",
               },
               {
+                icon: Layers3,
                 title: "Scalable Systems",
                 desc: "Create repeatable workflows that support growth.",
               },
               {
+                icon: ShieldCheck,
                 title: "Business Continuity",
                 desc: "Maintain structure, accountability, and consistency.",
               },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="
-            rounded-3xl
-            border border-slate-200
-            p-6
-          "
-              >
-                <h3
-                  className="
-              text-xl
-              font-semibold
-              text-[#06172d]
-            "
-                >
-                  {item.title}
-                </h3>
+            ].map((item) => {
+              const Icon = item.icon;
 
-                <p
+              return (
+                <div
+                  key={item.title}
                   className="
-              mt-4
-              text-slate-600
-              leading-relaxed
-            "
+        rounded-3xl
+        flex flex-col
+        border border-slate-200
+        p-6
+        h-full
+      "
                 >
-                  {item.desc}
-                </p>
-              </div>
-            ))}
+                  <div
+                    className="
+          w-14 h-14
+          rounded-2xl
+          bg-[#EEF6FD]
+          border border-[#D7EAFB]
+          flex items-center justify-center
+          mb-6
+        "
+                  >
+                    <Icon
+                      className="w-7 h-7 text-[#4F8DC9]"
+                      strokeWidth={1.8}
+                    />
+                  </div>
+
+                  <h3
+                    className="
+          text-xl
+          font-semibold
+          text-[#06172d]
+          leading-tight
+        "
+                  >
+                    {item.title}
+                  </h3>
+
+                  <p
+                    className="
+          mt-4
+          text-slate-600
+          leading-relaxed
+        "
+                  >
+                    {item.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

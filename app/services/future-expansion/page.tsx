@@ -1,6 +1,7 @@
 "use client";
 
 import FutureExpansionForm from "@/components/forms/FutureExpansionForm";
+import { Building2, Handshake, Rocket, TrendingUp } from "lucide-react";
 
 export default function FocusedMarketingPage() {
   const serviceGroups = [
@@ -44,52 +45,114 @@ export default function FocusedMarketingPage() {
   return (
     <main className="min-h-screen">
       {/* HERO */}
-      <section className="bg-[#06172d] text-white pt-40 pb-28">
-        <div className="max-w-6xl mx-auto px-6">
+      <section
+        className="
+    relative
+    overflow-hidden
+    text-white
+  "
+      >
+        {/* Background Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="
+      absolute
+      inset-0
+      h-full
+      w-full
+      object-cover
+    "
+        >
+          <source
+            src="/videos/services/future-expansion-hero.mp4"
+            type="video/mp4"
+          />
+        </video>
+
+        {/* Dark Overlay */}
+
+        <div
+          className="
+      absolute
+      inset-0
+      bg-[#06172D]/20
+    "
+        />
+
+        {/* Gradient Overlay */}
+
+        <div
+          className="
+      absolute
+      inset-0
+      bg-gradient-to-b
+      from-black/20
+      via-[#06172D]/40
+      to-[#06172D]/90
+    "
+        />
+
+        {/* Hero Content */}
+
+        <div
+          className="
+      relative
+      z-10
+      max-w-6xl
+      mx-auto
+      px-6
+      pt-40
+      pb-28
+    "
+        >
           <span
             className="
-              text-[#79B9FF]
-              uppercase
-              tracking-[0.25em]
-              text-xs
-              font-medium
-            "
+        text-[#79B9FF]
+        uppercase
+        tracking-[0.25em]
+        text-xs
+        font-medium
+      "
           >
             Service Line
           </span>
 
           <h1
             className="
-              mt-4
-              text-5xl
-              lg:text-7xl
-              font-semibold
-              leading-tight
-            "
+    mt-4
+    text-5xl
+    lg:text-7xl
+    font-semibold
+    leading-tight
+  "
           >
             Future Expansion
           </h1>
 
           <p
             className="
-              mt-6
-              text-xl
-              lg:text-2xl
-              text-white/70
-              max-w-2xl
-            "
+    mt-6
+    text-xl
+    lg:text-2xl
+    text-white/80
+    max-w-2xl
+  "
           >
-            Business Setup & Market Entry Coordination{" "}
+            Business Setup & Market Entry Coordination
           </p>
 
           <p
             className="
-              mt-8
-              max-w-3xl
-              text-white/60
-              text-lg
-              leading-relaxed
-            "
+    mt-8
+    max-w-3xl
+    text-white/70
+    text-lg
+    leading-relaxed
+  "
           >
             Helping businesses establish the operational foundation, local
             coordination, and support required to enter new markets and pursue
@@ -105,14 +168,15 @@ export default function FocusedMarketingPage() {
               <div
                 key={item}
                 className="
-        px-4 py-2
+        px-4
+        py-2
         rounded-full
-
-        border border-white/10
-        bg-white/[0.05]
-
+        border
+        border-white/20
+        bg-white/10
+        backdrop-blur-sm
         text-sm
-        text-white/80
+        text-white
       "
               >
                 {item}
@@ -120,28 +184,6 @@ export default function FocusedMarketingPage() {
             ))}
           </div>
 
-          {/* <button
-            onClick={() =>
-              document.getElementById("quote-section")?.scrollIntoView({
-                behavior: "smooth",
-              })
-            }
-            className="
-    mt-10
-    px-7 py-4
-    rounded-full
-
-    bg-[#4F8DC9]
-    hover:bg-[#79B9FF]
-
-    text-white
-    font-medium
-
-    transition-all duration-300
-  "
-          >
-            Request a Quote
-          </button> */}
           <div className="flex flex-wrap gap-4 mt-10">
             <button
               onClick={() =>
@@ -170,24 +212,24 @@ export default function FocusedMarketingPage() {
             <a
               href="/request-support"
               className="
-    px-7
-    py-4
+      px-7
+      py-4
 
-    rounded-full
+      rounded-full
 
-    border-2
-    border-[#79B9FF]
+      border-2
+      border-[#79B9FF]
 
-    text-[#79B9FF]
+      text-[#79B9FF]
 
-    font-semibold
+      font-semibold
 
-    hover:bg-[#79B9FF]
-    hover:text-white
+      hover:bg-[#79B9FF]
+      hover:text-white
 
-    transition-all
-    duration-300
-  "
+      transition-all
+      duration-300
+    "
             >
               Client Fast Track →
             </a>
@@ -434,106 +476,91 @@ export default function FocusedMarketingPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
             {[
               {
+                icon: Rocket,
                 title: "Faster Market Entry",
                 desc: "Reduce setup delays through structured coordination and local support.",
               },
-
               {
+                icon: Building2,
                 title: "Operational Readiness",
                 desc: "Establish the business infrastructure required for launch and growth.",
               },
-
               {
+                icon: Handshake,
                 title: "Local Market Support",
                 desc: "Access coordination resources and trusted local partner networks.",
               },
-
               {
+                icon: TrendingUp,
                 title: "Expansion Confidence",
                 desc: "Move forward with greater clarity and confidence during expansion.",
               },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="
-            rounded-3xl flex flex-col
-            border border-slate-200
-            p-6 h-full
-          "
-              >
-                <h3
-                  className="
-              text-xl font-semibold min-h-[56px]
-              text-[#06172d] flex items-start
-            "
-                >
-                  {item.title}
-                </h3>
+            ].map((item) => {
+              const Icon = item.icon;
 
-                <p
+              return (
+                <div
+                  key={item.title}
                   className="
-              mt-4
-              text-slate-600
-              leading-relaxed 
-            "
-                >
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Important Note */}
-      {/* <section className="bg-[#FFF8ED] py-16">
-        <div className="max-w-5xl mx-auto px-6">
-          <div
-            className="
         rounded-3xl
-        border border-[#F4D8A6]
-        bg-white
-        p-8
+        flex flex-col
+        border border-slate-200
+        p-6
+        h-full
       "
-          >
-            <span
-              className="
-          uppercase
-          tracking-[0.2em]
-          text-xs
-          font-semibold
-          text-[#C98A2E]
+                >
+                  <div
+                    className="
+          w-14 h-14
+          rounded-2xl
+          bg-[#EEF6FD]
+          border border-[#D7EAFB]
+          flex items-center justify-center
+          mb-6
         "
-            >
-              Important Note
-            </span>
+                  >
+                    <Icon
+                      className="w-7 h-7 text-[#4F8DC9]"
+                      strokeWidth={1.8}
+                    />
+                  </div>
 
-            <h3
-              className="
-          mt-4
-          text-2xl min-h-[72px] mb-6
+                  {/* <h3
+                    className="
+          text-xl
           font-semibold
+          min-h-[56px]
           text-[#06172d]
         "
-            >
-              Coordination & Support Services
-            </h3>
+                  >
+                    {item.title}
+                  </h3> */}
+                  <h3
+                    className="
+    text-xl
+    font-semibold
+    text-[#06172d]
+    leading-tight
+  "
+                  >
+                    {item.title}
+                  </h3>
 
-            <p
-              className="
+                  <p
+                    className="
           mt-4
           text-slate-600
           leading-relaxed
         "
-            >
-              Future Expansion services focus on operational coordination,
-              business setup support, and market entry assistance. Legal, tax,
-              and licensing advice is provided through qualified local partners
-              where required.
-            </p>
+                  >
+                    {item.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* REQUEST A QUOTE */}
       <FutureExpansionForm />

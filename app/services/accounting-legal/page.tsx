@@ -1,6 +1,7 @@
 "use client";
 
 import AccountingLegalForm from "@/components/forms/AccountingLegalForm";
+import { Calculator, Landmark, LineChart, ShieldCheck } from "lucide-react";
 
 export default function AccountingLegalPage() {
   const serviceGroups = [
@@ -497,54 +498,81 @@ export default function AccountingLegalPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
             {[
               {
+                icon: LineChart,
                 title: "Financial Visibility",
                 desc: "Gain clearer insight into financial performance and business health.",
               },
 
               {
+                icon: Calculator,
                 title: "Improved Accuracy",
                 desc: "Maintain consistent records and reduce administrative errors.",
               },
 
               {
+                icon: ShieldCheck,
                 title: "Better Compliance",
                 desc: "Support financial processes that align with operational requirements.",
               },
 
               {
+                icon: Landmark,
                 title: "Confident Decision-Making",
                 desc: "Use reliable financial information to guide strategic business decisions.",
               },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="
-            rounded-3xl
-            border border-slate-200
-            p-6
-          "
-              >
-                <h3
-                  className="
-              text-xl
-              font-semibold
-              text-[#06172d]
-            "
-                >
-                  {item.title}
-                </h3>
+            ].map((item) => {
+              const Icon = item.icon;
 
-                <p
+              return (
+                <div
+                  key={item.title}
                   className="
-              mt-4
-              text-slate-600
-              leading-relaxed
-            "
+        rounded-3xl
+        flex flex-col
+        border border-slate-200
+        p-6
+        h-full
+      "
                 >
-                  {item.desc}
-                </p>
-              </div>
-            ))}
+                  <div
+                    className="
+          w-14 h-14
+          rounded-2xl
+          bg-[#EEF6FD]
+          border border-[#D7EAFB]
+          flex items-center justify-center
+          mb-6
+        "
+                  >
+                    <Icon
+                      className="w-7 h-7 text-[#4F8DC9]"
+                      strokeWidth={1.8}
+                    />
+                  </div>
+
+                  <h3
+                    className="
+          text-xl
+          font-semibold
+          text-[#06172d]
+          leading-tight h-[46px]
+        "
+                  >
+                    {item.title}
+                  </h3>
+
+                  <p
+                    className="
+          mt-4
+          text-slate-600
+          leading-relaxed
+        "
+                  >
+                    {item.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

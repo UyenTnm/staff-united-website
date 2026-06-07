@@ -1,7 +1,13 @@
 "use client";
 
 import TargetedSalesForm from "@/components/forms/TargetedSalesForm";
-import { Target } from "lucide-react";
+import {
+  Eye,
+  HeartHandshake,
+  Target,
+  TrendingUp,
+  UserCheck,
+} from "lucide-react";
 
 export default function TargetedSalesPage() {
   const serviceGroups = [
@@ -498,54 +504,81 @@ export default function TargetedSalesPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
             {[
               {
+                icon: TrendingUp,
                 title: "Revenue Growth",
                 desc: "Create more qualified sales opportunities through organized sales processes.",
               },
 
               {
+                icon: HeartHandshake,
                 title: "Customer Satisfaction",
-
                 desc: "Deliver consistent support and improve customer satisfaction.",
               },
 
               {
+                icon: UserCheck,
                 title: "Stronger Retention",
                 desc: "Build lasting customer relationships through proactive engagement.",
               },
 
               {
+                icon: Eye,
                 title: "Operational Visibility",
                 desc: "Maintain clear visibility across sales pipelines and customer interactions.",
               },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="
-            rounded-3xl flex flex-col
-            border border-slate-200
-            p-6 h-full
-          "
-              >
-                <h3
-                  className="
-              text-xl font-semibold
-              text-[#06172d] flex items-start
-            "
-                >
-                  {item.title}
-                </h3>
+            ].map((item) => {
+              const Icon = item.icon;
 
-                <p
+              return (
+                <div
+                  key={item.title}
                   className="
-              mt-4
-              text-slate-600
-              leading-relaxed
-            "
+        rounded-3xl
+        flex flex-col
+        border border-slate-200
+        p-6
+        h-full
+      "
                 >
-                  {item.desc}
-                </p>
-              </div>
-            ))}
+                  <div
+                    className="
+          w-14 h-14
+          rounded-2xl
+          bg-[#EEF6FD]
+          border border-[#D7EAFB]
+          flex items-center justify-center
+          mb-6
+        "
+                  >
+                    <Icon
+                      className="w-7 h-7 text-[#4F8DC9]"
+                      strokeWidth={1.8}
+                    />
+                  </div>
+
+                  <h3
+                    className="
+          text-xl
+          font-semibold
+          text-[#06172d]
+          leading-tight
+        "
+                  >
+                    {item.title}
+                  </h3>
+
+                  <p
+                    className="
+          mt-4
+          text-slate-600
+          leading-relaxed
+        "
+                  >
+                    {item.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
