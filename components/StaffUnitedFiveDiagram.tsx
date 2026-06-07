@@ -937,8 +937,8 @@ text-base md:text-lg xl:text-xl "
 
               <p className="text-white leading-[1.6] text-sm md:text-base">
                 The STAFF Advantage™ is built on Strong, Talented, Ambitious,
-                Focused Females — professional women trained to deliver more
-                than support.
+                Focused Females — professional women internationally trained to
+                deliver more than support.
               </p>
 
               <p className="text-white leading-[1.6] text-sm md:text-base">
@@ -949,7 +949,7 @@ text-base md:text-lg xl:text-xl "
                 at a higher level.
               </p>
 
-              <p className="text-white/80 leading-[1.6] text-sm md:text-base">
+              <p className="text-white leading-[1.6] text-sm md:text-base">
                 We do not simply fill roles. We raise the standard of what
                 support should be.
               </p>
@@ -1535,7 +1535,6 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                 support system businesses need to operate, grow, protect, and
                 scale.
               </p>
-
               <p className="text-white leading-[1.6] text-sm md:text-base">
                 The 5-Core Support Ecosystem™ is built around five essential
                 areas of business support: Strategic Operations, Targeted Sales,
@@ -1552,6 +1551,11 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
                 foundation that allows businesses to grow and scale with
                 confidence.
               </p>
+
+              {/* <p className="text-white leading-[1.6] text-sm md:text-base">
+                We do not simply support businesses. We help build the systems
+                that enable them to scale with confidence.
+              </p> */}
             </div>
           </div>
 

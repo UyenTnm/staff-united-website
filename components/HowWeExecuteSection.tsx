@@ -98,7 +98,7 @@ to-[#e7f0f9]
           This is the operational philosophy behind how we deliver support
           consistently, efficiently, and at scale through our structured{" "}
           <span className="text-[#4f8dc9] font-semibold">
-            “5-Core Support”™ Ecosystem
+            “5-Core Support Ecosystem™”
           </span>
           .
         </p>

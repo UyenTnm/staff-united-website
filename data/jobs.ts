@@ -595,75 +595,69 @@ export const jobs: Job[] = [
     benefits: [],
   },
   {
-    slug: "sales-client-growth-coordinator",
-    title: "Sales & Client Growth Coordinator",
+    slug: "business-growth-representatives",
+    title: "Business Growth Representatives",
     department: "Sales",
     location: "Ho Chi Minh City",
     type: "Full-time",
 
     description:
-      "STAFF United is hiring a Sales & Client Growth Coordinator to drive pipeline growth, manage a structured CRM system, and ensure seamless client transitions from prospect to long-term partner.",
+      "STAFF United is hiring Business Growth Representatives to help introduce our services to businesses, build relationships, book Free Business Support Reviews, and support business growth through our Vietnam Forward Initiative.",
 
     sections: [
       {
         title: "About the Role",
         content: [
-          "This role is about building and maintaining a high-quality, structured sales pipeline.",
-          "You will identify opportunities, manage client relationships, and ensure smooth transitions from lead to active client.",
-          "The focus is not just on outreach, but on maintaining clarity, consistency, and professionalism across every touchpoint.",
-          "We’re looking for someone who is organized, proactive, and comfortable working with systems and processes.",
-          "This is an office-based role in Ho Chi Minh City for someone who can take ownership and execute with discipline.",
+          "STAFF United is building a women-powered business support team in Vietnam.",
+          "Through our Vietnamese Business Growth Initiative, we help international and local businesses operate smarter, execute better, and grow stronger.",
+          "We are looking for Business Growth Representatives based in Ho Chi Minh City to help introduce STAFF United to potential clients, build professional relationships, and support business growth.",
+          "This role focuses on communication, relationship building, outreach, and helping businesses access the support they need.",
+          "You will play an important role in expanding the reach of STAFF United and supporting Vietnam’s growing business community.",
         ],
       },
 
       {
         title: "What You’ll Do",
         content: [
-          "Prospect Research & Outreach",
-          "Conduct targeted research on LinkedIn and relevant databases",
-          "Identify founders, agencies, and operators aligned with our model",
-          "Execute personalized outreach via LinkedIn and email",
-          "Track emerging industries and trends with operational gaps",
+          "Introduce STAFF United to potential business clients",
+          "Support both international and local business growth",
+          "Promote the Vietnam Forward Initiative",
+          "Identify businesses that may need support",
+          "Book Free Business Support Reviews",
+          "Follow up with leads and referral partners",
+          "Keep lead information updated in Monday.com",
+          "Help guide qualified clients to the right next step",
+        ],
+      },
 
-          "CRM Management & Pipeline Tracking",
-          "Own and manage CRM system (Monday.com)",
-          "Ensure all leads are accurately tracked and categorized",
-          "Maintain clean, up-to-date pipeline data",
-          "Support reporting on pipeline health and performance",
+      {
+        title: "Our Core Service Areas",
+        content: [
+          "You will introduce businesses to our 5-Core Support Ecosystem™",
 
-          "Proposal Support & Lead Follow-up",
-          "Manage consistent follow-ups to keep leads engaged",
-          "Coordinate scheduling and communication flow",
-          "Support creation of clear, professional proposals",
-          "Ensure communication is prompt, structured, and confident",
+          "Strategic Operations — structure, admin support, workflows, documentation, and daily execution",
 
-          "Client Onboarding Support",
-          "Coordinate with Operations for smooth client transitions",
-          "Support onboarding setup (Slack, Notion, workflows)",
-          "Ensure a polished onboarding experience",
-          "Capture feedback to improve sales-to-delivery process",
+          "Targeted Sales — lead follow-up, client communication, CRM activity, and sales coordination",
+
+          "Accounting & Legal — financial records, documentation, compliance coordination, and partner support",
+
+          "Focused Marketing — content support, brand visibility, campaign coordination, and marketing execution",
+
+          "Future Expansion — market research, growth planning, new opportunities, and expansion preparation",
         ],
       },
 
       {
         title: "Who We’re Looking For",
         content: [
-          "Core Skills",
-          "Fluent, confident English communication (written and verbal)",
-          "Ability to communicate professionally with international clients",
-          "Experience with CRM systems or structured workflows",
-          "Strong organization and attention to detail",
-
-          "Mindset",
-          "Proactive, consistent, and accountable",
-          "Comfortable working within structured systems",
-          "Follows through on tasks and responsibilities",
-          "Interested in sales, networking, and client growth",
-
-          "Nice to Have",
-          "Experience in B2B sales or client-facing roles",
-          "Familiarity with tools like Monday.com, Notion, or Slack",
-          "Understanding of sales pipelines and conversion tracking",
+          "Fluent in English",
+          "Strong in Vietnamese communication",
+          "Confident speaking with business owners and professionals",
+          "Professional, organized, and reliable",
+          "Ambitious and motivated to grow",
+          "Comfortable with outreach, follow-up, and relationship building",
+          "Interested in business, sales, marketing, operations, or entrepreneurship",
+          "Experience in sales, business development, client service, or marketing is helpful, but communication, attitude, and follow-through matter most.",
         ],
       },
 
@@ -689,31 +683,36 @@ export const jobs: Job[] = [
       {
         title: "Compensation & Benefits",
         content: [
-          "Salary: Up to 15 million VND + bonus",
-          "Compensation directly tied to performance and contribution",
+          "Base Salary: VND 12,000,000/month",
+          "Performance Bonus: Up to 15% monthly",
+          "Signing Commission: 2.5% of first contract value for new clients signed",
+          "Commission is paid after the client signs and STAFF United receives the first payment",
           "Work with modern tools and equipment",
           "Access to premium office facilities (gym, swimming pool, pantry)",
-          "Structured, international-facing working environment",
-          "Direct exposure to founders and global clients",
-          "Clear pathway to grow into Business Development / Growth Lead roles",
+          "Structured international-facing working environment",
+          "Direct exposure to founders and business leaders",
         ],
       },
 
       {
         title: "Why This Role Matters",
         content: [
-          "This role is central to building a predictable and scalable growth engine.",
-          "You will help build a high-quality and consistent client pipeline.",
-          "You will expand network reach and market presence.",
-          "You will support long-term revenue growth through structured execution.",
+          "You will help connect businesses with the support they need to grow.",
+          "You will contribute directly to the Vietnam Forward Initiative.",
+          "You will help expand the reach of STAFF United across Vietnam and international markets.",
+          "You will support long-term business growth while building your own professional career.",
         ],
       },
 
       {
         title: "Apply",
         content: [
-          "If you are organized, proactive, and interested in building structured client growth systems, we’d like to hear from you.",
+          "Apply through our Talent Fast Track form on the STAFF United website.",
+          "Please upload your CV, salary expectation, availability, and a short English voice introduction.",
           "Apply here: https://www.staffunitedgroup.com/join",
+          // "STAFF United",
+          // "ALL WOMEN. ALL BUSINESS.",
+          // "Strong women. United purpose. Moving Vietnam forward.",
         ],
       },
     ],
