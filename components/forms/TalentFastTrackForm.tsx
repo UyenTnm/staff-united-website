@@ -195,20 +195,22 @@ export default function TalentFastTrackForm() {
   };
 
   const uploadCV = async (file: File) => {
-    const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, "_")}`;
+    // const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, "_")}`;
     // const safeFileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, "_")}`;
+    const safeFileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, "_")}`;
 
     const { error } = await supabase.storage
       .from("candidate-files")
-      .upload(`cv/${fileName}`, file);
+      .upload(`cv/${safeFileName}`, file);
 
     if (error) {
+      console.error("SUPABASE CV ERROR:", error);
       throw error;
     }
 
     const { data } = supabase.storage
       .from("candidate-files")
-      .getPublicUrl(`cv/${fileName}`);
+      .getPublicUrl(`cv/${safeFileName}`);
 
     return data.publicUrl;
   };
@@ -221,6 +223,8 @@ export default function TalentFastTrackForm() {
       .upload(`voice/${fileName}`, blob);
 
     if (error) {
+      console.error("SUPABASE VOICE ERROR:", error);
+
       throw error;
     }
 
@@ -631,6 +635,11 @@ ${errors.firstName ? "border border-red-500" : "border border-slate-300"}
                   console.log("FILE NAME:", file.name);
                   console.log("FILE SIZE MB:", file.size / 1024 / 1024);
                   console.log("FILE TYPE:", file.type);
+
+                  if (file.size > 10 * 1024 * 1024) {
+                    alert("CV must be smaller than 10MB");
+                    return;
+                  }
 
                   setCvFile(file);
                 }
