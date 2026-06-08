@@ -6,17 +6,18 @@ import TimezoneSelect from "react-timezone-select";
 import "react-phone-input-2/lib/style.css";
 import AnimatedSection from "@/components/AnimatedSection";
 import { supabase } from "@/lib/supabase";
+import VoiceRecorder from "@/components/forms/VoiceRecorder";
 
 export default function RequestSupportPage() {
   const [success, setSuccess] = useState(false);
 
-  const [isRecording, setIsRecording] = useState(false);
+  // const [isRecording, setIsRecording] = useState(false);
   const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
   const [audioUrl, setAudioUrl] = useState("");
   const [description, setDescription] = useState("");
 
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  // const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  // const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const [recordingTime, setRecordingTime] = useState(0);
 
@@ -37,69 +38,6 @@ export default function RequestSupportPage() {
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
     setTimezone(tz);
   }, []);
-
-  const startRecording = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({
-      audio: true,
-    });
-
-    const mediaRecorder = new MediaRecorder(stream);
-
-    const chunks: Blob[] = [];
-
-    mediaRecorder.ondataavailable = (event) => {
-      chunks.push(event.data);
-    };
-
-    mediaRecorder.onstop = () => {
-      // Release microphone
-      stream.getTracks().forEach((track) => track.stop());
-
-      const blob = new Blob(chunks, {
-        type: "audio/webm",
-      });
-
-      setAudioBlob(blob);
-
-      const previewUrl = URL.createObjectURL(blob);
-
-      setAudioUrl(previewUrl);
-    };
-
-    mediaRecorderRef.current = mediaRecorder;
-
-    mediaRecorder.start();
-
-    setRecordingTime(0);
-
-    timerRef.current = setInterval(() => {
-      setRecordingTime((prev) => prev + 1);
-    }, 1000);
-
-    setIsRecording(true);
-  };
-
-  const stopRecording = () => {
-    mediaRecorderRef.current?.stop();
-
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-    }
-
-    setIsRecording(false);
-  };
-
-  const deleteRecording = () => {
-    setAudioBlob(null);
-    setAudioUrl("");
-    setRecordingTime(0);
-
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-    }
-
-    setIsRecording(false);
-  };
 
   const uploadVoice = async (blob: Blob) => {
     const fileName = `voice-${Date.now()}.webm`;
@@ -572,34 +510,13 @@ export default function RequestSupportPage() {
     ${errors.description ? "border-red-500" : "border-[#d1d5db]"}
   `}
                         />
-                        <button
-                          type="button"
-                          onClick={isRecording ? stopRecording : startRecording}
-                          className={`
-    absolute
-    bottom-4
-    right-3
 
-    px-3
-    py-2
-
-    rounded-full
-
-    flex
-    items-center
-    gap-2
-
-    text-sm
-    font-medium
-
-    transition-all
-    duration-300
-
-    ${isRecording ? "bg-red-500 text-white" : "bg-[#06172D] text-white"}
-  `}
-                        >
-                          {isRecording ? "⏹ Stop" : "🎤 Record"}
-                        </button>
+                        <VoiceRecorder
+                          onRecordingReady={(blob, previewUrl) => {
+                            setAudioBlob(blob);
+                            setAudioUrl(previewUrl);
+                          }}
+                        />
                       </div>
                       {errors.description && (
                         <p className="mt-2 text-sm text-red-500">
@@ -607,35 +524,8 @@ export default function RequestSupportPage() {
                         </p>
                       )}
 
-                      {isRecording && (
-                        <div
-                          className="
-      mt-3
-      inline-flex
-      items-center
-      gap-2
-      px-3
-      py-2
-      rounded-full
-      bg-red-50
-      text-red-600
-      text-sm
-      font-medium
-    "
-                        >
-                          <span className="animate-pulse">🔴</span>
-                          Recording •{" "}
-                          {Math.floor(recordingTime / 60)
-                            .toString()
-                            .padStart(2, "0")}
-                          :{(recordingTime % 60).toString().padStart(2, "0")}
-                        </div>
-                      )}
-
-                      {audioUrl && (
+                      {/* {audioUrl && (
                         <div className="mt-3 space-y-3">
-                          <audio controls src={audioUrl} className="w-full" />
-
                           <button
                             type="button"
                             onClick={deleteRecording}
@@ -668,7 +558,7 @@ export default function RequestSupportPage() {
                             Delete Recording
                           </button>
                         </div>
-                      )}
+                      )} */}
 
                       <div className="space-y-4 pt-2">
                         <h3 className="text-lg font-semibold text-[#0b1b33]">
