@@ -1,13 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import TimezoneSelect from "react-timezone-select";
 import "react-phone-input-2/lib/style.css";
 import AnimatedSection from "@/components/AnimatedSection";
+import { supabase } from "@/lib/supabase";
 
 export default function RequestSupportPage() {
   const [success, setSuccess] = useState(false);
+
+  const [isRecording, setIsRecording] = useState(false);
+  const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
+  const [audioUrl, setAudioUrl] = useState("");
+  const [description, setDescription] = useState("");
+
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const [recordingTime, setRecordingTime] = useState(0);
 
   const [phone, setPhone] = useState("");
   const [timezone, setTimezone] = useState<string | undefined>(undefined);
@@ -26,6 +37,88 @@ export default function RequestSupportPage() {
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
     setTimezone(tz);
   }, []);
+
+  const startRecording = async () => {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      audio: true,
+    });
+
+    const mediaRecorder = new MediaRecorder(stream);
+
+    const chunks: Blob[] = [];
+
+    mediaRecorder.ondataavailable = (event) => {
+      chunks.push(event.data);
+    };
+
+    mediaRecorder.onstop = () => {
+      // Release microphone
+      stream.getTracks().forEach((track) => track.stop());
+
+      const blob = new Blob(chunks, {
+        type: "audio/webm",
+      });
+
+      setAudioBlob(blob);
+
+      const previewUrl = URL.createObjectURL(blob);
+
+      setAudioUrl(previewUrl);
+    };
+
+    mediaRecorderRef.current = mediaRecorder;
+
+    mediaRecorder.start();
+
+    setRecordingTime(0);
+
+    timerRef.current = setInterval(() => {
+      setRecordingTime((prev) => prev + 1);
+    }, 1000);
+
+    setIsRecording(true);
+  };
+
+  const stopRecording = () => {
+    mediaRecorderRef.current?.stop();
+
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+
+    setIsRecording(false);
+  };
+
+  const deleteRecording = () => {
+    setAudioBlob(null);
+    setAudioUrl("");
+    setRecordingTime(0);
+
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+
+    setIsRecording(false);
+  };
+
+  const uploadVoice = async (blob: Blob) => {
+    const fileName = `voice-${Date.now()}.webm`;
+
+    const { error } = await supabase.storage
+      .from("candidate-files")
+      .upload(`client-voice/${fileName}`, blob);
+
+    if (error) {
+      console.error("SUPABASE VOICE ERROR:", error);
+      throw error;
+    }
+
+    const { data } = supabase.storage
+      .from("candidate-files")
+      .getPublicUrl(`client-voice/${fileName}`);
+
+    return data.publicUrl;
+  };
 
   const validate = (data: any) => {
     const newErrors: any = {};
@@ -53,8 +146,9 @@ export default function RequestSupportPage() {
       newErrors.start_timeline = "Please select a start date.";
     }
 
-    if (!description) {
-      newErrors.description = "Please describe your needs.";
+    if (!description && !audioBlob) {
+      newErrors.description =
+        "Please provide a written description or record a voice note.";
     }
 
     return newErrors;
@@ -255,7 +349,18 @@ export default function RequestSupportPage() {
                       setIsSubmitting(true);
 
                       try {
+                        let voiceUrl = "";
+
+                        if (audioBlob) {
+                          voiceUrl = await uploadVoice(audioBlob);
+                        }
+
                         formData.set("phone", phone || "");
+                        formData.set("voice_url", voiceUrl);
+                        console.log(
+                          "VOICE URL IN FORM:",
+                          formData.get("voice_url"),
+                        );
                         formData.set("support_type", supportType);
                         formData.set("hours_per_week_option", hoursOption);
                         formData.set("custom_hours", customHours || "");
@@ -274,7 +379,7 @@ export default function RequestSupportPage() {
                         });
 
                         const res = await fetch(
-                          "https://script.google.com/macros/s/AKfycbyv8Dlwgk1tnbjlSLoynZoia34TEI5yvPBZLQ3F0z7UnSCXi2w9vAO8UoEO2KdB8f8/exec",
+                          "https://script.google.com/macros/s/AKfycbyd5_GxRni9GZ9eE9zsWadiyircFP1T9bQeenQjW_U5srABhWg-2we3Kb5xtHe_w4cO/exec",
                           {
                             method: "POST",
                             headers: {
@@ -307,6 +412,10 @@ export default function RequestSupportPage() {
                           });
 
                           form.reset();
+                          setAudioBlob(null);
+                          setAudioUrl("");
+                          setDescription("");
+                          setRecordingTime(0);
                           setPhone("");
                           setHoursOption("");
                           setCustomHours("");
@@ -445,12 +554,121 @@ export default function RequestSupportPage() {
                         <option>Not sure</option>
                       </select>
 
-                      <textarea
-                        name="description"
-                        rows={4}
-                        placeholder="Briefly describe the type of support you need..."
-                        className="w-full border border-[#d1d5db] rounded px-3 py-2"
-                      />
+                      <div className="relative">
+                        <textarea
+                          name="description"
+                          value={description}
+                          onChange={(e) => setDescription(e.target.value)}
+                          rows={5}
+                          placeholder="Tell us what support your business needs..."
+                          className={`
+    w-full
+    border
+    rounded-xl
+    px-4
+    py-3
+    pr-16
+    resize-none
+    ${errors.description ? "border-red-500" : "border-[#d1d5db]"}
+  `}
+                        />
+                        <button
+                          type="button"
+                          onClick={isRecording ? stopRecording : startRecording}
+                          className={`
+    absolute
+    bottom-4
+    right-3
+
+    px-3
+    py-2
+
+    rounded-full
+
+    flex
+    items-center
+    gap-2
+
+    text-sm
+    font-medium
+
+    transition-all
+    duration-300
+
+    ${isRecording ? "bg-red-500 text-white" : "bg-[#06172D] text-white"}
+  `}
+                        >
+                          {isRecording ? "⏹ Stop" : "🎤 Record"}
+                        </button>
+                      </div>
+                      {errors.description && (
+                        <p className="mt-2 text-sm text-red-500">
+                          {errors.description}
+                        </p>
+                      )}
+
+                      {isRecording && (
+                        <div
+                          className="
+      mt-3
+      inline-flex
+      items-center
+      gap-2
+      px-3
+      py-2
+      rounded-full
+      bg-red-50
+      text-red-600
+      text-sm
+      font-medium
+    "
+                        >
+                          <span className="animate-pulse">🔴</span>
+                          Recording •{" "}
+                          {Math.floor(recordingTime / 60)
+                            .toString()
+                            .padStart(2, "0")}
+                          :{(recordingTime % 60).toString().padStart(2, "0")}
+                        </div>
+                      )}
+
+                      {audioUrl && (
+                        <div className="mt-3 space-y-3">
+                          <audio controls src={audioUrl} className="w-full" />
+
+                          <button
+                            type="button"
+                            onClick={deleteRecording}
+                            className="
+    inline-flex
+    items-center
+    gap-2
+
+    px-4
+    py-2
+
+    rounded-full
+
+    bg-red-50
+    border
+    border-red-200
+
+    text-red-600
+    text-sm
+    font-semibold
+
+    hover:bg-red-100
+    hover:shadow-sm
+
+    transition-all
+    duration-300
+  "
+                          >
+                            <span>🗑</span>
+                            Delete Recording
+                          </button>
+                        </div>
+                      )}
 
                       <div className="space-y-4 pt-2">
                         <h3 className="text-lg font-semibold text-[#0b1b33]">
