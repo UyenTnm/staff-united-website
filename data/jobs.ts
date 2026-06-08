@@ -719,4 +719,136 @@ export const jobs: Job[] = [
 
     benefits: [],
   },
+  {
+    slug: "accountant-bookkeeper",
+    title: "Accountant / Bookkeeper",
+    department: "Finance & Accounting",
+    location: "Ho Chi Minh City",
+    type: "Full-time",
+
+    description:
+      "STAFF United is seeking a motivated and detail-oriented Accountant / Bookkeeper to support financial operations and business administration. This role is ideal for recent graduates and early-career professionals looking to build a strong foundation in accounting, bookkeeping, and business operations within a structured international-facing environment.",
+
+    sections: [
+      {
+        title: "About the Role",
+        content: [
+          "We are seeking a motivated and detail-oriented Accountant / Bookkeeper to join our team.",
+          "This is an excellent opportunity for recent graduates and early-career professionals looking to gain hands-on experience in accounting, bookkeeping, and business operations.",
+          "No prior work experience is required.",
+          "We provide training, guidance, and ongoing support to help you succeed in the role.",
+        ],
+      },
+
+      {
+        title: "What You'll Do",
+        content: [
+          "Bookkeeping & Accounting",
+
+          "Record and categorize daily financial transactions using QuickBooks Online",
+          "Reconcile bank accounts, credit cards, and payment platforms",
+          "Assist with accounts payable and accounts receivable management",
+          "Prepare monthly financial summaries and management reports",
+          "Support tax preparation and compliance activities with external accountants",
+          "Assist with bookkeeping catch-up projects and historical record clean-up",
+          "Maintain accurate and organized financial records and documentation",
+
+          "Administrative Support",
+
+          "Process invoices, receipts, and expense reports",
+          "Maintain organized digital filing systems and financial records",
+          "Assist with payroll administration and shareholder reporting",
+          "Draft correspondence and follow up on financial and operational matters",
+          "Support business operations, compliance requirements, and ad hoc administrative tasks",
+        ],
+      },
+
+      {
+        title: "Who We're Looking For",
+        content: [
+          "We are looking for someone who is detail-oriented, organized, and eager to learn.",
+
+          "Core Requirements",
+
+          "Fluent English communication skills",
+          "Diploma or Bachelor's degree in Accounting, Finance, Business Administration, or a related field",
+          "Basic understanding of bookkeeping and accounting principles",
+          "Comfortable learning new software and systems",
+          "Strong attention to detail and numerical accuracy",
+          "Organized, reliable, and capable of working independently",
+          "Good written and verbal communication skills",
+
+          "Nice to Have",
+
+          "Proficiency in Microsoft Office or Google Workspace",
+          "Familiarity with QuickBooks Online",
+          "Previous internship or academic project experience related to accounting or finance",
+        ],
+      },
+
+      {
+        title: "Who Will Do Well in This Role",
+        content: [
+          "This role suits someone who:",
+          "Enjoys working with numbers and structured processes",
+          "Has strong attention to detail and accuracy",
+          "Takes ownership of tasks and follows through consistently",
+          "Is eager to learn and develop professional accounting skills",
+          "Can maintain organized records and documentation",
+          "Values reliability, consistency, and continuous improvement",
+        ],
+      },
+
+      {
+        title: "What We Offer",
+        content: [
+          "Comprehensive on-the-job training and mentorship",
+          "Practical experience with modern accounting systems and business operations",
+          "Supportive and collaborative work environment",
+          "Opportunities for professional development and career growth",
+          "Direct exposure to founders and business leaders",
+          "Structured international-facing working environment",
+        ],
+      },
+
+      {
+        title: "Why This Role Matters",
+        content: [
+          "Accurate financial records and organized business operations are essential to the success of every growing company.",
+          "This role plays an important part in maintaining financial accuracy, supporting compliance, and helping leadership make informed decisions.",
+          "Beyond bookkeeping, you will gain valuable exposure to real-world business operations and develop skills that support long-term career growth.",
+        ],
+      },
+
+      {
+        title: "Position Details",
+        content: [
+          "Role Type: Full-Time",
+          "Work Setting: Office-Based",
+          "Location: Ho Chi Minh City",
+          "Experience Level: Entry-Level Welcome",
+        ],
+      },
+
+      {
+        title: "Compensation & Benefits",
+        content: [
+          "Salary: Up to 12,000,000 VND/month based on skills and experience",
+          "Performance bonus: Up to 15% monthly",
+          "Work with modern tools and equipment",
+          "Access to premium office facilities (gym, swimming pool, pantry)",
+        ],
+      },
+
+      {
+        title: "Apply",
+        content: [
+          "If you're looking to build a strong foundation in accounting, bookkeeping, and business operations while working in a structured and supportive environment, we'd love to hear from you.",
+          "Fresh graduates and career starters are strongly encouraged to apply.",
+        ],
+      },
+    ],
+
+    benefits: [],
+  },
 ];
