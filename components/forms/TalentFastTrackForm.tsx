@@ -195,7 +195,8 @@ export default function TalentFastTrackForm() {
   };
 
   const uploadCV = async (file: File) => {
-    const fileName = `${Date.now()}-${file.name}`;
+    const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, "_")}`;
+    // const safeFileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, "_")}`;
 
     const { error } = await supabase.storage
       .from("candidate-files")
@@ -285,8 +286,10 @@ export default function TalentFastTrackForm() {
       console.log("TALENT PAYLOAD", crmPayload);
 
       setIsSubmitted(true);
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
+
+      alert(error?.message || "CV upload failed. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -616,9 +619,20 @@ ${errors.firstName ? "border border-red-500" : "border border-slate-300"}
             <input
               type="file"
               accept=".pdf,.doc,.docx"
+              // onChange={(e) => {
+              //   if (e.target.files && e.target.files[0]) {
+              //     setCvFile(e.target.files[0]);
+              //   }
+              // }}
               onChange={(e) => {
                 if (e.target.files && e.target.files[0]) {
-                  setCvFile(e.target.files[0]);
+                  const file = e.target.files[0];
+
+                  console.log("FILE NAME:", file.name);
+                  console.log("FILE SIZE MB:", file.size / 1024 / 1024);
+                  console.log("FILE TYPE:", file.type);
+
+                  setCvFile(file);
                 }
               }}
               className="
