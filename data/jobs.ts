@@ -768,8 +768,6 @@ export const jobs: Job[] = [
         content: [
           "We are looking for someone who is detail-oriented, organized, and eager to learn.",
 
-          "Core Requirements",
-
           "Fluent English communication skills",
           "Diploma or Bachelor's degree in Accounting, Finance, Business Administration, or a related field",
           "Basic understanding of bookkeeping and accounting principles",
