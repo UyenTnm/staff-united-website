@@ -21,7 +21,18 @@ export default function VoiceRecorder({
       audio: true,
     });
 
-    const mediaRecorder = new MediaRecorder(stream);
+    // const mediaRecorder = new MediaRecorder(stream);
+    let mimeType = "";
+
+    if (MediaRecorder.isTypeSupported("audio/mp4")) {
+      mimeType = "audio/mp4";
+    } else if (MediaRecorder.isTypeSupported("audio/webm")) {
+      mimeType = "audio/webm";
+    }
+
+    const mediaRecorder = mimeType
+      ? new MediaRecorder(stream, { mimeType })
+      : new MediaRecorder(stream);
 
     const chunks: Blob[] = [];
 
@@ -33,8 +44,10 @@ export default function VoiceRecorder({
       stream.getTracks().forEach((track) => track.stop());
 
       const blob = new Blob(chunks, {
-        type: "audio/webm",
+        type: mediaRecorder.mimeType || "audio/mp4",
       });
+      //   console.log("Recorder MIME:", mediaRecorder.mimeType);
+      //   console.log("Blob MIME:", blob.type);
 
       const previewUrl = URL.createObjectURL(blob);
 
@@ -115,7 +128,7 @@ export default function VoiceRecorder({
           "
         >
           <span className="animate-pulse">🔴</span>
-          Recording •
+          Recording •{" "}
           {Math.floor(recordingTime / 60)
             .toString()
             .padStart(2, "0")}
