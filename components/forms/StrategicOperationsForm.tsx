@@ -4,6 +4,7 @@ import { useState } from "react";
 import FormSection from "./FormSection";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import VoiceRecorder from "./VoiceRecorder";
 
 // import { FormSection } from "/FormSection";
 
@@ -53,6 +54,12 @@ export default function StrategicOperationsForm() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const [businessOpsAudioBlob, setBusinessOpsAudioBlob] = useState<Blob | null>(
+    null,
+  );
+
+  const [businessOpsAudioUrl, setBusinessOpsAudioUrl] = useState("");
 
   const serviceOptions = [
     "Administrative Support",
@@ -1255,6 +1262,13 @@ export default function StrategicOperationsForm() {
             : "border-slate-200"
         }
         `}
+                />
+
+                <VoiceRecorder
+                  onRecordingReady={(blob, previewUrl) => {
+                    setBusinessOpsAudioBlob(blob);
+                    setBusinessOpsAudioUrl(previewUrl);
+                  }}
                 />
 
                 {errors.businessOpsNotes && (
