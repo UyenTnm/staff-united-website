@@ -23,6 +23,12 @@ import AnimatedSection from "./AnimatedSection";
 // ];
 
 export default function Careers({ jobs }: { jobs: Job[] }) {
+  const sortedJobs = [...jobs].sort(
+    (a, b) =>
+      new Date(b.publishedAt || "").getTime() -
+      new Date(a.publishedAt || "").getTime(),
+  );
+
   return (
     <div>
       {/* HERO */}
@@ -78,7 +84,7 @@ export default function Careers({ jobs }: { jobs: Job[] }) {
           </h2>
         </AnimatedSection>
         <div className="space-y-4">
-          {jobs.map((job, i) => (
+          {sortedJobs.map((job, i) => (
             <AnimatedSection key={job.slug} direction="up" delay={i * 0.05}>
               <Link
                 href={`/careers/${job.slug}`}
@@ -109,6 +115,12 @@ export default function Careers({ jobs }: { jobs: Job[] }) {
                   <h3 className="font-semibold text-base sm:text-lg">
                     {job.title}
                   </h3>
+                  {/* {Date.now() - new Date(job.publishedAt).getTime() <
+                    1000 * 60 * 60 * 24 * 14 && (
+                    <span className="ml-2 inline-flex items-center rounded-full bg-green-100 px-2 py-1 text-xs font-semibold text-green-700">
+                      NEW
+                    </span>
+                  )} */}
 
                   <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-500 mt-2">
                     <span className="bg-[#4f8fcb]/10 text-[#4f8fcb] px-2.5 py-1 rounded-full text-xs font-semibold">
