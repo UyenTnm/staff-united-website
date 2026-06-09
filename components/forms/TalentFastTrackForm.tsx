@@ -280,7 +280,7 @@ export default function TalentFastTrackForm() {
       // TODO:
       // Thay link Apps Script
       await fetch(
-        "https://script.google.com/macros/s/AKfycbx2NtRhvECDTQvVvEKafmh6hiX-bsBg9rRQWMGzI0o2JZnclc8BCR7kikcEa6Pwfys3xA/exec",
+        "https://script.google.com/macros/s/AKfycbxrIRyHN4NITKywupnPnf-ZjqEdY4cLN8d_1Xl4MehxnTC3ZZuqBqILL3ELCUnOjpNlsw/exec",
         {
           method: "POST",
           mode: "no-cors",
