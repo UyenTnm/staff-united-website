@@ -4,7 +4,7 @@ export interface Job {
   department: string;
   location: string;
   type: string;
-
+  publishedAt?: string;
   description: string;
 
   sections?: {
@@ -18,6 +18,8 @@ export interface Job {
 export const jobs: Job[] = [
   {
     slug: "travel-experience-curator",
+    publishedAt: "2026-06-05",
+
     title: "Travel Experience Curator",
     department: "Marketing",
     location: "Ho Chi Minh City",
@@ -159,6 +161,8 @@ export const jobs: Job[] = [
   },
   {
     slug: "female-website-developer",
+    publishedAt: "2026-06-05",
+
     title: "Female Website Developer",
     department: "Engineering",
     location: "Ho Chi Minh City",
@@ -257,6 +261,8 @@ export const jobs: Job[] = [
   },
   {
     slug: "operations-support",
+    publishedAt: "2026-06-05",
+
     title: "Operations Support Specialist",
     department: "Operations",
     location: "Vietnam",
@@ -368,6 +374,8 @@ export const jobs: Job[] = [
   },
   {
     slug: "long-form-video-editor",
+    publishedAt: "2026-06-07",
+
     title: "Long-Form Video Editor",
     department: "Creative",
     location: "Vietnam",
@@ -471,6 +479,8 @@ export const jobs: Job[] = [
   },
   {
     slug: "brand-social-media-coordinator",
+    publishedAt: "2026-06-07",
+
     title: "Brand & Social Media Coordinator",
     department: "Marketing",
     location: "Ho Chi Minh City",
@@ -596,11 +606,12 @@ export const jobs: Job[] = [
   },
   {
     slug: "business-growth-representatives",
+    publishedAt: "2026-06-08",
+
     title: "Business Growth Representatives",
     department: "Sales",
     location: "Ho Chi Minh City",
     type: "Full-time",
-
     description:
       "STAFF United is hiring Business Growth Representatives to help introduce our services to businesses, build relationships, book Free Business Support Reviews, and support business growth through our Vietnam Forward Initiative.",
 
@@ -721,6 +732,8 @@ export const jobs: Job[] = [
   },
   {
     slug: "accountant-bookkeeper",
+    publishedAt: "2026-06-09",
+
     title: "Accountant / Bookkeeper",
     department: "Finance & Accounting",
     location: "Ho Chi Minh City",
