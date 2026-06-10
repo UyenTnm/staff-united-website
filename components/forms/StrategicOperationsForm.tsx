@@ -435,7 +435,7 @@ export default function StrategicOperationsForm() {
   }
   return (
     <form
-      id="quote-section "
+      id="quote-section"
       className="bg-[#F6F8FB] py-28"
       onSubmit={handleSubmit}
     >
