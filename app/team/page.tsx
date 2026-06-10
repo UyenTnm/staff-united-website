@@ -1,328 +1,388 @@
 "use client";
-import AnimatedSection from "@/components/AnimatedSection";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import AnimatedSection from "@/components/AnimatedSection";
 
 export default function TeamPage() {
-  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [openDepartment, setOpenDepartment] = useState<string | null>(
+    "strategic-operations",
+  );
+  const [activeDepartment, setActiveDepartment] = useState("all");
 
-  const gridRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        window.matchMedia("(max-width: 1023px)").matches &&
-        gridRef.current &&
-        !gridRef.current.contains(e.target as Node)
-      ) {
-        setActiveIndex(null);
-      }
-    };
+  const departments = [
+    {
+      id: "strategic-operations",
+      number: "01",
+      name: "Strategic Operations",
+      description:
+        "Systems, workflows, admin coordination & business continuity",
+      color: "#1E3D6E",
 
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, []);
-  useEffect(() => {
-    const media = window.matchMedia("(max-width: 1023px)");
-    setIsMobile(media.matches);
+      lead: {
+        name: "Martha Nguyen",
+        title: "Video Editor",
+        image: "/team/martha.jpeg",
+        bio: "Create engaging video content and support multimedia production initiatives.",
+      },
 
-    const listener = () => setIsMobile(media.matches);
-    media.addEventListener("change", listener);
+      members: [
+        {
+          name: "Khue Vu",
+          title: "Operations Coordinator",
+          image: "/team/khue-vu.webp",
+          bio: "Support operational workflows, coordination and execution across internal and client-facing projects.",
+        },
 
-    return () => media.removeEventListener("change", listener);
-  }, []);
-  const teamMembers = [
-    {
-      name: "Yuko Furuta",
-      title: "Quality & Standards Manager",
-      responsibility:
-        "Ensures every deliverable meets our defined standards before it reaches the client.",
-      image: "/team/yuko.webp",
-    },
-    {
-      name: "Jena Truong",
-      title: "Video Editor",
-      responsibility:
-        "Deliver high-quality video production and editing integrated with social media management.",
-      image: "/team/jena.webp",
-    },
-    {
-      name: "Martha Nguyen",
-      title: "Video Editor",
-      responsibility:
-        "Drive video strategy and branding through expert editing, post-production support, and creative content oversight.",
-      image: "/team/martha.jpeg",
-    },
-    {
-      name: "Betty Van",
-      title: "Video Editor",
-      responsibility:
-        "Produce and host interactive video content, ensuring top-tier quality and publishing standards.",
-      image: "/team/betty.jpeg",
-    },
-    {
-      name: "Alice Truong",
-      title: "Website Developer",
-      responsibility:
-        "Execute high-quality web development specializing in Frontend and Fullstack support, utilizing WordPress, custom coding, and modern frameworks.",
-      image: "/team/alicetr.webp",
+        // {
+        //   name: "Martha Nguyen",
+        //   title: "Video Editor",
+        //   image: "/team/martha.jpeg",
+        //   bio: "Create engaging video content and support multimedia production initiatives.",
+        // },
+
+        {
+          name: "Elly Le",
+          title: "Customer Support Specialist",
+          image: "/team/linh-le.webp",
+          bio: "Provide customer support and ensure smooth communication across service channels.",
+        },
+      ],
     },
 
     {
-      name: "Annie Nguyen",
-      title: "UIUX",
-      responsibility: "Designs intuitive and user-friendly interfaces.",
-      image: "/team/annie.webp",
+      id: "targeted-sales",
+      number: "02",
+      name: "Targeted Sales",
+      description:
+        "Customer support, outreach, CRM management & sales coordination",
+      color: "#4F8DC9",
+
+      lead: {
+        name: "Levi Le",
+        title: "Marketing & Project Coordinator",
+        image: "/team/levi.webp",
+        bio: "Execute integrated marketing projects and social media campaigns through seamless collaboration and coordination.",
+      },
+
+      members: [],
     },
+
     {
-      name: "Trang Ngoc Bao Tran",
-      title: "Marketing & SEO Content",
-      responsibility:
-        "Supports digital marketing initiatives through SEO-focused content, social media engagement and brand communication.",
-      image: "/team/trang-tran.webp",
+      id: "accounting-legal",
+      number: "03",
+      name: "Accounting & Legal",
+      description: "Bookkeeping, reporting, invoicing & compliance support",
+      color: "#C07838",
+
+      lead: {
+        name: "TBD",
+        title: "Department Lead",
+        image: "/placeholder.webp",
+        bio: "Accounting and legal support services.",
+      },
+
+      members: [],
     },
+
     {
-      name: "Elly Le",
-      title: "Customer Support Specialist",
-      responsibility:
-        "Ensures smooth customer support and marketplace operations by managing inquiries, orders and fulfillment processes.",
-      image: "/team/linh-le.webp",
+      id: "focused-marketing",
+      number: "04",
+      name: "Focused Marketing",
+      description: "Content creation, social media, brand support & campaigns",
+      color: "#2E7D62",
+      lead: {
+        name: "Yuko Furuta",
+        title: "Quality & Standards Manager",
+        image: "/team/yuko.webp",
+        bio: "Execute market research and Excel-based reporting to drive problem-solving while facilitating cross-cultural communication within international teams.",
+      },
+      // lead: {
+      //   name: "Trang Phuong",
+      //   title: "Growth Marketing Specialist",
+      //   image: "/team/trang-phuong.webp",
+      //   bio: "Manage end-to-end marketing strategies, branding, content and paid advertising initiatives.",
+      // },
+
+      members: [
+        {
+          name: "Trang Ngoc Bao Tran",
+          title: "Marketing & SEO Content",
+          image: "/team/trang-tran.webp",
+        },
+
+        {
+          name: "Jena Truong",
+          title: "Video Editor",
+          image: "/team/jena.webp",
+        },
+        {
+          name: "Trang Phuong",
+          title: "Growth Marketing Specialist",
+          image: "/team/trang-phuong.webp",
+          bio: "Manage end-to-end marketing strategies, branding, content and paid advertising initiatives.",
+        },
+
+        {
+          name: "Betty Van",
+          title: "Video Editor",
+          image: "/team/betty.jpeg",
+        },
+
+        {
+          name: "Thao Tong",
+          title: "Graphic Designer",
+          image: "/team/thao-tong.webp",
+        },
+      ],
     },
+
     {
-      name: "Thao Tong",
-      title: "Graphic Designer",
-      responsibility:
-        "2D Design, basic 3D modeling, editing video, content creation",
-      image: "/team/thao-tong.webp",
-    },
-    {
-      name: "Mel Vu",
-      title: "Website Developer",
-      responsibility:
-        "Deliver scalable web solutions through clean coding, modern frameworks (Frontend/Fullstack), and Python-based technical support.",
-      image: "/team/mel-vu.webp",
-    },
-    {
-      name: "Trang Phuong",
-      title: "Growth Marketing Specialist ",
-      responsibility:
-        "Manage end-to-end marketing strategies and budgets, from branding and creative direction to multi-channel execution (Paid Ads, Content, Social Media)",
-      image: "/team/trang-phuong.webp",
-    },
-    {
-      name: "Khue Vu",
-      title: "Operations Coordinator ",
-      responsibility:
-        "Execute market research and Excel-based reporting to drive problem-solving, while facilitating cross-cultural communication within international teams.",
-      image: "/team/khue-vu.webp",
-    },
-    {
-      name: "Levi Le",
-      title: "Marketing & Project Coordinator",
-      responsibility:
-        "Execute integrated marketing projects and social media campaigns through seamless cross-functional collaboration and strategic coordination.",
-      image: "/team/levi.webp",
+      id: "future-expansion",
+      number: "05",
+      name: "Future Expansion",
+      description:
+        "Research, innovation, website development & growth initiatives",
+      color: "#4A5568",
+
+      lead: {
+        name: "Alice Truong",
+        title: "Website Developer",
+        image: "/team/alicetr.webp",
+        bio: "Execute high-quality web development specializing in Frontend and Fullstack support.",
+      },
+
+      members: [
+        {
+          name: "Mel Vu",
+          title: "Website Developer",
+          image: "/team/mel-vu.webp",
+        },
+
+        {
+          name: "Annie Nguyen",
+          title: "UIUX Designer",
+          image: "/team/annie.webp",
+        },
+      ],
     },
   ];
 
+  const allMembers = departments.flatMap((department) => [
+    {
+      ...department.lead,
+      color: department.color,
+      departmentId: department.id,
+      isLead: true,
+    },
+
+    ...department.members.map((member) => ({
+      ...member,
+      color: department.color,
+      departmentId: department.id,
+      isLead: false,
+    })),
+  ]);
+
+  console.table(allMembers);
+
   return (
-    <main className="relative overflow-hidden bg-[#f5f8fc]">
-      {/* BACKGROUND ATMOSPHERE */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* TOP GLOW */}
-        <div
-          className="
-      absolute
-      top-[-250px]
-      left-1/2
-      -translate-x-1/2
-
-      w-[1000px]
-      h-[1000px]
-
-      rounded-full
-      bg-[#4f8dc9]/10
-
-      blur-3xl
-    "
-        />
-
-        {/* SIDE GLOW */}
-        <div
-          className="
-      absolute
-      bottom-[-200px]
-      right-[-200px]
-
-      w-[700px]
-      h-[700px]
-
-      rounded-full
-      bg-[#79B9FF]/10
-
-      blur-3xl
-    "
-        />
-      </div>
-
-      {/* <AnimatedSection> */}
-      <section className="max-w-6xl mx-auto px-6 pt-28 md:pt-32 lg:pt-36 pb-16 md:pb-16 space-y-16">
-        {/* INTRO */}
-        <div className="text-center space-y-6 max-w-3xl mx-auto">
-          <AnimatedSection direction="up" delay={0}>
-            <h1 className="text-3xl md:text-5xl text-[#4f8dc9] font-light">
+    <>
+      <main className="bg-[#f5f8fc] overflow-hidden">
+        <section className="bg-[#0B1B33] text-white pt-40 pb-24 px-6">
+          <div className="max-w-5xl mx-auto text-center">
+            <p className="uppercase tracking-[0.3em] text-[#79B9FF] text-xs">
               Our Team
+            </p>
+
+            <h1 className="text-4xl md:text-6xl mt-6 font-light">
+              Meet the All-Women Team
+              <br />
+              Powering Your Business Execution
             </h1>
-          </AnimatedSection>
 
-          <div className="w-16 h-[3px] bg-[#4f8fcb] mx-auto rounded-full" />
-
-          <AnimatedSection direction="up" delay={0}>
-            <p className="text-lg md:text-xl text-[#0b1b33]/70 leading-relaxed">
-              We operate as one unit under one shared standard.{" "}
-              <br className="hidden md:block" />
-              Roles differ. Responsibility is collective.
+            <p className="max-w-3xl mx-auto mt-8 text-white/70 text-lg">
+              Every person on our team is selected, trained, and structured
+              within a specific department.
             </p>
 
-            <p className="text-sm md:text-base font-semibold text-[#4f8fcb] tracking-[0.2em] uppercase">
-              All Women. All Business.
+            <div className="mt-8 inline-flex rounded-full border border-[#79B9FF]/30 bg-[#79B9FF]/10 px-6 py-3 text-sm">
+              Organized through our 5-Core Support Ecosystem™
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl text-[#0B1B33] mb-6">
+              How Our Team Is Structured
+            </h2>
+
+            <p className="text-lg text-[#0B1B33]/70 leading-relaxed">
+              STAFF United is not just a list of talented women. It is a
+              structured offshore execution team organized by department through
+              our 5-Core Support Ecosystem™.
             </p>
-          </AnimatedSection>
-        </div>
+          </div>
 
-        {/* TEAM GRID */}
-        <div
-          ref={gridRef}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
-        >
-          {teamMembers.map((member, i) => {
-            const row = Math.floor(i / 4);
-            const direction = row % 2 === 0 ? "left" : "right";
-            return (
-              <AnimatedSection key={i} direction={direction} delay={i * 0.05}>
-                <div className="group w-full max-w-[260px] sm:max-w-none mx-auto sm:mx-0 [perspective:1200px]">
-                  <div
-                    onClick={(e) => {
-                      e.stopPropagation();
+          <div className="flex flex-wrap justify-center gap-3 mt-10">
+            {[
+              {
+                id: "all",
+                label: "All Team",
+              },
 
-                      if (window.matchMedia("(max-width: 1023px)").matches) {
-                        setActiveIndex((prev) => (prev === i ? null : i));
-                      }
-                    }}
-                    style={{
-                      transform:
-                        isMobile && activeIndex === i
-                          ? "rotateY(180deg)"
-                          : undefined,
-                    }}
-                    className={`relative w-full aspect-[3/4] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] cursor-pointer hover:shadow-[0_30px_80px_rgba(79,141,201,0.18)] hover:-translate-y-3
-hover:scale-[1.02] lg:group-hover:[transform:rotateY(180deg)]  rounded-2xl`}
-                  >
-                    {/* FRONT */}
-                    <div
-                      className="absolute inset-0 bg-white/75 backdrop-blur-xl border border-white/50
-    rounded-2xl shadow-[0_20px_60px_rgba(79,141,201,0.12)]
-    overflow-hidden flex flex-col
-    [backface-visibility:hidden]
-    pointer-events-auto
-          "
-                    >
-                      {/* IMAGE */}
-                      <div className="relative w-full aspect-[3/4] overflow-hidden">
-                        <Image
-                          src={member.image}
-                          alt={member.name}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 25vw"
-                          priority={i < 4}
-                          className="object-cover object-top group-hover:scale-105 transition duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />{" "}
-                      </div>
+              {
+                id: "strategic-operations",
+                label: "Strategic Operations",
+              },
 
-                      {/* INFO */}
-                      <div className="p-4 text-center space-y-1">
-                        <h3 className="text-[#0b1b33] font-semibold text-sm sm:text-base">
-                          {member.name}
-                        </h3>
+              {
+                id: "targeted-sales",
+                label: "Targeted Sales",
+              },
 
-                        <p className="text-[#4f8fcb] text-xs sm:text-sm font-medium">
-                          {member.title}
-                        </p>
-                      </div>
-                    </div>
+              {
+                id: "accounting-legal",
+                label: "Accounting & Legal",
+              },
 
-                    {/* BACK */}
-                    <div
-                      className="
-            absolute inset-0 
-    bg-[#0b1b33]
-    text-white 
-    rounded-2xl
-    shadow-xl
-    flex items-center justify-center p-5 text-center
-    [transform:rotateY(180deg)]
-    [backface-visibility:hidden]
-    pointer-events-none
-          "
-                    >
-                      <p className="text-xs sm:text-sm leading-relaxed text-white/80">
-                        {member.responsibility}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </AnimatedSection>
-            );
-          })}
-        </div>
+              {
+                id: "focused-marketing",
+                label: "Focused Marketing",
+              },
 
-        <div className="text-center">
-          <Link
-            href="/join"
+              {
+                id: "future-expansion",
+                label: "Future Expansion",
+              },
+            ].map((department) => (
+              <button
+                key={department.id}
+                onClick={() => setActiveDepartment(department.id)}
+                className={`
+        px-5 py-3
+        rounded-full
+        text-sm
+        font-medium
+        transition-all
+        duration-300
+
+        ${
+          activeDepartment === department.id
+            ? "bg-[#4f8fcb] text-white shadow-lg"
+            : "bg-white text-[#0B1B33] border border-[#E5ECF5] hover:border-[#4f8fcb]"
+        }
+      `}
+              >
+                {department.label}
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <section className="max-w-7xl mx-auto px-6 pb-24">
+          <div
             className="
-      group relative inline-flex items-center gap-2
-      px-6 py-3
-      rounded-full
-      bg-[#4f8fcb]
-      text-white
-      text-sm md:text-base font-medium
-      overflow-hidden
-      transition-all duration-300
-      hover:scale-105
-      hover:shadow-[0_12px_30px_rgba(0,0,0,0.25)]
+      grid
+      md:grid-cols-2
+      xl:grid-cols-3
+      gap-8
     "
           >
-            {/* LIQUID SHINE */}
-            <span
-              className="
-        absolute inset-0
-        bg-gradient-to-r from-white/0 via-white/30 to-white/0
-        translate-x-[-120%]
-        group-hover:translate-x-[120%]
-        transition-transform duration-700 ease-out
-      "
-            />
+            {allMembers
+              .filter((member) =>
+                activeDepartment === "all"
+                  ? true
+                  : member.departmentId === activeDepartment,
+              )
+              .map((member) => (
+                <div
+                  key={`${member.departmentId}-${member.name}`}
+                  className="relative h-[500px] overflow-hidden rounded-[36px] bg-[#F3F5F8] group"
+                >
+                  <div className="absolute inset-0">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="
+                object-cover
+                transition-transform
+                duration-500
+                group-hover:scale-110 cursor-pointer
+              "
+                    />
+                  </div>
 
-            {/* TEXT */}
-            <span className="relative z-10">Join the Team</span>
+                  <div
+                    className="
+    absolute
+    left-5
+    right-5
+    bottom-5
 
-            {/* ICON */}
-            <span
-              className="
-        relative z-10
-        inline-block
-        transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
-        group-hover:rotate-[360deg]
-      "
-            >
-              →
-            </span>
-          </Link>
-        </div>
-      </section>
-      {/* </AnimatedSection> */}
-    </main>
+    bg-white/95
+    backdrop-blur-md
+
+    rounded-[28px]
+
+    p-6
+
+    shadow-xl
+
+    transition-all
+    duration-500
+
+    h-[140px]
+
+    group-hover:h-[240px]
+  "
+                  >
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h3>{member.name}</h3>
+
+                        <p>{member.title}</p>
+                      </div>
+
+                      <div
+                        className="w-3 h-3 rounded-full mt-2"
+                        style={{
+                          backgroundColor: member.color,
+                        }}
+                      />
+                    </div>
+
+                    {member.bio && (
+                      <p
+                        className="
+      mt-4
+      text-[#0B1B33]/70
+      leading-relaxed
+
+      opacity-0
+      max-h-0
+
+      overflow-hidden
+
+      transition-all
+      duration-500
+
+      group-hover:opacity-100
+      group-hover:max-h-[120px]
+    "
+                      >
+                        {member.bio}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              ))}
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
