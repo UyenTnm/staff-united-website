@@ -623,24 +623,17 @@ ${errors.firstName ? "border border-red-500" : "border border-slate-300"}
             )}
 
             <div className="mt-6">
-              {/* <label
+              <label
                 className="
       block
-      text-sm
-      font-medium
-      text-[#06172D]
-      mb-2
+    text-lg
+    font-semibold
+    text-[#06172D]
+    mb-4
     "
               >
                 Position Applying For *
-              </label> */}
-              <p
-                className="
-      text-slate-500 mb-4
-    "
-              >
-                Position Applying For *
-              </p>
+              </label>
 
               <select
                 value={position}
