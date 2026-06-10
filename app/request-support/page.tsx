@@ -187,7 +187,7 @@ export default function RequestSupportPage() {
   duration-300
 "
                     >
-                      Request a Consultation →
+                      Client Fast Track →
                     </button>
                   </div>
 
@@ -253,7 +253,7 @@ duration-300
             <div id="service-selector" className="h-1"></div>
             <div className="grid md:grid-cols-2 xl:grid-cols-5 gap-4">
               <a
-                href="/services/strategic-operations"
+                href="/services/strategic-operations#service-form"
                 className={`
     group
     bg-white
@@ -280,7 +280,7 @@ duration-300
               </a>
 
               <a
-                href="/services/accounting-legal"
+                href="/services/accounting-legal#service-form"
                 className={`
     group
     bg-white
@@ -305,7 +305,7 @@ duration-300
               </a>
 
               <a
-                href="/services/targeted-sales"
+                href="/services/targeted-sales#service-form"
                 className={`
     group
     bg-white
@@ -330,7 +330,7 @@ duration-300
               </a>
 
               <a
-                href="/services/focused-marketing"
+                href="/services/focused-marketing#service-form"
                 className={`
     group
     bg-white
@@ -355,7 +355,7 @@ duration-300
               </a>
 
               <a
-                href="/services/future-expansion"
+                href="/services/future-expansion#service-form"
                 className={`
     group
     bg-white
