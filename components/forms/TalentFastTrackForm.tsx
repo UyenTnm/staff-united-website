@@ -449,7 +449,7 @@ export default function TalentFastTrackForm() {
                 <div
                   key={item.step}
                   className="bg-white border border-slate-200
-            rounded-3xl p-8 text-center shadow-sm relative hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-pointer"
+            rounded-3xl p-8 text-center shadow-sm relative"
                 >
                   {/* Step Number */}
                   <div
@@ -623,7 +623,7 @@ ${errors.firstName ? "border border-red-500" : "border border-slate-300"}
             )}
 
             <div className="mt-6">
-              <label
+              {/* <label
                 className="
       block
       text-sm
@@ -633,7 +633,14 @@ ${errors.firstName ? "border border-red-500" : "border border-slate-300"}
     "
               >
                 Position Applying For *
-              </label>
+              </label> */}
+              <p
+                className="
+      text-slate-500 mb-4
+    "
+              >
+                Position Applying For *
+              </p>
 
               <select
                 value={position}
