@@ -128,7 +128,7 @@ export default function RequestSupportPage() {
                 </p>
 
                 {/* Trust Badges */}
-                <div className="mt-10 flex flex-wrap justify-center gap-3">
+                {/* <div className="mt-10 flex flex-wrap justify-center gap-3">
                   {[
                     "Response within 24 hours",
                     "Custom recommendations",
@@ -141,7 +141,7 @@ export default function RequestSupportPage() {
                       {item}
                     </span>
                   ))}
-                </div>
+                </div> */}
 
                 {/* 2 CTA */}
                 {/* Decision Cards */}
@@ -437,10 +437,10 @@ duration-300
 
                   <ol className="space-y-4 text-sm text-foreground">
                     {[
-                      "We review your request and requirements.",
-                      "Our team assesses the best support model.",
-                      "We send a tailored recommendation.",
-                      "We schedule onboarding and kickoff.",
+                      // "We review your request and requirements.",
+                      "We assess your needs and determine the best approach.",
+                      "Get a customized proposal with scope, timeline, and pricing.",
+                      "Onboarding begins and service delivery gets underway.",
                     ].map((step, index) => (
                       <li key={step} className="flex gap-3">
                         <span className="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">
@@ -626,7 +626,7 @@ duration-300
                         <div>
                           <input
                             name="first_name"
-                            placeholder="First Name"
+                            placeholder="First Name *"
                             className={inputStyle("first_name")}
                           />
                           {errors.first_name && (
@@ -638,7 +638,7 @@ duration-300
                         <div>
                           <input
                             name="last_name"
-                            placeholder="Last Name"
+                            placeholder="Last Name *"
                             className={inputStyle("last_name")}
                           />
                           {errors.last_name && (
@@ -651,7 +651,7 @@ duration-300
 
                       <input
                         name="company_name"
-                        placeholder="Company Name"
+                        placeholder="Company Name *"
                         required
                         className={`
     w-full
@@ -673,7 +673,7 @@ duration-300
                         name="work_email"
                         required
                         type="email"
-                        placeholder="Work Email"
+                        placeholder="Work Email *"
                         className="w-full border border-[#d1d5db] rounded px-3 py-2"
                       />
                       {errors.work_email && (
@@ -746,7 +746,7 @@ duration-300
   `}
                         required
                       >
-                        <option value="">Support Type</option>
+                        <option value="">Support Type *</option>
                         <option value="Creative">Creative</option>
                         <option value="Administration">Administration</option>
                         <option value="Both">Both</option>
@@ -761,7 +761,7 @@ duration-300
                         name="engagement_model"
                         className="w-full border border-[#d1d5db] rounded px-3 py-2"
                       >
-                        <option value="">Engagement Model</option>
+                        <option value="">Engagement Model *</option>
                         <option>Dedicated</option>
                         <option>Flexible</option>
                         <option>Not sure</option>
@@ -773,7 +773,7 @@ duration-300
                           value={description}
                           onChange={(e) => setDescription(e.target.value)}
                           rows={5}
-                          placeholder="Tell us what support your business needs..."
+                          placeholder="Tell us what support your business needs *"
                           className={`
     w-full
     border
