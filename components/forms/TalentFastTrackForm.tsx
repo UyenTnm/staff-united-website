@@ -1,5 +1,6 @@
 "use client";
 
+import { jobs } from "@/data/jobs";
 import { supabase } from "@/lib/supabase";
 import { useEffect, useRef, useState } from "react";
 import DatePicker from "react-datepicker";
@@ -38,6 +39,8 @@ export default function TalentFastTrackForm() {
   const [cvFile, setCvFile] = useState<File | null>(null);
 
   const [cvUrl, setCvUrl] = useState("");
+
+  const [position, setPosition] = useState("");
 
   useEffect(() => {
     return () => {
@@ -261,6 +264,8 @@ export default function TalentFastTrackForm() {
         lastName,
         email,
 
+        position,
+
         cvUrl: uploadedCvUrl,
         voiceUrl: uploadedVoiceUrl,
 
@@ -280,7 +285,7 @@ export default function TalentFastTrackForm() {
       // TODO:
       // Thay link Apps Script
       await fetch(
-        "https://script.google.com/macros/s/AKfycbyUqrCMqASA8juvw-YKXN0--K_9xXIdckaeGRDKgQJLbZAZtdTAkVvKRg3s8rr1-MRO1A/exec",
+        "https://script.google.com/macros/s/AKfycbzAuSeba926decLvRxsCI-ounVP8idveOntQYxrTmyTYEtbNc2vOdY3ECpXEy_7pqxzHg/exec",
         {
           method: "POST",
           mode: "no-cors",
@@ -298,25 +303,6 @@ export default function TalentFastTrackForm() {
       setIsSubmitting(false);
     }
   };
-
-  //   if (isSubmitted) {
-  //     return (
-  //       <section className="py-24">
-  //
-  //         <div className="max-w-3xl mx-auto px-6 text-center">
-  //           {" "}
-  //           <h2 className="text-4xl font-bold mb-6">Application Submitted </h2>
-  //           <p className="text-slate-600">
-  //             Thank you for applying through Talent Fast Track.
-  //           </p>
-  //           <p className="text-slate-600 mt-3">
-  //             Our team and AI-assisted review process will review your application
-  //             shortly.
-  //           </p>
-  //         </div>
-  //       </section>
-  //     );
-  //   }
 
   if (isSubmitted) {
     return (
@@ -415,58 +401,105 @@ export default function TalentFastTrackForm() {
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold mb-6">Talent Fast Track</h1>
 
-          <p className="text-xl text-slate-600">Apply in under 2 minutes.</p>
+          <p className="text-xl text-slate-600">
+            Apply in Under 5 Minutes. Move Your Career Forward.
+          </p>
         </div>
 
-        {/* Progress Indicator */}
-        <div
-          className="
-    grid
-    md:grid-cols-3
-    gap-4
-    mb-16
+        {/* Progress Steps */}
+        <div className="mb-16">
+          <div className="relative">
+            {/* Line */}
+            <div
+              className="
+    hidden md:block
+    absolute
+    bottom-32
+    left-[16%]
+    right-[16%]
+    h-[2px]
+    bg-slate-200
   "
-        >
-          <div
-            className="
-      p-5
-      rounded-2xl
-      border
-      bg-white
-      text-center
-    "
-          >
-            <div className="text-3xl mb-2">📄</div>
+            />
 
-            <h3 className="font-semibold">Upload CV</h3>
-          </div>
+            <div className="grid md:grid-cols-3 gap-8 relative">
+              {[
+                {
+                  step: "01",
+                  icon: "📄",
+                  title: "Upload CV",
+                  description:
+                    "Upload your CV so we can review your experience and professional background.",
+                },
+                {
+                  step: "02",
+                  icon: "🎤",
+                  title: "Record Voice",
+                  description:
+                    "Record a short voice introduction to showcase your communication skills.",
+                },
+                {
+                  step: "03",
+                  icon: "🚀",
+                  title: "Submit Application",
+                  description:
+                    "Submit your application and our team will review it within 48 hours.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.step}
+                  className="bg-white border border-slate-200
+            rounded-3xl p-8 text-center shadow-sm relative hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-pointer"
+                >
+                  {/* Step Number */}
+                  <div
+                    className="
+              absolute
+              -top-5
+              left-1/2
+              -translate-x-1/2
+              w-10
+              h-10
+              rounded-full
+              bg-[#06172D]
+              text-white
+              flex
+              items-center
+              justify-center
+              font-bold
+            "
+                  >
+                    {item.step}
+                  </div>
 
-          <div
-            className="
-      p-5
-      rounded-2xl
-      border
-      bg-white
-      text-center
-    "
-          >
-            <div className="text-3xl mb-2">🎤</div>
+                  {/* Icon */}
+                  <div
+                    className="
+              w-20
+              h-20
+              mx-auto
+              mb-5
+              rounded-2xl
+              bg-slate-100
+              flex
+              items-center
+              justify-center
+              text-4xl
+            "
+                  >
+                    {item.icon}
+                  </div>
 
-            <h3 className="font-semibold">Record Voice</h3>
-          </div>
+                  <h3 className="text-xl font-bold text-[#06172D] mb-3">
+                    {item.title}
+                  </h3>
 
-          <div
-            className="
-      p-5
-      rounded-2xl
-      border
-      bg-white
-      text-center
-    "
-          >
-            <div className="text-3xl mb-2">🚀</div>
-
-            <h3 className="font-semibold">Submit Application</h3>
+                  <p className="text-slate-500 leading-relaxed text-sm">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -588,6 +621,67 @@ ${errors.firstName ? "border border-red-500" : "border border-slate-300"}
             {errors.email && (
               <p className="mt-2 text-sm text-red-600">{errors.email}</p>
             )}
+
+            <div className="mt-6">
+              <label
+                className="
+      block
+      text-sm
+      font-medium
+      text-[#06172D]
+      mb-2
+    "
+              >
+                Position Applying For *
+              </label>
+
+              <select
+                value={position}
+                onChange={(e) => {
+                  setPosition(e.target.value);
+
+                  if (errors.position) {
+                    setErrors((prev) => ({
+                      ...prev,
+                      position: "",
+                    }));
+                  }
+                }}
+                className="
+      w-full
+      rounded-2xl
+      border
+      border-slate-300
+      bg-white
+      px-5
+      py-4
+      outline-none
+      transition
+      focus:border-[#06172D]
+      focus:ring-4
+      focus:ring-slate-100
+    "
+              >
+                <option value="">Select a Position</option>
+
+                {/* {jobs.map((job) => (
+                  <option key={job.slug} value={job.title}>
+                    {job.title}
+                  </option>
+                ))} */}
+                {[...jobs]
+                  .sort((a, b) => a.title.localeCompare(b.title))
+                  .map((job) => (
+                    <option key={job.slug} value={job.title}>
+                      {job.title}
+                    </option>
+                  ))}
+              </select>
+
+              {errors.position && (
+                <p className="mt-2 text-sm text-red-600">{errors.position}</p>
+              )}
+            </div>
           </div>
 
           <div

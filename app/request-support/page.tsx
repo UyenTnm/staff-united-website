@@ -34,6 +34,8 @@ export default function RequestSupportPage() {
   const [hoursOption, setHoursOption] = useState("");
   const [customHours, setCustomHours] = useState("");
 
+  const [highlightServices, setHighlightServices] = useState(false);
+
   useEffect(() => {
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
     setTimezone(tz);
@@ -64,11 +66,14 @@ export default function RequestSupportPage() {
     const firstName = (data.first_name || "").toString().trim();
     const lastName = (data.last_name || "").toString().trim();
     const email = (data.work_email || "").toString().trim();
+    const company_name = (data.company_name || "").toString().trim();
+
     const description = (data.description || "").toString().trim();
     const startDate = data.start_timeline;
 
     if (!firstName) newErrors.first_name = "First name is required.";
     if (!lastName) newErrors.last_name = "Last name is required.";
+    if (!company_name) newErrors.company_name = "Company name is required.";
 
     if (!email) {
       newErrors.work_email = "Work email is required.";
@@ -78,6 +83,10 @@ export default function RequestSupportPage() {
 
     if (!phone || phone.length < 8) {
       newErrors.phone = "Enter a valid phone number.";
+    }
+
+    if (!hoursOption) {
+      newErrors.hours_per_week_option = "Please select weekly capacity.";
     }
 
     if (!startDate) {
@@ -113,13 +122,9 @@ export default function RequestSupportPage() {
                   Client Fast Track
                 </h1>
 
-                {/* <p className="text-lg md:text-xl text-foreground/80 leading-relaxed max-w-3xl mx-auto">
-                  Tell us what you need and our team will recommend the right
-                  support model, tools, and timeline to help your business grow.
-                </p> */}
                 <p className="text-lg md:text-xl text-foreground/80 leading-relaxed max-w-3xl mx-auto">
-                  Tell us what support your business needs. Our team will review
-                  your request and recommend the most suitable next steps.
+                  Request Support in Under 5 Minutes. Move Your Business
+                  Forward.
                 </p>
 
                 {/* Trust Badges */}
@@ -137,8 +142,243 @@ export default function RequestSupportPage() {
                     </span>
                   ))}
                 </div>
+
+                {/* 2 CTA */}
+                {/* Decision Cards */}
+                <div className="grid md:grid-cols-2 gap-5 mt-8 max-w-5xl mx-auto">
+                  {/* LEFT */}
+                  <div className="bg-[#06172D] border border-slate-200 rounded-3xl p-8 text-left">
+                    <p className="text-[#7FB4F0] font-semibold text-sm tracking-[0.2em] uppercase mb-4">
+                      Not Sure Yet
+                    </p>
+
+                    <h2 className="text-xl md:text-3xl font-bold text-white mb-4 leading-tight min-h-[56px]">
+                      Let us guide you
+                    </h2>
+
+                    <p className="text-white/70 text-base leading-relaxed mb-8">
+                      Share your goals and we'll match you to the right support
+                      from our 5-Core Ecosystem.
+                    </p>
+
+                    <button
+                      type="button"
+                      onClick={() =>
+                        document
+                          .getElementById("client-fast-track-form")
+                          ?.scrollIntoView({
+                            behavior: "smooth",
+                          })
+                      }
+                      className="
+  inline-flex
+  items-center
+  justify-center
+  h-12
+  px-6
+  rounded-xl
+  border
+  border-white/20
+  text-white
+  text-base
+  font-medium
+  hover:bg-white/10
+  transition-all
+  duration-300
+"
+                    >
+                      Request a Consultation →
+                    </button>
+                  </div>
+
+                  {/* RIGHT */}
+                  <div className="bg-white border border-slate-200 rounded-3xl p-8 text-left">
+                    <p className="text-green-600 font-semibold text-sm tracking-[0.2em] uppercase mb-4">
+                      I Know What I Need
+                    </p>
+
+                    <h2 className="text-xl md:text-3xl font-bold text-[#06172D] mb-4 leading-tight min-h-[56px]">
+                      Go straight to your service
+                    </h2>
+
+                    <p className="text-slate-500 text-base leading-relaxed mb-8">
+                      Select a service and fill in a focused request form —
+                      we'll get back to you within 24 hours.
+                    </p>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        document
+                          .getElementById("service-selector")
+                          ?.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center",
+                          });
+
+                        setHighlightServices(true);
+
+                        setTimeout(() => {
+                          setHighlightServices(false);
+                        }, 1500);
+                      }}
+                      className="
+inline-flex
+items-center
+justify-center
+h-12
+px-6
+rounded-xl
+bg-[#1F1F1F]
+text-white
+text-base
+font-medium
+hover:bg-black
+transition-all
+duration-300
+"
+                    >
+                      Choose a Service →
+                    </button>
+                  </div>
+                </div>
               </div>
             </AnimatedSection>
+          </div>
+        </section>
+
+        {/* SERVICE SELECTOR */}
+        <section id="service-selector" className="pb-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="service-selector" className="h-1"></div>
+            <div className="grid md:grid-cols-2 xl:grid-cols-5 gap-4">
+              <a
+                href="/services/strategic-operations"
+                className={`
+    group
+    bg-white
+    border
+    rounded-3xl
+    p-6
+    text-center
+    hover:-translate-y-2
+    hover:shadow-xl
+    transition-all
+    duration-500
+
+    ${
+      highlightServices
+        ? "border-[#4f8fcb] ring-4 ring-[#4f8fcb]/20 scale-105"
+        : ""
+    }
+  `}
+              >
+                <div className="text-4xl mb-4">⚙️</div>
+                <h3 className="font-bold text-secondary">
+                  Strategic Operations
+                </h3>
+              </a>
+
+              <a
+                href="/services/accounting-legal"
+                className={`
+    group
+    bg-white
+    border
+    rounded-3xl
+    p-6
+    text-center
+    hover:-translate-y-2
+    hover:shadow-xl
+    transition-all
+    duration-500
+
+    ${
+      highlightServices
+        ? "border-[#4f8fcb] ring-4 ring-[#4f8fcb]/20 scale-105"
+        : ""
+    }
+  `}
+              >
+                <div className="text-4xl mb-4">📊</div>
+                <h3 className="font-bold text-secondary">Accounting & Legal</h3>
+              </a>
+
+              <a
+                href="/services/targeted-sales"
+                className={`
+    group
+    bg-white
+    border
+    rounded-3xl
+    p-6
+    text-center
+    hover:-translate-y-2
+    hover:shadow-xl
+    transition-all
+    duration-500
+
+    ${
+      highlightServices
+        ? "border-[#4f8fcb] ring-4 ring-[#4f8fcb]/20 scale-105"
+        : ""
+    }
+  `}
+              >
+                <div className="text-4xl mb-4">📈</div>
+                <h3 className="font-bold text-secondary">Targeted Sales</h3>
+              </a>
+
+              <a
+                href="/services/focused-marketing"
+                className={`
+    group
+    bg-white
+    border
+    rounded-3xl
+    p-6
+    text-center
+    hover:-translate-y-2
+    hover:shadow-xl
+    transition-all
+    duration-500
+
+    ${
+      highlightServices
+        ? "border-[#4f8fcb] ring-4 ring-[#4f8fcb]/20 scale-105"
+        : ""
+    }
+  `}
+              >
+                <div className="text-4xl mb-4">📣</div>
+                <h3 className="font-bold text-secondary">Focused Marketing</h3>
+              </a>
+
+              <a
+                href="/services/future-expansion"
+                className={`
+    group
+    bg-white
+    border
+    rounded-3xl
+    p-6
+    text-center
+    hover:-translate-y-2
+    hover:shadow-xl
+    transition-all
+    duration-500
+
+    ${
+      highlightServices
+        ? "border-[#4f8fcb] ring-4 ring-[#4f8fcb]/20 scale-105"
+        : ""
+    }
+  `}
+              >
+                <div className="text-4xl mb-4">🌍</div>
+                <h3 className="font-bold text-secondary">Future Expansion</h3>
+              </a>
+            </div>
           </div>
         </section>
 
@@ -236,7 +476,10 @@ export default function RequestSupportPage() {
             RIGHT COLUMN - FORM CARD
         ========================================================= */}
               <div className="lg:col-span-2">
-                <div className="bg-white border border-muted rounded-2xl p-6 md:p-8 shadow-sm">
+                <div
+                  id="client-fast-track-form"
+                  className="bg-white border border-muted rounded-2xl p-6 md:p-8 shadow-sm"
+                >
                   {/* Form Header */}
                   <div className="mb-8">
                     <h2 className="text-2xl md:text-3xl font-bold text-secondary mb-3">
@@ -268,6 +511,7 @@ export default function RequestSupportPage() {
             ===================================================== */}
 
                   <form
+                    noValidate
                     onSubmit={async (e) => {
                       e.preventDefault();
                       if (isSubmitting) return;
@@ -379,34 +623,51 @@ export default function RequestSupportPage() {
                       </div>
 
                       <div className="grid md:grid-cols-2 gap-4">
-                        <input
-                          name="first_name"
-                          placeholder="First Name"
-                          className={inputStyle("first_name")}
-                        />
-                        {errors.first_name && (
-                          <p className="text-red-500 text-sm">
-                            {errors.first_name}
-                          </p>
-                        )}
-                        <input
-                          name="last_name"
-                          placeholder="Last Name"
-                          className={inputStyle("last_name")}
-                        />
-                        {errors.last_name && (
-                          <p className="text-red-500 text-sm">
-                            {errors.last_name}
-                          </p>
-                        )}
+                        <div>
+                          <input
+                            name="first_name"
+                            placeholder="First Name"
+                            className={inputStyle("first_name")}
+                          />
+                          {errors.first_name && (
+                            <p className="text-red-500 text-sm">
+                              {errors.first_name}
+                            </p>
+                          )}
+                        </div>
+                        <div>
+                          <input
+                            name="last_name"
+                            placeholder="Last Name"
+                            className={inputStyle("last_name")}
+                          />
+                          {errors.last_name && (
+                            <p className="text-red-500 text-sm">
+                              {errors.last_name}
+                            </p>
+                          )}
+                        </div>
                       </div>
 
                       <input
                         name="company_name"
-                        required
                         placeholder="Company Name"
-                        className="w-full border border-[#d1d5db] rounded px-3 py-2"
+                        required
+                        className={`
+    w-full
+    border
+    rounded
+    px-3
+    py-2
+    ${errors.company_name ? "border-red-500 bg-red-50" : "border-[#d1d5db]"}
+  `}
                       />
+
+                      {errors.company_name && (
+                        <p className="mt-1 text-sm text-red-500">
+                          {errors.company_name}
+                        </p>
+                      )}
 
                       <input
                         name="work_email"
@@ -415,6 +676,11 @@ export default function RequestSupportPage() {
                         placeholder="Work Email"
                         className="w-full border border-[#d1d5db] rounded px-3 py-2"
                       />
+                      {errors.work_email && (
+                        <p className="mt-1 text-sm text-red-500">
+                          {errors.work_email}
+                        </p>
+                      )}
 
                       {/* PHONE */}
                       <div>
@@ -459,9 +725,6 @@ export default function RequestSupportPage() {
                       )}
                     </section>
 
-                    {/* SUPPORT DETAILS */}
-                    {/* Dán toàn bộ section Support Details ở đây */}
-
                     {/* CONSENT */}
                     {/* SUPPORT DETAILS */}
                     <section className="space-y-4">
@@ -473,7 +736,14 @@ export default function RequestSupportPage() {
                         name="support_type"
                         value={supportType}
                         onChange={(e) => setSupportType(e.target.value)}
-                        className="w-full border border-[#d1d5db] rounded px-3 py-2"
+                        className={`
+    w-full
+    border
+    rounded
+    px-3
+    py-2
+    ${errors.support_type ? "border-red-500 bg-red-50" : "border-[#d1d5db]"}
+  `}
                         required
                       >
                         <option value="">Support Type</option>
@@ -481,6 +751,11 @@ export default function RequestSupportPage() {
                         <option value="Administration">Administration</option>
                         <option value="Both">Both</option>
                       </select>
+                      {errors.support_type && (
+                        <p className="text-sm text-red-500">
+                          {errors.support_type}
+                        </p>
+                      )}
 
                       <select
                         name="engagement_model"
@@ -524,42 +799,6 @@ export default function RequestSupportPage() {
                         </p>
                       )}
 
-                      {/* {audioUrl && (
-                        <div className="mt-3 space-y-3">
-                          <button
-                            type="button"
-                            onClick={deleteRecording}
-                            className="
-    inline-flex
-    items-center
-    gap-2
-
-    px-4
-    py-2
-
-    rounded-full
-
-    bg-red-50
-    border
-    border-red-200
-
-    text-red-600
-    text-sm
-    font-semibold
-
-    hover:bg-red-100
-    hover:shadow-sm
-
-    transition-all
-    duration-300
-  "
-                          >
-                            <span>🗑</span>
-                            Delete Recording
-                          </button>
-                        </div>
-                      )} */}
-
                       <div className="space-y-4 pt-2">
                         <h3 className="text-lg font-semibold text-[#0b1b33]">
                           Preferred Start Date
@@ -581,13 +820,12 @@ export default function RequestSupportPage() {
                           }}
                           className="w-full border border-[#d1d5db] rounded px-3 py-2 text-[#0b1b33] bg-white cursor-pointer"
                         />
+                        {errors.start_timeline && (
+                          <p className="text-sm text-red-500">
+                            {errors.start_timeline}
+                          </p>
+                        )}
                       </div>
-
-                      {/* <input
-                name="hours_per_week"
-                placeholder="Estimated hours per week (e.g. 20–40 hours)"
-                className="w-full border border-[#d1d5db] rounded px-3 py-2"
-              /> */}
 
                       <div className="space-y-4 pt-4">
                         <h3 className="text-lg font-semibold text-[#0b1b33]">
@@ -599,7 +837,18 @@ export default function RequestSupportPage() {
                           name="hours_per_week_option"
                           value={hoursOption}
                           onChange={(e) => setHoursOption(e.target.value)}
-                          className="w-full border border-[#d1d5db] rounded px-3 py-2"
+                          className={`
+    w-full
+    border
+    rounded
+    px-3
+    py-2
+    ${
+      errors.hours_per_week_option
+        ? "border-red-500 bg-red-50"
+        : "border-[#d1d5db]"
+    }
+  `}
                         >
                           <option value="">Select weekly capacity</option>
                           <option value="10-15">10–15 hrs / week</option>
@@ -608,6 +857,11 @@ export default function RequestSupportPage() {
                           <option value="40">40 hrs (Full-time)</option>
                           <option value="custom">Custom</option>
                         </select>
+                        {errors.hours_per_week_option && (
+                          <p className="mt-1 text-sm text-red-500">
+                            {errors.hours_per_week_option}
+                          </p>
+                        )}
 
                         {hoursOption === "custom" && (
                           <div className="relative">
@@ -620,6 +874,7 @@ export default function RequestSupportPage() {
                               placeholder="Enter custom hours"
                               className="w-full border border-[#d1d5db] rounded px-3 py-2 pr-12"
                             />
+
                             <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-[#0b1b33]/60">
                               hrs
                             </span>
