@@ -163,7 +163,7 @@ export default function TeamPage() {
       color: "#2E7D62",
       lead: {
         name: "Yuko Furuta",
-        title: "Lead Quality & Standards Manager",
+        title: "Lead Focused Marketing",
         image: "/team/yuko.webp",
         bio: "Delivers market insights and reporting to support strategic decisions.",
       },
