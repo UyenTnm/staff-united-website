@@ -500,21 +500,14 @@ export default function TeamPage() {
     transition-all
     duration-500
 
-    h-[100px]
+    h-[120px]
 
-    group-hover:h-[190px]
+    group-hover:h-[190px] group-hover:-translate-y-4
 
-    ${member.isLead ? "border-2 border-[#4F8DC9]" : "border border-transparent"}
+    ${member.isLead ? "ring-1 ring-[#4F8DC9]/50" : ""}
   `}
                   >
-                    {/* <div className="flex justify-between items-start">
-                      <div>
-                        <h3>{member.name}</h3>
-
-                        <p>{member.title}</p>
-                      </div>
-                    </div> */}
-                    <div className="flex justify-between items-start">
+                    <div className="flex justify-between items-start transition-all duration-500 ease-out group-hover:-translate-y-1">
                       <div>
                         <h3
                           className="
@@ -561,7 +554,6 @@ export default function TeamPage() {
                         )} */}
                       </div>
                     </div>
-
                     {member.bio && (
                       <p
                         className="
@@ -571,6 +563,7 @@ export default function TeamPage() {
 
       opacity-0
       max-h-0
+      translate-y-2
 
       overflow-hidden
 
@@ -579,6 +572,7 @@ export default function TeamPage() {
 
       group-hover:opacity-100
       group-hover:max-h-[120px]
+      group-hover:translate-y-0
     "
                       >
                         {member.bio}
