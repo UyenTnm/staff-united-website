@@ -18,12 +18,12 @@ export default function TeamPage() {
       number: "01",
       name: "Strategic Operations",
       description:
-        "Systems, workflows, admin coordination & business continuity",
+        "Helping businesses build stronger systems, improve coordination, and create scalable operational processes that support long-term growth.",
       color: "#1E3D6E",
 
       lead: {
         name: "Martha Nguyen",
-        title: "Lead Stragic Operations",
+        title: "Lead Strategic Operations",
         image: "/team/martha.jpeg",
         bio: "Create engaging video content and support multimedia production initiatives.",
       },
@@ -33,26 +33,26 @@ export default function TeamPage() {
           name: "Khue Vu",
           title: "Operations Coordinator",
           image: "/team/khue-vu.webp",
-          bio: "Support operational workflows, coordination and execution across internal and client-facing projects.",
+          bio: "Supports operational efficiency through coordination and execution.",
         },
 
         {
           name: "Elly Le",
           title: "Customer Support Specialist",
           image: "/team/linh-le.webp",
-          bio: "Provide customer support and ensure smooth communication across service channels.",
+          bio: "Coordinates daily operations and supports workflow execution.",
         },
         {
-          name: "Sophia Tran",
+          name: "Jessica Tran",
           title: "Executive Assistant",
           image: "/team/8.webp",
-          bio: "Supports leadership teams through scheduling, documentation, and operational coordination.",
+          bio: "Coordinates schedules, documentation, and team support.",
         },
         {
           name: "Hannah Nguyen",
           title: "Project Coordinator",
           image: "/team/9.webp",
-          bio: "Coordinates project timelines, deliverables, and communication across departments.",
+          bio: "Coordinates project timelines, deliverables, and communication.",
         },
         {
           name: "Olivia Le",
@@ -64,7 +64,7 @@ export default function TeamPage() {
           name: "Vivian Ho",
           title: "Process Improvement Associate",
           image: "/team/11.webp",
-          bio: "Assists in workflow optimization and continuous improvement initiatives.",
+          bio: "Provides customer support and service coordination.",
         },
       ],
     },
@@ -74,7 +74,7 @@ export default function TeamPage() {
       number: "02",
       name: "Targeted Sales",
       description:
-        "Customer support, outreach, CRM management & sales coordination",
+        "Helping businesses strengthen customer relationships, improve sales consistency, and create sustainable revenue growth through structured sales and customer support operations.",
       color: "#4F8DC9",
 
       lead: {
@@ -89,14 +89,14 @@ export default function TeamPage() {
           name: "Natalie Pham",
           title: "Sales Development Representative",
           image: "/team/12.webp",
-          bio: "Identifies qualified prospects and supports outbound sales campaigns.",
+          bio: "Supports prospecting and outbound sales activities.",
         },
 
         {
           name: "Levi Le",
           title: "Marketing & Project Coordinator",
           image: "/team/levi.webp",
-          bio: "Drives marketing projects, content, and campaign execution.",
+          bio: "Supports lead generation and sales outreach.",
         },
         {
           name: "Emma Vo",
@@ -118,16 +118,17 @@ export default function TeamPage() {
         },
       ],
     },
-    // Accouting Sales
+    // Accouting & Legal
     {
       id: "accounting-legal",
       number: "03",
       name: "Accounting & Legal",
-      description: "Bookkeeping, reporting, invoicing & compliance support",
+      description:
+        "Helping businesses maintain accurate financial records, improve operational compliance, and gain greater visibility into the financial performance of their organisation.",
       color: "#C07838",
 
       lead: {
-        name: "Lucia",
+        name: "Lucia Truong",
         title: "Lead Accounting & Legal",
         image: "/team/6.webp",
         bio: "Accounting and legal support services.",
@@ -150,7 +151,7 @@ export default function TeamPage() {
           name: "Nicole Vu",
           title: "Compliance Assistant",
           image: "/team/19.webp",
-          bio: "Supports compliance processes and documentation requirements.",
+          bio: "Supports compliance and documentation processes.",
         },
       ],
     },
@@ -159,7 +160,8 @@ export default function TeamPage() {
       id: "focused-marketing",
       number: "04",
       name: "Focused Marketing",
-      description: "Content creation, social media, brand support & campaigns",
+      description:
+        "Helping businesses maintain visibility, strengthen brand presence, and deliver consistent marketing execution across digital, visual, and media channels.",
       color: "#2E7D62",
       lead: {
         name: "Yuko Furuta",
@@ -186,14 +188,14 @@ export default function TeamPage() {
           name: "Trang Phuong",
           title: "Growth Marketing Specialist",
           image: "/team/trang-phuong.webp",
-          bio: "Manage end-to-end marketing strategies, branding, content and paid advertising initiatives.",
+          bio: "Leads marketing strategy and growth initiatives.",
         },
 
         {
           name: "Betty Van",
           title: "Video Editor",
           image: "/team/betty.jpeg",
-          bio: "Edits video content and supports multimedia production for marketing campaigns.",
+          bio: "Edits video content for digital campaigns.",
         },
 
         {
@@ -228,7 +230,7 @@ export default function TeamPage() {
       number: "05",
       name: "Future Expansion",
       description:
-        "Research, innovation, website development & growth initiatives",
+        "Helping businesses establish the operational foundation, local coordination, and support required to enter new markets and pursue growth opportunities with confidence.",
       color: "#4A5568",
 
       lead: {
@@ -269,7 +271,7 @@ export default function TeamPage() {
           name: "Sophia Vu",
           title: "Innovation Research Associate",
           image: "/team/25.webp",
-          bio: "Conducts market research and supports future business initiatives.",
+          bio: "Conducts research and supports strategic initiatives.",
         },
       ],
     },
@@ -356,7 +358,21 @@ export default function TeamPage() {
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-3 mt-10">
+          <div
+            className="
+    mt-10
+
+    grid
+    grid-cols-2
+
+    lg:grid-cols-6
+
+    gap-3
+
+    max-w-7xl
+    mx-auto
+  "
+          >
             {[
               {
                 id: "all",
@@ -392,19 +408,27 @@ export default function TeamPage() {
                 key={department.id}
                 onClick={() => setActiveDepartment(department.id)}
                 className={`
-        px-5 py-3
-        rounded-full
-        text-sm
-        font-medium
-        transition-all
-        duration-300
+    h-12
+    w-full
 
-        ${
-          activeDepartment === department.id
-            ? "bg-[#4f8fcb] text-white shadow-lg"
-            : "bg-white text-[#0B1B33] border border-[#E5ECF5] hover:border-[#4f8fcb]"
-        }
-      `}
+    rounded-full
+
+    text-xs xl:text-sm
+    font-medium
+
+    flex
+    items-center
+    justify-center
+
+    transition-all
+    duration-300
+
+    ${
+      activeDepartment === department.id
+        ? "bg-[#4f8fcb] text-white shadow-lg"
+        : "bg-white text-[#0B1B33] border border-[#E5ECF5] hover:border-[#4f8fcb]"
+    }
+  `}
               >
                 {department.label}
               </button>
@@ -467,6 +491,14 @@ export default function TeamPage() {
                   key={`${member.departmentId}-${member.name}`}
                   className="relative h-[500px] overflow-hidden rounded-[36px] bg-[#F3F5F8] group"
                 >
+                  {member.isLead && (
+                    <div
+                      className="
+  absolute top-3 left-3 md:top-5 md:left-5 z-20 px-2.5 py-1 md:px-4 md:py-2 rounded-full bg-[#4F8DC9] text-white text-[9px] md:text-[11px] font-semibold tracking-[0.1em] md:tracking-[0.15em] uppercase shadow-lg bg-[#4F8DC9]/90 backdrop-blur-md"
+                    >
+                      Team Lead
+                    </div>
+                  )}
                   <div className="absolute inset-0">
                     <Image
                       src={member.image}
