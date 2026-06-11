@@ -1066,19 +1066,27 @@ xl:group-hover:h-[175px] group-hover:-translate-y-2
                 <div
                   key={item}
                   className="
-            px-6
-            py-3
+  w-full
+  sm:w-[320px]
 
-            rounded-full
+  h-[52px]
 
-            border
-            border-[#2B4E86]
+  flex
+  items-center
+  justify-center
 
-            bg-[#0E2A5D]
+  rounded-full
 
-            text-white/90
-            text-sm
-          "
+  border
+  border-[#2B4E86]
+
+  bg-[#0E2A5D]
+
+  text-white/90
+  text-sm
+
+  text-center
+"
                 >
                   {item}
                 </div>
