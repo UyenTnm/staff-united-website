@@ -417,13 +417,13 @@ export default function TeamPage() {
                 </span>
               </div>
 
-              <h1 className="text-2xl sm:text-3xl md:text-5xl mt-6 font-light">
+              <h1 className="text-xl sm:text-3xl md:text-5xl mt-6 font-light">
                 Meet the All-Women Team
                 <br />
                 Powering Your Business Execution
               </h1>
 
-              <p className="max-w-4xl mx-auto mt-8 text-white/70 text-lg">
+              <p className="max-w-4xl mx-auto mt-6 text-white/70 text-lg">
                 Every person on our team is selected, trained, and structured
                 within a specific department.
               </p>
@@ -460,7 +460,7 @@ export default function TeamPage() {
 
         <section className="pt-20 pb-10 px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl text-[#0a1b33] mb-6">
+            <h2 className="text-2xl md:text-3xl text-[#0a1b33] mb-6">
               How Our Team Is Structured
             </h2>
 
@@ -569,13 +569,20 @@ export default function TeamPage() {
 
             <p
               className="
-        mt-2
-        text-lg
-        text-[#0B1B33]/65
-        leading-relaxed
-        max-w-3xl
-        mx-auto
-      "
+    mt-2
+
+    text-base
+    sm:text-lg
+
+    text-[#0B1B33]/65
+
+    leading-relaxed
+
+    max-w-3xl
+    mx-auto
+
+    text-balance
+  "
             >
               {activeDepartment === "all"
                 ? "Our team is organized through five specialized departments, delivering consistent support across Strategic Operations, Targed Sales, Accounting & Legal, Focused marketing, Future Expansion."
