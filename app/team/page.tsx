@@ -430,22 +430,27 @@ export default function TeamPage() {
 
               <div
                 className="
-          mt-8
+    mt-8
 
-          inline-flex
+    inline-flex
 
-          rounded-full
+    rounded-full
 
-          border
-          border-[#79B9FF]/30
+    border
+    border-[#79B9FF]/30
 
-          bg-[#79B9FF]/10
+    bg-[#79B9FF]/10
 
-          px-6
-          py-3
+    px-4
+    sm:px-6
 
-          text-sm
-        "
+    py-3
+
+    text-xs
+    sm:text-sm
+
+    whitespace-nowrap
+  "
               >
                 Organized through our 5-Core Support Ecosystem™
               </div>
