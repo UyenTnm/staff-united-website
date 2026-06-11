@@ -12,6 +12,8 @@ export default function TeamPage() {
   );
   const [activeDepartment, setActiveDepartment] = useState("all");
 
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
   const departments = [
     // Strategic Operations
     {
@@ -26,7 +28,7 @@ export default function TeamPage() {
         name: "Martha Nguyen",
         title: "Lead Strategic Operations",
         image: "/team/martha.jpeg",
-        bio: "Create engaging video content and support multimedia production initiatives.",
+        bio: "Leads operational strategy, team coordination, and process improvement initiatives.",
       },
 
       members: [
@@ -88,7 +90,7 @@ export default function TeamPage() {
       members: [
         {
           name: "Natalie Pham",
-          title: "Sales Development Representative",
+          title: "Business Growth Representatives",
           image: "/team/12.webp",
           bio: "Supports prospecting and outbound sales activities.",
         },
@@ -107,7 +109,7 @@ export default function TeamPage() {
         },
         {
           name: "Ruby Nguyen",
-          title: "Customer Success Associate",
+          title: "Business Growth Representatives",
           image: "/team/15.webp",
           bio: "Supports client relationships and ensures positive customer experiences.",
         },
@@ -302,25 +304,112 @@ export default function TeamPage() {
     <>
       <main className="bg-[#f5f8fc] overflow-hidden">
         {/* Hero */}
-        <section className="bg-[#0B1B33] text-white pt-40 pb-24 px-6">
+        {/* Hero */}
+        {/* Hero */}
+        <section
+          className="
+    relative
+    overflow-hidden
+
+    text-white
+
+    bg-[#06172D]
+  "
+        >
+          {/* Background Video */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            onLoadedData={() => setVideoLoaded(true)}
+            className={`
+      absolute
+      inset-0
+
+      h-full
+      w-full
+
+      object-cover
+
+      transition-opacity
+      duration-700
+
+      ${videoLoaded ? "opacity-100" : "opacity-0"}
+    `}
+          >
+            <source src="/videos/teams/hero.mp4" type="video/mp4" />
+          </video>
+
+          {/* Dark Overlay */}
+          <div
+            className="
+      absolute
+      inset-0
+
+      bg-[#06172D]/20
+    "
+          />
+
+          {/* Gradient Overlay */}
+          <div
+            className="
+      absolute
+      inset-0
+
+      bg-gradient-to-b
+      from-black/20
+      via-[#06172D]/40
+      to-[#06172D]/90
+    "
+          />
+
+          {/* Hero Content */}
           <AnimatedSection direction="up" delay={0}>
-            <div className="max-w-5xl mx-auto text-center">
-              {/* <p className="uppercase tracking-[0.3em] text-[#79B9FF] text-xs">
-                Our Team
-              </p> */}
+            <div
+              className="
+        relative
+        z-10
+
+        max-w-5xl
+        mx-auto
+
+        text-center
+
+        px-6
+
+        pt-40
+        pb-24
+      "
+            >
               <div className="flex justify-center">
                 <span
                   className="
-            inline-block uppercase
-            text-xs sm:text-sm
-            px-5 py-2
+            inline-block
+            uppercase
+
+            text-xs
+            sm:text-sm
+
+            px-5
+            py-2
+
             rounded-full
+
             font-semibold
+
             tracking-[0.18em]
+
             text-[#8FD3FF]
+
             bg-white/10
+
             backdrop-blur-md
-            border border-white/10
+
+            border
+            border-white/10
+
             shadow-[0_4px_20px_rgba(79,141,201,0.15)]
           "
                 >
@@ -339,7 +428,25 @@ export default function TeamPage() {
                 within a specific department.
               </p>
 
-              <div className="mt-8 inline-flex rounded-full border border-[#79B9FF]/30 bg-[#79B9FF]/10 px-6 py-3 text-sm">
+              <div
+                className="
+          mt-8
+
+          inline-flex
+
+          rounded-full
+
+          border
+          border-[#79B9FF]/30
+
+          bg-[#79B9FF]/10
+
+          px-6
+          py-3
+
+          text-sm
+        "
+              >
                 Organized through our 5-Core Support Ecosystem™
               </div>
             </div>
@@ -354,8 +461,8 @@ export default function TeamPage() {
 
             <p className="text-lg text-[#0a1b33]/70 leading-relaxed">
               STAFF United is not just a list of talented women. It is a
-              structured offshore execution team organized by department through
-              our 5-Core Support Ecosystem™.
+              structured offshore execution team organized by departments
+              through our 5-Core Support Ecosystem™.
             </p>
           </div>
 
@@ -466,7 +573,7 @@ export default function TeamPage() {
       "
             >
               {activeDepartment === "all"
-                ? "Our team is organized through five specialized departments, delivering consistent support across operations, sales, marketing, finance, and growth."
+                ? "Our team is organized through five specialized departments, delivering consistent support across Strategic Operations, Targed Sales, Accounting & Legal, Focused marketing, Future Expansion."
                 : departments.find(
                     (department) => department.id === activeDepartment,
                   )?.description}
@@ -531,7 +638,7 @@ export default function TeamPage() {
     bottom-5
 
     bg-white/95
-    backdrop-blur-md
+    backdrop-blur-md overflow-hidden
 
     rounded-[28px]
 
@@ -544,7 +651,10 @@ export default function TeamPage() {
 
     h-[120px]
 
-    group-hover:h-[190px] group-hover:-translate-y-4
+
+group-hover:h-[185px]  
+md:group-hover:h-[175px]
+xl:group-hover:h-[175px] group-hover:-translate-y-2
 
     ${member.isLead ? "ring-1 ring-[#4F8DC9]/50" : ""}
   `}
@@ -570,55 +680,35 @@ export default function TeamPage() {
                           >
                             {member.title}
                           </p>
-
-                          {/* {member.isLead && (
-                          <div
-                            className="
-          inline-flex
-          mt-3
-
-          px-3
-          py-1
-
-          rounded-full
-
-          bg-[#4F8DC9]/10
-          text-[#4F8DC9]
-
-          text-[11px]
-          font-semibold
-          tracking-[0.15em]
-          uppercase
-        "
-                          >
-                            Team Lead
-                          </div>
-                        )} */}
                         </div>
                       </div>
+
                       {member.bio && (
-                        <p
+                        <div
                           className="
       mt-4
-      text-[#0B1B33]/70
-      leading-relaxed
 
       opacity-0
-      max-h-0
-      translate-y-2
-
-      overflow-hidden
+      translate-y-4
 
       transition-all
-      duration-500
+      duration-300
 
-      group-hover:opacity-100
-      group-hover:max-h-[120px]
+      group-hover:opacity-100 group-hover:delay-75
       group-hover:translate-y-0
     "
                         >
-                          {member.bio}
-                        </p>
+                          <p
+                            className="
+        text-sm
+        text-[#0B1B33]/70
+        leading-relaxed
+        line-clamp-3
+      "
+                          >
+                            {member.bio}
+                          </p>
+                        </div>
                       )}
                     </div>
                   </div>
@@ -633,22 +723,34 @@ export default function TeamPage() {
             {/* Heading */}
             <div className="max-w-4xl mb-16 mx-auto text-center">
               <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="w-8 h-[2px] bg-[#4F8DC9]" />
+                <div className="w-8 h-[2px] bg-[#4F8DC9] shrink-0" />
+
                 <span
                   className="
-            tracking-[0.25em]
-            text-sm
-            text-[#4F8DC9]
-            font-medium
-          "
+      text-[#4F8DC9]
+      font-medium
+      text-center
+
+      text-xs
+      sm:text-sm
+
+      tracking-[0.12em]
+      sm:tracking-[0.18em]
+      md:tracking-[0.25em]
+    "
                 >
-                  One Standard. Five Departments.
+                  <span className="block sm:inline">One Standard.</span>
+                  <span className="block sm:inline sm:ml-2">
+                    Five Departments.
+                  </span>
                 </span>
+
+                <div className="w-8 opacity-0 shrink-0" />
               </div>
 
               <h2
                 className="
-          text-4xl
+          text-3xl
           md:text-5xl
           font-semibold
           text-[#0B1B33]
@@ -669,7 +771,7 @@ export default function TeamPage() {
           max-w-3xl
         "
               >
-                Regardless of department, every STAFF United team member
+                Regardless of departments, every STAFF United team member
                 operates under the same shared standards — ensuring your
                 business always receives consistent, accountable, and
                 professional support.
@@ -872,15 +974,20 @@ export default function TeamPage() {
 
               <span
                 className="
-          text-[#5EA6F4]
+    text-[#5EA6F4]
 
-          tracking-[0.25em]
+    uppercase
 
-          uppercase
+    text-[10px]
+    sm:text-xs
+    md:text-sm
 
-          text-xs
-          md:text-sm
-        "
+    tracking-[0.12em]
+    sm:tracking-[0.18em]
+    md:tracking-[0.25em]
+
+    whitespace-nowrap
+  "
               >
                 Ready To Work With Us?
               </span>
