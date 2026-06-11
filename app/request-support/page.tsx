@@ -11,13 +11,9 @@ import VoiceRecorder from "@/components/forms/VoiceRecorder";
 export default function RequestSupportPage() {
   const [success, setSuccess] = useState(false);
 
-  // const [isRecording, setIsRecording] = useState(false);
   const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
   const [audioUrl, setAudioUrl] = useState("");
   const [description, setDescription] = useState("");
-
-  // const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-  // const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const [recordingTime, setRecordingTime] = useState(0);
 
@@ -39,6 +35,14 @@ export default function RequestSupportPage() {
   useEffect(() => {
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
     setTimezone(tz);
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
   }, []);
 
   const uploadVoice = async (blob: Blob) => {
@@ -91,6 +95,9 @@ export default function RequestSupportPage() {
 
     if (!startDate) {
       newErrors.start_timeline = "Please select a start date.";
+    }
+    if (!data.support_type) {
+      newErrors.support_type = "Please select a support type.";
     }
 
     if (!description && !audioBlob) {
@@ -250,7 +257,7 @@ duration-300
         {/* SERVICE SELECTOR */}
         <section id="service-selector" className="pb-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div id="service-selector" className="h-1"></div>
+            {/* <div id="service-selector" className="h-1"></div> */}
             <div className="grid md:grid-cols-2 xl:grid-cols-5 gap-4">
               <a
                 href="/services/strategic-operations#service-form"
@@ -402,10 +409,10 @@ duration-300
                         Email
                       </p>
                       <a
-                        href="mailto:info@staffunited.com?subject=Free%20Consultation%20Request&body=Hello%20Staff%20United,%0A%0AI%20would%20like%20to%20learn%20more%20about%20your%20services.%0A"
+                        href="mailto:info@staffunitedgroup.com?subject=Free%20Consultation%20Request&body=Hello%20Staff%20United,%0A%0AI%20would%20like%20to%20learn%20more%20about%20your%20services.%0A"
                         className="text-primary hover:text-blue-800 underline"
                       >
-                        info@staffunited.com
+                        info@staffunitedgroup.com
                       </a>
                     </div>
 
@@ -464,7 +471,7 @@ duration-300
                   </p>
 
                   <a
-                    href="mailto:info@staffunited.com?subject=Free%20Consultation%20Request"
+                    href="mailto:info@staffunitedgroup.com?subject=Free%20Consultation%20Request"
                     className="inline-flex items-center justify-center w-full px-4 py-3 rounded-lg bg-white text-secondary font-semibold hover:bg-white/90 transition-colors"
                   >
                     Email Us Directly
