@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function TeamPage() {
   const [openDepartment, setOpenDepartment] = useState<string | null>(
@@ -295,7 +296,7 @@ export default function TeamPage() {
 
   const allMembers = [...leaders, ...teamMembers];
 
-  console.table(allMembers);
+  // console.table(allMembers);
 
   return (
     <>
@@ -347,11 +348,11 @@ export default function TeamPage() {
 
         <section className="pt-20 pb-10 px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl text-[#0B1B33] mb-6">
+            <h2 className="text-3xl text-[#0a1b33] mb-6">
               How Our Team Is Structured
             </h2>
 
-            <p className="text-lg text-[#0B1B33]/70 leading-relaxed">
+            <p className="text-lg text-[#0a1b33]/70 leading-relaxed">
               STAFF United is not just a list of talented women. It is a
               structured offshore execution team organized by department through
               our 5-Core Support Ecosystem™.
@@ -442,13 +443,16 @@ export default function TeamPage() {
             <p
               className="
         uppercase font-semibold
-        tracking-[0.25em]
-        text-[#4F8DC9]
-        text-sm
+        text-[#0a1b33]
+        text-xl
        
       "
             >
-              {activeDepartment === "all" ? "Our Team" : "Department Overview"}
+              {activeDepartment === "all"
+                ? "OUR TEAM"
+                : departments.find(
+                    (department) => department.id === activeDepartment,
+                  )?.name}
             </p>
 
             <p
@@ -472,49 +476,55 @@ export default function TeamPage() {
 
         {/* List Team */}
         <section className="max-w-7xl mx-auto px-6 pb-24">
-          <div
-            className="
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeDepartment}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+              className="
       grid
       md:grid-cols-2
       xl:grid-cols-3
       gap-8
     "
-          >
-            {allMembers
-              .filter((member) =>
-                activeDepartment === "all"
-                  ? true
-                  : member.departmentId === activeDepartment,
-              )
-              .map((member) => (
-                <div
-                  key={`${member.departmentId}-${member.name}`}
-                  className="relative h-[500px] overflow-hidden rounded-[36px] bg-[#F3F5F8] group"
-                >
-                  {member.isLead && (
-                    <div
-                      className="
+            >
+              {allMembers
+                .filter((member) =>
+                  activeDepartment === "all"
+                    ? true
+                    : member.departmentId === activeDepartment,
+                )
+                .map((member) => (
+                  <div
+                    key={`${member.departmentId}-${member.name}`}
+                    className="relative h-[500px] overflow-hidden rounded-[36px] bg-[#F3F5F8] group"
+                  >
+                    {member.isLead && (
+                      <div
+                        className="
   absolute top-3 left-3 md:top-5 md:left-5 z-20 px-2.5 py-1 md:px-4 md:py-2 rounded-full bg-[#4F8DC9] text-white text-[9px] md:text-[11px] font-semibold tracking-[0.1em] md:tracking-[0.15em] uppercase shadow-lg bg-[#4F8DC9]/90 backdrop-blur-md"
-                    >
-                      Team Lead
-                    </div>
-                  )}
-                  <div className="absolute inset-0">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="
+                      >
+                        Team Lead
+                      </div>
+                    )}
+                    <div className="absolute inset-0">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="
                 object-cover
                 transition-transform
                 duration-500
                 group-hover:scale-110 cursor-pointer
               "
-                    />
-                  </div>
+                      />
+                    </div>
 
-                  <div
-                    className={`
+                    <div
+                      className={`
     absolute
     left-5
     right-5
@@ -538,30 +548,30 @@ export default function TeamPage() {
 
     ${member.isLead ? "ring-1 ring-[#4F8DC9]/50" : ""}
   `}
-                  >
-                    <div className="flex justify-between items-start transition-all duration-500 ease-out group-hover:-translate-y-1">
-                      <div>
-                        <h3
-                          className="
+                    >
+                      <div className="flex justify-between items-start transition-all duration-500 ease-out group-hover:-translate-y-1">
+                        <div>
+                          <h3
+                            className="
         text-2xl
         font-semibold
         text-[#0B1B33]
       "
-                        >
-                          {member.name}
-                        </h3>
+                          >
+                            {member.name}
+                          </h3>
 
-                        <p
-                          className="
+                          <p
+                            className="
         mt-1
         text-base
         text-[#0B1B33]/70
       "
-                        >
-                          {member.title}
-                        </p>
+                          >
+                            {member.title}
+                          </p>
 
-                        {/* {member.isLead && (
+                          {/* {member.isLead && (
                           <div
                             className="
           inline-flex
@@ -584,11 +594,11 @@ export default function TeamPage() {
                             Team Lead
                           </div>
                         )} */}
+                        </div>
                       </div>
-                    </div>
-                    {member.bio && (
-                      <p
-                        className="
+                      {member.bio && (
+                        <p
+                          className="
       mt-4
       text-[#0B1B33]/70
       leading-relaxed
@@ -606,14 +616,15 @@ export default function TeamPage() {
       group-hover:max-h-[120px]
       group-hover:translate-y-0
     "
-                      >
-                        {member.bio}
-                      </p>
-                    )}
+                        >
+                          {member.bio}
+                        </p>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
-          </div>
+                ))}
+            </motion.div>
+          </AnimatePresence>
         </section>
 
         {/* One Standard */}
