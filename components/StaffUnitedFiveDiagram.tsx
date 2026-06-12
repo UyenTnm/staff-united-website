@@ -327,6 +327,7 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
             <span
               className="
     inline-block
+    whitespace-nowrap
 
     text-lg
     sm:text-xl
@@ -356,19 +357,24 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
           {/* Subtitle */}
           <p
             className="
-      mt-6
+    mt-6
 
-      text-[#8FD3FF]
+    text-[#8FD3FF]
 
-      font-semibold
+    
 
-      text-sm
-      sm:text-sm
+    text-sm
+    sm:text-base
+    lg:text-lg
 
-      tracking-[0.03em]
-    "
+    tracking-[0.03em]
+    leading-relaxed
+  "
           >
-            S.T.A.F.F. represents the foundation of STAFF United:
+            S.T.A.F.F. represents the{" "}
+            <span className="whitespace-nowrap">
+              foundation of STAFF United:
+            </span>
           </p>
         </div>
 
