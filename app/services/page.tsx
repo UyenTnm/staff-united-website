@@ -1019,7 +1019,7 @@ hidden md:inline
     "
                 >
                   <a
-                    href="/brochure/staff-united-en.pdf"
+                    href="/brochure/staff-brochure-eng.pdf"
                     download
                     className="block px-5 py-3 text-slate-700 hover:bg-slate-100"
                   >
@@ -1027,7 +1027,7 @@ hidden md:inline
                   </a>
 
                   <a
-                    href="/brochure/staff-united-vn.pdf"
+                    href="/brochure/staff-brochure-vi.pdf"
                     download
                     className="block px-5 py-3 text-slate-700 hover:bg-slate-100"
                   >
