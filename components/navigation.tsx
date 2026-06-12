@@ -285,15 +285,16 @@ group-hover:duration-700
     items-center gap-2
     px-5 py-2
     rounded-full
-    border border-white/10
-    bg-white/5
+    border border-[#0a1b33]/30
+    bg-[#4f8dc9]
     text-white/80
-    hover:text-white
-    transition-all duration-300
+    hover:text-[#0a1b33]
+    transition-all duration-500
   "
           >
-            📄 Brochure
+            Download Brochure
           </button>
+          {/* 📄 */}
 
           {/* <ThemeToggle /> */}
 

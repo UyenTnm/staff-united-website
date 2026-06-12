@@ -66,10 +66,10 @@ export default function BrochureModal({ open, onClose }: BrochureModalProps) {
 
             <h3 className="text-xl text-white mb-2">English Version</h3>
 
-            <p className="text-white/60 mb-6">Company Profile</p>
+            <p className="text-white/60 mb-6">Brochure</p>
 
             <a
-              href="/brochure/staff-brochure-eng.pdf"
+              href="/api/download-brochure-eng"
               target="_blank"
               rel="noopener noreferrer"
               className="
@@ -104,7 +104,7 @@ export default function BrochureModal({ open, onClose }: BrochureModalProps) {
             <p className="text-white/60 mb-6">Hồ sơ năng lực công ty</p>
 
             <a
-              href="/brochure/staff-brochure-vi.pdf"
+              href="/api/download-brochure-vi"
               target="_blank"
               rel="noopener noreferrer"
               className="
