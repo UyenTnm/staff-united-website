@@ -23,6 +23,10 @@ export default function Navigation() {
   ];
   const serviceItems = [
     {
+      label: "All Services",
+      href: "/services",
+    },
+    {
       label: "Strategic Operations",
       href: "/services/strategic-operations",
     },
