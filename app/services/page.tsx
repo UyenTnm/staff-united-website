@@ -289,22 +289,7 @@ export default function Services() {
             </div>
 
             {/* LOGO */}
-            <div className="mt-6 flex justify-center">
-              {/* <Image
-                src="/services/5taff-logo-services.webp"
-                alt="5TAFF United"
-                width={320}
-                height={120}
-                className="
-                        w-auto
-                        h-auto
-                        max-w-[220px]
-                        sm:max-w-[280px]
-                        md:max-w-[320px]
-                      "
-                priority
-              /> */}
-            </div>
+            <div className="mt-6 flex justify-center"></div>
 
             {/* SUBTITLE */}
             <div className="mt-6 mb-10 text-center">
@@ -1002,31 +987,7 @@ hidden md:inline
               </a>
 
               {/* Secondary CTA */}
-              {/* <a
-                href="/brochure/StaffUnitedGroup-Brochure.pdf"
-                download
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-        px-7 md:px-8
-        py-3 md:py-3.5
-        rounded-full
 
-        bg-white/10
-        border border-white/30
-
-        text-sm md:text-base lg:text-lg
-        font-medium
-        whitespace-nowrap
-
-        transition-all duration-700
-
-        hover:bg-white/20
-        hover:border-white/60
-      "
-              >
-                Download Brochure
-              </a> */}
               <div className="relative group">
                 <button
                   className="

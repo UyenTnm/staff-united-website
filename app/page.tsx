@@ -183,7 +183,8 @@ export default function Home() {
                   <div className="space-y-3 sm:space-y-4 w-full">
                     <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px]  md:text-[17px]">
                       STAFF United integrates directly into your operations,
-                      delivering structured offshore execution across Strategic Operations, Targeted Sales, Accounting & Legal, Focus
+                      delivering structured offshore execution across Strategic
+                      Operations, Targeted Sales, Accounting & Legal, Focus
                       Marketing and Future Expansion.
                     </p>
 
@@ -1231,6 +1232,90 @@ to-[#103663]/70
             </div>
           </div>
         )}
+
+        {/* CTA */}
+        <section className="">
+          <div
+            className="
+              bg-gradient-to-b
+              from-[#4f8dc9]
+              to-[#0b1b33]
+              text-white
+        
+              px-8 md:px-16 lg:px-20
+              py-10 md:py-14 lg:py-16
+        
+              flex flex-col
+              items-center
+              justify-center text-center
+              gap-6 md:gap-8
+        
+              shadow-[0_-20px_60px_rgba(0,0,0,0.35)]
+            "
+          >
+            {/* TEXT */}
+            <AnimatedSection>
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-light leading-tight text-center">
+                Explore Our Company Brochure
+              </h3>
+            </AnimatedSection>
+
+            {/* BUTTON DOWNLOAD BROCHURE*/}
+            <AnimatedSection>
+              <div className="flex flex-col sm:flex-row items-center gap-4">
+                {/* Primary CTA */}
+
+                <div className="relative group">
+                  <button
+                    className="
+              px-7 py-3 rounded-full
+              border border-white/80
+              hover:bg-white hover:text-[#3f6fb5]
+              transition-all duration-300
+            "
+                  >
+                    Download Brochure
+                  </button>
+
+                  <div
+                    className="
+              absolute top-full left-1/2
+              -translate-x-1/2 mt-2
+        
+              min-w-[220px]
+              bg-white
+              rounded-xl
+              shadow-xl
+        
+              opacity-0 invisible
+              group-hover:opacity-100
+              group-hover:visible
+        
+              transition-all duration-300
+              overflow-hidden
+            "
+                  >
+                    <a
+                      href="/brochure/staff-united-en.pdf"
+                      download
+                      className="block px-5 py-3 text-slate-700 hover:bg-slate-100"
+                    >
+                      🇬🇧 English
+                    </a>
+
+                    <a
+                      href="/brochure/staff-united-vn.pdf"
+                      download
+                      className="block px-5 py-3 text-slate-700 hover:bg-slate-100"
+                    >
+                      🇻🇳 Vietnamese
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </section>
       </main>
       {/* <ChatBox /> */}
     </>
