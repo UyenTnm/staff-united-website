@@ -319,6 +319,65 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
         />
       </div>
       <div className="relative z-10 max-w-[1800px] mx-auto px-6 md:px-10 xl:px-14">
+        {/* Intro */}
+        {/* HEADER */}
+        <div className="text-center max-w-5xl mx-auto mb-16">
+          {/* Badge */}
+          <div className="flex justify-center">
+            <span
+              className="
+    inline-block
+    whitespace-nowrap
+
+    text-lg
+    sm:text-xl
+    lg:text-xl
+
+    px-8 py-3
+
+    rounded-full
+
+    font-semibold
+
+    tracking-[0.12em]
+
+    text-[#8FD3FF]
+
+    bg-white/10
+
+    backdrop-blur-md
+
+    border border-white/10
+  "
+            >
+              THE STAFF FRAMEWORK
+            </span>
+          </div>
+
+          {/* Subtitle */}
+          <p
+            className="
+    mt-6
+
+    text-[#8FD3FF]
+
+    font-semibold
+
+    text-sm
+    sm:text-base
+    lg:text-lg
+
+    tracking-[0.03em]
+    leading-relaxed
+  "
+          >
+            S.T.A.F.F. represents the{" "}
+            <span className="whitespace-nowrap">
+              foundation of STAFF United:
+            </span>
+          </p>
+        </div>
+
         {/* Diagram */}
         <div
           className="w-full

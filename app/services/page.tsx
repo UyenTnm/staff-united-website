@@ -289,22 +289,7 @@ export default function Services() {
             </div>
 
             {/* LOGO */}
-            <div className="mt-6 flex justify-center">
-              {/* <Image
-                src="/services/5taff-logo-services.webp"
-                alt="5TAFF United"
-                width={320}
-                height={120}
-                className="
-                        w-auto
-                        h-auto
-                        max-w-[220px]
-                        sm:max-w-[280px]
-                        md:max-w-[320px]
-                      "
-                priority
-              /> */}
-            </div>
+            <div className="mt-6 flex justify-center"></div>
 
             {/* SUBTITLE */}
             <div className="mt-6 mb-10 text-center">
@@ -975,29 +960,82 @@ hidden md:inline
           </AnimatedSection>
 
           {/* BUTTON */}
-          {/* BUTTON */}
+          {/* BUTTONS */}
           <AnimatedSection>
-            <a
-              href="/request-support"
-              className="
-      px-7 md:px-8
-      py-3 md:py-3.5
-      rounded-full
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              {/* Primary CTA */}
+              <a
+                href="/request-support"
+                className="
+        px-7 md:px-8
+        py-3 md:py-3.5
+        rounded-full
+        border border-white/80
+
+        text-sm md:text-base lg:text-lg
+        font-medium
+        whitespace-nowrap
+
+        transition-all duration-700
+
+        hover:bg-white
+        hover:text-[#3f6fb5]
+        hover:shadow-lg
+      "
+              >
+                Request Support
+              </a>
+
+              {/* Secondary CTA */}
+
+              <div className="relative group">
+                <button
+                  className="
+      px-7 py-3 rounded-full
       border border-white/80
-
-      text-sm md:text-base lg:text-lg
-      font-medium
-      whitespace-nowrap
-
-      transition-all duration-700
-
-      hover:bg-white
-      hover:text-[#3f6fb5]
-      hover:shadow-lg
+      hover:bg-white hover:text-[#3f6fb5]
+      transition-all duration-300
     "
-            >
-              Request Support
-            </a>
+                >
+                  Download Brochure
+                </button>
+
+                <div
+                  className="
+      absolute top-full left-1/2
+      -translate-x-1/2 mt-2
+
+      min-w-[220px]
+      bg-white
+      rounded-xl
+      shadow-xl
+
+      opacity-0 invisible
+      group-hover:opacity-100
+      group-hover:visible
+
+      transition-all duration-300
+      overflow-hidden
+    "
+                >
+                  <a
+                    href="/brochure/staff-brochure-eng.pdf"
+                    download
+                    className="block px-5 py-3 text-slate-700 hover:bg-slate-100"
+                  >
+                    🇬🇧 English
+                  </a>
+
+                  <a
+                    href="/brochure/staff-brochure-vi.pdf"
+                    download
+                    className="block px-5 py-3 text-slate-700 hover:bg-slate-100"
+                  >
+                    🇻🇳 Vietnamese
+                  </a>
+                </div>
+              </div>
+            </div>
           </AnimatedSection>
         </div>
       </section>
