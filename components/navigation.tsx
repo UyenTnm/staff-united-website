@@ -23,6 +23,7 @@ export default function Navigation() {
     { label: "CAREERS", href: "/careers" },
     { label: "INSIGHT", href: "/insights" },
     { label: "JOIN TEAM", href: "/join" },
+    { label: "BROCHURE", href: "#" },
   ];
   const serviceItems = [
     {
@@ -185,6 +186,87 @@ export default function Navigation() {
                 </div>
               );
             }
+            if (item.label === "BROCHURE") {
+              return (
+                <button
+                  key="brochure"
+                  onClick={() => setBrochureOpen(true)}
+                  className="
+        group relative
+        px-4 py-2
+        text-sm
+        rounded-full
+        overflow-hidden
+      "
+                >
+                  {/* GLASS BASE */}
+                  <span
+                    className="
+          absolute inset-0
+          rounded-full
+          bg-white/5 backdrop-blur-md
+          opacity-0
+          group-hover:opacity-100
+          transition duration-300
+        "
+                  />
+
+                  {/* LIQUID 1 */}
+                  <span
+                    className="
+          absolute top-1/2 left-1/2
+          w-[20px] h-[20px]
+          rounded-full
+          -translate-x-1/2 -translate-y-1/2
+
+          bg-white/20
+
+          scale-0
+          group-hover:scale-[14]
+
+          transition-transform
+          duration-500
+          ease-[cubic-bezier(0.33,1,0.68,1)]
+
+          will-change-transform
+        "
+                  />
+
+                  {/* LIQUID 2 */}
+                  <span
+                    className="
+          absolute top-1/2 left-1/2
+          w-[20px] h-[20px]
+          rounded-full
+          -translate-x-1/2 -translate-y-1/2
+
+          bg-white/10
+
+          scale-0
+          group-hover:scale-[18]
+
+          transition-transform
+          duration-800
+          ease-[cubic-bezier(0.33,1,0.68,1)]
+
+          will-change-transform
+        "
+                  />
+
+                  {/* TEXT */}
+                  <span
+                    className="
+          relative z-10
+          text-white/70
+          group-hover:text-white
+          transition-colors duration-300
+        "
+                  >
+                    BROCHURE
+                  </span>
+                </button>
+              );
+            }
 
             return (
               <Link
@@ -278,7 +360,7 @@ group-hover:duration-700
         {/* CTA GROUP */}
         <div className="hidden lg:flex items-center gap-3">
           {/* Brochure */}
-          <button
+          {/* <button
             onClick={() => setBrochureOpen(true)}
             className="
     hidden xl:flex
@@ -293,7 +375,7 @@ group-hover:duration-700
   "
           >
             Download Brochure
-          </button>
+          </button> */}
           {/* 📄 */}
 
           {/* <ThemeToggle /> */}
@@ -404,6 +486,24 @@ group-hover:duration-700
                   </div>
                 );
               }
+              if (item.label === "BROCHURE") {
+                return (
+                  <button
+                    key="brochure"
+                    onClick={() => {
+                      setBrochureOpen(true);
+                      setIsOpen(false);
+                    }}
+                    className="
+        text-white text-lg
+        transition-colors duration-300
+        hover:text-[#4f8dc9]
+      "
+                  >
+                    BROCHURE
+                  </button>
+                );
+              }
 
               return (
                 <Link
@@ -439,8 +539,8 @@ group-hover:duration-700
                 Request Support
               </Link>
 
-              {/* Download Brochure */}
-              <button
+              {/* Download Brochure Tạm ẩn mobile */}
+              {/* <button
                 onClick={() => {
                   setBrochureOpen(true);
                   setIsOpen(false);
@@ -465,7 +565,7 @@ group-hover:duration-700
     "
               >
                 Download Brochure
-              </button>
+              </button> */}
             </div>
           </div>
         )}
