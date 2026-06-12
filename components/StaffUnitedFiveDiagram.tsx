@@ -361,7 +361,7 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
 
     text-[#8FD3FF]
 
-    
+    font-semibold
 
     text-sm
     sm:text-base
