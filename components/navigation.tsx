@@ -6,11 +6,14 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import ThemeToggle from "./theme/ThemeToggle";
 import { ChevronDown } from "lucide-react";
+import BrochureModal from "./brochure/BrochureModal";
 
 export default function Navigation() {
   const pathname = usePathname();
 
   const activeService = pathname.split("/")[2];
+
+  const [brochureOpen, setBrochureOpen] = useState(false);
 
   const navItems = [
     { label: "HOME", href: "/" },
@@ -274,6 +277,24 @@ group-hover:duration-700
         {/* CTA */}
         {/* CTA GROUP */}
         <div className="hidden lg:flex items-center gap-3">
+          {/* Brochure */}
+          <button
+            onClick={() => setBrochureOpen(true)}
+            className="
+    hidden xl:flex
+    items-center gap-2
+    px-5 py-2
+    rounded-full
+    border border-white/10
+    bg-white/5
+    text-white/80
+    hover:text-white
+    transition-all duration-300
+  "
+          >
+            📄 Brochure
+          </button>
+
           {/* <ThemeToggle /> */}
 
           {/* REQUEST SUPPORT (primary) */}
@@ -323,17 +344,6 @@ group-hover:duration-700
 
         {isOpen && (
           <div className="fixed top-[56px] sm:top-[64px] left-0 w-full bg-black backdrop-blur-xl z-[9998] flex flex-col items-center gap-6 py-10">
-            {/* {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className="text-white text-lg"
-              >
-                {item.label}
-              </Link>
-            ))} */}
-
             {navItems.map((item) => {
               if (item.label === "SERVICES") {
                 return (
@@ -406,19 +416,56 @@ group-hover:duration-700
               );
             })}
 
-            <Link
-              href="/request-support"
-              onClick={() => setIsOpen(false)}
-              className="
-        mt-4
-        bg-[#4f8dc9]
-        text-white
-        px-6 py-3
-        rounded-full
-      "
-            >
-              Request Support
-            </Link>
+            <div className="flex flex-col gap-3 w-full px-6 mt-4">
+              {/* Request Support */}
+              <Link
+                href="/request-support"
+                onClick={() => setIsOpen(false)}
+                className="
+      w-full
+      text-center
+
+      bg-[#4f8dc9]
+      text-white
+
+      px-6 py-3
+      rounded-full
+
+      font-medium
+      transition-all duration-300
+    "
+              >
+                Request Support
+              </Link>
+
+              {/* Download Brochure */}
+              <button
+                onClick={() => {
+                  setBrochureOpen(true);
+                  setIsOpen(false);
+                }}
+                className="
+      w-full
+      text-center
+
+      border-2 border-[#4f8dc9]/60
+      bg-transparent
+
+      text-white
+
+      px-6 py-3
+      rounded-full
+
+      font-medium
+
+      transition-all duration-300
+      hover:bg-[#4f8dc9]/10
+      hover:border-[#4f8dc9]
+    "
+              >
+                Download Brochure
+              </button>
+            </div>
           </div>
         )}
 
@@ -462,6 +509,11 @@ group-hover:duration-700
           />
         </button>
       </div>
+
+      <BrochureModal
+        open={brochureOpen}
+        onClose={() => setBrochureOpen(false)}
+      />
     </nav>
   );
 }
