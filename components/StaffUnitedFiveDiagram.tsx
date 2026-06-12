@@ -326,27 +326,28 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
           <div className="flex justify-center">
             <span
               className="
-        inline-block
-        text-xs sm:text-sm
+    inline-block
 
-        px-5 py-2
+    text-lg
+    sm:text-xl
+    lg:text-xl
 
-        rounded-full
+    px-8 py-3
 
-        font-semibold
+    rounded-full
 
-        tracking-[0.18em]
+    font-semibold
 
-        text-[#8FD3FF]
+    tracking-[0.12em]
 
-        bg-white/10
+    text-[#8FD3FF]
 
-        backdrop-blur-md
+    bg-white/10
 
-        border border-white/10
+    backdrop-blur-md
 
-        shadow-[0_4px_20px_rgba(79,141,201,0.15)]
-      "
+    border border-white/10
+  "
             >
               THE STAFF FRAMEWORK
             </span>
@@ -361,8 +362,8 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
 
       font-semibold
 
-      text-lg
-      sm:text-xl
+      text-sm
+      sm:text-sm
 
       tracking-[0.03em]
     "

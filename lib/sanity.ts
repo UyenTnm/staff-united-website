@@ -33,7 +33,6 @@ export async function getInsights(page = 1, limit = 6) {
   );
 }
 
-
 export async function getInsightBySlug(slug: string) {
   return client.fetch(
     `
@@ -74,4 +73,27 @@ export async function getInsightsCount() {
   return client.fetch(
     `count(*[_type == "insight" && (!defined(publishAt) || dateTime(publishAt) <= dateTime(now()))])`,
   );
+}
+
+export async function getJobs() {
+  return client.fetch(`
+    *[
+      _type == "job" &&
+      active == true &&
+      (
+        !defined(expiryDate) ||
+        dateTime(expiryDate) > dateTime(now())
+      )
+    ]
+    | order(coalesce(publishAt, _createdAt) desc)
+    {
+      title,
+      "slug": slug.current,
+      department,
+      location,
+      "type": employmentType,
+      publishAt,
+      description
+    }
+  `);
 }
