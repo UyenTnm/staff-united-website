@@ -1,6 +1,7 @@
 "use client";
 
 import { X, Download } from "lucide-react";
+import { useEffect } from "react";
 
 interface BrochureModalProps {
   open: boolean;
@@ -8,10 +9,25 @@ interface BrochureModalProps {
 }
 
 export default function BrochureModal({ open, onClose }: BrochureModalProps) {
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, [onClose]);
+
   if (!open) return null;
 
   return (
     <div
+      onClick={onClose}
       className="
         fixed inset-0 z-[99999]
         bg-black/70
@@ -21,6 +37,7 @@ export default function BrochureModal({ open, onClose }: BrochureModalProps) {
       "
     >
       <div
+        onClick={(e) => e.stopPropagation()}
         className="
           relative
           w-full max-w-4xl
@@ -66,7 +83,7 @@ export default function BrochureModal({ open, onClose }: BrochureModalProps) {
 
             <h3 className="text-xl text-white mb-2">English Version</h3>
 
-            <p className="text-white/60 mb-6">Brochure</p>
+            <p className="text-white/60 mb-6">Company Brochure</p>
 
             <a
               href="/api/download-brochure-eng"
