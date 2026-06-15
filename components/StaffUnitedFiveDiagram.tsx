@@ -322,17 +322,15 @@ bg-[linear-gradient(180deg,_#020817_0%,_#0a1b33_40%,_#1f4f82_70%,_#4f8dc9_100%)]
       <div className="relative z-10 max-w-[1800px] mx-auto px-6 md:px-10 xl:px-14">
         {/* Intro */}
         {/* HEADER */}
-        <div className="text-center max-w-5xl mx-auto mb-16">
+        <div className="text-center max-w-5xl mx-auto mb-8">
           {/* Badge */}
           <div className="flex justify-center">
-            <span
+            <h3
               className="
     inline-block
     whitespace-nowrap
 
-    text-lg
-    sm:text-xl
-    lg:text-xl
+    text-3xl md:text-xl lg:text-4xl
 
     px-8 py-3
 
@@ -344,21 +342,17 @@ bg-[linear-gradient(180deg,_#020817_0%,_#0a1b33_40%,_#1f4f82_70%,_#4f8dc9_100%)]
 
     text-[#8FD3FF]
 
-    bg-white/10
 
-    backdrop-blur-md
 
-    border border-white/10
   "
             >
               THE STAFF FRAMEWORK
-            </span>
+            </h3>
           </div>
 
           {/* Subtitle */}
           <p
             className="
-    mt-6
 
     text-[#8FD3FF]
 
