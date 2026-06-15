@@ -454,7 +454,7 @@ export default function TalentFastTrackForm() {
                   icon: "🚀",
                   title: "Submit Application",
                   description:
-                    "Submit your application and our team will review it within 48 hours.",
+                    "Submit your application and our team will review it within 48\u00A0hours.",
                 },
               ].map((item) => (
                 <div
