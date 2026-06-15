@@ -81,19 +81,43 @@ export async function getJobs() {
       _type == "job" &&
       active == true &&
       (
+        !defined(publishAt) ||
+        dateTime(publishAt) <= dateTime(now())
+      ) &&
+      (
         !defined(expiryDate) ||
         dateTime(expiryDate) > dateTime(now())
       )
-    ]
-    | order(coalesce(publishAt, _createdAt) desc)
-    {
+    ] | order(publishAt desc) {
       title,
       "slug": slug.current,
       department,
       location,
       "type": employmentType,
-      publishAt,
-      description
+      description,
+      "publishedAt": publishAt,
+      featured
     }
   `);
+}
+
+export async function getJobBySlug(slug: string) {
+  return client.fetch(
+    `
+    *[
+      _type == "job" &&
+      slug.current == $slug &&
+      active == true &&
+      (
+        !defined(publishAt) ||
+        dateTime(publishAt) <= dateTime(now())
+      ) &&
+      (
+        !defined(expiryDate) ||
+        dateTime(expiryDate) > dateTime(now())
+      )
+    ][0]
+    `,
+    { slug },
+  );
 }

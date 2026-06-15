@@ -397,7 +397,7 @@ export default function TalentFastTrackForm() {
   return (
     <section className="py-24">
       {" "}
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold mb-6">Talent Fast Track</h1>
 
@@ -407,7 +407,18 @@ export default function TalentFastTrackForm() {
         </div>
 
         {/* Progress Steps */}
-        <div className="mb-16">
+        {/* Progress Steps */}
+        <div
+          className="
+    mb-16
+    rounded-[40px]
+    border border-[#4F8DC9]/30
+    bg-[linear-gradient(135deg,rgba(79,141,201,0.10),rgba(255,255,255,0.75))]
+    backdrop-blur-md
+    p-6 md:p-10
+    shadow-[0_20px_60px_rgba(79,141,201,0.08)]
+  "
+        >
           <div className="relative">
             {/* Line */}
             <div
@@ -490,7 +501,22 @@ export default function TalentFastTrackForm() {
                     {item.icon}
                   </div>
 
-                  <h3 className="text-xl font-bold text-[#06172D] mb-3">
+                  <h3
+                    className="
+    text-xl
+    font-bold
+    text-[#06172D]
+    mb-3
+
+    md:min-h-[96px]
+    lg:min-h-0
+
+    flex
+    items-center
+    justify-center
+    text-center
+  "
+                  >
                     {item.title}
                   </h3>
 
@@ -632,7 +658,7 @@ ${errors.firstName ? "border border-red-500" : "border border-slate-300"}
     mb-4
     "
               >
-                Position Applying For *
+                Position Applying For
               </label>
 
               <select
