@@ -32,6 +32,8 @@ export default function RequestSupportPage() {
 
   const [highlightServices, setHighlightServices] = useState(false);
 
+  const [showServices, setShowServices] = useState(false);
+
   useEffect(() => {
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
     setTimezone(tz);
@@ -89,16 +91,16 @@ export default function RequestSupportPage() {
       newErrors.phone = "Enter a valid phone number.";
     }
 
-    if (!hoursOption) {
-      newErrors.hours_per_week_option = "Please select weekly capacity.";
-    }
+    // if (!hoursOption) {
+    //   newErrors.hours_per_week_option = "Please select weekly capacity.";
+    // }
 
-    if (!startDate) {
-      newErrors.start_timeline = "Please select a start date.";
-    }
-    if (!data.support_type) {
-      newErrors.support_type = "Please select a support type.";
-    }
+    // if (!startDate) {
+    //   newErrors.start_timeline = "Please select a start date.";
+    // }
+    // if (!data.support_type) {
+    //   newErrors.support_type = "Please select a support type.";
+    // }
 
     if (!description && !audioBlob) {
       newErrors.description =
@@ -125,14 +127,14 @@ export default function RequestSupportPage() {
                   Request Support
                 </p>
 
-                <h1 className="text-4xl md:text-6xl font-bold text-secondary tracking-tight leading-tight mb-6">
-                  Client Fast Track
+                <h1 className="text-4xl md:text-6xl font-bold text-secondary tracking-tight leading-tight mb-12">
+                  Request Support Your Way
                 </h1>
 
-                <p className="text-lg md:text-xl text-foreground/80 leading-relaxed max-w-3xl mx-auto">
+                {/* <p className="text-lg md:text-xl text-foreground/80 leading-relaxed max-w-3xl mx-auto">
                   Request Support in Under 5 Minutes. Move Your Business
                   Forward.
-                </p>
+                </p> */}
 
                 {/* Trust Badges */}
                 {/* <div className="mt-10 flex flex-wrap justify-center gap-3">
@@ -154,18 +156,31 @@ export default function RequestSupportPage() {
                 {/* Decision Cards */}
                 <div className="grid md:grid-cols-2 gap-5 mt-8 max-w-5xl mx-auto">
                   {/* LEFT */}
-                  <div className="bg-[#06172D] border border-slate-200 rounded-3xl p-8 text-left">
+                  <div className="bg-[#06172D] border border-slate-200 rounded-3xl p-8 text-left flex flex-col">
                     <p className="text-[#7FB4F0] font-semibold text-sm tracking-[0.2em] uppercase mb-4">
                       Not Sure Yet
                     </p>
 
-                    <h2 className="text-xl md:text-3xl font-bold text-white mb-4 leading-tight min-h-[56px]">
-                      Let us guide you
+                    <h2
+                      className="
+    text-xl md:text-3xl
+    font-bold
+    text-white
+    leading-tight
+
+    min-h-[65px]
+    mb-4
+
+    flex items-start
+  "
+                    >
+                      Client Fast Track
                     </h2>
 
-                    <p className="text-white/70 text-base leading-relaxed mb-8">
-                      Share your goals and we'll match you to the right support
-                      from our 5-Core Ecosystem.
+                    <p className="text-white/70 text-base leading-relaxed flex-1 mb-8">
+                      Need a quicker way to get started? Submit basic details
+                      with a short description or voice note in under 5 minutes,
+                      and we’ll take it from there.
                     </p>
 
                     <button
@@ -199,35 +214,52 @@ export default function RequestSupportPage() {
                   </div>
 
                   {/* RIGHT */}
-                  <div className="bg-white border border-slate-200 rounded-3xl p-8 text-left">
+                  <div className="bg-white border border-slate-200 rounded-3xl p-8 text-left flex flex-col">
                     <p className="text-green-600 font-semibold text-sm tracking-[0.2em] uppercase mb-4">
                       I Know What I Need
                     </p>
 
-                    <h2 className="text-xl md:text-3xl font-bold text-[#06172D] mb-4 leading-tight min-h-[56px]">
-                      Go straight to your service
+                    <h2
+                      className="
+    text-xl md:text-3xl
+    font-bold
+    text-[#06172D]
+    leading-tight
+
+    min-h-[65px]
+    mb-4
+
+    flex items-start
+  "
+                    >
+                      Client Quotation Intake
                     </h2>
 
-                    <p className="text-slate-500 text-base leading-relaxed mb-8">
-                      Select a service and fill in a focused request form —
-                      we'll get back to you within 24 hours.
+                    <p className="text-slate-500 text-base leading-relaxed flex-1 mb-8">
+                      Already know what you need? Share your scope and key
+                      details so we can prepare an accurate quote and support
+                      plan.
                     </p>
 
                     <button
                       type="button"
                       onClick={() => {
-                        document
-                          .getElementById("service-selector")
-                          ?.scrollIntoView({
-                            behavior: "smooth",
-                            block: "center",
-                          });
-
-                        setHighlightServices(true);
+                        setShowServices(true);
 
                         setTimeout(() => {
-                          setHighlightServices(false);
-                        }, 1500);
+                          document
+                            .getElementById("service-selector")
+                            ?.scrollIntoView({
+                              behavior: "smooth",
+                              block: "center",
+                            });
+
+                          setHighlightServices(true);
+
+                          setTimeout(() => {
+                            setHighlightServices(false);
+                          }, 1500);
+                        }, 150);
                       }}
                       className="
 inline-flex
@@ -255,13 +287,15 @@ duration-300
         </section>
 
         {/* SERVICE SELECTOR */}
-        <section id="service-selector" className="pb-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* <div id="service-selector" className="h-1"></div> */}
-            <div className="grid md:grid-cols-2 xl:grid-cols-5 gap-4">
-              <a
-                href="/services/strategic-operations#service-form"
-                className={`
+        {showServices && (
+          <div className="animate-in fade-in slide-in-from-top-4 duration-500">
+            <section id="service-selector" className="pb-20">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* <div id="service-selector" className="h-1"></div> */}
+                <div className="grid md:grid-cols-2 xl:grid-cols-5 gap-4">
+                  <a
+                    href="/services/strategic-operations#service-form"
+                    className={`
     group
     bg-white
     border
@@ -279,16 +313,16 @@ duration-300
         : ""
     }
   `}
-              >
-                <div className="text-4xl mb-4">⚙️</div>
-                <h3 className="font-bold text-secondary">
-                  Strategic Operations
-                </h3>
-              </a>
+                  >
+                    <div className="text-4xl mb-4">⚙️</div>
+                    <h3 className="font-bold text-secondary">
+                      Strategic Operations
+                    </h3>
+                  </a>
 
-              <a
-                href="/services/accounting-legal#service-form"
-                className={`
+                  <a
+                    href="/services/accounting-legal#service-form"
+                    className={`
     group
     bg-white
     border
@@ -306,14 +340,16 @@ duration-300
         : ""
     }
   `}
-              >
-                <div className="text-4xl mb-4">📊</div>
-                <h3 className="font-bold text-secondary">Accounting & Legal</h3>
-              </a>
+                  >
+                    <div className="text-4xl mb-4">📊</div>
+                    <h3 className="font-bold text-secondary">
+                      Accounting & Legal
+                    </h3>
+                  </a>
 
-              <a
-                href="/services/targeted-sales#service-form"
-                className={`
+                  <a
+                    href="/services/targeted-sales#service-form"
+                    className={`
     group
     bg-white
     border
@@ -331,14 +367,14 @@ duration-300
         : ""
     }
   `}
-              >
-                <div className="text-4xl mb-4">📈</div>
-                <h3 className="font-bold text-secondary">Targeted Sales</h3>
-              </a>
+                  >
+                    <div className="text-4xl mb-4">📈</div>
+                    <h3 className="font-bold text-secondary">Targeted Sales</h3>
+                  </a>
 
-              <a
-                href="/services/focused-marketing#service-form"
-                className={`
+                  <a
+                    href="/services/focused-marketing#service-form"
+                    className={`
     group
     bg-white
     border
@@ -356,14 +392,16 @@ duration-300
         : ""
     }
   `}
-              >
-                <div className="text-4xl mb-4">📣</div>
-                <h3 className="font-bold text-secondary">Focused Marketing</h3>
-              </a>
+                  >
+                    <div className="text-4xl mb-4">📣</div>
+                    <h3 className="font-bold text-secondary">
+                      Focused Marketing
+                    </h3>
+                  </a>
 
-              <a
-                href="/services/future-expansion#service-form"
-                className={`
+                  <a
+                    href="/services/future-expansion#service-form"
+                    className={`
     group
     bg-white
     border
@@ -381,13 +419,17 @@ duration-300
         : ""
     }
   `}
-              >
-                <div className="text-4xl mb-4">🌍</div>
-                <h3 className="font-bold text-secondary">Future Expansion</h3>
-              </a>
-            </div>
+                  >
+                    <div className="text-4xl mb-4">🌍</div>
+                    <h3 className="font-bold text-secondary">
+                      Future Expansion
+                    </h3>
+                  </a>
+                </div>
+              </div>
+            </section>
           </div>
-        </section>
+        )}
 
         {/* ================= MAIN CONTENT ================= */}
         <section className="pb-20">
@@ -550,10 +592,15 @@ duration-300
                           "VOICE URL IN FORM:",
                           formData.get("voice_url"),
                         );
-                        formData.set("support_type", supportType);
-                        formData.set("hours_per_week_option", hoursOption);
-                        formData.set("custom_hours", customHours || "");
+                        // formData.set("support_type", supportType);
+                        // formData.set("hours_per_week_option", hoursOption);
+                        // formData.set("custom_hours", customHours || "");
                         formData.set("time_zone", timezone || "");
+
+                        console.log("FORM DATA");
+                        for (const [key, value] of formData.entries()) {
+                          console.log(key, value);
+                        }
 
                         const body = new URLSearchParams();
 
@@ -738,7 +785,7 @@ duration-300
                       <h3 className="text-lg font-semibold text-[#0b1b33]">
                         Support Details
                       </h3>
-                      <div className="w-10 h-[2px] bg-[#4f8fcb] mt-2 rounded-full"></div>
+                      {/* <div className="w-10 h-[2px] bg-[#4f8fcb] mt-2 rounded-full"></div>
                       <select
                         name="support_type"
                         value={supportType}
@@ -772,7 +819,7 @@ duration-300
                         <option>Dedicated</option>
                         <option>Flexible</option>
                         <option>Not sure</option>
-                      </select>
+                      </select> */}
 
                       <div className="relative">
                         <textarea
@@ -805,8 +852,8 @@ duration-300
                           {errors.description}
                         </p>
                       )}
-
-                      <div className="space-y-4 pt-2">
+                      {/* Preferred Start Date */}
+                      {/* <div className="space-y-4 pt-2">
                         <h3 className="text-lg font-semibold text-[#0b1b33]">
                           Preferred Start Date
                         </h3>
@@ -832,15 +879,16 @@ duration-300
                             {errors.start_timeline}
                           </p>
                         )}
-                      </div>
+                      </div> */}
 
+                      {/* Select Weekly capacity */}
                       <div className="space-y-4 pt-4">
                         <h3 className="text-lg font-semibold text-[#0b1b33]">
                           Estimated Weekly Capacity
                         </h3>
                         <div className="w-10 h-[2px] bg-[#4f8fcb] rounded-full"></div>
 
-                        <select
+                        {/* <select
                           name="hours_per_week_option"
                           value={hoursOption}
                           onChange={(e) => setHoursOption(e.target.value)}
@@ -863,14 +911,14 @@ duration-300
                           <option value="30-40">30–40 hrs / week</option>
                           <option value="40">40 hrs (Full-time)</option>
                           <option value="custom">Custom</option>
-                        </select>
-                        {errors.hours_per_week_option && (
+                        </select> */}
+                        {/* {errors.hours_per_week_option && (
                           <p className="mt-1 text-sm text-red-500">
                             {errors.hours_per_week_option}
                           </p>
-                        )}
+                        )} */}
 
-                        {hoursOption === "custom" && (
+                        {/* {hoursOption === "custom" && (
                           <div className="relative">
                             <input
                               type="number"
@@ -886,15 +934,27 @@ duration-300
                               hrs
                             </span>
                           </div>
-                        )}
+                        )} */}
                       </div>
 
                       {/* TIMEZONE */}
-                      <div>
+                      <div className="relative z-50">
                         {timezone && (
                           <TimezoneSelect
                             value={timezone}
                             onChange={(tz) => setTimezone(tz.value)}
+                            displayValue="GMT"
+                            menuPortalTarget={
+                              typeof window !== "undefined"
+                                ? document.body
+                                : undefined
+                            }
+                            styles={{
+                              menuPortal: (base) => ({
+                                ...base,
+                                zIndex: 9999,
+                              }),
+                            }}
                           />
                         )}
 

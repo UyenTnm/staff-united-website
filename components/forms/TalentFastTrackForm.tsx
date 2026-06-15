@@ -413,25 +413,25 @@ export default function TalentFastTrackForm() {
     mb-16
     rounded-[40px]
     border border-[#4F8DC9]/30
-    bg-[linear-gradient(135deg,rgba(79,141,201,0.10),rgba(255,255,255,0.75))]
+    bg-[#4f8dc9]/30
     backdrop-blur-md
-    p-6 md:p-10
+    p-6 md:pt-10 md:pb-0
     shadow-[0_20px_60px_rgba(79,141,201,0.08)]
   "
         >
           <div className="relative">
             {/* Line */}
-            <div
+            {/* <div
               className="
     hidden md:block
     absolute
-    bottom-32
+    top-0
     left-[16%]
     right-[16%]
     h-[2px]
     bg-slate-200
   "
-            />
+            /> */}
 
             <div className="grid md:grid-cols-3 gap-8 relative">
               {[
@@ -459,8 +459,8 @@ export default function TalentFastTrackForm() {
               ].map((item) => (
                 <div
                   key={item.step}
-                  className="bg-white border border-slate-200
-            rounded-3xl p-8 text-center shadow-sm relative"
+                  className="
+             p-8 text-center relative"
                 >
                   {/* Step Number */}
                   <div
@@ -520,7 +520,7 @@ export default function TalentFastTrackForm() {
                     {item.title}
                   </h3>
 
-                  <p className="text-slate-500 leading-relaxed text-sm">
+                  <p className="text-slate-700 leading-relaxed text-sm ">
                     {item.description}
                   </p>
                 </div>
