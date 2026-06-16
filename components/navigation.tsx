@@ -541,6 +541,38 @@ group-hover:duration-700
               );
             })}
 
+            <div className="flex justify-center mt-4">
+              <div className="flex items-center rounded-full bg-black/40 border border-white/10 overflow-hidden">
+                <button
+                  onClick={() => {
+                    switchLanguage("en");
+                    setIsOpen(false);
+                  }}
+                  className={`px-4 py-2 text-sm transition ${
+                    locale === "en"
+                      ? "bg-[#4f8dc9] text-[#0a1b33]"
+                      : "text-white/70 hover:text-white"
+                  }`}
+                >
+                  EN
+                </button>
+
+                <button
+                  onClick={() => {
+                    switchLanguage("vi");
+                    setIsOpen(false);
+                  }}
+                  className={`px-4 py-2 text-sm transition ${
+                    locale === "vi"
+                      ? "bg-[#4f8dc9] text-[#0a1b33]"
+                      : "text-white/70 hover:text-white"
+                  }`}
+                >
+                  VI
+                </button>
+              </div>
+            </div>
+
             <div className="flex flex-col gap-3 w-full px-6 mt-4">
               {/* Request Support */}
               <Link
