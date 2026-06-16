@@ -1,8 +1,13 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+
   images: {
     unoptimized: true,
     domains: ["cdn.sanity.io"],
@@ -11,12 +16,12 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/the-standard',
-        destination: '/insights',
+        source: "/the-standard",
+        destination: "/insights",
         permanent: true,
-      }
-    ]
-  }
-}
+      },
+    ];
+  },
+};
 
-export default nextConfig
+export default withNextIntl(nextConfig);

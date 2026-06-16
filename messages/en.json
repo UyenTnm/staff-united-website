@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "home": "HOME",
+    "about": "OUR STORY",
+    "services": "SERVICES",
+    "team": "TEAM",
+    "careers": "CAREERS",
+    "insights": "INSIGHTS",
+    "join": "JOIN TEAM",
+    "brochure": "BROCHURE",
+    "support": "Request Support"
+  }
+}

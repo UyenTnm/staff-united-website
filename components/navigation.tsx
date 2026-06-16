@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import ThemeToggle from "./theme/ThemeToggle";
 import { ChevronDown } from "lucide-react";
@@ -10,13 +11,24 @@ import BrochureModal from "./brochure/BrochureModal";
 
 export default function Navigation() {
   const pathname = usePathname();
+  const locale = pathname.startsWith("/vi") ? "vi" : "en";
+  const pathnameWithoutLocale = pathname.replace(/^\/(en|vi)/, "") || "/";
 
-  const activeService = pathname.split("/")[2];
+  const router = useRouter();
+
+  // const activeService = pathname.split("/")[2];
+  const activeService = pathname.replace(/^\/(en|vi)/, "").split("/")[2];
 
   const [brochureOpen, setBrochureOpen] = useState(false);
 
+  const switchLanguage = (newLocale: string) => {
+    const pathWithoutLocale = pathname.replace(/^\/(en|vi)/, "");
+
+    router.push(`/${newLocale}${pathWithoutLocale || ""}`);
+  };
+
   const navItems = [
-    { label: "HOME", href: "/" },
+    // { label: "HOME", href: "/" },
     { label: "OUR STORY", href: "/about-us" },
     { label: "SERVICES", href: "/services" },
     { label: "TEAM", href: "/team" },
@@ -52,9 +64,16 @@ export default function Navigation() {
     },
   ];
 
+  // const isActive = (href: string) => {
+  //   if (href === "/") return pathname === "/";
+  //   return pathname.startsWith(href);
+  // };
   const isActive = (href: string) => {
-    if (href === "/") return pathname === "/";
-    return pathname.startsWith(href);
+    if (href === "/") {
+      return pathnameWithoutLocale === "/";
+    }
+
+    return pathnameWithoutLocale.startsWith(href);
   };
 
   const [isOpen, setIsOpen] = useState(false);
@@ -359,24 +378,29 @@ group-hover:duration-700
         {/* CTA */}
         {/* CTA GROUP */}
         <div className="hidden lg:flex items-center gap-3">
-          {/* Brochure */}
-          {/* <button
-            onClick={() => setBrochureOpen(true)}
-            className="
-    hidden xl:flex
-    items-center gap-2
-    px-5 py-2
-    rounded-full
-    border border-[#0a1b33]/30
-    bg-[#4f8dc9]
-    text-white/80
-    hover:text-[#0a1b33]
-    transition-all duration-500
-  "
-          >
-            Download Brochure
-          </button> */}
-          {/* 📄 */}
+          <div className="hidden xl:flex items-center rounded-full bg-black/40 border border-white/10 overflow-hidden">
+            <button
+              onClick={() => switchLanguage("en")}
+              className={`px-3 py-2 text-sm transition ${
+                locale === "en"
+                  ? "bg-[#4f8dc9] text-[#0a1b33]"
+                  : "text-white/70 hover:text-white"
+              }`}
+            >
+              EN
+            </button>
+
+            <button
+              onClick={() => switchLanguage("vi")}
+              className={`px-3 py-2 text-sm transition ${
+                locale === "vi"
+                  ? "bg-[#4f8dc9] text-[#0a1b33]"
+                  : "text-white/70 hover:text-white"
+              }`}
+            >
+              VI
+            </button>
+          </div>
 
           {/* <ThemeToggle /> */}
 
