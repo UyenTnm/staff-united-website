@@ -193,20 +193,24 @@ export default function RequestSupportPage() {
                           })
                       }
                       className="
-  inline-flex
-  items-center
-  justify-center
-  h-12
-  px-6
-  rounded-xl
-  border
-  border-white/20
-  text-white
-  text-base
-  font-medium
-  hover:bg-white/10
-  transition-all
-  duration-300
+inline-flex
+items-center
+justify-center
+h-12
+px-6
+rounded-xl
+
+bg-[#4F8DC9]
+text-white
+
+text-base
+font-medium
+
+hover:bg-[#6EA8DE]
+hover:shadow-[0_8px_24px_rgba(79,141,201,0.35)]
+
+transition-all
+duration-300
 "
                     >
                       Client Fast Track →
@@ -214,8 +218,8 @@ export default function RequestSupportPage() {
                   </div>
 
                   {/* RIGHT */}
-                  <div className="bg-white border border-slate-200 rounded-3xl p-8 text-left flex flex-col">
-                    <p className="text-green-600 font-semibold text-sm tracking-[0.2em] uppercase mb-4">
+                  <div className="bg-[#4f8dc9] border border-slate-200 rounded-3xl p-8 text-left flex flex-col">
+                    <p className="text-[#06172D] font-semibold text-sm tracking-[0.2em] uppercase mb-4">
                       I Know What I Need
                     </p>
 
@@ -223,7 +227,7 @@ export default function RequestSupportPage() {
                       className="
     text-xl md:text-3xl
     font-bold
-    text-[#06172D]
+    text-[#ffffff]
     leading-tight
 
     min-h-[65px]
@@ -235,7 +239,7 @@ export default function RequestSupportPage() {
                       Client Quotation Intake
                     </h2>
 
-                    <p className="text-slate-500 text-base leading-relaxed flex-1 mb-8">
+                    <p className="text-white/70 text-base leading-relaxed flex-1 mb-8">
                       Already know what you need? Share your scope and key
                       details so we can prepare an accurate quote and support
                       plan.
@@ -269,11 +273,11 @@ justify-center
 h-12
 px-6
 rounded-xl
-bg-[#4f8dc9]
+bg-[#06172D]
 text-white
 text-base
 font-medium
-hover:bg-[#3c7ab5]
+hover:bg-[#0A2547]
 transition-all
 duration-300
 
