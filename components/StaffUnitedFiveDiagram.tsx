@@ -328,22 +328,28 @@ bg-[linear-gradient(180deg,_#020817_0%,_#0a1b33_40%,_#1f4f82_70%,_#4f8dc9_100%)]
             <h3
               className="
     inline-block
-    whitespace-nowrap
 
-    text-3xl md:text-xl lg:text-4xl
+    whitespace-normal
+    md:whitespace-nowrap
 
-    px-8 py-3
+    text-xl
+    sm:text-2xl
+    md:text-xl
+    lg:text-4xl
+
+    px-4
+    sm:px-6
+    lg:px-8
+
+    py-3
 
     rounded-full
-
     font-semibold
 
-    tracking-[0.12em]
+    tracking-[0.08em]
+    lg:tracking-[0.12em]
 
     text-[#8FD3FF]
-
-
-
   "
             >
               THE STAFF FRAMEWORK
