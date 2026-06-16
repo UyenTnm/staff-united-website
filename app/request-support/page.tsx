@@ -262,19 +262,21 @@ export default function RequestSupportPage() {
                         }, 150);
                       }}
                       className="
+
 inline-flex
 items-center
 justify-center
 h-12
 px-6
 rounded-xl
-bg-[#1F1F1F]
+bg-[#4f8dc9]
 text-white
 text-base
 font-medium
-hover:bg-black
+hover:bg-[#3c7ab5]
 transition-all
 duration-300
+
 "
                     >
                       Choose a Service →
@@ -884,7 +886,7 @@ duration-300
                       {/* Select Weekly capacity */}
                       <div className="space-y-4 pt-4">
                         <h3 className="text-lg font-semibold text-[#0b1b33]">
-                          Estimated Weekly Capacity
+                          Additional Details
                         </h3>
                         <div className="w-10 h-[2px] bg-[#4f8fcb] rounded-full"></div>
 
