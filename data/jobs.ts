@@ -6,6 +6,7 @@ export interface Job {
   type: string;
   publishedAt?: string;
   description: string;
+  featured?: boolean;
 
   sections?: {
     title: string;

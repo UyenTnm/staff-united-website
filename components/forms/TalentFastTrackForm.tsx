@@ -397,7 +397,7 @@ export default function TalentFastTrackForm() {
   return (
     <section className="py-24">
       {" "}
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold mb-6">Talent Fast Track</h1>
 
@@ -407,20 +407,31 @@ export default function TalentFastTrackForm() {
         </div>
 
         {/* Progress Steps */}
-        <div className="mb-16">
+        {/* Progress Steps */}
+        <div
+          className="
+    mb-16
+    rounded-[40px]
+    border border-[#4F8DC9]/30
+    bg-[#4f8dc9]/30
+    backdrop-blur-md
+    p-6 md:pt-10 md:pb-0
+    shadow-[0_20px_60px_rgba(79,141,201,0.08)]
+  "
+        >
           <div className="relative">
             {/* Line */}
-            <div
+            {/* <div
               className="
     hidden md:block
     absolute
-    bottom-32
+    top-0
     left-[16%]
     right-[16%]
     h-[2px]
     bg-slate-200
   "
-            />
+            /> */}
 
             <div className="grid md:grid-cols-3 gap-8 relative">
               {[
@@ -443,13 +454,13 @@ export default function TalentFastTrackForm() {
                   icon: "🚀",
                   title: "Submit Application",
                   description:
-                    "Submit your application and our team will review it within 48 hours.",
+                    "Submit your application and our team will review it within 48\u00A0hours.",
                 },
               ].map((item) => (
                 <div
                   key={item.step}
-                  className="bg-white border border-slate-200
-            rounded-3xl p-8 text-center shadow-sm relative"
+                  className="
+             p-8 text-center relative"
                 >
                   {/* Step Number */}
                   <div
@@ -490,11 +501,26 @@ export default function TalentFastTrackForm() {
                     {item.icon}
                   </div>
 
-                  <h3 className="text-xl font-bold text-[#06172D] mb-3">
+                  <h3
+                    className="
+    text-xl
+    font-bold
+    text-[#06172D]
+    mb-3
+
+    md:min-h-[96px]
+    lg:min-h-0
+
+    flex
+    items-center
+    justify-center
+    text-center
+  "
+                  >
                     {item.title}
                   </h3>
 
-                  <p className="text-slate-500 leading-relaxed text-sm">
+                  <p className="text-slate-700 leading-relaxed text-sm ">
                     {item.description}
                   </p>
                 </div>
@@ -632,7 +658,7 @@ ${errors.firstName ? "border border-red-500" : "border border-slate-300"}
     mb-4
     "
               >
-                Position Applying For *
+                Position Applying For
               </label>
 
               <select

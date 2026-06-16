@@ -1,8 +1,9 @@
-"use client";
+// "use client";
 
-import { useParams } from "next/navigation";
+// import { useParams } from "next/navigation";
 import Link from "next/link";
-import { jobs } from "@/data/jobs";
+// import { jobs } from "@/data/jobs";
+import { getJobBySlug } from "@/lib/sanity";
 import { ArrowLeft } from "lucide-react";
 
 const headings = [
@@ -25,11 +26,14 @@ const headings = [
   "Nice to Have",
 ];
 
-export default function JobDetailPage() {
-  const params = useParams();
-  const slug = params?.slug as string;
+export default async function JobDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
 
-  const job = jobs.find((j) => j.slug === slug);
+  const job = await getJobBySlug(slug);
 
   if (!job) {
     return <div className="p-6">Job not found</div>;
@@ -89,13 +93,15 @@ export default function JobDetailPage() {
           </p>
 
           {/* SECTIONS */}
-          {job.sections?.map((section, index) => (
-            <Section
-              key={index}
-              title={section.title}
-              items={section.content}
-            />
-          ))}
+          {job.sections?.map(
+            (section: { title: string; content: string[] }, index: number) => (
+              <Section
+                key={index}
+                title={section.title}
+                items={section.content}
+              />
+            ),
+          )}
 
           {/* APPLY */}
           <div className="pt-6 flex justify-center">
@@ -137,12 +143,20 @@ function Section({ title, items }: { title: string; items: string[] }) {
 
       <ul className="space-y-2 text-[#0b1b33]/80">
         {items.map((item, index) => {
-          const cleanItem = item.trim().toLowerCase();
-          const isHeading = headings.some((h) => h.toLowerCase() === cleanItem);
+          const isHeading = item.startsWith("## ");
 
           return isHeading ? (
-            <li key={index} className="font-semibold mt-4">
-              {item}
+            <li
+              key={index}
+              className="
+        list-none
+        font-semibold
+        text-[#0b1b33]
+        mt-4
+        mb-1
+      "
+            >
+              {item.replace("## ", "")}
             </li>
           ) : (
             <li key={index} className="list-disc ml-4 marker:text-[#4f8fcb]">

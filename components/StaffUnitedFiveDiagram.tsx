@@ -271,7 +271,8 @@ pb-12 md:pb-20
 
   overflow-hidden
 
-bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#d5dadf_100%)]  border-b border-[rgba(255,255,255,0.12)]
+bg-[linear-gradient(180deg,_#020817_0%,_#0a1b33_40%,_#1f4f82_70%,_#4f8dc9_100%)]
+
 
   /* Luxury depth */
   shadow-[
@@ -291,8 +292,8 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
           className="
     absolute
     inset-0
-    opacity-40
     bg-[radial-gradient(circle_at_50%_35%,_rgba(255,255,255,0.10)_0%,_transparent_52%)]
+    opacity-40 
   "
         />
         {/* Main center glow */}
@@ -321,43 +322,43 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
       <div className="relative z-10 max-w-[1800px] mx-auto px-6 md:px-10 xl:px-14">
         {/* Intro */}
         {/* HEADER */}
-        <div className="text-center max-w-5xl mx-auto mb-16">
+        <div className="text-center max-w-5xl mx-auto mb-8">
           {/* Badge */}
           <div className="flex justify-center">
-            <span
+            <h3
               className="
     inline-block
-    whitespace-nowrap
 
-    text-lg
-    sm:text-xl
-    lg:text-xl
+    whitespace-normal
+    md:whitespace-nowrap
 
-    px-8 py-3
+    text-xl
+    sm:text-2xl
+    md:text-xl
+    lg:text-4xl
+
+    px-4
+    sm:px-6
+    lg:px-8
+
+    py-3
 
     rounded-full
-
     font-semibold
 
-    tracking-[0.12em]
+    tracking-[0.08em]
+    lg:tracking-[0.12em]
 
     text-[#8FD3FF]
-
-    bg-white/10
-
-    backdrop-blur-md
-
-    border border-white/10
   "
             >
               THE STAFF FRAMEWORK
-            </span>
+            </h3>
           </div>
 
           {/* Subtitle */}
           <p
             className="
-    mt-6
 
     text-[#8FD3FF]
 
@@ -407,7 +408,7 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
             }}
           >
             {/* TITLE PHÍA TRÊN CIRCLE */}
-            <div
+            {/* <div
               className="
     absolute
     inset-0
@@ -416,10 +417,10 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
     opacity-45
     bg-[radial-gradient(circle,_rgba(79,141,233,0.22)_0%,_transparent_70%)]
   "
-            />
+            /> */}
 
             {/* BIG DEPTH SHADOW */}
-            <div
+            {/* <div
               className="
     absolute
     left-1/2
@@ -438,7 +439,7 @@ bg-[linear-gradient(135deg,_#07111f_0%,_#0a1b33_18%,_#103663_42%,_#4a596e_68%,_#
 
     -z-10
   "
-            />
+            /> */}
 
             <h3
               className="relative
@@ -1034,7 +1035,7 @@ text-base md:text-lg xl:text-xl "
               transformStyle: "preserve-3d",
             }}
           >
-            <div
+            {/* <div
               className="
     absolute
     inset-0
@@ -1043,8 +1044,8 @@ text-base md:text-lg xl:text-xl "
     opacity-45
     bg-[radial-gradient(circle,_rgba(120,220,255,0.18)_0%,_transparent_70%)]
   "
-            />
-            <div
+            /> */}
+            {/* <div
               className="
     absolute
     left-1/2
@@ -1063,7 +1064,7 @@ text-base md:text-lg xl:text-xl "
 
     -z-10
   "
-            />
+            /> */}
             {/* TITLE PHÍA TRÊN CIRCLE */}
 
             <h3
@@ -1637,7 +1638,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
               transformStyle: "preserve-3d",
             }}
           >
-            <div
+            {/* <div
               className="
     absolute
     inset-0
@@ -1646,10 +1647,10 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
     opacity-60
     bg-[radial-gradient(circle,_rgba(210,220,235,0.12)_0%,_transparent_70%)]
   "
-            />
+            /> */}
 
             {/* BIG DEPTH SHADOW */}
-            <div
+            {/* <div
               className="
     absolute
     left-1/2
@@ -1668,7 +1669,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
 
     -z-10
   "
-            />
+            /> */}
             {/* TITLE PHÍA TRÊN CIRCLE */}
 
             <h3

@@ -23,11 +23,19 @@ import AnimatedSection from "./AnimatedSection";
 // ];
 
 export default function Careers({ jobs }: { jobs: Job[] }) {
-  const sortedJobs = [...jobs].sort(
-    (a, b) =>
-      new Date(b.publishedAt || "").getTime() -
-      new Date(a.publishedAt || "").getTime(),
-  );
+  const sortedJobs = [...jobs].sort((a, b) => {
+    if (a.featured && !b.featured) return -1;
+    if (!a.featured && b.featured) return 1;
+
+    const dateA = a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
+
+    const dateB = b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
+
+    return dateB - dateA;
+  });
+  // jobs.forEach((job) => {
+  //   console.log(job.title, job.publishedAt, job.featured);
+  // });
 
   return (
     <div>
@@ -73,6 +81,25 @@ export default function Careers({ jobs }: { jobs: Job[] }) {
             Work with the best talents, on successful brands,{" "}
             <span className="whitespace-nowrap">across global projects.</span>
           </p>
+
+          <div className="pt-4 flex justify-center">
+            <Link
+              href="/join"
+              className="
+      inline-flex items-center justify-center
+      px-8 py-3
+      rounded-full
+      bg-[#6ea8de]
+      text-white
+      font-semibold
+      transition-all duration-300
+      hover:scale-105
+      hover:bg-[#5d9ad4]
+    "
+            >
+              Talent Fast Track →
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -111,8 +138,10 @@ export default function Careers({ jobs }: { jobs: Job[] }) {
 "
               >
                 {/* LEFT */}
-                <div>
-                  <h3 className="font-semibold text-base sm:text-lg">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h3 className="font-semibold text-base sm:text-lg flex items-center gap-2">
+                    {job.featured && <span className="text-[#4f8fcb]">★</span>}
+
                     {job.title}
                   </h3>
                   {/* {Date.now() - new Date(job.publishedAt).getTime() <
