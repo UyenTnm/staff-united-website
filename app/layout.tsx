@@ -75,7 +75,7 @@ export default function RootLayout({
           }}
         />
 
-        <ChatProvider>
+        {/* <ChatProvider>
           <Navigation />
           {children}
           <Footer />
@@ -84,7 +84,8 @@ export default function RootLayout({
             <WhatsAppButton />
             <ChatBox />
           </div>
-        </ChatProvider>
+        </ChatProvider> */}
+        {children}
       </body>
 
       {GA_ID && (

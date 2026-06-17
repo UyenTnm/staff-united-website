@@ -2,9 +2,11 @@ import { Facebook, Instagram, Linkedin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaThreads } from "react-icons/fa6";
+import { useTranslations } from "next-intl";
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const t = useTranslations("footer");
 
   return (
     <footer className="bg-[#0b1b33] text-white">
@@ -26,19 +28,19 @@ export default function Footer() {
             href="mailto:info@staffunitedgroup.com"
             className="hover:text-white transition"
           >
-            <span className="font-semibold text-white">Email:</span>{" "}
+            <span className="font-semibold text-white">{t("email")}:</span>{" "}
             info@staffunitedgroup.com
           </a>
 
           <a href="tel:+84329426269" className="hover:text-white transition">
-            <span className="font-semibold text-white">Phone:</span> +84 32 942
-            6269
+            <span className="font-semibold text-white">{t("phone")}:</span> +84
+            32 942 6269
           </a>
 
           <span>
-            <span className="font-semibold text-white">Location:</span> L17-11,
-            17th Floor, Vincom Center, 72 Lê Thánh Tôn Street, Sài Gòn Ward, Hồ
-            Chí Minh City.
+            <span className="font-semibold text-white">{t("location")}:</span>{" "}
+            L17-11, 17th Floor, Vincom Center, 72 Lê Thánh Tôn Street, Sài Gòn
+            Ward, Hồ Chí Minh City.
           </span>
         </div>
 
@@ -111,7 +113,9 @@ export default function Footer() {
 
         {/* Bottom Line */}
         <div className="flex flex-col md:flex-row justify-between items-center text-sm text-white/60 gap-3 text-center md:text-left">
-          <p>© {year} STAFF United. All rights reserved.</p>
+          <p>
+            © {year} STAFF United. {t("rights")}.
+          </p>
           <p className="text-white/80 font-medium tracking-wide">
             All Women. All Business.
           </p>

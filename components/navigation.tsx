@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import ThemeToggle from "./theme/ThemeToggle";
 import { ChevronDown } from "lucide-react";
 import BrochureModal from "./brochure/BrochureModal";
@@ -12,6 +13,7 @@ import BrochureModal from "./brochure/BrochureModal";
 export default function Navigation() {
   const pathname = usePathname();
   const locale = pathname.startsWith("/vi") ? "vi" : "en";
+  const t = useTranslations("nav");
   const pathnameWithoutLocale = pathname.replace(/^\/(en|vi)/, "") || "/";
 
   const router = useRouter();
@@ -27,14 +29,24 @@ export default function Navigation() {
     router.push(`/${newLocale}${pathWithoutLocale || ""}`);
   };
 
+  // const navItems = [
+  //   { label: "HOME", href: "/" },
+  //   { label: "OUR STORY", href: "/about-us" },
+  //   { label: "SERVICES", href: "/services" },
+  //   { label: "TEAM", href: "/team" },
+  //   { label: "CAREERS", href: "/careers" },
+  //   { label: "INSIGHT", href: "/insights" },
+  //   { label: "JOIN TEAM", href: "/join" },
+  //   { label: "BROCHURE", href: "#" },
+  // ];
   const navItems = [
-    // { label: "HOME", href: "/" },
-    { label: "OUR STORY", href: "/about-us" },
-    { label: "SERVICES", href: "/services" },
-    { label: "TEAM", href: "/team" },
-    { label: "CAREERS", href: "/careers" },
-    { label: "INSIGHT", href: "/insights" },
-    { label: "JOIN TEAM", href: "/join" },
+    { label: t("home"), href: "/" },
+    { label: t("about"), href: "/about-us" },
+    { label: t("services"), href: "/services" },
+    { label: t("team"), href: "/team" },
+    { label: t("careers"), href: "/careers" },
+    { label: t("insights"), href: "/insights" },
+    { label: t("join"), href: "/join" },
     { label: "BROCHURE", href: "#" },
   ];
   const serviceItems = [
@@ -424,7 +436,7 @@ group-hover:duration-700
           >
             {/* TEXT */}
             <span className="relative z-10 flex items-center gap-2">
-              Request Support
+              {t("requestSupport")}
               <span
                 className="
       rotate-[-45deg]
@@ -592,7 +604,7 @@ group-hover:duration-700
       transition-all duration-300
     "
               >
-                Request Support
+                {t("requestSupport")}
               </Link>
 
               {/* Download Brochure Tạm ẩn mobile */}

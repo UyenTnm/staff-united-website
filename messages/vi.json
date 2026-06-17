@@ -8,6 +8,12 @@
     "insights": "TIN TỨC",
     "join": "THAM GIA",
     "brochure": "HỒ SƠ NĂNG LỰC",
-    "support": "Yêu cầu hỗ trợ"
+    "requestSupport": "Yêu cầu hỗ trợ"
+  },
+  "footer": {
+    "email": "Email",
+    "phone": "Điện thoại",
+    "location": "Địa chỉ",
+    "rights": "Đã đăng ký bản quyền."
   }
 }

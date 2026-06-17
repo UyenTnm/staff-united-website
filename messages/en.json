@@ -8,6 +8,12 @@
     "insights": "INSIGHTS",
     "join": "JOIN TEAM",
     "brochure": "BROCHURE",
-    "support": "Request Support"
+    "requestSupport": "Request Support"
+  },
+  "footer": {
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "rights": "All rights reserved."
   }
 }
