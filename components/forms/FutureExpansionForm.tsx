@@ -569,41 +569,13 @@ export default function FutureExpansionForm() {
       submittedAt: new Date().toISOString(),
     };
 
-    console.log("CRM PAYLOAD", crmPayload);
-
-    // try {
-    //   console.log("CRM PAYLOAD", crmPayload);
-
-    //   const response = await fetch(
-    //     "https://script.google.com/macros/s/AKfycbyqYb_caaaGi3DKqusiOSJ9kHatTYUioPAnrgVwZoshQWHWyWQaWSGMGpOOxukvArZN/exec",
-    //     {
-    //       method: "POST",
-    //       //   headers: {
-    //       //     "Content-Type": "application/json",
-    //       //   },
-    //       mode: "no-cors",
-    //       body: JSON.stringify(crmPayload),
-    //     },
-    //   );
-
-    // //   const result = await response.json();
-
-    //   console.log("APPS SCRIPT RESPONSE", result);
-
-    //   if (!result.success) {
-    //     throw new Error("Failed to submit form");
-    //   }
-
-    //   setIsSubmitted(true);
-    // } catch (error) {
-    //   console.error("SUBMIT ERROR:", error);
-    // }
-
     try {
+      setIsSubmitting(true);
+
       console.log("CRM PAYLOAD", crmPayload);
 
       await fetch(
-        "https://script.google.com/macros/s/AKfycbyGpETG-i3qXRPfEJz1klmNsBXXP4mR32KJulNTh1tNc1TWqx98FVhUwHZr5acXS_3C/exec",
+        "https://script.google.com/macros/s/AKfycbwu5rpNif5MihM5fiuIRAMzeZjIkIInlNKGqrMN9VQybyYtR8yz-Dc8Yvopxeo05MD_/exec",
         {
           method: "POST",
           mode: "no-cors",
@@ -616,6 +588,8 @@ export default function FutureExpansionForm() {
       setIsSubmitted(true);
     } catch (error) {
       console.error("SUBMIT ERROR:", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -2825,25 +2799,25 @@ p-6
               type="submit"
               disabled={isSubmitting}
               className={`
-      px-10
-      py-4
+    px-10
+    py-4
 
-      rounded-2xl
+    rounded-2xl
 
-      text-white
-      font-semibold
+    text-white
+    font-semibold
 
-      transition-all
-      duration-300
+    transition-all
+    duration-300
 
-      shadow-lg
+    shadow-lg
 
-      ${
-        isSubmitting
-          ? "bg-slate-400 cursor-not-allowed shadow-none"
-          : "bg-[#4F8DC9] hover:bg-[#3E7DBA] shadow-[#4F8DC9]/20"
-      }
-    `}
+    ${
+      isSubmitting
+        ? "bg-slate-400 cursor-not-allowed shadow-none"
+        : "bg-[#4F8DC9] hover:bg-[#3E7DBA] shadow-[#4F8DC9]/20"
+    }
+  `}
             >
               {isSubmitting
                 ? "Submitting Request..."
