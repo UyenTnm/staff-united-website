@@ -131,17 +131,17 @@ export default function TeamPage() {
       color: "#C07838",
 
       lead: {
-        name: "Lucia Truong",
-        title: "Lead Accounting & Legal",
-        image: "/team/6.webp",
+        name: "Jessica Tran",
+        title: "Bookkeeper",
+        image: "/team/17.webp",
         bio: "Accounting and legal support services.",
       },
 
       members: [
         {
-          name: "Jessica Tran",
-          title: "Bookkeeper",
-          image: "/team/17.webp",
+          name: "Chang Le",
+          title: "Lead Accounting & Legal",
+          image: "/team/trang.webp",
           bio: "Supports bookkeeping activities, reconciliations, and financial reporting.",
         },
         {
@@ -167,28 +167,28 @@ export default function TeamPage() {
         "Helping businesses maintain visibility, strengthen brand presence, and deliver consistent marketing execution across digital, visual, and media channels.",
       color: "#2E7D62",
       lead: {
-        name: "Yuko Furuta",
-        title: "Lead Focused Marketing",
-        image: "/team/yuko.webp",
+        name: "Jena Truong",
+        title: "Video Editor",
+        image: "/team/jena.webp",
         bio: "Delivers market insights and reporting to support strategic decisions.",
       },
 
       members: [
         {
-          name: "Trang Ngoc Bao Tran",
+          name: "Tian Tran",
           title: "Marketing & SEO Content",
           image: "/team/trang-tran.webp",
           bio: "Develops SEO content and marketing materials to support business growth.",
         },
 
         {
-          name: "Jena Truong",
-          title: "Video Editor",
-          image: "/team/jena.webp",
+          name: "Ava Hoang",
+          title: "Lead Future Expansion",
+          image: "/team/23.webp",
           bio: "Edits video content and visual assets for digital marketing campaigns.",
         },
         {
-          name: "Trang Phuong",
+          name: "Sammy Phuong",
           title: "Growth Marketing Specialist",
           image: "/team/trang-phuong.webp",
           bio: "Leads marketing strategy and growth initiatives.",
@@ -202,7 +202,7 @@ export default function TeamPage() {
         },
 
         {
-          name: "Tiffany",
+          name: "Tiffany Nguyen",
           title: "Graphic Designer",
           image: "/team/7.webp",
           bio: "Creates visual assets and brand materials to support marketing initiatives.",
@@ -237,9 +237,9 @@ export default function TeamPage() {
       color: "#4A5568",
 
       lead: {
-        name: "Ava Hoang",
-        title: "Lead Future Expansion",
-        image: "/team/23.webp",
+        name: "Yuko Furuta",
+        title: "Lead Focused Marketing",
+        image: "/team/yuko.webp",
         bio: "Drives project execution, team coordination, and operational success.",
       },
 

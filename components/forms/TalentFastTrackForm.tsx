@@ -414,7 +414,7 @@ export default function TalentFastTrackForm() {
     rounded-[40px]
     border border-[#4F8DC9]/30
     bg-[#4f8dc9]/30
-    backdrop-blur-md
+    backdrop-blur-md pt-20 pb-6 px-6
     p-6 md:pt-10 md:pb-0
     shadow-[0_20px_60px_rgba(79,141,201,0.08)]
   "
