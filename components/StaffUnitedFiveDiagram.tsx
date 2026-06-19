@@ -57,7 +57,7 @@ function RotatingDiagram({
       // viewBox="-30 -20 700 680"
       // viewBox="-60 -60 760 760"
       viewBox="-80 -80 840 840"
-      className="w-[100%]
+      className="w-[108%] md:w-[100%] sm:w-[120%]
 xl:w-[105%]
 2xl:w-[110%]
 
@@ -384,7 +384,7 @@ bg-[linear-gradient(180deg,_#020817_0%,_#0a1b33_40%,_#1f4f82_70%,_#4f8dc9_100%)]
           className="w-full
     mx-auto px-2 md:px-4 xl:px-6
     grid grid-cols-1 xl:grid-cols-3 gap-16
- lg:gap-8
+    lg:gap-8
     items-start
     justify-items-center"
         >
@@ -407,40 +407,6 @@ bg-[linear-gradient(180deg,_#020817_0%,_#0a1b33_40%,_#1f4f82_70%,_#4f8dc9_100%)]
               transformStyle: "preserve-3d",
             }}
           >
-            {/* TITLE PHÍA TRÊN CIRCLE */}
-            {/* <div
-              className="
-    absolute
-    inset-0
-    -z-10
-    blur-xl
-    opacity-45
-    bg-[radial-gradient(circle,_rgba(79,141,233,0.22)_0%,_transparent_70%)]
-  "
-            /> */}
-
-            {/* BIG DEPTH SHADOW */}
-            {/* <div
-              className="
-    absolute
-    left-1/2
-    top-[82%]
-    -translate-x-1/2
-
-    h-[130px]
-    w-[85%]
-
-    rounded-full
-
-    blur-xl
-    opacity-60
-
-    bg-[radial-gradient(circle,_rgba(2,10,24,0.58)_0%,_transparent_72%)]
-
-    -z-10
-  "
-            /> */}
-
             <h3
               className="relative
 
@@ -473,18 +439,6 @@ bg-[linear-gradient(180deg,_#020817_0%,_#0a1b33_40%,_#1f4f82_70%,_#4f8dc9_100%)]
                 <>
                   {/* Center Circle */}
                   <defs>
-                    {/* <radialGradient
-                      id="who-centerCoreGradient"
-                      cx="40%"
-                      cy="35%"
-                      r="70%"
-                    >
-                      <stop offset="0%" stopColor="#8fc5ff" />
-                      <stop offset="30%" stopColor="#4f8dc9" />
-                      <stop offset="65%" stopColor="#173d66" />
-                      <stop offset="100%" stopColor="#0a1b33" />
-                    </radialGradient> */}
-
                     <linearGradient
                       id="who-centerCoreGradient"
                       x1="0%"
@@ -1035,36 +989,6 @@ text-base md:text-lg xl:text-xl "
               transformStyle: "preserve-3d",
             }}
           >
-            {/* <div
-              className="
-    absolute
-    inset-0
-    -z-10
-    blur-xl
-    opacity-45
-    bg-[radial-gradient(circle,_rgba(120,220,255,0.18)_0%,_transparent_70%)]
-  "
-            /> */}
-            {/* <div
-              className="
-    absolute
-    left-1/2
-    top-[82%]
-    -translate-x-1/2
-
-    h-[130px]
-    w-[85%]
-
-    rounded-full
-
-    blur-xl
-    opacity-65
-
-    bg-[radial-gradient(circle,_rgba(6,18,38,0.52)_0%,_transparent_72%)]
-
-    -z-10
-  "
-            /> */}
             {/* TITLE PHÍA TRÊN CIRCLE */}
 
             <h3
