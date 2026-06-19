@@ -284,6 +284,7 @@ export default function TeamPage() {
     ...department.lead,
     color: department.color,
     departmentId: department.id,
+    departmentName: department.name,
     isLead: true,
   }));
 
@@ -292,6 +293,8 @@ export default function TeamPage() {
       ...member,
       color: department.color,
       departmentId: department.id,
+      departmentName: department.name,
+
       isLead: false,
     })),
   );
@@ -620,7 +623,7 @@ export default function TeamPage() {
                         className="
   absolute top-5 left-5 md:top-5 md:left-5 z-20 px-2.5 py-1 md:px-4 md:py-2 rounded-full bg-[#4F8DC9] text-white text-[9px] md:text-[11px] font-semibold tracking-[0.1em] md:tracking-[0.15em] uppercase shadow-lg bg-[#4F8DC9]/90 backdrop-blur-md"
                       >
-                        Team Lead
+                        Lead • {member.departmentName}
                       </div>
                     )}
                     <div className="absolute inset-0">
@@ -630,9 +633,9 @@ export default function TeamPage() {
                         fill
                         className="
     object-cover
-    object-[center_15%]
+    object-[center_10%]
 
-    scale-100
+    scale-[0.95]
 
     transition-all
     duration-500
