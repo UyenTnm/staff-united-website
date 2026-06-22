@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
 import { AnimatePresence, motion } from "framer-motion";
+import TeamCard from "@/components/TeamCard";
 
 export default function TeamPage() {
   const [openDepartment, setOpenDepartment] = useState<string | null>(
@@ -33,6 +34,18 @@ export default function TeamPage() {
 
       members: [
         {
+          name: "Alice Truong",
+          title: "Technology & Automation Coordinator",
+          image: "/team/alicetr.webp",
+          bio: "Builds scalable web applications and delivers modern software solutions.",
+        },
+        {
+          name: "Mel Vu",
+          title: "Technology & Automation Coordinator",
+          image: "/team/mel-vu.webp",
+          bio: "Builds scalable software solutions that support business growth.",
+        },
+        {
           name: "Khue Vu",
           title: "Operations Coordinator",
           image: "/team/khue-vu.webp",
@@ -52,22 +65,10 @@ export default function TeamPage() {
           bio: "Coordinates schedules, documentation, and team support.",
         },
         {
-          name: "Hannah Nguyen",
-          title: "Project Coordinator",
-          image: "/team/9.webp",
-          bio: "Coordinates project timelines, deliverables, and communication.",
-        },
-        {
-          name: "Olivia Le",
-          title: "Administrative Specialist",
-          image: "/team/10.webp",
-          bio: "Provides administrative support and ensures operational consistency.",
-        },
-        {
-          name: "Vivian Ho",
-          title: "Process Improvement Associate",
-          image: "/team/11.webp",
-          bio: "Provides customer support and service coordination.",
+          name: "Mia Pham",
+          title: "Content Strategist",
+          image: "/team/21.webp",
+          bio: "Develops content plans aligned with business goals and audience engagement.",
         },
       ],
     },
@@ -102,6 +103,12 @@ export default function TeamPage() {
           bio: "Supports lead generation and sales outreach.",
         },
         {
+          name: "Vivian Ho",
+          title: "Process Improvement Associate",
+          image: "/team/11.webp",
+          bio: "Provides customer support and service coordination.",
+        },
+        {
           name: "Emma Vo",
           title: "CRM Coordinator",
           image: "/team/14.webp",
@@ -114,10 +121,10 @@ export default function TeamPage() {
           bio: "Supports client relationships and ensures positive customer experiences.",
         },
         {
-          name: "Chloe Dang",
-          title: "Sales Support Specialist",
-          image: "/team/16.webp",
-          bio: "Assists sales teams with documentation, reporting, and coordination.",
+          name: "Sarah Nguyen",
+          title: "SEO Specialist",
+          image: "/team/20.webp",
+          bio: "Improves search visibility through keyword strategy and content optimization.",
         },
       ],
     },
@@ -151,10 +158,22 @@ export default function TeamPage() {
           bio: "Manages invoices, accounts payable, and administrative finance tasks.",
         },
         {
+          name: "Hannah Nguyen",
+          title: "Project Coordinator",
+          image: "/team/9.webp",
+          bio: "Coordinates project timelines, deliverables, and communication.",
+        },
+        {
           name: "Nicole Vu",
           title: "Compliance Assistant",
           image: "/team/19.webp",
           bio: "Supports compliance and documentation processes.",
+        },
+        {
+          name: "Olivia Le",
+          title: "Administrative Specialist",
+          image: "/team/10.webp",
+          bio: "Provides administrative support and ensures operational consistency.",
         },
       ],
     },
@@ -207,24 +226,6 @@ export default function TeamPage() {
           image: "/team/7.webp",
           bio: "Creates visual assets and brand materials to support marketing initiatives.",
         },
-        {
-          name: "Sarah Nguyen",
-          title: "SEO Specialist",
-          image: "/team/20.webp",
-          bio: "Improves search visibility through keyword strategy and content optimization.",
-        },
-        {
-          name: "Mia Pham",
-          title: "Content Strategist",
-          image: "/team/21.webp",
-          bio: "Develops content plans aligned with business goals and audience engagement.",
-        },
-        {
-          name: "Ella Tran",
-          title: "Social Media Coordinator",
-          image: "/team/22.webp",
-          bio: "Manages social media scheduling, engagement, and campaign execution.",
-        },
       ],
     },
     // Future Expansion
@@ -245,19 +246,6 @@ export default function TeamPage() {
 
       members: [
         {
-          name: "Alice Truong",
-          title: "Software Engineer",
-          image: "/team/alicetr.webp",
-          bio: "Builds scalable web applications and delivers modern software solutions.",
-        },
-        {
-          name: "Mel Vu",
-          title: "Software Engineer",
-          image: "/team/mel-vu.webp",
-          bio: "Builds scalable software solutions that support business growth.",
-        },
-
-        {
           name: "Annie Nguyen",
           title: "UIUX Designer",
           image: "/team/annie.webp",
@@ -275,6 +263,18 @@ export default function TeamPage() {
           title: "Innovation Research Associate",
           image: "/team/25.webp",
           bio: "Conducts research and supports strategic initiatives.",
+        },
+        {
+          name: "Ella Tran",
+          title: "Social Media Coordinator",
+          image: "/team/22.webp",
+          bio: "Manages social media scheduling, engagement, and campaign execution.",
+        },
+        {
+          name: "Chloe Dang",
+          title: "Sales Support Specialist",
+          image: "/team/16.webp",
+          bio: "Assists sales teams with documentation, reporting, and coordination.",
         },
       ],
     },
@@ -605,21 +605,51 @@ export default function TeamPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25 }}
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"
+              className={
+                activeDepartment === "all"
+                  ? ""
+                  : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"
+              }
             >
-              {allMembers
-                .filter((member) =>
-                  activeDepartment === "all"
-                    ? true
-                    : member.departmentId === activeDepartment,
-                )
-                .map((member) => (
-                  <div
-                    key={`${member.departmentId}-${member.name}`}
-                    className="relative h-[400px] overflow-hidden rounded-[36px] bg-[#F3F5F8] group"
-                  >
+              {activeDepartment === "all" ? (
+                <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 w-full">
+                  {departments.map((department) => (
+                    <div key={department.id} className="flex flex-col gap-4">
+                      {[
+                        {
+                          ...department.lead,
+                          color: department.color,
+                          departmentId: department.id,
+                          departmentName: department.name,
+                          isLead: true,
+                        },
+
+                        ...department.members.map((member) => ({
+                          ...member,
+                          color: department.color,
+                          departmentId: department.id,
+                          departmentName: department.name,
+                          isLead: false,
+                        })),
+                      ].map((member) => (
+                        <TeamCard
+                          key={`${member.departmentId}-${member.name}`}
+                          member={member}
+                        />
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                allMembers
+                  .filter((member) => member.departmentId === activeDepartment)
+                  .map((member) => (
                     <div
-                      className={`
+                      key={`${member.departmentId}-${member.name}`}
+                      className="relative h-[400px] overflow-hidden rounded-[36px] bg-[#F3F5F8] group"
+                    >
+                      <div
+                        className={`
     absolute
     top-4
     left-4
@@ -644,27 +674,27 @@ export default function TeamPage() {
     ${
       member.isLead
         ? "bg-[#4F8DC9]/90 text-white"
-        : "bg-white/95 text-[#4F8DC9] border-1 backdrop-blur-md"
+        : "bg-white/95 text-[#4F8DC9] border border-[#4F8DC9]/30 backdrop-blur-md"
     }
   `}
-                      style={
-                        member.isLead
-                          ? {}
-                          : {
-                              borderColor: member.color,
-                            }
-                      }
-                    >
-                      {member.isLead
-                        ? `Lead • ${member.departmentName}`
-                        : member.departmentName}
-                    </div>
-                    <div className="absolute inset-0">
-                      <Image
-                        src={member.image}
-                        alt={member.name}
-                        fill
-                        className="
+                        style={
+                          member.isLead
+                            ? {}
+                            : {
+                                borderColor: member.color,
+                              }
+                        }
+                      >
+                        {member.isLead
+                          ? `Lead • ${member.departmentName}`
+                          : member.departmentName}
+                      </div>
+                      <div className="absolute inset-0">
+                        <Image
+                          src={member.image}
+                          alt={member.name}
+                          fill
+                          className="
     object-cover
     object-[center_10%]
 
@@ -673,11 +703,11 @@ export default function TeamPage() {
 
     group-hover:scale-105
   "
-                      />
-                    </div>
+                        />
+                      </div>
 
-                    <div
-                      className={`
+                      <div
+                        className={`
     absolute
     left-3
     right-3
@@ -700,35 +730,35 @@ xl:group-hover:h-[175px] group-hover:-translate-y-2
 
     ${member.isLead ? "ring-1 ring-[#4F8DC9]/50" : ""}
   `}
-                    >
-                      <div className="flex justify-between items-start transition-all duration-500 ease-out group-hover:-translate-y-1">
-                        <div className="flex flex-col justify-center h-[75px] md:h-[85px]">
-                          <h3
-                            className="
+                      >
+                        <div className="flex justify-between items-start transition-all duration-500 ease-out group-hover:-translate-y-1">
+                          <div className="flex flex-col justify-center h-[75px] md:h-[85px]">
+                            <h3
+                              className="
         text-xl
         font-semibold
         text-[#0B1B33]
       "
-                          >
-                            {member.name}
-                          </h3>
+                            >
+                              {member.name}
+                            </h3>
 
-                          <p
-                            className="
+                            <p
+                              className="
         mt-1
         text-sm
         text-[#0B1B33]/70 h-[44px]
 md:h-[40px] leading-5
       "
-                          >
-                            {member.title}
-                          </p>
+                            >
+                              {member.title}
+                            </p>
+                          </div>
                         </div>
-                      </div>
 
-                      {member.bio && (
-                        <div
-                          className="
+                        {member.bio && (
+                          <div
+                            className="
       -mt-4
 
       opacity-0
@@ -740,22 +770,23 @@ md:h-[40px] leading-5
       group-hover:opacity-100 group-hover:delay-75
       group-hover:translate-y-0
     "
-                        >
-                          <p
-                            className="
+                          >
+                            <p
+                              className="
         text-sm
         text-[#0B1B33]/70
         leading-relaxed
         line-clamp-3
       "
-                          >
-                            {member.bio}
-                          </p>
-                        </div>
-                      )}
+                            >
+                              {member.bio}
+                            </p>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+              )}
             </motion.div>
           </AnimatePresence>
         </section>
