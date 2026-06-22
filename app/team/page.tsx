@@ -131,16 +131,16 @@ export default function TeamPage() {
       color: "#C07838",
 
       lead: {
-        name: "Lucia Truong",
+        name: "Chang Le",
         title: "Lead Accounting & Legal",
-        image: "/team/6.webp",
+        image: "/team/trang.webp",
         bio: "Accounting and legal support services.",
       },
 
       members: [
         {
           name: "Jessica Tran",
-          title: "Bookkeeper",
+          title: "Accounting",
           image: "/team/17.webp",
           bio: "Supports bookkeeping activities, reconciliations, and financial reporting.",
         },
@@ -167,28 +167,28 @@ export default function TeamPage() {
         "Helping businesses maintain visibility, strengthen brand presence, and deliver consistent marketing execution across digital, visual, and media channels.",
       color: "#2E7D62",
       lead: {
-        name: "Yuko Furuta",
+        name: "Jena Truong",
         title: "Lead Focused Marketing",
-        image: "/team/yuko.webp",
+        image: "/team/jena.webp",
         bio: "Delivers market insights and reporting to support strategic decisions.",
       },
 
       members: [
         {
-          name: "Trang Ngoc Bao Tran",
+          name: "Tian Tran",
           title: "Marketing & SEO Content",
           image: "/team/trang-tran.webp",
           bio: "Develops SEO content and marketing materials to support business growth.",
         },
 
         {
-          name: "Jena Truong",
-          title: "Video Editor",
-          image: "/team/jena.webp",
+          name: "Ava Hoang",
+          title: "Video Editor ",
+          image: "/team/23.webp",
           bio: "Edits video content and visual assets for digital marketing campaigns.",
         },
         {
-          name: "Trang Phuong",
+          name: "Sammy Phuong",
           title: "Growth Marketing Specialist",
           image: "/team/trang-phuong.webp",
           bio: "Leads marketing strategy and growth initiatives.",
@@ -202,7 +202,7 @@ export default function TeamPage() {
         },
 
         {
-          name: "Tiffany",
+          name: "Tiffany Nguyen",
           title: "Graphic Designer",
           image: "/team/7.webp",
           bio: "Creates visual assets and brand materials to support marketing initiatives.",
@@ -237,9 +237,9 @@ export default function TeamPage() {
       color: "#4A5568",
 
       lead: {
-        name: "Ava Hoang",
+        name: "Yuko Furuta",
         title: "Lead Future Expansion",
-        image: "/team/23.webp",
+        image: "/team/yuko.webp",
         bio: "Drives project execution, team coordination, and operational success.",
       },
 
@@ -284,6 +284,7 @@ export default function TeamPage() {
     ...department.lead,
     color: department.color,
     departmentId: department.id,
+    departmentName: department.name,
     isLead: true,
   }));
 
@@ -292,6 +293,8 @@ export default function TeamPage() {
       ...member,
       color: department.color,
       departmentId: department.id,
+      departmentName: department.name,
+
       isLead: false,
     })),
   );
@@ -594,7 +597,7 @@ export default function TeamPage() {
         </section>
 
         {/* List Team */}
-        <section className="max-w-7xl mx-auto px-6 pb-24">
+        <section className="max-w-[1700px] mx-auto px-6 pb-24">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeDepartment}
@@ -602,12 +605,7 @@ export default function TeamPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25 }}
-              className="
-      grid
-      md:grid-cols-2
-      xl:grid-cols-3
-      gap-8
-    "
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"
             >
               {allMembers
                 .filter((member) =>
@@ -618,53 +616,85 @@ export default function TeamPage() {
                 .map((member) => (
                   <div
                     key={`${member.departmentId}-${member.name}`}
-                    className="relative h-[500px] overflow-hidden rounded-[36px] bg-[#F3F5F8] group"
+                    className="relative h-[400px] overflow-hidden rounded-[36px] bg-[#F3F5F8] group"
                   >
-                    {member.isLead && (
-                      <div
-                        className="
-  absolute top-5 left-5 md:top-5 md:left-5 z-20 px-2.5 py-1 md:px-4 md:py-2 rounded-full bg-[#4F8DC9] text-white text-[9px] md:text-[11px] font-semibold tracking-[0.1em] md:tracking-[0.15em] uppercase shadow-lg bg-[#4F8DC9]/90 backdrop-blur-md"
-                      >
-                        Team Lead
-                      </div>
-                    )}
+                    <div
+                      className={`
+    absolute
+    top-4
+    left-4
+    z-20
+
+    w-[195px]
+    h-9
+
+    flex
+    items-center
+    justify-center
+
+    rounded-full
+
+    text-[10px]
+    font-bold
+    tracking-[0.08em]
+    uppercase
+
+    shadow-md
+
+    ${
+      member.isLead
+        ? "bg-[#4F8DC9]/90 text-white"
+        : "bg-white/95 text-[#4F8DC9] border-1 backdrop-blur-md"
+    }
+  `}
+                      style={
+                        member.isLead
+                          ? {}
+                          : {
+                              borderColor: member.color,
+                            }
+                      }
+                    >
+                      {member.isLead
+                        ? `Lead • ${member.departmentName}`
+                        : member.departmentName}
+                    </div>
                     <div className="absolute inset-0">
                       <Image
                         src={member.image}
                         alt={member.name}
                         fill
                         className="
-                object-cover
-                transition-transform
-                duration-500
-                group-hover:scale-110 cursor-pointer
-              "
+    object-cover
+    object-[center_10%]
+
+    transition-all
+    duration-500
+
+    group-hover:scale-105
+  "
                       />
                     </div>
 
                     <div
                       className={`
     absolute
-    left-5
-    right-5
-    bottom-5
+    left-3
+    right-3
+    bottom-3
+    p-4
 
     bg-white/95
     backdrop-blur-md overflow-hidden
 
     rounded-[28px]
-
-    p-6
-
     shadow-xl
 
     transition-all
-    duration-500
-
-    h-[120px]
+    duration-500 h-[85px] md:h-[100px]
 
 
-group-hover:h-[185px]  
+group-hover:h-[150px]  
 md:group-hover:h-[175px]
 xl:group-hover:h-[175px] group-hover:-translate-y-2
 
@@ -672,10 +702,10 @@ xl:group-hover:h-[175px] group-hover:-translate-y-2
   `}
                     >
                       <div className="flex justify-between items-start transition-all duration-500 ease-out group-hover:-translate-y-1">
-                        <div>
+                        <div className="flex flex-col justify-center h-[75px] md:h-[85px]">
                           <h3
                             className="
-        text-2xl
+        text-xl
         font-semibold
         text-[#0B1B33]
       "
@@ -686,8 +716,9 @@ xl:group-hover:h-[175px] group-hover:-translate-y-2
                           <p
                             className="
         mt-1
-        text-base
-        text-[#0B1B33]/70
+        text-sm
+        text-[#0B1B33]/70 h-[44px]
+md:h-[40px] leading-5
       "
                           >
                             {member.title}
@@ -698,7 +729,7 @@ xl:group-hover:h-[175px] group-hover:-translate-y-2
                       {member.bio && (
                         <div
                           className="
-      mt-4
+      -mt-4
 
       opacity-0
       translate-y-4
@@ -731,7 +762,7 @@ xl:group-hover:h-[175px] group-hover:-translate-y-2
 
         {/* One Standard */}
         <section className="py-24 px-6 bg-white">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-7xl mx-auto px-6 pb-24">
             {/* Heading */}
             <div className="max-w-4xl mb-16 mx-auto text-center">
               <div className="flex items-center justify-center gap-3 mb-6">

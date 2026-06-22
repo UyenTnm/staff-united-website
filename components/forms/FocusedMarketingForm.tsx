@@ -324,7 +324,7 @@ export default function FocusedMarketingForm() {
       console.log("CRM PAYLOAD", crmPayload);
 
       await fetch(
-        "https://script.google.com/macros/s/AKfycbzQMV0r0lhpYflclEflbenBX0esIe1zsivVRJ_xh5erVJWd8kmEoClIhJWb_W_Ptun1/exec",
+        "https://script.google.com/macros/s/AKfycbwu5rpNif5MihM5fiuIRAMzeZjIkIInlNKGqrMN9VQybyYtR8yz-Dc8Yvopxeo05MD_/exec",
         {
           method: "POST",
           mode: "no-cors",
