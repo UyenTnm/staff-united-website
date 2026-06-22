@@ -635,7 +635,7 @@ export default function TeamPage() {
     rounded-full
 
     text-[10px]
-    font-medium
+    font-bold
     tracking-[0.08em]
     uppercase
 
