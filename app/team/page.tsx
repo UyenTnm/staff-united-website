@@ -621,7 +621,31 @@ export default function TeamPage() {
                     {member.isLead && (
                       <div
                         className="
-  absolute top-5 left-5 md:top-5 md:left-5 z-20 px-2.5 py-1 md:px-4 md:py-2 rounded-full bg-[#4F8DC9] text-white text-[9px] md:text-[11px] font-semibold tracking-[0.1em] md:tracking-[0.15em] uppercase shadow-lg bg-[#4F8DC9]/90 backdrop-blur-md"
+absolute
+top-4
+left-4
+z-20
+
+w-[195px]
+h-9
+
+flex
+items-center
+justify-center
+
+rounded-full
+
+bg-[#4F8DC9]/90
+backdrop-blur-md
+
+text-[10px]
+font-medium
+tracking-[0.08em]
+uppercase
+text-white
+
+shadow-md
+"
                       >
                         Lead • {member.departmentName}
                       </div>
@@ -635,12 +659,10 @@ export default function TeamPage() {
     object-cover
     object-[center_10%]
 
-    scale-[0.95]
-
     transition-all
     duration-500
 
-    group-hover:scale-100
+    group-hover:scale-105
   "
                       />
                     </div>
