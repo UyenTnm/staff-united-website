@@ -618,38 +618,47 @@ export default function TeamPage() {
                     key={`${member.departmentId}-${member.name}`}
                     className="relative h-[400px] overflow-hidden rounded-[36px] bg-[#F3F5F8] group"
                   >
-                    {member.isLead && (
-                      <div
-                        className="
-absolute
-top-4
-left-4
-z-20
+                    <div
+                      className={`
+    absolute
+    top-4
+    left-4
+    z-20
 
-w-[195px]
-h-9
+    w-[195px]
+    h-9
 
-flex
-items-center
-justify-center
+    flex
+    items-center
+    justify-center
 
-rounded-full
+    rounded-full
 
-bg-[#4F8DC9]/90
-backdrop-blur-md
+    text-[10px]
+    font-medium
+    tracking-[0.08em]
+    uppercase
 
-text-[10px]
-font-medium
-tracking-[0.08em]
-uppercase
-text-white
+    shadow-md
 
-shadow-md
-"
-                      >
-                        Lead • {member.departmentName}
-                      </div>
-                    )}
+    ${
+      member.isLead
+        ? "bg-[#4F8DC9]/90 text-white"
+        : "bg-white/95 text-[#4F8DC9] border-1 backdrop-blur-md"
+    }
+  `}
+                      style={
+                        member.isLead
+                          ? {}
+                          : {
+                              borderColor: member.color,
+                            }
+                      }
+                    >
+                      {member.isLead
+                        ? `Lead • ${member.departmentName}`
+                        : member.departmentName}
+                    </div>
                     <div className="absolute inset-0">
                       <Image
                         src={member.image}
