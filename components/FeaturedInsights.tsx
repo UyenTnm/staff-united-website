@@ -133,10 +133,7 @@ export default function FeaturedInsights() {
                 lg:mx-0
               "
             >
-              Featured Business Insights
-              {/* <br className="block lg:hidden" />
-              <span className="hidden lg:inline">&nbsp;</span>
-              <span className="text-[#4f8fcb]">Insights</span> */}
+              Business Insights
             </h2>
 
             {/* BUTTON */}
