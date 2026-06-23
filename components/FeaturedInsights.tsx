@@ -43,21 +43,30 @@ export default function FeaturedInsights() {
     setSelectedIndex(emblaApi.selectedScrollSnap());
   }, [emblaApi]);
 
-  useEffect(() => {
+  const onInit = useCallback(() => {
     if (!emblaApi) return;
 
     setScrollSnaps(emblaApi.scrollSnapList());
+  }, [emblaApi]);
 
-    onSelect();
+  useEffect(() => {
+    if (!emblaApi || loading) return;
 
-    emblaApi.on("select", onSelect);
-    emblaApi.on("reInit", onSelect);
+    const update = () => {
+      setScrollSnaps(emblaApi.scrollSnapList());
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+    };
+
+    update();
+
+    emblaApi.on("select", update);
+    emblaApi.on("reInit", update);
 
     return () => {
-      emblaApi.off("select", onSelect);
-      emblaApi.off("reInit", onSelect);
+      emblaApi.off("select", update);
+      emblaApi.off("reInit", update);
     };
-  }, [emblaApi, onSelect]);
+  }, [emblaApi, loading]);
 
   return (
     <AnimatedSection>
