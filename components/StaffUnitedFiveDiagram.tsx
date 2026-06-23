@@ -944,28 +944,31 @@ text-base md:text-lg xl:text-xl "
               <div className="flex-1 h-px bg-gradient-to-l from-transparent to-white/20" />
             </div>
 
-            <div className="max-w-4xl mx-auto text-left px-6 space-y-3">
+            <div className="max-w-4xl mx-auto text-left px-6 space-y-5">
               <p className="text-white leading-[1.6] text-sm md:text-base">
                 At STAFF United, our people are your advantage.
               </p>
 
               <p className="text-white leading-[1.6] text-sm md:text-base">
-                The STAFF Advantage™ is built on Strong, Talented, Ambitious,
-                Focused Females — professional women internationally trained to
-                deliver more than support.
+                The STAFF Advantage™ is built on{" "}
+                <strong>Strong, Talented, Ambitious, Focused Females</strong> —
+                professional women internationally trained to deliver more than
+                support.
               </p>
 
               <p className="text-white leading-[1.6] text-sm md:text-base">
                 They bring structure, discipline, intelligence, presence, and
-                care to every task. They represent our clients with
-                professionalism, protect their standards with accountability,
-                and execute with the focus required to help businesses operate
-                at a higher level.
+                care to every task. Operating as a continuous engine, they
+                provide seamless <strong>24/7 execution</strong> — representing
+                our clients with unwavering professionalism, protecting their
+                standards with accountability, and executing around the clock
+                with the focus required to help global businesses operate at a
+                higher level.
               </p>
 
               <p className="text-white leading-[1.6] text-sm md:text-base">
                 We do not simply fill roles. We raise the standard of what
-                support should be.
+                support should be, ensuring your operations never pause.
               </p>
             </div>
           </div>
@@ -1513,7 +1516,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
               <div className="w-2 h-2 rounded-full bg-white/60" />
               <div className="flex-1 h-px bg-gradient-to-l from-transparent to-white/20" />
             </div>
-            <div className="max-w-4xl mx-auto text-left px-6 space-y-3">
+            <div className="max-w-4xl mx-auto text-left px-6 space-y-6">
               <p className="text-white leading-[1.6] text-sm md:text-base">
                 At STAFF United, we provide more than services — we provide the
                 support system businesses need to operate, grow, protect, and
@@ -2117,7 +2120,7 @@ drop-shadow(0 0 10px rgba(255,255,255,0.08))
               <div className="flex-1 h-px bg-gradient-to-l from-transparent to-white/20" />
             </div>
 
-            <div className="max-w-4xl mx-auto text-left px-6 space-y-3">
+            <div className="max-w-4xl mx-auto text-left px-6 space-y-6">
               <p className="text-white leading-[1.6] text-sm md:text-base">
                 At STAFF United, we aim to deliver every task at 120% of
                 expectation.

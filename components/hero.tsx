@@ -94,8 +94,8 @@ export default function Hero() {
         <div
           className="
     w-full
-    max-w-4xl
-    lg:max-w-3xl
+    max-w-5xl
+    lg:max-w-5xl
     mx-auto
     text-left
     md:text-left
@@ -105,7 +105,13 @@ md:ml-3
         >
           <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
             {/* Line 1 */}
-            <span className="block">Your execution engine</span>
+            <span className="block ">
+              Your{" "}
+              <span style={{ fontVariantNumeric: "lining-nums tabular-nums" }}>
+                24/7
+              </span>{" "}
+              Execution Engine
+            </span>
 
             {/* Line 2: chỉ có "for" và chữ chạy */}
             <span className="mt-1 inline-flex items-baseline whitespace-nowrap">
@@ -120,18 +126,15 @@ md:ml-3
         whitespace-nowrap
         align-baseline
 
-        /* Fine-tune baseline */
         translate-y-0
         lg:-translate-y-[8px]
         xl:-translate-y-[3.8px]
         2xl:-translate-y-[3px]
 
-        /* Không cắt các ký tự như g, p, q */
         leading-[1.2]
         h-[1.25em]
         sm:h-[1.3em]
 
-        /* Đủ rộng cho cụm dài nhất nhưng không ảnh hưởng line 1 */
         min-w-[20ch]
       "
               >
@@ -198,14 +201,15 @@ md:ml-3
             >
               Women-Powered Offshore Team | Based&nbsp;in&nbsp;Vietnam
             </span>
-            Supporting global businesses with disciplined,{" "}
-            high-performance&nbsp;results
+            Supporting global businesses with disciplined, continuous{" "}
+            <span>24/7</span> <br className="hidden lg:block" />
+            <span className="lg:inline">high-performance results.</span>
           </p>
         </div>
       </div>
 
       {/* ===== FLOATING CARD ===== */}
-      <div className="absolute z-40 left-1/2 -translate-x-1/2 bottom-20 sm:bottom-20 md:left-9 md:translate-x-0 md:bottom-28 lg:bottom-24 xl:bottom-28 2xl:bottom-36">
+      <div className="absolute z-40 left-1/2 -translate-x-1/2 bottom-20 sm:bottom-20 md:left-9 md:translate-x-0 md:bottom-22 lg:bottom-20 xl:bottom-28 2xl:bottom-22">
         <a
           href="https://maps.app.goo.gl/Rg6R1UCux7tWsjGZ7?g_st=ic"
           target="_blank"

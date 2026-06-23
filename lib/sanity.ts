@@ -55,6 +55,30 @@ export async function getInsightBySlug(slug: string) {
   );
 }
 
+export async function getFeaturedInsights(limit = 10) {
+  return client.fetch(
+    `
+    *[
+      _type == "insight" &&
+      featured == true &&
+      (
+        !defined(publishAt) ||
+        dateTime(publishAt) <= dateTime(now())
+      )
+    ]
+    | order(coalesce(publishAt, _createdAt) desc)[0...$limit]{
+      _id,
+      title,
+      "slug": slug.current,
+      subtitle,
+      thumbnail,
+      publishAt
+    }
+  `,
+    { limit },
+  );
+}
+
 export async function generateStaticParams() {
   const slugs = await client.fetch(
     `*[_type == "insight" && ( !defined(publishAt) || dateTime(publishAt) <= dateTime(now()) )]{ "slug": slug.current }`,

@@ -26,6 +26,7 @@ import "react-phone-input-2/lib/style.css";
 import { useState } from "react";
 import Link from "next/link";
 import StaffUnitedFiveDiagram from "@/components/StaffUnitedFiveDiagram";
+import FeaturedInsights from "@/components/FeaturedInsights";
 
 export default function Home() {
   const testimonials = [
@@ -183,15 +184,23 @@ export default function Home() {
                   <div className="space-y-3 sm:space-y-4 w-full">
                     <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px]  md:text-[17px]">
                       STAFF United integrates directly into your operations,
-                      delivering structured offshore execution across Strategic
-                      Operations, Targeted Sales, Accounting & Legal, Focus
-                      Marketing and Future Expansion.
+                      delivering structured{" "}
+                      <strong className="text-[#4f8fcb] font-semibold">
+                        24/7 offshore execution
+                      </strong>{" "}
+                      across Strategic Operations, Targeted Sales, Accounting &
+                      Legal, Focused Marketing, and Future Expansion.
                     </p>
 
-                    <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px] md:text-[17px]">
+                    {/* <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px] md:text-[17px]">
                       Our work is guided by clear standards, disciplined
                       workflows, and shared accountability - ensuring
                       consistent, high-quality outcomes as your business grows.
+                    </p> */}
+                    <p className="text-[#0b1b33] leading-7 text-sm sm:text-[15px] md:text-[17px]">
+                      With teams strategically positioned to cover your business
+                      around the clock, our work is guided by clear standards,
+                      disciplined workflows, and shared accountability.
                     </p>
                   </div>
 
@@ -924,6 +933,9 @@ to-[#103663]/70
             </div>
           </section>
         </AnimatedSection>
+
+        {/* Render Insights */}
+        <FeaturedInsights />
 
         {/* SECTION 10 — CTA STRIP -> LEAD */}
         <AnimatedSection>
