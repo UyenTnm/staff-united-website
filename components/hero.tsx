@@ -202,7 +202,7 @@ md:ml-3
               Women-Powered Offshore Team | Based&nbsp;in&nbsp;Vietnam
             </span>
             Supporting global businesses with disciplined, continuous{" "}
-            <span>24/7</span>
+            <span>24/7</span> {" "}
             <br className="hidden lg:block" />
             <span className="lg:inline">high-performance results.</span>
           </p>
