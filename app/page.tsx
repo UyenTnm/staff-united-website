@@ -26,6 +26,7 @@ import "react-phone-input-2/lib/style.css";
 import { useState } from "react";
 import Link from "next/link";
 import StaffUnitedFiveDiagram from "@/components/StaffUnitedFiveDiagram";
+import FeaturedInsights from "@/components/FeaturedInsights";
 
 export default function Home() {
   const testimonials = [
@@ -932,6 +933,9 @@ to-[#103663]/70
             </div>
           </section>
         </AnimatedSection>
+
+        {/* Render Insights */}
+        <FeaturedInsights />
 
         {/* SECTION 10 — CTA STRIP -> LEAD */}
         <AnimatedSection>
