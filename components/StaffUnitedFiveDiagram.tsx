@@ -53,9 +53,6 @@ function RotatingDiagram({
   return (
     <svg
       ref={svgRef}
-      // viewBox="-40 0 660 580"
-      // viewBox="-30 -20 700 680"
-      // viewBox="-60 -60 760 760"
       viewBox="-80 -80 840 840"
       className="w-[108%] md:w-[100%] sm:w-[120%]
 xl:w-[105%]
@@ -63,10 +60,9 @@ xl:w-[105%]
 
   h-auto
   overflow-visible
-  touch-none
   select-none"
       style={{
-        touchAction: "none",
+        touchAction: "pan-y",
         WebkitUserSelect: "none",
         userSelect: "none",
       }}

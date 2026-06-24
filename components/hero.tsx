@@ -179,7 +179,7 @@ md:ml-3
     text-white
     mt-6
     text-lg
-    max-w-2xl
+    max-w-4xl
     mx-auto
     md:mx-0
     text-left
@@ -202,8 +202,7 @@ md:ml-3
               Women-Powered Offshore Team | Based&nbsp;in&nbsp;Vietnam
             </span>
             Supporting global businesses with disciplined, continuous{" "}
-            <span>24/7</span> <br className="hidden lg:block" />
-            <span className="lg:inline">high-performance results.</span>
+            <span>24/7</span> <span>high-performance results.</span>
           </p>
         </div>
       </div>
