@@ -8,7 +8,7 @@ export function urlFor(source: any) {
 }
 
 export function getImageUrl(source: any) {
-  if (!source) return null;
+  if (!source?.asset) return null;
 
   return urlFor(source)
     .width(800)
