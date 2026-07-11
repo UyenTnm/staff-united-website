@@ -5,6 +5,7 @@ import FormSection from "./FormSection";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import VoiceRecorder from "./VoiceRecorder";
+import FormSelect from "./FormSelect";
 
 // import { FormSection } from "/FormSection";
 
@@ -604,8 +605,11 @@ export default function StrategicOperationsForm() {
                 What industry are you in?
               </label>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {[
+              <FormSelect
+                value={industry}
+                onChange={setIndustry}
+                placeholder="Please select..."
+                options={[
                   "E-commerce / Retail",
                   "Professional Services",
                   "Healthcare / Wellness",
@@ -614,42 +618,10 @@ export default function StrategicOperationsForm() {
                   "Education / Coaching",
                   "Finance / Accounting",
                   "Other",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-        cursor-pointer
-        rounded-2xl
-        border
-        p-5
+                ]}
+                error={errors.industry}
+              />
 
-        transition-all
-        duration-300
-
-        flex
-        items-center
-        gap-3
-
-        ${
-          industry === item
-            ? "border-[#4F8DC9] bg-[#F8FBFF]"
-            : "border-slate-200 hover:border-[#4F8DC9]"
-        }
-      `}
-                  >
-                    <input
-                      type="radio"
-                      name="industry"
-                      value={item}
-                      checked={industry === item}
-                      onChange={(e) => setIndustry(e.target.value)}
-                      className="w-4 h-4"
-                    />
-
-                    <span className="text-slate-700 font-medium">{item}</span>
-                  </label>
-                ))}
-              </div>
               {errors.industry && (
                 <p className="mt-4 text-sm text-red-500">{errors.industry}</p>
               )}
@@ -719,44 +691,13 @@ export default function StrategicOperationsForm() {
                 How many people are currently in your team?
               </label>
 
-              <div className="grid md:grid-cols-3 gap-4">
-                {["Just Me", "2–5", "6–15", "16–50", "50+"].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-
-          transition-all
-          duration-300
-
-          flex
-          items-center
-          gap-3
-
-          ${
-            teamSize === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : errors.teamSize
-                ? "border-red-300"
-                : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                  >
-                    <input
-                      type="radio"
-                      name="teamSize"
-                      checked={teamSize === item}
-                      onChange={() => setTeamSize(item)}
-                      className="w-4 h-4"
-                    />
-
-                    <span className="font-medium text-slate-700">{item}</span>
-                  </label>
-                ))}
-              </div>
+              <FormSelect
+                value={teamSize}
+                onChange={setTeamSize}
+                placeholder="Please select..."
+                options={["Just Me", "2–5", "6–15", "16–50", "50+"]}
+                error={errors.teamSize}
+              />
 
               {errors.teamSize && (
                 <p className="mt-4 text-sm text-red-500">{errors.teamSize}</p>
@@ -777,81 +718,24 @@ export default function StrategicOperationsForm() {
                 Do you currently have any dedicated operations or admin staff?
               </label>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {[
-                  {
-                    title: "Founder Handles Everything",
-                    desc: "No dedicated operations support currently.",
-                  },
-                  {
-                    title: "Part-Time Contractor",
-                    desc: "Some operational support is outsourced.",
-                  },
-                  {
-                    title: "1 Full-Time Person",
-                    desc: "A dedicated operations or admin resource exists.",
-                  },
-                  {
-                    title: "Small Operations Team",
-                    desc: "Multiple people currently support operations.",
-                  },
-                ].map((item) => (
-                  <label
-                    key={item.title}
-                    className={`
-    cursor-pointer
-    rounded-2xl
-    border
-    p-6
+              <FormSelect
+                value={operationsStaff}
+                onChange={setOperationsStaff}
+                placeholder="Please select..."
+                options={[
+                  "Founder Handles Everything",
+                  "Part-Time Contractor",
+                  "1 Full-Time Person",
+                  "Small Operations Team",
+                ]}
+                error={errors.operationsStaff}
+              />
 
-    transition-all
-    duration-300
-
-    flex
-    items-start
-    gap-5
-
-    ${
-      operationsStaff === item.title
-        ? "border-[#4F8DC9] bg-[#F8FBFF]"
-        : errors.operationsStaff
-          ? "border-red-300"
-          : "border-slate-200 hover:border-[#4F8DC9]"
-    }
-  `}
-                  >
-                    <input
-                      type="radio"
-                      name="operationsStaff"
-                      checked={operationsStaff === item.title}
-                      onChange={() => setOperationsStaff(item.title)}
-                      className="mt-1 w-4 h-4"
-                    />
-
-                    <div>
-                      <div
-                        className="
-                font-semibold
-                text-[#06172d]
-              "
-                      >
-                        {item.title}
-                      </div>
-
-                      <p
-                        className="
-                mt-2
-                text-sm
-                leading-relaxed
-                text-slate-500
-              "
-                      >
-                        {item.desc}
-                      </p>
-                    </div>
-                  </label>
-                ))}
-              </div>
+              {errors.operationsStaff && (
+                <p className="mt-4 text-sm text-red-500">
+                  {errors.operationsStaff}
+                </p>
+              )}
               {errors.operationsStaff && (
                 <p className="mt-4 text-sm text-red-500">
                   {errors.operationsStaff}
@@ -1080,56 +964,18 @@ export default function StrategicOperationsForm() {
                   How many hours per week do you estimate needing admin support?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={adminHours}
+                  onChange={setAdminHours}
+                  placeholder="Please select..."
+                  options={[
                     "1–5 hrs/week",
                     "5–10 hrs/week",
                     "10–20 hrs/week",
                     "20+ hrs/week",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-            cursor-pointer
-            rounded-2xl
-            border
-            p-5
-
-            transition-all
-            duration-300
-
-            ${
-              adminHours === item
-                ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                : "border-slate-200 hover:border-[#4F8DC9]"
-            }
-          `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          name="adminHours"
-                          checked={adminHours === item}
-                          onChange={() => setAdminHours(item)}
-                          className="
-                w-4
-                h-4
-                accent-[#4F8DC9]
-              "
-                        />
-
-                        <span
-                          className="
-                font-medium
-                text-slate-700
-              "
-                        >
-                          {item}
-                        </span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                  ]}
+                  error={errors.adminHours}
+                />
 
                 {errors.adminHours && (
                   <p className="mt-4 text-sm text-red-500">
@@ -1303,46 +1149,18 @@ export default function StrategicOperationsForm() {
                   What best describes your current SOP documentation?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={sopStatus}
+                  onChange={setSopStatus}
+                  placeholder="Please select..."
+                  options={[
                     "No documented SOPs",
                     "A few SOPs exist",
                     "Most processes documented",
                     "Fully documented system",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-                cursor-pointer
-                rounded-2xl
-                border
-                p-5
-
-                transition-all
-
-                ${
-                  sopStatus === item
-                    ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                    : "border-slate-200 hover:border-[#4F8DC9]"
-                }
-              `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          name="sopStatus"
-                          checked={sopStatus === item}
-                          onChange={() => setSopStatus(item)}
-                          className="w-4 h-4 accent-[#4F8DC9]"
-                        />
-
-                        <span className="font-medium text-slate-700">
-                          {item}
-                        </span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                  ]}
+                  error={errors.sopStatus}
+                />
                 {errors.sopStatus && (
                   <p className="mt-4 text-sm text-red-500">
                     {errors.sopStatus}
@@ -1365,46 +1183,18 @@ export default function StrategicOperationsForm() {
                   improvement?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={processCount}
+                  onChange={setProcessCount}
+                  placeholder="Please select..."
+                  options={[
                     "1–5 Processes",
                     "6–10 Processes",
                     "11–20 Processes",
                     "20+ Processes",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-                cursor-pointer
-                rounded-2xl
-                border
-                p-5
-
-                transition-all
-
-                ${
-                  processCount === item
-                    ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                    : "border-slate-200 hover:border-[#4F8DC9]"
-                }
-              `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          name="processCount"
-                          checked={processCount === item}
-                          onChange={() => setProcessCount(item)}
-                          className="w-4 h-4 accent-[#4F8DC9]"
-                        />
-
-                        <span className="font-medium text-slate-700">
-                          {item}
-                        </span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                  ]}
+                  error={errors.processCount}
+                />
                 {errors.processCount && (
                   <p className="mt-4 text-sm text-red-500">
                     {errors.processCount}
@@ -1599,46 +1389,18 @@ export default function StrategicOperationsForm() {
                   How many employees do you currently have?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={employeeCount}
+                  onChange={setEmployeeCount}
+                  placeholder="Please select..."
+                  options={[
                     "1–10 Employees",
                     "11–25 Employees",
                     "26–50 Employees",
                     "50+ Employees",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-                cursor-pointer
-                rounded-2xl
-                border
-                p-5
-
-                transition-all
-
-                ${
-                  employeeCount === item
-                    ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                    : "border-slate-200 hover:border-[#4F8DC9]"
-                }
-              `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          name="employeeCount"
-                          checked={employeeCount === item}
-                          onChange={() => setEmployeeCount(item)}
-                          className="w-4 h-4 accent-[#4F8DC9]"
-                        />
-
-                        <span className="font-medium text-slate-700">
-                          {item}
-                        </span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                  ]}
+                  error={errors.employeeCount}
+                />
 
                 {errors.employeeCount && (
                   <p className="mt-4 text-sm text-red-500">
@@ -1661,41 +1423,14 @@ export default function StrategicOperationsForm() {
                   Are you currently hiring?
                 </label>
 
-                <div className="grid md:grid-cols-3 gap-4">
-                  {["Yes", "No", "Planning Soon"].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-                cursor-pointer
-                rounded-2xl
-                border
-                p-5
+                <FormSelect
+                  value={hiringStatus}
+                  onChange={setHiringStatus}
+                  placeholder="Please select..."
+                  options={["Yes", "No", "Planning Soon"]}
+                  error={errors.hiringStatus}
+                />
 
-                transition-all
-
-                ${
-                  hiringStatus === item
-                    ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                    : "border-slate-200 hover:border-[#4F8DC9]"
-                }
-              `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          name="hiringStatus"
-                          checked={hiringStatus === item}
-                          onChange={() => setHiringStatus(item)}
-                          className="w-4 h-4 accent-[#4F8DC9]"
-                        />
-
-                        <span className="font-medium text-slate-700">
-                          {item}
-                        </span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
                 {errors.hiringStatus && (
                   <p className="mt-4 text-sm text-red-500">
                     {errors.hiringStatus}
@@ -1828,46 +1563,18 @@ export default function StrategicOperationsForm() {
                   Approximately how many active clients do you currently manage?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={activeClients}
+                  onChange={setActiveClients}
+                  placeholder="Please select..."
+                  options={[
                     "1–10 Clients",
                     "11–50 Clients",
                     "51–100 Clients",
                     "100+ Clients",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-            cursor-pointer
-            rounded-2xl
-            border
-            p-5
-
-            transition-all
-
-            ${
-              activeClients === item
-                ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                : "border-slate-200 hover:border-[#4F8DC9]"
-            }
-          `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          name="activeClients"
-                          checked={activeClients === item}
-                          onChange={() => setActiveClients(item)}
-                          className="w-4 h-4 accent-[#4F8DC9]"
-                        />
-
-                        <span className="font-medium text-slate-700">
-                          {item}
-                        </span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                  ]}
+                  error={errors.activeClients}
+                />
 
                 {errors.activeClients && (
                   <p className="mt-4 text-sm text-red-500">
@@ -2011,50 +1718,19 @@ export default function StrategicOperationsForm() {
                 Are you open to implementing new tools or systems?
               </label>
 
-              <div className="grid md:grid-cols-3 gap-4">
-                {[
+              <FormSelect
+                value={newToolsPreference}
+                onChange={setNewToolsPreference}
+                placeholder="Please select..."
+                options={[
                   "Yes, open to anything",
-                  "yes, prefer free/low cost",
+                  "Yes, prefer free/low cost",
                   "Prefer to stick with existing tools",
                   "Not sure yet",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
+                ]}
+                error={errors.newToolsPreference}
+              />
 
-          transition-all
-
-          ${
-            newToolsPreference === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : errors.newToolsPreference
-                ? "border-red-300"
-                : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                  >
-                    <div className="flex items-center gap-3">
-                      <input
-                        type="radio"
-                        name="newToolsPreference"
-                        checked={newToolsPreference === item}
-                        onChange={() => setNewToolsPreference(item)}
-                        className="
-              w-4
-              h-4
-              accent-[#4F8DC9]
-            "
-                      />
-
-                      <span className="font-medium text-slate-700">{item}</span>
-                    </div>
-                  </label>
-                ))}
-              </div>
               {errors.newToolsPreference && (
                 <p className="mt-4 text-sm text-red-500">
                   {errors.newToolsPreference}

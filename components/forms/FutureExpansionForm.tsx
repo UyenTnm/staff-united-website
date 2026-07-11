@@ -4,6 +4,8 @@ import { useState } from "react";
 import FormSection from "./FormSection";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { ChevronDown } from "lucide-react";
+import FormSelect from "./FormSelect";
 
 // import { FormSection } from "/FormSection";
 
@@ -795,46 +797,27 @@ ${errors.website ? "border-red-500 bg-red-50" : "border-slate-200"}
                 What industry are you in?
               </label>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {[
-                  "E-commerce / retail",
-                  "Professional services",
-                  "Healthcare / wellness",
-                  "Real estate",
-                  "Tech / SaaS",
-                  "Education / coaching",
-                  "Finance / accounting",
-                  "Manufacturing / distribution",
-                  "Other",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-
-          ${
-            industry === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                  >
-                    <div className="flex items-center gap-3">
-                      <input
-                        type="radio"
-                        checked={industry === item}
-                        onChange={() => setIndustry(item)}
-                      />
-
-                      <span>{item}</span>
-                    </div>
-                  </label>
-                ))}
+              <div className="relative">
+                <FormSelect
+                  value={industry}
+                  onChange={setIndustry}
+                  placeholder="Select Industry"
+                  options={[
+                    "E-commerce / Retail",
+                    "Professional Services",
+                    "Healthcare / Wellness",
+                    "Real Estate",
+                    "Tech / SaaS",
+                    "Education / Coaching",
+                    "Finance / Accounting",
+                    "Manufacturing / Distribution",
+                    "Other",
+                  ]}
+                  error={errors.industry}
+                  disabled={false}
+                  searchable={false}
+                />
               </div>
-
               {errors.industry && (
                 <p className="mt-3 text-sm text-red-500">{errors.industry}</p>
               )}
@@ -873,33 +856,48 @@ ${errors.website ? "border-red-500 bg-red-50" : "border-slate-200"}
                 How long has your business been operating?
               </label>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {["Less than 1 year", "1-3 years", "3-7 years", "7+ years"].map(
-                  (item) => (
-                    <label
-                      key={item}
-                      className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
+              <div className="relative">
+                {/* <select
+                  value={businessAge}
+                  onChange={(e) => setBusinessAge(e.target.value)}
+                  className={`
+      w-full
+      h-14
+      rounded-2xl
+      border
+      px-5
+      pr-12
+      appearance-none
+      bg-white
+      outline-none
+      focus:border-[#4F8DC9]
 
-          ${
-            businessAge === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                    >
-                      <input
-                        type="radio"
-                        checked={businessAge === item}
-                        onChange={() => setBusinessAge(item)}
-                      />
+      ${errors.businessAge ? "border-red-500 bg-red-50" : "border-slate-200"}
+    `}
+                >
+                  <option value="">Select Business Age</option>
+                  <option value="Less than 1 year">Less than 1 year</option>
+                  <option value="1-3 years">1-3 years</option>
+                  <option value="3-7 years">3-7 years</option>
+                  <option value="7+ years">7+ years</option>
+                </select> */}
+                <FormSelect
+                  value={businessAge}
+                  onChange={setBusinessAge}
+                  placeholder="Select Business Age"
+                  options={[
+                    "Less than 1 year",
+                    "1-3 years",
+                    "3-7 years",
+                    "7+ years",
+                  ]}
+                  error={errors.businessAge}
+                />
 
-                      <span className="ml-3">{item}</span>
-                    </label>
-                  ),
+                {errors.businessAge && (
+                  <p className="mt-3 text-sm text-red-500">
+                    {errors.businessAge}
+                  </p>
                 )}
               </div>
 
@@ -917,33 +915,13 @@ ${errors.website ? "border-red-500 bg-red-50" : "border-slate-200"}
                 What is your current team size?
               </label>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {["Just me", "2-5", "6-15", "16-50", "50+"].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-
-          ${
-            teamSize === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                  >
-                    <input
-                      type="radio"
-                      checked={teamSize === item}
-                      onChange={() => setTeamSize(item)}
-                    />
-
-                    <span className="ml-3">{item}</span>
-                  </label>
-                ))}
-              </div>
+              <FormSelect
+                value={teamSize}
+                onChange={setTeamSize}
+                placeholder="Select Your Team Size"
+                options={["Just me", "2-5", "6-15", "16-50", "50+"]}
+                error={errors.teamSize}
+              />
 
               {errors.teamSize && (
                 <p className="mt-3 text-sm text-red-500">{errors.teamSize}</p>
@@ -957,38 +935,18 @@ ${errors.website ? "border-red-500 bg-red-50" : "border-slate-200"}
                 Which best describes your current business stage?
               </label>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {[
+              <FormSelect
+                value={businessStage}
+                onChange={setBusinessStage}
+                placeholder="Select Business Stage"
+                options={[
                   "Early-stage — still building the foundation",
                   "Growth-stage — scaling quickly",
                   "Established — stable and profitable",
                   "Mature — optimizing and expanding",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-
-          ${
-            businessStage === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                  >
-                    <input
-                      type="radio"
-                      checked={businessStage === item}
-                      onChange={() => setBusinessStage(item)}
-                    />
-
-                    <span className="ml-3">{item}</span>
-                  </label>
-                ))}
-              </div>
+                ]}
+                error={errors.businessStage}
+              />
 
               {errors.businessStage && (
                 <p className="mt-3 text-sm text-red-500">
@@ -1003,8 +961,11 @@ ${errors.website ? "border-red-500 bg-red-50" : "border-slate-200"}
                 What is the primary driver of your expansion plans?
               </label>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {[
+              <FormSelect
+                value={expansionDriver}
+                onChange={setExpansionDriver}
+                placeholder="Select Expansion Driver"
+                options={[
                   "Entering a new geographic market",
                   "Launching a new product or service",
                   "Finding new partners or vendors",
@@ -1012,33 +973,9 @@ ${errors.website ? "border-red-500 bg-red-50" : "border-slate-200"}
                   "Franchising or licensing the business",
                   "Exploring new industries or verticals",
                   "Other",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-      ${
-        expansionDriver === item
-          ? "border-[#4F8DC9] bg-[#F8FBFF]"
-          : "border-slate-200 hover:border-[#4F8DC9]"
-      }
-    `}
-                  >
-                    <div className="flex items-center gap-3">
-                      <input
-                        type="radio"
-                        checked={expansionDriver === item}
-                        onChange={() => setExpansionDriver(item)}
-                      />
-
-                      <span>{item}</span>
-                    </div>
-                  </label>
-                ))}
-              </div>
+                ]}
+                error={errors.expansionDriver}
+              />
 
               {errors.expansionDriver && (
                 <p className="mt-3 text-sm text-red-500">
@@ -1162,7 +1099,7 @@ p-6
 
                       toggleServiceArea(item.title);
                     }}
-                    className="mt-1 w-5 h-5"
+                    className="mt-1 w-5 h-5 rounded border-slate-300 text-[#4F8DC9] focus:ring-[#4F8DC9]"
                   />
 
                   <div>
@@ -1249,37 +1186,17 @@ p-6
                   What type of expansion are you considering?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={expansionType}
+                  onChange={setExpansionType}
+                  placeholder="Select Expansion Type"
+                  options={[
                     "Domestic Expansion",
                     "International Expansion",
                     "Both",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-                cursor-pointer
-                rounded-2xl
-                border
-                p-5
-
-                ${
-                  expansionType === item
-                    ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                    : "border-slate-200 hover:border-[#4F8DC9]"
-                }
-              `}
-                    >
-                      <input
-                        type="radio"
-                        checked={expansionType === item}
-                        onChange={() => setExpansionType(item)}
-                      />
-
-                      <span className="ml-3">{item}</span>
-                    </label>
-                  ))}
-                </div>
+                  ]}
+                  error={errors.expansionType}
+                />
 
                 {errors.expansionType && (
                   <p className="mt-3 text-sm text-red-500">
@@ -1330,37 +1247,17 @@ p-6
                   Have you already developed an expansion plan?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={expansionPlanStatus}
+                  onChange={setExpansionPlanStatus}
+                  placeholder="Select Current Planning Status"
+                  options={[
                     "Yes — detailed plan exists",
                     "Partially — some planning completed",
                     "No — need support from scratch",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-                cursor-pointer
-                rounded-2xl
-                border
-                p-5
-
-                ${
-                  expansionPlanStatus === item
-                    ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                    : "border-slate-200 hover:border-[#4F8DC9]"
-                }
-              `}
-                    >
-                      <input
-                        type="radio"
-                        checked={expansionPlanStatus === item}
-                        onChange={() => setExpansionPlanStatus(item)}
-                      />
-
-                      <span className="ml-3">{item}</span>
-                    </label>
-                  ))}
-                </div>
+                  ]}
+                  error={errors.expansionPlanStatus}
+                />
 
                 {errors.expansionPlanStatus && (
                   <p className="mt-3 text-sm text-red-500">
@@ -1524,33 +1421,13 @@ p-6
                   identified?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {["1-10", "11-25", "26-50", "50+"].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-                cursor-pointer
-                rounded-2xl
-                border
-                p-5
-
-                ${
-                  partnerVolume === item
-                    ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                    : "border-slate-200 hover:border-[#4F8DC9]"
-                }
-              `}
-                    >
-                      <input
-                        type="radio"
-                        checked={partnerVolume === item}
-                        onChange={() => setPartnerVolume(item)}
-                      />
-
-                      <span className="ml-3">{item}</span>
-                    </label>
-                  ))}
-                </div>
+                <FormSelect
+                  value={partnerVolume}
+                  onChange={setPartnerVolume}
+                  placeholder="Select Expected Partner Volume"
+                  options={["1-10", "11-25", "26-50", "50+"]}
+                  error={errors.partnerVolume}
+                />
 
                 {errors.partnerVolume && (
                   <p className="mt-3 text-sm text-red-500">
@@ -1627,38 +1504,18 @@ p-6
                   What stage is the launch currently in?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={launchStage}
+                  onChange={setLaunchStage}
+                  placeholder="Select Launch Stage"
+                  options={[
                     "Idea Stage",
                     "Development In Progress",
                     "Ready For Launch",
                     "Already Launched",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-                cursor-pointer
-                rounded-2xl
-                border
-                p-5
-
-                ${
-                  launchStage === item
-                    ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                    : "border-slate-200 hover:border-[#4F8DC9]"
-                }
-              `}
-                    >
-                      <input
-                        type="radio"
-                        checked={launchStage === item}
-                        onChange={() => setLaunchStage(item)}
-                      />
-
-                      <span className="ml-3">{item}</span>
-                    </label>
-                  ))}
-                </div>
+                  ]}
+                  error={errors.launchStage}
+                />
 
                 {errors.launchStage && (
                   <p className="mt-3 text-sm text-red-500">
@@ -1674,38 +1531,18 @@ p-6
                   When do you plan to launch?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={launchTimeline}
+                  onChange={setLaunchTimeline}
+                  placeholder="Please select..."
+                  options={[
                     "Within 30 Days",
                     "1-3 Months",
                     "3-6 Months",
                     "6+ Months",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-                cursor-pointer
-                rounded-2xl
-                border
-                p-5
-
-                ${
-                  launchTimeline === item
-                    ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                    : "border-slate-200 hover:border-[#4F8DC9]"
-                }
-              `}
-                    >
-                      <input
-                        type="radio"
-                        checked={launchTimeline === item}
-                        onChange={() => setLaunchTimeline(item)}
-                      />
-
-                      <span className="ml-3">{item}</span>
-                    </label>
-                  ))}
-                </div>
+                  ]}
+                  error={errors.launchTimeline}
+                />
 
                 {errors.launchTimeline && (
                   <p className="mt-3 text-sm text-red-500">
@@ -1852,37 +1689,17 @@ p-6
                   Are you currently seeking funding or investment?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={fundingStatus}
+                  onChange={setFundingStatus}
+                  placeholder="Please select..."
+                  options={[
                     "Seeking Funding",
                     "Not Seeking Funding",
                     "Considering Funding Options",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-                cursor-pointer
-                rounded-2xl
-                border
-                p-5
-
-                ${
-                  fundingStatus === item
-                    ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                    : "border-slate-200 hover:border-[#4F8DC9]"
-                }
-              `}
-                    >
-                      <input
-                        type="radio"
-                        checked={fundingStatus === item}
-                        onChange={() => setFundingStatus(item)}
-                      />
-
-                      <span className="ml-3">{item}</span>
-                    </label>
-                  ))}
-                </div>
+                  ]}
+                  error={errors.fundingStatus}
+                />
 
                 {errors.fundingStatus && (
                   <p className="mt-3 text-sm text-red-500">
@@ -2082,33 +1899,13 @@ p-6
                   Are any of these projects cross-border or international?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {["Yes", "No", "Some are international"].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-                cursor-pointer
-                rounded-2xl
-                border
-                p-5
-
-                ${
-                  crossBorderProjects === item
-                    ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                    : "border-slate-200 hover:border-[#4F8DC9]"
-                }
-              `}
-                    >
-                      <input
-                        type="radio"
-                        checked={crossBorderProjects === item}
-                        onChange={() => setCrossBorderProjects(item)}
-                      />
-
-                      <span className="ml-3">{item}</span>
-                    </label>
-                  ))}
-                </div>
+                <FormSelect
+                  value={crossBorderProjects}
+                  onChange={setCrossBorderProjects}
+                  placeholder="Please select..."
+                  options={["Yes", "No", "Some are international"]}
+                  error={errors.crossBorderProjects}
+                />
 
                 {errors.crossBorderProjects && (
                   <p className="mt-3 text-sm text-red-500">
@@ -2185,38 +1982,18 @@ p-6
                   Do you currently have a strategic plan?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={existingPlan}
+                  onChange={setExistingPlan}
+                  placeholder="Please select..."
+                  options={[
                     "Yes — documented and active",
                     "Yes — needs updating",
                     "Partially documented",
                     "No strategic plan exists",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-                cursor-pointer
-                rounded-2xl
-                border
-                p-5
-
-                ${
-                  existingPlan === item
-                    ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                    : "border-slate-200 hover:border-[#4F8DC9]"
-                }
-              `}
-                    >
-                      <input
-                        type="radio"
-                        checked={existingPlan === item}
-                        onChange={() => setExistingPlan(item)}
-                      />
-
-                      <span className="ml-3">{item}</span>
-                    </label>
-                  ))}
-                </div>
+                  ]}
+                  error={errors.existingPlan}
+                />
 
                 {errors.existingPlan && (
                   <p className="mt-3 text-sm text-red-500">
@@ -2312,38 +2089,18 @@ p-6
                 How prepared do you feel for expansion today?
               </label>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {[
+              <FormSelect
+                value={readinessLevel}
+                onChange={setReadinessLevel}
+                placeholder="Please select..."
+                options={[
                   "Very Prepared",
                   "Somewhat Prepared",
                   "Need Guidance",
                   "Just Exploring Options",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-              cursor-pointer
-              rounded-2xl
-              border
-              p-5
-
-              ${
-                readinessLevel === item
-                  ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                  : "border-slate-200 hover:border-[#4F8DC9]"
-              }
-            `}
-                  >
-                    <input
-                      type="radio"
-                      checked={readinessLevel === item}
-                      onChange={() => setReadinessLevel(item)}
-                    />
-
-                    <span className="ml-3">{item}</span>
-                  </label>
-                ))}
-              </div>
+                ]}
+                error={errors.readinessLevel}
+              />
 
               {errors.readinessLevel && (
                 <p className="mt-3 text-sm text-red-500">
@@ -2438,38 +2195,18 @@ p-6
                 What type of engagement are you looking for?
               </label>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {[
+              <FormSelect
+                value={engagementType}
+                onChange={setEngagementType}
+                placeholder="Please select..."
+                options={[
                   "One-Time Project",
                   "Ongoing Monthly Support",
                   "Project-Based Retainer",
                   "Not Sure Yet",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-              cursor-pointer
-              rounded-2xl
-              border
-              p-5
-
-              ${
-                engagementType === item
-                  ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                  : "border-slate-200 hover:border-[#4F8DC9]"
-              }
-            `}
-                  >
-                    <input
-                      type="radio"
-                      checked={engagementType === item}
-                      onChange={() => setEngagementType(item)}
-                    />
-
-                    <span className="ml-3">{item}</span>
-                  </label>
-                ))}
-              </div>
+                ]}
+                error={errors.engagementType}
+              />
 
               {errors.engagementType && (
                 <p className="mt-3 text-sm text-red-500">
@@ -2485,38 +2222,18 @@ p-6
                 When would you like to get started?
               </label>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {[
+              <FormSelect
+                value={startTimeline}
+                onChange={setStartTimeline}
+                placeholder="Please select..."
+                options={[
                   "Immediately",
                   "Within 30 Days",
                   "1-3 Months",
                   "Just Exploring",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-              cursor-pointer
-              rounded-2xl
-              border
-              p-5
-
-              ${
-                startTimeline === item
-                  ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                  : "border-slate-200 hover:border-[#4F8DC9]"
-              }
-            `}
-                  >
-                    <input
-                      type="radio"
-                      checked={startTimeline === item}
-                      onChange={() => setStartTimeline(item)}
-                    />
-
-                    <span className="ml-3">{item}</span>
-                  </label>
-                ))}
-              </div>
+                ]}
+                error={errors.startTimeline}
+              />
 
               {errors.startTimeline && (
                 <p className="mt-3 text-sm text-red-500">
