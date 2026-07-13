@@ -21,15 +21,18 @@ export default function PhoneField({
         enableSearch
         value={value}
         onChange={onChange}
-        inputStyle={{
-          width: "100%",
-          height: "56px",
-          borderRadius: "16px",
-        }}
-        buttonStyle={{
-          borderTopLeftRadius: "16px",
-          borderBottomLeftRadius: "16px",
-        }}
+        // inputStyle={{
+        //   width: "100%",
+        //   height: "56px",
+        //   borderRadius: "16px",
+        // }}
+        // buttonStyle={{
+        //   borderTopLeftRadius: "16px",
+        //   borderBottomLeftRadius: "16px",
+        // }}
+        containerClass="w-full"
+        inputClass="phone-input"
+        buttonClass="phone-button"
       />
 
       {error && <p className="text-sm text-red-500">{error}</p>}

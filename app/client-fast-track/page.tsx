@@ -359,7 +359,7 @@ export default function ClientFastTrackForm() {
                       });
 
                       const res = await fetch(
-                        "https://script.google.com/macros/s/AKfycbyd5_GxRni9GZ9eE9zsWadiyircFP1T9bQeenQjW_U5srABhWg-2we3Kb5xtHe_w4cO/exec",
+                        "https://script.google.com/macros/s/AKfycbzyb22MZ8zTVqJ00W_oXNprY19wfxD-i7PnVQqSOwEV70VDyBvSoKKDe6aupAFpX5D6/exec",
                         {
                           method: "POST",
                           headers: {
@@ -368,6 +368,7 @@ export default function ClientFastTrackForm() {
                           body,
                         },
                       );
+                      console.log(Object.fromEntries(body.entries()));
 
                       const text = await res.text();
 
@@ -480,7 +481,7 @@ export default function ClientFastTrackForm() {
                     )}
 
                     {/* PHONE */}
-                    <div>
+                    {/* <div>
                       <PhoneInput
                         country={"us"}
                         value={phone}
@@ -489,6 +490,34 @@ export default function ClientFastTrackForm() {
                         inputClass="!w-full !border !border-[#d1d5db] !rounded !py-2"
                         containerClass="w-full"
                       />
+                      <input type="hidden" name="phone" value={phone} />
+                    </div> */}
+                    <div className="relative w-full">
+                      {(phone === "" || phone === "+1") && (
+                        <span
+                          className="
+        absolute
+        left-[75px]
+        top-1/2
+        -translate-y-1/2
+        text-[#9ca3af]
+        pointer-events-none
+        z-10
+      "
+                        >
+                          Phone Number <span className="text-grey-500">*</span>
+                        </span>
+                      )}
+
+                      <PhoneInput
+                        country={"us"}
+                        value={phone}
+                        onChange={setPhone}
+                        enableSearch
+                        inputClass="!w-full !border !border-[#d1d5db] !rounded !py-2"
+                        containerClass="w-full"
+                      />
+
                       <input type="hidden" name="phone" value={phone} />
                     </div>
 

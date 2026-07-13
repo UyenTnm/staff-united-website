@@ -558,3 +558,19 @@ select {
     background-position: -200% center;
   }
 }
+
+.PhoneInput {
+  width: 100%;
+}
+
+.PhoneInputInput {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+  background: transparent;
+}
+
+.PhoneInputCountry {
+  margin-right: 12px;
+}
