@@ -14,7 +14,8 @@ import {
 const services = [
   {
     title: "Strategic Operations",
-    description: "Day-to-day ops, admin, and process support",
+    // description: "Day-to-day ops, admin, and process support",
+    description: "Day-to-day ops, admin, and process\u00A0support",
     icon: Settings,
     // href: "/services/strategic-operations",
     href: "/services/strategic-operations#quote-section",
@@ -51,8 +52,7 @@ const services = [
   {
     isCTA: true,
     title: "Not sure which one fits?",
-    description:
-      "Need help deciding? Let us recommend the best service for your business.",
+    description: "Guidance to the right service.",
     icon: Compass,
     href: "/client-fast-track",
   },
@@ -87,70 +87,73 @@ export default function ChooseYourServicePage() {
             {services.map((service) => {
               const Icon = service.icon;
 
-              if (service.isCTA) {
-                return (
-                  <Link
-                    key={service.title}
-                    href={service.href}
-                    target="_blank"
-                    className="
-group
-rounded-3xl
-border-2
-border-dashed
-border-primary/30
-bg-primary/5
-p-10
-flex
-flex-col
-justify-center
-transition-all
-duration-300
-hover:bg-primary/10
-"
-                  >
-                    <div className="w-14 h-14 rounded-2xl bg-[#4F8DC9]/10 flex items-center justify-center mb-6">
-                      <Icon
-                        className="w-7 h-7 text-[#4F8DC9]"
-                        strokeWidth={2}
-                      />
-                    </div>
-                    <p className="text-xl font-bold text-secondary mb-3">
-                      {service.title}
-                    </p>
-
-                    {/* <p className="text-foreground/70 mb-5">
-                      {service.description}
-                    </p> */}
-
-                    <span className="font-semibold text-primary">
-                      Try Client Fast Track →
-                    </span>
-                  </Link>
-                );
-              }
-
               return (
                 <Link
                   key={service.title}
                   href={service.href}
                   target="_blank"
-                  className="
-        group
-        bg-white
-        rounded-3xl
-        border
-        border-slate-200
-        p-8
-        transition-all
-        duration-300
-        hover:-translate-y-2
-        hover:shadow-xl
-        hover:border-primary
-      "
+                  className={`
+group
+
+relative
+overflow-hidden
+
+rounded-3xl
+
+bg-gradient-to-b
+from-white
+to-[#F7FBFF]
+
+border
+${
+  service.isCTA
+    ? "border-dashed border-primary/40"
+    : "border-solid border-[#D5E3F2]"
+}
+
+p-8
+
+flex
+flex-col
+h-full
+
+shadow-[0_6px_24px_rgba(15,23,42,0.05)]
+
+transition-all
+duration-500
+
+hover:-translate-y-2
+hover:shadow-[0_18px_45px_rgba(15,23,42,0.10)]
+hover:border-primary
+`}
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-[#4F8DC9]/10 flex items-center justify-center mb-6">
-                    <Icon className="w-7 h-7 text-[#4F8DC9]" strokeWidth={2} />
+                  <div
+                    className="
+w-16
+h-16
+
+rounded-2xl
+
+bg-[#4F8DC9]/10
+
+ring-1
+ring-[#4F8DC9]/20
+
+flex
+items-center
+justify-center
+
+mb-8
+
+transition-all
+duration-500
+
+group-hover:bg-[#4F8DC9]/15
+group-hover:ring-[#4F8DC9]/35
+group-hover:scale-110
+"
+                  >
+                    <Icon className="w-8 h-8 text-[#4F8DC9]" strokeWidth={2} />
                   </div>
 
                   <h3 className="text-2xl font-bold text-secondary mb-3">
@@ -161,27 +164,29 @@ hover:bg-primary/10
                   <p className="text-sm md:text-base text-foreground/70 leading-relaxed">
                     {service.description}
                   </p>
+
+                  <div className="mt-8">
+                    <span className="inline-flex items-center font-semibold text-primary">
+                      {service.isCTA
+                        ? "Try Client Fast Track"
+                        : "Select This Service"}
+
+                      <span
+                        className="
+      ml-2
+      transition-transform
+      duration-300
+      group-hover:translate-x-1
+    "
+                      >
+                        →
+                      </span>
+                    </span>
+                  </div>
                 </Link>
               );
             })}
           </div>
-
-          {/* Bottom CTA */}
-
-          {/* <div className="mt-14 flex justify-center">
-            <div className="bg-white rounded-full border border-slate-200 px-8 py-4 shadow-sm">
-              <span className="text-foreground/70">
-                Not sure which one fits?
-              </span>
-
-              <Link
-                href="/client-fast-track"
-                className="ml-2 font-semibold text-primary hover:underline"
-              >
-                Try Client Fast Track →
-              </Link>
-            </div>
-          </div> */}
         </div>
       </section>
     </main>
