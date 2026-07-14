@@ -513,17 +513,33 @@ export default function TargetedSalesForm() {
           {/* ROW 2 */}
 
           <div className="grid md:grid-cols-2 gap-5 mt-5">
-            <div>
+            <div className="relative">
+              {(phone === "" || phone === "+1") && (
+                <span
+                  className="
+        absolute
+        left-[78px]
+        top-1/2
+        -translate-y-1/2
+        text-[#9ca3af]
+        pointer-events-none
+        z-10
+      "
+                >
+                  Phone Number *
+                </span>
+              )}
+
               <PhoneInput
                 country={"us"}
                 enableSearch
                 value={phone}
                 onChange={(value) => setPhone(value)}
-                placeholder="Phone Number"
                 inputClass="!w-full !h-14 !rounded-2xl"
                 containerClass="!w-full"
                 buttonClass="!rounded-l-2xl"
               />
+
               {errors.phone && (
                 <p className="mt-2 text-sm text-red-500">{errors.phone}</p>
               )}
