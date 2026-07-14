@@ -20,19 +20,20 @@ const services = [
     href: "/services/strategic-operations#quote-section",
   },
   {
-    title: "Accounting and Legal",
-    description: "Bookkeeping, compliance, and legal admin",
-    icon: Scale,
-    // href: "/services/accounting-legal",
-    href: "/services/accounting-legal#quote-section",
-  },
-  {
     title: "Targeted Sales",
     description: "Lead generation and outreach campaigns",
     icon: Target,
     // href: "/services/targeted-sales",
     href: "/services/targeted-sales#quote-section",
   },
+  {
+    title: "Accounting and Legal",
+    description: "Bookkeeping, compliance, and legal admin",
+    icon: Scale,
+    // href: "/services/accounting-legal",
+    href: "/services/accounting-legal#quote-section",
+  },
+
   {
     title: "Focused Marketing",
     description: "Content, brand, and social execution",
