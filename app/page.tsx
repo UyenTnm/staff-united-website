@@ -1030,7 +1030,7 @@ to-[#103663]/70
 
                     try {
                       const res = await fetch(
-                        "https://script.google.com/macros/s/AKfycbwEfL2geCsZcl5waUihSrzKUJ31Dmo640pa0hA0GnyAYIq2yRY-EIHwV6wF9y8cQm82/exec",
+                        "https://script.google.com/macros/s/AKfycbxeD37WGfrVn7lEP588PWs7A0WZmsPfyQHQq66D390P-lNSbtTl_VC91FVGZ2S1dB8P/exec",
                         {
                           method: "POST",
                           headers: {
@@ -1125,7 +1125,7 @@ to-[#103663]/70
                     />
 
                     {/* PHONE */}
-                    <div className="bg-white/60 backdrop-blur-md rounded-lg relative z-[9999]">
+                    {/* <div className="bg-white/60 backdrop-blur-md rounded-lg relative z-[9999]">
                       <PhoneInput
                         country={"us"}
                         value={phone}
@@ -1133,6 +1133,34 @@ to-[#103663]/70
                         enableSearch
                         inputClass="!w-full !border-none !bg-transparent !py-2"
                       />
+                      <input type="hidden" name="phone" value={phone} />
+                    </div> */}
+                    <div className="bg-white/60 backdrop-blur-md rounded-lg relative z-[9999]">
+                      {(phone === "" || phone === "+1") && (
+                        <span
+                          className="
+        absolute
+        left-[75px]
+        top-1/2
+        -translate-y-1/2
+        text-[#9ca3af]
+        pointer-events-none
+        z-10
+      "
+                        >
+                          Phone Number <span className="text-grey-500">*</span>
+                        </span>
+                      )}
+
+                      <PhoneInput
+                        country={"us"}
+                        value={phone}
+                        onChange={setPhone}
+                        enableSearch
+                        inputClass="!w-full !border !border-[#d1d5db] !rounded !py-2"
+                        containerClass="w-full"
+                      />
+
                       <input type="hidden" name="phone" value={phone} />
                     </div>
 

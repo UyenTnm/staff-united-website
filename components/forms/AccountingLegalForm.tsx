@@ -4,6 +4,7 @@ import { useState } from "react";
 import FormSection from "./FormSection";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import FormSelect from "./FormSelect";
 
 export default function AccountingLegalForm() {
   const [serviceAreas, setServiceAreas] = useState<string[]>([]);
@@ -768,8 +769,11 @@ export default function AccountingLegalForm() {
                 What industry are you in?
               </label>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {[
+              <FormSelect
+                value={industry}
+                onChange={setIndustry}
+                placeholder="Select your industry"
+                options={[
                   "E-commerce / Retail",
                   "Professional Services",
                   "Healthcare / Wellness",
@@ -778,42 +782,9 @@ export default function AccountingLegalForm() {
                   "Education / Coaching",
                   "Finance / Accounting",
                   "Other",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-        cursor-pointer
-        rounded-2xl
-        border
-        p-5
-
-        transition-all
-        duration-300
-
-        flex
-        items-center
-        gap-3
-
-        ${
-          industry === item
-            ? "border-[#4F8DC9] bg-[#F8FBFF]"
-            : "border-slate-200 hover:border-[#4F8DC9]"
-        }
-      `}
-                  >
-                    <input
-                      type="radio"
-                      name="industry"
-                      value={item}
-                      checked={industry === item}
-                      onChange={(e) => setIndustry(e.target.value)}
-                      className="w-4 h-4"
-                    />
-
-                    <span className="text-slate-700 font-medium">{item}</span>
-                  </label>
-                ))}
-              </div>
+                ]}
+                error={errors.industry}
+              />
               {errors.industry && (
                 <p className="mt-4 text-sm text-red-500">{errors.industry}</p>
               )}
@@ -883,44 +854,13 @@ export default function AccountingLegalForm() {
                 How many employees or contractors does your business have?{" "}
               </label>
 
-              <div className="grid md:grid-cols-3 gap-4">
-                {["Just Me", "2–5 ", "6–15 ", "16–50 ", "50+ "].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-
-          transition-all
-          duration-300
-
-          flex
-          items-center
-          gap-3
-
-          ${
-            teamSize === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : errors.teamSize
-                ? "border-red-300"
-                : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                  >
-                    <input
-                      type="radio"
-                      name="teamSize"
-                      checked={teamSize === item}
-                      onChange={() => setTeamSize(item)}
-                      className="w-4 h-4"
-                    />
-
-                    <span className="font-medium text-slate-700">{item}</span>
-                  </label>
-                ))}
-              </div>
+              <FormSelect
+                value={teamSize}
+                onChange={setTeamSize}
+                placeholder="Please select..."
+                options={["Just Me", "2–5", "6–15", "16–50", "50+"]}
+                error={errors.teamSize}
+              />
 
               {errors.teamSize && (
                 <p className="mt-4 text-sm text-red-500">{errors.teamSize}</p>
@@ -1131,45 +1071,24 @@ export default function AccountingLegalForm() {
                   How many accounts require regular reconciliation?
                 </label>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {[
+                <FormSelect
+                  value={accountsToReconcile}
+                  onChange={setAccountsToReconcile}
+                  placeholder="Please select..."
+                  options={[
                     "1–2 accounts",
                     "3–5 accounts",
                     "6–10 accounts",
                     "10+ accounts",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-          transition-all
+                  ]}
+                  error={errors.accountsToReconcile}
+                />
 
-          ${
-            accountsToReconcile === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          name="accountsToReconcile"
-                          checked={accountsToReconcile === item}
-                          onChange={() => setAccountsToReconcile(item)}
-                          className="w-4 h-4"
-                        />
-
-                        <span className="font-medium text-slate-700">
-                          {item}
-                        </span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                {errors.accountsToReconcile && (
+                  <p className="mt-3 text-sm text-red-500">
+                    {errors.accountsToReconcile}
+                  </p>
+                )}
               </div>
               {/* Question 8 */}
               <div>
@@ -1177,46 +1096,25 @@ export default function AccountingLegalForm() {
                   Approximately how many transactions occur each month?
                 </label>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
-                  {[
+                <FormSelect
+                  value={monthlyTransactions}
+                  onChange={setMonthlyTransactions}
+                  placeholder="Please select..."
+                  options={[
                     "0–100",
                     "101–500",
                     "501–1,000",
                     "1,000–5,000",
                     "5,000+",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-          transition-all
+                  ]}
+                  error={errors.monthlyTransactions}
+                />
 
-          ${
-            monthlyTransactions === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          name="monthlyTransactions"
-                          checked={monthlyTransactions === item}
-                          onChange={() => setMonthlyTransactions(item)}
-                          className="w-4 h-4"
-                        />
-
-                        <span className="font-medium text-slate-700">
-                          {item}
-                        </span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                {errors.monthlyTransactions && (
+                  <p className="mt-3 text-sm text-red-500">
+                    {errors.monthlyTransactions}
+                  </p>
+                )}
               </div>
               {/* Question 9 */}
               <div>
@@ -1224,45 +1122,24 @@ export default function AccountingLegalForm() {
                   What best describes your bookkeeping today?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={bookkeepingStatus}
+                  onChange={setBookkeepingStatus}
+                  placeholder="Please select..."
+                  options={[
                     "Bookkeeping is fully up to date",
                     "Mostly current but behind occasionally",
                     "Several months behind",
                     "Need a complete clean-up",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-          transition-all
+                  ]}
+                  error={errors.bookkeepingStatus}
+                />
 
-          ${
-            bookkeepingStatus === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          name="bookkeepingStatus"
-                          checked={bookkeepingStatus === item}
-                          onChange={() => setBookkeepingStatus(item)}
-                          className="w-4 h-4"
-                        />
-
-                        <span className="font-medium text-slate-700">
-                          {item}
-                        </span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                {errors.bookkeepingStatus && (
+                  <p className="mt-3 text-sm text-red-500">
+                    {errors.bookkeepingStatus}
+                  </p>
+                )}
               </div>
             </div>
           </FormSection>
@@ -1334,46 +1211,19 @@ export default function AccountingLegalForm() {
                   Who are these reports typically prepared for?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={reportRecipients}
+                  onChange={setReportRecipients}
+                  placeholder="Please select..."
+                  options={[
                     "Business Owner",
                     "Management Team",
                     "Board / Investors",
                     "External Accountant",
                     "Multiple Stakeholders",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-          transition-all
-
-          ${
-            reportRecipients === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          name="reportRecipients"
-                          checked={reportRecipients === item}
-                          onChange={() => setReportRecipients(item)}
-                          className="w-4 h-4"
-                        />
-
-                        <span className="font-medium text-slate-700">
-                          {item}
-                        </span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                  ]}
+                  error={errors.reportRecipients}
+                />
 
                 {errors.reportRecipients && (
                   <p className="mt-3 text-sm text-red-500">
@@ -1450,42 +1300,13 @@ export default function AccountingLegalForm() {
                   Approximately how many invoices are processed each month?
                 </label>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
-                  {["0–25", "26–100", "101–250", "251–500", "500+"].map(
-                    (item) => (
-                      <label
-                        key={item}
-                        className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-          transition-all
-
-          ${
-            monthlyInvoices === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                      >
-                        <div className="flex items-center gap-3">
-                          <input
-                            type="radio"
-                            name="monthlyInvoices"
-                            checked={monthlyInvoices === item}
-                            onChange={() => setMonthlyInvoices(item)}
-                            className="w-4 h-4"
-                          />
-
-                          <span className="font-medium text-slate-700">
-                            {item}
-                          </span>
-                        </div>
-                      </label>
-                    ),
-                  )}
-                </div>
+                <FormSelect
+                  value={monthlyInvoices}
+                  onChange={setMonthlyInvoices}
+                  placeholder="Please select..."
+                  options={["0–25", "26–100", "101–250", "251–500", "500+"]}
+                  error={errors.monthlyInvoices}
+                />
 
                 {errors.monthlyInvoices && (
                   <p className="mt-3 text-sm text-red-500">
@@ -1564,45 +1385,18 @@ export default function AccountingLegalForm() {
                   How is payroll currently managed?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={payrollProcess}
+                  onChange={setPayrollProcess}
+                  placeholder="Please select..."
+                  options={[
                     "Managed internally",
                     "Managed by external accountant",
                     "Combination of both",
                     "No formal payroll process",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-          transition-all
-
-          ${
-            payrollProcess === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          name="payrollProcess"
-                          checked={payrollProcess === item}
-                          onChange={() => setPayrollProcess(item)}
-                          className="w-4 h-4"
-                        />
-
-                        <span className="font-medium text-slate-700">
-                          {item}
-                        </span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                  ]}
+                  error={errors.payrollProcess}
+                />
 
                 {errors.payrollProcess && (
                   <p className="mt-3 text-sm text-red-500">
@@ -1617,40 +1411,13 @@ export default function AccountingLegalForm() {
                   cycle?
                 </label>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
-                  {["1–5", "6–15", "16–50", "51–100", "100+"].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-          transition-all
-
-          ${
-            payrollHeadcount === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          name="payrollHeadcount"
-                          checked={payrollHeadcount === item}
-                          onChange={() => setPayrollHeadcount(item)}
-                          className="w-4 h-4"
-                        />
-
-                        <span className="font-medium text-slate-700">
-                          {item}
-                        </span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                <FormSelect
+                  value={payrollHeadcount}
+                  onChange={setPayrollHeadcount}
+                  placeholder="Please select..."
+                  options={["1–5", "6–15", "16–50", "51–100", "100+"]}
+                  error={errors.payrollHeadcount}
+                />
 
                 {errors.payrollHeadcount && (
                   <p className="mt-3 text-sm text-red-500">
@@ -1726,45 +1493,18 @@ export default function AccountingLegalForm() {
                   How is tax preparation currently handled?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={taxRelationship}
+                  onChange={setTaxRelationship}
+                  placeholder="Please select..."
+                  options={[
                     "Internal team",
                     "External accountant",
                     "Combination of both",
                     "No formal process",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-          transition-all
-
-          ${
-            taxRelationship === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          name="taxRelationship"
-                          checked={taxRelationship === item}
-                          onChange={() => setTaxRelationship(item)}
-                          className="w-4 h-4"
-                        />
-
-                        <span className="font-medium text-slate-700">
-                          {item}
-                        </span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                  ]}
+                  error={errors.taxRelationship}
+                />
 
                 {errors.taxRelationship && (
                   <p className="mt-3 text-sm text-red-500">
@@ -1865,45 +1605,18 @@ export default function AccountingLegalForm() {
                   What best describes your current audit or review status?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={auditStatus}
+                  onChange={setAuditStatus}
+                  placeholder="Please select..."
+                  options={[
                     "Audit currently underway",
                     "Audit scheduled soon",
                     "Annual review approaching",
                     "Preparing for future audit",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-          transition-all
-
-          ${
-            auditStatus === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          name="auditStatus"
-                          checked={auditStatus === item}
-                          onChange={() => setAuditStatus(item)}
-                          className="w-4 h-4"
-                        />
-
-                        <span className="font-medium text-slate-700">
-                          {item}
-                        </span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                  ]}
+                  error={errors.auditStatus}
+                />
 
                 {errors.auditStatus && (
                   <p className="mt-3 text-sm text-red-500">
@@ -2004,46 +1717,19 @@ export default function AccountingLegalForm() {
                   Approximately how many documents require ongoing management?
                 </label>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
-                  {[
+                <FormSelect
+                  value={documentVolume}
+                  onChange={setDocumentVolume}
+                  placeholder="Please select..."
+                  options={[
                     "0–100",
                     "101–500",
                     "501–1,000",
                     "1,001–5,000",
                     "5,000+",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-          transition-all
-
-          ${
-            documentVolume === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          name="documentVolume"
-                          checked={documentVolume === item}
-                          onChange={() => setDocumentVolume(item)}
-                          className="w-4 h-4"
-                        />
-
-                        <span className="font-medium text-slate-700">
-                          {item}
-                        </span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                  ]}
+                  error={errors.documentVolume}
+                />
 
                 {errors.documentVolume && (
                   <p className="mt-3 text-sm text-red-500">
@@ -2122,42 +1808,13 @@ export default function AccountingLegalForm() {
                   Approximately how many active contracts are currently managed?
                 </label>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
-                  {["1–25", "26–100", "101–500", "501–1,000", "1,000+"].map(
-                    (item) => (
-                      <label
-                        key={item}
-                        className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-          transition-all
-
-          ${
-            activeContracts === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                      >
-                        <div className="flex items-center gap-3">
-                          <input
-                            type="radio"
-                            name="activeContracts"
-                            checked={activeContracts === item}
-                            onChange={() => setActiveContracts(item)}
-                            className="w-4 h-4"
-                          />
-
-                          <span className="font-medium text-slate-700">
-                            {item}
-                          </span>
-                        </div>
-                      </label>
-                    ),
-                  )}
-                </div>
+                <FormSelect
+                  value={activeContracts}
+                  onChange={setActiveContracts}
+                  placeholder="Please select..."
+                  options={["1–25", "26–100", "101–500", "501–1,000", "1,000+"]}
+                  error={errors.activeContracts}
+                />
 
                 {errors.activeContracts && (
                   <p className="mt-3 text-sm text-red-500">
@@ -2324,42 +1981,13 @@ export default function AccountingLegalForm() {
                   Do you currently work with outside legal counsel?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {["Yes, regularly", "Occasionally", "Rarely", "No"].map(
-                    (item) => (
-                      <label
-                        key={item}
-                        className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-          transition-all
-
-          ${
-            outsideCounsel === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                      >
-                        <div className="flex items-center gap-3">
-                          <input
-                            type="radio"
-                            name="outsideCounsel"
-                            checked={outsideCounsel === item}
-                            onChange={() => setOutsideCounsel(item)}
-                            className="w-4 h-4"
-                          />
-
-                          <span className="font-medium text-slate-700">
-                            {item}
-                          </span>
-                        </div>
-                      </label>
-                    ),
-                  )}
-                </div>
+                <FormSelect
+                  value={outsideCounsel}
+                  onChange={setOutsideCounsel}
+                  placeholder="Please select..."
+                  options={["Yes, regularly", "Occasionally", "Rarely", "No"]}
+                  error={errors.outsideCounsel}
+                />
 
                 {errors.outsideCounsel && (
                   <p className="mt-3 text-sm text-red-500">
@@ -2388,43 +2016,18 @@ export default function AccountingLegalForm() {
                 What type of engagement are you looking for?
               </label>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {[
+              <FormSelect
+                value={engagementType}
+                onChange={setEngagementType}
+                placeholder="Please select..."
+                options={[
                   "One-time project (defined scope & end date)",
                   "Ongoing monthly retainer",
                   "Project + retainer (setup then ongoing)",
                   "Not sure — need your recommendation",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-        cursor-pointer
-        rounded-2xl
-        border
-        p-5
-        transition-all
-
-        ${
-          engagementType === item
-            ? "border-[#4F8DC9] bg-[#F8FBFF]"
-            : "border-slate-200 hover:border-[#4F8DC9]"
-        }
-      `}
-                  >
-                    <div className="flex items-center gap-3 min-w-0">
-                      <input
-                        type="radio"
-                        name="engagementType"
-                        checked={engagementType === item}
-                        onChange={() => setEngagementType(item)}
-                        className="w-4 h-4 accent-[#4F8DC9]"
-                      />
-
-                      <span className="font-medium text-slate-700">{item}</span>
-                    </div>
-                  </label>
-                ))}
-              </div>
+                ]}
+                error={errors.engagementType}
+              />
 
               {errors.engagementType && (
                 <p className="mt-3 text-sm text-red-500">
@@ -2440,53 +2043,19 @@ export default function AccountingLegalForm() {
                 When would you ideally like to get started?
               </label>
 
-              <div className="grid lg:grid-cols-4 md:grid-cols-3 gap-4">
-                {[
+              <FormSelect
+                value={startTimeline}
+                onChange={setStartTimeline}
+                placeholder="Please select..."
+                options={[
                   "ASAP",
                   "Within 2 weeks",
                   "Within 1 month",
                   "1–3 months",
                   "Just exploring",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-        cursor-pointer
-        rounded-2xl
-        border
-        p-5
-        transition-all
-
-        ${
-          startTimeline === item
-            ? "border-[#4F8DC9] bg-[#F8FBFF]"
-            : "border-slate-200 hover:border-[#4F8DC9]"
-        }
-      `}
-                  >
-                    <div className="flex items-center gap-3 min-w-0">
-                      <input
-                        type="radio"
-                        name="startTimeline"
-                        checked={startTimeline === item}
-                        onChange={() => setStartTimeline(item)}
-                        className="w-4 h-4 accent-[#4F8DC9]"
-                      />
-
-                      <span
-                        className="
-            font-medium whitespace-nowrap
-            text-slate-700
-            text-sm
-            lg:text-base
-          "
-                      >
-                        {item}
-                      </span>
-                    </div>
-                  </label>
-                ))}
-              </div>
+                ]}
+                error={errors.startTimeline}
+              />
 
               {errors.startTimeline && (
                 <p className="mt-3 text-sm text-red-500">

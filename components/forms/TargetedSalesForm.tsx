@@ -4,6 +4,7 @@ import { useState } from "react";
 import FormSection from "./FormSection";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import FormSelect from "./FormSelect";
 
 export default function TargetedSalesForm() {
   const [serviceAreas, setServiceAreas] = useState<string[]>([]);
@@ -619,8 +620,11 @@ export default function TargetedSalesForm() {
                 What industry are you in?
               </label>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {[
+              <FormSelect
+                value={industry}
+                onChange={setIndustry}
+                placeholder="Please select..."
+                options={[
                   "E-commerce / Retail",
                   "Professional Services",
                   "Healthcare / Wellness",
@@ -629,42 +633,9 @@ export default function TargetedSalesForm() {
                   "Education / Coaching",
                   "Finance / Accounting",
                   "Other",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-        cursor-pointer
-        rounded-2xl
-        border
-        p-5
-
-        transition-all
-        duration-300
-
-        flex
-        items-center
-        gap-3
-
-        ${
-          industry === item
-            ? "border-[#4F8DC9] bg-[#F8FBFF]"
-            : "border-slate-200 hover:border-[#4F8DC9]"
-        }
-      `}
-                  >
-                    <input
-                      type="radio"
-                      name="industry"
-                      value={item}
-                      checked={industry === item}
-                      onChange={(e) => setIndustry(e.target.value)}
-                      className="w-4 h-4"
-                    />
-
-                    <span className="text-slate-700 font-medium">{item}</span>
-                  </label>
-                ))}
-              </div>
+                ]}
+                error={errors.industry}
+              />
               {errors.industry && (
                 <p className="mt-4 text-sm text-red-500">{errors.industry}</p>
               )}
@@ -734,50 +705,19 @@ export default function TargetedSalesForm() {
                 How many people are on your sales team (including yourself)?
               </label>
 
-              <div className="grid md:grid-cols-3 gap-4">
-                {[
+              <FormSelect
+                value={teamSize}
+                onChange={setTeamSize}
+                placeholder="Please select..."
+                options={[
                   "Just Me",
                   "2–3 People",
                   "4–10 People",
                   "11–25 People",
                   "25+ People",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-
-          transition-all
-          duration-300
-
-          flex
-          items-center
-          gap-3
-
-          ${
-            teamSize === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : errors.teamSize
-                ? "border-red-300"
-                : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                  >
-                    <input
-                      type="radio"
-                      name="teamSize"
-                      checked={teamSize === item}
-                      onChange={() => setTeamSize(item)}
-                      className="w-4 h-4"
-                    />
-
-                    <span className="font-medium text-slate-700">{item}</span>
-                  </label>
-                ))}
-              </div>
+                ]}
+                error={errors.teamSize}
+              />
 
               {errors.teamSize && (
                 <p className="mt-4 text-sm text-red-500">{errors.teamSize}</p>
@@ -799,46 +739,18 @@ export default function TargetedSalesForm() {
                 Do you currently use a CRM?
               </label>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {[
+              <FormSelect
+                value={crmStatus}
+                onChange={setCrmStatus}
+                placeholder="Please select..."
+                options={[
                   "No CRM — using spreadsheets/email",
                   "Yes — but it's messy or not maintained",
                   "Yes — maintained but could be better",
                   "Yes — well set up and actively used",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-
-          transition-all
-
-          ${
-            crmStatus === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : errors.crmStatus
-                ? "border-red-300"
-                : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                  >
-                    <div className="flex items-center gap-3">
-                      <input
-                        type="radio"
-                        name="crmStatus"
-                        checked={crmStatus === item}
-                        onChange={() => setCrmStatus(item)}
-                        className="w-4 h-4 accent-[#4F8DC9]"
-                      />
-
-                      <span className="font-medium text-slate-700">{item}</span>
-                    </div>
-                  </label>
-                ))}
-              </div>
+                ]}
+                error={errors.crmStatus}
+              />
 
               {errors.crmStatus && (
                 <p className="mt-4 text-sm text-red-500">{errors.crmStatus}</p>
@@ -1093,53 +1005,19 @@ export default function TargetedSalesForm() {
                 </label>
 
                 {/* <div className="grid md:grid-cols-5 gap-4"> */}
-                <div className="grid lg:grid-cols-5 md:grid-cols-3 gap-4">
-                  {["Fewer than 20", "20–50", "50–150", "150–500", "500+"].map(
-                    (item) => (
-                      <label
-                        key={item}
-                        className={`
-        cursor-pointer
-        rounded-2xl
-        border
-        p-5
-        transition-all
-
-        ${
-          leadsPerMonth === item
-            ? "border-[#4F8DC9] bg-[#F8FBFF]"
-            : "border-slate-200 hover:border-[#4F8DC9]"
-        }
-      `}
-                      >
-                        <div className="flex items-center gap-3">
-                          <input
-                            type="radio"
-                            name="leadsPerMonth"
-                            checked={leadsPerMonth === item}
-                            onChange={() => setLeadsPerMonth(item)}
-                            className="w-4 h-4 accent-[#4F8DC9]"
-                          />
-
-                          {/* <span className="font-medium text-slate-700">
-                            {item}
-                          </span> */}
-                          <span
-                            className="
-    font-medium
-    text-slate-700
-    whitespace-nowrap
-    text-sm
-    lg:text-base
-  "
-                          >
-                            {item}
-                          </span>
-                        </div>
-                      </label>
-                    ),
-                  )}
-                </div>
+                <FormSelect
+                  value={leadsPerMonth}
+                  onChange={setLeadsPerMonth}
+                  placeholder="Please select..."
+                  options={[
+                    "Fewer than 20",
+                    "20–50",
+                    "50–150",
+                    "150–500",
+                    "500+",
+                  ]}
+                  error={errors.leadsPerMonth}
+                />
 
                 {errors.leadsPerMonth && (
                   <p className="mt-3 text-sm text-red-500">
@@ -1343,42 +1221,19 @@ export default function TargetedSalesForm() {
                   How many outreach contacts do you target per week?
                 </label>
 
-                <div className="grid lg:grid-cols-5 md:grid-cols-3 gap-4">
-                  {["Fewer than 10", "10–30", "30–100", "100–300", "300+"].map(
-                    (item) => (
-                      <label
-                        key={item}
-                        className={`
-        cursor-pointer
-        rounded-2xl
-        border
-        p-5
-        transition-all
-
-        ${
-          outreachVolume === item
-            ? "border-[#4F8DC9] bg-[#F8FBFF]"
-            : "border-slate-200 hover:border-[#4F8DC9]"
-        }
-      `}
-                      >
-                        <div className="flex items-center gap-3">
-                          <input
-                            type="radio"
-                            name="outreachVolume"
-                            checked={outreachVolume === item}
-                            onChange={() => setOutreachVolume(item)}
-                            className="w-4 h-4 accent-[#4F8DC9]"
-                          />
-
-                          <span className="font-medium text-slate-700 whitespace-nowrap text-sm lg:text-base">
-                            {item}
-                          </span>
-                        </div>
-                      </label>
-                    ),
-                  )}
-                </div>
+                <FormSelect
+                  value={outreachVolume}
+                  onChange={setOutreachVolume}
+                  placeholder="Please select..."
+                  options={[
+                    "Fewer than 10",
+                    "10–30",
+                    "30–100",
+                    "100–300",
+                    "300+",
+                  ]}
+                  error={errors.outreachVolume}
+                />
                 {errors.outreachVolume && (
                   <p className="mt-3 text-sm text-red-500">
                     {errors.outreachVolume}
@@ -1393,45 +1248,19 @@ export default function TargetedSalesForm() {
                   Do you currently have outreach templates or scripts in place?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={outreachScripts}
+                  onChange={setOutreachScripts}
+                  placeholder="Please select..."
+                  options={[
                     "No — starting from scratch",
                     "Partial — some drafts exist",
                     "Yes — but need improvement",
                     "Yes — well developed",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-        cursor-pointer
-        rounded-2xl
-        border
-        p-5
-        transition-all
+                  ]}
+                  error={errors.outreachScripts}
+                />
 
-        ${
-          outreachScripts === item
-            ? "border-[#4F8DC9] bg-[#F8FBFF]"
-            : "border-slate-200 hover:border-[#4F8DC9]"
-        }
-      `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          name="outreachScripts"
-                          checked={outreachScripts === item}
-                          onChange={() => setOutreachScripts(item)}
-                          className="w-4 h-4 accent-[#4F8DC9]"
-                        />
-
-                        <span className="font-medium text-slate-700">
-                          {item}
-                        </span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
                 {errors.outreachScripts && (
                   <p className="mt-3 text-sm text-red-500">
                     {errors.outreachScripts}
@@ -1520,45 +1349,18 @@ export default function TargetedSalesForm() {
                 <label className="block text-lg font-semibold text-[#06172d] mb-5">
                   Which statement best describes your sales pipeline today?
                 </label>
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={pipelineStatus}
+                  onChange={setPipelineStatus}
+                  placeholder="Please select..."
+                  options={[
                     "No defined pipeline — all informal",
                     "Pipeline exists but rarely updated",
                     "Pipeline is active but disorganized",
                     "Pipeline is healthy and structured",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-        cursor-pointer
-        rounded-2xl
-        border
-        p-5
-        transition-all
-
-        ${
-          pipelineStatus === item
-            ? "border-[#4F8DC9] bg-[#F8FBFF]"
-            : "border-slate-200 hover:border-[#4F8DC9]"
-        }
-      `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          name="pipelineStatus"
-                          checked={pipelineStatus === item}
-                          onChange={() => setPipelineStatus(item)}
-                          className="w-4 h-4 accent-[#4F8DC9]"
-                        />
-
-                        <span className="font-medium text-slate-700">
-                          {item}
-                        </span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                  ]}
+                  error={errors.pipelineStatus}
+                />
                 {errors.pipelineStatus && (
                   <p className="mt-3 text-sm text-red-500">
                     {errors.pipelineStatus}
@@ -1574,50 +1376,19 @@ export default function TargetedSalesForm() {
                   pipeline?
                 </label>
 
-                <div className="grid lg:grid-cols-5 md:grid-cols-3 gap-4">
-                  {["Fewer than 10", "10–30", "30–75", "75–150", "150+"].map(
-                    (item) => (
-                      <label
-                        key={item}
-                        className={`
-        cursor-pointer
-        rounded-2xl
-        border
-        p-5
-        transition-all
-
-        ${
-          openDeals === item
-            ? "border-[#4F8DC9] bg-[#F8FBFF]"
-            : "border-slate-200 hover:border-[#4F8DC9]"
-        }
-      `}
-                      >
-                        <div className="flex items-center gap-3">
-                          <input
-                            type="radio"
-                            name="openDeals"
-                            checked={openDeals === item}
-                            onChange={() => setOpenDeals(item)}
-                            className="w-4 h-4 accent-[#4F8DC9]"
-                          />
-
-                          <span
-                            className="
-            font-medium
-            text-slate-700
-            whitespace-nowrap
-            text-sm
-            lg:text-base
-          "
-                          >
-                            {item}
-                          </span>
-                        </div>
-                      </label>
-                    ),
-                  )}
-                </div>
+                <FormSelect
+                  value={openDeals}
+                  onChange={setOpenDeals}
+                  placeholder="Please select..."
+                  options={[
+                    "Fewer than 10",
+                    "10–30",
+                    "30–75",
+                    "75–150",
+                    "150+",
+                  ]}
+                  error={errors.openDeals}
+                />
                 {errors.openDeals && (
                   <p className="mt-3 text-sm text-red-500">
                     {errors.openDeals}
@@ -1708,48 +1479,13 @@ export default function TargetedSalesForm() {
                   month?
                 </label>
 
-                <div className="grid lg:grid-cols-5 md:grid-cols-3 gap-4">
-                  {["Fewer than 5", "5–15", "15–30", "30+"].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-        cursor-pointer
-        rounded-2xl
-        border
-        p-5
-        transition-all
-
-        ${
-          proposalsPerMonth === item
-            ? "border-[#4F8DC9] bg-[#F8FBFF]"
-            : "border-slate-200 hover:border-[#4F8DC9]"
-        }
-      `}
-                    >
-                      <div className="flex items-center gap-3 min-w-0">
-                        <input
-                          type="radio"
-                          name="proposalsPerMonth"
-                          checked={proposalsPerMonth === item}
-                          onChange={() => setProposalsPerMonth(item)}
-                          className="w-4 h-4 accent-[#4F8DC9]"
-                        />
-
-                        <span
-                          className="
-            font-medium
-            text-slate-700
-            whitespace-nowrap
-            text-sm
-            lg:text-base
-          "
-                        >
-                          {item}
-                        </span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                <FormSelect
+                  value={proposalsPerMonth}
+                  onChange={setProposalsPerMonth}
+                  placeholder="Please select..."
+                  options={["Fewer than 5", "5–15", "15–30", "30+"]}
+                  error={errors.proposalsPerMonth}
+                />
 
                 {errors.proposalsPerMonth && (
                   <p className="mt-3 text-sm text-red-500">
@@ -1765,44 +1501,17 @@ export default function TargetedSalesForm() {
                   Do you already have proposal templates available?
                 </label>
 
-                <div className="grid md:grid-cols-3 gap-4">
-                  {[
+                <FormSelect
+                  value={proposalTemplates}
+                  onChange={setProposalTemplates}
+                  placeholder="Please select..."
+                  options={[
                     "No — need to build from scratch",
                     "Basic templates — need improvement",
                     "Yes — just need someone to manage them",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-        cursor-pointer
-        rounded-2xl
-        border
-        p-5
-        transition-all
-
-        ${
-          proposalTemplates === item
-            ? "border-[#4F8DC9] bg-[#F8FBFF]"
-            : "border-slate-200 hover:border-[#4F8DC9]"
-        }
-      `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          name="proposalTemplates"
-                          checked={proposalTemplates === item}
-                          onChange={() => setProposalTemplates(item)}
-                          className="w-4 h-4 accent-[#4F8DC9]"
-                        />
-
-                        <span className="font-medium text-slate-700">
-                          {item}
-                        </span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                  ]}
+                  error={errors.proposalTemplates}
+                />
                 {errors.proposalTemplates && (
                   <p className="mt-3 text-sm text-red-500">
                     {errors.proposalTemplates}
@@ -1893,50 +1602,19 @@ export default function TargetedSalesForm() {
                   manage?
                 </label>
 
-                <div className="grid lg:grid-cols-5 md:grid-cols-3 gap-4">
-                  {["Fewer than 10", "10–30", "30–75", "75–200", "200+"].map(
-                    (item) => (
-                      <label
-                        key={item}
-                        className={`
-        cursor-pointer
-        rounded-2xl
-        border
-        p-5
-        transition-all
-
-        ${
-          activeAccounts === item
-            ? "border-[#4F8DC9] bg-[#F8FBFF]"
-            : "border-slate-200 hover:border-[#4F8DC9]"
-        }
-      `}
-                      >
-                        <div className="flex items-center gap-3 min-w-0">
-                          <input
-                            type="radio"
-                            name="activeAccounts"
-                            checked={activeAccounts === item}
-                            onChange={() => setActiveAccounts(item)}
-                            className="w-4 h-4 accent-[#4F8DC9]"
-                          />
-
-                          <span
-                            className="
-            font-medium
-            text-slate-700
-            whitespace-nowrap
-            text-sm
-            lg:text-base
-          "
-                          >
-                            {item}
-                          </span>
-                        </div>
-                      </label>
-                    ),
-                  )}
-                </div>
+                <FormSelect
+                  value={activeAccounts}
+                  onChange={setActiveAccounts}
+                  placeholder="Please select..."
+                  options={[
+                    "Fewer than 10",
+                    "10–30",
+                    "30–75",
+                    "75–200",
+                    "200+",
+                  ]}
+                  error={errors.activeAccounts}
+                />
 
                 {errors.activeAccounts && (
                   <p className="mt-3 text-sm text-red-500">
@@ -2027,45 +1705,18 @@ export default function TargetedSalesForm() {
                   How are sales reports currently produced?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={reportingMethod}
+                  onChange={setReportingMethod}
+                  placeholder="Please select..."
+                  options={[
                     "Not being produced at all",
                     "Manually — very time consuming",
                     "Partially automated",
                     "Already automated — just need review",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-        cursor-pointer
-        rounded-2xl
-        border
-        p-5
-        transition-all
-
-        ${
-          reportingMethod === item
-            ? "border-[#4F8DC9] bg-[#F8FBFF]"
-            : "border-slate-200 hover:border-[#4F8DC9]"
-        }
-      `}
-                    >
-                      <div className="flex items-center gap-3 min-w-0">
-                        <input
-                          type="radio"
-                          name="reportingMethod"
-                          checked={reportingMethod === item}
-                          onChange={() => setReportingMethod(item)}
-                          className="w-4 h-4 accent-[#4F8DC9]"
-                        />
-
-                        <span className="font-medium text-slate-700">
-                          {item}
-                        </span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                  ]}
+                  error={errors.reportingMethod}
+                />
 
                 {errors.reportingMethod && (
                   <p className="mt-3 text-sm text-red-500">
@@ -2093,44 +1744,18 @@ export default function TargetedSalesForm() {
               <label className="block text-lg font-semibold text-[#06172d] mb-5">
                 What type of engagement are you looking for?
               </label>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                {[
+              <FormSelect
+                value={engagementType}
+                onChange={setEngagementType}
+                placeholder="Please select..."
+                options={[
                   "One-time project (defined scope & end date)",
                   "Ongoing monthly retainer",
                   "Project + retainer (setup then ongoing)",
                   "Not sure — need your recommendation",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-        cursor-pointer
-        rounded-2xl
-        border
-        p-5
-        transition-all
-
-        ${
-          engagementType === item
-            ? "border-[#4F8DC9] bg-[#F8FBFF]"
-            : "border-slate-200 hover:border-[#4F8DC9]"
-        }
-      `}
-                  >
-                    <div className="flex items-center gap-3 min-w-0">
-                      <input
-                        type="radio"
-                        name="engagementType"
-                        checked={engagementType === item}
-                        onChange={() => setEngagementType(item)}
-                        className="w-4 h-4 accent-[#4F8DC9]"
-                      />
-
-                      <span className="font-medium text-slate-700">{item}</span>
-                    </div>
-                  </label>
-                ))}
-              </div>
+                ]}
+                error={errors.engagementType}
+              />
 
               {errors.engagementType && (
                 <p className="mt-3 text-sm text-red-500">
@@ -2146,53 +1771,19 @@ export default function TargetedSalesForm() {
                 When would you ideally like to get started?
               </label>
 
-              <div className="grid lg:grid-cols-4 md:grid-cols-3 gap-4">
-                {[
+              <FormSelect
+                value={startTimeline}
+                onChange={setStartTimeline}
+                placeholder="Please select..."
+                options={[
                   "ASAP",
                   "Within 2 weeks",
                   "Within 1 month",
                   "1–3 months",
                   "Just exploring",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-        cursor-pointer
-        rounded-2xl
-        border
-        p-5
-        transition-all
-
-        ${
-          startTimeline === item
-            ? "border-[#4F8DC9] bg-[#F8FBFF]"
-            : "border-slate-200 hover:border-[#4F8DC9]"
-        }
-      `}
-                  >
-                    <div className="flex items-center gap-3 min-w-0">
-                      <input
-                        type="radio"
-                        name="startTimeline"
-                        checked={startTimeline === item}
-                        onChange={() => setStartTimeline(item)}
-                        className="w-4 h-4 accent-[#4F8DC9]"
-                      />
-
-                      <span
-                        className="
-            font-medium whitespace-nowrap
-            text-slate-700
-            text-sm
-            lg:text-base
-          "
-                      >
-                        {item}
-                      </span>
-                    </div>
-                  </label>
-                ))}
-              </div>
+                ]}
+                error={errors.startTimeline}
+              />
 
               {errors.startTimeline && (
                 <p className="mt-3 text-sm text-red-500">

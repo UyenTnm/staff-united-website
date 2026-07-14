@@ -4,6 +4,7 @@ import { useState } from "react";
 import FormSection from "./FormSection";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import FormSelect from "./FormSelect";
 
 export default function FocusedMarketingForm() {
   const [serviceAreas, setServiceAreas] = useState<string[]>([]);
@@ -547,8 +548,11 @@ export default function FocusedMarketingForm() {
                 What industry are you in?
               </label>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {[
+              <FormSelect
+                value={industry}
+                onChange={setIndustry}
+                placeholder="Select your industry"
+                options={[
                   "E-commerce / Retail",
                   "Professional Services",
                   "Healthcare / Wellness",
@@ -557,42 +561,9 @@ export default function FocusedMarketingForm() {
                   "Education / Coaching",
                   "Finance / Accounting",
                   "Other",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-        cursor-pointer
-        rounded-2xl
-        border
-        p-5
-
-        transition-all
-        duration-300
-
-        flex
-        items-center
-        gap-3
-
-        ${
-          industry === item
-            ? "border-[#4F8DC9] bg-[#F8FBFF]"
-            : "border-slate-200 hover:border-[#4F8DC9]"
-        }
-      `}
-                  >
-                    <input
-                      type="radio"
-                      name="industry"
-                      value={item}
-                      checked={industry === item}
-                      onChange={(e) => setIndustry(e.target.value)}
-                      className="w-4 h-4"
-                    />
-
-                    <span className="text-slate-700 font-medium">{item}</span>
-                  </label>
-                ))}
-              </div>
+                ]}
+                error={errors.industry}
+              />
               {errors.industry && (
                 <p className="mt-4 text-sm text-red-500">{errors.industry}</p>
               )}
@@ -662,49 +633,18 @@ export default function FocusedMarketingForm() {
                 How would you describe your current marketing presence?
               </label>
 
-              <div className="grid md:grid-cols-3 gap-4">
-                {[
+              <FormSelect
+                value={marketingPresence}
+                onChange={setMarketingPresence}
+                placeholder="Please select..."
+                options={[
                   "Very minimal — little to no presence",
                   "Some presence but inconsistent",
                   "Active but needs more structure",
                   "Strong — just need execution support",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-
-          transition-all
-          duration-300
-
-          flex
-          items-center
-          gap-3
-
-          ${
-            marketingPresence === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : errors.marketingPresence
-                ? "border-red-300"
-                : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                  >
-                    <input
-                      type="radio"
-                      name="marketingPresence"
-                      checked={marketingPresence === item}
-                      onChange={() => setMarketingPresence(item)}
-                      className="w-4 h-4"
-                    />
-
-                    <span className="font-medium text-slate-700">{item}</span>
-                  </label>
-                ))}
-              </div>
+                ]}
+                error={errors.marketingPresence}
+              />
 
               {errors.marketingPresence && (
                 <p className="mt-4 text-sm text-red-500">
@@ -720,41 +660,18 @@ export default function FocusedMarketingForm() {
                 Do you currently have a dedicated marketing person or team?
               </label>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {[
+              <FormSelect
+                value={marketingTeam}
+                onChange={setMarketingTeam}
+                placeholder="Please select..."
+                options={[
                   "No — founder handles everything",
                   "Part-time / contractor",
                   "Yes, 1 full-time person",
                   "Yes, a marketing team",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-          cursor-pointer
-          rounded-2xl
-          border
-          p-5
-
-          ${
-            marketingTeam === item
-              ? "border-[#4F8DC9] bg-[#F8FBFF]"
-              : "border-slate-200 hover:border-[#4F8DC9]"
-          }
-        `}
-                  >
-                    <div className="flex items-center gap-3">
-                      <input
-                        type="radio"
-                        checked={marketingTeam === item}
-                        onChange={() => setMarketingTeam(item)}
-                        className="w-4 h-4"
-                      />
-
-                      <span>{item}</span>
-                    </div>
-                  </label>
-                ))}
-              </div>
+                ]}
+                error={errors.marketingTeam}
+              />
 
               {errors.marketingTeam && (
                 <p className="mt-3 text-sm text-red-500">
@@ -991,38 +908,24 @@ export default function FocusedMarketingForm() {
                   How much content do you need per month?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={contentVolume}
+                  onChange={setContentVolume}
+                  placeholder="Please select..."
+                  options={[
                     "1-5 pieces",
                     "6-10 pieces",
                     "11-20 pieces",
                     "20+ pieces",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-            cursor-pointer
-            rounded-2xl
-            border
-            p-5
+                  ]}
+                  error={errors.contentVolume}
+                />
 
-            ${
-              contentVolume === item
-                ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                : "border-slate-200 hover:border-[#4F8DC9]"
-            }
-          `}
-                    >
-                      <input
-                        type="radio"
-                        checked={contentVolume === item}
-                        onChange={() => setContentVolume(item)}
-                      />
-
-                      <span className="ml-3">{item}</span>
-                    </label>
-                  ))}
-                </div>
+                {errors.contentVolume && (
+                  <p className="mt-3 text-sm text-red-500">
+                    {errors.contentVolume}
+                  </p>
+                )}
               </div>
 
               {/* QUESTION 8 */}
@@ -1032,38 +935,24 @@ export default function FocusedMarketingForm() {
                   Do you currently use a content calendar?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={contentCalendar}
+                  onChange={setContentCalendar}
+                  placeholder="Please select..."
+                  options={[
                     "Yes — actively maintained",
                     "Yes — but inconsistent",
                     "Planning to create one",
                     "No content calendar",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-            cursor-pointer
-            rounded-2xl
-            border
-            p-5
+                  ]}
+                  error={errors.contentCalendar}
+                />
 
-            ${
-              contentCalendar === item
-                ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                : "border-slate-200 hover:border-[#4F8DC9]"
-            }
-          `}
-                    >
-                      <input
-                        type="radio"
-                        checked={contentCalendar === item}
-                        onChange={() => setContentCalendar(item)}
-                      />
-
-                      <span className="ml-3">{item}</span>
-                    </label>
-                  ))}
-                </div>
+                {errors.contentCalendar && (
+                  <p className="mt-3 text-sm text-red-500">
+                    {errors.contentCalendar}
+                  </p>
+                )}
               </div>
 
               {/* QUESTION 9 */}
@@ -1225,36 +1114,19 @@ export default function FocusedMarketingForm() {
                   Approximately how many posts per month do you need?
                 </label>
 
-                <div className="grid md:grid-cols-3 gap-4">
-                  {["1-10", "11-20", "21-40", "40+"].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-            cursor-pointer
-            rounded-2xl
-            border
-            p-5
+                <FormSelect
+                  value={socialPostVolume}
+                  onChange={setSocialPostVolume}
+                  placeholder="Please select..."
+                  options={["1-10", "11-20", "21-40", "40+"]}
+                  error={errors.socialPostVolume}
+                />
 
-            ${
-              socialPostVolume === item
-                ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                : "border-slate-200 hover:border-[#4F8DC9]"
-            }
-          `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          checked={socialPostVolume === item}
-                          onChange={() => setSocialPostVolume(item)}
-                          className="w-4 h-4"
-                        />
-
-                        <span>{item}</span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                {errors.socialPostVolume && (
+                  <p className="mt-3 text-sm text-red-500">
+                    {errors.socialPostVolume}
+                  </p>
+                )}
               </div>
 
               {/* QUESTION 13 */}
@@ -1353,41 +1225,24 @@ export default function FocusedMarketingForm() {
                   How many campaigns do you typically run?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={campaignVolume}
+                  onChange={setCampaignVolume}
+                  placeholder="Please select..."
+                  options={[
                     "1-2 per month",
                     "3-5 per month",
                     "6-10 per month",
                     "10+ per month",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-            cursor-pointer
-            rounded-2xl
-            border
-            p-5
+                  ]}
+                  error={errors.campaignVolume}
+                />
 
-            ${
-              campaignVolume === item
-                ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                : "border-slate-200 hover:border-[#4F8DC9]"
-            }
-          `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          checked={campaignVolume === item}
-                          onChange={() => setCampaignVolume(item)}
-                          className="w-4 h-4"
-                        />
-
-                        <span>{item}</span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                {errors.campaignVolume && (
+                  <p className="mt-3 text-sm text-red-500">
+                    {errors.campaignVolume}
+                  </p>
+                )}
               </div>
 
               {/* QUESTION 16 */}
@@ -1515,41 +1370,24 @@ export default function FocusedMarketingForm() {
                   Do you already have established brand guidelines?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={brandIdentity}
+                  onChange={setBrandIdentity}
+                  placeholder="Please select..."
+                  options={[
                     "Yes — comprehensive brand guidelines",
                     "Partial brand guidelines",
                     "Basic logo and colors only",
                     "No brand guidelines yet",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-            cursor-pointer
-            rounded-2xl
-            border
-            p-5
+                  ]}
+                  error={errors.brandIdentity}
+                />
 
-            ${
-              brandIdentity === item
-                ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                : "border-slate-200 hover:border-[#4F8DC9]"
-            }
-          `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          checked={brandIdentity === item}
-                          onChange={() => setBrandIdentity(item)}
-                          className="w-4 h-4"
-                        />
-
-                        <span>{item}</span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                {errors.brandIdentity && (
+                  <p className="mt-3 text-sm text-red-500">
+                    {errors.brandIdentity}
+                  </p>
+                )}
               </div>
 
               {/* QUESTION 19 */}
@@ -1677,41 +1515,24 @@ export default function FocusedMarketingForm() {
                   Do you have a clearly defined target audience?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={audienceDefinition}
+                  onChange={setAudienceDefinition}
+                  placeholder="Please select..."
+                  options={[
                     "Yes — well defined",
                     "Somewhat defined",
                     "Still developing",
                     "Not defined yet",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-            cursor-pointer
-            rounded-2xl
-            border
-            p-5
+                  ]}
+                  error={errors.audienceDefinition}
+                />
 
-            ${
-              audienceDefinition === item
-                ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                : "border-slate-200 hover:border-[#4F8DC9]"
-            }
-          `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          checked={audienceDefinition === item}
-                          onChange={() => setAudienceDefinition(item)}
-                          className="w-4 h-4"
-                        />
-
-                        <span>{item}</span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                {errors.audienceDefinition && (
+                  <p className="mt-3 text-sm text-red-500">
+                    {errors.audienceDefinition}
+                  </p>
+                )}
               </div>
 
               {/* QUESTION 22 */}
@@ -1721,41 +1542,24 @@ export default function FocusedMarketingForm() {
                   How many competitors would you like analyzed?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={competitorVolume}
+                  onChange={setCompetitorVolume}
+                  placeholder="Please select..."
+                  options={[
                     "1-3 competitors",
                     "4-6 competitors",
                     "7-10 competitors",
                     "10+ competitors",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-            cursor-pointer
-            rounded-2xl
-            border
-            p-5
+                  ]}
+                  error={errors.competitorVolume}
+                />
 
-            ${
-              competitorVolume === item
-                ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                : "border-slate-200 hover:border-[#4F8DC9]"
-            }
-          `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          checked={competitorVolume === item}
-                          onChange={() => setCompetitorVolume(item)}
-                          className="w-4 h-4"
-                        />
-
-                        <span>{item}</span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                {errors.competitorVolume && (
+                  <p className="mt-3 text-sm text-red-500">
+                    {errors.competitorVolume}
+                  </p>
+                )}
               </div>
             </div>
           </FormSection>
@@ -1829,41 +1633,24 @@ export default function FocusedMarketingForm() {
                   Do you currently track marketing performance?
                 </label>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
+                <FormSelect
+                  value={trackingStatus}
+                  onChange={setTrackingStatus}
+                  placeholder="Please select..."
+                  options={[
                     "Yes — consistently",
                     "Sometimes",
                     "Very limited tracking",
                     "No tracking currently",
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      className={`
-            cursor-pointer
-            rounded-2xl
-            border
-            p-5
+                  ]}
+                  error={errors.trackingStatus}
+                />
 
-            ${
-              trackingStatus === item
-                ? "border-[#4F8DC9] bg-[#F8FBFF]"
-                : "border-slate-200 hover:border-[#4F8DC9]"
-            }
-          `}
-                    >
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="radio"
-                          checked={trackingStatus === item}
-                          onChange={() => setTrackingStatus(item)}
-                          className="w-4 h-4"
-                        />
-
-                        <span>{item}</span>
-                      </div>
-                    </label>
-                  ))}
-                </div>
+                {errors.trackingStatus && (
+                  <p className="mt-3 text-sm text-red-500">
+                    {errors.trackingStatus}
+                  </p>
+                )}
               </div>
 
               {/* QUESTION 25 */}
@@ -1911,43 +1698,18 @@ export default function FocusedMarketingForm() {
                 What type of engagement are you looking for?
               </label>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {[
+              <FormSelect
+                value={engagementType}
+                onChange={setEngagementType}
+                placeholder="Please select..."
+                options={[
                   "One-time project (defined scope & end date)",
                   "Ongoing monthly retainer",
                   "Project + retainer (setup then ongoing)",
                   "Not sure — need your recommendation",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-        cursor-pointer
-        rounded-2xl
-        border
-        p-5
-        transition-all
-
-        ${
-          engagementType === item
-            ? "border-[#4F8DC9] bg-[#F8FBFF]"
-            : "border-slate-200 hover:border-[#4F8DC9]"
-        }
-      `}
-                  >
-                    <div className="flex items-center gap-3 min-w-0">
-                      <input
-                        type="radio"
-                        name="engagementType"
-                        checked={engagementType === item}
-                        onChange={() => setEngagementType(item)}
-                        className="w-4 h-4 accent-[#4F8DC9]"
-                      />
-
-                      <span className="font-medium text-slate-700">{item}</span>
-                    </div>
-                  </label>
-                ))}
-              </div>
+                ]}
+                error={errors.engagementType}
+              />
 
               {errors.engagementType && (
                 <p className="mt-3 text-sm text-red-500">
@@ -1963,53 +1725,19 @@ export default function FocusedMarketingForm() {
                 When would you ideally like to get started?
               </label>
 
-              <div className="grid lg:grid-cols-4 md:grid-cols-3 gap-4">
-                {[
+              <FormSelect
+                value={startTimeline}
+                onChange={setStartTimeline}
+                placeholder="Please select..."
+                options={[
                   "ASAP",
                   "Within 2 weeks",
                   "Within 1 month",
                   "1–3 months",
                   "Just exploring",
-                ].map((item) => (
-                  <label
-                    key={item}
-                    className={`
-        cursor-pointer
-        rounded-2xl
-        border
-        p-5
-        transition-all
-
-        ${
-          startTimeline === item
-            ? "border-[#4F8DC9] bg-[#F8FBFF]"
-            : "border-slate-200 hover:border-[#4F8DC9]"
-        }
-      `}
-                  >
-                    <div className="flex items-center gap-3 min-w-0">
-                      <input
-                        type="radio"
-                        name="startTimeline"
-                        checked={startTimeline === item}
-                        onChange={() => setStartTimeline(item)}
-                        className="w-4 h-4 accent-[#4F8DC9]"
-                      />
-
-                      <span
-                        className="
-            font-medium whitespace-nowrap
-            text-slate-700
-            text-sm
-            lg:text-base
-          "
-                      >
-                        {item}
-                      </span>
-                    </div>
-                  </label>
-                ))}
-              </div>
+                ]}
+                error={errors.startTimeline}
+              />
 
               {errors.startTimeline && (
                 <p className="mt-3 text-sm text-red-500">
