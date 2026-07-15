@@ -79,9 +79,9 @@ export default function BrochureModal({ open, onClose }: BrochureModalProps) {
               hover:-translate-y-1
             "
           >
-            <div className="text-5xl mb-4">🇬🇧</div>
+            <div className="text-5xl mb-4">🌐</div>
 
-            <h3 className="text-xl text-white mb-2">English Version</h3>
+            <h3 className="text-xl text-white mb-2">For Global Business</h3>
 
             <p className="text-white/60 mb-6">Company Brochure</p>
 
@@ -116,7 +116,7 @@ export default function BrochureModal({ open, onClose }: BrochureModalProps) {
           >
             <div className="text-5xl mb-4">🇻🇳</div>
 
-            <h3 className="text-xl text-white mb-2">Vietnamese Version</h3>
+            <h3 className="text-xl text-white mb-2">For Local Business</h3>
 
             <p className="text-white/60 mb-6">Hồ sơ năng lực công ty</p>
 
