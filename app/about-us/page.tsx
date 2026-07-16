@@ -391,7 +391,7 @@ export default function AboutUs() {
                         label: "Women-led delivery teams",
                       },
                       {
-                        value: "5-Core Support™",
+                        value: "5-Core Support Ecosystem™",
                         label: "Ecosystem pillars",
                       },
                       {
@@ -402,30 +402,32 @@ export default function AboutUs() {
                       <div
                         key={index}
                         className="
-              bg-[#07244A]
-              text-white
-              rounded-xl md:rounded-2xl
-              px-5 sm:px-6 md:px-8
-              py-5 sm:py-6 md:py-7
-            "
+    bg-[#07244A]
+    text-white
+    rounded-xl md:rounded-2xl
+    px-5 sm:px-6 md:px-8
+    py-5 sm:py-6 md:py-7
+    flex flex-col
+  "
                       >
                         <div
                           className="
-                text-1xl sm:text-2xl md:text-3xl
-                font-semibold
-                leading-none
-                mb-2 md:mb-3
-              "
+      text-xl sm:text-2xl md:text-3xl
+      font-semibold
+      leading-tight
+      md:min-h-[72px]
+    "
                         >
                           {item.value}
                         </div>
 
                         <p
                           className="
-                text-white/80
-                text-sm sm:text-base md:text-lg
-                leading-snug
-              "
+      mt-5
+      text-white/80
+      text-sm sm:text-base md:text-lg
+      leading-snug
+    "
                         >
                           {item.label}
                         </p>
