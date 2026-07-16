@@ -10,9 +10,14 @@ import {
   Settings,
   Target,
 } from "lucide-react";
+import { useState } from "react";
+import { SERVICES } from "@/data/choose-services/services";
+import { DynamicServerError } from "next/dist/client/components/hooks-server-context";
+import DynamicServiceSection from "@/components/choose-services/DynamicServiceSection";
 
 const services = [
   {
+    id: "strategic-operations",
     title: "Strategic Operations",
     // description: "Day-to-day ops, admin, and process support",
     description: "Day-to-day ops, admin, and process\u00A0support",
@@ -21,6 +26,7 @@ const services = [
     href: "/services/strategic-operations#quote-section",
   },
   {
+    id: "targeted-sales",
     title: "Targeted Sales",
     description: "Lead generation and outreach campaigns",
     icon: Target,
@@ -28,6 +34,7 @@ const services = [
     href: "/services/targeted-sales#quote-section",
   },
   {
+    id: "accouting-and-legal",
     title: "Accounting and Legal",
     description: "Bookkeeping, compliance, and legal admin",
     icon: Scale,
@@ -36,6 +43,7 @@ const services = [
   },
 
   {
+    id: "focused-marketing",
     title: "Focused Marketing",
     description: "Content, brand, and social execution",
     icon: Megaphone,
@@ -43,6 +51,7 @@ const services = [
     href: "/services/focused-marketing#quote-section",
   },
   {
+    id: "future-expansion",
     title: "Future Expansion",
     description: "New market entry and growth planning",
     icon: Globe,
@@ -50,6 +59,7 @@ const services = [
     href: "/services/future-expansion#quote-section",
   },
   {
+    id: "all",
     isCTA: true,
     title: "Not sure which one fits?",
     description: "Guidance to the right service.",
@@ -59,6 +69,29 @@ const services = [
 ];
 
 export default function ChooseYourServicePage() {
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+
+  const toggleService = (serviceId: string) => {
+    if (serviceId === "all") {
+      const allServiceIds = services
+        .filter((service) => !service.isCTA)
+        .map((service) => service.id);
+
+      const isAllSelected = allServiceIds.every((id) =>
+        selectedServices.includes(id),
+      );
+
+      setSelectedServices(isAllSelected ? [] : allServiceIds);
+      return;
+    }
+
+    setSelectedServices((prev) =>
+      prev.includes(serviceId)
+        ? prev.filter((id) => id !== serviceId)
+        : [...prev, serviceId],
+    );
+  };
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       <section className="pt-28 md:pt-36 pb-20">
@@ -87,11 +120,17 @@ export default function ChooseYourServicePage() {
             {services.map((service) => {
               const Icon = service.icon;
 
+              const isSelected = service.isCTA
+                ? services
+                    .filter((service) => !service.isCTA)
+                    .every((service) => selectedServices.includes(service.id))
+                : selectedServices.includes(service.id);
+
               return (
-                <Link
+                <button
                   key={service.title}
-                  href={service.href}
-                  target="_blank"
+                  type="button"
+                  onClick={() => toggleService(service.id)}
                   className={`
 group
 
@@ -124,7 +163,7 @@ duration-500
 
 hover:-translate-y-2
 hover:shadow-[0_18px_45px_rgba(15,23,42,0.10)]
-hover:border-primary
+${isSelected ? "border-primary bg-primary/5" : "border-[#D5E3F2]"}
 `}
                 >
                   <div
@@ -168,8 +207,12 @@ group-hover:scale-110
                   <div className="mt-8">
                     <span className="inline-flex items-center font-semibold text-primary">
                       {service.isCTA
-                        ? "Try Client Fast Track"
-                        : "Select This Service"}
+                        ? isSelected
+                          ? "All Services Selected"
+                          : "Choose All Services"
+                        : isSelected
+                          ? "Selected ✓"
+                          : "Select This Service"}
 
                       <span
                         className="
@@ -183,10 +226,12 @@ group-hover:scale-110
                       </span>
                     </span>
                   </div>
-                </Link>
+                </button>
               );
             })}
           </div>
+
+          <DynamicServiceSection selectedServices={selectedServices} />
         </div>
       </section>
     </main>

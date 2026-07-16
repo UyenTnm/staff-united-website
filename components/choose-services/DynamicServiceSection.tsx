@@ -1,0 +1,44 @@
+import { strategicOperations } from "@/data/choose-services/strategic-operations";
+import ServiceQuestionSection from "./ServiceQuestionSection";
+
+interface DynamicServiceSectionProps {
+  selectedServices: string[];
+}
+const SERVICE_MAP = {
+  "strategic-operations": strategicOperations,
+};
+
+export default function DynamicServiceSection({
+  selectedServices,
+}: DynamicServiceSectionProps) {
+  if (selectedServices.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className="mt-20">
+      <div className="rounded-3xl border border-[#D5E3F2] bg-white p-10 shadow-sm">
+        <h2 className="text-3xl font-bold text-secondary mb-4">
+          Request Information
+        </h2>
+
+        <p className="text-foreground/70 mb-10">
+          Complete the information below and we'll prepare a proposal tailored
+          to your business.
+        </p>
+
+        <div className="space-y-8">
+          {selectedServices.map((serviceId) => {
+            const service = SERVICE_MAP[serviceId as keyof typeof SERVICE_MAP];
+
+            if (!service) return null;
+
+            return (
+              <ServiceQuestionSection key={service.id} service={service} />
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
