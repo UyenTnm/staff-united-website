@@ -1,12 +1,9 @@
-import { strategicOperations } from "@/data/choose-services/strategic-operations";
+import { SERVICE_MAP } from "@/data/choose-services/service-map";
 import ServiceQuestionSection from "./ServiceQuestionSection";
 
 interface DynamicServiceSectionProps {
   selectedServices: string[];
 }
-const SERVICE_MAP = {
-  "strategic-operations": strategicOperations,
-};
 
 export default function DynamicServiceSection({
   selectedServices,
@@ -29,8 +26,7 @@ export default function DynamicServiceSection({
 
         <div className="space-y-8">
           {selectedServices.map((serviceId) => {
-            const service = SERVICE_MAP[serviceId as keyof typeof SERVICE_MAP];
-
+            const service = SERVICE_MAP[serviceId];
             if (!service) return null;
 
             return (
