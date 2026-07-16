@@ -151,7 +151,7 @@ export default async function InsightsPage({ searchParams }: Props) {
           })}
         </div>
 
-        <div className="text-center pt-6">
+        {/* <div className="text-center pt-6">
           <p
             className="
       text-lg md:text-xl
@@ -164,7 +164,7 @@ export default async function InsightsPage({ searchParams }: Props) {
           >
             More Insights Coming Soon.
           </p>
-        </div>
+        </div> */}
       </section>
     </main>
   );
