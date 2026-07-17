@@ -73,6 +73,7 @@ export default function ServiceDropdown({
                 <div
                   key={category.id}
                   onClick={() => onToggle?.(category.id)}
+                  
                   className="cursor-pointer flex items-center gap-3 border-b last:border-b-0 px-5 py-4 hover:bg-slate-50"
                 >
                   <div
@@ -122,6 +123,16 @@ export default function ServiceDropdown({
                   </span>
                 </div>
               ))}
+
+          <div className="border-t border-[#D5E3F2] p-3">
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              className="w-full rounded-lg bg-primary py-2 text-sm font-semibold text-white hover:opacity-90"
+            >
+              Done Selecting ✓
+            </button>
+          </div>
         </div>
       )}
     </div>
