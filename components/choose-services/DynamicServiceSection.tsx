@@ -8,6 +8,8 @@ interface DynamicServiceSectionProps {
 export default function DynamicServiceSection({
   selectedServices,
 }: DynamicServiceSectionProps) {
+  console.log("Selected Services:", selectedServices);
+
   if (selectedServices.length === 0) {
     return null;
   }
@@ -26,6 +28,7 @@ export default function DynamicServiceSection({
 
         <div className="space-y-8">
           {selectedServices.map((serviceId) => {
+            console.log("serviceId:", serviceId);
             const service = SERVICE_MAP[serviceId];
             if (!service) return null;
 

@@ -8,26 +8,10 @@ export interface ServiceCard {
   isChooseAll?: boolean;
 }
 
-export interface ServiceTask {
-  id: string;
-  label: string;
-}
-
-export interface FollowUpQuestion {
-  label: string;
-  type: "select" | "text";
-  options?: string[];
-  placeholder?: string;
-}
-
 export interface ServiceCategory {
   id: string;
   title: string;
   description?: string;
-
-  tasks: ServiceTask[];
-
-  followUp?: FollowUpQuestion;
 }
 
 export interface ExtraProfileField {
@@ -41,18 +25,16 @@ export interface ServiceDefinition {
   title: string;
 
   subtitle: string;
+  question: string;
 
   extraProfile?: ExtraProfileField;
+  secondQuestion?: SelectQuestion;
 
   categories: ServiceCategory[];
 }
 
 export interface CategoryResponse {
   selected: boolean;
-
-  selectedTasks: string[];
-
-  followUpAnswer?: string;
 }
 
 export interface ServiceResponse {
@@ -63,4 +45,32 @@ export interface ChooseServiceForm {
   selectedServices: string[];
 
   services: Record<string, ServiceResponse>;
+}
+
+export interface SelectOption {
+  id: string;
+  title: string;
+  showAdditionalQuestion?: boolean;
+
+  additionalTitle?: string;
+
+  additionalPlaceholder?: string;
+
+  allowVoice?: boolean;
+}
+
+export interface SelectQuestion {
+  title: string;
+  options: SelectOption[];
+  additionalQuestion?: AdditionalQuestion;
+}
+
+export interface AdditionalQuestion {
+  enabled?: boolean;
+
+  title?: string;
+
+  placeholder?: string;
+
+  allowVoice?: boolean;
 }

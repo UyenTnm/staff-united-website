@@ -34,7 +34,7 @@ const services = [
     href: "/services/targeted-sales#quote-section",
   },
   {
-    id: "accouting-and-legal",
+    id: "accounting-legal",
     title: "Accounting and Legal",
     description: "Bookkeeping, compliance, and legal admin",
     icon: Scale,

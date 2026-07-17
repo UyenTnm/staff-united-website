@@ -1,50 +1,52 @@
 "use client";
 
-import { useState } from "react";
 import { ServiceCategory } from "@/types/choose-services";
 
 interface CategoryCardProps {
   category: ServiceCategory;
+  selected: boolean;
+  onToggle: () => void;
 }
 
-export default function CategoryCard({ category }: CategoryCardProps) {
-  const [expanded, setExpanded] = useState(false);
+export default function CategoryCard({
+  category,
+  selected,
+  onToggle,
+}: CategoryCardProps) {
+  const isSelected = selected;
 
   return (
-    <div className="rounded-2xl border border-[#D5E3F2] overflow-hidden transition-all">
+    <div className="overflow-hidden rounded-2xl border border-[#D5E3F2] bg-white">
       <button
         type="button"
-        onClick={() => setExpanded(!expanded)}
-        className="w-full p-6 text-left hover:bg-gray-50 transition"
+        onClick={onToggle}
+        className="flex w-full items-center justify-between p-6 text-left hover:bg-gray-50 transition"
       >
-        <div className="flex items-start justify-between">
-          <div>
+        <div>
+          <div className="flex items-center gap-3">
+            <div
+              className={`
+w-6
+h-6
+rounded-full
+flex
+items-center
+justify-center
+text-xs
+font-bold
+
+${isSelected ? "bg-green-500 text-white" : "bg-gray-200 text-gray-500"}
+`}
+            >
+              {isSelected ? "✓" : ""}
+            </div>
+
             <h4 className="text-lg font-semibold text-secondary">
               {category.title}
             </h4>
-
-            {category.description && (
-              <p className="mt-2 text-sm text-foreground/70">
-                {category.description}
-              </p>
-            )}
           </div>
-
-          <span
-            className={`text-xl transition-transform ${
-              expanded ? "rotate-180" : ""
-            }`}
-          >
-            ▼
-          </span>
         </div>
       </button>
-
-      {expanded && (
-        <div className="border-t border-[#D5E3F2] bg-gray-50 p-6">
-          <p className="text-sm text-gray-500">Tasks will appear here...</p>
-        </div>
-      )}
     </div>
   );
 }
