@@ -8,10 +8,38 @@ export interface ServiceCard {
   isChooseAll?: boolean;
 }
 
+export interface TaskOption {
+  id: string;
+
+  title: string;
+}
+
+export interface CategoryQuestion {
+  title: string;
+
+  options?: string[];
+
+  type?: "select" | "text";
+}
+
 export interface ServiceCategory {
   id: string;
   title: string;
   description?: string;
+
+  tasks?: TaskOption[];
+
+  question?: CategoryQuestion;
+
+  isNotSure?: boolean;
+
+  placeholder?: string;
+
+  allowVoice?: boolean;
+
+  allowFileUpload?: boolean;
+
+  allowAiSuggestion?: boolean;
 }
 
 export interface ExtraProfileField {

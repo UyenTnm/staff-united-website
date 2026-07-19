@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { SelectOption, ServiceCategory } from "@/types/choose-services";
 
@@ -13,6 +13,9 @@ interface ServiceDropdownProps {
   categories?: ServiceCategory[];
   selected?: Record<string, boolean>;
   onToggle?: (id: string) => void;
+
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
 
   options?: SelectOption[];
 
@@ -27,17 +30,17 @@ export default function ServiceDropdown({
   categories = [],
   selected = {},
   onToggle,
+  open,
+  onOpenChange,
   value = "",
   onChange,
   options = [],
 }: ServiceDropdownProps) {
-  const [open, setOpen] = useState(false);
-
   return (
     <div className="mt-8">
       <button
         type="button"
-        onClick={() => setOpen(!open)}
+        onClick={() => onOpenChange(!open)}
         className="flex w-full items-center justify-between rounded-xl border border-[#D5E3F2] bg-white px-5 py-4 text-left transition hover:border-primary"
       >
         <div className="flex flex-col text-left">
@@ -47,7 +50,33 @@ export default function ServiceDropdown({
 
           <span className="mt-1 text-sm text-gray-500">
             {multi
-              ? "Select one or more services"
+              ? (() => {
+                  const selectedCategories = categories.filter(
+                    (category) => selected[category.id],
+                  );
+
+                  if (selectedCategories.length === 0) {
+                    return "Administrative Support, SOP Support";
+                  }
+
+                  const allOption = selectedCategories.find((c) =>
+                    c.title.toLowerCase().startsWith("all "),
+                  );
+
+                  if (allOption) {
+                    return `✓ ${allOption.title}`;
+                  }
+
+                  if (selectedCategories.length === 1) {
+                    return selectedCategories[0].title;
+                  }
+
+                  if (selectedCategories.length === 2) {
+                    return `${selectedCategories[0].title}, ${selectedCategories[1].title}`;
+                  }
+
+                  return `${selectedCategories[0].title}, ${selectedCategories[1].title} +${selectedCategories.length - 2} more`;
+                })()
               : value
                 ? options.find((o) => o.id === value)?.title
                 : "Please select one option"}
@@ -72,8 +101,18 @@ export default function ServiceDropdown({
             ? categories.map((category) => (
                 <div
                   key={category.id}
-                  onClick={() => onToggle?.(category.id)}
-                  
+                  onClick={() => {
+                    const wasSelected = selected[category.id];
+
+                    onToggle?.(category.id);
+
+                    if (
+                      category.title.toLowerCase().startsWith("all ") &&
+                      !wasSelected
+                    ) {
+                      onOpenChange(false);
+                    }
+                  }}
                   className="cursor-pointer flex items-center gap-3 border-b last:border-b-0 px-5 py-4 hover:bg-slate-50"
                 >
                   <div
@@ -94,7 +133,7 @@ export default function ServiceDropdown({
                   key={option.id}
                   onClick={() => {
                     onChange?.(option.id);
-                    setOpen(false);
+                    onOpenChange(false);
                   }}
                   className="cursor-pointer
         flex items-center gap-3 border-b last:border-b-0 px-5 py-4
@@ -127,7 +166,7 @@ export default function ServiceDropdown({
           <div className="border-t border-[#D5E3F2] p-3">
             <button
               type="button"
-              onClick={() => setOpen(false)}
+              onClick={() => onOpenChange(false)}
               className="w-full rounded-lg bg-primary py-2 text-sm font-semibold text-white hover:opacity-90"
             >
               Done Selecting ✓

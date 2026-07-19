@@ -13,40 +13,59 @@ export default function CategoryCard({
   selected,
   onToggle,
 }: CategoryCardProps) {
-  const isSelected = selected;
-
   return (
-    <div className="overflow-hidden rounded-2xl border border-[#D5E3F2] bg-white">
-      <button
-        type="button"
-        onClick={onToggle}
-        className="flex w-full items-center justify-between p-6 text-left hover:bg-gray-50 transition"
+    <button
+      type="button"
+      onClick={onToggle}
+      className={`
+        w-full
+        rounded-xl
+        border
+        px-4
+        py-4
+        transition
+        text-left
+        flex
+        items-start
+        gap-3
+
+        ${
+          selected
+            ? "border-primary bg-[#F5FAFF]"
+            : "border-[#D5E3F2] bg-white hover:bg-gray-50"
+        }
+      `}
+    >
+      <div
+        className={`
+          mt-0.5
+          flex
+          h-5
+          w-5
+          items-center
+          justify-center
+          rounded
+          border
+          text-xs
+          font-bold
+
+          ${
+            selected
+              ? "border-primary bg-primary text-white"
+              : "border-gray-300"
+          }
+        `}
       >
-        <div>
-          <div className="flex items-center gap-3">
-            <div
-              className={`
-w-6
-h-6
-rounded-full
-flex
-items-center
-justify-center
-text-xs
-font-bold
+        {selected ? "✓" : ""}
+      </div>
 
-${isSelected ? "bg-green-500 text-white" : "bg-gray-200 text-gray-500"}
-`}
-            >
-              {isSelected ? "✓" : ""}
-            </div>
+      <div>
+        <h4 className="font-semibold text-secondary">{category.title}</h4>
 
-            <h4 className="text-lg font-semibold text-secondary">
-              {category.title}
-            </h4>
-          </div>
-        </div>
-      </button>
-    </div>
+        {category.description && (
+          <p className="mt-1 text-sm text-gray-500">{category.description}</p>
+        )}
+      </div>
+    </button>
   );
 }

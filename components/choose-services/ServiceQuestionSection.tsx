@@ -1,27 +1,13 @@
 import { ServiceDefinition } from "@/types/choose-services";
 import CategoryCard from "./CategoryCard";
-import { useState } from "react";
-// import SelectionProgress from "./SelectionProgress";
+import React, { useState } from "react";
 import { useCategorySelection } from "@/hooks/useCategorySelection";
-import ServiceDropdown from "./ServiceDropdown";
-import SelectQuestion from "./SelectQuestion";
-import AdditionalQuestion from "./AdditionalQuestion";
+import CategoryPanel from "./CategoryPanel";
 
 interface ServiceQuestionSectionProps {
   service: ServiceDefinition;
 }
 
-type SelectedCategories = Record<string, boolean>;
-
-const createInitialCategorySelection = (service: ServiceDefinition) => {
-  return service.categories.reduce(
-    (acc, category) => ({
-      ...acc,
-      [category.id]: false,
-    }),
-    {} as SelectedCategories,
-  );
-};
 export default function ServiceQuestionSection({
   service,
 }: ServiceQuestionSectionProps) {
@@ -32,11 +18,55 @@ export default function ServiceQuestionSection({
     toggleCategory,
   } = useCategorySelection(service);
 
-  const [selectedSecondAnswer, setSelectedSecondAnswer] = useState("");
-
-  const selectedOption = service.secondQuestion?.options.find(
-    (option) => option.id === selectedSecondAnswer,
+  const [selectedTasks, setSelectedTasks] = useState<Record<string, string[]>>(
+    {},
   );
+
+  const [selectedQuestions, setSelectedQuestions] = useState<
+    Record<string, string>
+  >({});
+
+  const [selectedVoices, setSelectedVoices] = useState<
+    Record<
+      string,
+      {
+        blob: Blob;
+        previewUrl: string;
+      }
+    >
+  >({});
+
+  const updateQuestion = (categoryId: string, value: string) => {
+    setSelectedQuestions((prev) => ({
+      ...prev,
+      [categoryId]: value,
+    }));
+  };
+
+  const updateVoice = (categoryId: string, blob: Blob, previewUrl: string) => {
+    setSelectedVoices((prev) => ({
+      ...prev,
+      [categoryId]: {
+        blob,
+        previewUrl,
+      },
+    }));
+  };
+
+  const toggleTask = (categoryId: string, task: string) => {
+    setSelectedTasks((prev) => {
+      const currentTasks = prev[categoryId] || [];
+
+      const updatedTasks = currentTasks.includes(task)
+        ? currentTasks.filter((t) => t !== task)
+        : [...currentTasks, task];
+
+      return {
+        ...prev,
+        [categoryId]: updatedTasks,
+      };
+    });
+  };
 
   return (
     <div className="rounded-2xl border border-[#D5E3F2] bg-white p-8">
@@ -50,56 +80,57 @@ export default function ServiceQuestionSection({
 
       <p className="mt-2 text-foreground/70">{service.subtitle}</p>
 
-      {/* <SelectionProgress
-        selectedCount={selectedCount}
-        total={actualCategories.length}
-      /> */}
-
       {selectedCount === 0 && (
         <p className="mt-4 text-sm text-gray-500">
           Please select one or more service categories.
         </p>
       )}
 
-      {/* <div className="mt-8 space-y-4">
-        {service.categories.map((category) => (
-          <CategoryCard
-            key={category.id}
-            category={category}
-            selected={selectedCategories[category.id]}
-            onToggle={() => toggleCategory(category.id)}
-          />
-        ))}
-      </div> */}
-      <ServiceDropdown
-        title={service.question}
-        categories={service.categories}
-        selected={selectedCategories}
-        onToggle={toggleCategory}
-        multi
-      />
+      <div className="mt-8 space-y-3">
+        <button
+          type="button"
+          onClick={() => toggleCategory("all")}
+          className="w-full rounded-xl border border-dashed border-[#D5E3F2] bg-white px-4 py-3 text-left text-sm font-semibold text-primary hover:bg-[#F5FAFF]"
+        >
+          Select All Areas
+        </button>
 
-      <ServiceDropdown
-        title={service.secondQuestion!.title}
-        options={service.secondQuestion!.options}
-        multi={false}
-        value={selectedSecondAnswer}
-        onChange={setSelectedSecondAnswer}
-      />
+        {service.categories
+          .filter((category) => category.id !== "all")
+          .map((category) => {
+            const isSelected = selectedCategories[category.id];
+            return (
+              <div key={category.id} className="space-y-3">
+                <CategoryCard
+                  category={category}
+                  selected={isSelected}
+                  onToggle={() => toggleCategory(category.id)}
+                />
 
-      {/* <p className="mt-4 text-red-500">Selected: {selectedSecondAnswer}</p> */}
-
-      {/* {selectedSecondAnswer === "not-sure" &&
-        service.secondQuestion?.additionalQuestion && (
-          <AdditionalQuestion
-            config={service.secondQuestion.additionalQuestion}
-          />
-        )} */}
-      {selectedOption?.showAdditionalQuestion && (
-        <AdditionalQuestion config={selectedOption} />
-      )}
-
-      {/* <pre>{JSON.stringify(selectedCategories, null, 2)}</pre> */}
+                {isSelected && (
+                  <CategoryPanel
+                    tasks={category.tasks}
+                    question={category.question}
+                    isNotSure={category.isNotSure}
+                    placeholder={category.placeholder}
+                    allowVoice={category.allowVoice}
+                    allowAiSuggestion={category.allowAiSuggestion}
+                    selectedTasks={selectedTasks[category.id] || []}
+                    selectedQuestion={selectedQuestions[category.id] || ""}
+                    onToggleTask={(task) => toggleTask(category.id, task)}
+                    onQuestionChange={(value) =>
+                      updateQuestion(category.id, value)
+                    }
+                    voice={selectedVoices[category.id]}
+                    onVoiceReady={(blob, previewUrl) =>
+                      updateVoice(category.id, blob, previewUrl)
+                    }
+                  />
+                )}
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 }

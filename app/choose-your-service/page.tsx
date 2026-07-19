@@ -19,69 +19,60 @@ const services = [
   {
     id: "strategic-operations",
     title: "Strategic Operations",
-    // description: "Day-to-day ops, admin, and process support",
-    description: "Day-to-day ops, admin, and process\u00A0support",
+    description: "Admin & process support",
     icon: Settings,
-    // href: "/services/strategic-operations",
     href: "/services/strategic-operations#quote-section",
   },
   {
     id: "targeted-sales",
     title: "Targeted Sales",
-    description: "Lead generation and outreach campaigns",
+    description: "Lead generation & outreach",
     icon: Target,
-    // href: "/services/targeted-sales",
     href: "/services/targeted-sales#quote-section",
   },
   {
     id: "accounting-legal",
     title: "Accounting and Legal",
-    description: "Bookkeeping, compliance, and legal admin",
+    description: "Bookkeeping & legal admin",
     icon: Scale,
-    // href: "/services/accounting-legal",
     href: "/services/accounting-legal#quote-section",
   },
-
   {
     id: "focused-marketing",
     title: "Focused Marketing",
-    description: "Content, brand, and social execution",
+    description: "Content & social media",
     icon: Megaphone,
-    // href: "/services/focused-marketing",
     href: "/services/focused-marketing#quote-section",
   },
   {
     id: "future-expansion",
     title: "Future Expansion",
-    description: "New market entry and growth planning",
+    description: "Market entry & growth",
     icon: Globe,
-    // href: "/services/future-expansion",
     href: "/services/future-expansion#quote-section",
   },
   {
     id: "all",
     isCTA: true,
-    title: "Not sure which one fits?",
-    description: "Guidance to the right service.",
+    title: "Choose All Services",
+    description: "Select every service in one click",
     icon: Compass,
-    href: "/client-fast-track",
   },
 ];
 
 export default function ChooseYourServicePage() {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
 
+  const realServiceIds = services
+    .filter((service) => !service.isCTA)
+    .map((service) => service.id);
+
   const toggleService = (serviceId: string) => {
     if (serviceId === "all") {
-      const allServiceIds = services
-        .filter((service) => !service.isCTA)
-        .map((service) => service.id);
-
-      const isAllSelected = allServiceIds.every((id) =>
+      const isAllSelected = realServiceIds.every((id) =>
         selectedServices.includes(id),
       );
-
-      setSelectedServices(isAllSelected ? [] : allServiceIds);
+      setSelectedServices(isAllSelected ? [] : realServiceIds);
       return;
     }
 
@@ -92,140 +83,135 @@ export default function ChooseYourServicePage() {
     );
   };
 
+  const selectedCount = realServiceIds.filter((id) =>
+    selectedServices.includes(id),
+  ).length;
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       <section className="pt-28 md:pt-36 pb-20">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection direction="up">
             <div className="max-w-5xl mx-auto text-center">
-              <p className="text-primary font-semibold text-sm tracking-[0.2em] uppercase mb-4">
-                REQUEST SUPPORT
-              </p>
-
-              <h1 className="text-4xl md:text-6xl font-bold text-secondary tracking-tight mb-6">
-                Choose Your Service
+              <h1 className="text-4xl md:text-6xl font-bold text-secondary tracking-tight mb-5">
+                Request a Quote
               </h1>
 
-              <p className="text-lg text-foreground/70 leading-relaxed max-w-3xl mx-auto">
-                Already know what your business needs? Pick the service below
-                and share the details — we'll come back with scope, timeline,
-                and pricing tailored to you.
+              <p className="text-lg text-foreground/70 leading-relaxed max-w-4xl mx-auto">
+                Select the services you need. Each one expands to let you
+                specify exactly what's involved.
               </p>
+
+              {/* Live status + instruction — tells the user this grid is interactive */}
+              <div className="mt-6 inline-flex items-center gap-2.5 rounded-full border border-[#D5E3F2] bg-white px-4 py-2 shadow-[0_2px_10px_rgba(15,23,42,0.04)]">
+                <span
+                  className={`h-2 w-2 rounded-full transition-colors ${
+                    selectedCount > 0 ? "bg-primary" : "bg-foreground/25"
+                  }`}
+                />
+                <span className="text-sm font-semibold text-secondary">
+                  {selectedCount === 0
+                    ? "Tap a card to select a service"
+                    : `${selectedCount} of ${realServiceIds.length} services selected`}
+                </span>
+              </div>
             </div>
           </AnimatedSection>
 
           {/* Service Cards */}
-
-          <div className="mt-16 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-14 grid gap-5 lg:gap-6 lg:p-6 md:grid-cols-2 xl:grid-cols-3">
             {services.map((service) => {
               const Icon = service.icon;
 
               const isSelected = service.isCTA
-                ? services
-                    .filter((service) => !service.isCTA)
-                    .every((service) => selectedServices.includes(service.id))
+                ? realServiceIds.every((id) => selectedServices.includes(id))
                 : selectedServices.includes(service.id);
+
+              if (service.isCTA) {
+                return (
+                  <button
+                    key={service.title}
+                    type="button"
+                    onClick={() => toggleService(service.id)}
+                    aria-pressed={isSelected}
+                    className={`
+                      group relative overflow-hidden rounded-xl p-6 flex flex-col h-full
+                      border-2 border-dashed
+                      transition-all duration-500 hover:-translate-y-2
+                      ${
+                        isSelected
+                          ? "border-primary bg-gradient-to-br from-primary to-[#3D75AC] shadow-[0_18px_45px_rgba(79,141,201,0.35)]"
+                          : "border-primary/40 bg-gradient-to-br from-[#EAF3FC] to-white hover:shadow-[0_18px_45px_rgba(15,23,42,0.10)]"
+                      }
+                    `}
+                  >
+                    <div
+                      className={`mx-auto w-12 h-12 rounded-2xl flex items-center justify-center mb-5 transition-all duration-500 group-hover:scale-110 ${
+                        isSelected
+                          ? "bg-white/20"
+                          : "bg-primary/10 ring-1 ring-primary/25"
+                      }`}
+                    >
+                      <Icon
+                        className={`w-7 h-7 ${isSelected ? "text-white" : "text-primary"}`}
+                        strokeWidth={2}
+                      />
+                    </div>
+
+                    <h3
+                      className={`text-xl font-bold mb-2 ${isSelected ? "text-white" : "text-secondary"}`}
+                    >
+                      {service.title}
+                    </h3>
+                    <p
+                      className={`text-sm leading-6 ${isSelected ? "text-white/80" : "text-foreground/70"}`}
+                    >
+                      {service.description}
+                    </p>
+                  </button>
+                );
+              }
 
               return (
                 <button
                   key={service.title}
                   type="button"
                   onClick={() => toggleService(service.id)}
+                  aria-pressed={isSelected}
                   className={`
-group
-
-relative
-overflow-hidden
-
-rounded-3xl
-
-bg-gradient-to-b
-from-white
-to-[#F7FBFF]
-
-border
-${
-  service.isCTA
-    ? "border-dashed border-primary/40"
-    : "border-solid border-[#D5E3F2]"
-}
-
-p-8
-
-flex
-flex-col
-h-full
-
-shadow-[0_6px_24px_rgba(15,23,42,0.05)]
-
-transition-all
-duration-500
-
-hover:-translate-y-2
-hover:shadow-[0_18px_45px_rgba(15,23,42,0.10)]
-${isSelected ? "border-primary bg-primary/5" : "border-[#D5E3F2]"}
-`}
+                    group relative overflow-hidden rounded-xl p-6 flex flex-col h-full
+                    border bg-gradient-to-b
+                    transition-all duration-500 hover:-translate-y-2
+                    ${
+                      isSelected
+                        ? "border-primary from-[#EAF3FC] to-white shadow-[0_18px_45px_rgba(79,141,201,0.18)] ring-2 ring-primary/30"
+                        : "border-[#D5E3F2] from-white to-[#F7FBFF] shadow-[0_6px_24px_rgba(15,23,42,0.05)] hover:shadow-[0_18px_45px_rgba(15,23,42,0.10)]"
+                    }
+                  `}
                 >
                   <div
-                    className="
-w-16
-h-16
-
-rounded-2xl
-
-bg-[#4F8DC9]/10
-
-ring-1
-ring-[#4F8DC9]/20
-
-flex
-items-center
-justify-center
-
-mb-8
-
-transition-all
-duration-500
-
-group-hover:bg-[#4F8DC9]/15
-group-hover:ring-[#4F8DC9]/35
-group-hover:scale-110
-"
+                    className={`
+                      mx-auto w-12 h-12 rounded-2xl flex items-center justify-center mb-5
+                      ring-1 transition-all duration-500 group-hover:scale-110
+                      ${
+                        isSelected
+                          ? "bg-primary ring-primary/40"
+                          : "bg-[#4F8DC9]/10 ring-[#4F8DC9]/20 group-hover:bg-[#4F8DC9]/15 group-hover:ring-[#4F8DC9]/35"
+                      }
+                    `}
                   >
-                    <Icon className="w-8 h-8 text-[#4F8DC9]" strokeWidth={2} />
+                    <Icon
+                      className={`w-7 h-7 ${isSelected ? "text-white" : "text-[#4F8DC9]"}`}
+                      strokeWidth={2}
+                    />
                   </div>
 
-                  <h3 className="text-2xl font-bold text-secondary mb-3">
+                  <h3 className="text-xl font-bold text-secondary mb-2">
                     {service.title}
                   </h3>
-
-                  {/* <p className="text-foreground/70">{service.description}</p> */}
-                  <p className="text-sm md:text-base text-foreground/70 leading-relaxed">
+                  <p className="text-sm text-foreground/70 leading-6">
                     {service.description}
                   </p>
-
-                  <div className="mt-8">
-                    <span className="inline-flex items-center font-semibold text-primary">
-                      {service.isCTA
-                        ? isSelected
-                          ? "All Services Selected"
-                          : "Choose All Services"
-                        : isSelected
-                          ? "Selected ✓"
-                          : "Select This Service"}
-
-                      <span
-                        className="
-      ml-2
-      transition-transform
-      duration-300
-      group-hover:translate-x-1
-    "
-                      >
-                        →
-                      </span>
-                    </span>
-                  </div>
                 </button>
               );
             })}
