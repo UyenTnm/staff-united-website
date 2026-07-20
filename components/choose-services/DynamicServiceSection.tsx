@@ -40,10 +40,11 @@ export default function DynamicServiceSection({
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  // const [serviceResponses, setServiceResponses] = useState({});
+
   const [serviceResponses, setServiceResponses] = useState<
     Record<string, ServiceResponse>
   >({});
+  console.log("serviceResponses:", serviceResponses);
 
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [leadId, setLeadId] = useState("");

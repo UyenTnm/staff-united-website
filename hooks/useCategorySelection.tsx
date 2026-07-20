@@ -47,8 +47,5 @@ export function useCategorySelection(service: ServiceDefinition) {
 
   return {
     actualCategories,
-    selectedCategories,
-    selectedCount,
-    toggleCategory,
   };
 }

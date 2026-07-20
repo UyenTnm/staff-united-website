@@ -5,7 +5,7 @@ import {
 } from "@/types/choose-services";
 import CategoryCard from "./CategoryCard";
 import React, { useEffect, useState } from "react";
-import { useCategorySelection } from "@/hooks/useCategorySelection";
+// import { useCategorySelection } from "@/hooks/useCategorySelection";
 import CategoryPanel from "./CategoryPanel";
 
 interface ServiceQuestionSectionProps {
@@ -19,20 +19,8 @@ export default function ServiceQuestionSection({
   value,
   onChange,
 }: ServiceQuestionSectionProps) {
-  const {
-    actualCategories,
-    selectedCategories,
-    selectedCount,
-    toggleCategory,
-  } = useCategorySelection(service);
-
-  // const [selectedTasks, setSelectedTasks] = useState<Record<string, string[]>>(
-  //   {},
-  // );
-
-  // const [selectedQuestions, setSelectedQuestions] = useState<
-  //   Record<string, string>
-  // >({});
+  // const { actualCategories } = useCategorySelection(service);
+  // useCategorySelection(service);
 
   const [response, setResponse] = useState<ServiceResponse>(() => {
     return (
@@ -41,6 +29,41 @@ export default function ServiceQuestionSection({
       }
     );
   });
+
+  const emitChange = (next: ServiceResponse) => {
+    setResponse(next);
+    onChange(next);
+  };
+
+  const updateCategory = (
+    categoryId: string,
+    updater: (
+      current: NonNullable<ServiceResponse["categories"][string]>,
+    ) => NonNullable<ServiceResponse["categories"][string]>,
+  ) => {
+    const current = response.categories[categoryId] ?? {
+      selected: true,
+      selectedTasks: [],
+      selectedQuestion: "",
+      note: "",
+    };
+
+    const next: ServiceResponse = {
+      ...response,
+      categories: {
+        ...response.categories,
+        [categoryId]: updater(current),
+      },
+    };
+
+    setResponse(next);
+    onChange(next);
+  };
+
+  const updateResponse = (next: ServiceResponse) => {
+    setResponse(next);
+    onChange(next);
+  };
 
   const updateVoice = (categoryId: string, blob: Blob, previewUrl: string) => {
     updateCategory(categoryId, (current) => ({
@@ -56,79 +79,47 @@ export default function ServiceQuestionSection({
     updateCategory(categoryId, (current) => {
       const tasks = current.selectedTasks ?? [];
 
-      const exists = tasks.includes(taskId);
-
       return {
         ...current,
-        selectedTasks: exists
-          ? tasks.filter((t) => t !== taskId)
+        selectedTasks: tasks.includes(taskId)
+          ? tasks.filter((id) => id !== taskId)
           : [...tasks, taskId],
       };
     });
   };
 
-  const updateQuestion = (categoryId: string, question: string) => {
+  const updateQuestion = (categoryId: string, value: string) => {
     updateCategory(categoryId, (current) => ({
       ...current,
-      selectedQuestion: question,
+      selectedQuestion: value,
     }));
   };
 
-  const updateCategory = (
-    categoryId: string,
-    updater: (
-      current: NonNullable<ServiceResponse["categories"][string]>,
-    ) => NonNullable<ServiceResponse["categories"][string]>,
-  ) => {
-    setResponse((prev) => {
-      const current: CategoryResponse = prev.categories[categoryId] ?? {
+  const handleToggleCategory = (categoryId: string) => {
+    if (categoryId === "all") {
+      return;
+    }
+
+    const nextCategories = { ...response.categories };
+
+    if (nextCategories[categoryId]) {
+      delete nextCategories[categoryId];
+    } else {
+      nextCategories[categoryId] = {
         selected: true,
         selectedTasks: [],
         selectedQuestion: "",
         note: "",
       };
-
-      const updatedCategory = updater(current);
-
-      return {
-        ...prev,
-        categories: {
-          ...prev.categories,
-          [categoryId]: updatedCategory,
-        },
-      };
-    });
-  };
-
-  const handleToggleCategory = (categoryId: string) => {
-    toggleCategory(categoryId);
-
-    if (categoryId === "all") {
-      return;
     }
 
-    setResponse((prev) => {
-      const exists = prev.categories[categoryId];
+    const next: ServiceResponse = {
+      ...response,
+      categories: nextCategories,
+    };
 
-      if (exists) {
-        const updated = { ...prev };
-        delete updated.categories[categoryId];
-        return updated;
-      }
-
-      return {
-        ...prev,
-        categories: {
-          ...prev.categories,
-          [categoryId]: {
-            selected: true,
-            selectedTasks: [],
-            selectedQuestion: "",
-            note: "",
-          },
-        },
-      };
-    });
+    setResponse(next);
+    onChange(next);
   };
 
   useEffect(() => {
@@ -137,9 +128,9 @@ export default function ServiceQuestionSection({
     }
   }, [value]);
 
-  useEffect(() => {
-    onChange(response);
-  }, [response, onChange]);
+  // useEffect(() => {
+  //   onChange(response);
+  // }, [response]);
 
   return (
     <div className="rounded-2xl border border-[#D5E3F2] bg-white p-8">
@@ -153,7 +144,7 @@ export default function ServiceQuestionSection({
 
       <p className="mt-2 text-foreground/70">{service.subtitle}</p>
 
-      {selectedCount === 0 && (
+      {Object.keys(response.categories).length === 0 && (
         <p className="mt-4 text-sm text-gray-500">
           Please select one or more service categories.
         </p>
@@ -171,9 +162,10 @@ export default function ServiceQuestionSection({
         {service.categories
           .filter((category) => category.id !== "all")
           .map((category) => {
-            const isSelected =
-              selectedCategories[category.id] ||
-              !!response.categories[category.id];
+            // const isSelected =
+            //   !!response.categories[category.id] ||
+            //   !!response.categories[category.id];
+            const isSelected = !!response.categories[category.id];
             return (
               <div key={category.id} className="space-y-3">
                 <CategoryCard
