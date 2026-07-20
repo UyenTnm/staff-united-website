@@ -6,12 +6,14 @@ interface ProjectGoalsSectionProps {
     primaryGoal: string;
     additionalInformation: string;
   };
+  errors: Record<string, string>;
 
   onChange: (field: string, value: string) => void;
 }
 
 export default function ProjectGoalsSection({
   formData,
+  errors,
   onChange,
 }: ProjectGoalsSectionProps) {
   const textareaClass =
@@ -50,12 +52,18 @@ export default function ProjectGoalsSection({
           </div> */}
 
           <textarea
+            id="primaryGoal"
             rows={5}
             placeholder="Tell us what you're trying to achieve..."
             value={formData.primaryGoal}
             onChange={(e) => onChange("primaryGoal", e.target.value)}
-            className={textareaClass}
+            className={`${textareaClass} ${
+              errors.primaryGoal ? "border-red-500 focus:border-red-500" : ""
+            }`}
           />
+          {errors.primaryGoal && (
+            <p className="mt-2 text-sm text-red-600">{errors.primaryGoal}</p>
+          )}
 
           <VoiceRecorder
             onRecordingReady={(blob, previewUrl) => {

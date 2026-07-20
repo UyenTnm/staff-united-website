@@ -6,12 +6,14 @@ interface ContactInformationSectionProps {
     workEmail: string;
     phone: string;
   };
+  errors: Record<string, string>;
 
   onChange: (field: string, value: string) => void;
 }
 
 export default function ContactInformationSection({
   formData,
+  errors,
   onChange,
 }: ContactInformationSectionProps) {
   const inputClass =
@@ -36,46 +38,88 @@ export default function ContactInformationSection({
       </div>
 
       <div className="grid gap-5 md:grid-cols-2">
-        <input
-          type="text"
-          placeholder="First name *"
-          value={formData.firstName}
-          onChange={(e) => onChange("firstName", e.target.value)}
-          className={inputClass}
-        />
+        <div>
+          <input
+            type="text"
+            id="firstName"
+            placeholder="First name *"
+            value={formData.firstName}
+            onChange={(e) => onChange("firstName", e.target.value)}
+            className={`${inputClass} ${
+              errors.firstName ? "border-red-500 focus:border-red-500" : ""
+            }`}
+          />
 
-        <input
-          type="text"
-          placeholder="Last name *"
-          value={formData.lastName}
-          onChange={(e) => onChange("lastName", e.target.value)}
-          className={inputClass}
-        />
+          {errors.firstName && (
+            <p className="mt-2 text-sm text-red-600">{errors.firstName}</p>
+          )}
+        </div>
 
-        <input
-          type="text"
-          placeholder="Company name *"
-          value={formData.companyName}
-          onChange={(e) => onChange("companyName", e.target.value)}
-          className={inputClass}
-        />
+        <div>
+          <input
+            type="text"
+            id="lastName"
+            placeholder="Last name *"
+            value={formData.lastName}
+            onChange={(e) => onChange("lastName", e.target.value)}
+            className={`${inputClass} ${
+              errors.lastName ? "border-red-500 focus:border-red-500" : ""
+            }`}
+          />
 
-        <input
-          type="email"
-          placeholder="Work email *"
-          value={formData.workEmail}
-          onChange={(e) => onChange("workEmail", e.target.value)}
-          className={inputClass}
-        />
+          {errors.lastName && (
+            <p className="mt-2 text-sm text-red-600">{errors.lastName}</p>
+          )}
+        </div>
+
+        <div>
+          <input
+            type="text"
+            id="companyName"
+            placeholder="Company name *"
+            value={formData.companyName}
+            onChange={(e) => onChange("companyName", e.target.value)}
+            className={`${inputClass} ${
+              errors.companyName ? "border-red-500 focus:border-red-500" : ""
+            }`}
+          />
+
+          {errors.companyName && (
+            <p className="mt-2 text-sm text-red-600">{errors.companyName}</p>
+          )}
+        </div>
+
+        <div>
+          <input
+            type="email"
+            id="workEmail"
+            placeholder="Work email *"
+            value={formData.workEmail}
+            onChange={(e) => onChange("workEmail", e.target.value)}
+            className={`${inputClass} ${
+              errors.workEmail ? "border-red-500 focus:border-red-500" : ""
+            }`}
+          />
+
+          {errors.workEmail && (
+            <p className="mt-2 text-sm text-red-600">{errors.workEmail}</p>
+          )}
+        </div>
 
         <div className="md:col-span-2">
           <input
             type="text"
+            id="phone"
             placeholder="Phone number *"
             value={formData.phone}
             onChange={(e) => onChange("phone", e.target.value)}
-            className={inputClass}
+            className={`${inputClass} ${
+              errors.phone ? "border-red-500 focus:border-red-500" : ""
+            }`}
           />
+          {errors.phone && (
+            <p className="mt-2 text-sm text-red-600">{errors.phone}</p>
+          )}
         </div>
       </div>
     </section>

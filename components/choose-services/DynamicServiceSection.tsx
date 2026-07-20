@@ -7,6 +7,7 @@ import EngagementSection from "./EngagementSection";
 import ProjectGoalsSection from "./ProjectGoalsSection";
 import PrivacyConsentSection from "./PrivacyConsentSection";
 import SubmitSection from "./SubmitSection";
+import { validateQuoteForm } from "@/lib/validation/quote-form";
 
 interface DynamicServiceSectionProps {
   selectedServices: string[];
@@ -24,6 +25,7 @@ export default function DynamicServiceSection({
   });
   const [businessProfile, setBusinessProfile] = useState({
     industry: "",
+    otherIndustry: "",
     teamSize: "",
   });
   const [engagement, setEngagement] = useState({
@@ -36,12 +38,19 @@ export default function DynamicServiceSection({
   });
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const updateContactInformation = (field: string, value: string) => {
     setContactInformation((prev) => ({
       ...prev,
       [field]: value,
     }));
+
+    setErrors((prev) => {
+      const newErrors = { ...prev };
+      delete newErrors[field];
+      return newErrors;
+    });
   };
 
   const updateBusinessProfile = (field: string, value: string) => {
@@ -49,6 +58,12 @@ export default function DynamicServiceSection({
       ...prev,
       [field]: value,
     }));
+
+    setErrors((prev) => {
+      const newErrors = { ...prev };
+      delete newErrors[field];
+      return newErrors;
+    });
   };
 
   const updateEngagement = (field: string, value: string) => {
@@ -56,19 +71,64 @@ export default function DynamicServiceSection({
       ...prev,
       [field]: value,
     }));
+
+    setErrors((prev) => {
+      const newErrors = { ...prev };
+      delete newErrors[field];
+      return newErrors;
+    });
   };
+
   const updateProjectGoals = (field: string, value: string) => {
     setProjectGoals((prev) => ({
       ...prev,
       [field]: value,
     }));
+
+    setErrors((prev) => {
+      const newErrors = { ...prev };
+      delete newErrors[field];
+      return newErrors;
+    });
   };
 
   const handleSubmit = async () => {
-    if (!privacyAccepted) {
-      alert("Please accept the Privacy Policy.");
+    const validation = validateQuoteForm({
+      contactInformation,
+      businessProfile,
+      selectedServices,
+      engagement,
+      projectGoals,
+      // acceptedPrivacy,
+    });
+
+    if (!validation.valid) {
+      setErrors(validation.errors);
+
+      const firstErrorField = Object.keys(validation.errors)[0];
+
+      const element = document.getElementById(firstErrorField);
+
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+
+        setTimeout(() => {
+          element.focus();
+        }, 300);
+      }
+
       return;
     }
+
+    setErrors({});
+
+    // if (!privacyAccepted) {
+    //   alert("Please accept the Privacy Policy.");
+    //   return;
+    // }
 
     setLoading(true);
 
@@ -88,20 +148,49 @@ export default function DynamicServiceSection({
     "future-expansion",
   ];
 
-  // if (selectedServices.length === 0) {
-  //   return null;
-  // }
-
   return (
     <section className="mt-20">
       <div className="rounded-3xl border border-[#D5E3F2] bg-white p-10 shadow-sm">
+        {Object.keys(errors).length > 0 && (
+          <div className="mb-8 rounded-xl border border-red-200 bg-red-50 px-5 py-4">
+            <div className="flex items-start gap-3">
+              <svg
+                className="mt-0.5 h-5 w-5 text-red-600"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 9v4m0 4h.01M10.29 3.86l-8.18 14A2 2 0 003.82 21h16.36a2 2 0 001.71-3.14l-8.18-14a2 2 0 00-3.42 0z"
+                />
+              </svg>
+
+              <div>
+                <p className="font-semibold text-red-700">
+                  Please review your submission.
+                </p>
+
+                <p className="mt-1 text-sm text-red-600">
+                  Some required fields are missing or contain invalid
+                  information. Please correct the highlighted fields below.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
         <ContactInformationSection
           formData={contactInformation}
+          errors={errors}
           onChange={updateContactInformation}
         />
 
         <BusinessProfileSection
           formData={businessProfile}
+          errors={errors}
           onChange={updateBusinessProfile}
         />
 
@@ -120,18 +209,25 @@ export default function DynamicServiceSection({
           </div>
         )}
 
-        <EngagementSection formData={engagement} onChange={updateEngagement} />
+        <EngagementSection
+          formData={engagement}
+          errors={errors}
+          onChange={updateEngagement}
+        />
+
         <ProjectGoalsSection
           formData={projectGoals}
+          errors={errors}
           onChange={updateProjectGoals}
         />
 
-        <PrivacyConsentSection
+        {/* <PrivacyConsentSection
           checked={privacyAccepted}
           onChange={setPrivacyAccepted}
-        />
+        /> */}
         <SubmitSection
-          disabled={!privacyAccepted}
+          // disabled={!privacyAccepted}
+          disabled={false}
           loading={loading}
           onSubmit={handleSubmit}
         />
