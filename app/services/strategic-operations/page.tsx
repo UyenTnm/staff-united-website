@@ -3,6 +3,8 @@
 import { Gauge, Layers3, ShieldCheck, Workflow } from "lucide-react";
 import StrategicOperationsForm from "../../../components/forms/StrategicOperationsForm";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function StrategicOperationsPage() {
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -52,6 +54,7 @@ export default function StrategicOperationsPage() {
       ],
     },
   ];
+  const router = useRouter();
 
   return (
     <main className="min-h-screen">
@@ -203,32 +206,17 @@ export default function StrategicOperationsPage() {
           </div>
 
           <div className="flex flex-wrap gap-4 mt-10">
-            <button
-              onClick={() =>
-                document.getElementById("quote-section")?.scrollIntoView({
-                  behavior: "smooth",
-                })
-              }
-              className="
-      px-7
-      py-4
-      rounded-full
-
-      bg-[#4F8DC9]
-      hover:bg-[#79B9FF]
-
-      text-white
-      font-medium
-
-      transition-all
-      duration-300
-    "
+            <Link
+              href="/choose-your-service"
+              target="_blank"
+              className="px-7 py-4 rounded-full bg-[#4F8DC9] hover:bg-[#79B9FF] text-white font-medium transition-all duration-300"
             >
               Request a Quote
-            </button>
+            </Link>
 
             <a
-              href="/request-support"
+              href="/client-fast-track"
+              target="_blank"
               className="
     px-7
     py-4
@@ -725,7 +713,7 @@ export default function StrategicOperationsPage() {
         </div>
       </section> */}
 
-      <StrategicOperationsForm />
+      {/* <StrategicOperationsForm /> */}
     </main>
   );
 }
