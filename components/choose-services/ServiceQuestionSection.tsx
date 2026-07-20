@@ -1,15 +1,23 @@
-import { ServiceDefinition } from "@/types/choose-services";
+import {
+  CategoryResponse,
+  ServiceDefinition,
+  ServiceResponse,
+} from "@/types/choose-services";
 import CategoryCard from "./CategoryCard";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useCategorySelection } from "@/hooks/useCategorySelection";
 import CategoryPanel from "./CategoryPanel";
 
 interface ServiceQuestionSectionProps {
   service: ServiceDefinition;
+  value?: ServiceResponse;
+  onChange: (response: ServiceResponse) => void;
 }
 
 export default function ServiceQuestionSection({
   service,
+  value,
+  onChange,
 }: ServiceQuestionSectionProps) {
   const {
     actualCategories,
@@ -18,55 +26,120 @@ export default function ServiceQuestionSection({
     toggleCategory,
   } = useCategorySelection(service);
 
-  const [selectedTasks, setSelectedTasks] = useState<Record<string, string[]>>(
-    {},
-  );
+  // const [selectedTasks, setSelectedTasks] = useState<Record<string, string[]>>(
+  //   {},
+  // );
 
-  const [selectedQuestions, setSelectedQuestions] = useState<
-    Record<string, string>
-  >({});
+  // const [selectedQuestions, setSelectedQuestions] = useState<
+  //   Record<string, string>
+  // >({});
 
-  const [selectedVoices, setSelectedVoices] = useState<
-    Record<
-      string,
-      {
-        blob: Blob;
-        previewUrl: string;
+  const [response, setResponse] = useState<ServiceResponse>(() => {
+    return (
+      value ?? {
+        categories: {},
       }
-    >
-  >({});
-
-  const updateQuestion = (categoryId: string, value: string) => {
-    setSelectedQuestions((prev) => ({
-      ...prev,
-      [categoryId]: value,
-    }));
-  };
+    );
+  });
 
   const updateVoice = (categoryId: string, blob: Blob, previewUrl: string) => {
-    setSelectedVoices((prev) => ({
-      ...prev,
-      [categoryId]: {
+    updateCategory(categoryId, (current) => ({
+      ...current,
+      voice: {
         blob,
         previewUrl,
       },
     }));
   };
 
-  const toggleTask = (categoryId: string, task: string) => {
-    setSelectedTasks((prev) => {
-      const currentTasks = prev[categoryId] || [];
+  const toggleTask = (categoryId: string, taskId: string) => {
+    updateCategory(categoryId, (current) => {
+      const tasks = current.selectedTasks ?? [];
 
-      const updatedTasks = currentTasks.includes(task)
-        ? currentTasks.filter((t) => t !== task)
-        : [...currentTasks, task];
+      const exists = tasks.includes(taskId);
 
       return {
-        ...prev,
-        [categoryId]: updatedTasks,
+        ...current,
+        selectedTasks: exists
+          ? tasks.filter((t) => t !== taskId)
+          : [...tasks, taskId],
       };
     });
   };
+
+  const updateQuestion = (categoryId: string, question: string) => {
+    updateCategory(categoryId, (current) => ({
+      ...current,
+      selectedQuestion: question,
+    }));
+  };
+
+  const updateCategory = (
+    categoryId: string,
+    updater: (
+      current: NonNullable<ServiceResponse["categories"][string]>,
+    ) => NonNullable<ServiceResponse["categories"][string]>,
+  ) => {
+    setResponse((prev) => {
+      const current: CategoryResponse = prev.categories[categoryId] ?? {
+        selected: true,
+        selectedTasks: [],
+        selectedQuestion: "",
+        note: "",
+      };
+
+      const updatedCategory = updater(current);
+
+      return {
+        ...prev,
+        categories: {
+          ...prev.categories,
+          [categoryId]: updatedCategory,
+        },
+      };
+    });
+  };
+
+  const handleToggleCategory = (categoryId: string) => {
+    toggleCategory(categoryId);
+
+    if (categoryId === "all") {
+      return;
+    }
+
+    setResponse((prev) => {
+      const exists = prev.categories[categoryId];
+
+      if (exists) {
+        const updated = { ...prev };
+        delete updated.categories[categoryId];
+        return updated;
+      }
+
+      return {
+        ...prev,
+        categories: {
+          ...prev.categories,
+          [categoryId]: {
+            selected: true,
+            selectedTasks: [],
+            selectedQuestion: "",
+            note: "",
+          },
+        },
+      };
+    });
+  };
+
+  useEffect(() => {
+    if (value) {
+      setResponse(value);
+    }
+  }, [value]);
+
+  useEffect(() => {
+    onChange(response);
+  }, [response, onChange]);
 
   return (
     <div className="rounded-2xl border border-[#D5E3F2] bg-white p-8">
@@ -89,7 +162,7 @@ export default function ServiceQuestionSection({
       <div className="mt-8 space-y-3">
         <button
           type="button"
-          onClick={() => toggleCategory("all")}
+          onClick={() => handleToggleCategory("all")}
           className="w-full rounded-xl border border-dashed border-[#D5E3F2] bg-white px-4 py-3 text-left text-sm font-semibold text-primary hover:bg-[#F5FAFF]"
         >
           Select All Areas
@@ -98,13 +171,15 @@ export default function ServiceQuestionSection({
         {service.categories
           .filter((category) => category.id !== "all")
           .map((category) => {
-            const isSelected = selectedCategories[category.id];
+            const isSelected =
+              selectedCategories[category.id] ||
+              !!response.categories[category.id];
             return (
               <div key={category.id} className="space-y-3">
                 <CategoryCard
                   category={category}
                   selected={isSelected}
-                  onToggle={() => toggleCategory(category.id)}
+                  onToggle={() => handleToggleCategory(category.id)}
                 />
 
                 {isSelected && (
@@ -115,13 +190,17 @@ export default function ServiceQuestionSection({
                     placeholder={category.placeholder}
                     allowVoice={category.allowVoice}
                     allowAiSuggestion={category.allowAiSuggestion}
-                    selectedTasks={selectedTasks[category.id] || []}
-                    selectedQuestion={selectedQuestions[category.id] || ""}
+                    selectedTasks={
+                      response.categories[category.id]?.selectedTasks ?? []
+                    }
+                    selectedQuestion={
+                      response.categories[category.id]?.selectedQuestion ?? ""
+                    }
+                    voice={response.categories[category.id]?.voice}
                     onToggleTask={(task) => toggleTask(category.id, task)}
                     onQuestionChange={(value) =>
                       updateQuestion(category.id, value)
                     }
-                    voice={selectedVoices[category.id]}
                     onVoiceReady={(blob, previewUrl) =>
                       updateVoice(category.id, blob, previewUrl)
                     }

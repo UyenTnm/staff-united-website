@@ -8,6 +8,7 @@ import ProjectGoalsSection from "./ProjectGoalsSection";
 import PrivacyConsentSection from "./PrivacyConsentSection";
 import SubmitSection from "./SubmitSection";
 import { validateQuoteForm } from "@/lib/validation/quote-form";
+import { ServiceResponse } from "@/types/choose-services";
 
 interface DynamicServiceSectionProps {
   selectedServices: string[];
@@ -39,6 +40,13 @@ export default function DynamicServiceSection({
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  // const [serviceResponses, setServiceResponses] = useState({});
+  const [serviceResponses, setServiceResponses] = useState<
+    Record<string, ServiceResponse>
+  >({});
+
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [leadId, setLeadId] = useState("");
 
   const updateContactInformation = (field: string, value: string) => {
     setContactInformation((prev) => ({
@@ -133,7 +141,81 @@ export default function DynamicServiceSection({
     setLoading(true);
 
     try {
-      console.log("Ready to submit...");
+      const formData = new FormData();
+
+      // ===========================
+      // Contact Information
+      // ===========================
+
+      formData.append("first_name", contactInformation.firstName);
+      formData.append("last_name", contactInformation.lastName);
+      formData.append("company_name", contactInformation.companyName);
+      formData.append("work_email", contactInformation.workEmail);
+      formData.append("phone", contactInformation.phone);
+
+      // ===========================
+      // Business Profile
+      // ===========================
+
+      formData.append("industry", businessProfile.industry);
+      formData.append("team_size", businessProfile.teamSize);
+
+      // ===========================
+      // Engagement
+      // ===========================
+
+      formData.append("engagement_type", engagement.engagementType);
+      formData.append("start_timeline", engagement.startTimeline);
+
+      // ===========================
+      // Project Goals
+      // ===========================
+
+      formData.append("primary_goal", projectGoals.primaryGoal);
+      formData.append(
+        "additional_information",
+        projectGoals.additionalInformation || "",
+      );
+
+      // ===========================
+      // Services
+      // ===========================
+
+      formData.append("selected_services", JSON.stringify(selectedServices));
+      console.log("serviceResponses", serviceResponses);
+      formData.append("service_details", JSON.stringify(serviceResponses));
+
+      // ===========================
+      // Convert giống Client Fast Track
+      // ===========================
+
+      const body = new URLSearchParams();
+
+      formData.forEach((value, key) => {
+        body.append(key, String(value));
+      });
+
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbxa5poOyblY5_JIbM1eNuiyVIVJv7i7ETstjB7luIZhow-4cn1K9AVwj06Ytwll_IlfAA/exec",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body,
+        },
+      );
+
+      const text = await response.text();
+
+      const result = JSON.parse(text);
+
+      if (result.success) {
+        setLeadId(result.leadId);
+        setSubmitSuccess(true);
+      } else {
+        alert(result.error || "Something went wrong.");
+      }
     } finally {
       setLoading(false);
     }
@@ -150,7 +232,8 @@ export default function DynamicServiceSection({
 
   return (
     <section className="mt-20">
-      <div className="rounded-3xl border border-[#D5E3F2] bg-white p-10 shadow-sm">
+      {/* <div className="rounded-3xl border border-[#D5E3F2] bg-white p-10 shadow-sm"> */}
+      <div className="space-y-8">
         {Object.keys(errors).length > 0 && (
           <div className="mb-8 rounded-xl border border-red-200 bg-red-50 px-5 py-4">
             <div className="flex items-start gap-3">
@@ -202,7 +285,17 @@ export default function DynamicServiceSection({
                 if (!service) return null;
 
                 return (
-                  <ServiceQuestionSection key={service.id} service={service} />
+                  <ServiceQuestionSection
+                    key={service.id}
+                    service={service}
+                    value={serviceResponses[service.id]}
+                    onChange={(response) => {
+                      setServiceResponses((prev) => ({
+                        ...prev,
+                        [service.id]: response,
+                      }));
+                    }}
+                  />
                 );
               },
             )}
@@ -232,6 +325,55 @@ export default function DynamicServiceSection({
           onSubmit={handleSubmit}
         />
       </div>
+
+      {submitSuccess && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-6">
+          <div className="w-full max-w-lg rounded-3xl bg-white p-8 shadow-2xl">
+            <div className="mb-6 flex justify-center">
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
+                <svg
+                  className="h-10 w-10 text-green-600"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <h2 className="text-center text-3xl font-bold text-[#0B4F8C]">
+              Thank You!
+            </h2>
+
+            <p className="mt-4 text-center text-gray-600">
+              Your request has been successfully submitted.
+            </p>
+
+            <div className="mt-6 rounded-xl bg-blue-50 p-4 text-center">
+              <p className="text-sm text-gray-500">Lead Reference</p>
+
+              <p className="mt-2 text-xl font-bold text-[#0B4F8C]">{leadId}</p>
+            </div>
+
+            <p className="mt-6 text-center text-gray-600">
+              A confirmation email will be sent shortly.
+            </p>
+
+            <button
+              onClick={() => setSubmitSuccess(false)}
+              className="mt-8 w-full rounded-xl bg-[#0B4F8C] py-3 font-semibold text-white hover:bg-[#083a67]"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

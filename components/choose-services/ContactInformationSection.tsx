@@ -1,3 +1,6 @@
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+
 interface ContactInformationSectionProps {
   formData: {
     firstName: string;
@@ -107,16 +110,41 @@ export default function ContactInformationSection({
         </div>
 
         <div className="md:col-span-2">
-          <input
-            type="text"
-            id="phone"
-            placeholder="Phone number *"
-            value={formData.phone}
-            onChange={(e) => onChange("phone", e.target.value)}
-            className={`${inputClass} ${
-              errors.phone ? "border-red-500 focus:border-red-500" : ""
-            }`}
-          />
+          <div className="relative w-full">
+            {(formData.phone === "" || formData.phone === "1") && (
+              <span
+                className="
+          absolute
+          left-[75px]
+          top-1/2
+          -translate-y-1/2
+          text-[#9ca3af]
+          pointer-events-none
+          z-10
+        "
+              >
+                Phone Number <span className="text-grey-500">*</span>
+              </span>
+            )}
+
+            <PhoneInput
+              country={"us"}
+              value={formData.phone}
+              onChange={(value) => onChange("phone", value)}
+              enableSearch
+              containerClass="w-full"
+              inputClass={`
+        !w-full
+        !h-[58px]
+        !rounded-xl
+        !border
+        ${errors.phone ? "!border-red-500" : "!border-[#D5E3F2]"}
+        !pl-[52px]
+      `}
+              buttonClass="!border-[#D5E3F2] !rounded-l-xl"
+            />
+          </div>
+
           {errors.phone && (
             <p className="mt-2 text-sm text-red-600">{errors.phone}</p>
           )}

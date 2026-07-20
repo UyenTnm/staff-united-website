@@ -44,14 +44,7 @@ export const accountingLegal: ServiceDefinition = {
       question: {
         title: "Transactions processed per month (approx.)",
         type: "select",
-        options: [
-          "Please select",
-          "Fewer than 50",
-          "50-150",
-          "150-500",
-          "500-1,500",
-          "1,500+",
-        ],
+        options: ["Fewer than 50", "50-150", "150-500", "500-1,500", "1,500+"],
       },
     },
     {
@@ -78,14 +71,7 @@ export const accountingLegal: ServiceDefinition = {
       question: {
         title: "Invoices sent to clients per month",
         type: "select",
-        options: [
-          "Please select",
-          "Fewer than 10",
-          "10-30",
-          "30-75",
-          "75-200",
-          "200+",
-        ],
+        options: ["Fewer than 10", "10-30", "30-75", "75-200", "200+"],
       },
     },
     {
@@ -117,7 +103,6 @@ export const accountingLegal: ServiceDefinition = {
         title: "Who receives these reports?",
         type: "select",
         options: [
-          "Please select",
           "Just the owner/founder",
           "Leadership/management team",
           "Board of directors",
@@ -155,7 +140,7 @@ export const accountingLegal: ServiceDefinition = {
       question: {
         title: "Employees/contractors needing payroll support",
         type: "select",
-        options: ["Please select", "1-5", "6-15", "16-30", "31-75", "75+"],
+        options: ["1-5", "6-15", "16-30", "31-75", "75+"],
       },
     },
     {
@@ -207,14 +192,7 @@ export const accountingLegal: ServiceDefinition = {
       question: {
         title: "How many legal/contract documents need organizing?",
         type: "select",
-        options: [
-          "Please select",
-          "Fewer than 20",
-          "20-75",
-          "75-200",
-          "200-500",
-          "500+",
-        ],
+        options: ["Fewer than 20", "20-75", "75-200", "200-500", "500+"],
       },
     },
     {
@@ -241,14 +219,7 @@ export const accountingLegal: ServiceDefinition = {
       question: {
         title: "Active contracts managed (client and/or vendor)",
         type: "select",
-        options: [
-          "Please select",
-          "Fewer than 10",
-          "10-30",
-          "30-75",
-          "75-150",
-          "150+",
-        ],
+        options: ["Fewer than 10", "10-30", "30-75", "75-150", "150+"],
       },
     },
     {
@@ -283,7 +254,6 @@ export const accountingLegal: ServiceDefinition = {
         title: "Upcoming audit, review, or examination?",
         type: "select",
         options: [
-          "Please select",
           "Yes — date confirmed",
           "Yes — likely within 6 months",
           "No — but want to be prepared",
@@ -356,7 +326,6 @@ export const accountingLegal: ServiceDefinition = {
         title: "Do you work with outside legal counsel?",
         type: "select",
         options: [
-          "Please select",
           "Yes — regularly",
           "Yes — occasionally",
           "No — handle internally",

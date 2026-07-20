@@ -32,7 +32,6 @@ export const futureExpansion: ServiceDefinition = {
         title: "How developed is your expansion plan?",
         type: "select",
         options: [
-          "Please select",
           "Just an idea — no research done yet",
           "Early research — exploring options",
           "Plan in progress — need support to complete",
@@ -69,7 +68,7 @@ export const futureExpansion: ServiceDefinition = {
       question: {
         title: "Partners/vendors to research",
         type: "select",
-        options: ["Please select", "5-10", "10-25", "25-50", "50-100", "100+"],
+        options: ["5-10", "10-25", "25-50", "50-100", "100+"],
       },
     },
 
@@ -101,7 +100,6 @@ export const futureExpansion: ServiceDefinition = {
         title: "Planned launch timeline",
         type: "select",
         options: [
-          "Please select",
           "Within 1 month",
           "1-3 months",
           "3-6 months",
@@ -141,7 +139,6 @@ export const futureExpansion: ServiceDefinition = {
         title: "Seeking investment or external funding?",
         type: "select",
         options: [
-          "Please select",
           "Yes — actively seeking now",
           "Yes — planning to in next 6 months",
           "Possibly — still evaluating",
@@ -175,7 +172,6 @@ export const futureExpansion: ServiceDefinition = {
         title: "Active expansion projects right now",
         type: "select",
         options: [
-          "Please select",
           "None yet — planning phase",
           "1 initiative",
           "2-3 initiatives",
@@ -209,7 +205,6 @@ export const futureExpansion: ServiceDefinition = {
         title: "Existing business plan or growth document?",
         type: "select",
         options: [
-          "Please select",
           "No — starting from scratch",
           "Basic notes/ideas only",
           "Draft exists — needs development",

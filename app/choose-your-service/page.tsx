@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { SERVICES } from "@/data/choose-services/services";
-import { DynamicServerError } from "next/dist/client/components/hooks-server-context";
+// import { DynamicServerError } from "next/dist/client/components/hooks-server-context";
 import DynamicServiceSection from "@/components/choose-services/DynamicServiceSection";
 
 const services = [

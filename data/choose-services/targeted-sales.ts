@@ -49,14 +49,7 @@ export const targetedSales: ServiceDefinition = {
       question: {
         title: "New leads per month",
         type: "select",
-        options: [
-          "Please select",
-          "Fewer than 20",
-          "20-50",
-          "50-150",
-          "150-500",
-          "500+",
-        ],
+        options: ["Fewer than 20", "20-50", "50-150", "150-500", "500+"],
       },
     },
 
@@ -99,14 +92,7 @@ export const targetedSales: ServiceDefinition = {
       question: {
         title: "Outreach contacts targeted per week",
         type: "select",
-        options: [
-          "Please select",
-          "Fewer than 10",
-          "10-30",
-          "30-100",
-          "100-300",
-          "300+",
-        ],
+        options: ["Fewer than 10", "10-30", "30-100", "100-300", "300+"],
       },
     },
 
@@ -157,14 +143,7 @@ export const targetedSales: ServiceDefinition = {
       question: {
         title: "Open deals/opportunities in pipeline",
         type: "select",
-        options: [
-          "Please select",
-          "Fewer than 10",
-          "10-30",
-          "30-75",
-          "75-150",
-          "150+",
-        ],
+        options: ["Fewer than 10", "10-30", "30-75", "75-150", "150+"],
       },
     },
 
@@ -203,7 +182,7 @@ export const targetedSales: ServiceDefinition = {
       question: {
         title: "Proposals/quotes sent per month",
         type: "select",
-        options: ["Please select", "Fewer than 5", "5-15", "15-30", "30+"],
+        options: ["Fewer than 5", "5-15", "15-30", "30+"],
       },
     },
 
@@ -242,14 +221,7 @@ export const targetedSales: ServiceDefinition = {
       question: {
         title: "Active client accounts managed",
         type: "select",
-        options: [
-          "Please select",
-          "Fewer than 10",
-          "10-30",
-          "30-75",
-          "75-200",
-          "200+",
-        ],
+        options: ["Fewer than 10", "10-30", "30-75", "75-200", "200+"],
       },
     },
 
@@ -289,7 +261,6 @@ export const targetedSales: ServiceDefinition = {
         title: "How are sales reports currently produced?",
         type: "select",
         options: [
-          "Please select",
           "Not being produced at all",
           "Manually — very time consuming",
           "Partially automated",
@@ -316,36 +287,5 @@ export const targetedSales: ServiceDefinition = {
 
       allowAiSuggestion: true,
     },
-
-    
   ],
-
-  // secondQuestion: {
-  //   title: "Do you currently use a CRM system?",
-  //   options: [
-  //     {
-  //       id: "yes",
-  //       title: "Yes",
-  //     },
-  //     {
-  //       id: "no",
-  //       title: "No",
-  //     },
-  //     {
-  //       id: "not-sure",
-  //       title: "Not sure",
-  //     },
-  //   ],
-
-  //   additionalQuestion: {
-  //     enabled: true,
-
-  //     title: "Tell us more about your current sales process",
-
-  //     placeholder:
-  //       "Share any additional details that will help us understand your current setup.",
-
-  //     allowVoice: true,
-  //   },
-  // },
 };

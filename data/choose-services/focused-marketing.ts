@@ -38,13 +38,7 @@ export const focusedMarketing: ServiceDefinition = {
       question: {
         title: "Pieces of content needed per week",
         type: "select",
-        options: [
-          "Please select",
-          "1-3 pieces",
-          "4-7 pieces",
-          "8-15 pieces",
-          "15+ pieces",
-        ],
+        options: ["1-3 pieces", "4-7 pieces", "8-15 pieces", "15+ pieces"],
       },
     },
 
@@ -76,7 +70,6 @@ export const focusedMarketing: ServiceDefinition = {
         title: "Posts per week across all platforms",
         type: "select",
         options: [
-          "Please select",
           "1-3 posts/week",
           "4-7 posts/week",
           "8-14 posts/week",
@@ -119,7 +112,6 @@ export const focusedMarketing: ServiceDefinition = {
         title: "Marketing campaigns run per month",
         type: "select",
         options: [
-          "Please select",
           "None currently",
           "1-2 campaigns",
           "3-5 campaigns",
@@ -156,7 +148,6 @@ export const focusedMarketing: ServiceDefinition = {
         title: "Established brand identity?",
         type: "select",
         options: [
-          "Please select",
           "No — brand is not defined yet",
           "Basic — logo only, no guidelines",
           "Partial — some assets but inconsistent",
@@ -186,7 +177,6 @@ export const focusedMarketing: ServiceDefinition = {
         title: "Competitors to monitor/research",
         type: "select",
         options: [
-          "Please select",
           "1-3 competitors",
           "4-7 competitors",
           "8-15 competitors",
@@ -231,7 +221,6 @@ export const focusedMarketing: ServiceDefinition = {
         title: "How are marketing results currently tracked?",
         type: "select",
         options: [
-          "Please select",
           "Not being tracked at all",
           "Manually — very time consuming",
           "Partially — some platforms tracked",

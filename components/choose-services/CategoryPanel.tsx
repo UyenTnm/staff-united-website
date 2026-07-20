@@ -4,6 +4,13 @@ import { useState } from "react";
 import TaskChip from "./TaskChip";
 import { CategoryQuestion, TaskOption } from "@/types/choose-services";
 import VoiceRecorder from "../forms/VoiceRecorder";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 interface CategoryPanelProps {
   tasks?: TaskOption[];
@@ -69,7 +76,7 @@ export default function CategoryPanel({
           value={selectedQuestion ?? ""}
           onChange={(e) => onQuestionChange?.(e.target.value)}
           rows={6}
-          className="mt-5 w-full resize-none rounded-lg border border-[#D5E3F2] bg-white px-4 py-3 text-sm outline-none focus:border-primary"
+          className="mt-5 w-full resize-none rounded-xl border border-[#D5E3F2] bg-white px-4 py-3 text-sm outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
         />
         <VoiceRecorder
           onRecordingReady={(blob, previewUrl) =>
@@ -98,7 +105,7 @@ export default function CategoryPanel({
     <div className="mt-4 rounded-xl border border-[#D5E3F2] bg-[#FAFCFF] p-5">
       <h4 className="text-sm font-semibold text-secondary">Specific Tasks</h4>
 
-      <div className="mt-4 flex flex-wrap gap-3">
+      <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {tasks.map((task) => (
           <TaskChip
             key={task.id}
@@ -115,17 +122,22 @@ export default function CategoryPanel({
             {question.title}
           </label>
 
-          <select
+          <Select
             value={selectedQuestion ?? ""}
-            onChange={(e) => onQuestionChange?.(e.target.value)}
-            className="w-full rounded-lg border border-[#D5E3F2] bg-white px-4 py-3 text-sm"
+            onValueChange={(value) => onQuestionChange?.(value)}
           >
-            {question.options?.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
+            <SelectTrigger className="h-14 w-full rounded-xl border-[#D5E3F2] bg-white">
+              <SelectValue placeholder="Please select an option" />
+            </SelectTrigger>
+
+            <SelectContent>
+              {question.options?.map((option) => (
+                <SelectItem key={option} value={option}>
+                  {option}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
       )}
     </div>

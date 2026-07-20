@@ -63,6 +63,17 @@ export interface ServiceDefinition {
 
 export interface CategoryResponse {
   selected: boolean;
+
+  selectedTasks?: string[];
+
+  selectedQuestion?: string;
+
+  voice?: {
+    blob: Blob;
+    previewUrl: string;
+  };
+
+  note?: string;
 }
 
 export interface ServiceResponse {

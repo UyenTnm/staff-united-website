@@ -57,10 +57,9 @@ export const strategicOperations: ServiceDefinition = {
       ],
 
       question: {
+        type: "select",
         title: "Hours per week needed",
-
         options: [
-          "Please select",
           "1-5 hrs/week",
           "5-10 hrs/week",
           "10-20 hrs/week",
@@ -170,7 +169,6 @@ export const strategicOperations: ServiceDefinition = {
         title: "How many processes/departments need documenting?",
         type: "select",
         options: [
-          "Please select",
           "1-3 processes",
           "4-10 processes",
           "10-20 processes",
@@ -226,13 +224,7 @@ export const strategicOperations: ServiceDefinition = {
       question: {
         title: "How many employees/hires will this cover?",
         type: "select",
-        options: [
-          "Please select",
-          "1-5 people",
-          "6-20 people",
-          "21-50 people",
-          "50+ people",
-        ],
+        options: ["1-5 people", "6-20 people", "21-50 people", "50+ people"],
       },
     },
 
@@ -271,13 +263,7 @@ export const strategicOperations: ServiceDefinition = {
       question: {
         title: "How many active clients/customers?",
         type: "select",
-        options: [
-          "Please select",
-          "Fewer than 20",
-          "20-100",
-          "100-500",
-          "500+",
-        ],
+        options: ["Fewer than 20", "20-100", "100-500", "500+"],
       },
     },
 
@@ -300,29 +286,4 @@ export const strategicOperations: ServiceDefinition = {
       allowAiSuggestion: true,
     },
   ],
-  // secondQuestion: {
-  //   title: "Do you have dedicated ops/admin staff?",
-  //   options: [
-  //     {
-  //       id: "dedicated",
-  //       title: "Yes, we have a dedicated team",
-  //     },
-  //     {
-  //       id: "part-time",
-  //       title: "Yes, part-time",
-  //     },
-  //     {
-  //       id: "partial",
-  //       title: "Partially",
-  //     },
-  //     {
-  //       id: "adhoc",
-  //       title: "No, we handle ad hoc",
-  //     },
-  //     {
-  //       id: "none",
-  //       title: "No staff at all",
-  //     },
-  //   ],
-  // },
 };
