@@ -95,13 +95,10 @@ export const focusedMarketing: ServiceDefinition = {
           id: "email-campaign-setup-support",
           title: "Email Campaign Setup Support",
         },
-        {
-          id: "campaign-calendar-management",
-          title: "Campaign Calendar Management",
-        },
+
         {
           id: "marketing-task-coordination",
-          title: "Marketing Task Coordination",
+          title: "Cross-Channel Campaign Task Coordination",
         },
         {
           id: "landing-page-content-support",
@@ -111,8 +108,11 @@ export const focusedMarketing: ServiceDefinition = {
           id: "campaign-asset-organization",
           title: "Campaign Asset Organization",
         },
-        { id: "promotion-tracking", title: "Promotion Tracking" },
-        { id: "lead-magnet-support", title: "Lead Magnet Support" },
+        { id: "promotion-tracking", title: "Promotion & Offer Tracking" },
+        {
+          id: "lead-magnet-support",
+          title: "Lead Magnet Support (Setup & Delivery)",
+        },
       ],
 
       question: {
@@ -138,16 +138,20 @@ export const focusedMarketing: ServiceDefinition = {
           title: "Presentation Design Support",
         },
         { id: "brand-asset-organization", title: "Brand Asset Organization" },
-        { id: "template-creation", title: "Template Creation" },
-        { id: "simple-graphics", title: "Simple Graphics" },
         {
-          id: "marketing-collateral-formatting",
-          title: "Marketing Collateral Formatting",
+          id: "template-creation",
+          title: "Reusable Template Creation (Social, Docs, Slides)",
         },
+        { id: "simple-graphics", title: "One-Off Graphics & Social Visuals" },
+
         { id: "pitch-deck-support", title: "Pitch Deck Support" },
         {
           id: "brochure-and-flyer-formatting",
           title: "Brochure and Flyer Formatting",
+        },
+        {
+          id: "video-filming",
+          title: "Video Filming (Vietnam-based)",
         },
       ],
 
@@ -169,15 +173,14 @@ export const focusedMarketing: ServiceDefinition = {
       description: "Researching your market, competitors, and customers",
 
       tasks: [
-        { id: "competitor-research", title: "Competitor Research" },
+        { id: "competitor-research", title: "Competitor Profile Research" },
         { id: "market-trend-research", title: "Market Trend Research" },
         { id: "customer-persona-research", title: "Customer Persona Research" },
-        { id: "content-idea-research", title: "Content Idea Research" },
+        { id: "content-idea-research", title: "Content Idea & Topic Research" },
         {
           id: "industry-research-summaries",
           title: "Industry Research Summaries",
         },
-        { id: "social-media-benchmarking", title: "Social Media Benchmarking" },
       ],
 
       question: {

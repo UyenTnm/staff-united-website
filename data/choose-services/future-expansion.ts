@@ -16,15 +16,16 @@ export const futureExpansion: ServiceDefinition = {
       description: "Researching a new city, country, or market to enter",
 
       tasks: [
-        { id: "new-market-research", title: "New Market Research" },
-        { id: "country-or-city-research", title: "Country or City Research" },
-        { id: "competitor-mapping", title: "Competitor Mapping" },
-        { id: "market-entry-research", title: "Market Entry Research" },
-        { id: "pricing-research", title: "Pricing Research" },
-        { id: "local-partner-research", title: "Local Partner Research" },
+        { id: "country-or-city-research", title: "Country/City Research" },
+        { id: "competitor-mapping", title: "Competitor Mapping (New Market)" },
+        {
+          id: "market-entry-research",
+          title: "Market Entry Strategy Research",
+        },
+        { id: "pricing-research", title: "Local Pricing Research" },
         {
           id: "expansion-opportunity-reports",
-          title: "Expansion Opportunity Reports",
+          title: "Market Opportunity Summary Report",
         },
       ],
 
@@ -49,10 +50,9 @@ export const futureExpansion: ServiceDefinition = {
       tasks: [
         {
           id: "potential-partner-research",
-          title: "Potential Partner Research",
+          title: "Potential Partner Identification",
         },
         { id: "vendor-sourcing", title: "Vendor Sourcing" },
-        { id: "supplier-research", title: "Supplier Research" },
         { id: "distributor-research", title: "Distributor Research" },
         {
           id: "strategic-contact-list-building",
@@ -60,9 +60,12 @@ export const futureExpansion: ServiceDefinition = {
         },
         {
           id: "partnership-outreach-preparation",
-          title: "Partnership Outreach Preparation",
+          title: "Partnership Outreach Preparation (Intro Messages, Materials)",
         },
-        { id: "vendor-comparison-reports", title: "Vendor Comparison Reports" },
+        {
+          id: "vendor-comparison-reports",
+          title: "Vendor/Partner Comparison Report",
+        },
       ],
 
       question: {
@@ -78,13 +81,15 @@ export const futureExpansion: ServiceDefinition = {
       description: "Planning and organizing the launch of something new",
 
       tasks: [
-        { id: "launch-research", title: "Launch Research" },
         { id: "launch-checklist-support", title: "Launch Checklist Support" },
         {
           id: "product-service-positioning-research",
-          title: "Product or Service Positioning Research",
+          title: "Product/Service Positioning Research",
         },
-        { id: "competitive-analysis", title: "Competitive Analysis" },
+        {
+          id: "competitive-analysis",
+          title: "Competitive Analysis (Launch-Specific)",
+        },
         { id: "rollout-planning-support", title: "Rollout Planning Support" },
         {
           id: "launch-timeline-coordination",
@@ -92,7 +97,7 @@ export const futureExpansion: ServiceDefinition = {
         },
         {
           id: "launch-documentation-support",
-          title: "Launch Documentation Support",
+          title: "Launch Documentation Support (Briefs, Runbooks)",
         },
       ],
 
@@ -120,10 +125,9 @@ export const futureExpansion: ServiceDefinition = {
           title: "Industry Opportunity Research",
         },
         { id: "target-account-research", title: "Target Account Research" },
-        { id: "expansion-lead-lists", title: "Expansion Lead Lists" },
         {
           id: "investor-grant-research-support",
-          title: "Investor or Grant Research Support",
+          title: "Investor & Grant Research Support",
         },
         {
           id: "franchise-licensing-research",
@@ -155,13 +159,12 @@ export const futureExpansion: ServiceDefinition = {
       tasks: [
         { id: "expansion-task-tracking", title: "Expansion Task Tracking" },
         { id: "milestone-tracking", title: "Milestone Tracking" },
-        { id: "project-documentation", title: "Project Documentation" },
+        { id: "project-documentation", title: "Project Status Documentation" },
         {
           id: "cross-border-coordination-support",
           title: "Cross-border Coordination Support",
         },
-        { id: "partner-follow-up", title: "Partner Follow-up" },
-        { id: "status-reporting", title: "Status Reporting" },
+        { id: "partner-follow-up", title: "Partner Follow-up & Communication" },
         {
           id: "expansion-file-organization",
           title: "Expansion File Organization",
@@ -186,7 +189,6 @@ export const futureExpansion: ServiceDefinition = {
       description: "Research and documents to support your business planning",
 
       tasks: [
-        { id: "research-briefs", title: "Research Briefs" },
         { id: "business-plan-support", title: "Business Plan Support" },
         { id: "feasibility-study-support", title: "Feasibility Study Support" },
         { id: "swot-research-support", title: "SWOT Research Support" },
@@ -194,10 +196,9 @@ export const futureExpansion: ServiceDefinition = {
           id: "opportunity-assessment-support",
           title: "Opportunity Assessment Support",
         },
-        { id: "presentation-deck-support", title: "Presentation Deck Support" },
         {
-          id: "decision-support-summaries",
-          title: "Decision Support Summaries",
+          id: "presentation-deck-support",
+          title: "Board/Investor Presentation Deck Support",
         },
       ],
 

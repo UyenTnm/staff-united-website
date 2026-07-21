@@ -237,7 +237,7 @@ export default function DynamicServiceSection({
       });
 
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbzSN5KsE3hBuho7Vz_Mhqm3mfwNqKenMFltwceE9kO6YQaDX_kcjrwY0m-l58MehD-xXw/exec",
+        "https://script.google.com/macros/s/AKfycbxOXCCBboAAXitoN6QcfK76leYB2ZhQQQgZbFfcXrQ2WOztj0AlTPXG7XtE7Fbr24ScFQ/exec",
         {
           method: "POST",
           headers: {
