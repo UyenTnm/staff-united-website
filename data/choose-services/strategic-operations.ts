@@ -84,31 +84,19 @@ export const strategicOperations: ServiceDefinition = {
         },
         {
           id: "task-management-support",
-          title: "Task Management Support",
+          title: "Task & Project Tracking",
         },
         {
           id: "internal-reporting-support",
-          title: "Internal Reporting Support",
+          title: "Internal Reports & Dashboards",
         },
         {
           id: "department-coordination",
-          title: "Department Coordination",
+          title: "Cross-Department Coordination",
         },
         {
           id: "vendor-follow-up",
           title: "Vendor Follow-up",
-        },
-        {
-          id: "client-follow-up-operational",
-          title: "Client Follow-up (Operational)",
-        },
-        {
-          id: "internal-project-tracking",
-          title: "Internal Project Tracking",
-        },
-        {
-          id: "process-documentation",
-          title: "Process Documentation",
         },
       ],
       question: {
@@ -133,11 +121,11 @@ export const strategicOperations: ServiceDefinition = {
       tasks: [
         {
           id: "sop-drafting",
-          title: "SOP Drafting",
+          title: "Writing New SOPs",
         },
         {
           id: "sop-formatting",
-          title: "SOP Formatting",
+          title: "Formatting Existing SOPs",
         },
         {
           id: "process-mapping",
@@ -153,15 +141,15 @@ export const strategicOperations: ServiceDefinition = {
         },
         {
           id: "internal-procedure-organization",
-          title: "Internal Procedure Organization",
+          title: "Organizing Individual Procedures",
         },
         {
           id: "operations-manual-support",
-          title: "Operations Manual Support",
+          title: "Full Operations Manual Support",
         },
         {
           id: "template-creation",
-          title: "Template Creation",
+          title: "Template Creation (Forms, Trackers, Docs)",
         },
       ],
 
@@ -183,10 +171,6 @@ export const strategicOperations: ServiceDefinition = {
       description: "Hiring, onboarding, and employee record-keeping",
 
       tasks: [
-        {
-          id: "recruitment-coordination",
-          title: "Recruitment Coordination",
-        },
         {
           id: "job-posting-support",
           title: "Job Posting Support",

@@ -43,7 +43,7 @@ export default function ProjectGoalsSection({
       <div className="space-y-6">
         <div>
           <label className="mb-2 block text-sm font-medium text-secondary">
-            What's the #1 outcome you want, and qhat's stopped you from solving
+            What's the #1 outcome you want, and what's stopped you from solving
             this already?
           </label>
 

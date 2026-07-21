@@ -18,7 +18,7 @@ export const targetedSales: ServiceDefinition = {
       tasks: [
         {
           id: "lead-list-organization",
-          title: "Lead List Organization",
+          title: "Consolidating & Cleaning Lead Lists",
         },
         {
           id: "lead-qualification-support",
@@ -26,7 +26,7 @@ export const targetedSales: ServiceDefinition = {
         },
         {
           id: "crm-lead-entry",
-          title: "CRM Lead Entry",
+          title: "Entering New Leads into CRM",
         },
         {
           id: "lead-tagging-and-segmentation",
@@ -39,10 +39,6 @@ export const targetedSales: ServiceDefinition = {
         {
           id: "contact-information-verification",
           title: "Contact Information Verification",
-        },
-        {
-          id: "pipeline-data-cleanup",
-          title: "Pipeline Data Cleanup",
         },
       ],
 
@@ -69,11 +65,11 @@ export const targetedSales: ServiceDefinition = {
         },
         {
           id: "follow-up-message-preparation",
-          title: "Follow-up Message Preparation",
+          title: "Outreach Follow-up Message Drafting",
         },
         {
           id: "sales-sequence-support",
-          title: "Sales Sequence Support",
+          title: "Multi-Step Sequence Setup & Management",
         },
         {
           id: "appointment-setting-support",
@@ -81,7 +77,7 @@ export const targetedSales: ServiceDefinition = {
         },
         {
           id: "cold-outreach-administration",
-          title: "Cold Outreach Administration",
+          title: "Cold Campaign Coordination & Tracking",
         },
         {
           id: "call-list-preparation",
@@ -108,7 +104,7 @@ export const targetedSales: ServiceDefinition = {
         },
         {
           id: "crm-updates",
-          title: "CRM Updates",
+          title: "Contact & Company Record Updates",
         },
         {
           id: "pipeline-tracking",
@@ -120,12 +116,9 @@ export const targetedSales: ServiceDefinition = {
         },
         {
           id: "follow-up-reminders",
-          title: "Follow-up Reminders",
+          title: "CRM Task & Reminder Setup",
         },
-        {
-          id: "sales-activity-reporting",
-          title: "Sales Activity Reporting",
-        },
+
         {
           id: "opportunity-tracking",
           title: "Opportunity Tracking",
@@ -136,7 +129,7 @@ export const targetedSales: ServiceDefinition = {
         },
         {
           id: "crm-hygiene-support",
-          title: "CRM Hygiene Support",
+          title: "CRM Data Cleanup (Duplicates, Missing Fields)",
         },
       ],
 
@@ -163,19 +156,15 @@ export const targetedSales: ServiceDefinition = {
         },
         {
           id: "sales-deck-organization",
-          title: "Sales Deck Organization",
+          title: "Sales Deck Organization & Templates",
         },
         {
           id: "client-presentation-support",
-          title: "Client Presentation Support",
+          title: "Client-Specific Presentation Customization",
         },
         {
           id: "contract-handoff-coordination",
           title: "Contract Handoff Coordination",
-        },
-        {
-          id: "sales-document-management",
-          title: "Sales Document Management",
         },
       ],
 
@@ -194,12 +183,9 @@ export const targetedSales: ServiceDefinition = {
       tasks: [
         {
           id: "follow-up-scheduling",
-          title: "Follow-up Scheduling",
+          title: "Client Check-in & Follow-up Scheduling",
         },
-        {
-          id: "client-check-in-coordination",
-          title: "Client Check-in Coordination",
-        },
+
         {
           id: "renewal-reminder-tracking",
           title: "Renewal Reminder Tracking",
@@ -214,7 +200,7 @@ export const targetedSales: ServiceDefinition = {
         },
         {
           id: "sales-meeting-preparation",
-          title: "Sales Meeting Preparation",
+          title: "Internal Meeting Notes & Agenda Prep",
         },
       ],
 
@@ -253,7 +239,7 @@ export const targetedSales: ServiceDefinition = {
         },
         {
           id: "crm-hygiene-reports",
-          title: "CRM Hygiene Reports",
+          title: "CRM Data Quality Status Reports",
         },
       ],
 

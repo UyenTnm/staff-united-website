@@ -22,17 +22,25 @@ export const focusedMarketing: ServiceDefinition = {
         },
         { id: "blog-content-support", title: "Blog Content Support" },
         { id: "newsletter-support", title: "Newsletter Support" },
-        { id: "caption-writing", title: "Caption Writing" },
         { id: "content-calendar-support", title: "Content Calendar Support" },
-        { id: "content-repurposing", title: "Content Repurposing" },
-        { id: "basic-copywriting-support", title: "Basic Copywriting Support" },
+        {
+          id: "content-repurposing",
+          title: "Repurposing Long-Form Text into Posts",
+        },
+        {
+          id: "basic-copywriting-support",
+          title: "Basic Copywriting Support (Ads, Emails, Web Snippets)",
+        },
         { id: "website-content-updates", title: "Website Content Updates" },
-        { id: "video-editing-support", title: "Video Editing Support" },
+        { id: "video-editing-support", title: "General Video Editing Support" },
         {
           id: "short-form-video-content",
           title: "Short-Form Video Content (Reels/TikTok)",
         },
-        { id: "video-repurposing", title: "Video Repurposing" },
+        {
+          id: "video-repurposing",
+          title: "Repurposing Long-Form Video into Clips",
+        },
       ],
 
       question: {
@@ -51,19 +59,18 @@ export const focusedMarketing: ServiceDefinition = {
         { id: "post-scheduling", title: "Post Scheduling" },
         {
           id: "community-engagement-support",
-          title: "Community Engagement Support",
+          title: "Community Engagement & Reply Support",
         },
+
         {
-          id: "comment-and-message-monitoring",
-          title: "Comment and Message Monitoring",
+          id: "social-inbox-organization",
+          title: "Social Inbox Organization & Routing",
         },
-        { id: "social-inbox-organization", title: "Social Inbox Organization" },
-        { id: "hashtag-research", title: "Hashtag Research" },
+        { id: "hashtag-research", title: "Hashtag & Keyword Research" },
         {
           id: "competitor-content-monitoring",
           title: "Competitor Content Monitoring",
         },
-        { id: "social-media-reporting", title: "Social Media Reporting" },
       ],
 
       question: {

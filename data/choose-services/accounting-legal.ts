@@ -117,11 +117,14 @@ export const accountingLegal: ServiceDefinition = {
       description: "Preparing pay, timesheets, and contractor payments",
 
       tasks: [
-        { id: "payroll-data-preparation", title: "Payroll Data Preparation" },
+        {
+          id: "payroll-data-preparation",
+          title: "Pre-Payroll Data Prep (Hours, Rates, Changes)",
+        },
         { id: "timesheet-collection", title: "Timesheet Collection" },
         {
           id: "contractor-payment-records",
-          title: "Contractor Payment Records",
+          title: "Contractor Payment Tracking",
         },
         {
           id: "commission-tracking-support",
@@ -129,7 +132,7 @@ export const accountingLegal: ServiceDefinition = {
         },
         {
           id: "payroll-report-organization",
-          title: "Payroll Report Organization",
+          title: "Post-Payroll Report Filing & Organization",
         },
         {
           id: "employee-reimbursement-tracking",
@@ -306,10 +309,13 @@ export const accountingLegal: ServiceDefinition = {
 
       tasks: [
         { id: "legal-task-tracking", title: "Legal Task Tracking" },
-        { id: "matter-file-organization", title: "Matter File Organization" },
+        {
+          id: "matter-file-organization",
+          title: "Legal Matter/Case File Organization",
+        },
         {
           id: "evidence-and-document-collection-support",
-          title: "Evidence and Document Collection Support",
+          title: "Legal Evidence & Discovery Document Collection",
         },
         { id: "legal-billing-support", title: "Legal Billing Support" },
         {
@@ -318,7 +324,7 @@ export const accountingLegal: ServiceDefinition = {
         },
         {
           id: "board-corporate-document-preparation",
-          title: "Board/Corporate Document Preparation",
+          title: "Board/Corporate Document Drafting",
         },
       ],
 
