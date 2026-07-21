@@ -8,6 +8,7 @@ import {
   TrendingUp,
   UserCheck,
 } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function TargetedSalesPage() {
@@ -197,58 +198,18 @@ export default function TargetedSalesPage() {
             )}
           </div>
 
-          {/* <button
-            onClick={() =>
-              document.getElementById("quote-section")?.scrollIntoView({
-                behavior: "smooth",
-              })
-            }
-            className="
-    mt-10
-    px-7
-    py-4
-    rounded-full
-
-    bg-[#4F8DC9]
-    hover:bg-[#79B9FF]
-
-    text-white
-    font-medium
-
-    transition-all
-    duration-300
-  "
-          >
-            Request a Quote
-          </button> */}
-
           <div className="flex flex-wrap gap-4 mt-10">
-            <button
-              onClick={() =>
-                document.getElementById("quote-section")?.scrollIntoView({
-                  behavior: "smooth",
-                })
-              }
-              className="
-      px-7
-      py-4
-      rounded-full
-
-      bg-[#4F8DC9]
-      hover:bg-[#79B9FF]
-
-      text-white
-      font-medium
-
-      transition-all
-      duration-300
-    "
+            <Link
+              href="/choose-your-service"
+              target="_blank"
+              className="px-7 py-4 rounded-full bg-[#4F8DC9] hover:bg-[#79B9FF] text-white font-medium transition-all duration-300"
             >
               Request a Quote
-            </button>
+            </Link>
 
             <a
-              href="/request-support"
+              href="/client-fast-track"
+              target="_blank"
               className="
     px-7
     py-4
@@ -749,7 +710,7 @@ export default function TargetedSalesPage() {
           </div>
         </div>
       </section> */}
-      <TargetedSalesForm />
+      {/* <TargetedSalesForm /> */}
     </main>
   );
 }
