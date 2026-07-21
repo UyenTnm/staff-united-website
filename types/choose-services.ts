@@ -69,8 +69,9 @@ export interface CategoryResponse {
   selectedQuestion?: string;
 
   voice?: {
-    blob: Blob;
-    previewUrl: string;
+    blob?: Blob;
+    previewUrl?: string;
+    url?: string;
   };
 
   note?: string;

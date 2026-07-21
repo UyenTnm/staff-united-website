@@ -9,6 +9,7 @@ import PrivacyConsentSection from "./PrivacyConsentSection";
 import SubmitSection from "./SubmitSection";
 import { validateQuoteForm } from "@/lib/validation/quote-form";
 import { ServiceResponse } from "@/types/choose-services";
+import { supabase } from "@/lib/supabase";
 
 interface DynamicServiceSectionProps {
   selectedServices: string[];
@@ -43,9 +44,61 @@ export default function DynamicServiceSection({
   const [serviceResponses, setServiceResponses] = useState<
     Record<string, ServiceResponse>
   >({});
+  const [goalVoiceRecording, setGoalVoiceRecording] = useState<{
+    blob: Blob;
+    previewUrl: string;
+  } | null>(null);
 
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [leadId, setLeadId] = useState("");
+
+  const uploadVoiceNote = async (blob: Blob) => {
+    const fileName = `${Date.now()}.webm`;
+
+    const { error } = await supabase.storage
+      .from("candidate-files")
+      .upload(`quote-voice/${fileName}`, blob);
+
+    if (error) {
+      console.error("SUPABASE QUOTE VOICE ERROR:", error);
+      throw error;
+    }
+
+    const { data } = supabase.storage
+      .from("candidate-files")
+      .getPublicUrl(`quote-voice/${fileName}`);
+
+    return data.publicUrl;
+  };
+
+  const uploadAllVoiceNotes = async (
+    responses: Record<string, ServiceResponse>,
+  ) => {
+    const cloned: Record<string, ServiceResponse> = JSON.parse(
+      JSON.stringify(responses, (key, value) =>
+        key === "voice" ? undefined : value,
+      ),
+    );
+
+    for (const serviceId of Object.keys(responses)) {
+      const categories = responses[serviceId].categories;
+
+      for (const categoryId of Object.keys(categories)) {
+        const category = categories[categoryId];
+
+        if (category.voice?.blob) {
+          const url = await uploadVoiceNote(category.voice.blob);
+
+          cloned[serviceId].categories[categoryId] = {
+            ...cloned[serviceId].categories[categoryId],
+            voice: { url },
+          };
+        }
+      }
+    }
+
+    return cloned;
+  };
 
   const updateContactInformation = (field: string, value: string) => {
     setContactInformation((prev) => ({
@@ -140,11 +193,15 @@ export default function DynamicServiceSection({
     setLoading(true);
 
     try {
-      const formData = new FormData();
+      const uploadedServiceResponses =
+        await uploadAllVoiceNotes(serviceResponses);
 
-      // ===========================
-      // Contact Information
-      // ===========================
+      let goalVoiceUrl = "";
+      if (goalVoiceRecording?.blob) {
+        goalVoiceUrl = await uploadVoiceNote(goalVoiceRecording.blob);
+      }
+
+      const formData = new FormData();
 
       formData.append("first_name", contactInformation.firstName);
       formData.append("last_name", contactInformation.lastName);
@@ -152,23 +209,11 @@ export default function DynamicServiceSection({
       formData.append("work_email", contactInformation.workEmail);
       formData.append("phone", contactInformation.phone);
 
-      // ===========================
-      // Business Profile
-      // ===========================
-
       formData.append("industry", businessProfile.industry);
       formData.append("team_size", businessProfile.teamSize);
 
-      // ===========================
-      // Engagement
-      // ===========================
-
       formData.append("engagement_type", engagement.engagementType);
       formData.append("start_timeline", engagement.startTimeline);
-
-      // ===========================
-      // Project Goals
-      // ===========================
 
       formData.append("primary_goal", projectGoals.primaryGoal);
       formData.append(
@@ -176,17 +221,14 @@ export default function DynamicServiceSection({
         projectGoals.additionalInformation || "",
       );
 
-      // ===========================
-      // Services
-      // ===========================
+      formData.append("voice_url", goalVoiceUrl);
 
       formData.append("selected_services", JSON.stringify(selectedServices));
-      console.log("serviceResponses", serviceResponses);
-      formData.append("service_details", JSON.stringify(serviceResponses));
 
-      // ===========================
-      // Convert giống Client Fast Track
-      // ===========================
+      formData.append(
+        "service_details",
+        JSON.stringify(uploadedServiceResponses),
+      );
 
       const body = new URLSearchParams();
 
@@ -195,7 +237,7 @@ export default function DynamicServiceSection({
       });
 
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbxa5poOyblY5_JIbM1eNuiyVIVJv7i7ETstjB7luIZhow-4cn1K9AVwj06Ytwll_IlfAA/exec",
+        "https://script.google.com/macros/s/AKfycbzYMymwwSt2fwCc-lkPx1P-fCWrALaeLINrFCColpTyaD3nDHy9vshqGBjCWmLF275u/exec",
         {
           method: "POST",
           headers: {
@@ -311,6 +353,7 @@ export default function DynamicServiceSection({
           formData={projectGoals}
           errors={errors}
           onChange={updateProjectGoals}
+          onVoiceChange={setGoalVoiceRecording}
         />
 
         {/* <PrivacyConsentSection

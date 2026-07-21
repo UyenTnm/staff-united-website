@@ -151,13 +151,13 @@ export default function ServiceQuestionSection({
       )}
 
       <div className="mt-8 space-y-3">
-        <button
+        {/* <button
           type="button"
           onClick={() => handleToggleCategory("all")}
           className="w-full rounded-xl border border-dashed border-[#D5E3F2] bg-white px-4 py-3 text-left text-sm font-semibold text-primary hover:bg-[#F5FAFF]"
         >
           Select All Areas
-        </button>
+        </button> */}
 
         {service.categories
           .filter((category) => category.id !== "all")

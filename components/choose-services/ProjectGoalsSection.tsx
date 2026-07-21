@@ -9,22 +9,24 @@ interface ProjectGoalsSectionProps {
   errors: Record<string, string>;
 
   onChange: (field: string, value: string) => void;
+  onVoiceChange: (recording: { blob: Blob; previewUrl: string } | null) => void;
 }
 
 export default function ProjectGoalsSection({
   formData,
   errors,
   onChange,
+  onVoiceChange,
 }: ProjectGoalsSectionProps) {
   const textareaClass =
     "w-full rounded-xl border border-[#D5E3F2] bg-white px-5 py-4 text-base outline-none transition resize-none focus:border-primary";
 
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-  const [voiceRecording, setVoiceRecording] = useState<{
-    blob: Blob;
-    previewUrl: string;
-  } | null>(null);
+  // const [voiceRecording, setVoiceRecording] = useState<{
+  //   blob: Blob;
+  //   previewUrl: string;
+  // } | null>(null);
 
   return (
     <section className="mt-10 rounded-2xl border border-[#D5E3F2] bg-white p-8">
@@ -67,10 +69,7 @@ export default function ProjectGoalsSection({
 
           <VoiceRecorder
             onRecordingReady={(blob, previewUrl) => {
-              setVoiceRecording({
-                blob,
-                previewUrl,
-              });
+              onVoiceChange({ blob, previewUrl });
             }}
           />
         </div>

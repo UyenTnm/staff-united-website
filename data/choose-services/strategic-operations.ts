@@ -14,14 +14,14 @@ export const strategicOperations: ServiceDefinition = {
       description: "Day-to-day help like scheduling, email, and files",
 
       tasks: [
-        {
-          id: "executive-assistant-support",
-          title: "Executive Assistant Support",
-        },
-        {
-          id: "virtual-assistant-support",
-          title: "Virtual Assistant Support",
-        },
+        // {
+        //   id: "executive-assistant-support",
+        //   title: "Executive Assistant Support",
+        // },
+        // {
+        //   id: "virtual-assistant-support",
+        //   title: "Virtual Assistant Support",
+        // },
         {
           id: "calendar-management",
           title: "Calendar Management",
@@ -51,8 +51,8 @@ export const strategicOperations: ServiceDefinition = {
           title: "Document Formatting",
         },
         {
-          id: "internal-communication-support",
-          title: "Internal Communication Support",
+          id: "internal-announcements-message-coordination",
+          title: "Internal Announcements & Message Coordination",
         },
       ],
 
