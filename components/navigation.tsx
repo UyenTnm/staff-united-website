@@ -254,6 +254,7 @@ export default function Navigation() {
                   >
                     <Link
                       href="/sales-academy"
+                      target="_blank"
                       onClick={() => setStoryHover(false)}
                       className={`block px-4 py-2 hover:text-[#4f8dc9] ${activeStory === "sales-academy" ? "bg-[#4f8dc9]/20 text-[#4f8dc9]" : "hover:text-[#4f8dc9]"}`}
                     >
@@ -589,6 +590,7 @@ group-hover:duration-700
                             <Link
                               key={story.href}
                               href={story.href}
+                              target="_blank"
                               onClick={() => {
                                 setStoryOpen(false);
                                 setServicesOpen(false);
@@ -666,34 +668,6 @@ group-hover:duration-700
               >
                 Request Support
               </Link>
-
-              {/* Download Brochure Tạm ẩn mobile */}
-              {/* <button
-                onClick={() => {
-                  setBrochureOpen(true);
-                  setIsOpen(false);
-                }}
-                className="
-      w-full
-      text-center
-
-      border-2 border-[#4f8dc9]/60
-      bg-transparent
-
-      text-white
-
-      px-6 py-3
-      rounded-full
-
-      font-medium
-
-      transition-all duration-300
-      hover:bg-[#4f8dc9]/10
-      hover:border-[#4f8dc9]
-    "
-              >
-                Download Brochure
-              </button> */}
             </div>
           </div>
         )}
