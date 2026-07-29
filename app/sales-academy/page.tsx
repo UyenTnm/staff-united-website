@@ -311,7 +311,7 @@ function CourseGrid() {
               </div>
 
               <h3
-                className={`mt-3 font-bold text-lg sm:text-xl ${
+                className={`mt-3 font-bold text-lg sm:text-xl text-balance ${
                   available ? "text-[#0a1b33]" : "text-white"
                 }`}
               >
