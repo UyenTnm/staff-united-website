@@ -75,7 +75,8 @@ function GridHoverButton({ dark = false }: { dark?: boolean }) {
 
   return (
     <Link
-      href="/academy/login"
+      href="https://academy.staffunitedgroup.com/login"
+      target="_blank"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={`
@@ -328,7 +329,8 @@ function CourseGrid() {
               <div className="mt-6">
                 {available ? (
                   <Link
-                    href="/academy/login"
+                    href="https://academy.staffunitedgroup.com/login"
+                    target="_blank"
                     className="inline-block rounded-full bg-[#4f8dc9] px-5 py-2 text-xs font-bold uppercase tracking-widest text-white transition hover:opacity-90"
                   >
                     Available Now →
