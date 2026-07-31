@@ -99,7 +99,7 @@ function GridHoverButton({ dark = false }: { dark?: boolean }) {
       />
 
       <span className="relative z-10 flex items-center gap-2">
-        Enter&nbsp;the&nbsp;Academy →
+        Enter&nbsp;the&nbsp;Course →
       </span>
     </Link>
   );
@@ -161,42 +161,42 @@ function AltSection({
 /* -------------------------------------------------------------------- */
 /* Section 1: Why This Exists (LIGHT)                                    */
 /* -------------------------------------------------------------------- */
-function WhyThisExists() {
-  return (
-    <AltSection variant="light">
-      <motion.div
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-80px" }}
-        variants={fadeUp}
-        transition={{ duration: 0.5 }}
-      >
-        <Eyebrow variant="light">Why This Exists</Eyebrow>
-        <h2 className="mt-4 font-bold leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-          Where careers start.
-        </h2>
-        <div className="mt-6 max-w-3xl space-y-4 text-sm sm:text-base md:text-lg text-[#4a596e] leading-relaxed">
-          <p>
-            The purpose of the STAFF United Training Academy is to help young
-            women develop the{" "}
-            <strong className="text-[#0a1b33]">
-              practical skills, professional confidence, and international
-              business knowledge
-            </strong>{" "}
-            they need to succeed in today&apos;s global workplace.
-          </p>
-          <p>
-            Through structured training, real-world application, and continuous
-            development, the Academy strengthens employee performance while
-            creating meaningful opportunities for women in Vietnam to grow their
-            careers, expand their capabilities, and prepare for future
-            leadership.
-          </p>
-        </div>
-      </motion.div>
-    </AltSection>
-  );
-}
+// function WhyThisExists() {
+//   return (
+//     <AltSection variant="light">
+//       <motion.div
+//         initial="hidden"
+//         whileInView="show"
+//         viewport={{ once: true, margin: "-80px" }}
+//         variants={fadeUp}
+//         transition={{ duration: 0.5 }}
+//       >
+//         <Eyebrow variant="light">Why This Exists</Eyebrow>
+//         <h2 className="mt-4 font-bold leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+//           Where careers start.
+//         </h2>
+//         <div className="mt-6 max-w-3xl space-y-4 text-sm sm:text-base md:text-lg text-[#4a596e] leading-relaxed">
+//           <p>
+//             The purpose of the STAFF United Training Academy is to help young
+//             women develop the{" "}
+//             <strong className="text-[#0a1b33]">
+//               practical skills, professional confidence, and international
+//               business knowledge
+//             </strong>{" "}
+//             they need to succeed in today&apos;s global workplace.
+//           </p>
+//           <p>
+//             Through structured training, real-world application, and continuous
+//             development, the Academy strengthens employee performance while
+//             creating meaningful opportunities for women in Vietnam to grow their
+//             careers, expand their capabilities, and prepare for future
+//             leadership.
+//           </p>
+//         </div>
+//       </motion.div>
+//     </AltSection>
+//   );
+// }
 
 /* -------------------------------------------------------------------- */
 /* Section 2: Five courses. One roadmap. (DARK)                          */
@@ -254,7 +254,7 @@ const COURSES: CourseCard[] = [
 
 function CourseGrid() {
   return (
-    <AltSection variant="dark">
+    <AltSection variant="light">
       <motion.div
         initial="hidden"
         whileInView="show"
@@ -262,11 +262,11 @@ function CourseGrid() {
         variants={fadeUp}
         transition={{ duration: 0.5 }}
       >
-        <Eyebrow variant="dark">The Academy</Eyebrow>
+        <Eyebrow variant="light">The Academy</Eyebrow>
         <h2 className="mt-4 font-bold leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
           Five courses. One roadmap.
         </h2>
-        <p className="mt-4 max-w-2xl text-sm sm:text-base md:text-lg text-[#d5dadf]">
+        <p className="mt-4 max-w-2xl text-sm sm:text-base md:text-lg text-[#4a596e]">
           We&apos;re building the Academy one course at a time — starting with
           the skill every STAFF United team member relies on first.
         </p>
@@ -786,7 +786,7 @@ export default function AcademyPage() {
             className="flex items-center gap-3 uppercase font-medium text-[#4f8dc9] text-xs sm:text-sm md:text-base tracking-[0.2em]"
           >
             <span className="h-px w-8 bg-[#4f8dc9] shrink-0" />
-            Staff United Sales Academy
+            Ongoing Course
           </motion.p>
 
           <motion.h1
@@ -841,14 +841,14 @@ export default function AcademyPage() {
           >
             <Stat number={3} label="Training days" />
             <Stat number={10} label="Core modules" />
-            <Stat number="80%+" label="To certify" />
+            <Stat number="80%+" label="Score To Pass" />
             <Stat number="30-Day" label="Follow-up review" />
           </motion.div>
         </div>
       </section>
 
       {/* Alternating light/dark sections */}
-      <WhyThisExists />
+      {/* <WhyThisExists /> */}
       <CourseGrid />
       <NowLaunching />
       <LearningCycle />
