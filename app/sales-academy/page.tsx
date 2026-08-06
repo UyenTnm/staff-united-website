@@ -786,7 +786,7 @@ export default function AcademyPage() {
             className="flex items-center gap-3 uppercase font-medium text-[#4f8dc9] text-xs sm:text-sm md:text-base tracking-[0.2em]"
           >
             <span className="h-px w-8 bg-[#4f8dc9] shrink-0" />
-            Ongoing Course
+            CURRENT COURSE
           </motion.p>
 
           <motion.h1
@@ -796,9 +796,11 @@ export default function AcademyPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mt-6 font-bold leading-tight max-w-7xl text-2xl sm:text-4xl md:text-6xl lg:text-7xl"
           >
-            <span className="block">Every client relationship</span>
-            <span className="block">starts with</span>
-            <span className="block text-[#4f8dc9]">the right foundation.</span>
+            <span className="block">Targeted Sales Fundamentals</span>
+            {/* <span className="block">starts with</span> */}
+            <span className="block text-[#4f8dc9]">
+              Every client relationship starts with the right foundation.
+            </span>
           </motion.h1>
 
           <motion.p
@@ -808,10 +810,10 @@ export default function AcademyPage() {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="mt-6 text-white leading-relaxed max-w-2xl text-sm sm:text-base md:text-lg"
           >
-            A three-day certification program for every STAFF United Business
-            Growth Representative — built to teach how we identify
-            opportunities, understand clients, represent our 5-Core Support
-            Ecosystem™ accurately, and begin the right long-term relationships.
+            A three-day training and certification program designed to help
+            STAFF United Business Growth Representatives identify the right
+            opportunities, understand client needs, represent our company
+            accurately, and begin the right long-term business relationships.
           </motion.p>
 
           <motion.div
