@@ -25,6 +25,14 @@ export default function Navigation() {
     { label: "JOIN TEAM", href: "/join" },
     { label: "BROCHURE", href: "#" },
   ];
+
+  const storyItems = [
+    {
+      label: "Academy",
+      href: "/sales-academy",
+    },
+  ];
+
   const serviceItems = [
     {
       label: "All Services",
@@ -59,7 +67,11 @@ export default function Navigation() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [storyOpen, setStoryOpen] = useState(false);
+
   const [servicesHover, setServicesHover] = useState(false);
+  const [storyHover, setStoryHover] = useState(false);
+  const activeStory = pathname.split("/")[1];
 
   useEffect(() => {
     const close = () => setIsOpen(false);
@@ -186,6 +198,73 @@ export default function Navigation() {
                 </div>
               );
             }
+
+            // ACED
+            if (item.label === "OUR STORY") {
+              return (
+                <div
+                  key={item.href}
+                  className="relative"
+                  onMouseEnter={() => setStoryHover(true)}
+                  onMouseLeave={() => setStoryHover(false)}
+                >
+                  <Link
+                    href="/about-us"
+                    className={`
+    flex items-center gap-1
+    px-4 py-2
+    text-sm
+    rounded-full
+    transition-all duration-300
+
+    ${active ? "bg-[#4f8dc9] text-[#0a1b33]" : "text-white/70 hover:text-white"}
+  `}
+                  >
+                    <span>OUR STORY</span>
+
+                    <ChevronDown
+                      size={12}
+                      className={`
+  opacity-60
+  transition-transform duration-300
+  shrink-0
+  ${storyHover ? "rotate-180" : ""}
+`}
+                    />
+                  </Link>
+                  {/* Dropdown */}
+                  <div
+                    className={`
+    text-white/70
+    absolute
+    top-full mt-3
+    left-1/2
+    -translate-x-1/3 ml-6
+
+    transition-all duration-300
+
+    ${storyHover ? "opacity-100 visible" : "opacity-0 invisible"}
+
+    bg-[#0d0d0d]
+    border border-white/10
+    rounded-2xl
+    p-3
+    min-w-[180px]
+  `}
+                  >
+                    <Link
+                      href="/sales-academy"
+                      target="_blank"
+                      onClick={() => setStoryHover(false)}
+                      className={`block px-4 py-2 hover:text-[#4f8dc9] ${activeStory === "sales-academy" ? "bg-[#4f8dc9]/20 text-[#4f8dc9]" : "hover:text-[#4f8dc9]"}`}
+                    >
+                      Academy
+                    </Link>
+                  </div>
+                </div>
+              );
+            }
+
             if (item.label === "BROCHURE") {
               return (
                 <button
@@ -356,28 +435,8 @@ group-hover:duration-700
           })}
         </div>
 
-        {/* CTA */}
         {/* CTA GROUP */}
         <div className="hidden lg:flex items-center gap-3">
-          {/* Brochure */}
-          {/* <button
-            onClick={() => setBrochureOpen(true)}
-            className="
-    hidden xl:flex
-    items-center gap-2
-    px-5 py-2
-    rounded-full
-    border border-[#0a1b33]/30
-    bg-[#4f8dc9]
-    text-white/80
-    hover:text-[#0a1b33]
-    transition-all duration-500
-  "
-          >
-            Download Brochure
-          </button> */}
-          {/* 📄 */}
-
           {/* <ThemeToggle /> */}
 
           {/* REQUEST SUPPORT (primary) */}
@@ -428,6 +487,7 @@ group-hover:duration-700
         {isOpen && (
           <div className="fixed top-[56px] sm:top-[64px] left-0 w-full bg-black backdrop-blur-xl z-[9998] flex flex-col items-center gap-6 py-10">
             {navItems.map((item) => {
+              // SERVICES
               if (item.label === "SERVICES") {
                 return (
                   <div
@@ -435,7 +495,10 @@ group-hover:duration-700
                     className="flex flex-col items-center gap-3"
                   >
                     <button
-                      onClick={() => setServicesOpen(!servicesOpen)}
+                      onClick={() => {
+                        setServicesOpen(!servicesOpen);
+                        setStoryOpen(false);
+                      }}
                       className="
     flex items-center justify-center gap-1
     text-white text-lg
@@ -465,6 +528,7 @@ group-hover:duration-700
                               href={service.href}
                               onClick={() => {
                                 setServicesOpen(false);
+                                setStoryOpen(false);
                                 setIsOpen(false);
                               }}
                               className={`
@@ -486,6 +550,72 @@ group-hover:duration-700
                   </div>
                 );
               }
+
+              // OUR STORY
+              if (item.label === "OUR STORY") {
+                return (
+                  <div
+                    key={item.href}
+                    className="flex flex-col items-center gap-3"
+                  >
+                    <button
+                      onClick={() => {
+                        setStoryOpen(!storyOpen);
+                        setServicesOpen(false);
+                      }}
+                      className="
+    flex items-center justify-center gap-1
+    text-white text-lg
+  "
+                    >
+                      <span>OUR STORY</span>
+
+                      <ChevronDown
+                        size={12}
+                        strokeWidth={1.8}
+                        className={`
+      opacity-70
+      transition-transform duration-300
+      ${storyOpen ? "rotate-180" : ""}
+    `}
+                      />
+                    </button>
+
+                    {storyOpen && (
+                      <div className="mt-3 flex flex-col items-center gap-3">
+                        {storyItems.map((story) => {
+                          const slug = story.href.split("/")[1];
+
+                          return (
+                            <Link
+                              key={story.href}
+                              href={story.href}
+                              target="_blank"
+                              onClick={() => {
+                                setStoryOpen(false);
+                                setServicesOpen(false);
+                                setIsOpen(false);
+                              }}
+                              className={`
+        block px-4 py-2 rounded-lg transition-all
+
+        ${
+          activeStory === slug
+            ? "bg-[#4f8dc9]/20 text-[#4f8dc9]"
+            : "text-white/70 hover:text-[#4f8dc9]"
+        }
+      `}
+                            >
+                              {story.label}
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
               if (item.label === "BROCHURE") {
                 return (
                   <button
@@ -538,34 +668,6 @@ group-hover:duration-700
               >
                 Request Support
               </Link>
-
-              {/* Download Brochure Tạm ẩn mobile */}
-              {/* <button
-                onClick={() => {
-                  setBrochureOpen(true);
-                  setIsOpen(false);
-                }}
-                className="
-      w-full
-      text-center
-
-      border-2 border-[#4f8dc9]/60
-      bg-transparent
-
-      text-white
-
-      px-6 py-3
-      rounded-full
-
-      font-medium
-
-      transition-all duration-300
-      hover:bg-[#4f8dc9]/10
-      hover:border-[#4f8dc9]
-    "
-              >
-                Download Brochure
-              </button> */}
             </div>
           </div>
         )}
