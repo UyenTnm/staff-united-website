@@ -80,12 +80,14 @@ function GridHoverButton({ dark = false }: { dark?: boolean }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={`
-        group relative inline-flex items-center gap-2 rounded-full
-        font-semibold transition-all duration-300 overflow-hidden
-        hover:-translate-y-0.5 active:scale-[0.98]
-        text-sm sm:text-base px-6 py-3 sm:px-8 sm:py-4
-        ${dark ? "bg-[#0a1b33] text-white" : "bg-[#4f8dc9] text-[#0b1b33]"}
-      `}
+  group relative inline-flex
+  w-[280px] max-w-full
+  items-center justify-center gap-2 rounded-full
+  font-semibold transition-all duration-300 overflow-hidden
+  hover:-translate-y-0.5 active:scale-[0.98]
+  text-sm sm:text-base px-6 py-3 sm:px-8 sm:py-4
+  ${dark ? "bg-[#0a1b33] text-white" : "bg-[#4f8dc9] text-[#0b1b33]"}
+`}
     >
       <motion.span
         className="absolute inset-y-0 left-0 w-16 pointer-events-none"
@@ -99,9 +101,79 @@ function GridHoverButton({ dark = false }: { dark?: boolean }) {
       />
 
       <span className="relative z-10 flex items-center gap-2">
-        Enter&nbsp;the&nbsp;Course →
+        Enter&nbsp;the&nbsp;Academy →
       </span>
     </Link>
+  );
+}
+
+function ExploreCoursesButton() {
+  const [hovered, setHovered] = useState(false);
+
+  const handleExplore = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+
+    const target = document.getElementById("courses");
+
+    if (!target) return;
+
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
+  return (
+    <a
+      href="#courses"
+      onClick={handleExplore}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="
+  group relative inline-flex
+  w-[280px] max-w-full
+  items-center justify-center gap-2
+  rounded-full
+  border border-[#4f8dc9]
+  bg-transparent
+  px-6 py-3 sm:px-8 sm:py-4
+  text-sm sm:text-base
+  font-semibold text-white
+  overflow-hidden
+  transition-all duration-300
+  hover:-translate-y-0.5
+  hover:bg-[#4f8dc9]
+  hover:text-[#0a1b33]
+  active:scale-[0.98]
+"
+    >
+      {/* Bottom → Top Shine */}
+      <motion.span
+        className="
+          pointer-events-none
+          absolute
+          inset-x-0
+          bottom-0
+          h-14
+          w-full
+        "
+        style={{
+          background:
+            "linear-gradient(to top, transparent, rgba(255,255,255,0.55), transparent)",
+        }}
+        initial={{ y: "100%" }}
+        animate={hovered ? { y: "-180%" } : { y: "100%" }}
+        transition={{
+          duration: 0.7,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* Button content */}
+      <span className="relative z-10 flex items-center gap-2">
+        Explore&nbsp;the&nbsp;Courses →
+      </span>
+    </a>
   );
 }
 
@@ -135,14 +207,17 @@ function Eyebrow({
 function AltSection({
   variant,
   className = "",
+  id,
   children,
 }: {
   variant: Variant;
   className?: string;
+  id?: string;
   children: React.ReactNode;
 }) {
   return (
     <section
+      id={id}
       className={`relative w-full ${
         variant === "dark"
           ? "bg-[#0a1b33] text-white"
@@ -150,7 +225,15 @@ function AltSection({
       }`}
     >
       <div
-        className={`relative z-10 mx-auto max-w-[92vw] 2xl:max-w-[1400px] px-5 sm:px-6 md:px-10 py-16 sm:py-20 md:py-24 ${className}`}
+        className={`
+  relative z-10
+  mx-auto
+  max-w-[92vw]
+  2xl:max-w-[1600px]
+  px-5 sm:px-6 md:px-10
+  py-16 sm:py-20 md:py-24
+  ${className}
+`}
       >
         {children}
       </div>
@@ -161,49 +244,52 @@ function AltSection({
 /* -------------------------------------------------------------------- */
 /* Section 1: Why This Exists (LIGHT)                                    */
 /* -------------------------------------------------------------------- */
-// function WhyThisExists() {
-//   return (
-//     <AltSection variant="light">
-//       <motion.div
-//         initial="hidden"
-//         whileInView="show"
-//         viewport={{ once: true, margin: "-80px" }}
-//         variants={fadeUp}
-//         transition={{ duration: 0.5 }}
-//       >
-//         <Eyebrow variant="light">Why This Exists</Eyebrow>
-//         <h2 className="mt-4 font-bold leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-//           Where careers start.
-//         </h2>
-//         <div className="mt-6 max-w-3xl space-y-4 text-sm sm:text-base md:text-lg text-[#4a596e] leading-relaxed">
-//           <p>
-//             The purpose of the STAFF United Training Academy is to help young
-//             women develop the{" "}
-//             <strong className="text-[#0a1b33]">
-//               practical skills, professional confidence, and international
-//               business knowledge
-//             </strong>{" "}
-//             they need to succeed in today&apos;s global workplace.
-//           </p>
-//           <p>
-//             Through structured training, real-world application, and continuous
-//             development, the Academy strengthens employee performance while
-//             creating meaningful opportunities for women in Vietnam to grow their
-//             careers, expand their capabilities, and prepare for future
-//             leadership.
-//           </p>
-//         </div>
-//       </motion.div>
-//     </AltSection>
-//   );
-// }
+function WhyThisExists() {
+  return (
+    <AltSection variant="light">
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-80px" }}
+        variants={fadeUp}
+        transition={{ duration: 0.5 }}
+      >
+        <Eyebrow variant="light">Why This Exists</Eyebrow>
+
+        <h2 className="mt-4 font-bold leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+          Where careers start.
+        </h2>
+
+        <div className="mt-6 max-w-3xl space-y-4 text-sm sm:text-base md:text-lg text-[#4a596e] leading-relaxed">
+          <p>
+            The purpose of the STAFF United Training Academy is to help young
+            women develop the{" "}
+            <strong className="text-[#0a1b33]">
+              practical skills, professional confidence, and international
+              business knowledge
+            </strong>{" "}
+            they need to succeed in today&apos;s global workplace.
+          </p>
+
+          <p>
+            Through structured training, real-world application, and continuous
+            development, the Academy strengthens employee performance while
+            creating meaningful opportunities for women in Vietnam to grow their
+            careers, expand their capabilities, and prepare for future
+            leadership.
+          </p>
+        </div>
+      </motion.div>
+    </AltSection>
+  );
+}
 
 /* -------------------------------------------------------------------- */
 /* Section 2: Five courses. One roadmap. (DARK)                          */
 /* -------------------------------------------------------------------- */
 type CourseCard = {
   courseLabel: string;
-  tag: string;
+  tag?: string;
   title: string;
   description: string;
   status: "available" | "soon";
@@ -252,9 +338,24 @@ const COURSES: CourseCard[] = [
   },
 ];
 
+function CourseTitle({ title }: { title: string }) {
+  const parts = title.split(" & ");
+
+  if (parts.length === 1) {
+    return <>{title}</>;
+  }
+
+  return (
+    <>
+      <span className="whitespace-nowrap">{parts[0]} &amp;</span>{" "}
+      <span className="whitespace-nowrap">{parts[1]}</span>
+    </>
+  );
+}
+
 function CourseGrid() {
   return (
-    <AltSection variant="light">
+    <AltSection variant="dark" id="courses">
       <motion.div
         initial="hidden"
         whileInView="show"
@@ -262,11 +363,13 @@ function CourseGrid() {
         variants={fadeUp}
         transition={{ duration: 0.5 }}
       >
-        <Eyebrow variant="light">The Academy</Eyebrow>
+        <Eyebrow variant="dark">The Academy</Eyebrow>
+
         <h2 className="mt-4 font-bold leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
           Five courses. One roadmap.
         </h2>
-        <p className="mt-4 max-w-2xl text-sm sm:text-base md:text-lg text-[#4a596e]">
+
+        <p className="mt-4 max-w-2xl text-sm sm:text-base md:text-lg text-[#d5dadf]">
           We&apos;re building the Academy one course at a time — starting with
           the skill every STAFF United team member relies on first.
         </p>
@@ -274,77 +377,286 @@ function CourseGrid() {
 
       <motion.div
         initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ staggerChildren: 0.08 }}
-        className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
+        animate="show"
+        transition={{
+          staggerChildren: 0.08,
+          delayChildren: 0.1,
+        }}
+        className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch"
       >
         {COURSES.map((course) => {
           const available = course.status === "available";
-          return (
+
+          const card = (
             <motion.div
-              key={course.courseLabel}
-              variants={fadeUp}
-              className={`rounded-2xl p-6 sm:p-7 flex flex-col ${
-                available
-                  ? "bg-white text-[#0a1b33] border-2 border-[#4f8dc9]"
-                  : "bg-[#132a4a] border border-white/10"
-              }`}
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: 12,
+                },
+                show: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.45,
+                    ease: "easeOut",
+                  },
+                },
+              }}
+              whileHover={{
+                y: -6,
+                scale: 1.015,
+                transition: {
+                  duration: 0.25,
+                  ease: "easeOut",
+                },
+              }}
+              whileTap={{
+                scale: 0.98,
+                y: -1,
+                transition: {
+                  duration: 0.12,
+                  ease: "easeOut",
+                },
+              }}
+              className={`
+      group relative
+      h-full
+      min-h-0 sm:min-h-[330px] lg:min-h-[320px]
+      rounded-2xl
+      p-6 sm:p-7
+      flex flex-col
+      overflow-hidden
+      transition-shadow duration-300
+      ${
+        available
+          ? `
+            bg-white
+            text-[#0a1b33]
+            border-2 border-[#4f8dc9]
+            cursor-pointer
+            shadow-[0_8px_30px_rgba(79,141,201,0.08)]
+            hover:shadow-[0_18px_45px_rgba(79,141,201,0.22)]
+            active:shadow-[0_8px_25px_rgba(79,141,201,0.28)]
+          `
+          : `
+            bg-[#132a4a]
+            border border-white/10
+            cursor-default
+            hover:border-[#4f8dc9]/50
+            hover:shadow-[0_18px_40px_rgba(79,141,201,0.12)]
+          `
+      }
+    `}
             >
-              <div className="flex items-center justify-between">
-                <span
-                  className={`text-[11px] font-semibold uppercase tracking-widest ${
-                    available ? "text-[#2a6ea3]" : "text-white/40"
-                  }`}
-                >
-                  {course.courseLabel}
-                </span>
-                {course.tag && (
+              {/* Hover glow */}
+              <div
+                className={`
+        pointer-events-none
+        absolute inset-0
+        opacity-0
+        transition-opacity duration-300
+        group-hover:opacity-100
+        ${
+          available
+            ? "bg-[radial-gradient(circle_at_top_right,rgba(79,141,201,0.12),transparent_45%)]"
+            : "bg-[radial-gradient(circle_at_top_right,rgba(79,141,201,0.10),transparent_45%)]"
+        }
+      `}
+              />
+
+              {/* Top accent line */}
+              <div
+                className={`
+        pointer-events-none
+        absolute left-0 right-0 top-0
+        h-[3px]
+        origin-left
+        scale-x-0
+        transition-transform duration-300
+        group-hover:scale-x-100
+        ${available ? "bg-[#4f8dc9]" : "bg-[#4f8dc9]/70"}
+      `}
+              />
+
+              {/* Content */}
+              <div className="relative z-10 flex h-full flex-col">
+                {/* ------------------------------------------------------------ */}
+                {/* Header — SAME HEIGHT                                         */}
+                {/* ------------------------------------------------------------ */}
+
+                <div className="flex min-h-[22px] items-start justify-between gap-4">
                   <span
-                    className={`text-[10px] uppercase tracking-widest ${
-                      available ? "text-[#4a596e]" : "text-white/30"
-                    }`}
+                    className={`
+            text-[11px]
+            font-semibold
+            uppercase
+            tracking-widest
+            transition-colors duration-300
+            ${
+              available
+                ? "text-[#2a6ea3]"
+                : "text-white/40 group-hover:text-[#7fb2e0]"
+            }
+          `}
                   >
-                    {course.tag}
+                    {course.courseLabel}
                   </span>
-                )}
-              </div>
 
-              <h3
-                className={`mt-3 font-bold text-lg sm:text-xl text-balance ${
-                  available ? "text-[#0a1b33]" : "text-white"
-                }`}
-              >
-                {course.title}
-              </h3>
+                  {course.tag && (
+                    <span
+                      className={`
+              text-right
+              text-[10px]
+              uppercase
+              tracking-widest
+              transition-colors duration-300
+              ${
+                available
+                  ? "text-[#4a596e] group-hover:text-[#2a6ea3]"
+                  : "text-white/30 group-hover:text-white/60"
+              }
+            `}
+                    >
+                      {course.tag}
+                    </span>
+                  )}
+                </div>
 
-              <p
-                className={`mt-3 text-sm leading-relaxed flex-1 ${
-                  available ? "text-[#4a596e]" : "text-white/70"
-                }`}
-              >
-                {course.description}
-              </p>
+                {/* ------------------------------------------------------------ */}
+                {/* Title — SAME HEIGHT                                          */}
+                {/* ------------------------------------------------------------ */}
 
-              <div className="mt-6">
-                {available ? (
-                  <Link
-                    href="https://academy.staffunitedgroup.com/login"
-                    target="_blank"
-                    className="inline-block rounded-full bg-[#4f8dc9] px-5 py-2 text-xs font-bold uppercase tracking-widest text-white transition hover:opacity-90"
+                <div className="mt-3 min-h-0 sm:min-h-[58px] lg:min-h-[60px] flex items-start">
+                  <h3
+                    className={`
+      font-bold
+      text-lg
+      sm:text-xl
+      lg:text-[18px]
+      xl:text-[19px]
+      2xl:text-[20px]
+      transition-transform duration-300
+      group-hover:translate-x-0.5
+      ${available ? "text-[#0a1b33]" : "text-white"}
+    `}
                   >
-                    Available Now →
-                  </Link>
-                ) : (
-                  <span className="inline-block rounded-full border border-white/20 px-5 py-2 text-xs uppercase tracking-widest text-white/40">
-                    Coming Soon
-                  </span>
-                )}
+                    <CourseTitle title={course.title} />
+                  </h3>
+                </div>
+
+                {/* ------------------------------------------------------------ */}
+                {/* Description — SAME HEIGHT                                    */}
+                {/* ------------------------------------------------------------ */}
+
+                <div className="mt-3 min-h-[96px] sm:min-h-[90px]">
+                  <p
+                    className={`
+    text-sm
+    lg:text-[16px]
+    xl:text-[16px]
+    2xl:text-[17px]
+    leading-relaxed
+    transition-colors duration-300
+    ${available ? "text-[#4a596e]" : "text-white/70 group-hover:text-white/85"}
+  `}
+                  >
+                    {course.description}
+                  </p>
+                </div>
+
+                {/* ------------------------------------------------------------ */}
+                {/* CTA — SAME POSITION                                          */}
+                {/* ------------------------------------------------------------ */}
+
+                <div className="mt-auto pt-6">
+                  {available ? (
+                    <span
+                      className="
+              inline-flex
+              items-center
+              rounded-full
+              bg-[#4f8dc9]
+              px-5 py-2
+              text-xs
+              font-bold
+              uppercase
+              tracking-widest
+              text-white
+              transition-all
+              duration-300
+              group-hover:bg-[#2f78b8]
+              group-hover:px-6
+              group-active:bg-[#245f91]
+            "
+                    >
+                      Available Now →
+                    </span>
+                  ) : (
+                    <span
+                      className="
+              inline-flex
+              items-center
+              rounded-full
+              border border-white/20
+              px-5 py-2
+              text-xs
+              uppercase
+              tracking-widest
+              text-white/40
+              transition-all
+              duration-300
+              group-hover:border-[#4f8dc9]/60
+              group-hover:text-[#7fb2e0]
+            "
+                    >
+                      Coming Soon
+                    </span>
+                  )}
+                </div>
               </div>
             </motion.div>
           );
+
+          return available ? (
+            <Link
+              key={course.courseLabel}
+              href="/sales-academy/course-01"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+    block
+    rounded-2xl
+    outline-none
+    focus-visible:ring-2
+    focus-visible:ring-[#7fb2e0]
+    focus-visible:ring-offset-4
+    focus-visible:ring-offset-[#0a1b33]
+  "
+            >
+              {card}
+            </Link>
+          ) : (
+            <div key={course.courseLabel}>{card}</div>
+          );
         })}
       </motion.div>
+      <div
+        className="
+    pointer-events-none
+    absolute
+    bottom-0
+    left-1/2
+    z-20
+    h-px
+    w-[88%]
+    -translate-x-1/2
+    bg-gradient-to-r
+    from-transparent
+    via-[#4f8dc9]/50
+    to-transparent
+  "
+      />
     </AltSection>
   );
 }
@@ -352,254 +664,254 @@ function CourseGrid() {
 /* -------------------------------------------------------------------- */
 /* Section 3: Now Launching · Course 01 (LIGHT)                          */
 /* -------------------------------------------------------------------- */
-function NowLaunching() {
-  return (
-    <AltSection variant="light">
-      <motion.div
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-80px" }}
-        variants={fadeUp}
-        transition={{ duration: 0.5 }}
-      >
-        <Eyebrow variant="light">Now Launching · Course 01</Eyebrow>
-        <h2 className="mt-4 font-bold leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-          Targeted Sales Fundamentals
-        </h2>
-        <p className="mt-4 max-w-3xl text-sm sm:text-base md:text-lg text-[#4a596e] leading-relaxed">
-          A three-day certification program for every STAFF United Business
-          Growth Representative — built to teach how we identify opportunities,
-          understand clients, represent our 5-Core Support Ecosystem™
-          accurately, and begin the right long-term relationships.
-        </p>
+// function NowLaunching() {
+//   return (
+//     <AltSection variant="light">
+//       <motion.div
+//         initial="hidden"
+//         whileInView="show"
+//         viewport={{ once: true, margin: "-80px" }}
+//         variants={fadeUp}
+//         transition={{ duration: 0.5 }}
+//       >
+//         <Eyebrow variant="light">Now Launching · Course 01</Eyebrow>
+//         <h2 className="mt-4 font-bold leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+//           Targeted Sales Fundamentals
+//         </h2>
+//         <p className="mt-4 max-w-3xl text-sm sm:text-base md:text-lg text-[#4a596e] leading-relaxed">
+//           A three-day certification program for every STAFF United Business
+//           Growth Representative — built to teach how we identify opportunities,
+//           understand clients, represent our 5-Core Support Ecosystem™
+//           accurately, and begin the right long-term relationships.
+//         </p>
 
-        <div className="mt-8 max-w-2xl rounded-r-xl border-l-4 border-[#4f8dc9] bg-[#eaf2fa] p-6 sm:p-8">
-          <p className="text-base sm:text-lg md:text-xl text-[#0a1b33] leading-relaxed italic">
-            &ldquo;The purpose of sales is not simply to win a client. The
-            purpose of sales is to begin the right long-term business
-            relationship.&rdquo;
-          </p>
-        </div>
-      </motion.div>
-    </AltSection>
-  );
-}
+//         <div className="mt-8 max-w-2xl rounded-r-xl border-l-4 border-[#4f8dc9] bg-[#eaf2fa] p-6 sm:p-8">
+//           <p className="text-base sm:text-lg md:text-xl text-[#0a1b33] leading-relaxed italic">
+//             &ldquo;The purpose of sales is not simply to win a client. The
+//             purpose of sales is to begin the right long-term business
+//             relationship.&rdquo;
+//           </p>
+//         </div>
+//       </motion.div>
+//     </AltSection>
+//   );
+// }
 
 /* -------------------------------------------------------------------- */
 /* Section 4: Learning Cycle (DARK)                                      */
 /* -------------------------------------------------------------------- */
-const LEARNING_CYCLE = [
-  { step: "01", label: "Core Lesson" },
-  { step: "02", label: "Examples & Standards" },
-  { step: "03", label: "Discussion" },
-  { step: "04", label: "Practical Activity" },
-  { step: "05", label: "8-Question Quiz" },
-  { step: "06", label: "Confidence Check" },
-];
+// const LEARNING_CYCLE = [
+//   { step: "01", label: "Core Lesson" },
+//   { step: "02", label: "Examples & Standards" },
+//   { step: "03", label: "Discussion" },
+//   { step: "04", label: "Practical Activity" },
+//   { step: "05", label: "8-Question Quiz" },
+//   { step: "06", label: "Confidence Check" },
+// ];
 
-function LearningCycle() {
-  return (
-    <AltSection variant="dark">
-      <motion.div
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-80px" }}
-        variants={fadeUp}
-        transition={{ duration: 0.5 }}
-      >
-        <Eyebrow variant="dark">Learning Cycle</Eyebrow>
-        <h2 className="mt-4 font-bold leading-tight text-2xl sm:text-3xl md:text-4xl">
-          The same rhythm, every single time.
-        </h2>
-        <p className="mt-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.15em] text-[#7fb2e0]">
-          Preview → Instructor-Led Learning → Practice → Review → Examination
-        </p>
-        <p className="mt-4 max-w-2xl text-sm sm:text-base text-[#d5dadf]">
-          That five-stage rhythm shapes the entire three-day program. Inside
-          every single module, the same discipline repeats in six smaller steps:
-        </p>
-      </motion.div>
+// function LearningCycle() {
+//   return (
+//     <AltSection variant="dark">
+//       <motion.div
+//         initial="hidden"
+//         whileInView="show"
+//         viewport={{ once: true, margin: "-80px" }}
+//         variants={fadeUp}
+//         transition={{ duration: 0.5 }}
+//       >
+//         <Eyebrow variant="dark">Learning Cycle</Eyebrow>
+//         <h2 className="mt-4 font-bold leading-tight text-2xl sm:text-3xl md:text-4xl">
+//           The same rhythm, every single time.
+//         </h2>
+//         <p className="mt-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.15em] text-[#7fb2e0]">
+//           Preview → Instructor-Led Learning → Practice → Review → Examination
+//         </p>
+//         <p className="mt-4 max-w-2xl text-sm sm:text-base text-[#d5dadf]">
+//           That five-stage rhythm shapes the entire three-day program. Inside
+//           every single module, the same discipline repeats in six smaller steps:
+//         </p>
+//       </motion.div>
 
-      <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-        {LEARNING_CYCLE.map((item, idx) => (
-          <motion.div
-            key={item.step}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-40px" }}
-            variants={fadeUp}
-            transition={{ duration: 0.4, delay: idx * 0.06 }}
-            className="flex flex-col rounded-xl border border-white/10 bg-[#132a4a] p-4 sm:p-5 min-h-[104px] sm:min-h-[112px]"
-          >
-            <span className="text-xs font-bold text-[#7fb2e0]">
-              {item.step}
-            </span>
-            <p className="mt-2 font-semibold text-white text-sm sm:text-base leading-snug">
-              {item.label}
-            </p>
-          </motion.div>
-        ))}
-      </div>
-    </AltSection>
-  );
-}
+//       <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+//         {LEARNING_CYCLE.map((item, idx) => (
+//           <motion.div
+//             key={item.step}
+//             initial="hidden"
+//             whileInView="show"
+//             viewport={{ once: true, margin: "-40px" }}
+//             variants={fadeUp}
+//             transition={{ duration: 0.4, delay: idx * 0.06 }}
+//             className="flex flex-col rounded-xl border border-white/10 bg-[#132a4a] p-4 sm:p-5 min-h-[104px] sm:min-h-[112px]"
+//           >
+//             <span className="text-xs font-bold text-[#7fb2e0]">
+//               {item.step}
+//             </span>
+//             <p className="mt-2 font-semibold text-white text-sm sm:text-base leading-snug">
+//               {item.label}
+//             </p>
+//           </motion.div>
+//         ))}
+//       </div>
+//     </AltSection>
+//   );
+// }
 
 /* -------------------------------------------------------------------- */
 /* Section 5: Curriculum (LIGHT)                                         */
 /* -------------------------------------------------------------------- */
-type CurriculumModule = { num: string; title: string; description: string };
-type CurriculumDay = {
-  label: string;
-  intro: string;
-  modules: CurriculumModule[];
-};
+// type CurriculumModule = { num: string; title: string; description: string };
+// type CurriculumDay = {
+//   label: string;
+//   intro: string;
+//   modules: CurriculumModule[];
+// };
 
-const CURRICULUM: CurriculumDay[] = [
-  {
-    label: "Day 1 — Foundations",
-    intro:
-      "Baseline assessment, the Northstar Construction Group scenario, and the four modules that establish how we show up with every client.",
-    modules: [
-      {
-        num: "01",
-        title: "Sales Philosophy & Professional Standards",
-        description:
-          "The purpose of sales, professional standards, confidence without arrogance, and sales ethics.",
-      },
-      {
-        num: "02",
-        title: "Relationships, First Impressions & Client Experience",
-        description:
-          "How trust and first impressions shape every buying decision.",
-      },
-      {
-        num: "03",
-        title: "Listening & Understanding Clients",
-        description:
-          "Active listening, curiosity, and asking better questions.",
-      },
-      {
-        num: "04",
-        title: "Understanding & Representing STAFF United",
-        description:
-          "Positioning, the 5-Core Support Ecosystem™, and approved terminology.",
-      },
-    ],
-  },
-  {
-    label: "Day 2 — Finding Opportunities",
-    intro:
-      "Prospecting, qualification, and running the discovery meetings that turn interest into a real opportunity.",
-    modules: [
-      {
-        num: "05",
-        title: "Prospecting, Outreach, Research & Preparation",
-        description:
-          "Finding the right companies and preparing for the first conversation.",
-      },
-      {
-        num: "06",
-        title: "Qualification, Stakeholders & the Client Decision Process",
-        description:
-          "Confirming whether an opportunity is real, suitable, and worth pursuing.",
-      },
-      {
-        num: "07",
-        title: "Discovery Meetings & Client Video Calls",
-        description:
-          "Running a professional discovery call and ending with a clear next step.",
-      },
-    ],
-  },
-  {
-    label: "Day 3 — Moving the Sale Forward",
-    intro:
-      "Recommendations, objection handling, closing, and everything that happens after the sale is won.",
-    modules: [
-      {
-        num: "08",
-        title: "Recommendations, Proposals & Presentations",
-        description:
-          "Turning client information into a relevant recommendation and proposal.",
-      },
-      {
-        num: "09",
-        title: "Objections, Negotiation & Closing",
-        description:
-          "Responding to concerns, negotiating professionally, and asking for a decision.",
-      },
-      {
-        num: "10",
-        title: "Follow-Up, Pipeline, Complaints, Handover & Growth",
-        description:
-          "Managing opportunities after the meeting and supporting long-term client relationships.",
-      },
-    ],
-  },
-];
+// const CURRICULUM: CurriculumDay[] = [
+//   {
+//     label: "Day 1 — Foundations",
+//     intro:
+//       "Baseline assessment, the Northstar Construction Group scenario, and the four modules that establish how we show up with every client.",
+//     modules: [
+//       {
+//         num: "01",
+//         title: "Sales Philosophy & Professional Standards",
+//         description:
+//           "The purpose of sales, professional standards, confidence without arrogance, and sales ethics.",
+//       },
+//       {
+//         num: "02",
+//         title: "Relationships, First Impressions & Client Experience",
+//         description:
+//           "How trust and first impressions shape every buying decision.",
+//       },
+//       {
+//         num: "03",
+//         title: "Listening & Understanding Clients",
+//         description:
+//           "Active listening, curiosity, and asking better questions.",
+//       },
+//       {
+//         num: "04",
+//         title: "Understanding & Representing STAFF United",
+//         description:
+//           "Positioning, the 5-Core Support Ecosystem™, and approved terminology.",
+//       },
+//     ],
+//   },
+//   {
+//     label: "Day 2 — Finding Opportunities",
+//     intro:
+//       "Prospecting, qualification, and running the discovery meetings that turn interest into a real opportunity.",
+//     modules: [
+//       {
+//         num: "05",
+//         title: "Prospecting, Outreach, Research & Preparation",
+//         description:
+//           "Finding the right companies and preparing for the first conversation.",
+//       },
+//       {
+//         num: "06",
+//         title: "Qualification, Stakeholders & the Client Decision Process",
+//         description:
+//           "Confirming whether an opportunity is real, suitable, and worth pursuing.",
+//       },
+//       {
+//         num: "07",
+//         title: "Discovery Meetings & Client Video Calls",
+//         description:
+//           "Running a professional discovery call and ending with a clear next step.",
+//       },
+//     ],
+//   },
+//   {
+//     label: "Day 3 — Moving the Sale Forward",
+//     intro:
+//       "Recommendations, objection handling, closing, and everything that happens after the sale is won.",
+//     modules: [
+//       {
+//         num: "08",
+//         title: "Recommendations, Proposals & Presentations",
+//         description:
+//           "Turning client information into a relevant recommendation and proposal.",
+//       },
+//       {
+//         num: "09",
+//         title: "Objections, Negotiation & Closing",
+//         description:
+//           "Responding to concerns, negotiating professionally, and asking for a decision.",
+//       },
+//       {
+//         num: "10",
+//         title: "Follow-Up, Pipeline, Complaints, Handover & Growth",
+//         description:
+//           "Managing opportunities after the meeting and supporting long-term client relationships.",
+//       },
+//     ],
+//   },
+// ];
 
-function Curriculum() {
-  const [activeDay, setActiveDay] = useState(0);
-  const day = CURRICULUM[activeDay];
+// function Curriculum() {
+//   const [activeDay, setActiveDay] = useState(0);
+//   const day = CURRICULUM[activeDay];
 
-  return (
-    <AltSection variant="light">
-      <motion.div
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-80px" }}
-        variants={fadeUp}
-        transition={{ duration: 0.5 }}
-      >
-        <Eyebrow variant="light">The Curriculum</Eyebrow>
-        <h2 className="mt-4 font-bold leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-          10 modules, delivered across three focused days.
-        </h2>
-      </motion.div>
+//   return (
+//     <AltSection variant="light">
+//       <motion.div
+//         initial="hidden"
+//         whileInView="show"
+//         viewport={{ once: true, margin: "-80px" }}
+//         variants={fadeUp}
+//         transition={{ duration: 0.5 }}
+//       >
+//         <Eyebrow variant="light">The Curriculum</Eyebrow>
+//         <h2 className="mt-4 font-bold leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+//           10 modules, delivered across three focused days.
+//         </h2>
+//       </motion.div>
 
-      <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 border-b border-[#d5dadf]">
-        {CURRICULUM.map((d, idx) => (
-          <button
-            key={d.label}
-            onClick={() => setActiveDay(idx)}
-            className={`pb-3 text-sm sm:text-base font-semibold transition-colors cursor-pointer ${
-              idx === activeDay
-                ? "text-[#0a1b33] border-b-2 border-[#4f8dc9]"
-                : "text-[#4a596e]/60 hover:text-[#4a596e]"
-            }`}
-          >
-            {d.label}
-          </button>
-        ))}
-      </div>
+//       <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 border-b border-[#d5dadf]">
+//         {CURRICULUM.map((d, idx) => (
+//           <button
+//             key={d.label}
+//             onClick={() => setActiveDay(idx)}
+//             className={`pb-3 text-sm sm:text-base font-semibold transition-colors cursor-pointer ${
+//               idx === activeDay
+//                 ? "text-[#0a1b33] border-b-2 border-[#4f8dc9]"
+//                 : "text-[#4a596e]/60 hover:text-[#4a596e]"
+//             }`}
+//           >
+//             {d.label}
+//           </button>
+//         ))}
+//       </div>
 
-      <p className="mt-6 max-w-2xl text-sm sm:text-base text-[#4a596e]">
-        {day.intro}
-      </p>
+//       <p className="mt-6 max-w-2xl text-sm sm:text-base text-[#4a596e]">
+//         {day.intro}
+//       </p>
 
-      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-        {day.modules.map((m) => (
-          <div
-            key={m.num}
-            className="flex items-start gap-4 rounded-xl border border-[#d5dadf] bg-[#f7f9fb] p-5 sm:p-6"
-          >
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#4f8dc9]/15 text-sm font-bold text-[#2a6ea3]">
-              {m.num}
-            </span>
-            <div>
-              <h3 className="font-bold text-[#0a1b33] text-sm sm:text-base">
-                {m.title}
-              </h3>
-              <p className="mt-1 text-xs sm:text-sm text-[#4a596e] leading-relaxed">
-                {m.description}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </AltSection>
-  );
-}
+//       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+//         {day.modules.map((m) => (
+//           <div
+//             key={m.num}
+//             className="flex items-start gap-4 rounded-xl border border-[#d5dadf] bg-[#f7f9fb] p-5 sm:p-6"
+//           >
+//             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#4f8dc9]/15 text-sm font-bold text-[#2a6ea3]">
+//               {m.num}
+//             </span>
+//             <div>
+//               <h3 className="font-bold text-[#0a1b33] text-sm sm:text-base">
+//                 {m.title}
+//               </h3>
+//               <p className="mt-1 text-xs sm:text-sm text-[#4a596e] leading-relaxed">
+//                 {m.description}
+//               </p>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//     </AltSection>
+//   );
+// }
 
 /* -------------------------------------------------------------------- */
 /* Section 6: Certification Outcomes (DARK)                              */
@@ -786,7 +1098,7 @@ export default function AcademyPage() {
             className="flex items-center gap-3 uppercase font-medium text-[#4f8dc9] text-xs sm:text-sm md:text-base tracking-[0.2em]"
           >
             <span className="h-px w-8 bg-[#4f8dc9] shrink-0" />
-            CURRENT COURSE
+            STAFF United Training Academy
           </motion.p>
 
           <motion.h1
@@ -796,10 +1108,10 @@ export default function AcademyPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mt-6 font-bold leading-tight max-w-7xl text-2xl sm:text-4xl md:text-6xl lg:text-7xl"
           >
-            <span className="block">Targeted Sales Fundamentals</span>
+            <span className="block">Where practical skill becomes </span>
             {/* <span className="block">starts with</span> */}
             <span className="block text-[#4f8dc9]">
-              Every client relationship starts with the right foundation.
+              professional confidence.
             </span>
           </motion.h1>
 
@@ -810,10 +1122,10 @@ export default function AcademyPage() {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="mt-6 text-white leading-relaxed max-w-2xl text-sm sm:text-base md:text-lg"
           >
-            A three-day training and certification program designed to help
-            STAFF United Business Growth Representatives identify the right
-            opportunities, understand client needs, represent our company
-            accurately, and begin the right long-term business relationships.
+            A structured learning platform built for the women of STAFF United —
+            combining real-world application and continuous development to
+            strengthen performance today and prepare every team member for
+            leadership tomorrow.
           </motion.p>
 
           <motion.div
@@ -821,9 +1133,10 @@ export default function AcademyPage() {
             initial="hidden"
             animate="show"
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-10"
+            className="mt-10 flex flex-wrap items-center gap-3 sm:gap-4"
           >
             <GridHoverButton />
+            <ExploreCoursesButton />
           </motion.div>
 
           <motion.div
@@ -839,24 +1152,28 @@ export default function AcademyPage() {
             whileInView="show"
             viewport={{ once: true, margin: "-50px" }}
             transition={{ staggerChildren: 0.12 }}
-            className="mt-8 sm:mt-10 md:mt-12 mx-auto max-w-xl sm:max-w-none grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-8 sm:gap-x-10 md:gap-x-16 items-start text-center"
+            className="
+    mt-8 sm:mt-10 md:mt-12
+    mx-auto max-w-2xl
+    grid grid-cols-2
+    gap-x-12 sm:gap-x-24
+    items-start text-center
+  "
           >
-            <Stat number={3} label="Training days" />
-            <Stat number={10} label="Core modules" />
-            <Stat number="80%+" label="Score To Pass" />
-            <Stat number="30-Day" label="Follow-up review" />
+            <Stat number={5} label="Courses on the roadmap" />
+            <Stat number={1} label="Live now" />
           </motion.div>
         </div>
       </section>
 
       {/* Alternating light/dark sections */}
-      {/* <WhyThisExists /> */}
+      <WhyThisExists />
       <CourseGrid />
-      <NowLaunching />
-      <LearningCycle />
-      <Curriculum />
-      <CertificationOutcomes />
-      <FinalCTA />
+      {/* <NowLaunching /> */}
+      {/* <LearningCycle /> */}
+      {/* <Curriculum /> */}
+      {/* <CertificationOutcomes /> */}
+      {/* <FinalCTA /> */}
     </main>
   );
 }
