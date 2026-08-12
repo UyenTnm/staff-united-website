@@ -120,11 +120,26 @@ export default function TeamPage() {
           image: "/team/15.webp",
           bio: "Supports client relationships and ensures positive customer experiences.",
         },
+
         {
           name: "Sarah Nguyen",
           title: "SEO Specialist",
           image: "/team/20.webp",
           bio: "Improves search visibility through keyword strategy and content optimization.",
+        },
+
+        {
+          name: "Vy Nguyen",
+          title: "Business Growth Representatives",
+          image: "/team/vy-pham.webp",
+          bio: "Supports Targeted Sales activities, client communication.",
+        },
+
+        {
+          name: "Giang Pham",
+          title: "Business Growth Representatives",
+          image: "/team/giang.webp",
+          bio: "Supports Targeted Sales activities, client communication, and marketing email campaigns.",
         },
       ],
     },
@@ -721,23 +736,23 @@ export default function TeamPage() {
     shadow-xl
 
     transition-all
-    duration-500 h-[85px] md:h-[100px]
+    duration-500 h-[92px] md:h-[108px]
 
-
-group-hover:h-[150px]  
-md:group-hover:h-[175px]
-xl:group-hover:h-[175px] group-hover:-translate-y-2
+group-hover:h-[168px]
+md:group-hover:h-[192px]
+xl:group-hover:h-[192px] group-hover:-translate-y-2
 
     ${member.isLead ? "ring-1 ring-[#4F8DC9]/50" : ""}
   `}
                       >
                         <div className="flex justify-between items-start transition-all duration-500 ease-out group-hover:-translate-y-1">
-                          <div className="flex flex-col justify-center h-[75px] md:h-[85px]">
+                          <div className="flex flex-col justify-center">
                             <h3
                               className="
         text-xl
         font-semibold
         text-[#0B1B33]
+        leading-tight
       "
                             >
                               {member.name}
@@ -745,10 +760,11 @@ xl:group-hover:h-[175px] group-hover:-translate-y-2
 
                             <p
                               className="
-        mt-1
+        mt-1.5
         text-sm
-        text-[#0B1B33]/70 h-[44px]
-md:h-[40px] leading-5
+        text-[#0B1B33]/70
+        leading-5
+        line-clamp-2
       "
                             >
                               {member.title}
@@ -759,7 +775,7 @@ md:h-[40px] leading-5
                         {member.bio && (
                           <div
                             className="
-      -mt-4
+      mt-2
 
       opacity-0
       translate-y-4
@@ -979,68 +995,6 @@ md:h-[40px] leading-5
     px-6
   "
         >
-          {/* WATERMARK */}
-          {/* <div
-            className="
-      absolute
-      inset-0
-
-      flex
-      items-center
-      justify-center
-
-      pointer-events-none
-    "
-          >
-            <div
-              className="
-    text-white/[0.03]
-    font-black
-    uppercase
-    select-none
-    text-center
-
-    flex
-    flex-col
-    items-center
-  "
-            >
-              <div
-                className="
-    tracking-[0.15em]
-
-    text-[60px]
-    md:text-[120px]
-    xl:text-[180px]
-
-    -mb-2
-    md:-mb-4
-    xl:-mb-6
-
-    -translate-y-3
-    md:-translate-y-5
-  "
-              >
-                STAFF UNITED
-              </div>
-
-              <div
-                className="
-    tracking-[0.35em]
-
-    text-[40px]
-    md:text-[80px]
-    xl:text-[120px]
-
-    translate-y-3
-    md:translate-y-5
-  "
-              >
-                GROUP
-              </div>
-            </div>
-          </div> */}
-
           <div className="relative z-10 max-w-5xl mx-auto text-center">
             {/* TOP LABEL */}
             <div className="flex items-center justify-center gap-4 mb-8">
