@@ -2,7 +2,7 @@ import Careers from "@/components/Careers";
 // import { jobs } from "@/data/jobs";
 import { getJobs } from "@/lib/sanity";
 
-// export const revalidate = 0;
+export const revalidate = 0;
 
 export default async function CareersPage() {
   // Hide/ show when need update cms
