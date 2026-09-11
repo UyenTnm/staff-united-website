@@ -110,7 +110,7 @@ md:ml-3
               <span style={{ fontVariantNumeric: "lining-nums tabular-nums" }}>
                 24/7
               </span>{" "}
-              Execution Engine
+              Execution Team
             </span>
 
             {/* Line 2: chỉ có "for" và chữ chạy */}
