@@ -128,19 +128,19 @@ export default function TeamPage() {
           bio: "Improves search visibility through keyword strategy and content optimization.",
         },
 
-        {
-          name: "Vy Nguyen",
-          title: "Business Growth Representatives",
-          image: "/team/vy-pham.webp",
-          bio: "Supports Targeted Sales activities, client communication.",
-        },
+        // {
+        //   name: "Vy Nguyen",
+        //   title: "Business Growth Representatives",
+        //   image: "/team/vy-pham.webp",
+        //   bio: "Supports Targeted Sales activities, client communication.",
+        // },
 
-        {
-          name: "Giang Pham",
-          title: "Business Growth Representatives",
-          image: "/team/giang.webp",
-          bio: "Supports Targeted Sales activities, client communication, and marketing email campaigns.",
-        },
+        // {
+        //   name: "Giang Pham",
+        //   title: "Business Growth Representatives",
+        //   image: "/team/giang.webp",
+        //   bio: "Supports Targeted Sales activities, client communication, and marketing email campaigns.",
+        // },
       ],
     },
     // Accouting & Legal
